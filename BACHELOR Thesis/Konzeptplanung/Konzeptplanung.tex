@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\geometry{left=30mm, right=30mm, top=40mm, bottom=20mm}
+
+\lhead{\Huge{\textbf{Konzeptplanung}}}
+\rhead{für die Bachelor-Arbeit}
+\rfoot{Marcel Zauder}
+
+\begin{document}
+\hfill \\
+\textbf{PROJEKTBESCHREIBUNG} \\
+\\
+Das Hauptziel dieser Bachelor-Arbeit ist es, ein Programm zu entwickeln, mit welchem 3D-Strukturen und Meshes im virtuellen Raum erstellt und modifiziert werden k\"onnen. Auch soll es m\"oglich sein, diese Objekte über eine Netzwerk-Schnittstelle mit anderen zu teilen und sie in Echtzeit gemeinsam manipulieren zu k\"onnen.  Als Vorlage nutzen wir die Programme Google Blocks, Microsoft Maquette und Google Tilt Brush. \\
+Das Programm soll dem Benutzer erm\"oglichen simple aber auch komplexe 3D-Strukturen frei Hand zu erstellen, sowie vorgefertigte Objekte, wie einen W\"urfel oder eine Kugel, in seine ''Welt'' sehr schnell zu integrieren. Diese Strukturen können dann auch mit verschiedenen Tools modifiziert und verändert werden. Als Beispiel hierzu ist das Subdividing zu nennen, welches zwei Funktionsweisen beinhalten soll, sodass zwischen einem ''Snapping-Modus'' und einem ''Freihand-Modus'' gewechselt werden kann. Auch beim Erstellen von 3D-Objekten kann in solch einen ''Snapping-Modus'' gewechselt werden, damit sehr einfach rechte Winkel (eventuell auch 45 Grad Winkel) erzeugt werden k\"onnen. Weitere Spezifikationen und Funktionsweisen werden im Laufe der ersten Phase noch hinzugef\"ugt. \\
+Im letztendlichen ''Produkt'' wird es dann schlie$\ss$lich m\"oglich sein, über eine Internet-Verkn\"upfung mit mehreren Benutzern diese Strukturen gemeinsam zu bearbeiten und anzuschauen, wobei auch ein ''Show-Modus'' integriert sein wird, um gewisse Gebiete hervorheben zu k\"onnen. \\
+\hfill \\ \\
+\textbf{MEILENSTEINE} 
+
+\begin{itemize}
+
+\item[\textbf{1.}] Recherche und Informationssuche
+\begin{itemize}
+\item[\textbf{a.}] Welche Programme gibt es schon und was k\"onnen sie?
+\item[\textbf{b.}] Welche Engine (UE4, Unity) wird benutzt?
+\end{itemize}
+
+\item[\textbf{2.}] Ziel formulieren (Was soll unser Programm letztlich k\"onnen?)
+
+\item[\textbf{3.}] Intuitionstest (Wie intuitiv und einfach soll das Programm zu bedienen sein?)
+\begin{itemize}
+\item[\textbf{a.}] Was kann aus den vorliegenden Programmen als Anreiz herausgenommen werden?
+\end{itemize}
+
+\item[\textbf{4.}] Ersten Prototypen des Programms erstellen
+\begin{itemize}
+\item[\textbf{a.}] Erstellen, L\"oschen und Speichern von simplen 3D-Strukturen
+\item[\textbf{b.}] Gruppieren von mehreren Strukturen
+\item[\textbf{c.}] Bewegung im Raum und Herumschieben von Strukturen
+\end{itemize}
+
+\item[\textbf{5.}] Weiterf\"uhrender Prototyp des Programms
+\begin{itemize}
+\item[\textbf{a.}] Vorgefertigte Strukturen (W\"urfel, Kugel, etc.) k\"onnen in die Umgebung gesetzt werden
+\item[\textbf{b.}] Undo/Redo Funktion
+\item[\textbf{c.}] Duplizieren und Skalieren von Objekten
+\end{itemize}
+
+\item[\textbf{6.}] Beta-Version des Programms
+\begin{itemize}
+\item[\textbf{a.}] Modifizieren (Subdividing, Versatz von einzelnen Knoten, Kanten und Fl\"achen) von Strukturen
+\item[\textbf{b.}] F\"arben von Strukturen (ganze Objekte, aber auch einzelner Fl\"achen [vielleicht auch einzelne Knoten? $\rightarrow$ Farb\"uberg\"ange auf Fl\"achen])
+\item[\textbf{c.}] (Rotations-)Snapping von Objekten, Kanten und Fl\"achen
+\end{itemize}
+
+\hfill
+
+\item[\textbf{7.}] Fertiges Programm
+\begin{itemize}
+\item[\textbf{a.}] Zeige-Modus
+\item[\textbf{b.}] Mehrbenutzerf\"ahigkeit
+\item[\textbf{c.}] Echtzeit-Netzwerk-\"Ubertragung
+\end{itemize}
+
+\end{itemize}
+
+\end{document}
