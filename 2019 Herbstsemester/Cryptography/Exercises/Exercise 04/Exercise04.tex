@@ -1,0 +1,72 @@
+\documentclass{report}
+\usepackage[headheight=50pt,]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 04}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{4.1 Deterministic Libraries}
+	\begin{enumerate}[]
+		\item A deterministic library is one  that uses no random choices. Therefore the output for any input will be always the same. Let $L_1$ and $L_2$ be such deterministic libraries.
+		\item Further the advantage or bias of A is defined as follows:
+		\[
+			Bias(A) \ = \ \mid Pr(A \diamond L_1 \Rightarrow 1) - Pr(A \diamond L_2 \Rightarrow 1) \mid
+		\]
+		\item Therefore it is clear that if the deterministic libraries are interchangeable the bias will be \textsc{Zero}. \\
+		The bias will only be 1 if the algorithm $Pr(A \diamond L_1 \Rightarrow 1) = 1$ and $Pr(A \diamond L_2 \Rightarrow 1) = 0$ (or vice versa). This is only possible if $L_1$ and $L_2$ are different. Therefore $L_1$ and $L_2$ are either equivalent or can be distinguished with advantage 1.
+	\end{enumerate}
+	
+	\section*{4.2 Hash-function collisions}
+	\subsection*{4.2.a $\lambda = 40$}
+	\begin{enumerate}[]
+		\item For $\lambda = 40$ we have $2^{40} \ \approx \ 1.1 * 10^{12}$ different keys. Because we do 1'000'000 hashes on this which is clearly much less than $1,1 * 10^{12}$, we should use the Lemma of \textit{PColl(q, N)} $\approx \ 1 - e^{\frac{q^2}{2N}}$:
+		\begin{align*}
+			PColl(10^6, 2^{40}) \ & \approx \ 1 \ - \ e^{\frac{(10^6)^2}{2 \times 2^{40}}} \\
+			& = \ 1 \ - \ 0.634608281 \\
+			& = \ 0.365391719 \ \approx \ 36.54 \%
+		\end{align*}
+	\end{enumerate}
+	\subsection*{4.2.b $\lambda = 256$}
+	\begin{enumerate}[]
+		\item For $\lambda = 256$ we have $2^{256} \ \approx \ 1.16 * 10^{77}$ different keys.  Again we will use the \textit{PColl(q, N)} function to estimate the number of hashes needed to exceed the probability $\frac{1}{2}$ for a collision:
+		\begin{align*}
+			& &PColl(q, N) \ & \approx \ 1 - e^{\frac{q^2}{2N}} \\
+			& \Rightarrow & q \ & \approx \ \sqrt{ln(PColl(q, N)) \times (-2N)} \\
+			& \Rightarrow & q \ & \approx \ \sqrt{ln(\frac{1}{2}) \times (-2 \times 2^{256})} \\
+			& & & \approx \ 4 * 10^{38}
+		\end{align*}
+		So approximately $4 * 10^{38}$ hashes are needed to exceed the probability of $\frac{1}{2}$ for a collision.
+	\end{enumerate}
+	
+	\section*{4.3 Salt}
+	\subsection*{4.3.a Without \textit{Salt}}
+	\begin{enumerate}[]
+		\item From the exercise we know that $\lambda \ = \ 20$. We will use the \textit{BirthdayProb(q, N)} function:
+		\begin{align*}
+			& &BirthdayProb(q,\ N) \ & \geq \ 1 \ - \ 0.632 \cdot \frac{q(q-1)}{2N} & if \ q \ << \ \sqrt{2N} \\
+			& \Rightarrow & q \ & = \ \frac{1}{2} \ \pm \ \sqrt{\frac{1}{4} + \frac{(1-BirthdayProb(q, \ N)) \times 2N}{0,632}} \\
+			& \Rightarrow & q \ & = \ \frac{1}{2} \ + \ \sqrt{\frac{1}{4} + \frac{2^{20}}{0,632}} \ \approx \ 1289
+		\end{align*}
+	\end{enumerate}
+	\subsection*{4.3.b With \textit{Salt}}
+	\begin{enumerate}[]
+		\item Through the salt the length of the $\lambda \ = \ 256 + 20 \ = \ 276$. So we get (similar as above):
+		\begin{align*}
+			q \ & = \ \frac{1}{2} \ + \ \sqrt{\frac{1}{4} + \frac{2^{276}}{0,632}} \ = \ 4.4 * 10^{41}
+		\end{align*}
+	\end{enumerate}
+	
+\end{document}

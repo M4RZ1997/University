@@ -1,0 +1,183 @@
+\documentclass{report}
+\usepackage[headheight=50pt,]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 01}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{2.1 Basics on libraries}
+	\subsection*{2.1.1 Probabilities}
+	$\mathbb{Z}_6 = \{0,1,2,3,4,5\}$ \\
+	\begin{compactenum}[$\bullet$]
+		\item \textbf{Pr[$A_1 \diamond L_1 \Rightarrow 1$]:}
+		\begin{enumerate}[]
+			\item Pr[$(r_1 \leftarrow \mathbb{Z}_6)$ $\stackrel{?}{=}$ $(r_2 \leftarrow \mathbb{Z}_6)$] = $\frac{1}{6}$
+		\end{enumerate}	
+		\item \textbf{Pr[$A_1 \diamond L_2 \Rightarrow 1$]:}
+		\begin{enumerate}[]
+			\item Pr[0 $\stackrel{?}{=}$ 0] = 1
+		\end{enumerate}				
+		\item \textbf{Pr[$A_2 \diamond L_1 \Rightarrow 1$]:}
+		\begin{enumerate}[]
+			\item Pr[$(r \leftarrow \mathbb{Z}_6)$ $\stackrel{?}{\geq}$ 3] = $\frac{1}{2}$
+		\end{enumerate}	
+		\item \textbf{Pr[$A_2 \diamond L_2 \Rightarrow 1$]:}
+		\begin{enumerate}[]
+			\item Pr[0 $\stackrel{?}{\geq}$ 3] = 0
+		\end{enumerate}	
+	\end{compactenum}
+	\subsection*{2.1.2 Equivalent libraries}
+	Two Libraries $L_{left}$ and $L_{right}$ are equivalent iff:
+	\[
+		P[A\diamond L_{left} \rightarrow 1] = P[A\diamond L_{right} \rightarrow 1]
+	\]
+	\begin{compactenum}[$\bullet$]
+		\item 	\begin{tabular}{lll}
+					\begin{tabular}{|c|}
+						\hline \textbf{$L_{left}$} \\
+						\hline \multicolumn{1}{|l|}{\underline{\textsc{Query():}}} \\
+						x $\leftarrow$ $\{0,1\}^n$ \\
+						return x \\
+						\hfill \\
+						\hline
+					\end{tabular}
+					&
+					$\stackrel{?}{\equiv}$
+					&
+					\begin{tabular}{|c|}
+						\hline \textbf{$L_{right}$} \\
+						\hline \multicolumn{1}{|l|}{\underline{\textsc{Query():}}} \\
+						x $\leftarrow$ $\{0,1\}^n$ \\
+						y := $\overline{x}$ \\
+						return y \\
+						\hline
+					\end{tabular}
+				\end{tabular}
+			\begin{enumerate}[]
+				\item Because we can make a 1:1 correspondence (we could make a bijection) for each return value of $L_{left}$ to each return value of $L_{right}$ the probabilities for each return value are equal and therefore the libraries are equivalent. \\
+			\end{enumerate}
+		\item 	\begin{tabular}{lll}
+					\begin{tabular}{|c|}
+						\hline \textbf{$L_{left}$} \\
+						\hline \multicolumn{1}{|l|}{\underline{\textsc{Query():}}} \\
+						x $\leftarrow$ $\mathbb{Z}_n$ \\
+						return x \\
+						\hfill \\
+						\hline
+					\end{tabular}
+					&
+					$\stackrel{?}{\equiv}$
+					&
+					\begin{tabular}{|c|}
+						\hline \textbf{$L_{right}$} \\
+						\hline \multicolumn{1}{|l|}{\underline{\textsc{Query():}}} \\
+						x $\leftarrow$ $\mathbb{Z}_n$ \\
+						y := 2x \% n \\
+						return y \\
+						\hline
+					\end{tabular}
+				\end{tabular}
+			\begin{enumerate}[]
+				\item \textbf{For "even" n's:} \\
+				Let us assume that n = 2 and we calculate the probability of the return value being 1. In this case $\mathbb{Z}_2$ = $\{0,1\}$ and the probability of $L_{left}$ returning 1 is therefore $\frac{1}{2}$. The library $L_{right}$ will only return 1 if there is a possibility to solve the equation 1 = 2x $\%$ 2, with x $\in$ $\mathbb{Z}_2$. Because there is no possible result $L_{right}$ cannot return 1, so the probability is 0 and the libraries are therfore not equivalent. \\
+				\item \textbf{For "uneven" n's:} \\
+				For uneven n, the distributions are:
+				\[
+					\mathbb{Z}_n  = \{0,1,2,...,n-1\} $$ $$
+					2 \cdot \mathbb{Z}_n \% n = \{0,2,4,...,n-1,1,3,..., n-2\}
+				\]
+				Therefore the second distribution is a permutation of the first one and therefore the libraries are equivalent. \\
+			\end{enumerate}
+		\item 	\begin{tabular}{lll}
+					\begin{tabular}{|c|}
+						\hline \textbf{$L_{left}$} \\
+						\hline \multicolumn{1}{|l|}{\underline{\textsc{Query():}}} \\
+						x $\leftarrow$ $\{0,1\}^n$ \\
+						y $\leftarrow$ $\{0,1\}^n$ \\
+						return x \& y \\
+						\hline
+					\end{tabular}
+					&
+					$\stackrel{?}{\equiv}$
+					&
+					\begin{tabular}{|c|}
+						\hline \textbf{$L_{right}$} \\
+						\hline \multicolumn{1}{|l|}{\underline{\textsc{Query():}}} \\
+						z $\leftarrow$ $\{0,1\}^n$ \\
+						return z \\
+						\hfill \\
+						\hline
+					\end{tabular}
+				\end{tabular}
+			\begin{enumerate}[]
+				\item Let us assume that n = 1. The probability of $L_{left}$ returning 0 is $\frac{3}{4}$ because this is returned if $((x=0) \wedge (y=0)) \vee ((x=0) \wedge (y=1)) \vee ((x=1) \wedge (y=0))$. Only if $((x=1) \wedge (y=1))$ $L_{left}$ returns 1. $L_{right}$  will return 0 with a possibility of $\frac{1}{2}$. Therefore they are not equivalent.
+			\end{enumerate}
+	\end{compactenum}
+	\hfill \\
+	
+	\section*{2.2 Security of a modified One-time Pad (OTP)}7
+	Given the two libraries from the lecture, we need to show that $L_{OTS_left} \equiv L_{OTS_right}$ so we can conclude the one-time secrecy: \\
+	For two arbitrary messages $m_1$ and $m_2$, the eavesdrop() function will return the following bit string for either of the two libraries:
+	\[
+		c_1 c_2 \cdots c_{n-2} c_{n-1} c_n $$ $$
+		\textit{whereas: } c_{n - 1} = c_n = 0 \textit{ and } c_1, c_2, \cdots, c_{n-2} \textit{ are uniformaly distributed in } \{0,1\}^{n-2} 
+	\]
+	Because in either cases the ciphertexts will be distributed in the same way, a distinguishable algorithm A still will be unable to differ between those two libraries. This implies that both libraries are exchangeable due to the fact that $P[A \diamond L_{OTS-left} \Rightarrow 1] = P[A \diamond L_{OTS-right} \Rightarrow 1]$. So this cipher will provide a one time secrecy. $\square$
+	\newpage
+	\section*{2.3 Construction of a distinguisher}
+	First we can make a few assumptions:
+	\begin{enumerate}[\hspace{1cm} 1.]
+		\item If at least one of $m$ \textsc{or} $k$ is even the result for $(k \times m) \% 10$ is even
+		\item Only if $m$ and $k$ are odd the result for $(k \times m) \% 10$ is odd
+	\end{enumerate}
+	Therefore we can compute the following table: \\
+	\begin{center}	
+		\begin{tabular}{ccc}
+			\hline
+	    			 & $k$ even & $k$ odd \\
+			\hline
+			$m$ even & $c$ even & $c$ even \\
+			$m$ odd  & $c$ even & $c$ odd \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Now we can define a distinguishing algorithm A:
+	\begin{align*}
+		A: \ & \\
+		& \ m_l \leftarrow 2 \\
+		& \ m_r \leftarrow 3 \\
+		& \ c = Eavesdrop(m_l, m_r) \\
+		& \ if \ (c \textit{ mod } 2 \ == \ 0) \ \{ \\
+		& \ \ \ \ \frac{2}{3} \textit{ likelihood that } m_l \textit{ encrypted} \\
+		& \ \ \ \ return \ 0 \\
+		& \ \} \\
+		& \ else \ \{ \\
+		& \ \ \ \ \textit{Guaranteed that } m_r \textit{ is encrypted} \\
+		& \ \ \ \ return \ 1 \\
+		& \ \} \\
+		& \ end
+	\end{align*}
+	Therefore for the probability follows:
+	\[
+		P[A \diamond L_{OTS-left} \Rightarrow 1] = 0 \neq \frac{1}{2} = P[A \diamond L_{OTS-right} \Rightarrow 1]
+	\]
+	We can see that this leads to the conclusion that the two libraries are \textsc{not} exchangeable and therefore the one-time secrecy cannot be provided.
+	\hfill \\
+	
+	\section*{2.4* Size of the OTP key space}
+	-
+	
+\end{document}

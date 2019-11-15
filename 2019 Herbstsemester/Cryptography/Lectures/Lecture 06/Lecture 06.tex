@@ -1,0 +1,185 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptography}}}
+\end{center}
+
+
+{\let\clearpage\relax \chapter*{5. Extension of the PRG}}
+	\[
+		G: \Sigma ^{\lambda} \rightarrow \Sigma ^{\lambda} \hspace{2cm}
+		H_n: \Sigma ^{\lambda} \rightarrow \Sigma ^{(n+1) \lambda} \\
+	\]
+	\begin{tabular}{l}
+		\underline{$H_n(s)$} \\
+		\ $s_o \ := \ s$ \\
+		\ \underline{for} $i=1$ to $n$ \underline{do} \\
+		\ \ \ $t_i \| s_i \ := \ G(s_{i-1})$ \\
+		\ \textbf{return} $t_1 \| t_2 \| ... \| t_n \| s_n$
+	\end{tabular} \\
+	\section*{Theroem:}
+	If G is a (2x) PRG, then $H_n$ is a ((n+1)x) PRG. \\ \\
+	\begin{tabular}{lll}
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^G_{PRG-real}$ \\ \hline
+			\ \underline{\textsc{Query()}} \\
+			\ \ \ $s \leftarrow \Sigma ^{\lambda}$ \\
+			\ \ \ \textbf{return} G(s) \\ \hline
+		\end{tabular}
+		&
+		$\apeq$
+		&
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^G_{PRG-rand}$ \\ \hline
+			\ \underline{\textsc{Query()}} \\
+			\ \ \ $r \leftarrow \Sigma ^{2\lambda}$ \\
+			\ \ \ \textbf{return} r \\ \hline
+		\end{tabular}
+	\end{tabular}
+	\\ \\
+	\begin{tabular}{lll}
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{H_n}_{PRG-real}$ \\ \hline
+			\ \underline{\textsc{Query()}} \\
+			\ \ \ $s_0 \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\ \ \ \underline{for} $i=1$ to $n$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ G(s_{i-1})$ \\
+			\ \ \ \textbf{return} $t_1 \| t_2 \| ... \| t_n \| s_n$ \\ \hline
+		\end{tabular}
+		&
+		$\apeq$
+		&
+		\begin{tabular}{|l|}
+			\multicolumn{1}{c}{Define hybrid-k L} \\
+			\hline \cellcolor[gray]{0.8}$L^{H}_{hyb-k}$ \\ \hline
+			\ \underline{\textsc{Query()}} \\
+			\ \ \ $s_0 \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\ \ \ \underline{for} $i=1$ to $k$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ \{ 0,1 \} ^{2\lambda}$ \\
+			\ \ \ $t_{k+1} \| s_{k+1} \leftarrow G(s_k)$ \\
+			\ \ \ \underline{for} $i=k+2$ to $n$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ G(s_{i-1})$ \\
+			\ \ \ \textbf{return} $t_1 \| t_2 \| ... \| t_n \| s_n$ \\ \hline
+		\end{tabular}
+	\end{tabular}
+	\\ \\
+	$L^{H}_{hyb-0} \ \equiv \ L^{H}_{PRG-real}$ (actual $H_n$) \\
+	$\vdots$ \\
+	$^{L^{H}_{hyb-k}}_{L^{H}_{hyb-k+1}}\rbrace {\color{red}\apeq}$ \hspace{1cm} ${\color{red}\downarrow \ n-times}$\\
+	$\vdots$ \\
+	$L^{H}_{hyb-n} \ \equiv \ L^{H}_{PRG-rand}$ ((n+1)$\lambda$-bit random output) \\ \\
+	\begin{tabular}{lllll}
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{H}_{hyb-k}$ \\ \hline
+			\ \underline{\textsc{Query()}} \\
+			\ \ \ $s_0 \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\ \ \ \underline{for} $i=1$ to $k$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ \{ 0,1 \} ^{2\lambda}$ \\
+			{\color{red}\ \ \ $t_{k+1} \| s_{k+1} \leftarrow G(s_k)$} \\
+			\ \ \ \underline{for} $i=k+2$ to $n$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ G(s_{i-1})$ \\
+			\ \ \ \textbf{return} $t_1 \| t_2 \| ... \| t_n \| s_n$ \\ \hline
+		\end{tabular}
+		&
+		$\apeq$
+		&
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{H}_{hyb-k+1}$ \\ \hline
+			\ \underline{\textsc{Query()}} \\
+			\ \ \ $s_0 \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\ \ \ \underline{for} $i=1$ to $k$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ \{ 0,1 \} ^{2\lambda}$ \\
+			{\color{red}\ \ \ $t_{k+1} \| s_{k+1} \leftarrow \{ 0,1 \} ^{2\lambda}$} \\
+			\ \ \ \underline{for} $i=k+1$ to $n$ \underline{do} \\
+			\ \ \ $t_i \| s_i \ := \ G(s_{i-1})$ \\
+			\ \ \ \textbf{return} $t_1 \| t_2 \| ... \| t_n \| s_n$ \\ \hline
+		\end{tabular}
+		&
+		&
+		\begin{tabular}{p{6cm}}
+			This substitution can be made because $L^G_{PRG-real} \ \apeq \ L^G_{PRG-rand}$
+		\end{tabular}
+	\end{tabular} \\ \\
+	Therefore the theorem is proved.
+
+{\let\clearpage\relax \chapter*{6. Pseudorandom Functions}}
+	\begin{enumerate}[*]
+		\item Stream cipher from PRG ($\leftarrow$ one-time use) \\
+		$G_k() \rightarrow \square \square \square....$ (pseudorandom keys
+		\begin{enumerate}[-]
+			\item sequential access only 
+		\end{enumerate}
+		\item "Blockciphers" from a PRF (=pseudorandom function)
+		\begin{enumerate}[-]
+			\item random-access characteristic 
+		\end{enumerate}
+	\end{enumerate}
+	
+	\section*{Definition:}
+	A pseudorandom function (PRF)
+	\[
+		F: \{ 0,1 \} ^{\lambda} \times \{ 0,1 \}^{in} \rightarrow \{ 0,1 \}^{out}
+	\]
+	is a deterministic function, s.t.
+	\[
+		L^{F}_{PRF-real} \ \apeq \ L^{F}_{PRF-rand}
+	\]
+	\\
+	\begin{tabular}{lll}
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{F}_{PRF-real}$ \\ \hline
+			\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\\
+			\ \underline{\textsc{Lookup}}($x \in \{ 0,1 \} ^{in}$) \\
+			\ \ \ \textbf{return} F(k,x) \\ \hline
+		\end{tabular}
+		&
+		$\apeq$
+		&
+		\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{F}_{PRF-rand}$ \\ \hline
+				\ $T \ := \ empty \ associated \ array$ \\
+				\\
+				\ \underline{\textsc{Lookup}(x)}\\
+				\ \ \ \textbf{if} $T[x]$ undefined: \\
+				\ \ \ \ \ $T[x] \leftarrow \{ 0,1 \} ^{out}$ \\
+				\ \ \ \textbf{return} $T[x]$ \\ \hline
+			\end{tabular}
+	\end{tabular} \\ \\
+	For particular key $k$, F(k,-) is a deterministic function from in-bit strings to out-bit strings. \\
+	There are $2^{\lambda}$ such functions. \\
+	But in total there are $(2^{out})^{2^{in}} \ = \ 2^{out \cdot 2^{in}}$ functions  in-bits to out-bits.
+	
+	\section*{Failed attempts to build a PRG}
+	\begin{enumerate}[1.]
+		\item $F^{*}(k,x) := G(k) \oplus x$ \\
+		where $k \in \{ 0,1 \} ^{\lambda}$, $G: \{ 0,1 \} ^{k} \rightarrow \{ 0,1 \}^{2k}$ \\
+		$F^{*}(k,x) =  G(k) \oplus x$ \\
+		$F^{*}(k,y) =  G(k) \oplus y$ \\
+		$F^{*}(k,x) \oplus F^{*}(k,y) =  x \oplus y$ \\
+		$P[A \diamond L^{F^{*}}_{real} \rightarrow 1] = 1$ \\
+		$P[A \diamond L^{F^{*}}_{rand} \rightarrow 1] = 2^{-out}$ \\
+		This $F^{*}$ is distinguishable from random.
+		
+	\end{enumerate}
+	
+\end{document}
+ 

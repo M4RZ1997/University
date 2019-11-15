@@ -1,0 +1,276 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptography}}}
+\end{center}
+
+
+{\let\clearpage\relax \chapter*{Computational Security}}
+\subsection*{Def.:}
+Encriptionscheme $\Sigma$ uniform ciphertexts when:
+\begin{center}
+	$L_{OTS\$-real} \equiv L_{OTS\$-rand}$
+\end{center}
+\begin{tabular}{ll}
+	\begin{tabular}{c}
+		$L_{OTS\$ -real}$ \\
+		$\ cTXT(m): $ \\
+		$\ \ k \leftarrow \Sigma .KeyGen() $\\
+		$\ \ c \leftarrow \Sigma .Enc(k,m) $\\
+		$\ \ return \ c $
+	\end{tabular}
+	&
+	\begin{tabular}{c}
+		$L_{OTS\$-rand} $ \\
+		$\ cTXT(m): $ \\
+		$\ \ c \leftarrow \Sigma.C $\\
+		$\ \ return \ c $
+	\end{tabular}
+\end{tabular}
+\subsection*{Def.:}
+Encriptionscheme $\Sigma$ has one-time secrecy when:
+\begin{center}
+	$L_{OTS-L} \equiv L_{OTS-R}$
+\end{center}
+\begin{tabular}{ll}
+	\begin{tabular}{c}
+		$L_{OTS-L} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	\begin{tabular}{c}
+		$L_{OTS-R} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_R) $\\
+		$\ \ return \ c$
+	\end{tabular}
+\end{tabular}
+
+\chapter*{Composing libraries}
+\subsection*{Theorem:}
+If $L_L \equiv L_R$ then for all $L^{\star}$: \\
+\[
+	L^{\star} \diamond L_L \equiv L^{\star} \diamond L_R
+\]
+\subsection*{Pf.:}
+A arbitrary program that accesses $L^{\star}$
+\[
+	P[A \diamond (L^{\star} \diamond L_L) \Rightarrow 1] = P[\underbrace{(A \diamond L^{\star})}_{A^{\star}} \diamond L_L \Rightarrow 1] = P[{(A \diamond L^{\star})} \diamond L_R \Rightarrow 1] = P[A \diamond (L^{\star} \diamond L_R) \Rightarrow 1]
+\]
+\subsection*{Theorem:}
+$\Sigma$ with uniform ciphertexts (OTS\$) also has one-time secrecy (OTS)
+\begin{align*}
+	L_{OTS\$-real} \ & \equiv \ L_{OTS\$-rand} \\
+	\Rightarrow L_{OTS-L} \ & \equiv \ L_{OTS-R}
+\end{align*}
+\begin{enumerate}[$\bullet$]
+	\item construct sequence of libraries, s.t. each two are interchangeable
+	\item We call the intermediate ones "hybrids"
+	\item Exploit $\equiv$ interchangeable
+\end{enumerate}
+\newpage
+\subsection*{Proof}
+\begin{tabular}{lllll}
+	& & \multicolumn{3}{c}{$L_{hyb1}$} \\
+	\begin{tabular}{l}
+		$L_{OTS-L} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\equiv$
+	&
+	\begin{tabular}{l}
+		$L$\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ c := cTXT(m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\lozenge$
+	&
+	\begin{tabular}{l}
+		$L_{OTS\$-real} $\\
+		$\ cTXT(m): $ \\
+		$\ \ k \leftarrow \Sigma .KeyGen() $\\
+		$\ \ c \leftarrow \Sigma .Enc(k,m) $\\
+		$\ \ return \ c $
+	\end{tabular}
+\end{tabular}
+\hfill \\ \\
+\begin{tabular}{lllll}
+	& & \multicolumn{3}{c}{$L_{hyb2}$} \\
+	\begin{tabular}{l}
+		$L_{OTS-L} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\equiv$
+	&
+	\begin{tabular}{l}
+		$L$\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ c := cTXT(m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\lozenge$
+	&
+	\begin{tabular}{l}
+		$L_{OTS\$-rand} $\\
+		$\ cTXT(m): $ \\
+		$\ \ c \leftarrow \Sigma.C $\\
+		$\ \ return \ c $
+	\end{tabular}
+\end{tabular}
+\hfill \\ \\
+\begin{tabular}{lllll}
+	& & \multicolumn{3}{c}{$L_{hyb3}$} \\
+	\begin{tabular}{l}
+		$L_{OTS-L} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\equiv$
+	&
+	\begin{tabular}{l}
+		$L$\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ c := cTXT(m_R) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\lozenge$
+	&
+	\begin{tabular}{l}
+		$L_{OTS\$-rand} $\\
+		$\ cTXT(m): $ \\
+		$\ \ c \leftarrow \Sigma.C $\\
+		$\ \ return \ c $
+	\end{tabular}
+\end{tabular}
+\hfill \\ \\
+\begin{tabular}{lllll}
+	& & \multicolumn{3}{c}{$L_{hyb4}$} \\
+	\begin{tabular}{l}
+		$L_{OTS-L} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\equiv$
+	&
+	\begin{tabular}{l}
+		$L$\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ c := cTXT(m_R) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\lozenge$
+	&
+	\begin{tabular}{l}
+		$L_{OTS\$-real} $\\
+		$\ cTXT(m): $ \\
+		$\ \ k \leftarrow \Sigma .KeyGen() $\\
+		$\ \ c \leftarrow \Sigma .Enc(k,m) $\\
+		$\ \ return \ c $
+	\end{tabular}
+\end{tabular}
+\hfill \\ \\
+\begin{tabular}{lll}
+	\begin{tabular}{l}
+		$L_{OTS-L} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_L) $\\
+		$\ \ return \ c$
+	\end{tabular}
+	&
+	$\equiv$
+	&
+	\begin{tabular}{l}
+		$L_{OTS-R} $\\
+		$\ Eavesdrop(m_L, m_R): $\\
+		$\ \ k \leftarrow \Sigma.KeyGen() $\\
+		$\ \ c \leftarrow \Sigma.Enc(k,m_R) $\\
+		$\ \ return \ c$
+	\end{tabular}
+\end{tabular}
+
+\chapter*{4. Security from intractable computations}
+\section*{Intractable computations}
+What is tractable? \\
+Everything computable probabilistic polynomial time. \\
+\underline{Computational security} is based on difficulty of intractable computation. \\
+Modern Cryptology is based on computational security models.
+\subsection*{Security parameter $\lambda$}
+$\lambda$ quantities the computational effort of an attack and the security of an algorithm. \\
+Iddeally we would like the cost of an attack to be $\sim \ 2^{\lambda}$ and cost of implementation $\sim \ poly(\lambda)$ [even better: $\sim \lambda$].
+\subsubsection*{Examples:}
+AES-128 uses 128-bit keys an attacker would need to perform $2^{128}$ operations.
+\subsection*{Formalizing "efficiently"}
+\begin{enumerate}[$\bullet$]
+	\item According to complexity theory, we consider everything computable in probabilistic polynomial time (ppt) to be \underline{efficient}. \\
+	\item TM halts after p($\lambda$) steps, where p(\textbullet) polynomial.
+\end{enumerate}
+\subsubsection*{Examples:}
+\begin{align*}
+	& \lambda^2 \ & polynomial \\
+	& 2^{(log \ \lambda)^{10}} \ & superpolynomial \\
+	& 1.1^{\lambda} \ & exponential \\
+	& \lambda^{1000} \ & polynomial
+\end{align*}
+\subsection*{Formalizing "negligible probabilities"}
+\begin{enumerate}[\textbullet]
+	\item Adversary can always guess our $\lambda$-bit secret key with probability $2^{-\lambda}$
+	\item Adversary can repeat a guess $p(\lambda)$ times (for some polynomial p(\textbullet)) and achieve $probability \ \leq p(\lambda) \cdot 2^{-\lambda}$ .... should still be negligible
+\end{enumerate}
+\subsubsection*{Definition:}
+A function f() \underline{is negligible} iff for all polynomials p(\textbullet):
+\[
+	\lim_{\lambda \rightarrow \infty} p(\lambda) \cdot f(\lambda) = 0
+\]
+\subsubsection*{Definition:}
+A function g() \underline{is superpolynomial} when $\frac{1}{g()}$ is negligible.
+\subsubsection*{Definition:}
+For functions p() dand q() we write:
+\begin{align*}
+	& \ \ \ p \approx q \\
+	for & \underbrace{\mid p-q \mid}_{\mid p(\lambda) - q(\lambda) \mid} \ is \ negligible
+\end{align*}
+Extending the notion to probabilities
+\begin{align*}
+	P[\epsilon] \approx 0: & \ Event \ \epsilon \textit{ almost never occurs} \\
+	P[\epsilon] \approx 1: & \ Event \ \epsilon \textit{ occurs almost surely/almost certainly/with overwhelming probability} \\
+	P[A] \approx P[B]: & \ A \ and \ B \textit{ have essentially the same probability}
+\end{align*}
+\subsection*{Indistinguishability}
+\begin{enumerate} [\textbullet]
+ \item Interchangeable libraries produce the same probability distributions
+ \item Indistinguishable libraries produce essentially the same probability distributions
+\end{enumerate}
+
+\end{document}
+ 

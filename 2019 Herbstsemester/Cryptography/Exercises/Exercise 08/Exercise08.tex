@@ -1,0 +1,364 @@
+\documentclass{report}
+\usepackage[headheight=30pt, textheight=580pt]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\usepackage{stix}
+
+\newcommand{\tableflip}{$($\rotatebox{45}{$\smile$}$^{\circ}\smwhtsquare^{\circ})\rotatebox{45}{$\smile$}\mkern-6mu\frown$\raisebox{0.5ex}{$\bot$}$\mkern-3.5mu-\mkern-3.5mu$\raisebox{0.5ex}{$\bot$}}
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 08}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{8.1 CPA-secure encryption}
+	\subsection*{8.1.a $\Sigma '$ CPA\$-secure?}
+	\begin{enumerate}[]
+		\item We consider the following distinguisher: \\ \\
+		\begin{tabular}{ll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
+				\ \textbf{pick} $m \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $y \ = \ \Sigma'(k,m)$ \\
+				\ \textbf{return} $first \ two \ bits \ of \ y \stackrel{?}{=} 00$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{7.5cm}}
+				First we will pick $k$ and $m$ at random. Then the return value of $\Sigma '$ is checked whether the two starting bits are both 0 or not.
+			\end{tabular}
+		\end{tabular}
+		\item It is obvious that for $L^{\Sigma'}_{CPA-real}$ the distinguisher will always output 1. For $L^{\Sigma'}_{CPA-rand}$ the distinguisher will only output 1 if the random algorithm outputs a bit-string with the first two bits being 0. The probability for this will be $\frac{1}{4}$. \\
+		For the advantage we will then get:
+		\begin{align*}
+			Bias(A) \ & = \ \mid Pr(A \diamond L^{\Sigma'}_{CPA-real}) - Pr(A \diamond L^{\Sigma'}_{CPA-rand}) \mid \\
+			& = \ \mid 1 - \frac{1}{4} \mid \\
+			& = \ \frac{3}{4} \ \neq \ 0
+		\end{align*}
+		Therefore $\Sigma '$ is not CPA\$-secure.
+	\end{enumerate}
+	\subsection*{8.1.b $\Sigma '$ CPA-secure?}
+	\begin{enumerate}
+		\item We will show that $\Sigma' \diamond \Sigma(k,m_L)$ is indistinguishable from $\Sigma' \diamond \Sigma(k,m_R)$: \\ \\
+		\begin{tabular}{ll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma '}_{CPA-L}$ \\
+				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Eavesdrop}($m_L, m_R$)} \\
+				\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c \ := \ 00 \| \Sigma .Enc(k, m_L)$ \\
+				\ \ \textbf{return} $c$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{7.5cm}}
+				This is our starting library $L^{\Sigma '}_{CPA-L}$.
+			\end{tabular}
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{llll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma '}_{CPA}$ \\
+				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Eavesdrop}($m_L, m_R$)} \\
+				\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c \ := \ 00 \| \Sigma .Enc(k,(m_L, m_R))$ \\
+				\ \ \textbf{return} $c$ \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA-L}$ \\
+				\ \underline{\textsc{}Enc($k, (m_L, m_R)$)} \\
+				\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c \ := \ \Sigma .Enc(k, m_L)$ \\
+				\ \ \textbf{return} $c$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{3cm}}
+				With adding $L^{\Sigma}_{CPA-L}$ we create a hybrid-library.
+			\end{tabular}
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{llll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma '}_{CPA}$ \\
+				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Eavesdrop}($m_L, m_R$)} \\
+				\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c \ := \ 00 \| \Sigma .Enc(k,(m_L, m_R))$ \\
+				\ \ \textbf{return} $c$ \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA-R}$ \\
+				\ \underline{\textsc{}Enc($k, (m_L, m_R)$)} \\
+				\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c \ := \ \Sigma .Enc(k, m_R)$ \\
+				\ \ \textbf{return} $c$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{3cm}}
+				Because we know that $\Sigma$ has CPA\$-security (especially also CPA-security $L^{\Sigma}_{CPA-L} \ \apeq \ L^{\Sigma}_{CPA-R}$
+			\end{tabular}
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{ll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma '}_{CPA-R}$ \\
+				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Eavesdrop}($m_L, m_R$)} \\
+				\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c \ := \ 00 \| \Sigma .Enc(k, m_R)$ \\
+				\ \ \textbf{return} $c$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{7.5cm}}
+				Therefore we can inline this subroutine to end with the library $L^{\Sigma '}_{CPA-R}$. Therefore we showed that $L^{\Sigma '}_{CPA-L} \ \apeq \ L^{\Sigma '}_{CPA-R}$.
+			\end{tabular}
+		\end{tabular}
+	\end{enumerate}
+	
+	\section*{8.2 From a PRP to CPA-secure encryption}
+	\subsection*{8.2.1 Corresponding Decoder}
+	\subsubsection*{8.2.1.a}
+	\begin{tabular}{lll}
+		 \begin{tabular}{|l|}
+		 	\hline \cellcolor[gray]{0.8}$Enc(k,m):$ \\
+		 	\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 	\ \ $z := F(k,m) \oplus r$ \\
+		 	\ \ \textbf{return} $(r,z)$ \\ \hline
+		 \end{tabular}
+		 &
+		 &
+		 \begin{tabular}{|l|}
+		 	\hline \cellcolor[gray]{0.8}$Dec(r,z):$ \\
+		 	\ \ $c = z \oplus r$ \\
+		 	\ \ $m' = F^{-1}(c)$ \\
+		 	\ \ \textbf{return} $m'$ \\ \hline
+		 \end{tabular}
+	\end{tabular}
+	\subsubsection*{8.2.1.b}
+	\begin{tabular}{lll}
+		 \begin{tabular}{|l|}
+		 	\hline \cellcolor[gray]{0.8}$Enc(k,m):$ \\
+		 	\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 	\ \ $s := r \oplus m$ \\
+		 	\ \ $x := F(k,r)$ \\
+		 	\ \ \textbf{return} $(s, x)$ \\ \hline
+		 \end{tabular}
+		 &
+		 &
+		 \begin{tabular}{|l|}
+		 	\hline \cellcolor[gray]{0.8}$Dec(r,z):$ \\
+		 	\ \ $r = F^{-1}(x)$ \\
+		 	\ \ $m' = r \oplus s$ \\
+		 	\ \ \textbf{return} $m'$ \\ \hline
+		 \end{tabular}
+	\end{tabular}
+	\subsubsection*{8.2.1.c}
+	\begin{tabular}{lll}
+		 \begin{tabular}{|l|}
+		 	\hline \cellcolor[gray]{0.8}$Enc(k,m):$ \\
+		 	\ \ $s_1 \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 	\ \ $s_2 := s_1 \oplus m$ \\
+		 	\ \ $x := F(k, s_1)$ \\
+		 	\ \ $y := F(k, s_2)$ \\
+		 	\ \ \textbf{return} $(x, y)$ \\ \hline
+		 \end{tabular}
+		 &
+		 &
+		 \begin{tabular}{|l|}
+		 	\hline \cellcolor[gray]{0.8}$Dec(r,z):$ \\
+		 	\ \ $s_1 = F^{-1}(x)$ \\
+		 	\ \ $s_2 = F^{-1}(y)$ \\
+		 	\ \ $m' = s_2 \oplus s_1$ \\
+		 	\ \ \textbf{return} $m'$ \\ \hline
+		 \end{tabular}
+	\end{tabular}
+	\subsection*{8.2.2 CPA-secure?}
+	\subsubsection*{8.2.2.a}
+	\begin{enumerate}[]
+		\item No, it is not \textit{CPA-secure}, because:
+		\item \textbf{\underline{Proof:}} \\
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_L(k,(m_L, m_R)):$ \\
+		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $z := F(k,m_L) \oplus r$ \\
+		 		\ \ \textbf{return} $(r,z)$ \\ \hline
+			\end{tabular}
+			&
+			$\stackrel{?}{\apeq}$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_R(k,(m_L, m_R)):$ \\
+		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $z := F(k,m_R) \oplus r$ \\
+		 		\ \ \textbf{return} $(r,z)$ \\ \hline
+			\end{tabular}			
+		\end{tabular} 
+		\\ \\ \\
+		We will consider the following distinguisher: \\
+		\begin{tabular}{ll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
+				\ \textbf{pick} $x \in \{ 0,1 \} ^{\lambda}$ \\
+				\ \textbf{pick} $y \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $m_1 \ = \ x \| x$ \\
+				\ $m_2 \ = \ x \| y$ \\
+				\ $(r_1, c_1) \ = \ Enc(k, m_1)$ \\
+				\ $(r_2, c_2) \ = \ Enc(k, m_2)$ \\
+				\ \textbf{return} $c_1 \oplus r_1 \stackrel{?}{=} c_2 \oplus r_2$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{7.5cm}}
+				First we will pick a key $k$ and two messages $x$ and $y$ at random. Then the return values of $Enc(k,m)$ are fetched. In the end the XOR-step which the encoder has done, will be reversed by using the return values. The distinguisher will therefore output whether both $F(k,m)$ have returned the same value.
+			\end{tabular}
+		\end{tabular}
+		\\ \\ \\
+		It is obvious that if the $Enc_L$ is used the adversary will output 1 because in both cases $F(k,x)$ is returned. If the $Enc_R$ is used one will output $F(k,x)$ and the other one will output $F(k,y)$ which will not be the same and therefore the output value of A will be 0. So the adversary can distinguish between $Enc_L$ and $Enc_R$ and therfore this encoder is not \textit{CPA-secure}.
+	\end{enumerate}
+	\subsubsection*{8.2.2.b}
+	\begin{enumerate}[]
+		\item Yes, it is \textit{CPA-secure}, because:
+		\item \textbf{\underline{Proof (We will show that the encoder has \textit{CPA\$-security} and is therefore also \textit{CPA-secure}):}} \\
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-real}(k,(m_L, m_R)):$ \\
+		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $s := r \oplus m$ \\
+		 		\ \ $x := F(k,r)$ \\
+		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+			\end{tabular}
+			&
+			$\stackrel{?}{\apeq}$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-rand}(k, m):$ \\
+		 		\ \ $x \leftarrow (\{ 0,1 \} ^{\lambda})^{2}$ \\
+		 		\ \ \textbf{return} $x$ \\ \hline
+			\end{tabular}			
+		\end{tabular} 
+		\\ \\ \\
+		\begin{tabular}{llll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-real}(k,m):$ \\
+		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $s := r \oplus m$ \\
+		 		\ \ $x := F(k,r)$ \\
+		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+			\end{tabular}
+			&
+			$\apeq$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid1}(k,m):$ \\
+		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $s := r \oplus m$ \\
+		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+			\end{tabular}
+			&	
+			\begin{tabular}{p{5cm}}
+				Because we know that F is a secure PRP/PRF we can inline the subroutine of a random PRP/PRF.
+			\end{tabular}	
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{llll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid1}(k,m)):$ \\
+		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $s := r \oplus m$ \\
+		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+			\end{tabular}
+			&
+			$\apeq$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid2}(k,m):$ \\
+		 		\ \ $s \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+			\end{tabular}
+			&	
+			\begin{tabular}{p{5cm}}
+				Because "XORing" a random bitstring with the message bitstring is also the same as generating a random bitstring, we can change this in the hybrid.
+			\end{tabular}	
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{llll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid1}(k,m):$ \\
+		 		\ \ $s \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+			\end{tabular}
+			&
+			$\apeq$
+			&
+			\begin{tabular}{|l|}
+		 		\hline \cellcolor[gray]{0.8}$Enc_{CPA-rand}(k, m):$ \\
+		 		\ \ $x \leftarrow (\{ 0,1 \} ^{\lambda})^{2}$ \\
+		 		\ \ \textbf{return} $x$ \\ \hline
+			\end{tabular}
+			&	
+			\begin{tabular}{p{5cm}}
+				Because s and x are making up a pair which is in $C$ we can inline such a subroutine to end up with $Enc_{CPA-rand}(k, m):$.
+			\end{tabular}	
+		\end{tabular}
+	\end{enumerate}
+	\subsubsection*{8.2.2.c}
+	\begin{enumerate}[]
+		\item No, it is not \textit{CPA-secure}, because if whether one of $m_L$ and $m_R$ is the 0-bit-string, the $s_2$ bit string will be the same as the $s_1$ bit string and therefore the return value $x$ and $y$ will be bitwise equal.
+	\end{enumerate}
+	
+	\section*{8.3 Modes of operation}
+	\subsection*{8.3.1 CBC}
+	\begin{enumerate}[]
+		\item It will affect the block which is corresponding with the encrypted block with the error as well as all the following blocks.
+	\end{enumerate}
+	\subsection*{8.3.2 OFB}
+	\begin{enumerate}[]
+		\item It will only affect the block which is corresponding with the encrypted block with the error.
+	\end{enumerate}
+	\subsection*{8.3.3 CTR}
+	\begin{enumerate}[]
+		\item It will only affect the block which is corresponding with the encrypted block with the error.
+	\end{enumerate}
+	
+\end{document}

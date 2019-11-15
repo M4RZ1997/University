@@ -1,0 +1,215 @@
+\documentclass{report}
+\usepackage[headheight=30pt, textheight=580pt]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 05}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{6.1 Distinction between PRGs}
+	\begin{tabular}{lllll}
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{G_1}_{which-PRG}$ \\
+			\underline{\textsc{Query():}} \\
+			\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\ \ \textbf{return} $G_1(x)$ \\ \hline
+		\end{tabular}
+		&
+		$\equiv$
+		&
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{G_1}_{rand-PRG}$ \\
+			\underline{\textsc{Query():}} \\
+			\ \ $r \leftarrow \{ 0,1 \} ^{\lambda + l}$ \\
+			\ \ \textbf{return} $r$ \\ \hline
+		\end{tabular}
+		&
+		&
+		\\ \\
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{G_2}_{which-PRG}$ \\
+			\underline{\textsc{Query():}} \\
+			\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+			\ \ \textbf{return} $G_2(x)$ \\ \hline
+		\end{tabular}
+		&
+		$\equiv$
+		&
+		\begin{tabular}{|l|}
+			\hline \cellcolor[gray]{0.8}$L^{G_2}_{rand-PRG}$ \\
+			\underline{\textsc{Query():}} \\
+			\ \ $r \leftarrow \{ 0,1 \} ^{\lambda + l}$ \\
+			\ \ \textbf{return} $r$ \\ \hline
+		\end{tabular}
+		&
+		&
+		\multirow{2}{*}[4em]{
+			\begin{tabular}{p{7cm}}
+				Because we know that $G_1$ (respectively $G_2$) is secure those two libraries are equivalent and indistinguishable.
+			\end{tabular}
+		}		
+	\end{tabular}
+	\begin{enumerate}[]
+		\item Because it is obvious that these so created "random" PRGs of $G_1$ and $G_2$ are the same this indistinguishability is also guaranteed for the starting libraries.
+	\end{enumerate}
+	
+	\section*{6.2 Find the key}
+	\begin{enumerate}[]
+		\item We consider the following distinguisher: \\
+		\begin{tabular}{ll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $s \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $x = \textsc{Lookup}(s)$ \\
+				\ \textbf{get} key $k$ \\
+				\ $y = F(k,s)$ \\
+				\ \textbf{return} $x = y$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{8cm}}
+				First we will pick a random seed and put in either the Lookup and the F library. The distinguisher will get the key by its property stated in the exercise, with probability $p$, which is also given to the F function. In the end we will check both outputs.
+			\end{tabular}
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $s \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $x = \textsc{Lookup}(s)$ \\
+				\ \textbf{get} key $k$ \\
+				\ $y = F(k,s)$ \\
+				\ \textbf{return} $x = y$ \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{F}_{PRF-real}$ \\
+				\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Lookup}(x)}\\
+				\ \ \ \textbf{return} $F(k,x)$ \\ \hline
+			\end{tabular}
+		\end{tabular}
+		\\ \\
+		It is obvious that the algorithm combined with $L^{F}_{PRF-real}$ will always output 1, if the right key was found with probability $p$, because the \textsc{Lookup} and F function are doing exactly the same and therefore their output will be equal. \\
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $s \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $x = \textsc{Lookup}(s)$ \\
+				\ \textbf{get} key $k$ \\
+				\ $y = F(k,s)$ \\
+				\ \textbf{return} $x = y$ \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{F}_{PRF-rand}$ \\
+				\ $T \ := \ empty \ associated \ array$ \\
+				\\
+				\ \underline{\textsc{Lookup}(x)}\\
+				\ \ \ \textbf{if} $T[x]$ undefined: \\
+				\ \ \ \ \ $T[x] \leftarrow \{ 0,1 \} ^{out}$ \\
+				\ \ \ \textbf{return} $T[x]$ \\ \hline
+			\end{tabular}
+		\end{tabular}
+		\\ \\
+		This combination will only return 1 if the entry in T will be exactly the same as the F function output. The probability for this will be $\frac{1}{2^{out}}$.
+		\\
+		For the advantage, we get:
+		\[
+			Bias(A) \ = \ \mid P[A \diamond L^F_{PRF-Real} \rightarrow 1] - P[A \diamond L^F_{PRF-Rand} \rightarrow 1] \mid \ = \ p - \frac{1}{2^{out}} \\
+		\]
+		, which is clearly not negligible, because p is non-negligible.
+	\end{enumerate}
+	
+	\section*{6.3 Build a distinguisher}
+	\begin{enumerate}[]
+		\item We consider the following distinguisher: \\
+		\begin{tabular}{ll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $s \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $\overline{s} \ = \ s \oplus 1^{\lambda}$ \\
+				\ $x_1 \| y_1 \ = \ \textsc{Lookup}(s)$ \\
+				\ $x_2 \| y_2 \ = \ \textsc{Lookup}(\overline{s})$ \\
+				\ \textbf{return} $(x_1 = y_2) \wedge (x_2 = y_1)$ \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{p{5cm}}
+				First we will pick a random seed and calculate its complement. Both seeds are then encrypted the PRF $F'$.
+			\end{tabular}
+		\end{tabular}
+		\\ \\ \\
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ pick $s \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $\overline{s} \ = \ s \oplus 1^{\lambda}$ \\
+				\ $x_1 \| y_1 \ = \ \textsc{Lookup}(s)$ \\
+				\ $x_2 \| y_2 \ = \ \textsc{Lookup}(\overline{s})$ \\
+				\ \textbf{return} $(x_1 = y_2) \wedge (x_2 = y_1)$ \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{F'}_{PRF-real}$ \\
+				\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Lookup}(x)}\\
+				\ \ \ \textbf{return} $(F(k,x) \| F(k,\overline{x}))$ \\ \hline
+			\end{tabular}
+		\end{tabular}
+		\\
+		It is obvious that our algorithm will always return 1 if we use $L^{F'}_{PRF-real}$, because first it will compute $(F(k,s) \| F(k,\overline{s}))$ and compare it with $(F(k,\overline{s}) \| F(k,\overline{\overline{s}}))$ which is the same as $(F(k,\overline{s}) \| F(k,s))$. \\ \\
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
+				\ \textbf{pick} $s \in \{ 0,1 \} ^{\lambda}$ \\
+				\ $\overline{s} \ = \ s \oplus 1^{\lambda}$ \\
+				\ $x_1 \| y_1 \ = \ \textsc{Lookup}(s)$ \\
+				\ $x_2 \| y_2 \ = \ \textsc{Lookup}(\overline{s})$ \\
+				\ \textbf{return} $(x_1 = y_2) \wedge (x_2 = y_1)$ \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$L^{F'}_{PRF-rand}$ \\
+				\ $T \ := \ empty \ associated \ array$ \\
+				\\
+				\ \underline{\textsc{Lookup}(x)}\\
+				\ \ \ \textbf{if} $T[x]$ undefined: \\
+				\ \ \ \ \ $T[x] \leftarrow \{ 0,1 \} ^{out}$ \\
+				\ \ \ \textbf{return} $T[x]$ \\ \hline
+			\end{tabular}
+		\end{tabular}
+		\\
+		The algorithm combined with $L^{F'}_{PRF-rand}$ will only return 1 if for $s$ and $\overline{s}$ the strings saved in T consist of the same two "stringparts" but in the opposite different sequence. The probability for this is $\frac{1}{2^{out}}$
+		\\ \\
+		For the advantage, we get:
+		\[
+			Bias(A) \ = \ \mid P[A \diamond L^F_{PRF-Real} \rightarrow 1] - P[A \diamond L^F_{PRF-Rand} \rightarrow 1] \mid \ = \ 1 - \frac{1}{2^{out}} \\
+		\]
+		, which is clearly not negligible.
+	\end{enumerate}
+	
+\end{document}

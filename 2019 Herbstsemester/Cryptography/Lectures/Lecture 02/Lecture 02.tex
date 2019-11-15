@@ -1,0 +1,194 @@
+ \documentclass{report}
+ \usepackage{hyperref}
+ \usepackage[hoffset = 1px]{geometry}
+ \usepackage{scalerel,amssymb}
+ \usepackage{paralist}
+ 
+ \begin{document}
+ \begin{center}
+ \huge{\textbf{\underline{Cryptography}}}
+ \end{center}
+ \hfill \\ \\
+ 
+ \underline{\textit{Organization:}} \\ \\
+ 09. Oct.	 cancelled \\
+ 11. Oct. (14:00-17:00)	replacement \\
+ 23. Oct.	cancelled 
+ 
+ {\let\clearpage\relax \chapter*{2. Provable Security}}
+ \underline{\textbf{One-time pad:}} \\
+ \begin{compactenum}[-]
+ 	\item not practical
+ 	\item information-theoretically secure
+ 	\begin{compactenum}[$\rightarrow$]
+ 		\item too strong
+ 	\end{compactenum}
+ 	\item illustrative
+ \end{compactenum} 
+ \hfill \\
+ 
+ \underline{\textbf{Practical cryptosystems}} \\
+ \begin{compactenum}[-]
+ 	\item computationally secure
+ \end{compactenum}
+ 
+ \section*{2.1 Formalization of Encryption}
+ \subsection*{2.1.1 Syntax}
+ \underline{Definition:} \\
+ A symmetric-key cryptosystem $\Sigma$ consists of 3 algorithms (SKE):
+ \begin{compactenum}[-]
+ 	\item KeyGen() $\rightarrow$ k	, randomized, k $\in$ K
+ 	\item Enc(k,m) $\rightarrow$ c	, m $\in$ M, c $\in$ C (might be randomized)
+ 	\item Dec(k,c) $\rightarrow$ m	, deterministic
+ \end{compactenum}
+ $\Sigma$ = ($\Sigma$.KeyGen, $\Sigma$.Enc, $\Sigma$.Dec, $\Sigma$.K, ...)
+ \subsection*{2.1.2 Correctness}
+ \underline{Definition:} \\
+ A cryptosystem $\Sigma$ is correct if $\forall$k $\in$ K, $\forall$m $\in$ M:
+ \[
+ 	P[Dec(k,Enc(k,m))=m]=1
+ \]
+ \underline{Example:} \\
+ Enc(k, m) $\rightarrow$ m \\
+ Dec(k, c) $\rightarrow$ c \\
+ $\Rightarrow$ correct but totally insecure
+ \subsection*{2.1.3 Terminology in distributed systems:}
+ \subsubsection*{Liveness : correctness}
+ "something good eventually happens"
+ \subsubsection*{Safety : security}
+ "nothing bad has happened"
+ \subsection*{2.1.4 Security}
+ \underline{Eavesdrop()-experiment} from One-time pad (OTP)
+ \begin{compactenum}[-]
+ 	\item too specific to OTP
+ \end{compactenum}
+ \subsubsection*{Candidate sec.def. A (attempt 2)}
+ $\Sigma$ is secure if $\forall$ m $\in$ M, the output of Eavesdrop(m) is a random variable with uniform distribution over C:
+ \begin{center}
+ 	\underline{Eavesdrop(m $\in$ M):} \\
+ 	k $\leftarrow$ KeyGen() \\
+ 	c $\leftarrow$ Enc(k,m) \\
+ 	return c
+ \end{center}
+ \subsubsection*{Candidate sec.def. B (attempt 3)}
+ $\Sigma$ is secure if $\forall$ m $\in$ M, the following functions produce the same random variable:
+ \begin{center}
+ 	\underline{"real" Eavesdrop(m $\in$ M):} \\
+ 	k $\leftarrow$ KeyGen() \\
+ 	c $\leftarrow$ Enc(k,m) \\
+ 	return c  \\
+ 	\hfill \\
+ 	\underline{"ideal/fake" Eavesdrop(m $\in$ M):} \\
+ 	c $\leftarrow$ C \\
+ 	return c
+ \end{center}
+ \hfill \\
+ Definition B used indistinguishability of distributions \\
+ Move towards a definition with an adversary A (distinguishing algorithm) \\
+ \[
+ 	P[\textit{A with B-left } \rightarrow 1] = P[\textit{A with B-right } \rightarrow 1] $$ $$
+ 	\textit{A outputs b} \in \{ 0,1\}
+ \]
+ \subsubsection*{Candidate sec.def. C (attempt 4)}
+ $\Sigma$ is secure if $\forall$ alg. A, running A With the left or right experiment of Attempt-B outputs 1 is the same. \\ \\
+ \textit{\underline{How secure/useful is this?}} \\
+ K = M = $\{ 0,1 \}^{\lambda}$ \\
+ Enc(k,m) $\rightarrow$ m $\oplus$ k $\mid \mid $ m $\oplus$ k \\
+ Dec(k,c) $\rightarrow$ $c_1 \mid \mid c_2$ = c, return $c_1 \oplus$ k \\ \\
+ That example shows that Attempt-C was too strong!
+ \subsubsection*{Candidate sec.def. D (attempt 4)}
+ $\Sigma$ is secure if $\forall$ alg. A and $\forall m_L, m_R \in$ M running with left or right implementation of Eavesdrop, A outputs 1 with equal probability.
+ \begin{center}
+ 	\underline{Eavesdrop($m_L, m_R$)} \\
+ 	k $\leftarrow$ KeyGen() \\
+ 	c $\leftarrow$ Enc(k, $m_L$) \\
+ 	return c \\ 
+ 	\hfill \\
+ 	\underline{Eavesdrop($m_L, m_R$)} \\
+ 	k $\leftarrow$ KeyGen() \\
+ 	c $\leftarrow$ Enc(k, $m_R$) \\
+ 	return c
+ \end{center}
+ $\leadsto$ \textit{\textbf{chosen-plaintext attack}}
+ \subsection*{2.2 Defining provable security}
+ \underline{Definition:} \\
+ A Library L is a collection of functions and static (private) variables. \\
+ The interface are its functions and their arguments and types. \\ \\
+ \underline{Definition:} \\
+ Running a program P with Library L is denoted P $\lozenge$L ("P linked to L"). \\
+ \[
+ 	P \rightarrow 1 $$ $$
+ 	P \lozenge L \rightarrow 1
+ \]
+ L \\
+ s $\leftarrow$ $\{0,1\} ^{\lambda}$ \\
+ \underline{Guess(x):} \\
+ return x $\stackrel{?}{=}$ s \\ \\
+ \underline{A:} \\
+ repeat \\
+ x $\leftarrow \{0,1\}^{\lambda}$ \\
+ until Guess(x) = \textsc{True} \\
+ return x \\
+ P[A$\lozenge$L $\rightarrow$ z] $\stackrel{?}{=}$ $2^{-\lambda}$ for any z $\in \{0,1\}^{\lambda}$ \\ \\
+ \underline{B:} \\
+ c $\leftarrow \{0,1\} ^{\lambda}$ \\
+ return Guess(x) \\
+ P[B$\lozenge $L $\rightarrow $ \textsc{True}] = 2$^{-\lambda}$
+ \subsubsection*{2.2.1 Two Libraries with same VO behaviour}
+ \underline{Definition:} \\
+ Two Libraries $L_L$ and $L_R$ are \underline{exchangeable} written:
+ \[
+ 	L_L \equiv L_R,
+ \]
+ if \underline{for all} distinguishable alg. A:
+ \[
+ 	P[A \lozenge L_L \rightarrow 1] = P[A \lozenge L_R \rightarrow 1]
+ \]
+ \underline{\textsc{Important:}}
+ \begin{compactenum}[-]
+ 	\item A interacts with L only via the interface
+ 	\item No side-channels
+ \end{compactenum}
+ \subsubsection*{2.2.2 Two Libraries $L_{eager} \equiv L_{lazy}$}
+ $L_{eager}$ \\
+ \underline{for} x $\in$ X \underline{do} \\
+ T[x] $\leftarrow$ $\{ 0,1 \} ^{\lambda}$ \\ \\
+ \underline{Get(x)} \\
+ return T[x] \\ \\ 
+ $L_{lazy}$  \\
+ T[$\bullet$] = $\perp$ \\ \\
+ \underline{Get(x)} \\
+ \underline{if} T[x] = $\perp$ \underline{then} \\
+ T[x] $\leftarrow$ $\{ 0,1 \} ^{\lambda}$ \\
+ return T[x]
+ \subsubsection*{2.2.3 Security definition using libraries}
+ \underline{Definition:} \\
+ An encription-scheme $\Sigma$ has \underline{uniform ciphertexts} if:
+ \[
+ 	L_{ots\$-real} \equiv L_{ots\$-rand}
+ \]
+ $L_{ots\$-real}$ \\
+ \underline{CT $\times$ T (m)} \\
+ k $\leftarrow$ KeyGen() \\
+ c $\leftarrow$ Enc(k,m) \\
+ return c \\ \\
+ $L_{ots\$-rand}$ \\
+ \underline{CT $\times$ T (m)} \\
+ c $\leftarrow$ C \\
+ return c \\ \\
+ \underline{Definition:} \\
+ An encription-scheme $\Sigma$ has one-time secrecy if:
+ \[
+ 	L_{ots-left} \equiv L_{ots-right}
+ \]
+ $L_{ots-left}$ \\
+ \underline{Eavesdrop($m_L, m_R$)} \\
+ k $\leftarrow$ KeyGen() \\
+ c $\leftarrow$ Enc(k, $m_L$) \\
+ return c \\ \\
+ $L_{ots-right}$ \\
+ \underline{Eavesdrop($m_L, m_R$)} \\
+ k $\leftarrow$ KeyGen() \\
+ c $\leftarrow$ Enc(k, $m_R$) \\
+ return c \\ \\
+ \end{document}

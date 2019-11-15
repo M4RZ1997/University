@@ -1,0 +1,124 @@
+\documentclass{report}
+\usepackage[headheight=50pt,]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 01}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{3.1 Nested Encription Scheme}
+	\begin{enumerate}[]
+		\item Prove that $\Sigma$ satisfies one-time secrecy, then so does $\Sigma ^2$:
+		\begin{enumerate}[]
+			\item The given library of function on the exercise sheet will be called $L_2$ of $\Sigma ^2$. \\
+			We know that $\Sigma$ satisfies the one-time secrecy with $\Sigma$.Enc(k,m) = c, with library $L_1$. \\
+			It is clear that $L_{OTS-L} \equiv L_{OTS-R}$, which means $Pr[A \diamond L_{OTS-L} \rightarrow 1] \ = \ Pr[A \diamond L_{OTS-R} \rightarrow 1]$, for any $A$. \\
+			The scheme $\Sigma$ is used to encrypt $m_L$ and $m_R$ into $c_L$ and $c_R$ which are distributed equally. These encrypted ciphertexts are then encrypted again to get $c_{L2}$ and $c_{R2}$ which are still equally distributed. The used Library will be called $L'_1 \diamond L_1$. \\
+			$L'_1 \diamond L_1$ will satisfy one-time secrecy because $L_{OTS-L} \equiv L_{OTS-R}$ with an appropriate Eavesdrop($m_L$, $m_R$). \\
+			Because in $L'_1 \diamond L_1$ and $L_2$ the same is done, the produced ciphertexts are distributed the same (equally) and therefore one-time secrecy is given in $L_2$.
+		\end{enumerate}
+	\end{enumerate}
+	\hfill \\
+	\section*{3.2 Negligible Functions}
+	\subsection*{3.2.a}
+	\begin{enumerate}
+		\item $\frac{1}{2^{\frac{\lambda}{2}}}$ Negligible?: \\
+		It is negligible because: $\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot \frac{1}{2^{\frac{\lambda}{2}}}) \ = \ 0$
+		\item $\frac{1}{\lambda^2}$ Negligible?: \\
+		No, it is not negligible because for $p(\lambda) = \lambda^2$ we have: \\
+		$\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot \frac{1}{\lambda^2})\ = \ \lim_{\lambda \rightarrow \infty} (\lambda^2 \cdot \frac{1}{\lambda^2}) \ = \ 1$
+		\item $\frac{1}{\lambda^{\frac{1}{\lambda}}}$ Negligible?: \\
+		No, it is not because: $\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot \frac{1}{\lambda^{\frac{1}{\lambda}}}) \ = \ \lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot \frac{1}{\underbrace{\lambda^{\frac{1}{\lambda}}}_1}) \ = \ \lim_{\lambda \rightarrow \infty} (p(\lambda)) \neq 0 \ \forall p(\lambda)$
+		\item $\frac{1}{\sqrt{\lambda}}$ Negligible?: \\
+		No, it is not negligible because for $p(\lambda) = \sqrt{\lambda}$ we have: \\
+		$\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot \frac{1}{\sqrt{\lambda}})\ = \ \lim_{\lambda \rightarrow \infty} (\sqrt{\lambda} \cdot \frac{1}{\sqrt{\lambda}}) \ = \ 1$
+		\item $\frac{1}{2^{\sqrt{\lambda}}}$ Negligible?: \\
+		It is negligible because: $\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot \frac{1}{2^{\sqrt{\lambda}}}) \ = \ 0$
+	\end{enumerate}
+	\subsection*{3.2.b}
+	\begin{enumerate}[\textbullet]
+		\item f(), g() are negligible $\Rightarrow$ f() $\cdot$ g() is negligible? \\
+		We know:
+		\begin{align*}
+			\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot f(\lambda)) \ & = \ 0 \\
+			\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot g(\lambda)) \ & = \ 0 \\
+			\Rightarrow \ \lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot (f(\lambda) \cdot g(\lambda))) \ & = \ \lim_{\lambda \rightarrow \infty} ((p(\lambda) \cdot f(\lambda)) \cdot g(\lambda)) \\
+			& = \ \underbrace{\lim_{\lambda \rightarrow \infty} (p(\lambda) \cdot f(\lambda))}_0 \cdot \underbrace{\lim_{\lambda \rightarrow \infty} (g(\lambda))}_0 \\
+			& = 0 & \square
+		\end{align*}
+		\item Example s.t. f() and g() are negligible but $\frac{f()}{g()}$ is not: \\
+		If $f()=g()=\frac{1}{2^{\lambda}}$, both are clearly negligible, but $\frac{f()}{g()}= \frac{\frac{1}{2^{\lambda}}}{\frac{1}{2^{\lambda}}} = \frac{2^{\lambda}}{2^{\lambda}} = 1$ is clearly not.
+	\end{enumerate}
+	\section*{3.3 Hashrate}
+	\subsection*{3.3.a CPU with 2GHz}
+	\begin{enumerate}[]
+		\item \textit{Assuming you have one Intel CPU with 2GHz clock speed, how many cycles per block can one have in case of a single-threaded AVX1 implementation? How much is the hash rate?}
+		\begin{enumerate}[\textbullet]
+			\item 1Mb = 1'000'000 bytes
+			\item 2Ghz = 1 * $10^9$ Hz (cycles/sec)
+			\item From the given paper we can assume that the performance of SHA-256 will be most likely be constant at 12.8 cycles/byte
+		\end{enumerate}
+		\item Therefore we have:
+		\begin{align*}
+			12.8 \ \frac{cycles}{byte} \times 1'000'000 \textit{ bytes } \ & = \ 12'800'000 \textit{ cycles} \\
+			12'800'000 \textit{ cycles } \div \ 2'000'000'000 \ \frac{cycles}{sec} \ & = \ 0.0064 \textit{ sec} \\
+			1 \textit{ sec } \div  \ 0.0064 \textit{ sec } \ & = \ 156.25 \textit{ hashes per second}
+		\end{align*}
+	\end{enumerate}
+	\subsection*{3.3.b Bitcoin}
+		\begin{enumerate}[]
+			\item Current hashrate is 93'241'227 * $10^{12}$ hashes per second (3.10.2019 2:00)
+			\begin{align*}
+				93'241'227 \ * \ 10^{12} \ \div \ 156.25 \ & \approx \ 6 \ * 10^{17}
+			\end{align*}
+			\item So $\sim 6 \ * 10^{17}$ such CPUs are needed to compute the current hash rate of bitcoin.
+		\end{enumerate}
+	\section*{3.4 A Random Cipher}
+	\subsection*{3.4.a Description}
+	\begin{enumerate}[]
+		\item $\Sigma$.M = $\Sigma$.C = $\{0,1\}^{\kappa}$ \\
+		$\Sigma$.K = $\{0,1\}^?$
+	\end{enumerate}
+	\begin{tabular}{lllll}
+		\begin{tabular}{l}
+			$\Sigma$.KeyGen() = k $\leftarrow$ $\{0,1\}^?$
+		\end{tabular}
+		&
+		,
+		&
+		\begin{tabular}{l}
+			\underline{$\Sigma$.Enc(k,m)} \\
+			c = ??? \\
+			return c
+		\end{tabular}
+		&
+		,
+		&
+		\begin{tabular}{l}
+			\underline{$\Sigma$.Dec(k,c)} \\
+			m = ??? \\
+			return m
+		\end{tabular}
+	\end{tabular}
+	\subsection*{3.4.b Upper Bound}
+	\begin{enumerate}[]
+		\item The chance to guess m randomly out of c is:
+		\begin{align*}
+			P[A(c) \Rightarrow m] \ & = \ 1 -(1-\frac{q}{2^k}) \textit{ invers of guessing q-times false.} \\
+			& = \ \frac{q}{2^k}
+		\end{align*}
+		\item For $q \ \rightarrow \ 2^k$ the probability gets to 1.
+	\end{enumerate}
+\end{document}

@@ -1,0 +1,186 @@
+\documentclass{report}
+ \usepackage{hyperref}
+ \usepackage[hoffset = 1px]{geometry}
+ \usepackage{scalerel,amssymb}
+ \usepackage{paralist}
+ \begin{document}
+ \begin{center}
+ \huge{\textbf{\underline{Cryptography}}}
+ \end{center}
+ \hfill \\ \\
+ 
+ \underline{\textit{Important Information:}} \\ \\
+ Exam: January 2020\\
+ Lectures: 14:15-17:00, 106 HG\\
+ Exercises: 10 points each, required 70\% \\
+ Trivia: NONE
+ 
+ {\let\clearpage\relax \chapter{Introduction}}
+ Difference between \textbf{Cryptology} and \textbf{Cryptography}: \\
+ Cryptology is the combination of Cryptography and Cryptoanalysis \\
+ Cryptology concerns the protection of informstion in an adverserial context. \\
+ \subsection{Classical Goals of Cryptography (CIA)}
+ \begin{compactenum}[$\bullet$]
+ 	\item Confidentiality
+ 	\item Integrity
+ 	\item Availability
+ \end{compactenum}
+ \subsection{Techniques}
+ \begin{compactenum}[$\bullet$]
+ 	\item encryption
+ 	\item digital signatures
+ 	\item hash functions
+ 	\item MACs
+ \end{compactenum}
+ \subsection{Modern goals}
+ \begin{compactenum}[$\bullet$]
+ 	\item Anonymity
+ 	\item Zero-knowledge proofs
+ \end{compactenum}
+ 
+ \newpage
+ 
+ \section{A model for a cryptosystem (Shannon, 48)}
+ \begin{center}
+ 	KeyGen() (outputs secret key k) \\
+ 	$\downarrow$k \hspace{3.8cm} $\downarrow$k\\
+ 	(Alice)	$\stackrel{m}{\rightarrow }$ [Enc] $\stackrel{c}{\longrightarrow }$ [Dec] $\stackrel{\stackrel{\wedge}{m}}{\rightarrow }$ (Bob) \\
+ 	$\downarrow$c \\
+ 	(Eve) \\
+ \end{center}
+ 	plaintext m, ciphertext c, decoded text $\stackrel{\wedge}{m}$ \\
+ \subsection{Key genereaton algorithm}
+ KeyGen() $\rightarrow$ k
+ \subsection{Encryption algorithm}
+ Enc(k,m) $\rightarrow$ c
+ \subsection{Decription algorithm}
+ Dec(k,c) $\rightarrow$ $\stackrel{\wedge}{m}$
+ \subsection{Goals}
+ \begin{enumerate}
+ 	\item \textit{Completeness}: \\
+ 		Bob obtains the message from Alice: \\
+ 		m $\stackrel{?}{=}$ $\stackrel{\wedge}{m}$
+ 		\item \textit{Security}: \\
+ 		"Eve obtains no useful information about the message m"
+ \end{enumerate}
+ 
+ \section{Hystoric cryptography}
+ \begin{compactenum}[$\bullet$]
+ 	\item \textit{Scytale} (ancient Greece, 3rd. cent. BC)
+ 	\item \textit{Ceasar cipher} (Roman empire, 50 BC) (shift cipher) 
+ 	\begin{compactenum}[$\bullet$]
+ 		\item KeyGen(): k $\stackrel{R}{\leftarrow}$ \{0,1,...,25\}
+ 		\item Enc(k,l): return l+k
+ 		\item Dec(k,c): return c-k
+ 	\end{compactenum}
+ 	\item \textit{Monoalphabetic substitution} (uniform distributed permutation of the input)
+ 	\begin{compactenum}[$\bullet$]
+ 		\item Enc(k,l): return K[l]
+ 		\item Dec(k,c): return K$^{-1}$[c]
+ 	\end{compactenum}
+ \end{compactenum}
+ 
+ \chapter{Mathematical preliminories} 
+ \section{Probability theory}
+ \begin{compactenum}[$\star$]
+ 	\item A probability distribution P[ ] over a sample space $\Omega$ assigns a value in [0,1] to each $S \subseteq \Omega $ ("events") such that:
+ 	\begin{enumerate}
+ 		\item P[$\Omega$] = 1
+ 		\item P[A $\cup$ B] = P[A] + P[B] \\
+ 		for any $A,B\subseteq \Omega$ s.t. $A \cap B \neq \emptyset$
+ 	\end{enumerate}
+ 	\hfill \\
+ 	\item Random variable $X \in \chi$ ($\chi$-alphabet) is defined by an alphabet $\chi$ and a prob. distribution $P_X$ over $\chi$, s.t.:
+ 	\begin{center}
+ 		$P_X (x) = P[X=x]$ s.t. $\sum_{x\in \chi} P_X(x) = 1$
+ 	\end{center}
+ 	\hfill \\
+ 	\item A uniform random variable U over an alphabet $\mho$ satisfies:
+ 	\begin{center}
+ 		$P_U(u) = 1/\mid \mho \mid$ for $u \in \mho$
+ 	\end{center}
+ 	\underline{Example:} \\
+ 	P[Adversary A outputs a value k] $\leq 2^{-\lambda}, \lambda \in \{0,1\}^{\lambda}$
+ \end{compactenum}
+ \hfill \\ \\
+ \textbf{Warning!!!!} "random" $\neq$ arbitrary \\
+ 
+ \newpage
+ 
+ \section{Notation}
+ \begin{compactenum}[$\star$]
+ 	\item \textbf{$\leftarrow$ or $\stackrel{R}{\leftarrow}$} \\
+ 	For set S the notation: 
+ 	\begin{center}
+ 		$x \leftarrow S$
+ 	\end{center}
+ 	denotes that the value x ios chosen uniformly at random from set S
+ 	\begin{center}
+ 		$\forall s \in S: P[x \leftarrow S: x=s] = 1/\mid S \mid$
+ 	\end{center}
+ 	For a randomized algorithm R(y):
+ 	\begin{center}
+ 		$x \leftarrow R(y)$
+ 	\end{center}
+ 	denotes the experiment of running R on input y and assigning its output to x
+ 	\item \textbf{:=} (assignment operator)
+ 	\begin{center}
+ 		x := 1
+ 	\end{center}
+ 	\item \textbf{$\stackrel{?}{=}$} \\
+ 	\begin{center}
+ 		\underline{if} $x \stackrel{?}{=}$ \underline{then} ...
+ 	\end{center}
+ \end{compactenum}
+ 
+ \section{Kerckhoff's principle}
+ 	Design cryptosystem s.t. its security does not rely on the secrecy of the algrithm itself
+ 
+ \subsection{One-time-pad (Vernam's cipher)}
+ 	\begin{compactenum}[$\bullet$]
+ 		\item Vernam ($\sim$ 1916)
+ 		\item Security proof by Shannon (1948)
+ 	\end{compactenum}
+ 	\underline{Syntax:} keys, messages are $\lambda$-bit strings $\Sigma$ = \{0,1\} $m \in \Sigma ^{\lambda} $ \\
+ 	\underline{KeyGen():} $k \leftarrow \Sigma ^{\lambda}$ \\
+ 	Enc(k,m): return $k \oplus m$ \\
+ 	Dec(k,c): return $k \oplus c$
+ 	
+ \subsection{Completeness}
+ \subsubsection{Theorem}
+ \[
+ 	\forall m \in \Sigma ^{\lambda}, \forall k \in \Sigma ^{\lambda}, $$ $$
+ 	Dec(k, Enc(k,m)) = m
+ \]
+ \subsubsection{Proof}
+ \[
+ 	k \oplus Enc(k,m) $$ $$
+ 	= k \oplus (k \oplus m) $$ $$
+ 	= (k \oplus k) \oplus m $$ $$
+ 	= 0^{\lambda} \oplus m $$ $$
+ 	= m
+ \]
+ 
+ \subsection{Security}
+ Consider experiment that produces exactly the distribution seen by Eve. \\
+ \underline{Eavesdrop(m)} \\
+ \[
+ 	k \leftarrow \Sigma ^{\lambda} $$ $$
+ 	c \leftarrow m \oplus k $$ $$
+ 	\textit{return c}
+ \]
+ \subsubsection{Theorem}
+ \[
+ 	\forall m \in \Sigma ^{\lambda}, \textit{ Eavesdrop(m) is a uniform random variable over } \Sigma ^{\lambda} $$ $$
+ 	\Rightarrow m \neq m': \textit{ Eavesdrop(m) has same distribution as Eavesdrop(m')}
+ \]
+ \subsubsection{Proof}
+ \[
+ 	\forall m \in \Sigma ^{\lambda} $$ $$
+ 	\forall c \in \Sigma ^{\lambda} $$ $$
+ 	P[\textit{Eavesdrop(m)=c}] = ? $$ $$
+ 	\textit{\underline{We know:} } c = m \oplus k \Leftrightarrow k = m \oplus c $$ $$
+ 	P[\textit{Eavesdrop(m)=c}] = P[m \oplus k = c] = P[k = \underbrace{m \oplus c}_s ] = P[k=s] = 2^{- \lambda}
+ \]
+ 
+ \end{document}
