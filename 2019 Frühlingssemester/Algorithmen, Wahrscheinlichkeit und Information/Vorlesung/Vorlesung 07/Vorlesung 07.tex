@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{amsmath}
+
+\geometry{top=3cm, bottom=3cm}
+
+\begin{document}
+	\textbf{\underline{\large{Algorithmen, Wahrscheinlichkeit und Information}}}
+	\\ \\ \\
+	\underline{\textbf{Chernoff Bounds}} \\
+	Annahmen:
+	\begin{itemize}
+		\item $X = \sum_{i=1}^n X_i$ $X_i$ unabhängig
+		\item $X_i$ können verschieden verteilt sein
+		\item 0 $\leq$ $X_i$ $\leq$ 1 $\leftarrow$ \underline{ohne Beweis!}
+		\item $\mu = E[X] = \sum_{i=1}^n E[X_i]$
+	\end{itemize}
+	\hfill \\
+	\underline{\textbf{Zusammenfassung der Chernoff-Methode}}
+	\begin{itemize}
+		\item Nicht P[X $>$ c], sonder P[$e^X$ $>$ $e^{t\cdot c}$]
+		\item E[$e^X$] = E[$e^{\sum_i X_i}$] = $\prod_i E[e^{X_i}]$
+		\item Wähle t so, dass WSK möglichst klein wird
+	\end{itemize}
+	\begin{itemize}
+		\item P[X $\geq$ (1+$\delta$) $\mu$] $\leq$ $e^{-\frac{\mu \delta ^2}{3}}$
+		\item P[X  $\leq$ (1-$\delta$) $\mu$] $\leq$ $e^{-\frac{\mu \delta ^2}{3}}$
+		\item P[$\mid$ X-$\mu \mid$  $\geq$ $\delta \cdot \mu$] $\leq$ $2 \cdot e^{-\frac{\mu \delta ^2}{3}}$
+	\end{itemize}
+	\underline{Bsp.:} Wettervorhersage trifft zu an jedem Tag mit WSK 0.75 \\
+	Jemand behauptet: Stimmt am Sa/So nie! \\
+	$\Rightarrow$ Prognose stimmt nur an höchsten $\frac{5}{7}$ Tage \\
+	$X_1, \ldots , X_n: X_i$ Indikator-ZV dafür, dass die Prognose stimmt an Tag i \\
+	\[
+		X = \sum_{i=1}^n X_i $$ $$
+		P_{X_i} (1) = \frac{3}{4} \hspace{1cm} E[X] = \mu = \frac{3}{4} \cdot n
+	\]
+	P[''Prognose stimmt höchstens an $\frac{5}{7}$ Tagen''] = $P[X\leq \frac{5}{7} \cdot n]$ \\
+	\[
+		\frac{5}{7} \cdot n = (1-\delta ) \cdot \mu = (1-\delta ) \cdot \frac{3}{4} \cdot n $$ $$
+		\Leftrightarrow \delta = \frac{1}{21} $$ $$
+		\Rightarrow P[X\leq \frac{5}{7} \cdot n] = P[X \leq (1-\frac{1}{21}) \cdot \frac{3}{4} \cdot n] \leq e^{-\frac{\mu \delta ^2}{3}} = e^{-\frac{3}{4} \cdot \frac{1}{441} \cdot \frac{1}{3} \cdot n}
+	\]
+	\begin{itemize}
+		 \item 1 Jahr = 365 Tage $\rightarrow$ WSK = 0,81
+		 \item 10 Jahr = 3650 Tage $\rightarrow$ WSK = 0,12
+		 \item 20 Jahr = 7300 Tage $\rightarrow$ WSK = 0,016
+	\end{itemize}
+	\newpage
+	\hfill \\
+	\underline{Für welche Abweichung ($\delta$) ergibt ein Chernoff-Bound eine geg. WSK $\varepsilon$?}
+	\[
+		P[\ldots] \leq e^{-\frac{\mu \delta ^2}{3}} = \varepsilon
+	\]
+	\begin{itemize}
+		\item $\varepsilon$: Fehler-WSK
+		\item $\delta$: Abweichung vom Erwartungswert
+		\item $\mu$: Erwartungswert
+	\end{itemize}
+	\[
+		\Delta (\mu , \varepsilon) ? $$ $$
+		e^{-\frac{\mu \delta ^2}{3}} = \varepsilon $$ $$
+		\frac{\mu \delta ^2}{3} = ln(\frac{1}{\varepsilon}) $$ $$
+		\delta = \sqrt{\frac{3}{\mu} \cdot ln(\frac{1}{\varepsilon})} $$ $$
+		\Rightarrow \Delta(\mu , \varepsilon) = \sqrt{\frac{3}{\mu} \cdot ln(\frac{1}{\varepsilon})} 
+	\]
+	$X_i$ Bernoulli-Experiment mit WSK p \\
+	$\mu = E[X] = n \cdot p$ \\
+	Fehler WSK möglichst klein: \\
+	\[
+		\Delta (\mu , e^{-n} ) = \sqrt{\frac{3}{n\cdot p} \cdot n} = \sqrt{\frac{3}{p}} \textit{ nicht möglich } $$ $$
+		\Delta (\mu , n^{-c} ) = \sqrt{\frac{3}{n\cdot p} \cdot ln(n^c)} = \sqrt{\frac{3}{n\cdot p} \cdot c \cdot ln(n)} = \sqrt{\frac{3c}{p} \cdot \frac{ln(n)}{n}}
+	\]
+	$\delta = \frac{1}{21}$ mit Fehler-WSK = $n^{-2}$ \\
+	\[
+	 \Delta(\mu , n^{-2}) = \sqrt{\frac{3\cdot 2}{\frac{3}{4}} \cdot \frac{ln(n)}{n}} = \sqrt{8 \cdot \frac{ln(n)}{n}}
+	\]
+	\begin{itemize}
+		\item 365 Tage $\rightarrow \varepsilon= 7,5 \cdot 10^{-6} \rightarrow \delta = 0,35$
+		\item 1000 Tage $\rightarrow \varepsilon= 10^{-6} \rightarrow \delta = 0,23$
+		\item 3650 Tage $\rightarrow \varepsilon= 7,5 \cdot 10^{-8} \rightarrow \delta = 0,13$
+		\item 7300 Tage $\rightarrow \varepsilon= 1,8 \cdot 10^{-8} \rightarrow \delta = 0,099$
+	\end{itemize}
+	\underline{Balls and Bins} \\
+	m Bälle und n Töpfe, wobei m $>>$ n \\
+	$X_i$ Anzahl Bälle in $T_i$ \\
+	E[$X_i$] = $\frac{m}{n}$ für jedes $T_i$ \\
+	Mit hoher WSK ist $X_i$ ''nicht viel größer'' als $\frac{m}{n}$; wie viel größer? (und mit welcher WSK?) \\
+	\[
+		X_i = \sum_{j=1}^m X_{ij} \textit{ Indikator für Ball j in Topf i } $$ $$
+		P_{X_{ij}} (1) = \frac{1}{n} $$ $$
+		E[X_{ij}] = \frac{1}{n} \hspace{2cm} Var[X_{ij}] = \frac{1}{n} - \frac{1}{n^2} $$ $$
+		Var[X_i] = \sum_{j=1}^m Var[X_{ij}] = \frac{m}{n} - \frac{m}{n^2} $$ $$
+		\textit{\underline{Chebyshev }} \Rightarrow P[X_i \geq \frac{m}{n} + l] = P[\mid X_i - \frac{m}{n}\mid \geq l] \leq \frac{Var[X_i]}{l^2} \leq \frac{m}{n} \cdot \frac{1}{l^2} $$ $$
+	\]
+	\underline{Bsp. (Markov):} m = $10^6$, n = $10^3$, l = 250 \\
+	\[
+		P[X_i \geq 1250] \leq 0,016
+	\]
+	\\
+	\textbf{Chernoff-Bound} \\
+	\underline{Lemma:}
+	\[
+		\Rightarrow P[X_i \geq \frac{m}{n} + 3\cdot \sqrt{ln(n)} \cdot \sqrt{\frac{m}{n}} \leq \frac{1}{n^3}
+	\]
+	\underline{Beweis:}
+	\[
+		P[X_i \geq (1+\delta ) \cdot \mu] \leq e^{-\frac{\mu \delta ^2}{3}} $$ $$
+		\delta \cdot \mu = \delta \cdot \frac{m}{n} := 3 \cdot \sqrt{ln(n)} \cdot \sqrt{\frac{m}{n}} $$ $$
+		\delta = \frac{3 \cdot \sqrt{ln(n)}}{\sqrt{\frac{m}{n}}} $$ $$
+		\varepsilon = e^{-\frac{\mu \delta ^2}{3}} = e^{-\frac{9\cdot ln(n)}{3 \cdot \frac{m}{n}} \cdot \frac{m}{n}} = e^{-3 \cdot ln(n)} = n^{-3} = \frac{1}{n^3}
+	\]
+	\underline{Bsp. (Chernoff):} m = $10^6$, n = $10^3$, l = 250 \\
+	\[
+		P[X_i \geq \frac{m}{n}+l] = P[X_i \geq 1000 +250] \leq 10^{-9} \\
+	\]
+	\underline{Kombination von Chernoff-Bound mit Union-Bound} \\
+	''Fehlerereignisse'' $B_1, B_2, \ldots, B_n$, die alle kleine WSK (mit Chernoff-Bound) \\
+	$P[B_1 \cup B_2 \cup \ldots \cup B_n] \leq \sum_{i=1}^n P[B_i]$ \\
+	Falls P[$B_i$] ''sehr sehr klein'' und ''viele'' solcher Ereignisse auftreten können, dann ist Gesamtfehler-WSK ''sehr klein'' \\
+	\underline{Bsp.:} n Fehler und P[$B_i$] $\leq$ $2^{-\frac{n}{2}}$ \\
+	\[
+	P[\bigcup_i B_i] \leq n \cdot 2^{-\frac{n}{2}} \in O( 2^{-\frac{n}{2}}) $$ $$
+	P[B_i] = \varepsilon \in O(n^{-c}) $$ $$
+	P[\bigcup_i B_i]  \leq n \cdot \varepsilon \in O(n^{-c+1})
+	\]
+	\newpage 
+	\hfill \\
+	\underline{Bsp.:} Server-Farm mit n Servern und m Jobs, welche statisch aber zufällig auf k Server verteilt werden \\
+	Storage-Array mit n Disks und m Blocks, die zu verteilen sind (uniform und zufällig) \\
+	Entspricht Modell: Balls and Bins \\
+	$X_i$ ZV für Anzahl Bälle in $T_i$ \\
+	\[
+	M = max\{ X_1, \ldots, X_n\} $$ $$
+	P[M\geq \frac{m}{n} + l] \leq ? $$ $$
+	P[M \geq \frac{m}{n}	+ l^n] \leq n \cdot P[X-i \geq \frac{m}{n} + l] \leq n \cdot \frac{1}{n^3} = \frac{1}{n^2}
+	\]
+	WSK dafür, dass irgend ein $T_i$ mehr als 1'250 Bälle enthält $\leq 10^{-6}$.
+	
+	
+	
+\end{document}

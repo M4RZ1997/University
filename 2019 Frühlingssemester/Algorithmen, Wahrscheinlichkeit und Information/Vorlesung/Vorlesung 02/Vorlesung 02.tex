@@ -1,0 +1,110 @@
+ \documentclass{article}
+ \usepackage{hyperref}
+ \begin{document}
+ 	\textbf{\underline{Algorithmen, Wahrscheinlichkeit und Information}}
+ 	\\ \\ \\
+ 	\textbf{Algorithmus:} VerifyMatrix(A,B,C) \\
+ 	IN:A,B,C , nxn Matrizen, bin\"ar \\
+ 	OUT: A x B $\stackrel{\mathrm{?}}=$ C \\
+ 	r $\stackrel{R}\leftarrow$ \{0, 1\}\textsuperscript{n} \\
+ 	\underline{if} $A \cdot (B \cdot r) \neq C \cdot r$ \underline{than} \\
+ 	return \textbf{FALSE} \\
+ 	\underline{else} \\
+ 	return \textbf{TRUE} \\
+ 	\\
+ 	\underline{Kosten:} O(n\textsuperscript{2}) Operationen \\
+ 	\underline{Nachberechnung:}	O(n\textsuperscript3) zum $A \cdot B$ \\
+ 	Fehler tritt auf, falls $A \cdot B \neq C$ aber Alg. $\rightarrow$ \textbf{TRUE} \\
+ 	P($A \cdot B \cdot r = C \cdot r \mid	A \cdot B \neq C$) \\
+ 	($D = A \cdot B - C \neq 0$) \\
+ 	P($D \cdot R = 0$) \\
+ 	D = [d\textsubscript{ij}] \\
+ 	$d\textsubscript{nn} \neq 0$ \\
+ 	$\Sigma d\textsubscript{nn} \cdot r$ = 0 \\
+ 	$\leftrightarrow rn = \frac{1}{d\textsubscript{nn}}  \Sigma d\textsubscript{n1} \cdot r\textsubscript{i}$ \\
+ 	\\
+ 	Angenommen r\textsubscript{1}, \ldots, r\textsubscript{n-1} sind bestimmt, dann: \\
+ 	$P(r\textsubscript{n} = s \mid r\textsubscript{1}, \ldots, r\textsubscript{n-1}) = \frac{1}{2}$ \\
+ 	= P(Alg. irrt) = P(VerifyMatrix(A,B,C) = \textbf{TRUE} $\mid$ A $\cdot$ B $\neq$ C) \\
+ 	\\
+ 	Prinzip der \textbf{aufgeschobenen Entscheidung} \\
+ 	Einschr\"ankung (Conditioning) auf bereits getroffene Auswahlen \\
+ 	Bedingt, die ''offene'' WSK gleich ist für alle m\"oglichen Auswahlen  \\
+ 	\\
+ 	\\
+ 	\textbf{Algorithmus:} zur Berechnung des minimalen Schnitts \\
+ 	IN: G = (V,E) \\
+ 	OUT: (m\"ogl.) kleinster Schnitt C \\
+ 	\\
+ 	\underline{while} $\mid V \mid > 2$ \underline{do} \\
+ 	e $\stackrel{R}\leftarrow$ E \\
+ 	''join v\textsubscript{1} und v\textsubscript{2}, retain all edges in G except e and except self-loops'' \\
+ 	$V \leftarrow V\setminus \{v\textsubscript{1}, v\textsubscript{2}\} \cup \{v\textsubscript{12}\}$ \\
+ 	return E \\
+ 	$WSK \geq \frac{2}{n \cdot (n-1)}$ \\
+ 	\\
+ 	\underline{Intuition:} \\
+ 	Sei G\textsubscript{i} der Graph nach i Operationen \\
+ 	Schnitt in G\textsubscript{i} ist auch ein Schnitt in G\textsubscript{i-1}, \ldots, G\textsubscript{0} = G \\
+ 	Schnitt in G\textsubscript{0}, G\textsubscript{1}, \ldots, G\textsubscript{i-1} ist nicht immer ein Schnitt in G\textsubscript{i} \\
+ 	\\
+ 	\underline{Theorem:} MinCut(\ldots) berechnet den kleinsten Schritt mit $WSK \geq \frac{2}{n \cdot (n-1)}$ \\
+ 	\\ Sei C ein kleinster Schnitt mit k Kanten \\
+ 	Ereignis A\textsubscript{i} $\equiv$ Kante e aus Schnitt i $\notin$ C \\
+ 	Ereignis B\textsubscript{i} $\equiv$ $\bigcap$ A\textsubscript{j}: Alle Kanten aus Schnitt 1, \ldots, i ist $\notin$ C \\
+ 	P(B\textsubscript{n-2} = WSK, dass Ereignis Min-Cut \\
+ 	P(A\textsubscript{1}) = P(B\textsubscript{1}) \\
+ 	Wegen $\mid C \mid$ = k hat jeder Knoten mind. k Kanten \\
+ 	$\rightarrow$ G hat $\geq$ $\frac{n \cdot k}{2}$ Kanten \\
+ 	Schnitt 1 wählt e zuf\"allig \\
+ 	P(A\textsubscript{1}) = P(B\textsubscript{2})$\geq 1 - k \cdot \frac{2}{n \cdot k} = 1 - \frac{2}{n}$ \\
+ 	Nach i-1 Schritten hat G $\frac{(n-i+1) \cdot k}{2}$ Kanten \\
+ 	P(A\textsubscript{i} $\mid$ B\textsubscript{i-1} $\geq 1 - k \cdot \frac{2}{(n-i+1) \cdot k} = 1 - \frac{2}{n-i+1}$ \\
+ 	P(B\textsubscript{n-2}) = P(A\textsubscript{n-2} $\mid$ B\textsubscript{n-3}) $\cdot$ P(A\textsubscript{n-3} $\mid$ B\textsubscript{n-4}) $\cdot$ \ldots P(A\textsubscript{2} $\mid$ B\textsubscript{1}) $\cdot$ P(A\textsubscript{1}) \\
+ 	= $\Pi P(A\textsubscript{i} \mid B\textsubscript{i-1})$ \\
+ 	$\geq \Pi (1 - \frac{2}{n-i+1}) = \frac{2}{n \cdot (n-1)}$ \\
+ 	\\
+ 	\\
+ 	\textbf{\underline{Kapitel 2: Zufallsvariablen und Erwartungswert}}\\
+ 	\\
+ 	Zufallsvariablen (ZV) ist eine Abbildung aus einem WSK $\Omega$ in ein X \\
+ 	\underline{Def.:} ZV X $\in$ X\\
+ 	$\Omega$ WSK-Raum \\
+ 	X Definitionsmenge \\
+ 	$X: \Omega \rightarrow X$ Abbildung \\
+ 	\\
+ 	\underline{Notation:} \\
+ 	ZV A
+ 	Definitionsmenge A
+ 	P\textsubscript{A}(a) = P(A = a) = $\Sigma P(A(\omega) = a)$ , a $\in$ A, $\omega \in \Omega$ \\
+ 	\\
+ 	\underline{Def.:} Erwartungswert einer reell-wertigen ZV X, X $\subset R$ \\
+ 	E(X) = $\Sigma x \cdot P\textsubscript{X}(x)$ \\
+ 	\\
+ 	\underline{Def.:} Zufallsvariablen X und Y sind unabhängig \\
+ 	$\leftrightarrow$ \\
+ 	$\forall x \in X, \forall y \in Y: P\textsubscript{XY}(xy) = P\textsubscript{X}(x) \cdot P\textsubscript {Y}(y)$ \\
+ 	\\
+ 	\underline{Theorem:} E($\Sigma X\textsubscript{i}$) = $\Sigma E(X\textsubscript{i})$ \\
+ 	\underline{Lemma:} für Konstante c: $E(c \cdot X) = c \cdot E(X)$ \\
+ 	\\
+ 	\textbf{Jensen-Ungleichung} \\
+ 	\underline{Def.:}	f: R $\rightarrow$ ist konvex (convex-$\cup$) $\leftrightarrow$ \\
+ 	$\forall x\textsubscript{1}, x\textsubscript{2} , \forall \lambda \in [0,1]$ \\
+ 	$f(\lambda \cdot x\textsubscript{1} + (1-\lambda) \cdot x\textsubscript{2}) \leq \lambda f(x\textsubscript{1}) + (1-\lambda)f(x\textsubscript{2})$ \\
+ 	\\
+ 	\underline{Theorem:} Für konvexe f und ZV X: \\
+ 	$E[f(x)] \geq f[E(X)]$ \\
+ 	\underline{Beispiel:} $E(X\textsuperscript{2}) \geq E(X)\textsuperscript{2}$ \\
+ 	\\
+ 	Sei f zweimal diff.bar \\
+ 	f konvex, daraus folgt: f''() $\geq$ 0 \\
+ 	\\
+ 	f(x) = f($\mu$) + f'($\mu$)*(x-$\mu$) + f''(c)$\cdot \frac{1}{2} \cdot$(x-$\mu$)\textsuperscript{2} \\
+ 	f(x) $\geq$ f($\mu$) + f'($\mu$)(x-$\mu$) \\
+ 	E(f(X)) $\geq$ E(f($\mu$)+f'($\mu$)(X-$\mu$)) \\
+ 	= E[f($\mu$)] + E[f'($\mu$)$\cdot$(X-$\mu$)] \\
+ 	= E(f($\mu$) + f'($\mu$)$\cdot$E(X)-$\mu$) \\
+ 	= f($\mu$) = f(E(X)) \\
+ 	
+ \end{document} 

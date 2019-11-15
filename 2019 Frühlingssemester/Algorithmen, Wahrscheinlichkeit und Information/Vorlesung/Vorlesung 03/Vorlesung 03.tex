@@ -1,0 +1,137 @@
+ \documentclass{article}
+ \usepackage{hyperref}
+ \usepackage{geometry}
+ \usepackage{amsmath}
+ 
+ \begin{document}
+ 	\textbf{\underline{Algorithmen, Wahrscheinlichkeit und Information}}
+ 	\\ \\ \\
+ 	\underline{Bedingter Erwartungswert:} \\
+ 	\\
+ 	$P_X : \sum_{x} x \cdot P_X (x)$ \\
+ 	$P_{X\mid Y = y} :$ \\
+ 	\underline{Def.:} E[X$\mid$Y=y] $\sum_{x\in X} x \cdot P_{X\mid Y=y}(x)$ \\
+ 	\textbf{Bsp.:} $X_1, X_2$ sind uniform in [1, k] \\
+ 	$Z = X_1 + X_2$ \\
+ 	$E[X_i] = \frac{k+1}{2}$ \\
+ 	$E[Z] = E[X_1 + X_2] = E[X_1] + E[X_2] = k+1$ \\
+ 	$E[Z\mid X_1=1] = E[X_1+X_2\mid X_1=1] = E[X_2+1] = E[X_2]+1= \frac{k+1}{2}+1$ \\
+ 	\underline{Theorem:} Für ZV X und Y \\
+ 	$E[X] = \sum_{y\in Y} P_Y (y) E[X\mid Y=y]$\\
+ 	\underline{Bew.:}
+	\[
+		\rightarrow \sum_{y}P_Y(y) \cdot  \sum_{x} x \cdot P_{X\mid Y=y}(x) $$ $$
+		=\sum_{x} \sum_{y} x \cdot P_Y(y) \cdot P_{X\mid Y=y}(x) $$ $$
+		=\sum_{x} \sum_{y} x \cdot P_{XY}(xy) $$ $$
+		=\sum_{x} \sum_{y} x \cdot P_X(x) \cdot P_{Y\mid X=x}(y) $$ $$
+		=\sum_{x} x \cdot P(X=x) \cdot \sum_{y} P(Y=y\mid X=x) $$ $$
+		=\sum_{x} x \cdot P(X=x) \cdot 1
+	\]
+	\[
+	E[X\mid Y=y] \neq E[X\mid Y]
+	\]
+	\underline{Bedingter Erwartungswert gegeben eine ZV} \\
+	E[X$\mid$Y] bezeichnet eine ZV A=f(Y) $\in$ R, die mit WSK $P_Y(y)$ den Wert a = E[X$\mid$Y=y] \\
+	\textbf{Bsp.:} $Z = X_1 + X_2,$ $X_1,X_2 \in\textsubscript{R} [1,k]$ \\
+	E[Z$\mid X_1=x_1$] für $x_1 \in [1,k]$ \\
+	$\rightarrow \sum_{z=2}^{2k} z \cdot P_{Z\mid X_1 = x_1}(z)$ 
+	$=\sum_{x_2=1}^{k}(x_1+x_2) \cdot P_{Z\mid X_1 = x_1}(z)$
+	$=x_1 + \sum_{x_2=1}^{k} x_2 \cdot P_{X_2}(x_2)$
+	$=x_1 + E[X_2] = x_1 + \frac{k+1}{2}$ \\
+	\\
+	$P_{X_1}(x_1) = \frac{1}{k}$\\
+	\[
+	E[E[Z\mid X_1]] = \sum_{X_1} E[Z\mid X_1=x_1]\cdot P_{X_1}(x_1) $$ $$
+	= \sum_{X_1} \frac{1}{k} \cdot (x_1 + \frac{k+1}{2}
+	= \sum_{x_1=1}^{k} \frac{1}{k} \cdot x_1 + \frac{k+1}{2}
+	= k + 1 = E[Z]
+	\]
+	\newpage
+	\underline{Algorithmen für zufällige Permutationen 1, \ldots , n} \\
+	\\
+	Geg.: random(1,k) $\rightarrow$ zuf. Zahl n [1,k] \\
+	1) \underline{for} i = 1, \ldots , n \underline{do} \\
+	j $\leftarrow$random(1,n) \\
+	\underline{while} j $\in \{\Pi\textsubscript{1},\Pi\textsubscript{1}, \ldots \Pi\textsubscript{i-1}\}$ \\
+	$\Pi\textsubscript{i} \leftarrow j$ \\
+	$O(n^2)$ Operationen \\
+	\\
+	2) j $\leftarrow$random(1,n!) \\
+	$\Pi$ ist j-te Permutation von n Elementen \\
+	$O(2^n)$ Error \\
+	\\
+	3) $L_1, L_2, \ldots , L_n$ zufällige Zahlen und sortieren \\
+	\underline{for} i = 1, \ldots , n \underline{do} \\
+	$L_i \leftarrow(i, random(1,n^3))$ \\
+	$\sum \leftarrow$ sort(L) anhand 2. Komponenten \\
+	\underline{for} i = 1, \ldots , n \underline{do} \\
+	$\Pi_i \leftarrow L_i$ 1. Komponente \\
+	O(n log(n)) Operationen \\
+	\\
+	4) \underline{Linearer Algorithmus: [CLRS]} \\
+	\underline{for} i = 1, \ldots , n \underline{do} $\Pi \leftarrow i$ \\
+	\underline{for} i = 1, \ldots , n \underline{do} \\
+	$k \leftarrow random(i,n)$ \\
+	$swap(\Pi_i, \Pi_k)$ \\
+	O(n) Operationen \\
+	\\
+	\underline{Def.:} Eine m-Permuattion aus Menge G mit n  Elementen ist eine Sequenz von m Elementen aus G \\
+	Es gibt $\binom{m}{n} = \frac{m!}{(n-m)!}$ m-Permutation. \\
+	\\
+	\underline{Invariante (*):} Vor Iteration i für jede (i-1)-Permutation $\rho$ von [1,n] die Sequenz $\Pi_1, \ldots , \Pi_{i-1}$ ist gleich $\rho$ mit WSK $\frac{(n-i+1)!}{n!}$. \\
+	\underline{Verankerung (i-1):} jede O-Permutation ist gleich [ ] mit WSK 1. \\
+	\\
+	\underline{Schritt:} Sei $\rho$ eine (i-1)-Permutation, $\rho = \rho_1, \ldots , \rho_{i-1}$ \\
+	(1) P[$\Pi_1, \ldots , \Pi_{i-1} = \rho_1, \ldots , \rho_{i-1}$] = $\frac{(n-i+1)!}{n!}$ \\
+	(2) P[$\rho_i=\Pi_i\mid \Pi_1, \ldots , \Pi_{i-1} = \rho_1, \ldots , \rho_{i-1}$] = $\frac{1}{n-i+1}$ \\
+	\\
+	(1) $\cap$ (2) $\rightarrow$ P[$\rho_1, \ldots , \rho_i=\Pi_1, \ldots , \Pi_i$] \\
+	= P[$\rho_1, \ldots , \rho_{i-1}=\Pi_1, \ldots , \Pi_{i-1}$] $\cdot$ P[$\rho_i=\Pi_i\mid \Pi_1, \ldots , \Pi_{i-1} = \rho_1, \ldots , \rho_{i-1}$] \\
+	= $\frac{(n-i+1)!}{n!} \cdot \frac{1}{(n-i+1)}$ = $\frac{(n-i)!}{n!} \leftarrow$ WSK für bestimmte i-Permutation  \\
+	\newpage
+	\underline{Bernoulli-ZV} \\
+	Experiment mit WSK p gelingt. \\
+	\[
+		P_X(0) = 1-p \hspace{1,5cm}
+		P_X(1) = p \hspace{1,5cm}
+		E[X] = p
+	\]
+	\underline{Binomialverteilung} \\
+	WSK für k Erfolge in n unabhängigen Experimenten mit WSK p. \\
+	\textbf{Def.:} $B_{n,p} \in [0,n]$
+	\[
+		P_{B_{n,p}}(k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k} \hspace{1,5cm}
+		E[B_{n,p}] = n \cdot p $$ $$
+		B_{n,p} = \sum_{i=1}^{n} X_i  \textit{ (X\textsubscript{i} ist Bernoulli-ZV))} $$ $$
+		E[B_{n,p}] = E\left[\sum_{i=1}^{n} X_i\right] = \sum_{i=1}^{n} E[X_i] = \sum_{i=1}^{n} p = np
+	\]
+	\underline{Geometrische ZV} \\
+	''Anzahl Versuche bis zum ersten Erfolg'' \\
+	\textbf{Def.:} ZV X geometrisch verteilt mit Parameter p
+	\[
+		P_X(n) = (1-p)^{n-1} \cdot p
+	\]
+	\textbf{Lemma:} Für n $>$ 0, k $>$ 0 \\
+	$P[X=n+k\mid X>k] = P[X=n]$ ''memory loss'' \\
+	\textbf{Bew.:}
+	\[
+		P[X=n+k\mid X>k] = \frac{P[X=n+k \cap X>k]}{P[X>k]} = \frac{P[X=n+k]}{P[X>k]} = \frac{(1-p)^{n+k-1} \cdot p}{\sum_{i=k}^{\infty}(1-p)^i \cdot p} $$ $$
+		= \frac{(1-p)^{n+k-1} \cdot p}{(1-p)^k} = (1-p)^{n-1} \cdot p = P[X=n]
+	\]
+	\textbf{Lemma:} Erwartungswert einer geometrischen ZV mit Parameter p
+	\[
+		E[X] = \frac{1}{p}
+	\]
+	\textbf{Bew.:} Sei X geometrisch verteilt mit Parameter p. \\
+	X: Anzahl Versuche bis ersten Erfolg (p). \\
+	S: Bernoulli-ZV, ob erster Versuch gelingt (p). \\
+	\[
+		E[X] = P[S=0] \cdot E[X\mid S=0] + P[S=1] \cdot E[X\mid S=1] = (1-p) \cdot E[X\mid S=0] + p
+	\]
+	Sei Z die Anzahl verbleibender Versuche für S=0. \\
+	\[
+		E[X] = (1-p) \cdot E[Z+1] + p = (1-p) \cdot E[Z] + 1 
+		\textit{ ''memoryloss'' E[X] = E[Z]} $$ $$
+		E[X] = (1-p) \cdot E[X] + 1 \rightarrow E[X] = \frac{1}{p}
+	\]
+ \end{document}

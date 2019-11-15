@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{amsmath}
+
+\geometry{top=3cm, bottom=3cm}
+
+\begin{document}
+	\textbf{\underline{\Large{Information und Entropie}}} \\
+	\begin{itemize}
+		\item[-] Wie misst man Information?
+		\item[-] Wie viel Information steckt in einer Nachricht?
+		\item[$\Rightarrow$] Quantifizierung durch Informationstheorie (\textsc{Shannon})
+	\end{itemize}
+	\hfill \\
+	\textbf{\underline{Entropie}} \\ \\
+	Die fundamentale Größe ist die \underline{Entropie} einer ZV, ein Maß für die Unsicherheit oder den Informationsgehalt der ZV. \\
+	\underline{Bsp.:} 
+	\[
+		F \in_R \{0,1\} \textit{ faire Münze} $$ $$
+		W \in_R \{1,2,\ldots , 6\} \textit{ Würfel} $$ $$
+		Z \in \{0,a,b,\ldots , h\} \hspace{1cm} P_Z(0) = \frac{1}{2} \hspace{1cm} P_Z(a)=P_Z(b)=\ldots = P_Z(h)=\frac{1}{16} $$ $$
+		G \sim geom(p) = geom(\frac{1}{3}) \hspace{1cm} P[G=n] = (1-p)^{n-1} \cdot p \hspace{0.5cm} n > 0
+	\] \\
+	\underline{Versuch für ein Informationsmaß:} Supportmenge der ZV X $\{x \in \textit{X} \mid P_X(x)>0\}$ \\
+	$\rightarrow \underbrace{\textit{Kardinalität der Supportmenge}}_{\textit{Logarithmus von}}$ \\ \\ \\
+	\textbf{\Large{!}} \textbf{Alle Logarithmen zur Basis 2}
+	\[
+		K(F) = 1 $$ $$
+		K(W) = log(6) \approx 2.58 $$ $$
+		K(Z) = log(9) \approx 3.12 $$ $$
+		K(G) = \infty
+	\] \\
+	\underline{Idee:} Info.gehalt von X=x sei log$(\frac{1}{P_X(x)})$ \\ \\
+	\textbf{\underline{Definition der Entropie}} \\
+	\underline{Def.:} $H(X) = - \sum P_X(x) \cdot log(P_X(x))$ \\
+	(Annahme: $\forall x \in X : P_X(x) \geq 0$) \\
+	Da der Logarithmus zur Basis 2 ist, so misst die Entropie "Bits" \\
+	\underline{Alternative Definition:} $H(X) = E[-log(P_X(X))]$ \\ \\
+	\textbf{\underline{Entropie der binären Verteilung}}\\
+	\[
+		^{P[X=0]=p}_{P[X=1]=1-p} \rbrace \hspace{0,5cm} h(p) = .-p \cdot log(p) - (1-p) \cdot log(1-p) $$ $$
+		h(0.5) = 1 $$ $$
+		h(0.11) = h(0.89) = 0.5 $$ $$
+		h(0) = h(1) = 0
+	\]
+	\underline{Theorem:} 
+	\[
+		0 \leq H(X) \leq log\mid X\mid $$ $$
+		\textit{mit } 0 = H(X) \Leftrightarrow \exists x: P_X(x)=1 $$ $$
+		\textit{mit } H(X) = log\mid X\mid \Leftrightarrow P_X(x) = \frac{1}{\mid X \mid} \hspace{1cm} \forall x
+	\]
+	\underline{Beweis:}
+	\[
+		1.)\hspace{1cm} 0 \geq H(X) $$ $$
+		\textit{Da $P_X(x)>0$ für x $\in$ X:} $$ $$
+		P_X(x) \cdot log(P_X(x) = 0 \Leftrightarrow \exists x: P_X(x) = 1 $$ $$
+		P_X(x) \cdot log(P_X(x) > 0 \Leftarrow \lbrace^{P_X(x)>0}_{P_X(x)<1} $$ $$
+		2.)\hspace{1cm} \textit{Jensen: }  f(\cdot ) \textit{ konkav } (\cap ) $$ $$
+		\Rightarrow E[f(x)] \leq f[E(X)] $$ $$
+		H(X) = E[-log(P_X(X))] = E[log(\frac{1}{P_X(X)})] \leq log(E[\frac{1}{P_X(X)}]) $$ $$
+		= log(\sum_{x\in X} P_X(x) \cdot \frac{1}{P_X(x)}) = log \mid X \mid
+	\]
+	\textbf{Entropiewerte der Beispiele:}
+	\[
+		H(F) = 1 $$ $$
+		H(W) \approx 2.58 $$ $$
+		H(Z) = \frac{1}{2} \cdot log(\frac{1}{2}) + 8\cdot \frac{1}{16} \cdot log(\frac{1}{16}) = 2.5 $$ $$
+		H(G) = \frac{h(p)}{p} \approx 2.75
+	\]
+	\textbf{\underline{Interpretationen von H(X)}}
+	\begin{itemize}
+		\item[-] Anzahl nötiger bits im Durchschnitt, um einen Wert von X zu codieren
+		\item[-] Anzahl nötiger binärer Fragen (im Durchschnitt), um das Resultat X zu erfahren
+		\item[-] Anzahl der perfekten Zufallsbits, welche aus X extrahiert werden können (im Durchschnitt)
+	\end{itemize}
+	\hfill \\
+	\textbf{\underline{Bedingte Entropie}} \\
+	\underline{Def.:} Bedingte Entropie von X gegeben Ereignis Y=y: \\
+	\[
+		H(X\mid Y=y) = - \sum_{x\in X} P_{X\mid Y=y}(x) \cdot log(P_{X\mid Y=y}(x)) \hspace{0.5cm} \textit{ ''Entropie von \underline{X$\mid$Y=y}''}
+	\]
+	\underline{Def.:} Bedingte Entropie von X gegeben eine ZV Y:
+	\[
+		H(X\mid Y) = \sum_{y\in Y} P_Y(y) \cdot H(X\mid Y=y)
+	\]
+	\underline{Alternative Definition:}
+	\[
+		H(X\mid Y) = E[-log(P_{X\mid Y}(X))] $$ $$
+		H(X\mid Y) = -\sum_{x\in X} \sum_{y\in Y} P_{X\mid Y}(x,y) \cdot log(P_{X\mid Y=y}(x))
+	\]
+	$\Rightarrow$ Verbleibende Unsicherheit über X, wenn Y bekannt ist. \\
+	\underline{Bsp. 1:} X $\in _R$ \{000,001,\ldots , 111\} \\
+	\[
+		X = X_1X_2X_3 $$ $$
+		Y = X_1\oplus X_2\oplus X_3 $$ $$
+		H(X) = 3  \hspace{1cm} H(Y) = 1 $$ $$
+		H(X\mid Y) = 2
+	\]
+	\underline{Bsp. 2:} Barometer B$\in$ \{\underline{t}ief, \underline{m}ittel, \underline{h}och\} \\
+	Wetter morgen W$\in$\{\underline{s}onnig, \underline{w}echselhaft, \underline{r}egen\}
+	\begin{table}
+		\begin{tabular}{l|ccc|} 
+				&	s	&	w	&	r \\ \hline
+			t	&	0	&	$\frac{1}{12}$	&	$\frac{2}{12}$ \\
+			m	&	$\frac{2}{12}$	&	$\frac{2}{12}$	&	$\frac{2}{12}$ \\
+			h	&	$\frac{2}{12}$	&	0	&	$\frac{1}{12}$ \\
+		\end{tabular}
+	\end{table}
+	\[
+		H[BW] \approx  1.675 $$ $$
+		H[B] = H[\frac{1}{4}, \frac{1}{2}, \frac{1}{4}] = 1.5 $$ $$
+		H[W] \approx 1.554 $$ $$
+		H[W\mid B=t] = h(\frac{1}{3}) \approx 0.918 $$ $$
+		H[W\mid B=m] = log(3) \approx 1.585 \textit{ Konditionierung auf Ereignis kann Unsicherheit erhöhen!!!} $$ $$
+		H[W\mid B=h] = h(\frac{1}{3}) \approx 0.918 $$ $$
+		H[W\mid B] = \frac{1}{4} \cdot H[W\mid B=t] + \frac{1}{2} \cdot H[W\mid B=m] + \frac{1}{4} \cdot H[W\mid B=h] \approx 1.252 $$ $$
+		H[W] \geq H[W\mid B]
+	\]
+	\underline{Theorem:} Für ZV X und Y gilt:
+	\[
+		H[X\mid Y] \leq H[X] \hspace{0.5cm} \textit{ mit Gleichheit gdw. X unabhängig von Y}
+	\]
+	\textbf{''Zusatzinformation verringert die Unsicherheit''} \\
+	\underline{Theorem:} ''Kettenregel für Entropie'' \\
+	\[
+		H[XY] = H[X] + H[Y\mid X] $$ $$
+		H[XY] = H[Y] + H[X\mid Y] $$ $$
+	\]
+	\underline{Wichtige Spezialfälle:}
+	\begin{itemize}
+		\item[$\cdot$] X unabhängig von Y $\Leftrightarrow$ H[XY] = H[X] + H[Y]
+		\item[$\cdot$] Y = f(X) $\Leftrightarrow$ H[Y$\mid$X] = 0 $\Leftrightarrow$ H[XY] = H[X]
+	\end{itemize}
+\end{document}

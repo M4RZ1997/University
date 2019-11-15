@@ -1,0 +1,123 @@
+ \documentclass{article}
+ \usepackage{hyperref}
+ \usepackage[hoffset = 1px]{geometry}
+ \begin{document}
+ \begin{center}
+ \textbf{\underline{Algorithmen, Wahrscheinlichkeit und Information}}
+ \end{center}
+ \hfill \\ \\ 	
+ \textbf{Kapitel 01: Ereignisse und Wahrscheinlichkeit (WSK)}
+ \\ \\
+ \underline{Def.:} Wahrscheinlichkeitsraum \\
+ 1) Ergebnisraum $\Omega$ \\
+ = Menge aller m\"oglichen Ereignisse \\
+ $\omega\in\Omega$: Elementarereignis  \\
+ 2) Ereignissystem $\Sigma$ \\
+ = Menge von Testmengen aus $\Omega$ \\
+ = Z\textsuperscript{$\Omega$} \\
+ 3) WSK-Ma$\ss$ P: \\
+ P: $\Sigma$ $\to$ [0,1]\\
+ \\
+ \underline{Def.:} WSK-Ma$\ss$ P: $\Sigma$ $\to$ [0,1]\\
+ P[$\Omega$] = 1 \\
+ P[$\emptyset$] = 0 \\
+ F\"ur alle paarweise disjunkten Ereignisse E\textsubscript{1}, E		\textsubscript{2}, \ldots \\ 	
+ P[$\bigcup$ E\textsubscript{i}] = $\Sigma$(P[E\textsubscript{i}]) \\ 	\\
+ Ereignisse sind Mengen \\
+ E\textsubscript{1}  $\cap$ E\textsubscript{2}: E\textsubscript{1} und E\textsubscript{2} treten gleichzeitig auf \\
+ E\textsubscript{1}  $\cup$ E\textsubscript{2}: mindestens eines von E	\textsubscript{1} und E\textsubscript{2} tritt auf \\
+ $\overline{E}$: Komplement von E \\
+ \\
+ \underline{Lem.:} P[E\textsubscript{1} $\cup$ E\textsubscript{2}] = P[E\textsubscript{1}] + P[E\textsubscript{2}] - P[E\textsubscript{1} $\cap$ E\textsubscript{2}] \\
+ \underline{Bew.:} \\
+ P[E\textsubscript{1}] = P[E\textsubscript{1}$\setminus$(E\textsubscript{1} $\cap$ E\textsubscript{2})] + P[E\textsubscript{1} $\cap$ E\textsubscript{2}] \\ 
+ P[E\textsubscript{2}] = P[E\textsubscript{2}$\setminus$(E\textsubscript{1} $\cap$ E\textsubscript{2})] + P[E\textsubscript{1} $\cap$ E\textsubscript{2}] \\
+ P[E\textsubscript{1} $\cup$ E\textsubscript{2}] = P[E\textsubscript{1}$\setminus$(E\textsubscript{1} $\cap$ E\textsubscript{2})] + P[E\textsubscript{2}$\setminus$(E\textsubscript{1} $\cap$ E\textsubscript{2})] + P[E\textsubscript{1} $\cap$ E\textsubscript{2}]
+ \\
+ \underline{Lem.:} Union Bound \\
+ F\"ur alle Ereignisse E\textsubscript{1}, E\textsubscript{2}, \ldots \\
+ P[$\bigcup$ E\textsubscript{i}] $\le$ $\Sigma$(P[E					\textsubscript{i}]) \\
+ \\
+ \underline{Lem.:} Inklusion und Exklusion \\
+ F\"ur Ereignisse E\textsubscript{1}, E\textsubscript{2}, ...\\
+ P[$\bigcup$ E\textsubscript{i}] = $\Sigma$(P[E\textsubscript{i}]) - $\Sigma$(P[E\textsubscript{i} $\cap$ E\textsubscript{j}]) + $\Sigma$		(P[E\textsubscript{i} $\cap$ E\textsubscript{j} $\cap$ E\textsubscript{k}]) + ... + (-1)\textsuperscript{l+1} $\Sigma$(P[E\textsubscript{i} $\cap$ E\textsubscript{j} $\cap$ \ldots $\cap$ E		\textsubscript{l}]) \\
+ \\
+ \underline{Algorithmus: \"Aquivalenz von Polynomen} \\
+ (x-1)(x+2)(x-3)(x+4)(x-5)(x+6) \\
+ $\stackrel{\mathrm{?}}=$ \\
+ x\textsuperscript{6} + 3x\textsuperscript{5} - 14x\textsuperscript{4} - 78x\textsuperscript{3} + 400x\textsuperscript{2} + 444x - 720 \\
+ F(x) als Produkt: Ausmultiplizieren $\to$ $\theta$(d\textsuperscript{2}) 	Operationen \\
+ G(x) als Normalform \\
+ \\
+ Allg. F(x) $\stackrel{\mathrm{?}}\equiv$ G(x) \\
+ \\
+ PolyEq(F(x), G(x))) \\
+ r $\stackrel{\mathrm{R}}\leftarrow$ \{1, \ldots, 1000d\} \\
+ \underline{if} F(x) $\neq$ G(x) \underline{then} \\
+ return ''different'' \\
+ \underline{else} \\
+ return ''maybe equal'' \\
+ \\
+ falls: \\
+ F(x) = G(x) $\wedge$ ''maybe equal'': die Antwort ist korrekt \\
+ F(x) $\neq$ G(x) $\wedge$ ''different'': die Antwort ist korrekt \\
+ F(x) $\neq$ G(x) $\wedge$ ''maybe equal'': die Antwort ist falsch!\\
+ \\
+ Wahrscheinlichkeit, dass Antwort falsch ist: \\
+ D(x) = F(x) - G(x) $\Leftrightarrow$ falls r Nullstelle von D(x) \\
+ Grad d $\Leftrightarrow$ h\"ochstens d Nullstellen\\
+ WSK = $\frac{d}{1000 \cdot d}$ = $\frac{1}{1000}$ \\
+ \\
+ \underline{Randomisierte Algorithmen} \\
+ \\
+ Las Vegas Algorithmus: \\
+ terminiert eventuell nicht \\
+ Ergebnis immer korrekt \\
+ \\
+ Monte Carlo Algorithmus: \\
+ terminiert immer \\
+ Ergebnis eventuell falsch \\
+ $\rightarrow$ F\"ur Entscheidungsprobleme (YES/NO) \\
+ Einseitige Fehler \\
+ Eine Antwort (YES/NO) ist immer korrekt \\
+ Zweiseitige Fehler \\
+ \ldots \\
+ \\
+ \underline{Unabh\"angigkeit} \\
+ \underline{Def.:} Ereignisse E und F sind unabh\"angig $\leftrightarrow$ P[E $\cap$ F] = P(E) $\cdot$ P(F) \\
+ \\
+ \underline{bedingte Wahrscheinlichkeit} \\
+ P[E$\mid$F] = $\frac{P[E \cap F]}{P(F)}$ \\
+ \\
+ Algorithmus MultiPolyEq(\ldots) \\
+ \underline{for} j = 1, \ldots, k \underline{do} \\
+ \underline{if} PolyEq(\ldots) = ''different'' \underline{then} \\
+ return ''different'' \\
+ \underline{end} \\
+ return ''maybe equal'' \\
+ \\
+ Wahrscheinlichkeiten sind unabh\"angig \\
+ P[eine Runde falsch] = $\frac{1}{1000}$ \\
+ P[alle k Runden falsch] = ($\frac{1}{1000}$)\textsuperscript{k} \\
+ \\
+ \underline{Theorem} \\
+ E\textsubscript{1}, E\textsubscript{2}, ..., E\textsubscript{k} paarweise disjunkte Ereignisse \\
+ $\Omega$ = $\bigcup$ E\textsubscript{i} \\
+ P[A] = $\Sigma$ P[A$\mid$E\textsubscript{j}] $\cdot$ P[E			\textsubscript{j}] \\
+ \\
+ \textbf{\underline{Theorem von Bayes}} \\
+ E\textsubscript{1}, E\textsubscript{2}, ..., E\textsubscript{k} paarweise disjunkte Ereignisse \\
+ $\Omega$ = $\bigcup$ E\textsubscript{i} \\
+ F\"ur alle A, E\textsubscript{j}: P[E\textsubscript{j}$\mid$A] = $		\frac{P[E\textsubscript{j} \cap A]}{P(A)}$ = $\frac{P[A \mid E			\textsubscript{j}] \cdot P[E\textsubscript{j}]}{\Sigma P[A \mid E		\textsubscript{j}] \cdot P[E\textsubscript{j}]}$ \\
+ \\
+ \underline{Intrusive-Prevention-System} \\
+ Soll Alarm (A) geben, falls eine Intrusion (I) vorliegt \\
+ P[A$\mid$I] = 0.95 \\
+ P[A$\mid$T] = 0.01 \\
+ P[I] = 0.02 \\
+ \\
+ WSK daf\"ur, dass bei Alarm (A) tats\"achlich eine Inklusion passiert: \\
+ P[I$\mid$A] = 0.66 \\
+ 
+ 	
+ \end{document}

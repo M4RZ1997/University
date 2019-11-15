@@ -1,0 +1,184 @@
+ \documentclass{article}
+ \usepackage{hyperref}
+ \usepackage{geometry}
+ \usepackage{amsmath}
+ 
+ \geometry{top=3cm, bottom=3cm}
+ 
+ \begin{document}
+ 	\textbf{\underline{\large{Algorithmen, Wahrscheinlichkeit und Information}}}
+ 	\\ \\ \\
+ 	\underline{Geburtstags-Effekt}
+ 	\begin{itemize}
+ 		\item Menge n Personen
+ 		\item m mögliche Geburtstage (m = 365)
+ 		\item WSK, dass zwei Personen am selben Tag Geburtstag haben?
+ 	\end{itemize}
+ 	\begin{itemize}
+ 		\item Universum von m Elementen
+ 		\item n uniforme und gleich verteilte Auswahlen
+ 		\item WSK dafür, dass zwei Auswahlen gleich \\
+ 		\ldots dass zwei Auswahlen kollidieren
+ 	\end{itemize}
+ 	\begin{center}
+ 		$\rightarrow n = \Theta(\sqrt{m})$
+ 	\end{center}
+ 	\textbf{Herleitung 1 - Untere Schranke} \\
+ 	m Elemente, n Auswahlen \\
+ 	$G_i$ sei Auswahl i (Geburtstag von i) \\
+ 	$\forall$ d: $P_{G_i}$(d) = $\frac{1}{m}$
+ 	\begin{itemize}
+ 		\item Für zwei Personen $l$ und $k$, und für bestimmten Tag d: \\
+ 		$P[G_l = d \cap G_k = d] = \frac{1}{m^2}$
+ 		\item WSK für den gleichen Geburtstag von zwei: \\
+ 		$P[G_l=G_k) = \frac{1}{365} = \frac{1}{m}$
+ 	\end{itemize}
+ 	P[mind. zwei gleiche] = 1-P[keine zwei gleiche] \\
+ 	Person i: \\
+ 	$X_i \hat{=}$ Ereignis $G_i$ verschieden von $G_1, \ldots, G_{i-1}$ \\
+ 	$Y_i \hat{=} \bigcap_{j=1}^{i-1} X_i$ \\
+ 	$\rightarrow$ gesucht ist P[$Y_n$] \\
+ 	$Y_i = Y_{i-1} \cap X_i$ \\
+ 	P[$Y_i$] = P[$X_i \mid Y_{i-1}$] $\cdot$ P[$Y_{i-1}$] \\
+ 	P[$Y_1$] = 1 \\
+ 	P[$X_i \mid Y_{i-1}$] = $\frac{m-i+1}{m}$ \\
+ 	\\
+ 	P[$Y_n$] = P[$X_n \mid Y_{n-1}$] $\cdot$ P[$Y_{n-1}$] \\
+ 	= P[$X_n \mid Y_{n-1}$] $\cdot$ \ldots $\cdot$ P[$X_i \mid Y_{i-1}$] $\cdot$ \ldots $\cdot$ P[$Y_1$] \\
+ 	= $\prod_{i=1}^{n}$ P[$X_i \mid Y_{i-1}$] \\
+ 	= $\prod_{i=1}^{n} \frac{m-i+1}{m}$ = $\prod_{i=1}^{n} \left(1-\frac{i-1}{m}\right)$ \\
+ 	P[$Y_n$] $\leq$ $\prod_{i=1}^{n} e^{\frac{-(i-1)}{m}}$ \\
+ 	..... \\
+ 	P[$Y_n$] $\leq$ p: ln(p) $\geq$ $-\frac{n \cdot (n-1)}{2m}$ \\
+ 	$\frac{n \cdot (n-1)}{2m} \geq ln(\frac{1}{p})$ \\
+ 	Für p = $\frac{1}{2}$: $n \cdot (n-1) \geq ln(2) \cdot 2m$ \\
+ 	dann P[$Y_n$] $\leq$ p = $\frac{1}{2}$ \\
+ 	m = 365 Tage: 
+ 	\begin{itemize}
+ 		\item n $\geq$ 23, dann P[$Y_n$] $\leq$ $\frac{1}{2}$
+ 		\item n $\geq$ 68, dann P[$Y_n$] $\leq$ 0.002
+ 	\end{itemize}
+ 	\newpage
+ 	\hfill \\
+ 	\textbf{Herleitung 2 - Indikator-ZV} \\
+ 	\\
+ 	ZV $G_{ij}$ = $\lbrace^{\textit{1, falls $G_i$ = $G_j$}}_{\textit{0, sonst}}$ \\
+ 	E[$X_{ij}$] E[$G_i = G_j$] = $\frac{1}{m}$ \\
+ 	$X = \sum_{i,j} X_{ij} = \sum_i=1^n \sum_j=1^n X_{ij}$ \\
+ 	E[X] = E[$\sum_{i} \sum_{j} X_{ij}$] = $\sum_{i} \sum_{j}$ E[$X_{ij}$] = $\sum_{i} \sum_{j} \frac{1}{m}$ = $\frac{1}{m} \sum_{i} \sum_{j} 1$ = $\frac{1}{m} \cdot \frac{n \cdot (n-1)}{2}$ \\
+ 	Falls n = $\Theta(\sqrt{m})$, dann im Erwartungswert mind. eine Kollision \\
+ 	\\
+ 	\underline{Hashfunktionen}
+ 	\begin{itemize}
+ 		\item Berechnen kurzer, eindeutiger Werte für einen beliebig langen Input
+ 		\item H:$\{0,1\}^{*} \rightarrow \{0,1\}^k$ (fixes k)
+ 		\item SHA-256, SHA-512
+ 		\item Sicherheit: Es ist praktisch nicht möglich zwei x und x' zu finden $\rightarrow$ H(x) = H(x') \\
+ 		$\rightarrow$ ''keine Kollision''
+ 		\item Angenommen: Output von H ist zufälliger k-bit String \\
+ 		$m=2^k \rightarrow$ mit n = $O(\sqrt{m}) = O(2^{\frac{k}{2}})$ Operationen $\rightarrow$ Kollision \\
+ 	\end{itemize}
+ 	\hfill \\
+ 	\underline{Momente und Abweichungen} \\
+ 	Markov-Ungleichung \\
+ 	\underline{Theorem:} Sei X eine ZV in $R^+$ \\
+ 	\[
+ 		\forall a > 0, \hspace{0,5cm}
+ 		P[X \geq a] \leq \frac{E[x]}{a}
+ 		\hspace{1cm} \leftrightarrow \hspace{1cm} 
+ 		P[X \geq c \cdot E[X]] \leq \frac{1}{c}
+ 	\]
+ 	\underline{Beweis:} \\•
+ 	I: Indikatorfunktion := $\lbrace_{0,X<a}^{1, \geq a}$ \\
+ 	\[
+ 		E[X] = \sum_x x \cdot P_X(x) 
+ 		\geq \sum_{x \geq a} x \cdot P_X(x)
+ 		\geq \sum_{x \geq a} a \cdot P_X(x)
+ 		= a \cdot \sum_{x \geq a} P_X(x)
+ 		= a \cdot P[X \geq a]
+ 	\]
+ 	\underline{Beispiel:} Fairer Münzwurf mit n Wiederholungen \\
+ 	X Anzahl Münze = Kopf \\
+ 	E[X] = $ \frac{n}{2}$ \\
+ 	$P[X \geq \frac{7}{8} \cdot n] \leq \frac{n}{2} \cdot \frac{8}{7n} = \frac{4}{7}$ \\
+ 	\\
+ 	\underline{Momente einer ZV}
+ 	\begin{itemize}
+ 		\item Momente charakterisieren ZV
+ 		\item Erwartungswert ist das erste Moment
+ 	\end{itemize}
+ 	\underline{Definition:} Das letzte Moment einer ZV X
+ 	\[
+ 		E[X^k]
+ 	\] 
+ 	Das k-te zentrale Moment von X:
+ 	\[
+ 		E[(X-\mu)^k] \textit{ wobei $\mu$ = E[X]}
+ 	\]
+ 	\underline{Defintion:} Varianz einer ZV X ist
+ 	\[
+ 		Var[X] = E[(X-E[X])^2]
+ 	\]
+ 	\newpage
+ 	\hfill \\
+ 	\underline{Definition:} Standardabweichung
+ 	\[
+ 		\sigma = \sqrt{Var[X]}
+ 	\] 
+ 	\underline{Theorem:} $Var[X] = E[X^2]- E[X]^2$ \\
+ 	\underline{Beweis:}
+ 	\[
+ 		\mu = E[X] $$ $$
+ 		Var[X] = E[(X-\mu)^2] = E[X^2-2X\mu+\mu^2] = E[X^2]-2\mu\underbrace{E[X]}_\mu+\mu^2 = E[X^2]-\mu^2 = E[X^2]-(E[X])^2
+ 	\]
+ 	\underline{Beispiel:}
+ 	\begin{itemize}
+		\item X $\in_R$ [1,6] \\
+ 		$Var[X] = \frac{1}{6} \cdot (1^2 + 2^2 + \ldots + 6^2) - (\frac{7}{2})^2 = \frac{35}{12} = 2,916666...$
+ 		\item X $\in_R$ [a, b] \\
+ 		$Var[X] = \frac{(b-a+1)^2-1}{12}$
+ 	\end{itemize}
+ 	\underline{Theorem:} ZV X und Y unabhängig \\
+ 	\[
+ 		E[X\cdot Y] = E[X] \cdot E[Y]
+ 	\]
+ 	\underline{Beweis:}
+ 	\[
+ 		E[X \cdot Y] = \sum_{x,y} x \cdot y \cdot P_{XY}(x,y) 
+ 		= \sum_x \sum_y x\cdot y \cdot P_X(x) \cdot P_Y(y) 
+ 		= \sum_x x \cdot P_X(x) \cdot \sum_y y \cdot P_Y(y) 
+ 		= E[X] \cdot E[Y]
+ 	\]
+ 	\underline{Theorem:} ZV X und Y unabhängig
+ 	\[
+ 		Var[X+Y] = Var[X] + Var[Y]
+ 	\]
+ 	\underline{Beweis:}
+ 	\[
+ 		Var[X+Y] = E[(X+Y-E[X+Y])^2]
+ 		= E[(X+Y-E[X]-E[Y])^2] $$ $$
+ 		= E[(X-E[X])^2+(Y-E[Y])^2 + 2(X-E[X]) \cdot (Y-E[Y])] $$ $$
+ 		= E[(X-E[X])^2] + E[(Y-E[Y])^2] + \underbrace{E[2 \cdot \underbrace{(X-\mu_X)}_0 \cdot \underbrace{(Y-\mu_Y)]}_0}_0
+ 		= Var[X] + Var[Y]
+ 	\]
+ 	\underline{Varianz einer ZV mit Binomialverteilung} \\
+ 	\[
+ 	X \sim B(n, p) $$ $$
+ 	\textit{Var = ?} $$ $$
+ 	X = \sum_{i=1}^n Z_i \hspace{2cm} Z_i := \lbrace^{\textit{1, mit WSK p}}_{\textit{0, sonst}} $$ $$
+ 	Z_i \textit{ unabhängig } \hspace{2cm} E[Z_i] = p $$ $$
+ 	Var[Z_i] = E[(Z_i - p)2] 
+ 	= p \cdot (1-p)^2 + (1-p) \cdot p^2
+ 	= p \cdot (1-p) \cdot (1-p+p)
+ 	= p \cdot (1-p)$$ $$
+ 	Var[X] = \sum_{i=1}^n Var[Z_i] = n\cdot p \cdot (1-p)
+ 	\]
+ 	\textbf{Chebyshev-Ungleichung} \\
+ 	\underline{Theorem:}
+ 	\[
+ 		\textit{ZV X und a} > 0 $$ $$
+ 		P[\mid X-E[X]\mid \geq a] \leq \frac{Var[X]}{a^2}
+ 	\]
+ 	
+ 	         
+ \end{document}

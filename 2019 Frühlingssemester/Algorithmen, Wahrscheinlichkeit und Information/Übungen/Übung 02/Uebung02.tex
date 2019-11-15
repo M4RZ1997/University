@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Algorithmen, Wahrscheinlichkeit und Information \\
+\Large \"Ubungsserie 02}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+\pagestyle{fancy}
+\hfill \\
+
+\textbf{\underline{2.1 Zwei W\"urfel}} \\
+\\
+\underline{Allgemein gilt:} $E[Y \mid B] = \frac{E[1\textsubscript{B} \cdot Y]}{P(B)}$ \\
+\begin{compactenum}[a)]
+	\item E[Z$\mid$X ist gerade] \\
+	\\
+	P(X ist gerade) = $\frac{1}{2}$ \\
+	E[1\textsubscript{X ist gerade} $\cdot$ Z] = P(Z=1$\mid$X ist gerade)$\cdot$1 + P(Z=2$\mid$X ist gerade)$\cdot$2 +\ldots + P(Z=12$\mid$X ist gerade)$\cdot$12 \\
+	E[1\textsubscript{X ist gerade} $\cdot$ Z] = $\frac{1}{36}\cdot$3 + $\frac{1}{36}\cdot$4 + $\frac{2}{36}\cdot$5 + $\frac{2}{36}\cdot$6 + $\frac{3}{36}\cdot$7 + $\frac{3}{36}\cdot$8 + $\frac{2}{36}\cdot$9 + $\frac{2}{36}\cdot$ 10 + $\frac{1}{36}\cdot$11 + $\frac{1}{36}\cdot$12 \\
+	= $\frac{135}{36}$ = 3,75 \\
+	$\rightarrow$  E[Z$\mid$X ist gerade] = $\frac{3,75}{\frac{1}{2}}$ = 7,5 \\
+	\\
+	\item E[Z$\mid$Y ist ungerade] \\
+	\\
+	P(Y ist ungerade) = $\frac{1}{2}$ \\
+	E[1\textsubscript{Y ist ungerade} $\cdot$ Z] = P(Z=1$\mid$Y ist ungerade)$\cdot$1 + P(Z=2$\mid$Y ist ungerade)$\cdot$2 +\ldots + P(Z=12$\mid$Y ist ungerade)$\cdot$12 \\
+	E[1\textsubscript{Y ist ungerade} $\cdot$ Z] = $\frac{1}{36}\cdot$2 + $\frac{1}{36}\cdot$3 + $\frac{2}{36}\cdot$4 + $\frac{2}{36}\cdot$5 + $\frac{3}{36}\cdot$6 + $\frac{3}{36}\cdot$7 + $\frac{2}{36}\cdot$8 + $\frac{2}{36}\cdot$ 9 + $\frac{1}{36}\cdot$10 + $\frac{1}{36}\cdot$11 \\
+	= $\frac{117}{36}$ = 3,25 \\
+	$\rightarrow$  E[Z$\mid$Y ist ungerade] = $\frac{3,25}{\frac{1}{2}}$ = 6,5 \\
+	\\
+	\item E[X$\mid$Z = 5] \\
+	\\
+	P(Z = 5) = P(X = 1,Y = 4) + P(X = 2,Y = 3) + P(X = 3,Y = 2) + P(X = 4,Y = 1) = $\frac{4}{36}$ = $\frac{1}{9}$ \\
+	E[1\textsubscript{Z = 5} $\cdot$ X] = P(X=1$\mid$Z=5)$\cdot$1 + P(X=2$\mid$Z=5)$\cdot$2 +\ldots + P(X=6$\mid$Z=5)$\cdot$6 \\
+	E[1\textsubscript{Z = 5} $\cdot$ X] = $\frac{1}{36}$ $\cdot$1 + $\frac{1}{36}$ $\cdot$2 + $\frac{1}{36}$ $\cdot$3 + $\frac{1}{36}$ $\cdot$4 = $\frac{10}{36}$ \\
+	$\rightarrow$  E[X$\mid$Z = 5] = $\frac{\frac{10}{36}}{\frac{1}{9}}$ = 2,5 \\
+	\\
+	\item E[Y$\mid$Z $>$ 6] \\
+	\\
+	P(Z $>$ 6) = 1 - P(Z $\leq$ 6) = 1 - [P(X = 1,Y = 1) +  P(X = 1,Y = 2) + \ldots + P(X = 5,Y = 1) \\
+	= 1 - $\frac{15}{36}$ = $\frac{21}{36}$ \\
+	E[1\textsubscript{Z $>$ 6} $\cdot$ Y] = P(Y=1$\mid$Z$>$6)$\cdot$1 + P(Y=2$\mid$Z$>$6)$\cdot$2 +\ldots + P(Y=6$\mid$Z$>$6)$\cdot$6 \\
+	E[1\textsubscript{Z $>$ 6} $\cdot$ Y] = $\frac{1}{36}\cdot$1 + $\frac{2}{36}\cdot$2 + $\frac{3}{36}\cdot$3 + $\frac{4}{36}\cdot$4 + $\frac{5}{36}\cdot$5 + $\frac{6}{36}\cdot$6 = $\frac{91}{36}$\\
+	$\rightarrow$  E[Y$\mid$Z $>$ 6] = $\frac{\frac{91}{36}}{\frac{21}{36}}$ = $\frac{13}{3}$ = 4,3333333... \\
+\end{compactenum}
+
+\newpage
+
+\textbf{\underline{2.2 Jensen im Quadrat}} \\
+\\
+\underline{zu Beweisen:} E[X\textsuperscript{k}] $\geq$ E[X]\textsuperscript{k} \hspace{1cm} k $\geq$ 2; k $\in$ N \\
+\\
+\underline{Wir wissen:} Wenn die Funktion f(x) zweimal differenzierbar ist, mit f''(x) $\geq$ 0 $\forall$ x, dann ist sie konvex. \\
+Sei nun f(x) := x\textsuperscript{2k} mit k $\in$ N. Dann ist: \\
+\[
+	f''(x) = k * (k-1) * x^{k-2} \geq 0
+\]
+Somit folgt, dass f(x) = x\textsuperscript{k} konvex ist für alle geraden k. \\
+Durch die Jensen-Ungleichung wissen wir, dass für eine konvexe Funktion f und $\lambda_i > 0$ mit $\sum_{i=1}^n \lambda_i = 1$ gilt: \\
+\[
+	f(\sum_{i=1}^n{\lambda_i x_i}) \leq \sum_{i=1}^n{\lambda_i f(x_i)}
+\]
+Sei nun $\lambda_i := P(X = x)$, $f(x) = x^k$:
+\[
+	E[X]^k = (\sum_{i=1}^n{P(X=x_i) * x_i})^k \\
+	= f(\sum_{i=1}^n{\lambda_i * x_i}) \\
+	\leq \sum_{i=1}^n{\lambda_i * f(x_i)} \\
+	= \sum_{i=1}^n{P(X=x_i) * x_i^k} \\
+	= E[X^k]
+\]
+\\
+\\
+
+\textbf{\underline{2.3 Min-Max im Erwartungswert}} \\
+\begin{compactenum}[a)]
+	\item Was ist E[min(A,B)] und E[max(A,B)]? \\
+	\[
+	E[max(A, B)] = \sum_{a} \sum_{b} max(a, b) \cdot \frac{1}{k} \cdot \frac{1}{k}
+	= \frac{1}{k^2} \sum_{a} \sum_{b \leq a} a + \sum_{b>a} b $$ $$
+	E[min(A, B)] = \sum_{a} \sum_{b} min(a, b) \cdot \frac{1}{k} \cdot \frac{1}{k}
+	= \frac{1}{k^2} \sum_{a} \sum_{b \leq a} b + \sum_{b>a} a $$ $$
+	\]
+	\\
+	\item \underline{zu Zeigen:} E[min(A,B)] + E[max(A,B)] = E[A] + E[B] \\
+	\[
+	E[max(A, B)] + E[min(A, B)] = \frac{1}{k^2} \sum_{a} \sum_{b \leq a} a + \sum_{b>a} b + \frac{1}{k^2} \sum_{a} \sum_{b \leq a} b + \sum_{b>a} a $$ $$
+	= \frac{1}{k^2} \cdot \sum_{a} \left(\sum_{b} b + \sum_{b} a \right) = \frac{1}{k^2} \cdot \sum_{a}\sum_{b} a+b = E[A] + E[B] $$ $$
+	\]
+	\newpage
+	\item Beweis durch Eigenschaften des Erwartungswertes \\
+	\[
+	E[max(A, B)] + E[min(A, B)] = E[max(A, B) + min(A, B)] = E[A + B] = E[A] + E[B]
+	\]
+	\\
+	
+\end{compactenum}
+
+\textbf{\underline{2.4 Ein zuf\"alliger Text}} \\
+\\
+weitere Annahmen sind zu treffen, da sonst die Aufgabe nicht zu lösen ist: \\
+\begin{compactenum}[(i)]
+	\item Die Katze trifft bei jedem Schritt genau ein Zeichen \\
+	\item der nächste Buchstabe ist unabhängig von der vorherigen Eingabe (ein Zeichen kann auch doppelt hintereinander eingegeben werden) \\
+	\item Wir beachten nicht, dass die Katze auch weniger oder mehr Zeichen eingeben kann, sondern, dass sie immer genau die angegebene Zeichenanzahl erreicht \\
+\end{compactenum}
+\begin{compactenum}[a)]
+	\item Ihr Passwort (10 Zeichen) \\	
+	P(Passwort) = $(\frac{1}{32})$\textsuperscript{10} = 8,88 $\cdot$ 10\textsuperscript{-16} \\
+	
+	\item Den 128-bit AES-Schl\"ussel einer TLS-Verbindung auf dem Internet \\	
+	Der AES-Schl\"ussel besteht in diesem Beispiel aus 26 Zeichen, also: \\
+	P(Passwort) = $(\frac{1}{32})$\textsuperscript{26} = 7,35 $\cdot$ 10\textsuperscript{-40} \\
+	
+	\item Die Kopfzeile dieses \"Ubungsblattes (125 Zeichen) \\
+	P(Passwort) = $(\frac{1}{32})$\textsuperscript{125} = 7,18 $\cdot$ 10\textsuperscript{-189} \\
+	
+	\item \textbf{Zusatz:} Computer mit 40 $\cdot$ 10\textsuperscript{18} Operationen pro Sekunde \\
+	\begin{compactenum}[(i)]
+		\item Passwort \\
+			T\textsubscript{max}(Passwort) = $\frac{1}{2} \cdot\frac{32\textsuperscript{10}}{40 \cdot 10\textsuperscript{18}} = 1,41 \cdot 10\textsuperscript{-5}$ sec \\
+		\item AES-Schl\"ussel \\
+		T\textsubscript{max}(Passwort) = $\frac{1}{2} \cdot\frac{32\textsuperscript{26}}{40 \cdot 10\textsuperscript{18}} = 1,70 \cdot 10\textsuperscript{19}$ sec \\
+		\item Kopfzeile \\
+		T\textsubscript{max}(Passwort) = $\frac{1}{2} \cdot\frac{32\textsuperscript{125}}{40 \cdot 10\textsuperscript{18}} =  1,74 \cdot 10\textsuperscript{168}$ sec (sehr sehr lange) \\
+	\end{compactenum}
+\end{compactenum}
+
+\end{document}
