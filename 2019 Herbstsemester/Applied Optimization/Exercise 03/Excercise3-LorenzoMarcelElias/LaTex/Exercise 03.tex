@@ -1,0 +1,162 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Applied Optimization \\
+\Large Exercise 03}
+\fancyhead[R]{13-123-922 \\
+Elias \textsc{Wipfli} \\
+13-933-262 \\
+Lorenzo \textsc{Wipfli} \\
+16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill \\ \\
+	
+	\section*{3.1 Vector Composition}
+		\begin{enumerate}[]
+			\item First we can compute the second derivation of this function:
+			\begin{align*}
+				f(x) \ & = \ h(g_1(x), ..., g_k(x)) \ = \ h(g(x)) \\
+				f''(x) \ & = \ g'(x)^T \bigtriangledown ^2 h(g(x)) g'(x) + \bigtriangledown h(g(x))^T g''(x)
+			\end{align*}
+			For convexity the second derivation must be $f''(x) \geq 0$.
+		\end{enumerate}
+		\begin{enumerate}[1.]
+			\item \textit{h is convex and nondecreasing in the i-t h argument, and $g_i$ is convex:} \\
+			Therefore we have for the second derivation:
+			\begin{align*}
+				f''(x) \ & = \ \underbrace{g'(x)^T \underbrace{\bigtriangledown ^2 h(g(x))}_{(1)} g'(x)}_{(2)} + \underbrace{\underbrace{\bigtriangledown h(g(x))}_{(3)}^T \underbrace{g''(x)}_{(4)}}_{(5)}
+			\end{align*}
+			\begin{enumerate}[(1)]
+				\item $\bigtriangledown ^2 h(g(x)) \ \geq 0$, because h is convex
+				\item Therefore $g'(x)^T \bigtriangledown ^2 h(g(x)) g'(x) \ \geq \ 0$
+				\item $\bigtriangledown h(g(x)) \ \geq \ 0$, because h is nondecreasing
+				\item $g''(x) \ \geq \ 0$, because all $g_i$ are convex
+				\item $\bigtriangledown h(g(x)) ^T g''(x) \ \geq \ 0$, because of (3) and (4).
+			\end{enumerate}
+			Therefore $f''(x) \ \geq \ 0$.
+			\item \textit{h is convex and nonincreasing in the i-t h argument, and $g_i$ is concave:} \\
+			Therefore we have for the second derivation:
+			\begin{align*}
+				f''(x) \ & = \ \underbrace{g'(x)^T \underbrace{\bigtriangledown ^2 h(g(x))}_{(1)} g'(x)}_{(2)} + \underbrace{\underbrace{\bigtriangledown h(g(x))}_{(3)}^T \underbrace{g''(x)}_{(4)}}_{(5)}
+			\end{align*}
+			\begin{enumerate}[(1)]
+				\item $\bigtriangledown ^2 h(g(x)) \ \geq 0$, because h is convex
+				\item Therefore $g'(x)^T \bigtriangledown ^2 h(g(x)) g'(x) \ \geq \ 0$
+				\item $\bigtriangledown h(g(x)) \ \leq \ 0$, because h is nonincreasing
+				\item $g''(x) \ \leq \ 0$, because all $g_i$ are concave
+				\item $\bigtriangledown h(g(x)) ^T g''(x) \ \geq \ 0$, because of (3) and (4).
+			\end{enumerate}
+			Therefore $f''(x) \ \geq \ 0$.
+			\item \textit{All $g_i$ are affine} \\
+			Therefore $g_i(x)$ is of the form $Ax + b$. For $x,y \in \mathbb{R}^n$ and $\theta \in [0,1]$, we have: \\
+			Note that: $g(\theta x  + (1 - \theta) y) \ = \ \theta g(x) + (1- \theta) g(y)$
+			\begin{align*}
+				& f(\theta x + (1- \theta ) y) & \ & = \ h(g(\theta x  + (1 - \theta) y)) \\
+				& & & = \ h(\theta g(x) + (1- \theta) g(y)) \\
+				& h \ convex \Rightarrow & & \leq \ \theta h(g(x)) + (1- \theta ) h(g(y)) \\
+				& & & = \ \theta f(x) + (1- \theta ) f(y)
+			\end{align*}
+			Therefore f is convex. \\
+			Also we can compute the second derivative of f:
+			\[
+				\bigtriangledown ^2 f(x) = A^T \bigtriangledown ^2 h(g(x))g'(x) = A^T \bigtriangledown ^2 h(g(x)) A
+			\]
+			, which is clearly always positive which implies that f is convex.
+		\end{enumerate}
+		In the end we can conclude that a composition of all of those different statements will lead to a convex function. $\square$
+	
+	\section*{3.2 Linear Programming}
+	\subsection*{3.2.1 Transform}
+	\begin{enumerate}[]
+		\item We have the following optimization problem:
+		\begin{align*}
+			& \textit{\textbf{minimize}} & \ & \ \| (2x_1 \ + \ 3x_2, \ -3x_1)^T \|_{\infty} \\
+			& \textit{\textbf{subject to}} & \ & \ \mid x_1 \ - \ 2x_2 \mid \ \leq \ 0
+		\end{align*}
+	\end{enumerate}
+	\subsubsection*{3.2.1.1 Transform to LP}
+	\begin{enumerate}
+		\item First thing to do is to eliminate the $L_{\infty}$-Norm:
+		\begin{align*}
+			& \textit{\textbf{minimize (over x, t)}} & t \ \\
+			& \textit{\textbf{subject to}} & \ t \ & \geq \ 2x_1 + 3x_2 \\
+			& & \ t \ & \geq \ -3x_1 \\
+			& & \ t \ & \geq \ -2x_1-3x_2 \\
+			& & \ t \ & \geq \ 3x_1 \\
+			& & \ \mid x_1 \ - \ 2x_2 \mid \ & \leq \ 0
+		\end{align*}
+		\item Next we eleminate the absolute value:
+		\begin{align*}
+			& \textit{\textbf{minimize (over x, t)}} & t \ \\
+			& \textit{\textbf{subject to}} & \ t \ & \geq \ 2x_1 + 3x_2 \\
+			& & \ t \ & \geq \ -3x_1 \\
+			& & \ t \ & \geq \ -2x_1-3x_2 \\
+			& & \ t \ & \geq \ 3x_1 \\
+			& & \ x_1 \ - \ 2x_2 \ & \leq \ 0 \\
+			& & \ 2x_2 \ - \ x_1 \ & \leq \ 0
+		\end{align*}
+	\end{enumerate}
+	\subsubsection*{3.2.1.2 Transform with variables in $\mathbb{R}^+$ and no inequalities}
+	\begin{enumerate}[]
+		\item From the last two inequalities of the LP we can conclude the following:
+		\begin{align*}
+			x_1 \ - \ 2x_2 \ \leq \ 0 \ & \, \wedge \ 2x_2 \ - \ x_1 \ \leq \ 0 \\
+			\Rightarrow \ x_1 \ - \ 2x_2 \ = \ 0 \ & \Leftrightarrow \ x_1 \ = \ 2x_2
+		\end{align*}
+		\item Therefore we can put these information into the other inequalities:
+		\begin{align*}
+			& \textit{\textbf{minimize (over x, t)}} & t \ \\
+			& \textit{\textbf{subject to}} & \ t \ & \geq \ 4x_2 + 3x_2 \ = \ 7x_2 \\
+			& & \ t \ & \geq \ -6x_2 \\
+			& & \ t \ & \geq \ -4x_2-3x_2 \ = \ -7x_2 \\
+			& & \ t \ & \geq \ 6x_2 \\
+			& & \ x_1 \ & = \ 2x_2
+		\end{align*}
+		\item Because one of both either $7x_2$ and $-7x_2$ (respectively $6x_2$ and $-6x_2$) is positive, we can write for any $x_2 \in \mathbb{R}^+$:
+		\begin{align*}
+			& \textit{\textbf{minimize (over x, t)}} & t \ \\
+			& \textit{\textbf{subject to}} & \ t \ & \geq \ 7x_2 \\
+			& & \ t \ & \geq \ 6x_2 \\
+			& & \ x_1 \ & = \ 2x_2
+		\end{align*}
+		\item Because $7x_2$ is always greater equal to $6x_2$, we have:
+		\begin{align*}
+			& \textit{\textbf{minimize (over x, t)}} & t \ \\
+			& \textit{\textbf{subject to}} & \ t \ & \geq \ 7x_2 \\
+			& & \ x_1 \ & = \ 2x_2
+		\end{align*}
+		\item Because we want to minimize t, we can also write:
+		\begin{align*}
+			& \textit{\textbf{minimize (over x, t)}} & t \ \\
+			& \textit{\textbf{subject to}} & \ t \ & = \ 7x_2 \\
+			& & \ x_1 \ & = \ 2x_2
+		\end{align*}
+		\item Therfore we have a LP with variables in $\mathbb{R}^+$ and no inequalities.
+	\end{enumerate}
+	\newpage
+	\subsection*{3.2.2 Differences between general LP and its standard form}
+	\begin{enumerate}[]
+		\item The general LP represents a convex problem with affine objectives and constraints. The feasable set is a polyhedron, which is put up by the different constraints. The optimal solution $x^{\star}$ will be at one of the corners of the polyhedron. \\
+		In contradiction to the general form the standard form only contains non-negative constraints for all variables. Also all constrants are expressed as equality constraints. Its optimal solution $x^{\star}$ will be the minimum of the $f_0$ function within the feasable set of non-negative variables which fulfill all constraints.
+	\end{enumerate}
+	\section*{3.3 Mass Spring System}
+	\begin{enumerate}[]
+		\item First we have to say that it was very hard because of the lack of documentation of this code and not really knowing what we should do. Only a quick sentence does not explain anything.
+	\end{enumerate}
+
+\end{document}

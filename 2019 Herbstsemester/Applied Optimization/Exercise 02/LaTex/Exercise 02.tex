@@ -1,0 +1,133 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Applied Optimization \\
+\Large Exercise 01}
+\fancyhead[R]{13-123-922 \\
+Elias Wipfli \\
+13-933-262 \\
+Lorenzo Wipfli \\
+16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill \\ \\
+	
+	\section*{2.1 Convex Functions}
+	\subsection*{2.1.1 First-Order Condition}
+		\begin{enumerate}[]
+			\item \textit{\underline{Prove the first-order condition:}} \\
+			\textit{A differentiable function} $f$ \textit{is convex if and only if \textbf{dom}}$f$ \textit{is convex and}
+		 	\[
+		 	f (y) \geq f (x) + \bigtriangledown f(x)^T(y - x)
+		 	\]
+		 	\textit{holds for all} $x,y \in$ \textit{\textbf{dom}}$f$. \\
+		 	\textit{A function is convex if: }
+		 	\begin{align*}
+		 		& \ & \ f(\theta y + (1- \theta)x) \ & \leq \ \theta f(y) + (1-\theta) f(x) \ & \ \forall x,y \in \textbf{dom}f, \ \theta \in [0,1] 
+		 	\end{align*}
+		 	\textit{Therefore we have: }
+		 	\begin{align*}
+		 		& \ & \ f(\theta y + (1- \theta)x) \ & \leq \ \theta f(y) + (1-\theta) f(x) \\
+		 		& \Rightarrow & \ f (x + \theta (y-x)) \ & \leq  \ f(x) + \theta (f(y) - f(x)) \\
+		 		& \Rightarrow & \ f (x + \theta (y-x)) - f(x) \ & \leq  \ \theta (f(y) - f(x)) \\
+		 		& \Rightarrow & \ \frac{f (x + \theta (y-x)) - f(x)}{\theta} \ & \leq  \ f(y) - f(x) \\
+		 		& \Rightarrow & \ f(y) \ & \geq \ f(x) + \frac{f (x + \theta (y-x)) - f(x)}{\theta} \\
+		 		& \textit{Now let:} \\
+		 		& \ \ g(\theta) \ = \ f(x + \theta (y-x)) \\
+		 		& \Rightarrow & \ f(y) \ & \geq \ f(x) + \frac{g(\theta) - g(0)}{\theta} \\
+		 		& \Rightarrow & \ f(y) \ & \geq \ f(x) + \lim_{\theta \rightarrow \infty} \left(\frac{g(\theta) - g(0)}{\theta}\right) \\
+		 		& \Rightarrow & \ f(y) \ & \geq \ f(x) + g'(0) \\
+		 		& \textit{Now we compute } g'(\theta): \\
+		 		& \ \ g'(\theta) \ = \ \bigtriangledown f(x+\theta (y-x))^T (y-x) \\
+		 		& \ \ g'(0) \ = \ \bigtriangledown f(x)^T (y-x) \\
+		 		& \Rightarrow & \ f(y) \ & \geq f(x) + \bigtriangledown f(x)^T (y-x)
+		 	\end{align*}
+		 	\textit{Now we consider:}
+		 	\begin{align*}
+		 		& \ z = \theta x + (1-\theta ) y \\
+		 		& & f(x) \ \geq \ f(z) + \bigtriangledown f(z)^T (z-x) & \ \ \ \ \ \ \ \ \ \ \ \  f(y) \  \geq \ f(z) + \bigtriangledown f(z)^T (z-y) \\
+		 		& & \theta f(x) + (1-\theta ) f(y) \ & \geq \ f(z) + \bigtriangledown f(z)^T (\theta x + (1-\theta)y -z) \\
+		 		& \Rightarrow &  \ \theta f(x) + (1-\theta ) f(y) \ & \geq \ f( \theta x + (1-\theta ) y) &&& \square
+		 	\end{align*}
+		 	
+		\end{enumerate}
+	\subsection*{2.1.2 Second-Order Condition}
+		\begin{enumerate}[]
+			\item \textit{We will proove this with the knowledge frome the \textbf{First-Order Condition}:} \\
+			\underline{1. First-Order Condition $\Rightarrow$ Second-Order Condition} \\
+			\textit{Let x,y} $\in$ \textbf{dom}$f$, $y>x$. \textit{We have:}
+			\begin{align*}
+				& & f(y) \ & \geq \ f(x) + \bigtriangledown f(x)(y-x) \\
+				& & and \ f(x) \ & \geq \ f(y) + \bigtriangledown f(y)(x-y) \\
+				& \Rightarrow & \bigtriangledown f(x)(y-x) \ \leq \ f(y) \ & - \ f(x) \ \leq \ \bigtriangledown f(y)(x-y) \\
+				& \Rightarrow & \frac{\bigtriangledown f(y) - \bigtriangledown f(x)}{y-x} \ & \geq \ 0
+			\end{align*}
+			\item \textit{Now we let } $y \rightarrow x$, we get:
+		\[
+			\bigtriangledown^2 f(x) \geq 0 \ \forall x, x \in dom(f)
+		\]
+			\underline{2. Second-Order Condition $\Rightarrow$ First-Order Condition:} \\
+			\textit{For n=1:} \\
+			\textit{We assume that} $\bigtriangledown^2 f(x) \geq 0, \ \forall x, x \in dom(f)$. WIth Taylor's theorem we have:
+			\begin{align*}
+				& & f(y) \ & = \ f(x) + \bigtriangledown f(x)(y-x) + \frac{1}{2} \bigtriangledown^2 f(z)(y-x)^2, \textit{ for some } z \in [x,y] \\
+				& \Rightarrow & \ f(y) \ & \geq \ f(x) + \bigtriangledown f(x)(y-x)
+			\end{align*}
+			To establish this in general dimension, we recall that convexity  is equivalent to convexity on all lines:
+			\begin{align*}
+				f: \mathbb{R}^n \rightarrow \mathbb{R} \textit{ is convex if: } \\
+				g(\alpha ) = f(x_0 + \alpha v) \textit{ is convex, } \forall x_0 \in dom(f) \textit{ and } \forall v \in \mathbb{R}^n \\
+				\textit{This happens iff: } \\
+				g''(\alpha ) = v^T \bigtriangledown ^2 f(x_0 + \alpha v)v \geq 0
+			\end{align*}
+			$\forall x_0 \in dom(f), \ \forall v \in \mathbb{R}^n and \forall \alpha \ s.t. \ x_0 + \alpha v \in dom(f).$ Hence, $f$ is convex iff $\bigtriangledown ^2 f(x) \succeq 0, \ \forall x \in dom(f).$
+		\end{enumerate}	
+	\newpage
+	\subsection*{2.1.3 Log-Sum-Exp}
+		\begin{enumerate}[]
+			\item Let $u_i = e^{x_i}$, $r_i = e^{y_i}$. So $f(\theta x + (1-\theta )y) = log ( \sum_{i=1}^n e^{\theta x_i+(1-\theta )y_i}) = log(\sum_{i=1}^n u_i^{\theta} v_i^{(1-\theta )})$ \\
+			From Hölder's inequality:
+			\[
+				\sum_i=1^n x_i y_i \ \leq \ (\sum_{i=1}^n \mid x_i \mid^p)^{\frac{1}{p}} \ \cdot \ (\sum_{i=1}^n \mid x_i \mid^q)^{\frac{1}{q}} \ \ \ \ \ \ , \ where \frac{1}{p} + \frac{1}{q} = 1
+			\]
+			We now apply this inequality to $f(\theta x + (1-\theta ) y)$:
+			\begin{align*}
+				log(\sum_i=1^n u_i^{\theta}v_i^{1-\theta}) \ & \leq \ log[(\sum_{i=1}^n u_i ^{\theta \cdot \frac{1}{\theta}})^{\theta} \ \cdot \ (\sum_{i=1}^n v_i ^{1-\theta \cdot \frac{1}{1-\theta}})^{1-\theta}] \\
+				& = \ \theta \ log (\sum_{i=1}^n u_i) + (1-\theta ) log (\sum_{i=1}^n v_i)
+			\end{align*}
+			$\theta = \frac{1}{p}$ and $1-\theta = \frac{1}{q}$. \\
+			So we achieved that $f(\theta x + (1-\theta) y) \leq \theta f(x) + (1-\theta) f(y)$. 
+		\end{enumerate}
+	
+	\subsection*{2.1.4 Geometric mean}
+		\begin{enumerate}[]
+			\item $f(x) = (\prod_{i=1}^n x_i)^{1/n}$ is concave on $\mathbb{R}_{++}$?
+			\begin{align*}
+				& & \bigtriangledown^2 f(x) \ & = \ -\frac{\prod_{i=1}^n x_i^{1/n}}{n^2} (n \ diag^2(q) \ - qq^T \ & \ (q = \frac{1}{x_i}) \\
+				& \Rightarrow & \ v^T \bigtriangledown^2f(x)v \ & = \ -\frac{\prod_{i=1}^n x_i^{1/n}}{n^2} \ (\sum_{i=1}^n 1 \sum_{i=1}^n v_i^2 q_i^2 - (\sum_{i=1}^n q_iv_i)^2) \\
+				& \Rightarrow & \ \ & = \ -\frac{\prod_{i=1}^n x_i^{1/n}}{n^2} \ ( \| a \|_2^2 \| b \|_2^2 - \langle a,b \rangle^2 \leq 0 \\
+				& & where \ a_i =1, \ b_i = q_iv_i & \ for \ any \ v, \ so \ \bigtriangledown^2 f(x) \preceq 0.  & \square
+			\end{align*}
+		\end{enumerate}
+	
+	\section*{2.2 Programming Exercise}
+	The setting up of the spring graph wasn't a real problem. Everything else though is. It is completely unclear what we should do, because the function's and classes are unclear.\\
+For example: MassSpringProblem2D eval f(\& x), for what exactly do we need the x Vector? Don't we just have to give back the energy of the whole system? How would we get the lengths of the edges, if they're not available? Could we at least have some small introduction to the Spectra library? We invested hours into this exercise and it's just completely frustrating.\\
+We would really like to have more extensive comments to even understand what the code is supposed to do.\\
+
+
+\end{document}

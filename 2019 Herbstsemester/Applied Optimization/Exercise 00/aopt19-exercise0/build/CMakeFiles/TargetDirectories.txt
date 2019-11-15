@@ -1,0 +1,8 @@
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/CMakeFiles/rebuild_cache.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/CMakeFiles/edit_cache.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/grid_search/CMakeFiles/rebuild_cache.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/grid_search/CMakeFiles/grid_search.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/grid_search/CMakeFiles/edit_cache.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/csv_exporter/CMakeFiles/rebuild_cache.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/csv_exporter/CMakeFiles/csv_exporter.dir
+/home/lorenzo/Schreibtisch/Applied Optimization/AppliedOpti/Exercise 00/aopt19-exercise0/build/csv_exporter/CMakeFiles/edit_cache.dir

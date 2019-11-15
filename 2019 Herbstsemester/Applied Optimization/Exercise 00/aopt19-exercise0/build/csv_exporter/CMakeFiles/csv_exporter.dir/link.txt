@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -DNDEBUG   CMakeFiles/csv_exporter.dir/main.cc.o  -o ../Build/bin/csv_exporter 

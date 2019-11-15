@@ -1,0 +1,59 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+\usepackage{pgfplots}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Applied Optimization \\
+\Large Exercise 06}
+\fancyhead[R]{13-123-922 \\
+Elias \textsc{Wipfli} \\
+13-933-262 \\
+Lorenzo \textsc{Wipfli} \\
+16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\definecolor{darkgreen}{rgb}{0.0, 0.4, 0.0}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill \\ \\
+	
+	\section*{6.1 Affine Invariance}
+	\begin{enumerate}[]
+		\item \textit{Show that Newton methos is invariant under affine transformation:}
+		\begin{align*}
+			f : \mathbb{R}^{n} \rightarrow \mathbb{R} \ & ; \ f'' \ exists \\
+			g(y) \ := \ f(Ay+b) \ & ; \ A \ non \ singular \ const. \ matrix \  \in \mathbb{R}^{n \times n}; \ b \in \mathbb{R}
+		\end{align*}
+		\textbf{Newton step:} $\Delta x_{nt} \ = \ - \bigtriangledown ^{2} f(x) ^{-1} \bigtriangledown f(x)$ \\
+		\textbf{We have:}
+		\begin{align*}
+			\bigtriangledown g(y) \ & = \ A^{T} \bigtriangledown f(Ay+b) \\
+			\bigtriangledown ^{2} g(y) \ & = \ A^{T} \bigtriangledown f(Ay+b) A \\ 
+		\end{align*}
+		\textit{Let's suppose that some} $x_0 = A y_0 + b$:
+		\begin{align*}
+			x_{k+1} \ & = \ x_k - t_n \frac{\bigtriangledown f(x_k)}{\bigtriangledown ^{2} f(x_k)} \\
+			& = \ x_k - t_n \bigtriangledown ^{2} f(x_k)^{-1}  \bigtriangledown f(x_k) \\
+			& = \ Ay_k + b - t_n \bigtriangledown ^{2} f(x_k)^{-1}  \bigtriangledown f(x_k) \\
+			& = \ Ay_k + b - t_n\cdot A^{1} \cdot A^{-1} \cdot A^{T} \cdot (A^{T})^{-1} \cdot [\bigtriangledown ^{2} f(x_k)^{-1}  \bigtriangledown f(x_k)] \\
+			& = \ A [y_k - t_n [A^{T} \bigtriangledown ^{2} f(x_k) A] ^{-1} A^{T} \bigtriangledown f(x_k)] + b \\
+			& = \ A [y_k - t_n \bigtriangledown ^{2} g(y_k)^{-1} \cdot \bigtriangledown g(y_k)] + b \\
+			& = \ A y_{k+1} + b
+		\end{align*}
+	\end{enumerate}
+	
+	\section*{6.2 Programming}
+		
+\end{document}

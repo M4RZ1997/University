@@ -1,0 +1,1 @@
+/usr/bin/c++  -O3 -DNDEBUG   CMakeFiles/OptimalityChecker.dir/main.cc.o CMakeFiles/OptimalityChecker.dir/OptimalityChecker.cc.o  -o ../Build/bin/OptimalityChecker 
