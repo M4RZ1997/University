@@ -1,0 +1,71 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Modal Logic \\
+\Large Exercise 01}
+\fancyhead[R]{13-123-922 \\
+Elias \textsc{Wipfli} \\
+16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{Problem 2.1}
+		\textit{Complete the Proof of \underline{Theorem 2.1}.}
+		\begin{enumerate}[]
+			\item Model $M \ = \ \langle W, R, V \rangle$. If R has the property on the left side, every instance of the formula on the right side is true in $M$.
+			\begin{enumerate}[]
+				\item \underline{\textbf{D}: $\square p \rightarrow \diamond p$} \\
+					$\square A$ holds for every $w \in W$ ($M,w \Vdash A, \ \forall w \in W$) \\
+					, because of serial hypothesis we know $\forall w \in W$ there has to be a $Rww'$ with $w' \in W$ with $M,w' \Vdash A$ (because of $\square A$) so $M,w \Vdash \diamond A$ holds.
+					\begin{flushright}
+						$\square$
+					\end{flushright}
+				\item \underline{\textbf{T}: $\square p \rightarrow p$} \\
+					$\square A$ golds for every world $w \in W$ ($M,w \Vdash A$) \\
+					, because of reflexivity hypothesis we know for every $w \in W$ there is Rww, so $M,w \Vdash A$ because of the antecedent $\square A$.
+					\begin{flushright}
+						$\square$
+					\end{flushright}
+				\item \underline{\textbf{4}: $\square p \rightarrow \square \square p$} \\
+					Suppose $\square A \rightarrow \square \diamond A$ is an instance of (4). Let a world be an arbitrary $w \in W$ with $M, w \Vdash \square A$. We need to show that for every $w' \in W$ such that $Rww'$ and every $w'' \in W$ such that $Rw'w''$ we have $M, w'' \Vdash A$, i.e. $M, w \Vdash \square \square A$. But if $Rww'$ and $Rw'w''$ then $Rww''$ since transitivity, and together with $M, w \Vdash \square A$ we have then $M, w'' \Vdash A$. Hence $M, w \Vdash \square \square A$.
+					\begin{flushright}
+						$\square$
+					\end{flushright}
+				\item \underline{\textbf{5}: $\square p \rightarrow \square \diamond p$} \\
+					Relation $R$ is euclidean. Let $w \in W$ be arbitrary such that $M,w \Vdash \diamond A$. Then ther is a $w'' \in W$ with $Rww''$ and $M,w'' \Vdash A$. Now suppose $w' \in W$ with $Rww'$, then $Rw'w''$ since $R$ is euclidean. But then we have $M, w' \Vdash \diamond A$, and hence $M,w \Vdash \square \diamond A$, i.e. $M,w \Vdash \diamond A \rightarrow \square \diamond A$.
+					\begin{flushright}
+						$\square$
+					\end{flushright}
+			\end{enumerate}
+		\end{enumerate}
+	\section*{Problem 2.3}
+		\textit{Let } $M \ = \ \langle W,R,V \rangle$ \textit{be a model. Show that if R satisfies the left-hand properties of \underline{table 2.2}, every instance of the corresponding right-hand formula is true in} $M$.
+		\begin{enumerate}[]
+			\item \underline{\textbf{Partially functional:}} \\
+				Relation $R$ with $\forall w \forall u \forall v ((Rwu \wedge Rwv) \rightarrow u = v): \ \diamond p \rightarrow \square p, \ w,u,v \in W$, with an arbitrary world $w \in W$ with $M,w \Vdash \diamond A$. Now suppose we have $Rww'$ with $w' \in W$ and $Rww''$ with $w'' \in W$ where $M,w'' \Vdash A$ because of $M, w \Vdash \diamond A$. But with the properties $w'' = w'$, hence $M,w' \Vdash A$, $M,w \Vdash \square A$.
+				\begin{flushright}
+						$\square$
+				\end{flushright}
+			\item \underline{\textbf{Functional:}} \\
+				Relation $R$ with $\forall w \exists v \forall u ((Rwu \leftrightarrow u = v): \ \diamond p \leftrightarrow \square p, \ w,u,v \in W$, suppose arbitrary world $w \in W$  with $M, w \Vdash \square A$. Suppose we have $Rww'$ with $M,w' \Vdash A$ and $Rww''$ with $M,w'' \Vdash A$. So we have $M,w \Vdash \diamond A$, but $Rww' \rightarrow w' = w''$ (sp $\diamond p \rightarrow \square p$ proof as above).
+				\begin{flushright}
+						$\square$
+				\end{flushright}
+		\end{enumerate}
+\end{document}

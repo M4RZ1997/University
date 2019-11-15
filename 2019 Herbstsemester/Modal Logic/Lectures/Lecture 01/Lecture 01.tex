@@ -1,0 +1,160 @@
+ \documentclass{report}
+ \usepackage{hyperref}
+ \usepackage[hoffset = 1px]{geometry}
+ \usepackage{scalerel,amssymb}
+ \usepackage{paralist}
+ \begin{document}
+ \begin{center}
+ \huge{\textbf{\underline{Modal Logic}}}
+ \end{center}
+ \hfill \\ \\
+ 
+ \underline{\textit{Important Information:}} \\ \\
+ Exercises: nenad.savic@inf.unibe.ch \\
+ Exam: Tuesday, December 17, 2019 \\
+ Lecture starts 9:20 \\
+ Exercises start in two weeks \\
+ Next week no lecture \\
+ mcs.unibnf.ch request for academia access \\
+ 
+ \chapter{Syntacs and Semantics of Normal Modal Logics}
+ \section{Introduction}
+ 	\textbf{\textit{New Connectives:}} $\square$ and $\lozenge$ \\
+ 	$\square$A means A is necessary \\
+ 	$\lozenge$A means A is possible \\
+ 	\\
+ 	$\square$A holds if A is true in all possible worlds \\
+ 	$\lozenge$A holds if A is true in some possible worlds \\
+ 	\\
+ 	$\square$ and $\lozenge$ are dual operators \\
+ 	$\lozenge$A holds if $\neg\square\neg$A \\
+ 	\\
+ 	$\square$ and $\lozenge$ are intensional operators (not possible to calculate if $\square$A truth-value from the truth value of A)... in contrast to extensional operators \\
+ 	A $\wedge$ B $\rightarrow$ A and B \\
+ 	\\
+ 	\textit{Epistic:} \\
+ 	$\square$A means A \textbf{is known} or A \textbf{is believed} \\
+ 	\\
+ 	\textit{Temporal:} \\
+ 	$\square$A means \textbf{always A} \\
+ 	$\lozenge$A means \textbf{eventually} A \\
+ 	$\circ$A means \textbf{in the next world is} A \\
+ 	\\
+ 	\textit{Deontic:} \\
+ 	$\square$A means A \textbf{is obligatory} \\
+ 	$\lozenge$A means A \textbf{is permitted} \\
+ 	\\
+ 	\textit{Proof Theoretic:} \\
+ 	$\square$A means A \textbf{is provable} \\
+ 	\\
+ 	\textit{Basic principles in modal logic:} \\
+ 	$\square$A $\wedge$ $\square$(A $\rightarrow$ B) $\rightarrow$ $\square$B \\
+ 	$\square$(A $\rightarrow$ B) $\wedge$ $\square$A $\rightarrow$ $\square$B \\
+ 	$^{\square A \rightarrow A}_{\square A \rightarrow \square\square A} \rbrace$ \textit{depends on the definition of $\square$} \\
+ 	If A is provable, so is $\square$A (\textbf{Neccessitation}, you can proof A in every world, so $\square$A holds)
+ 	
+ 	\section{Lecture notes: Boxes and Diamonds}
+ 	
+ 	\subsection{Relations}
+ 	\subsubsection{Special properties (pages 178ff.):}
+ 	\textit{Reflexivity:} \\
+ 	A relation R $\subseteq$ $X^2$ is \textit{reflexive} iff, for every x $\in$ X, $R_{xx}$. \\
+ 	\\
+ 	\textit{Transitivity:} \\
+ 	A relation R $\subseteq$ $X^2$ is \textit{transitive} iff, whenever $R_{xy}$ and $R_{yz}$, then also $R_{xz}$. \\
+ 	\\
+ 	\textit{Symmetry:} \\
+ 	A relation R $\subseteq$ $X^2$ is \textit{symmetric} iff, whenever $R_{xy}$, then also $R_{yx}$. \\
+ 	\\
+ 	\textit{Anti-Symmetry:} \\
+ 	A relation R $\subseteq$ $X^2$ is \textit{antisymmetric} iff, whenever both $R_{xy}$ and $R_{yx}$, then x = y (or, in other words: if x $\neq$ y then either $\neg R_{xy}$ or $\neg R_{yx}$) \\
+ 	\\
+ 	\textit{Connectivity:} \\
+ 	A relation R $\subseteq$ $X^2$ is \textit{connected} if for all $x,y \in X$, if x $\neq$ y, then either  $R_{xy}$ or $R_{yx}$. \\
+ 	\\
+ 	\textit{Partial order:} \\
+ 	A relation R $\subseteq$ $X^2$ that is reflexive, transitive, and anti-symmetric is called a partial order. \\
+ 	\\
+ 	\textit{Linear order:} \\
+ 	A partial order that is also connected is called a \textit{linear order}. \\
+ 	\\
+ 	\textit{Equivalence relation:} \\
+ 	A relation R $\subseteq$ $X^2$ that is reflexive, symmetric, and transitive is called an \textit{equivalence relation}. x and y are called \textit{R-equivalent} if $R_{xy}$. \\
+ 	\\
+ 	\textit{Equivalence class:} \\
+ 	The R-equivalence class containing x, or $\left[ x \right]_R$, or $\left[ x \right]$ if R is clear, is defined to be the set $\lbrace y: R_xy \rbrace$. x is said to be the \textit{representative} of this R-equivalence class when we write $\left[ x \right]_R$.
+ 	
+ 	\subsubsection{Orders (pages 180 ff.):}
+ 	\textit{Preorder:} \\
+ 	A relation which is both reflexive and transitive is called a \textit{preorder}. \\
+ 	\\
+ 	\textit{Partial order:} \\
+ 	A preorder which is also antisymmetric is called a \textit{partial order}. \\
+ 	\\
+ 	\textit{Linear order:} \\
+ 	A partial order which is also connected is called a \textit{total order} or \textit{linear order}. \\
+ 	\\
+ 	\textit{Irreflexivity:} \\
+ 	A relation R on X is called \textit{irreflexive} if, for all x $\in$ X, $\neg R_{xx}$. \\
+ 	\\
+ 	\textit{Asymmetry:} \\
+ 	A relation R on X is called \textit{asymmetric} if for no pair x,y $\in$ X we have $R_{xy}$ and $R_{yx}$. \\
+ 	\\
+ 	\textit{Strict order:} \\
+ 	A \textit{strict order} is a relation which is irreflexive, asymmetric, and transitive. \\
+ 	\\
+ 	\textit{Strict linear order:} \\
+ 	A strict order whichh is also connected is called a \textit{strict linear order}. \\
+ 	\\
+ 	\textbf{\textit{Proposition:}}
+ 	\begin{enumerate}
+ 		\item If R is a strict (linear) order on X, then $R^+ = R \cup Id_X$ is a partial order (linear order).
+ 		\item If R is a partial order (linear order) on X, then $R^- = R \setminus Id_X$ is a strict linear order.
+ 	\end{enumerate}
+ 	\hfill \\
+ 	
+ 	\subsection{Syntacs and Semantics}
+ 	\subsubsection{Formulas (pages 189 ff.)}
+ 	\begin{enumerate}
+ 		\item A countable infinite set $At_0$ of propositional variables $p_0$, $p_1$ ...
+ 		\item The propositional constant for falsity $\perp$.
+ 		\item The logical connectives: $\neg$ (negation), $\wedge$ (conjunction), $\vee$ (disjunction), $\rightarrow$ (conditional)
+ 		\item Punctuation marks: (, ), and the comma.
+ 	\end{enumerate}
+ 	\hfill \\ 	
+ 	
+ 	\subsection{Axiomatic Dervations}
+ 	\subsubsection{Axioms for the Propositional Connectives (page 203)}
+ 	The set of $Ax_0$ of \textit{axioms} for the propositional connectives comprises all formulas of the following forms: \\
+ 	\begin{compactenum}[(D.1)]
+ 		\item $(A \wedge B) \rightarrow A$
+ 		\item $(A \wedge B) \rightarrow B$
+ 		\item $A \rightarrow (B \rightarrow (A \wedge B))$
+ 		\item $A \rightarrow (A \vee B)$
+ 		\item $A \rightarrow B \vee A$
+ 		\item $(A \rightarrow C) \rightarrow ((B \rightarrow C) \rightarrow ((A \vee B) \rightarrow C))$
+ 		\item $A \rightarrow (B \rightarrow A)$
+ 		\item $(A \rightarrow (B \rightarrow C)) \rightarrow ((A \rightarrow B) \rightarrow (A \rightarrow C))$
+ 		\item $(A \rightarrow B) \rightarrow ((A \rightarrow \neg B) \rightarrow \neg A)$
+ 		\item $\neg A \rightarrow (A \rightarrow B)$
+ 		\item $\top$
+ 		\item $\perp \rightarrow A$
+ 		\item $(A \rightarrow \perp) \rightarrow \neg A$
+ 		\item $\neg \neg A \rightarrow A$
+ 	\end{compactenum}
+ 	\subsubsection{Modus ponens}
+ 	If B and B $\rightarrow$ A already occur in a derivation, then A is a correct inference step.
+ 	\subsubsection{Deduction Theorem}
+ 		$\Gamma$ $\wedge$ $\lbrace$A$\rbrace$ $\vdash$ B iff $\Gamma$ $\vdash$ A $\rightarrow$ B \\
+ 		$\lbrace$D$\rbrace$ $\vdash$ D iff $\vdash$ D $\rightarrow$ D
+ 	\subsubsection{Soundness}
+ 	IF $\Gamma$ $\vdash$ A then $\Gamma$ $\models$ A
+ 	
+ 	\subsection{Tableaux}
+ 	
+ 	\subsection{The Completeness Theorem}
+ 	IF $\Gamma$ $\vdash$ A then $\Gamma$ $\models$ A is given \\
+ 	The proof of the other side round
+ 	
+ \end{document}
+ 

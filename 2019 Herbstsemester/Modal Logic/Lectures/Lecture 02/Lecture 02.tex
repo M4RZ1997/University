@@ -1,0 +1,70 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Modal Logic}}}
+\end{center}
+ 
+{\let\clearpage\relax \chapter*{1. Syntax and Semantics of Normal Modal Logics}}
+\section*{1.3 Simultaneous Substitution}
+$\square p_1 \wedge \neg p_2$
+\begin{align*}
+	\square p \wedge q \ & = \ (\square p) \wedge q \\
+	\neg p \ & \Rightarrow \ (p \rightarrow \bot)
+\end{align*}
+$p_1 = \diamond p_2 \vee \diamond \neg p_2$ \\
+$\square (\diamond p_2 \vee \diamond \neg p_2 ) \wedge \neg p_2$ \\
+\begin{align*}
+	p_1 \rightarrow \square (p_1 \wedge p_2)
+	[\diamond (p_2 \rightarrow p_2) \ & / \ p_1 \\
+	\neg \square p_1 \ & / \ p_2 ] \\
+	\equiv \diamond  (p_2 \rightarrow p_1) \rightarrow \square (\diamond (p_2 \rightarrow p_1) \wedge \neg \square p_1) \ 
+\end{align*}
+The substitution is simultaneous.
+\section*{1.4 Relational Models}
+M,w $\Vdash$ A, means A is true in the world w in the model M (Truth relation) \\
+TO 7. A $\equiv$ $\square$B means iff B is \textsc{True} in every accessible world \\
+TO 8. A $\equiv$ $\diamond$B means iff B is \textsc{True} in at least one accessible world
+\section*{1.5 Truth at a World}
+$\square$ and $\diamond$ are dual operators.
+\section*{1.7 Validity}
+$\models$ A $\Rightarrow$ $\models \square$ A \\
+BUT: this does not imply $\not \models$ A $\rightarrow$ $\square$A
+\section*{1.8 Tautological Instances}
+\begin{align*}
+	p \vee \neg p \ \ \ \ [\square A \ & / \ p] \\
+	\Rightarrow \square A \vee \neg  \square A \ 
+\end{align*}
+\section*{1.9 Schemas and Validity}
+\begin{align*}
+	p \vee \neg p \ \ \ \ [\square A / p] \ & \textit{ (characteristic formula)} \\
+	\square A \vee \neg  \square A \ & \textit{ (instance)} \ 
+\end{align*}
+Instances have the "same shape" as the characteristic formula.
+\begin{align*}
+	\square \square p \ \rightarrow \ \square p & \\
+	& w_1 \longrightarrow w_2 \longrightarrow w_3 \\
+	& \square \square p \hspace{0.6cm} \square p \hspace{0.7cm} p \\
+	& \neg \square p \hspace{0.7cm} p\\
+	\\
+	\square \diamond p \rightarrow \diamond \square p & \\
+	& w_1 \longrightarrow w_2 \longrightarrow w_3 \\
+	& \square \diamond p \hspace{0.3cm} \diamond p \hspace{0.7cm} p \\
+	& \neg \diamond \square p \hspace{0.1cm} \neg \square p \\
+	& \hspace{1.5cm} \hookrightarrow w_4 \\
+	& \hspace{2cm} \neg p
+\end{align*}
+\section*{1.10 Entailment}
+\begin{align*}
+	\models A \ \ \ \ & \textit{A is valid} \\
+	C \models A \ \ \ \ & \textit{A is valid in C} \\
+	\Gamma \models A \ \ \ \ & \Gamma \textit{ entails A}
+\end{align*}
+
+\end{document}

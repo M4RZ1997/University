@@ -1,0 +1,64 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Modal Logic \\
+\Large Exercise 03}
+\fancyhead[R]{13-123-922 \\
+Elias \textsc{Wipfli} \\
+16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{Problem 3.2 Find derivations in \textbf{K} for the following formulas}
+		\subsection*{3.2.1 $\square \neg p \rightarrow \square(p\rightarrow q)$}
+			\begin{align*}
+				& 1. \ \ \ \neg p \rightarrow (p \rightarrow q) & \textsc{Taut} \\
+				& 2. \ \ \ \square ( \neg p \rightarrow (p \rightarrow q) ) & \textsc{Nec}, \ 1. \\
+				& 3. \ \ \ \square ( \neg p \rightarrow (p \rightarrow q) ) \rightarrow ( \square \neg p \rightarrow \square (p \rightarrow q) ) & \textsc{K}, \ 2. \\
+				& 4. \ \ \ \square \neg p \rightarrow \square (p \rightarrow q) & \textsc{MP}, \ 3.
+			\end{align*}
+		\subsection*{3.2.2 $(\square p \vee \square q) \rightarrow \square (p \vee q)$}
+			\begin{align*}
+				& 1. \ \ \ p \rightarrow (p \vee q) & \textsc{Taut} \\
+				& 2. \ \ \ \square ( p \rightarrow (p \vee q) ) & \textsc{Nec}, \ 1. \\
+				& 3. \ \ \ \square ( p \rightarrow (p \vee q) ) \rightarrow ( \square p \rightarrow \square (p \vee q) ) & \textsc{K}, \ 2. \\
+				& 4. \ \ \ \square p \rightarrow \square (p \vee q) & \textsc{MP}, \ 3. \\
+				& 5. \ \ \ q \rightarrow (p \vee q) & \textsc{Taut} \\
+				& 6. \ \ \ \square ( q \rightarrow (p \vee q) ) & \textsc{Nec}, \ 5. \\
+				& 7. \ \ \ \square ( q \rightarrow (p \vee q) ) \rightarrow ( \square q \rightarrow \square (p \vee q) ) & \textsc{K}, \ 6. \\
+				& 8. \ \ \ \square q \rightarrow \square (p \vee q) & \textsc{MP}, \ 7. \\
+				& 9. \ \ \ (\square p \vee \square q) \rightarrow \square (p \vee q) & \textsc{PL}, \ 4., \ 8.
+			\end{align*}
+		\subsection*{3.2.3 $\diamond p \rightarrow \diamond (p \vee q)$}
+		\begin{align*}
+				& 1. \ \ \ \neg(A \vee B) \rightarrow \neg A & \textsc{Taut} \\
+				& 2. \ \ \ \square \neg(A \vee B) \rightarrow \square \neg A & \textsc{RK}, \ 1. \\
+				& 3. \ \ \ \neg \square \neg A \rightarrow \neg \square \neg (A \vee B) & \textsc{PL}, \ 2. \\
+				& 4. \ \ \ \diamond A \rightarrow \diamond (A \vee B) & \textit{rewriting } \diamond \ for \ \neg \square \neg.
+			\end{align*}
+		
+	\section*{Problem 3.4 Show that the following derivability claims holds:}
+		\subsection*{3.4.1 K$\vdash \diamond \neg \bot \rightarrow (\square A \rightarrow \diamond A)$}
+		\subsection*{3.4.1 K$\vdash \square (A \vee B) \rightarrow ( \diamond A \vee \square B)$}
+		\subsection*{3.4.1 K$\vdash (\diamond A \rightarrow \square B) \rightarrow \square (A \rightarrow B)$}
+		
+	\section*{Problem 3.7 Alternative Proof for \textit{Theorem 3.34} with 3 Worlds}
+	
+	\section*{Problem 3.8 Single reflexive transitive model s.t. KT4 $\nvdash B$ and KT5 $\nvdash B$}
+\end{document}

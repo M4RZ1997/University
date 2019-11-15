@@ -1,0 +1,29 @@
+\documentclass{report}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{nccmath}
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Modal Logic}}}
+\end{center}
+ 
+{\let\clearpage\relax \chapter*{2. Frame Definability}}
+\section*{2.1 Introduction}
+Model : (W, R, V) \\
+R reflexive (every world has arrow to itself $\circlearrowright$, $\forall w \in W: Rww$) $\Rightarrow$ $\square p \rightarrow p$ holds. \\ \\
+Frame : (W, R) \\
+R reflexive $\Leftrightarrow$ $\square p \rightarrow p$ holds.
+\section*{2.2 Properties of Accessibility Relations}
+\begin{enumerate}[]
+	\item serial: always an arrow from each world
+	\item reflexive: every world has arrow to itself $\circlearrowright$, $\forall w \in W: Rww$
+	\item symmetric: $\forall w,v \in W$ if $Rwv \rightarrow Rvw$.
+	\item transitive: If we can go to a world in two steps we can go there in one step
+	\item euclidian: If we can go from one world to two others there will be an arrow betwenn thos worlds.
+\end{enumerate}
+
+\end{document}
