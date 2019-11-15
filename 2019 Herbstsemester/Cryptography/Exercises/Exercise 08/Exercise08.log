@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.29)  15 NOV 2019 11:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.29)  15 NOV 2019 15:50
 entering extended mode
 **./Exercise08.tex
 (Exercise08.tex
@@ -642,14 +642,14 @@ File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
 * h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
-* v-part:(T,H,B)=(85.98798pt, 580.0pt, 128.98201pt)
+* v-part:(T,H,B)=(77.98798pt, 600.0pt, 116.98201pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
 * \textwidth=430.00462pt
-* \textheight=580.0pt
+* \textheight=600.0pt
 * \oddsidemargin=19.8752pt
 * \evensidemargin=19.8752pt
-* \topmargin=-41.28201pt
+* \topmargin=-49.28201pt
 * \headheight=30.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -852,106 +852,90 @@ This may cause the page layout to be inconsistent, however.
 
 [1{C:/Users/marci/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-]
+] [2]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 213.
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 215--254
-
- []
+(paralist)                The label is:  on input line 214.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--254
+Underfull \hbox (badness 10000) in paragraph at lines 216--277
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--254
+Underfull \hbox (badness 10000) in paragraph at lines 216--277
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--254
+Underfull \hbox (badness 10000) in paragraph at lines 216--277
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--277
 
  []
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 256.
+(paralist)                The label is:  on input line 279.
 
 LaTeX Font Info:    Font shape `T1/stix/bx/it' in size <10> not available
-(Font)              Font shape `T1/stix/b/it' tried instead on input line 258.
+(Font)              Font shape `T1/stix/b/it' tried instead on input line 281.
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--344
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--344
+Underfull \hbox (badness 10000) in paragraph at lines 281--339
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--344
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--344
-
- []
-
-
-Overfull \hbox (3.99246pt too wide) in paragraph at lines 258--344
-[] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--344
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--344
+Underfull \hbox (badness 10000) in paragraph at lines 281--339
 
  []
 
 [3]
+Underfull \hbox (badness 10000) in paragraph at lines 340--387
 
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 346.
-
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 352.
+ []
 
 
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 356.
+Underfull \hbox (badness 10000) in paragraph at lines 340--387
+
+ []
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 360.
+(paralist)                The label is:  on input line 389.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 364.
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 395.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 399.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 403.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
 [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 364.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
  (Exercise08.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 364.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 364.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
 Package rerunfilecheck Info: File `Exercise08.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9540 strings out of 492897
- 129398 string characters out of 3141882
- 230066 words of memory out of 3000000
- 13270 multiletter control sequences out of 15000+200000
- 67386 words of font info for 95 fonts, out of 3000000 for 9000
+ 9544 strings out of 492897
+ 129396 string characters out of 3141882
+ 229066 words of memory out of 3000000
+ 13274 multiletter control sequences out of 15000+200000
+ 76836 words of font info for 99 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,24n,43p,826b,451s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 32i,24n,43p,826b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
 {F:/MikTex/fonts/enc/dvips/stix/stix-t1.enc}<F:/MikTex/fonts/type1/public/sti
 x/STIXGeneral-Bold.pfb><F:/MikTex/fonts/type1/public/stix/STIXGeneral-BoldItali
 c.pfb><F:/MikTex/fonts/type1/public/stix/STIXGeneral-Italic.pfb><F:/MikTex/font
@@ -960,7 +944,7 @@ stix-mathcal.pfb><F:/MikTex/fonts/type1/public/stix/stix-mathex.pfb><F:/MikTex/
 fonts/type1/public/stix/stix-mathit.pfb><F:/MikTex/fonts/type1/public/stix/stix
 -mathrm.pfb><F:/MikTex/fonts/type1/public/stix/stix-mathscr.pfb><F:/MikTex/font
 s/type1/public/stix/stix-mathsf.pfb>
-Output written on Exercise08.pdf (4 pages, 188198 bytes).
+Output written on Exercise08.pdf (4 pages, 189525 bytes).
 PDF statistics:
  97 PDF objects out of 1000 (max. 8388607)
  32 named destinations out of 1000 (max. 500000)

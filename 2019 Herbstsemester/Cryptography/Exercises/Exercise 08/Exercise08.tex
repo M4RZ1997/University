@@ -1,5 +1,5 @@
 \documentclass{report}
-\usepackage[headheight=30pt, textheight=580pt]{geometry}
+\usepackage[headheight=30pt, textheight=600pt]{geometry}
 \usepackage{paralist}
 \usepackage{scalerel,amssymb}
 \usepackage{amsmath}
@@ -208,57 +208,91 @@ Marcel \textsc{Zauder}}
 		 	\ \ \textbf{return} $m'$ \\ \hline
 		 \end{tabular}
 	\end{tabular}
+	\newpage
 	\subsection*{8.2.2 CPA-secure?}
 	\subsubsection*{8.2.2.a}
 	\begin{enumerate}[]
 		\item No, it is not \textit{CPA-secure}, because:
 		\item \textbf{\underline{Proof:}} \\
-		\begin{tabular}{lll}
+		\begin{tabular}{lllllll}
+			\begin{tabular}{l}
+		 		(
+		 	\end{tabular}
+		 	&
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_L(k,(m_L, m_R)):$ \\
-		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
-		 		\ \ $z := F(k,m_L) \oplus r$ \\
-		 		\ \ \textbf{return} $(r,z)$ \\ \hline
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA-L}:$ \\
+				\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Eavesdrop}($m_L, m_R$)} \\
+		 		\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c := \Sigma.Enc(k, m_L)$ \\
+				\ \ \textbf{return} c \\ \hline
 			\end{tabular}
 			&
 			$\stackrel{?}{\apeq}$
 			&
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_R(k,(m_L, m_R)):$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA-R}:$ \\
+				\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{Eavesdrop}($m_L, m_R$)} \\
+		 		\ \ \underline{if} $\mid m_L \mid \ \neq \ \mid m_R \mid$ \\
+				\ \ \underline{then} return \textsc{Error} \\
+				\ \ $c := \Sigma.Enc(k, m_R)$ \\
+				\ \ \textbf{return} c \\ \hline
+			\end{tabular}
+			&
+			\begin{tabular}{l}
+		 		)
+		 	\end{tabular}
+		 	&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+		 		\hline \cellcolor[gray]{0.8}$Enc(k,m):$ \\
 		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
-		 		\ \ $z := F(k,m_R) \oplus r$ \\
+		 		\ \ $z := F(k,m) \oplus r$ \\
 		 		\ \ \textbf{return} $(r,z)$ \\ \hline
-			\end{tabular}			
+		 	\end{tabular}		
 		\end{tabular} 
 		\\ \\ \\
 		We will consider the following distinguisher: \\
 		\begin{tabular}{ll}
 			\begin{tabular}{|l|}
 				\hline \cellcolor[gray]{0.8}$Distinguisher \ A$ \\
-				\ \textbf{pick} $k \in \{ 0,1 \} ^{\lambda}$ \\
 				\ \textbf{pick} $x \in \{ 0,1 \} ^{\lambda}$ \\
 				\ \textbf{pick} $y \in \{ 0,1 \} ^{\lambda}$ \\
-				\ $m_1 \ = \ x \| x$ \\
-				\ $m_2 \ = \ x \| y$ \\
-				\ $(r_1, c_1) \ = \ Enc(k, m_1)$ \\
-				\ $(r_2, c_2) \ = \ Enc(k, m_2)$ \\
+				\ $(r_1, c_1) \ = \ \textsc{Eavesdrop}(x, x)$ \\
+				\ $(r_2, c_2) \ = \ \textsc{Eavesdrop}(x, y)$ \\
 				\ \textbf{return} $c_1 \oplus r_1 \stackrel{?}{=} c_2 \oplus r_2$ \\ \hline
 			\end{tabular}
 			&
 			\begin{tabular}{p{7.5cm}}
-				First we will pick a key $k$ and two messages $x$ and $y$ at random. Then the return values of $Enc(k,m)$ are fetched. In the end the XOR-step which the encoder has done, will be reversed by using the return values. The distinguisher will therefore output whether both $F(k,m)$ have returned the same value.
+				First we will pick two messages $x$ and $y$ at random. Then the return values of \textsc{Eavesdrop}($m_L, m_R$) are fetched. In the end the XOR-step which the encoder has done, will be reversed by using the return values. The distinguisher will therefore output whether both $F(k,m)$ have returned the same value.
 			\end{tabular}
 		\end{tabular}
 		\\ \\ \\
-		It is obvious that if the $Enc_L$ is used the adversary will output 1 because in both cases $F(k,x)$ is returned. If the $Enc_R$ is used one will output $F(k,x)$ and the other one will output $F(k,y)$ which will not be the same and therefore the output value of A will be 0. So the adversary can distinguish between $Enc_L$ and $Enc_R$ and therfore this encoder is not \textit{CPA-secure}.
+		It is obvious that if the $L^{\Sigma}_{CPA-L}$ is used the adversary will output 1 because in both cases $F(k,x)$ is returned. If the $L^{\Sigma}_{CPA-R}$ is used one will output $F(k,x)$ and the other one will output $F(k,y)$ which will not be the same and therefore the output value of A will be 0. So the adversary can distinguish between $L^{\Sigma}_{CPA-L}$ and $L^{\Sigma}_{CPA-R}$ and therefore this encoder is not \textit{CPA-secure}.
 	\end{enumerate}
 	\subsubsection*{8.2.2.b}
 	\begin{enumerate}[]
 		\item Yes, it is \textit{CPA-secure}, because:
 		\item \textbf{\underline{Proof (We will show that the encoder has \textit{CPA\$-security} and is therefore also \textit{CPA-secure}):}} \\
-		\begin{tabular}{lll}
+		\begin{tabular}{lllll}
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-real}(k,(m_L, m_R)):$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-real}$ \\
+				\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{CTxt}($m$)} \\
+				\ \ $c := \Sigma.Enc(k, m)$ \\
+				\ \ \textbf{return} c \\ \hline
+			\end{tabular}
+			&
+			$\diamond$
+			&
+			\begin{tabular}{|l|}
+				\hline \cellcolor[gray]{0.8}$Enc(k,m)$ \\
 		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
 		 		\ \ $s := r \oplus m$ \\
 		 		\ \ $x := F(k,r)$ \\
@@ -268,52 +302,59 @@ Marcel \textsc{Zauder}}
 			$\stackrel{?}{\apeq}$
 			&
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-rand}(k, m):$ \\
-		 		\ \ $x \leftarrow (\{ 0,1 \} ^{\lambda})^{2}$ \\
-		 		\ \ \textbf{return} $x$ \\ \hline
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-rand}$ \\
+				\ \underline{\textsc{CTxt}($m$)} \\
+		 		$ \ \ r \leftarrow (\{ 0,1 \} ^{\lambda})^{2}$ \\
+				\ \ \textbf{return} r \\ \hline
 			\end{tabular}			
 		\end{tabular} 
 		\\ \\ \\
 		\begin{tabular}{llll}
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-real}(k,m):$ \\
-		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-real}$ \\
+				\ $k \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\\
+				\ \underline{\textsc{CTxt}($m$)} \\
+				\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
 		 		\ \ $s := r \oplus m$ \\
 		 		\ \ $x := F(k,r)$ \\
-		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+				\ \ \textbf{return} $(s, x)$ \\ \hline
 			\end{tabular}
 			&
 			$\apeq$
 			&
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid1}(k,m):$ \\
-		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-hybrid}$ \\
+				\ \underline{\textsc{CTxt}($m$)} \\
+				\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
 		 		\ \ $s := r \oplus m$ \\
 		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
-		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+				\ \ \textbf{return} $(s, x)$ \\ \hline
 			\end{tabular}
 			&	
 			\begin{tabular}{p{5cm}}
 				Because we know that F is a secure PRP/PRF we can inline the subroutine of a random PRP/PRF.
 			\end{tabular}	
 		\end{tabular}
-		\\ \\ \\
+		\newpage
 		\begin{tabular}{llll}
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid1}(k,m)):$ \\
-		 		\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-hybrid}$ \\
+				\ \underline{\textsc{CTxt}($m$)} \\
+				\ \ $r \leftarrow \{ 0,1 \} ^{\lambda}$ \\
 		 		\ \ $s := r \oplus m$ \\
 		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
-		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+				\ \ \textbf{return} $(s, x)$ \\ \hline
 			\end{tabular}
 			&
 			$\apeq$
 			&
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid2}(k,m):$ \\
-		 		\ \ $s \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-hybrid}$ \\
+				\ \underline{\textsc{CTxt}($m$)} \\
+				\ \ $s \leftarrow \{ 0,1 \} ^{\lambda}$ \\
 		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
-		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+				\ \ \textbf{return} $(s, x)$ \\ \hline
 			\end{tabular}
 			&	
 			\begin{tabular}{p{5cm}}
@@ -323,22 +364,24 @@ Marcel \textsc{Zauder}}
 		\\ \\ \\
 		\begin{tabular}{llll}
 			\begin{tabular}{|l|}
-				\hline \cellcolor[gray]{0.8}$Enc_{CPA-hybrid1}(k,m):$ \\
-		 		\ \ $s \leftarrow \{ 0,1 \} ^{\lambda}$ \\
+				\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-hybrid}$ \\
+				\ \underline{\textsc{CTxt}($m$)} \\
+				\ \ $s \leftarrow \{ 0,1 \} ^{\lambda}$ \\
 		 		\ \ $x \leftarrow \{ 0,1 \} ^{\lambda}$ \\
-		 		\ \ \textbf{return} $(s, x)$ \\ \hline
+				\ \ \textbf{return} $(s, x)$ \\ \hline
 			\end{tabular}
 			&
 			$\apeq$
 			&
 			\begin{tabular}{|l|}
-		 		\hline \cellcolor[gray]{0.8}$Enc_{CPA-rand}(k, m):$ \\
-		 		\ \ $x \leftarrow (\{ 0,1 \} ^{\lambda})^{2}$ \\
-		 		\ \ \textbf{return} $x$ \\ \hline
+		 		\hline \cellcolor[gray]{0.8}$L^{\Sigma}_{CPA\$-rand}$ \\
+				\ \underline{\textsc{CTxt}($m$)} \\
+		 		$ \ \ r \leftarrow (\{ 0,1 \} ^{\lambda})^{2}$ \\
+				\ \ \textbf{return} r \\ \hline
 			\end{tabular}
 			&	
 			\begin{tabular}{p{5cm}}
-				Because s and x are making up a pair which is in $C$ we can inline such a subroutine to end up with $Enc_{CPA-rand}(k, m):$.
+				Because s and x are making up a pair which is in $C$ we can inline such a subroutine to end up with $L^{\Sigma}_{CPA\$-rand}$.
 			\end{tabular}	
 		\end{tabular}
 	\end{enumerate}
