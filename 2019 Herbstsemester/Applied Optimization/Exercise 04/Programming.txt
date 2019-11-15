@@ -1,3 +1,0 @@
-The Optimumchecker function should be alright now.
-We tried to add the KKT Example in the main function but we were unsure how to add the constraints to the vectors.
-

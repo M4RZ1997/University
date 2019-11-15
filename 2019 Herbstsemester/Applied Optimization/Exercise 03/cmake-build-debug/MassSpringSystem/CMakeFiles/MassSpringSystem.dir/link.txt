@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/MassSpringSystem.dir/main.cc.o CMakeFiles/MassSpringSystem.dir/MassSpringSystem.cc.o  -o ../Build/bin/MassSpringSystem 
