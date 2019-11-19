@@ -1,11 +1,13 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.29)  15 NOV 2019 15:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  19 NOV 2019 11:45
 entering extended mode
-**./Exercise08.tex
-(Exercise08.tex
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Exercise08.tex
+(./Exercise08.tex
 LaTeX2e <2018-12-01>
-(F:\MikTex\tex/latex/base\report.cls
+(c:/texlive/2018/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
-(F:\MikTex\tex/latex/base\size10.clo
+(c:/texlive/2018/texmf-dist/tex/latex/base/size10.clo
 File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -21,21 +23,21 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(F:\MikTex\tex/latex/geometry\geometry.sty
+(c:/texlive/2018/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
-(F:\MikTex\tex/latex/graphics\keyval.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(F:\MikTex\tex/generic/oberdiek\ifpdf.sty
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
-(F:\MikTex\tex/generic/oberdiek\ifvtex.sty
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-(F:\MikTex\tex/generic/ifxetex\ifxetex.sty
+(c:/texlive/2018/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count89
@@ -50,9 +52,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen109
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
-
-(F:\MikTex\tex/latex/geometry\geometry.cfg))
-(F:\MikTex\tex/latex/paralist\paralist.sty
+)
+(c:/texlive/2018/texmf-dist/tex/latex/paralist/paralist.sty
 Package: paralist 2017/01/22 v2.7 Extended list environments
 \pltopsep=\skip43
 \plpartopsep=\skip44
@@ -60,10 +61,11 @@ Package: paralist 2017/01/22 v2.7 Extended list environments
 \plparsep=\skip46
 \pl@lab=\toks16
 )
-(F:\MikTex\tex/latex/scalerel\scalerel.sty
+(c:/texlive/2018/texmf-dist/tex/latex/scalerel/scalerel.sty
 Package: scalerel 2016/12/29 v1.8 Routines for constrained scaling and stretchi
 ng of objects, relative to a reference object or in absolute terms
- (F:\MikTex\tex/latex/tools\calc.sty
+
+(c:/texlive/2018/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count92
 \calc@Bcount=\count93
@@ -75,27 +77,28 @@ LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count94
 \calc@Cskip=\skip49
-) (F:\MikTex\tex/latex/graphics\graphicx.sty
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(F:\MikTex\tex/latex/graphics\graphics.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(F:\MikTex\tex/latex/graphics\trig.sty
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(F:\MikTex\tex/latex/graphics-cfg\graphics.cfg
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(F:\MikTex\tex/latex/graphics-def\pdftex.def
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
 )
-(F:\MikTex\tex/latex/etoolbox\etoolbox.sty
+(c:/texlive/2018/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count95
 )
@@ -107,10 +110,10 @@ Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
 \LMex=\skip55
 \LMpt=\skip56
 )
-(F:\MikTex\tex/latex/amsfonts\amssymb.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(F:\MikTex\tex/latex/amsfonts\amsfonts.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks17
 \symAMSa=\mathgroup4
@@ -118,24 +121,24 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(F:\MikTex\tex/latex/amsmath\amsmath.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
 \@mathmargin=\skip57
 
 For additional information on amsmath, use the `?' option.
-(F:\MikTex\tex/latex/amsmath\amstext.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(F:\MikTex\tex/latex/amsmath\amsgen.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen115
 ))
-(F:\MikTex\tex/latex/amsmath\amsbsy.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen116
 )
-(F:\MikTex\tex/latex/amsmath\amsopn.sty
+(c:/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count96
@@ -176,9 +179,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
-(F:\MikTex\tex/latex/colortbl\colortbl.sty
+(c:/texlive/2018/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2018/12/12 v1.0d Color table columns (DPC)
- (F:\MikTex\tex/latex/tools\array.sty
+
+(c:/texlive/2018/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \col@sep=\dimen124
 \ar@mcellbox=\box29
@@ -187,10 +191,11 @@ Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \extratabsurround=\skip60
 \backup@length=\skip61
 \ar@cellbox=\box30
-) (F:\MikTex\tex/latex/graphics\color.sty
+)
+(c:/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
-(F:\MikTex\tex/latex/graphics-cfg\color.cfg
+(c:/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
@@ -198,16 +203,17 @@ Package color Info: Driver file: pdftex.def on input line 147.
 \everycr=\toks24
 \minrowclearance=\skip62
 )
-(F:\MikTex\tex/latex/multirow\multirow.sty
+(c:/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
 \multirow@colwidth=\skip63
 \multirow@cntb=\count108
 \multirow@dima=\skip64
 \bigstrutjot=\dimen126
-) (F:\MikTex\tex/latex/stix\stix.sty
+)
+(c:/texlive/2018/texmf-dist/tex/latex/stix/stix.sty
 Package: stix 2018/04/17 v1.1.3-latex STIX fonts support package
 
-(F:\MikTex\tex/latex/base\textcomp.sty
+(c:/texlive/2018/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2018/08/11 v2.0j Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -222,12 +228,13 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
 Package textcomp Info: Changing ? sub-encoding to TS1/0 on input line 80.
- (F:\MikTex\tex/latex/base\ts1enc.def
+
+(c:/texlive/2018/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
-(F:\MikTex\tex/latex/base\ts1enc.dfu
+(c:/texlive/2018/texmf-dist/tex/latex/base/ts1enc.dfu
 File: ts1enc.dfu 2018/10/05 v1.2f UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -450,17 +457,17 @@ LaTeX Info: Redefining \vdots on input line 1518.
 LaTeX Info: Redefining \cdots on input line 1522.
 LaTeX Info: Redefining \not on input line 2144.
 )
-(F:\MikTex\tex/latex/stackengine\stackengine.sty
+(c:/texlive/2018/texmf-dist/tex/latex/stackengine/stackengine.sty
 Package: stackengine 2017/02/13 v4.01\ Stacking text and objects in convenient 
 ways
 
-(F:\MikTex\tex/latex/listofitems\listofitems.sty
-(F:\MikTex\tex/generic/listofitems\listofitems.tex
+(c:/texlive/2018/texmf-dist/tex/generic/listofitems/listofitems.sty
+(c:/texlive/2018/texmf-dist/tex/generic/listofitems/listofitems.tex
 \loi_cnt_foreach_nest=\count109
 \loi_nestcnt=\count110
 )
-Package: listofitems 2019/08/21 v1.63 Grab items in lists using user-specified 
-sep char (CT)
+Package: listofitems 2018/11/01 v1.6 Grab items in lists using user-specified s
+ep char (CT)
 )
 \c@@stackindex=\count111
 \@boxshift=\skip65
@@ -473,7 +480,7 @@ sep char (CT)
 \@centerbox=\box34
 \c@ROWcellindex@=\count112
 )
-(F:\MikTex\tex/latex/fancyhdr\fancyhdr.sty
+(c:/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip69
@@ -486,14 +493,14 @@ s
 \f@nch@O@olf=\skip76
 \f@nch@O@orf=\skip77
 )
-(F:\MikTex\tex/latex/hyperref\hyperref.sty
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
 
-(F:\MikTex\tex/generic/oberdiek\hobsub-hyperref.sty
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
 
 
-(F:\MikTex\tex/generic/oberdiek\hobsub-generic.sty
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
 Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -504,6 +511,10 @@ Package hobsub Info: Skipping package `ifvtex' (already loaded).
 Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
 Package hobsub Info: Skipping package `ifpdf' (already loaded).
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
@@ -527,24 +538,24 @@ Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
 Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
 Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 )
-(F:\MikTex\tex/latex/oberdiek\auxhook.sty
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-(F:\MikTex\tex/latex/oberdiek\kvoptions.sty
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 )
 \@linkdim=\dimen127
 \Hy@linkcounter=\count113
 \Hy@pagecounter=\count114
 
-(F:\MikTex\tex/latex/hyperref\pd1enc.def
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count115
 
-(F:\MikTex\tex/latex/00miktex\hyperref.cfg
+(c:/texlive/2018/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4519.
@@ -555,7 +566,8 @@ Package hyperref Info: Backreferencing OFF on input line 4539.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4772.
 \c@Hy@tempcnt=\count116
- (F:\MikTex\tex/latex/url\url.sty
+
+(c:/texlive/2018/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -579,18 +591,19 @@ LaTeX Info: Redefining \pageref on input line 6454.
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
-(F:\MikTex\tex/latex/hyperref\hpdftex.def
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
 \Fld@listcount=\count121
 \c@bookmark@seq@number=\count122
 
-(F:\MikTex\tex/latex/oberdiek\rerunfilecheck.sty
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip78
-) (Exercise08.aux)
+)
+(./Exercise08.aux)
 \openout1 = `Exercise08.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
@@ -607,15 +620,15 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 31.
-
-(F:\MikTex\tex/latex/base\ts1cmr.fd
+ (c:/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 31.
 LaTeX Font Info:    Try loading font information for LS1+stix on input line 31.
 
- (F:\MikTex\tex/latex/stix\ls1stix.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
 LaTeX Font Info:    ... okay on input line 31.
@@ -623,14 +636,15 @@ LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 31.
 LaTeX Font Info:    Try loading font information for LS2+stix on input line 31.
 
 
-(F:\MikTex\tex/latex/stix\ls2stix.fd
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
 LaTeX Font Info:    Try loading font information for T1+stix on input line 31.
- (F:\MikTex\tex/latex/stix\t1stix.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 )
 *geometry* driver: auto-detecting
@@ -667,7 +681,7 @@ File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(F:\MikTex\tex/context/base/mkii\supp-pdf.mkii
+(c:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count123
 \scratchdimen=\dimen131
@@ -680,10 +694,10 @@ File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
 \MPnumerator=\count127
 \makeMPintoPDFobject=\count128
 \everyMPtoPDFconversion=\toks26
-) (F:\MikTex\tex/latex/oberdiek\epstopdf-base.sty
+) (c:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(F:\MikTex\tex/latex/oberdiek\grfext.sty
+(c:/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -692,14 +706,18 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-)
+
+(c:/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 \AtBeginShipoutBox=\box36
 Package hyperref Info: Link coloring OFF on input line 31.
 
-(F:\MikTex\tex/latex/hyperref\nameref.sty
+(c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
-(F:\MikTex\tex/generic/oberdiek\gettitlestring.sty
+(c:/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count129
@@ -707,8 +725,8 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 31.
 LaTeX Info: Redefining \pageref on input line 31.
 LaTeX Info: Redefining \nameref on input line 31.
- (Exercise08.out)
-(Exercise08.out)
+
+(./Exercise08.out) (./Exercise08.out)
 \@outlinefile=\write3
 \openout3 = `Exercise08.out'.
 
@@ -718,52 +736,58 @@ LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <12> not available
 (Font)              Font shape `T1/stix/b/n' tried instead on input line 35.
 LaTeX Font Info:    Try loading font information for LS1+stixscr on input line 
 35.
- (F:\MikTex\tex/latex/stix\ls1stixscr.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Try loading font information for LS2+stixex on input line 3
 5.
 
-(F:\MikTex\tex/latex/stix\ls2stixex.fd
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for U+msa on input line 35.
- (F:\MikTex\tex/latex/amsfonts\umsa.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 35.
 
-(F:\MikTex\tex/latex/amsfonts\umsb.fd
+(c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for LS1+stixfrak on input line
  35.
- (F:\MikTex\tex/latex/stix\ls1stixfrak.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 3
 5.
- (F:\MikTex\tex/latex/stix\ls1stixbb.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixcal on input line 
 35.
 
-(F:\MikTex\tex/latex/stix\ls2stixcal.fd
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 3
 5.
- (F:\MikTex\tex/latex/stix\ls1stixsf.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 3
 5.
- (F:\MikTex\tex/latex/stix\ls2stixtt.fd
+
+(c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 
 )
@@ -790,7 +814,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
 
 Underfull \hbox (badness 7759) in paragraph at lines 132--133
-\T1/stix/m/n/10 that $\LS1/stix/m/n/10 $ \T1/stix/m/n/10 has CPA$-
+\T1/stix/m/n/10 that $\LS1/stix/m/n/10 ^^F$ \T1/stix/m/n/10 has CPA$-
  []
 
 
@@ -850,7 +874,7 @@ Make it at least 35.06406pt.
 We now make it that large for the rest of the document.
 This may cause the page layout to be inconsistent, however.
 
-[1{C:/Users/marci/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+[1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 ] [2]
 
@@ -922,31 +946,34 @@ Package paralist Warning: Incorrect label; no or multiple counters.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
 [4]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
- (Exercise08.aux)
+ (./Exercise08.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
 Package rerunfilecheck Info: File `Exercise08.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9544 strings out of 492897
- 129396 string characters out of 3141882
- 229066 words of memory out of 3000000
- 13274 multiletter control sequences out of 15000+200000
- 76836 words of font info for 99 fonts, out of 3000000 for 9000
+ 9544 strings out of 492616
+ 131638 string characters out of 6132768
+ 229135 words of memory out of 5000000
+ 13274 multiletter control sequences out of 15000+600000
+ 76836 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,24n,43p,826b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
-{F:/MikTex/fonts/enc/dvips/stix/stix-t1.enc}<F:/MikTex/fonts/type1/public/sti
-x/STIXGeneral-Bold.pfb><F:/MikTex/fonts/type1/public/stix/STIXGeneral-BoldItali
-c.pfb><F:/MikTex/fonts/type1/public/stix/STIXGeneral-Italic.pfb><F:/MikTex/font
-s/type1/public/stix/STIXGeneral-Regular.pfb><F:/MikTex/fonts/type1/public/stix/
-stix-mathcal.pfb><F:/MikTex/fonts/type1/public/stix/stix-mathex.pfb><F:/MikTex/
-fonts/type1/public/stix/stix-mathit.pfb><F:/MikTex/fonts/type1/public/stix/stix
--mathrm.pfb><F:/MikTex/fonts/type1/public/stix/stix-mathscr.pfb><F:/MikTex/font
-s/type1/public/stix/stix-mathsf.pfb>
-Output written on Exercise08.pdf (4 pages, 189525 bytes).
+ 32i,24n,43p,824b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}<c:/texlive/2018
+/texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb><c:/texlive/2018/texmf
+-dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb><c:/texlive/2018/texmf
+-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb><c:/texlive/2018/texmf-dis
+t/fonts/type1/public/stix/STIXGeneral-Regular.pfb><c:/texlive/2018/texmf-dist/f
+onts/type1/public/stix/stix-mathcal.pfb><c:/texlive/2018/texmf-dist/fonts/type1
+/public/stix/stix-mathex.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/sti
+x/stix-mathit.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-math
+rm.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:
+/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
+Output written on Exercise08.pdf (4 pages, 178761 bytes).
 PDF statistics:
- 97 PDF objects out of 1000 (max. 8388607)
+ 99 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  32 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
