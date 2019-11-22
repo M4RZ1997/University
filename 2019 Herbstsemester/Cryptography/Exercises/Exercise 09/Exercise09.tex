@@ -1,0 +1,72 @@
+\documentclass{report}
+\usepackage[headheight=30pt, textheight=600pt]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\usepackage{stix}
+
+\newcommand{\tableflip}{$($\rotatebox{45}{$\smile$}$^{\circ}\smwhtsquare^{\circ})\rotatebox{45}{$\smile$}\mkern-6mu\frown$\raisebox{0.5ex}{$\bot$}$\mkern-3.5mu-\mkern-3.5mu$\raisebox{0.5ex}{$\bot$}}
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 09}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{9.1 Diffie-Hellman assumptions}
+		\subsection*{9.1.a Bad Event Lemma on CDH}
+			\textit{\textbf{Bad Event Lemma:}}
+			\[
+				\mid \ Pr[A \diamond L_{left} \Rightarrow 1] \ - \ Pr[A \diamond L_{right} \Rightarrow 1] \mid \ \leq \ Pr [A \diamond L_{left} sets \ bad \ = 1]
+			\]
+			For CDH, we can say:
+			\[
+				\mid \ Pr[A \diamond L_{dh-real} \Rightarrow 1] \ - \ Pr[A \diamond L_{dh-rand} \Rightarrow 1] \mid \ \leq \ Pr [A \diamond L_{dh-real} computes \ g^{ab} \ = 1] \ \Rightarrow \ non-negligible
+			\]
+		\subsection*{9.1.b Relation between DDH and CDH? What is the problem if one can solve CDH?}
+			CDH is a "weaker" assumption than DDH, so therfore if CDH is solveable and non-negligible, the same can be said about DDH, so that it is not indistinguishable anymore. Therefore if one can solve the CDH in non-negligible time so is the discrete logarithm problem.
+	
+	\section*{9.2 Man-in-the-middle attack}
+		As \textsc{Alice} will receive the wrong value $g^{b'}$ which was changed by \textsc{Eve} she will raise this to her chosen number $a$ which will result in the key $(g^{b'})^{a} \ = \ g^{b' \cdot a}$. The same is happening to \textsc{Bob} who will calculate the key $(g^{a'})^{b} \ = \ g^{a' \cdot b}$. \\
+		Because the resulting keys are not equal, \textsc{Alice} and \textsc{Bob} will not be able to decrypt the messages sent from one to the other (, \textit{without any interception in between them}). \\
+		\textsc{Eve} can intercept the messages of \textsc{Alice} and \textsc{Bob}. Because she/he can compute the keys which \textsc{Alice} and \textsc{Bob} will have, by raising the intercepted $g^a$ and $g^b$ with either $b'$ or $a'$, she/he can decrypt the messages and encrypt them with the keys corresponding to \textsc{Alice} or \textsc{Bob}. Therefore \textsc{Alice} and \textsc{Bob} will not notice that anything is wrong, but \textsc{Eve} can read the sent messages.
+	\section*{9.3 Quadratic residues}
+		We know that $g$ is a \textit{primitive root}, therefore it is:
+		\[
+			\langle g \rangle _p \ = \ \mathbb{Z}_p^{\star}
+		\]
+		We want to show that $g^a \in \mathbb{Q}\mathbb{R}_p^{\star}$ iff $a$ is even. Suppose that this is true:
+		\begin{align*}
+			& & g^a \in \mathbb{Q}\mathbb{R}_p^{\star} \\
+			& \Rightarrow & g^{a \cdot \frac{p-1}{2}} \ & \equiv _p \ 1 \\
+			& \Leftrightarrow & g^{\frac{a}{2} \cdot (p-1)} \ & \equiv_p \ 1
+		\end{align*}
+		Because $a$ is even we can substitute $\frac{a}{2}$ with $b$ which is still in $\mathbb{Z}$. Therefore we have:
+		\begin{align*}
+			& g^{b \cdot (p-1)} \ \equiv_p \ 1 & (1)
+		\end{align*}
+		Because $g$ is a \textit{primitive root} of $\mathbb{Z}_p^{\star}$:
+		\[
+			g^a \ mod \ p \ = \ g^{a + b \cdot (p-1)} \ mod \ p
+		\]
+		Because $g^0 \equiv_p 1$, equation (1) is shown and therefore $g^a \in \mathbb{Q}\mathbb{R}_p^{\star}$.
+	
+\end{document}

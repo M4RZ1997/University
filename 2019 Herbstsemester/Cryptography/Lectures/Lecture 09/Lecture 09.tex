@@ -1,0 +1,183 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptography}}}
+\end{center}
+
+	{\let\clearpage\relax \chapter*{Encryption modes}}
+	\begin{tabular}{|l|c|c|c|c|}
+		\hline
+		& ECB & CBC & CTR & OFB \\
+		\hline
+		secure? & x & y & y & y \\
+		encryption parallel? & & x & y & x \\
+		decryption parallel? & & y & y & x\\
+		random access decryption? & & y & y & x \\
+		\hline
+	\end{tabular} \\
+	\subsection*{Length expansion}
+	\underline{if} dec. error \underline{then} \\
+	\textbf{return} \textsc{Error} \\ \\
+	\underline{if} dec. OK \underline{then} \\
+	\textbf{return} $*-*$
+	\subsection*{Storage encryption}
+	\begin{enumerate}[-]
+		\item where to store the IV or nonce?
+		\item because expansion not possible:\\
+		Enc $B^{512} \rightarrow B^{512}$
+		\item $\rightarrow$ use nonce derived from address \\
+		ESSIV: where IV for sector i is \\
+		$IV := Enc(H(k),i)$ \\
+		encrypted salt sector IV
+	\end{enumerate}
+	{\let\clearpage\relax \chapter*{9 Diffie-Hellman Key Agreement}}
+	\section*{Modular arithmetic}
+	\begin{enumerate}[-]
+		\item Integer divisions: For $a,d \in \mathbb{Z}$ there exist a unique \underline{quotient} $q$ and a unique \underline{remainder} $r$ s.t.:
+		\begin{align*}
+			a = d \cdot q + r & & and \ \ 0 \leq r \leq \mid d-1 \mid
+		\end{align*}
+		\item Since $q$ and $r$ are unique:
+		\begin{align*}
+			q \ & = \ a \ \underline{div} \ d \ & = \ \lfloor \frac{a}{d} \rfloor \\
+			r \ & = \ a \ \underline{mod} \ d \ & = \ a \% d
+		\end{align*}
+		\item Relation "divides": $a \mid d$
+	\end{enumerate}
+	\subsection*{Congruence relation}
+		$a \equiv b$ (mod $m$) or $a \equiv _m b$ \underline{if} $m \mid (a-b)$
+		\textbf{"Integers mod m"}: $\mathbb{Z}_m \stackrel{def.}{=}\{0,1,...,m-1\}$ \\
+		\textbf{\textsc{Note}}: $\underbrace{a \equiv _m b}_{equivalence \ relation} \ \neq \ ( \underbrace{a \ mod \ m \ = \ b \ mod \ m}_{euquality \ over \ \mathbb{Z}})$ \\
+		\textbf{\textsc{Rules}}: $(a+b) \ mod \ m \ = \ (((a \ mod \ m) + (b \ mod \ m)) \ mod \ m)$
+	\subsection*{Cyclic groups}
+	\subsubsection*{Definition}
+	A group $\langle F, \cdot , 1 \rangle$ consists of a \underline{set} $G$, an \underline{operation} $\cdot$ , and a \underline{neutral element} 1
+	\begin{enumerate}
+		\item $\forall a,b \in G: (a \cdot b) \in G$
+		\item $\forall a: 1 \cdot a = a \cdot 1 = a$
+		\item $\forall a \in G, \exists a^{-1} \in G: a \cdot a^{-1} = 1$
+		\item associative
+	\end{enumerate}
+	\subsubsection*{Example}
+	\begin{enumerate}
+		\item $\mathbb{Z}_m \stackrel{def}{=} \langle \mathbb{Z}_m, +, 0 \rangle$
+		\item $\mathbb{Z}_p^{\star} \stackrel{def}{=} \langle \{ 1,2,...,p-1 \} , \cdot, 1 \rangle$
+	\end{enumerate}
+	\subsubsection*{Definition}
+	$\mid G \mid$ denotes the number of elements in $G$
+	\subsubsection*{Definition}
+	A finite group $G$ is \underline{cyclic} if some $g$ called \underline{generator} exists s.t. $G = \{ g^0, g^1, g^2, ... g^{\mid G \mid - 1}\}$ \\
+	\underline{Notation}: $\langle g \rangle = G$ \\
+	\underline{Integers mod m:} $\langle g \rangle _m \subset \mathbb{Z}_m^{\star}$
+	\subsubsection*{Definition}
+	If $\langle g \rangle _p = \mathbb{Z}_p^{\star}$, then $g$ is a \underline{primitive root}.
+	\subsubsection*{Example}
+	$\mathbb{Z}_{11}^{\star}$ \\
+	$\langle 1 \rangle _{11} = \{ 1 \}$ \\
+	$\langle 2 \rangle _{11} = \{ 1, 2, 4, 8, 5, 10, 9, 7, 3, 6 \}$ \\
+	$\langle 2 \rangle _{11} = \{ 1, 3, 9, 5, 4 \}$ \\
+	\subsubsection*{Definition}
+	\begin{enumerate}[\textbullet]
+		\item The number of elements in $G$ is also called the \underline{order} of $G$
+		\item The order of $a \in G$ is the smallest i s.t. $a^i = 1$ (in $G$) \\
+		$[$smallest i s.t. $g^i \equiv _m 1]$
+	\end{enumerate}
+	\subsubsection*{Lemma}
+	For all primitive roots $g$:
+	\[
+		g^a = g^b \Leftrightarrow a \equiv _{\mid G \mid} b
+	\]
+	\subsubsection*{Example}
+	\begin{enumerate}[\textbullet]
+		\item $\mathbb{Z}_{p}^{\star}, \ p \ prime: \mid \mathbb{Z}_{p}^{\star} \mid = p-1$
+		\item For $q \mid (p-1)$, and $q$ prime, there is a cyclic group of order $q$ ($q$ prime!), defined by multiplication modulo $p$ \\
+		(think of: $\underbrace{p}_{safe \ prime} \ = \ 2 \cdot \underbrace{q}_{Sophie-Germain \ prime} + 1$ \\
+		$p \ = \ m\cdot q + 1$, where $\mid p \mid \ = \ 2000$, but $q \ \approx \ 256$
+	\end{enumerate}
+	\subsection*{Discrete Logarithms}
+	\subsubsection*{Definition}
+	In a cyclic group $G$, the \underline{discrete logarithm} of $y \in G$ w.r.t a primitive root $g$ is $x \in \mathbb{Z}_{\mid G \mid}$ s.t. $g^x = y$.
+	\subsubsection*{Definition}
+	\textbf{\underline{Discrete Logarithm Problem (DLP):}} \\
+	Given $y \leftarrow G$, compute $x$ s.t. $g^x = y$ \\ \\
+	Group where the DLP is computationally hard:
+	\begin{enumerate}[-]
+		\item Prime-order subgroups of $\mathbb{Z}_{p}^{\star}$, $p$ prime (DSA, DH)
+		\item groups defined over points on alliptic curves (ECDSA...) $[ \mid G \mid \geq 2^{256}]$
+	\end{enumerate}
+	
+	\section*{Diffie-Hellman Key Agreement}
+	\subsection*{Goal}
+	Agree on a pseudorandom key.
+	\begin{tabular}{lll}
+		\begin{tabular}{l}
+			\underline{Alice} \\
+			$a \leftarrow \mathbb{Z}_{q}$ \\
+			$X := g^a$ \\
+			$Z_A := Y^a$
+		\end{tabular}
+		&
+		\begin{tabular}{c}
+			$G = \langle g \rangle$	 \\
+			order $q$ \\
+			\\
+			$\stackrel{x}{\longrightarrow}$ \\
+			$\stackrel{y}{\longleftarrow}$ \\
+			Eve
+		\end{tabular}
+		&
+		\begin{tabular}{l}
+			\underline{Bob} \\
+			$b \leftarrow \mathbb{Z}_{q}$ \\
+			$Y := g^b$ \\
+			$Z_B := X^b$
+		\end{tabular}	
+	\end{tabular} \\ \\
+	\underline{\textsc{Claim:}} $ Z_A = Z_B$: $Z_Y = Y^a = (g^b)^a = (g^a)^b = X^b = Z_B$
+	\subsection*{Security?}
+	\begin{enumerate}[-]
+		\item If Eve can compute DLOG, then not secure
+		\item Want that $Z$ is pseudorandom
+	\end{enumerate}
+	\subsubsection*{Definition}
+	Protocol $\Pi$ generates a key $k$ in $\Pi .K$ and a transcript $T \in \{ 0,1 \} ^{\star}$. \\
+	$(T, k) \ \leftarrow \ EXEC(\Pi)$ \\
+	$K.A$ protocol $\Pi$ is called \underline{secure} if: \\
+	\begin{tabular}{lll}
+		\begin{tabular}{l}
+			\underline{$L^{\Pi}_{ka-real}$} \\
+			\textsc{\underline{Query():}} \\
+			\ $(T, k) \ \leftarrow \ EXEC(\Pi)$ \\
+			\ \textbf{return} (T,k)
+		\end{tabular}
+		&
+		$\apeq$
+		&
+		\begin{tabular}{l}
+			\underline{$L^{\Pi}_{ka-rand}$} \\
+			\textsc{\underline{Query():}} \\
+			\ $(T, k) \ \leftarrow \ EXEC(\Pi)$ \\
+			\ $k^{\star} \leftarrow \Pi .K$ \\
+			\ \textbf{return} (T,$k^{\star}$)
+		\end{tabular}
+	\end{tabular}
+\end{document}
+ 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  20 NOV 2019 14:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  22 NOV 2019 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Exercise08.tex
-(./Exercise08.tex
+**Exercise09.tex
+(./Exercise09.tex
 LaTeX2e <2018-12-01>
 (c:/texlive/2018/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2018/09/03 v1.4i Standard LaTeX document class
@@ -603,8 +603,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip78
 )
-(./Exercise08.aux)
-\openout1 = `Exercise08.aux'.
+(./Exercise09.aux)
+\openout1 = `Exercise09.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
@@ -726,147 +726,74 @@ LaTeX Info: Redefining \ref on input line 31.
 LaTeX Info: Redefining \pageref on input line 31.
 LaTeX Info: Redefining \nameref on input line 31.
 
-(./Exercise08.out) (./Exercise08.out)
+(./Exercise09.out) (./Exercise09.out)
 \@outlinefile=\write3
-\openout3 = `Exercise08.out'.
+\openout3 = `Exercise09.out'.
 
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/stix/b/n' tried instead on input line 34.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <12> not available
 (Font)              Font shape `T1/stix/b/n' tried instead on input line 35.
+LaTeX Font Info:    Font shape `T1/stix/bx/it' in size <10> not available
+(Font)              Font shape `T1/stix/b/it' tried instead on input line 36.
 LaTeX Font Info:    Try loading font information for LS1+stixscr on input line 
-35.
+37.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Try loading font information for LS2+stixex on input line 3
-5.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 35.
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 35.
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for LS1+stixfrak on input line
- 35.
+ 37.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 3
-5.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixcal on input line 
-35.
+37.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 3
-5.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 3
-5.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 
 )
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 36.
-
-LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <10> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 41.
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--51
-
- []
-
-
-Underfull \hbox (badness 1226) in paragraph at lines 104--105
-\T1/stix/m/n/10 we cre-ate a hybrid-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-[]|\T1/stix/m/n/10 Because we know
- []
-
-
-Underfull \hbox (badness 7759) in paragraph at lines 132--133
-\T1/stix/m/n/10 that $\LS1/stix/m/n/10 ^^F$ \T1/stix/m/n/10 has CPA$-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-\T1/stix/m/n/10 security (es-pe-cially
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 132--133
-\T1/stix/m/n/10 also CPA-security
- []
-
-
-Underfull \hbox (badness 1616) in paragraph at lines 149--150
-\T1/stix/m/n/10 the li-brary $\LS1/stix/m/it/10 L[]$\T1/stix/m/n/10 . There-for
-e we showed that
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--152
-
- []
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 72.
 
 
 Package Fancyhdr Warning: \headheight is too small (30.0pt): 
@@ -876,104 +803,38 @@ This may cause the page layout to be inconsistent, however.
 
 [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2]
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 72.
 
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 214.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--277
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--277
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--277
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 216--277
-
- []
-
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 279.
-
-LaTeX Font Info:    Font shape `T1/stix/bx/it' in size <10> not available
-(Font)              Font shape `T1/stix/b/it' tried instead on input line 281.
-
-Underfull \hbox (badness 10000) in paragraph at lines 281--339
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 281--339
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 340--387
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 340--387
-
- []
-
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 389.
-
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 395.
-
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 399.
-
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 403.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 407.
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 407.
- (./Exercise08.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 407.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 407.
-Package rerunfilecheck Info: File `Exercise08.out' has not changed.
+(./Exercise09.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 72.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 72.
+Package rerunfilecheck Info: File `Exercise09.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 9544 strings out of 492616
- 131638 string characters out of 6132768
- 229135 words of memory out of 5000000
- 13274 multiletter control sequences out of 15000+600000
- 76836 words of font info for 99 fonts, out of 8000000 for 9000
+ 9474 strings out of 492616
+ 130758 string characters out of 6132768
+ 222135 words of memory out of 5000000
+ 13229 multiletter control sequences out of 15000+600000
+ 50977 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,24n,43p,824b,449s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 32i,11n,43p,824b,329s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}<c:/texlive/2018
 /texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb><c:/texlive/2018/texmf
 -dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb><c:/texlive/2018/texmf
 -dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb><c:/texlive/2018/texmf-dis
 t/fonts/type1/public/stix/STIXGeneral-Regular.pfb><c:/texlive/2018/texmf-dist/f
-onts/type1/public/stix/stix-mathcal.pfb><c:/texlive/2018/texmf-dist/fonts/type1
-/public/stix/stix-mathex.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/sti
-x/stix-mathit.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-math
-rm.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:
-/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on Exercise08.pdf (4 pages, 178762 bytes).
+onts/type1/public/stix/stix-mathbb.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
+public/stix/stix-mathcal.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/sti
+x/stix-mathex.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-math
+it.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:/texlive/20
+18/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
+Output written on Exercise09.pdf (1 page, 172932 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 32 named destinations out of 1000 (max. 500000)
+ 65 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
+ 7 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
