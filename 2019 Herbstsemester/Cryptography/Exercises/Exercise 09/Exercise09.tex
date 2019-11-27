@@ -1,5 +1,5 @@
 \documentclass{report}
-\usepackage[headheight=30pt, textheight=600pt]{geometry}
+\usepackage[headheight=30pt, textheight=650pt]{geometry}
 \usepackage{paralist}
 \usepackage{scalerel,amssymb}
 \usepackage{amsmath}
@@ -33,16 +33,44 @@ Marcel \textsc{Zauder}}
 	
 	\section*{9.1 Diffie-Hellman assumptions}
 		\subsection*{9.1.a Bad Event Lemma on CDH}
-			\textit{\textbf{Bad Event Lemma:}}
-			\[
-				\mid \ Pr[A \diamond L_{left} \Rightarrow 1] \ - \ Pr[A \diamond L_{right} \Rightarrow 1] \mid \ \leq \ Pr [A \diamond L_{left} sets \ bad \ = 1]
-			\]
-			For CDH, we can say:
-			\[
-				\mid \ Pr[A \diamond L_{dh-real} \Rightarrow 1] \ - \ Pr[A \diamond L_{dh-rand} \Rightarrow 1] \mid \ \leq \ Pr [A \diamond L_{dh-real} computes \ g^{ab} \ = 1] \ \Rightarrow \ non-negligible
-			\]
+			\begin{tabular}{lllll}
+				\begin{tabular}{|l|}
+					\hline
+					$a, b \leftarrow \mathbb{Z}_q$ \\
+					\\
+					\textsc{Seed}(): \\
+			  		\ \ \textbf{return} ($g^a, g^b$) \\
+					\\
+					\textsc{Check}(x): \\
+			  		\ \ if $x = {(g^a)}^b$: \\
+			    	\ \ \ \ \textbf{return} 1 \\
+			  		\ \ else: \\
+			    	\ \ \ \ \textbf{return} 0 \\
+			    	\hline
+				\end{tabular}
+				&
+				&
+				\begin{tabular}{|l|}
+					\hline
+					$a, b \leftarrow \mathbb{Z}_q$ \\
+					\\
+					\textsc{Seed}(): \\
+			  		\ \ \textbf{return} ($g^a, g^b$) \\
+					\\
+					\textsc{Check}(x): \\
+			  		\ \ \textbf{return} 0 \\
+			  		\hline
+				\end{tabular}
+				&
+				&
+				\begin{tabular}{p{7.5cm}}
+					Because we know that for any given $(g^a, g^b)$ an attacker cannot compute $g^{ab}$ in polynomial time with non negligible probability, the advantage of any algorithm is also non-negligible. Therefore the two libraries are indistinguishable.
+				\end{tabular}
+			\end{tabular}
+			\\
+			
 		\subsection*{9.1.b Relation between DDH and CDH? What is the problem if one can solve CDH?}
-			CDH is a "weaker" assumption than DDH, so therfore if CDH is solveable and non-negligible, the same can be said about DDH, so that it is not indistinguishable anymore. Therefore if one can solve the CDH in non-negligible time so is the discrete logarithm problem.
+			CDH is a "stronger" assumption than DDH, because one need to compute $g^{ab}$ in non-negligible time, so therefore if CDH is solveable and non-negligible, the same can be said about DDH, so that it is not indistinguishable anymore. Therefore if one can solve the CDH in non-negligible time so is the discrete logarithm problem.
 	
 	\section*{9.2 Man-in-the-middle attack}
 		As \textsc{Alice} will receive the wrong value $g^{b'}$ which was changed by \textsc{Eve} she will raise this to her chosen number $a$ which will result in the key $(g^{b'})^{a} \ = \ g^{b' \cdot a}$. The same is happening to \textsc{Bob} who will calculate the key $(g^{a'})^{b} \ = \ g^{a' \cdot b}$. \\
@@ -55,9 +83,9 @@ Marcel \textsc{Zauder}}
 		\]
 		We want to show that $g^a \in \mathbb{Q}\mathbb{R}_p^{\star}$ iff $a$ is even. Suppose that this is true:
 		\begin{align*}
-			& & g^a \in \mathbb{Q}\mathbb{R}_p^{\star} \\
-			& \Rightarrow & g^{a \cdot \frac{p-1}{2}} \ & \equiv _p \ 1 \\
-			& \Leftrightarrow & g^{\frac{a}{2} \cdot (p-1)} \ & \equiv_p \ 1
+			& & g^a \in \mathbb{Q}\mathbb{R}_p^{\star}
+			& & \Rightarrow & & g^{a \cdot \frac{p-1}{2}} \ \equiv _p \ 1
+			& & \Leftrightarrow & & g^{\frac{a}{2} \cdot (p-1)} \ \equiv_p \ 1
 		\end{align*}
 		Because $a$ is even we can substitute $\frac{a}{2}$ with $b$ which is still in $\mathbb{Z}$. Therefore we have:
 		\begin{align*}
