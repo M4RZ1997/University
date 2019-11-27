@@ -1,0 +1,189 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Developer CV
+% LaTeX Template
+% Version 1.0 (28/1/19)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Jan Vorisek (jan@vorisek.me)
+% Based on a template by Jan Küster (info@jankuester.com)
+% Modified for LaTeX Templates by Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[9pt]{developercv} % Default font size, values from 8-12pt are recommended
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.35\textwidth} % 45% of the page width for name
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	% If your name is very short, use just one of the lines below
+	% If your name is very long, reduce the font size or make the minipage wider and reduce the others proportionately
+	\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{Marcel}}}}} % First name
+	
+	\colorbox{black}{{\HUGE\textcolor{white}{\textbf{\MakeUppercase{Zauder}}}}} % Last name
+	
+	\vspace{6pt}
+	
+	{\huge Bachelor Student} % Career or current job title
+\end{minipage}
+\begin{minipage}[t]{0.4\textwidth} % 27.5% of the page width for the first row of icons
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+	% Other icons can be found by referring to fontawesome.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+	\icon{MapMarker}{12}{Alpenstrasse 6b, CH-3072 Ostermundigen}\\
+	\icon{Github}{12}{\href{https://github.com/M4RZ1997}{https://github.com/M4RZ1997}}\\	
+	\icon{At}{12}{\href{mailto:marciz@gmx.net}{marciz@gmx.net}}\\	
+\end{minipage}
+\begin{minipage}[t]{0.25\textwidth} % 27.5% of the page width for the second row of icons
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+	% Other icons can be found by referring to fontawesome.pdf (supplied with the template) and using the word after \fa in the command for the icon you want
+	\vspace*{0.665cm}
+	\icon{Phone}{12}{+49 1578 1775871}\\
+\end{minipage}
+
+\vspace{0.5cm}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION, SKILLS AND TECHNOLOGIES
+%----------------------------------------------------------------------------------------
+
+\cvsect{Who Am I?}
+
+\begin{minipage}[t]{0.4\textwidth} % 40% of the page width for the introduction text
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	I was born on the 3rd of April 1997 in Kirchen (Sieg) in Germany. \\
+	During my school time, I came into contact with various applications of IT at an early age. Interest in IT has continued to increase ever since and I have been able to look into many areas of application and gain a lot of experience. \\
+	I was also able to collaborate on the making of the school homepage of the FvS Gymnasium (Betzdorf/Kirchen). % Dummy text
+\end{minipage}
+\hfill % Whitespace between
+\begin{minipage}[t]{0.5\textwidth} % 50% of the page for the skills bar chart
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	\begin{barchart}{5.5}
+		\baritem{Java}{90}
+		\baritem{C\#}{100}
+		\baritem{C++}{80}
+		%\baritem{C}{60}
+		\baritem{Python}{100}		
+		\baritem{Git}{70}
+		\baritem{LaTeX}{80}
+	\end{barchart}
+\end{minipage}
+
+\begin{center}
+	\bubbles{5/JetBrains, 5/Eclipse, 4/SQL, 5/git, 6/Office, 4/UE4, 2/Blender, 4/VR}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\cvsect{Experience/Internships}
+
+\begin{entrylist}
+	\entry
+		{July 2018}
+		{Softwarengineering}
+		{secat}
+		{\texttt{QPPD}\slashsep\texttt{SAP Software}\slashsep\texttt{SQL-Data-Bases}}
+	\entry
+		{August 2017}
+		{Craftmanship}
+		{OSCAR Moebel \& Objekte}
+		{\texttt{CNC-operation}}
+	\entry
+		{July 2014}
+		{School Internship}
+		{State Office of Geology}
+		{\texttt{administrative activities}\slashsep\texttt{laboratory work}\slashsep\texttt{SQL-Data-Bases}}
+	\entry
+		{April 2014}
+		{Introduction in IT}
+		{ikt Gromnitza GmBH \& Co. KG}
+		{\texttt{Network organization}\slashsep\texttt{Computer construction}}
+	\entry
+		{April 2013}
+		{Precision Craftmanship}
+		{Oehm Optik}
+		{}
+	\entry
+		{Autumn 2012}
+		{Craftmanship}
+		{OSCAR Moebel \& Objekte}
+		{\texttt{CNC-operation}}
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\cvsect{Education}
+
+\begin{entrylist}
+	\entry
+		{2016 -- today}
+		{Computer Science Bachelor}
+		{University of Bern}
+		{Attended Courses (in Computer Science): Programmieren 1 (P1); Programmieren 2 (P2); Einführung in die Informatik (EI); Grundlagen der technischen Informatik (GTI); Computer Graphics (CG); Computer Architecture (CA); Operating Systems (OS); Algorithmen, Wahrscheinlichkeit und Information (AWI); Diskrete Mathematik und Logik (DML); Automaten und formale Sprachen (AFS); Datenstrukturen und Algorithmen(DA); Datenbanken (DB); Berechenbarkeit und Komplexität (BK); Computernetze (CN)}
+	\entry
+		{2007 - 2016}
+		{General University Entrance Qualification}
+		{Freiherr-vom-Stein Gymnasium (Betzdorf/Kirchen)}
+		{}
+	\entry
+		{2003 -- 2007}
+		{Primary School}
+		{Martin Luther Grundschule (Betzdorf)}
+		{}
+\end{entrylist}
+
+%----------------------------------------------------------------------------------------
+%	ADDITIONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+
+	\cvsect{Languages}
+	
+	\textbf{\textsc{German}} - native\\
+	\textbf{\textsc{English}} - proficient
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	%\cvsect{}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+	\vspace{-\baselineskip} % Required for vertically aligning minipages
+	
+	\cvsect{Non profit}
+	
+	Leo Club International
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

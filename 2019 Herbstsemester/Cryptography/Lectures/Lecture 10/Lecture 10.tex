@@ -1,0 +1,53 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptography}}}
+\end{center}
+
+	{\let\clearpage\relax \chapter*{Public Key Encryption}}
+	\subsection*{KA-security}
+	\[
+		(T,k) \  \leftarrow \ \textsc{Exec}(\Pi) 
+	\]
+	\begin{tabular}{lll}
+		\begin{tabular}{l}
+			\cellcolor{gray} $L_{ka-real}^{\Pi}$ \\
+			\underline{\textsc{Query():}} \\
+			$(T,k) \  \leftarrow \ \textsc{Exec}(\Pi)$ \\
+			\textbf{return} $(T,k)$
+		\end{tabular}
+		&
+		&
+		\begin{tabular}{l}
+			\cellcolor{gray} $L_{ka-rand}^{\Pi}$ \\
+			\underline{\textsc{Query():}} \\
+			$(T,k) \  \leftarrow \ \textsc{Exec}(\Pi)$ \\
+			$r \ \leftarrow \ \Pi .K$ \\
+			\textbf{return} $(T,r)$
+		\end{tabular}
+	\end{tabular}
+	\\
+	\section*{Problems and Assumptions in DL-Type in Cryptography}
+	\subsection*{DLP (Discrete Logarithm Problem}
+	Given: $\langle g \rangle \ = \ G$, $ \mid G \mid \ = \ q$ \\
+	
+\end{document}
+ 
