@@ -1,0 +1,41 @@
+\documentclass{report}
+\usepackage[headheight=30pt, textheight=650pt]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\usepackage{stix}
+
+\newcommand{\tableflip}{$($\rotatebox{45}{$\smile$}$^{\circ}\smwhtsquare^{\circ})\rotatebox{45}{$\smile$}\mkern-6mu\frown$\raisebox{0.5ex}{$\bot$}$\mkern-3.5mu-\mkern-3.5mu$\raisebox{0.5ex}{$\bot$}}
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 10}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{10.1 ElGamal Encryption}
+		\subsection*{10.1.a }
+		\subsection*{10.1.b }
+		\subsection*{10.1.c }
+	\section*{10.2 Ciphertext size of CPA-secure public-key encryption}
+	\section*{10.3 Unbounded power}	
+	
+\end{document}
