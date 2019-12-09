@@ -1,0 +1,116 @@
+\documentclass{report}
+\usepackage[headheight=30pt, textheight=600pt]{geometry}
+\usepackage{paralist}
+\usepackage{scalerel,amssymb}
+\usepackage{amsmath}
+\usepackage{colortbl}
+\usepackage{array}
+\usepackage{multirow}
+
+\usepackage{graphicx}
+\usepackage{stix}
+
+\newcommand{\tableflip}{$($\rotatebox{45}{$\smile$}$^{\circ}\smwhtsquare^{\circ})\rotatebox{45}{$\smile$}\mkern-6mu\frown$\raisebox{0.5ex}{$\bot$}$\mkern-3.5mu-\mkern-3.5mu$\raisebox{0.5ex}{$\bot$}}
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{\LARGE Cryptography \\
+\Large Exercise 11}
+\fancyhead[R]{16-124-836 \\
+Marcel \textsc{Zauder}}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{11.1 Computing with encrypted messages}
+	\subsection*{ElGamal}
+	The encoding process looks as follows:
+	\[
+		Enc(pk, m) \ = \ (g^{r}, m \cdot Y^{r})
+	\]
+	For $m_1$ and $m_2$ we then get:
+	\begin{align*}
+		Enc(pk, m_1) \ & = \ (g^{r_1}, m_1 \cdot Y^{r_1}) \\
+		Enc(pk, m_2) \ & = \ (g^{r_2}, m_2 \cdot Y^{r_2})
+	\end{align*}
+	For the operations $\otimes$ and $\oplus$ we then get:
+	\begin{align*}
+		Enc(pk, m_1) \ \otimes \ Enc(pk, m_2) \ & = \ (g^{r_1}, m_1 \cdot Y^{r_1}) \ \otimes \ (g^{r_2}, m_2 \cdot Y^{r_2}) \\
+		& = \ (g^{r_1} \ \otimes \ g^{r_2}, m_1 \cdot Y^{r_1} \ \otimes \ m_2 \cdot Y^{r_2}) \\
+		The \ \otimes \ can \ be \ replaced &\ with \ a \ multiplication \ (\cdot): \\
+		& = \ (g^{r_1} \ \cdot \ g^{r_2}, m_1 \cdot Y^{r_1} \ \cdot \ m_2 \cdot Y^{r_2}) \\
+		& = \ (g^{r_1 + r_2}, \underbrace{m_1 \ \cdot \ m_2}_{m_3} \cdot Y^{r_1 + r_2}) \\
+		& = \ Enc(pk, m_3) & with \ m_3 \ = \ m_1 \cdot m_2
+	\end{align*}
+	\subsection*{RSA}
+	The encoding process looks as follows:
+	\[
+		Enc(pk, m) \ := \ m^{pk} \ \% N
+	\]
+	For $m_1$ and $m_2$ we then get:
+	\begin{align*}
+		Enc(pk, m_1) \ & = \ m_1^{pk} \ \% N \\
+		Enc(pk, m_2) \ & = \ m_2^{pk} \ \% N
+	\end{align*}
+	For the operations $\otimes$ and $\oplus$ we then get:
+	\begin{align*}
+		Enc(pk, m_1) \ \otimes \ Enc(pk, m_2) \ & = \ m_1^{pk} \ \% N \ \otimes \ m_2^{pk} \ \% N \\
+		& = \ (m_1^{pk} \otimes m_2^{pk}) \ \% N \\
+		The \ \otimes \ can \ be \ replaced &\ with \ a \ multiplication \ (\cdot): \\
+		& = \ (m_1^{pk} \cdot m_2^{pk}) \ \% N \\
+		& = \ ((\underbrace{m_1\cdot m_2}_{m_3})^{pk}) \ \% N \\
+		& = \ Enc(pk, m_3) & with \ m_3 \ = \ m_1 \cdot m_2
+	\end{align*}
+	\newpage
+	\section*{11.2 RSA parameters}
+	\subsection*{11.2.a Why $e$ must be odd?}
+	$e$ must be \textbf{odd}, because if $e$ would be \textbf{even} we can only reach \textbf{even} values ibn $\mathbb{G}$ (see Exercise 02).
+	\subsection*{11.2.b Given $N$ and $\Phi(N)$}
+	We have given:
+	\begin{align*}
+		N \ & = \ pq \\
+		\Phi(N) \ & = \ (p-1) \ \cdot \ (q-1)
+	\end{align*}
+	Therefore we can compute:
+	\begin{center}
+		\begin{tabular}{lllllll}
+			\begin{tabular}{|l|}
+				$N \ = \ pq$ \\
+				$\Phi(N) \ = \ (p-1) \ \cdot \ (q-1)$
+			\end{tabular}
+			&
+			$\Leftrightarrow$
+			&
+			\begin{tabular}{|l|}
+				$N \ = \ pq$ \\
+				$q \ = \ \frac{\Phi(N)}{p-1} + 1$
+			\end{tabular}
+			&
+			$\Rightarrow$
+			&
+			$N \ = \ p \cdot \left(\frac{\Phi(N)}{p-1} + 1\right)$
+		\end{tabular}
+	\end{center}
+	With this we can now compute $p$:
+	\begin{align*}
+		& & N \ & = \ p \cdot \left(\frac{\Phi(N)}{p-1} + 1\right) \\
+		& \Leftrightarrow & N \cdot (p-1) \ & = \ p \cdot \Phi(N) + p^2 - p \\
+		& \Leftrightarrow & 0 \ & = \ p^2 + p \cdot ( \Phi(N) - N - 1 ) + N \\
+		& \Leftrightarrow & p_{^1/_2} \ & = \ -\frac{\Phi(N) - N - 1}{2} \pm \sqrt{\left(\frac{\Phi(N) - N - 1}{2}\right)^2 - N}
+	\end{align*}
+	The solutions $p_1$ and $p_2$ are then the prime factorization of $N$.
+	\section*{11.3 Bad choice of prime factors}
+	\subsection*{11.3.a $p$ is "small"}
+	\subsection*{11.3.a $\mid p - q \mid$ is "small"}
+	\section*{11.4 RSA oracle}
+	
+\end{document}

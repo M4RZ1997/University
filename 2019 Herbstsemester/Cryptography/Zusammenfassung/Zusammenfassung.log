@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  3 DEC 2019 10:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  9 DEC 2019 12:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1650,7 +1650,7 @@ Overfull \hbox (4.37451pt too wide) in paragraph at lines 107--108
 [][] 
  []
 
-<security_lock.png, id=91, 513.92pt x 513.92pt>
+<security_lock.png, id=87, 513.92pt x 513.92pt>
 File: security_lock.png Graphic file (type png)
 <use security_lock.png>
 Package pdftex.def Info: security_lock.png  used on input line 112.
@@ -1682,30 +1682,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 192--194
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
+
+ []
+
 File: security_lock.png Graphic file (type png)
 <use security_lock.png>
-Package pdftex.def Info: security_lock.png  used on input line 236.
+Package pdftex.def Info: security_lock.png  used on input line 238.
 (pdftex.def)             Requested size: 35.97807pt x 35.97807pt.
 [3]
+Overfull \hbox (14.41615pt too wide) in paragraph at lines 245--274
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+
+ []
+
 File: security_lock.png Graphic file (type png)
 <use security_lock.png>
-Package pdftex.def Info: security_lock.png  used on input line 255.
+Package pdftex.def Info: security_lock.png  used on input line 324.
 (pdftex.def)             Requested size: 35.97807pt x 35.97807pt.
- [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
+[4]
+File: security_lock.png Graphic file (type png)
+<use security_lock.png>
+Package pdftex.def Info: security_lock.png  used on input line 335.
+(pdftex.def)             Requested size: 35.97807pt x 35.97807pt.
+ [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
  (./Zusammenfassung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 335.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
 Package rerunfilecheck Info: File `Zusammenfassung.out' has not changed.
-(rerunfilecheck)             Checksum: 657A199406D91A219895729FE266CAF8;1749.
+(rerunfilecheck)             Checksum: 98D71FE43FEF63B0E00897CA218692B9;1647.
  ) 
 Here is how much of TeX's memory you used:
- 43656 strings out of 492616
- 956406 string characters out of 6132768
+ 43663 strings out of 492616
+ 956488 string characters out of 6132768
  1122337 words of memory out of 5000000
- 46950 multiletter control sequences out of 15000+600000
- 608630 words of font info for 88 fonts, out of 8000000 for 9000
+ 46956 multiletter control sequences out of 15000+600000
+ 619678 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,30n,96p,1017b,923s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}<c:/texlive/2018
@@ -1713,14 +1732,15 @@ Here is how much of TeX's memory you used:
 -dist/fonts/type1/public/stix/STIXGeneral-BoldItalic.pfb><c:/texlive/2018/texmf
 -dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb><c:/texlive/2018/texmf-dis
 t/fonts/type1/public/stix/STIXGeneral-Regular.pfb><c:/texlive/2018/texmf-dist/f
-onts/type1/public/stix/stix-mathit.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
-public/stix/stix-mathrm.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix
-/stix-mathscr.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-math
-sf.pfb>
-Output written on Zusammenfassung.pdf (4 pages, 228233 bytes).
+onts/type1/public/stix/stix-mathbb.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
+public/stix/stix-mathex.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix
+/stix-mathit.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathr
+m.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:/
+texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
+Output written on Zusammenfassung.pdf (5 pages, 240676 bytes).
 PDF statistics:
- 158 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 167 PDF objects out of 1000 (max. 8388607)
+ 146 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

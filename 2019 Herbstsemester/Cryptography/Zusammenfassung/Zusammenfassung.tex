@@ -162,12 +162,12 @@ Marcel \textsc{Zauder}}
 				\begin{adjustwidth}{2em}{4em}
 					A \textbf{symmetric key encryption \textit{(SKE)} scheme} consissts of the following algorithms:
 					\begin{enumerate}[$\triangleright$]
-						\item \textsc{KeyGen}: a randomized algorithm that outputs a \textbf{\textit{key}} $k \in K$
-						\item \textsc{Enc}: a (\textit{possibly randomized}) algorithm that takes a key $k \in K$ and \textbf{\textit{plaintext}} $m \in M$ as input, and ouputs a \textbf{\textit{ciphertext}} $c \in C$
-						\item \textsc{Dec}: a deterministic algorithm that takes a key $k \in K$ and a ciphertexts $c \in C$ as input, and outputs a plaintext $m \in M$
+						\item \textsc{KeyGen}: a randomized algorithm that outputs a \textbf{\textit{key}} $k \in \mathbb{K}$
+						\item \textsc{Enc}: a (\textit{possibly randomized}) algorithm that takes a key $k \in \mathbb{K}$ and \textbf{\textit{plaintext}} $m \in \mathbb{M}$ as input, and ouputs a \textbf{\textit{ciphertext}} $c \in \mathbb{C}$
+						\item \textsc{Dec}: a deterministic algorithm that takes a key $k \in \mathbb{K}$ and a ciphertexts $c \in \mathbb{C}$ as input, and outputs a plaintext $m \in \mathbb{M}$
 					\end{enumerate}
-					$K$ is called the \textbf{\textit{key space}}, $M$ the \textbf{\textit{message space}}, and $C$ the \textbf{\textit{ciphertext space}} of the scheme. Often the entire scheme (with all its algorithms) is referred to as $\Sigma$. Each component is then referred to as $\Sigma$.\textsc{KeyGen}, $\Sigma$.\textsc{Enc}, $\Sigma$.\textsc{Dec}, $\Sigma.K$, $\Sigma.M$, and $\Sigma.C$. \\ \\
-					Furthermore we define an encryption scheme to be \textbf{\textit{correct}} if for all $k \in K$ and all $m \in M$:
+					$\mathbb{K}$ is called the \textbf{\textit{key space}}, $\mathbb{M}$ the \textbf{\textit{message space}}, and $\mathbb{C}$ the \textbf{\textit{ciphertext space}} of the scheme. Often the entire scheme (with all its algorithms) is referred to as $\Sigma$. Each component is then referred to as $\Sigma$.\textsc{KeyGen}, $\Sigma$.\textsc{Enc}, $\Sigma$.\textsc{Dec}, $\Sigma.\mathbb{K}$, $\Sigma.\mathbb{M}$, and $\Sigma.\mathbb{C}$. \\ \\
+					Furthermore we define an encryption scheme to be \textbf{\textit{correct}} if for all $k \in \mathbb{K}$ and all $m \in \mathbb{M}$:
 					\[
 						Pr[\Sigma.\textsc{Dec}(k, \Sigma.\textsc{Enc}(k, m))=m] \ = \ 1 
 					\]
@@ -194,22 +194,102 @@ Marcel \textsc{Zauder}}
 				\begin{center}
 					\begin{tabular}{|l|}
 						\hline
-						\underline{\textsc{Eavesdrop}($m \in \Sigma.M$):} \\
-						\ \ $k \leftarrow \Sigma.K$ \\
+						\underline{\textsc{Eavesdrop}($m \in \Sigma.\mathbb{M}$):} \\
+						\ \ $k \leftarrow \Sigma.\mathbb{K}$ \\
 						\ \ $c \ := \ \Sigma.\textsc{Enc}(k,m)$ \\
 						\ \ \textbf{return} $c$ \\
 						\hline
 					\end{tabular}
 				\end{center}
 				\hfill \\
-				Such an encryption scheme $\Sigma$ is secure if, for all $m \in \Sigma.M$, the output of this subroutine is uniformly distributed over $\Sigma.C$. 
+				Such an encryption scheme $\Sigma$ is secure if, for all $m \in \Sigma.\mathbb{M}$, the output of this subroutine is uniformly distributed over $\Sigma.\mathbb{C}$. 
 				\subsubsection{Adversary as Distinguishers}
 				\begin{adjustwidth}{2em}{}
-				Filler
-				\end{adjustwidth}
-				\subsubsection{Critically Analyzing a Security Definition}
-				\begin{adjustwidth}{2em}{}
-				Filler
+					For a better conceptualization of the security definition we consider the following two libraries: \\
+					\begin{center}
+						\begin{tabular}{lll}
+							\begin{tabular}{|l|}
+								\hline
+								\underline{\textsc{Eavesdrop}($m \in \Sigma.\mathbb{M}$):} \\
+								\ \ $k \leftarrow \Sigma.\mathbb{K}$ \\
+								\ \ $c \ := \ \Sigma.\textsc{Enc}(k,m)$ \\
+								\ \ \textbf{return} $c$ \\
+								\hline
+							\end{tabular}
+							&
+							&
+							\begin{tabular}{|l|}
+								\hline
+								\underline{\textsc{Eavesdrop}($m \in \Sigma.\mathbb{M}$):} \\
+								\ \ $c \ \leftarrow \ \Sigma.\mathbb{C}$ \\
+								\ \ \textbf{return} $c$ \\
+								\hline
+							\end{tabular}
+						\end{tabular}
+					\end{center}
+					\hfill \\
+					$\Sigma$ is secure if both implementations of the subroutine \textsc{Eavesdrop} have the same \textit{input-output behavior} (both subroutines generate the same output distribution, on every input). \\
+					Furthermore for every calling program $\mathbb{A}$ the connection with the right or left version of the subroutine \textsc{Eavesdrop} should not change the output distribution of $\mathbb{A}$. Such an $\mathbb{A}$ is called an \textit{\textbf{adversary}} which gets too choose plaintexts to send to an \textsc{Eavesdrop} subroutine, but does not know which one of the left or right version is used. Its only goal is to \textbf{distinguish} betwenn the left and right implementation. This means to detect differences in the behavior of the two subroutines. To distinguish whether our implementation is secure, the following must hold:
+					\[
+						Pr[\textit{the adversary outputs \textbf{1} if connected to the left implementation}] $$$$
+						= $$$$
+						Pr[\textit{the adversary outputs \textbf{1} if connected to the right implementation}]
+					\]
+					\newpage
+					\paragraph*{2.2.1.1 Example of a non-secure $\Sigma$}
+					\begin{adjustwidth}{2em}{}
+						In order to add some redundancy to the data, the following OTP is used:
+					\end{adjustwidth}
+					\begin{adjustwidth}{-1em}{}
+						\begin{center}
+							\begin{tabular}{|llll|}
+								\hline
+								\begin{tabular}{l}
+									$\mathbb{K} \ = \ \{ 0,1 \}^{\lambda}$ \\
+									$\mathbb{M} \ = \ \{ 0,1 \}^{\lambda}$ \\
+									$\mathbb{C} \ = \ \{ 0,1 \}^{2\lambda}$ \\
+								\end{tabular}
+								&
+								\begin{tabular}{l}
+									\underline{\textsc{KeyGen:}} \\
+									\ $k \leftarrow \mathbb{K}$ \\
+									\ \textbf{return} $k$
+								\end{tabular}
+								&
+								\begin{tabular}{l}
+									\underline{\textsc{Enc}($k, m \in \mathbb{M}$)} \\
+									\ $c' \ = \ k \oplus m$ \\
+									\ $c \ := \ c' \| c'$ \\
+									\ \textbf{return} $c$
+								\end{tabular}
+								&
+								\begin{tabular}{l}
+									\underline{\textsc{Dec}($k, c \in \mathbb{C}$)} \\
+									\ $c' \ = \ first  \ \lambda \ bits \ of \ c$ \\
+									\ \textbf{return} $c' \oplus k$
+								\end{tabular}
+							\hfill \\
+							\hline
+							\end{tabular}
+						\end{center}
+					\end{adjustwidth}
+					\hfill \\
+					\begin{adjustwidth}{2em}{}
+						Intuitively this version of OTP should be also \textit{secure}. However doubling the output ciphertext does not meet the security definition from above. \\
+						We can write an adversary which can distinguish between this scheme and a totally random subroutine version:
+						\begin{center}
+							\begin{tabular}{|l|}
+								\hline
+								\cellcolor{gray!80} $\mathbb{A}$ \\
+								\ $c \ =$ \textsc{Eavesdrop}($0^{\lambda}$) \\
+								\ $L \ =$ first half of $c$ \\
+								\ $R \ =$ second half of $c$ \\
+								\ \textbf{return} $L \stackrel{?}{=} R$	\\										\hline
+							\end{tabular}
+						\end{center}
+						\hfill \\
+						For the doubling version of the subroutine this distinguisher will \textbf{always} return 1. The probability that a fully random subroutine returns a ciphertext with equal first and second halves is $\frac{1}{2^{\lambda}}$. Therefore the probabilities are not equal and the adversary can successfully distinguish between both implementations
+					\end{adjustwidth}
 				\end{adjustwidth}
 				\subsubsection{Chosen Plaintext Attack Template}
 				\begin{adjustwidth}{2em}{}
