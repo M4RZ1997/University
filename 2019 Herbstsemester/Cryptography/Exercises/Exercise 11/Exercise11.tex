@@ -6,6 +6,7 @@
 \usepackage{colortbl}
 \usepackage{array}
 \usepackage{multirow}
+\usepackage{xcolor}
 
 \usepackage{graphicx}
 \usepackage{stix}
@@ -73,7 +74,7 @@ Marcel \textsc{Zauder}}
 	\newpage
 	\section*{11.2 RSA parameters}
 	\subsection*{11.2.a Why $e$ must be odd?}
-	$e$ must be \textbf{odd}, because if $e$ would be \textbf{even} we can only reach \textbf{even} values ibn $\mathbb{G}$ (see Exercise 02).
+	Because $p$ and $q$ are prime (and therefore odd) the product of $(p-1)(q-1)$ is even. Because $e$ and $\Phi(pq)$ must be \textbf{coprime}, e must be odd, otherwise these two numbers would have at least 2 as a common divisor.
 	\subsection*{11.2.b Given $N$ and $\Phi(N)$}
 	We have given:
 	\begin{align*}
@@ -110,7 +111,44 @@ Marcel \textsc{Zauder}}
 	The solutions $p_1$ and $p_2$ are then the prime factorization of $N$.
 	\section*{11.3 Bad choice of prime factors}
 	\subsection*{11.3.a $p$ is "small"}
+	We assume: $\mid p \mid \ = \ O(log \ \lambda)$. \\
+	So a possible algorithm for prime factorization can look as the following:
+	\begin{center}	
+		\begin{tabular}{|l|}
+			\hline
+			\cellcolor{gray!80} \textbf{\textit{primeFactorization(N):}} \\
+			\hline
+			\ \ $root \ := \ \sqrt{N}$; \\
+			\ \ $i \ := \ 1$; \\
+			\ \ \textbf{while} \textsc{True} \textbf{do} \\
+			\ \ \ \ \textbf{if} $i \mid N$ \\
+			\ \ \ \ \ \ \textbf{return} $i$ and $N/i$; \\
+			\ \ \ \ \textbf{else} \\
+			\ \ \ \ \ \ $i++$; \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Because we know that in the worst case this algorithm needs $O(log \ \lambda)$ steps, it is clearly efficient in $\lambda$.
 	\subsection*{11.3.a $\mid p - q \mid$ is "small"}
+	We assume: $\mid p-q \mid \ = \ O(log \ \lambda)$. \\
+	Therefore we know $p$ and $q$ must be in range of $\{\lfloor\sqrt{N}\rfloor - \frac{\mid p - q \mid}{2}, \ \lfloor\sqrt{N}\rfloor + \frac{\mid p - q \mid}{2}\}$. Furthermore we know that at least one of these must be in range $\{\lfloor\sqrt{N}\rfloor - \frac{\mid p - q \mid}{2}, \ \lfloor\sqrt{N}\rfloor\}$ and the other one in $\{\lfloor\sqrt{N}\rfloor, \ \lfloor\sqrt{N}\rfloor + \frac{\mid p - q \mid}{2}\}$. If we found one prime factor, the other one is trivial and therefore we only need to search in one of these ranges. The algorithm can therfore look like the following: \\
+	\begin{center}	
+		\begin{tabular}{|l|}
+			\hline
+			\cellcolor{gray!80} \textbf{\textit{primeFactorization(N):}} \\
+			\hline
+			\ \ $root \ := \ \sqrt{N}$; \\
+			\ \ $step \ := \ 0$; \\
+			\ \ \textbf{while} \textsc{True} \textbf{do} \\
+			\ \ \ \ $i \ := \ root + step$; \\
+			\ \ \ \ \textbf{if} $i \mid N$ \\
+			\ \ \ \ \ \ \textbf{return} $i$ and $N/i$; \\
+			\ \ \ \ \textbf{else} \\
+			\ \ \ \ \ \ $step++$; \\
+			\hline
+		\end{tabular}
+	\end{center}
+	Because we know that in the worst case this algorithm needs $\frac{O(log \ \lambda)}{2}$ steps, it is clearly efficient in $\lambda$.
 	\section*{11.4 RSA oracle}
 		We have:
 		\begin{align*}
