@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  9 DEC 2019 12:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  11 DEC 2019 13:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1701,28 +1701,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 276--277
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 296--298
+
+ []
+
 File: security_lock.png Graphic file (type png)
 <use security_lock.png>
-Package pdftex.def Info: security_lock.png  used on input line 324.
+Package pdftex.def Info: security_lock.png  used on input line 331.
 (pdftex.def)             Requested size: 35.97807pt x 35.97807pt.
 [4]
+Underfull \hbox (badness 10000) in paragraph at lines 333--334
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--361
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 382--383
+
+ []
+
 File: security_lock.png Graphic file (type png)
 <use security_lock.png>
-Package pdftex.def Info: security_lock.png  used on input line 335.
+Package pdftex.def Info: security_lock.png  used on input line 402.
 (pdftex.def)             Requested size: 35.97807pt x 35.97807pt.
- [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 335.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 335.
+[5]
+File: security_lock.png Graphic file (type png)
+<use security_lock.png>
+Package pdftex.def Info: security_lock.png  used on input line 432.
+(pdftex.def)             Requested size: 35.97807pt x 35.97807pt.
+ [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 432.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 432.
  (./Zusammenfassung.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 335.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 335.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 432.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 432.
 Package rerunfilecheck Info: File `Zusammenfassung.out' has not changed.
 (rerunfilecheck)             Checksum: 98D71FE43FEF63B0E00897CA218692B9;1647.
  ) 
 Here is how much of TeX's memory you used:
- 43663 strings out of 492616
- 956488 string characters out of 6132768
- 1122337 words of memory out of 5000000
+ 43666 strings out of 492616
+ 956514 string characters out of 6132768
+ 1124337 words of memory out of 5000000
  46956 multiletter control sequences out of 15000+600000
  619678 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1737,10 +1761,10 @@ public/stix/stix-mathex.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix
 /stix-mathit.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathr
 m.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:/
 texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on Zusammenfassung.pdf (5 pages, 240676 bytes).
+Output written on Zusammenfassung.pdf (6 pages, 247291 bytes).
 PDF statistics:
- 167 PDF objects out of 1000 (max. 8388607)
- 146 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
+ 174 PDF objects out of 1000 (max. 8388607)
+ 152 compressed objects within 2 object streams
+ 33 named destinations out of 1000 (max. 500000)
  178 words of extra memory for PDF output out of 10000 (max. 10000000)
 

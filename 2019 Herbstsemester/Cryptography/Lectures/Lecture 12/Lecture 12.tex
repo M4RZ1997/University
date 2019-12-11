@@ -1,0 +1,187 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{colortbl}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{stackengine}
+\def\apeqA{\SavedStyle\sim}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
+  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptography}}}
+\end{center}
+
+	{\let\clearpage\relax \chapter*{12 Digital Signatures}}
+	
+	\begin{enumerate}[-]
+		\item Integrity and Authenticity 
+		\item Dual to public-key encryption
+		\item Applications:
+		\begin{enumerate}[-]
+			\item signed email
+			\item certificates and public key infrastructures
+			\item software distribution
+		\end{enumerate}
+		\item universally verifiable ($neq$ Message Auth.Codes - MACs)
+	\end{enumerate}
+	
+	\subsection*{12.1 Digital Signature Scheme}
+	$\Gamma.\mathbb{M}$: message space \\
+	$\Gamma.\Sigma$: Signature space \\
+	$\Gamma.KeyGen() \rightarrow (pk, sk)$ \\
+	$\Gamma.Sign(sk, m) \rightarrow \sigma$ (m message, $\sigma$ signature) \\
+	$\Gamma.Ver(pk,m,\sigma) \rightarrow$ \textsc{True/False}
+	\subsubsection*{Completeness}
+	$\forall m \in \mathbb{M}, (pk,sk) \leftarrow KeyGen():$ \\
+	$Ver(pk,m,Sign(sk,m)) =$ \textsc{True}
+	\subsubsection*{Security}
+	Security means: $\mathbb{A}$ cannont \underline{\textit{forge}} a valid message/signature pair that was not produced by the legitimate signer.
+	\paragraph*{Definition:}
+	A digital-sign.-schme $\Gamma$ is \textit{secure} (existential unforgability against \textbf{adaptive chosen-message attacks}) if
+	\begin{center}
+		\begin{tabular}{lll}
+			\begin{tabular}{|l|}
+				\hline
+				\cellcolor{gray!80} $\mathbb{L}_{sig-real}^{\Gamma}$ \\
+				\hline
+				$(pk, sk) \leftarrow KeyGen()$ \\
+				\\
+				\underline{\textsc{GetPK():}} \\
+				\ \ \textbf{return} $pk$ \\
+				\\
+				\underline{\textsc{GetSig}($m$):} \\
+				\ \ \textbf{return} $Sign(sk, m)$ \\
+				\\
+				\underline{\textsc{CheckSig}($m,\sigma$)} \\
+				\ \ \textbf{return} $Ver(pk,m,\sigma)$ \\
+				\hline
+			\end{tabular}
+			&
+			&
+			\begin{tabular}{|l|}
+				\hline
+				\cellcolor{gray!80} $\mathbb{L}_{sig-ideal}^{\Gamma}$ \\
+				\hline
+				$(pk, sk) \leftarrow KeyGen()$ \\
+				$\mathbb{S} := \emptyset$ \\
+				\\
+				\underline{\textsc{GetPK():}} \\
+				\ \ \textbf{return} $pk$ \\
+				\\
+				\underline{\textsc{GetSig}($m$):} \\
+				\ \ $\sigma \leftarrow Sign(sk,m)$ \\
+				\ \ $\mathbb{S} := \mathbb{S} \vee \{ (m,\sigma) \}$ \\
+				\ \ \textbf{return} $\sigma$ \\
+				\\
+				\underline{\textsc{CheckSig}($m,\sigma$)} \\
+				\ \ \textbf{return} $(m, \sigma) \stackrel{?}{\in} \mathbb{S}$ \\
+				\hline
+			\end{tabular}
+		\end{tabular}
+	\end{center}
+	Relaxations are possible by permitting multiple equivalent signatures for each message.
+	
+	\subsection*{12.2 RSA signatures}
+	Recall RSA function:
+	\begin{enumerate}[-]
+		\item \underline{KeyGen():} \\
+		$p, q$ ... large primes \\
+		$N := p \cdot q$ \\
+		$e$ ... (small) prime \\
+		$d \ : \ d \cdot e \equiv_{\Phi(N)} 1$ \ \ \ \ \ $\Phi(N) := (p-1)\cdot (q-1)$ \\
+		$(pk,sk) := ((N,e),d)$
+		\item \underline{Eval(pk,x):} \\
+		\textbf{return} $x^e \ mod \ N$
+		\item \underline{Invert(sk,c):} \\
+		\textbf{return} $c^d \ mod \ N$
+	\end{enumerate}
+	
+	\underline{\textbf{Textbook RSA signatures - INSECURE}} \\
+	Direct application of RSA function for signatures: \\
+	$\Gamma.KeyGen()$: \\
+	\textbf{return} RSA.KeyGen() \\
+	\\
+	$\Gamma.Sign(sk,m)$ \\
+	\textbf{return} RSA.Invert(sk,m) \\
+	\\
+	$\Gamma.Ver(pk, m, \sigma)$ \\
+	\textbf{return} RSA.Eval(pk,$\sigma$) $\stackrel{?}{=} m$ \\
+	\\ 
+	\underline{$m_1, m_2$:} (To forge sign on $\overline{m}$ pick $m_1, m_2$ s.t. $\overline{m} = m_1 \cdot m_2$) \\
+	$\sigma_1 \ := \ Sign(sk, m_1)$ \\
+	$\sigma_2 \ := \ Sign(sk, m_2)$ \\
+	It holds that: \\
+	$\sigma_1^e \equiv_N m_1$ \\
+	$\sigma_2^e \equiv_N m_2$ \\
+	$\} (\sigma_1 \cdot \sigma_2)^e \equiv_N m_1 \cdot m_2$ \\
+	To forge signature of $\overline{m} = m_1 \cdot m_2$ compute $\overline{\sigma} = (\sigma_1 \cdot \sigma_2)^e \ mod \ N$ \\
+	\\
+	\underline{\textbf{Textbook RSA}} \\
+	given $m$, difficult to produce $\sigma$ \\
+	Attack to produce a valid message/signature pair: \\
+	\textbf{pick} random $\sigma^{\star}$ \\
+	$m^{\star} := (\sigma^{\star})^{e} \ mod \ N$ \\
+	This satisfies $(\sigma^{\star})^{e} \equiv_N m^{\star}$, $Ver(pk, m^{\star}, \sigma^{\star}) \ =$ \textsc{True} \\
+	\\
+	\underline{\textbf{RSA Full-domain-hash signatures}} \\
+	How to properly sign with RSA in the random oracle model (R.O.M.) \\
+	\underline{Idea:} Break the connection between message $m$ and a signature $\sigma$ by using a hash-function $H$ and signing its output. \\
+	\\
+	Let $H : \{ 0,1 \}^{\star} \rightarrow \mathbb{Z}_N^{\star}$ \\
+	$J : \{ 0,1 \}^{\star} \rightarrow \{ 0,1 \}^{k}$ \\
+	but $k \approx 256$ \\
+	Define  $H : \{ 0,1 \}^{\star} \rightarrow \{ 0,1 \}^{\mid N \mid}$ \\
+	$H(x) := J(0 \| x) \| J(1 \| x) \| ... \| J(l-1 \| x)$ \ \ \ \ \ for $l = \lceil\frac{\mid N \mid}{k}\rceil$ \\
+	\\ 
+	\underline{FDH-RSA} \\
+	KeyGen() - same as before \\
+	\\
+	Sign(sk,m) \\
+	\textbf{return} RSA.Inverse(sk, H(m)) \\
+	\\
+	Ver(pk,m$\sigma$) \\
+	\textbf{return} RSA.Eval(pk, $\sigma$) $\stackrel{?}{=}$ H(m) \\
+	\\
+	\textbf{Hash and sign:} Hash message first and then apply pk-transformation \\
+	\textbf{Hybrid-encryption:} pick a random symmetric key and then encrypt (long) plaintext with k and use the public-key-transformation to encrypt k itself \\
+	\newpage
+	\subsection*{12.3 Schnorr Signatures}
+	PK signatures based on the DLP \\
+	Group $G = \langle g \rangle$, generator $g$ \\
+	$\mid G \mid = q$, for example $G \subset \mathbb{Z}_p$, $p$ prime, s.t. $q \mid (p-1)$ \\
+	$\mid p \mid \approx 2048$ \\
+	$\mid q \mid \approx 256$ \\
+	\\
+	$H: \{ 0,1 \} ^{\star} \rightarrow \mathbb{Z}_q$ \\
+	\\
+	\underline{KeyGen():} \\
+	$x \leftarrow \mathbb{Z}_q$ \\
+	\textbf{return} $(g^x ,x)$ \\
+	\\
+	\underline{Sign(x,m):} \\
+	$r \leftarrow \mathbb{Z}_q$ \\
+	$t := g^r \ mod \ p$ \\
+	$c := H(m \| t)$ \\
+	$s := (r - c \cdot x) \ mod \ q$ \\
+	\textbf{return} $(c, s)$ \\
+	\\
+	\underline{Ver(y (= $g^x$), m, (c,s)):} \\
+	$\hat{t} := g^s \cdot y^c \ mod \ p$ (=$g^s \cdot y^c  \ = \ g^{r-c \cdot x} \cdot g^{x^c} \ = \ g^{r-c\cdot x + c \cdot x} \ = \ g^r$ \\
+	\textbf{return} $c \stackrel{?}{=} H(m \| \hat{t})$ \\
+	\\
+	\underline{\textbf{Completeness:}} \\
+	$\hat{t} = t$ because $g^s \cdot y^c \equiv_p t \equiv_p g^r$ \\
+	$c = H(m\|t) = H(m\| \hat{t})$ because $H$ deterministic.
+\end{document}
+ 
