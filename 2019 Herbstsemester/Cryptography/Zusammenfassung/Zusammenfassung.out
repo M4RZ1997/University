@@ -11,10 +11,62 @@
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Chosen Plaintext Attack Template}{subsection.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.3}{Provable Security Fundamentals}{section.2}% 12
 \BOOKMARK [3][-]{subsubsection.2.3.1}{Libraries \046 Interfaces}{subsection.2.3}% 13
-\BOOKMARK [3][-]{subsubsection.2.3.2}{Semantics \046 Scopes}{subsection.2.3}% 14
-\BOOKMARK [3][-]{subsubsection.2.3.3}{Interchangeability}{subsection.2.3}% 15
-\BOOKMARK [3][-]{subsubsection.2.3.4}{Security Definition, Using New Terminology}{subsection.2.3}% 16
-\BOOKMARK [2][-]{subsection.2.4}{How to Prove Security with the Hybrid Technique}{section.2}% 17
-\BOOKMARK [3][-]{subsubsection.2.4.1}{Chaining Several Components}{subsection.2.4}% 18
-\BOOKMARK [3][-]{subsubsection.2.4.2}{One-Time Secrecy of One-Time Pad}{subsection.2.4}% 19
-\BOOKMARK [2][-]{subsection.2.5}{How to Demonstarte Insecurity with Attacks}{section.2}% 20
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Interchangeability}{subsection.2.3}% 14
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Security Definition, Using New Terminology}{subsection.2.3}% 15
+\BOOKMARK [2][-]{subsection.2.4}{How to Prove Security with the Hybrid Technique}{section.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Chaining Several Components}{subsection.2.4}% 17
+\BOOKMARK [3][-]{subsubsection.2.4.2}{One-Time Secrecy of One-Time Pad}{subsection.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.5}{How to Demonstrate Insecurity with Attacks}{section.2}% 19
+\BOOKMARK [1][-]{section.3}{Basing Cryptography on Intractable Computations}{}% 20
+\BOOKMARK [2][-]{subsection.3.1}{What Qualifies as a "Computational Infeasible" Attack?}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Asymptotic Running Time}{subsection.3.1}% 22
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Potential Pitfall: Numerical Algorithms}{subsection.3.1}% 23
+\BOOKMARK [2][-]{subsection.3.2}{What Qualifies as a "Negligible" Success Probability?}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.3}{Indistinguishability}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Bad Event Lemma}{subsection.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.4}{Birthday Probabilities \046 Sampling With/out Replacement}{section.3}% 27
+\BOOKMARK [1][-]{section.4}{Pseudorandom Generators}{}% 28
+\BOOKMARK [2][-]{subsection.4.1}{Definition}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.2}{Pseudorandom Generators in Practice}{section.4}% 30
+\BOOKMARK [3][-]{subsubsection.4.2.1}{How not to Build a PRG}{subsection.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.3}{Application: Shorter Keys in One-Time Secret Encryption}{section.4}% 32
+\BOOKMARK [2][-]{subsection.4.4}{Extending the Stretch of PRG}{section.4}% 33
+\BOOKMARK [1][-]{section.5}{Pseudorandom Function \046 Block Ciphers}{}% 34
+\BOOKMARK [2][-]{subsection.5.1}{Definition}{section.5}% 35
+\BOOKMARK [3][-]{subsubsection.5.1.1}{How not to Build a PRF}{subsection.5.1}% 36
+\BOOKMARK [2][-]{subsection.5.2}{Block Cipher \(Pseudorandom Permutations\)}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.3}{Relating PRFs and Block Ciphers}{section.5}% 38
+\BOOKMARK [3][-]{subsubsection.5.3.1}{Switching Lemma}{subsection.5.3}% 39
+\BOOKMARK [2][-]{subsection.5.4}{PRFs and Block Ciphers in Practice}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.5}{Strong Pseudorandom Permutations}{section.5}% 41
+\BOOKMARK [1][-]{section.6}{Security against Chosen Plaintext Attacks}{}% 42
+\BOOKMARK [2][-]{subsection.6.1}{Limits of Deterministic Encryption}{section.6}% 43
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Avoiding Deterministic Encryption}{subsection.6.1}% 44
+\BOOKMARK [2][-]{subsection.6.2}{Pseudorandom Ciphertexts}{section.6}% 45
+\BOOKMARK [2][-]{subsection.6.3}{CPA-Secure Encryption Based on PRFs}{section.6}% 46
+\BOOKMARK [1][-]{section.7}{Block Cipher Modes of Operation}{}% 47
+\BOOKMARK [2][-]{subsection.7.1}{A Tour of Common Modes}{section.7}% 48
+\BOOKMARK [3][-]{subsubsection.7.1.1}{ECB: Electronic Codebook}{subsection.7.1}% 49
+\BOOKMARK [3][-]{subsubsection.7.1.2}{CBC: Cipher Block Chaining}{subsection.7.1}% 50
+\BOOKMARK [3][-]{subsubsection.7.1.3}{CTR: Counter}{subsection.7.1}% 51
+\BOOKMARK [3][-]{subsubsection.7.1.4}{OFB: Output Feedback}{subsection.7.1}% 52
+\BOOKMARK [3][-]{subsubsection.7.1.5}{Compare \046 Contrast}{subsection.7.1}% 53
+\BOOKMARK [2][-]{subsection.7.2}{CPA Security for Variable-Length Plaintexts}{section.7}% 54
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Don't Take Length-Leaking for Granted}{subsection.7.2}% 55
+\BOOKMARK [1][-]{section.8}{Diffie-Hellman Key Agreement}{}% 56
+\BOOKMARK [2][-]{subsection.8.1}{Cyclic Groups}{section.8}% 57
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Example}{subsection.8.1}% 58
+\BOOKMARK [2][-]{subsection.8.2}{Diffie-Hellman Key Agreement}{section.8}% 59
+\BOOKMARK [2][-]{subsection.8.3}{Decisional Diffie-Hellman Problem}{section.8}% 60
+\BOOKMARK [3][-]{subsubsection.8.3.1}{For Which Groups does the DDH Assumption Hold?}{subsection.8.3}% 61
+\BOOKMARK [1][-]{section.9}{Public-Key Encryption}{}% 62
+\BOOKMARK [2][-]{subsection.9.1}{Security Definitions}{section.9}% 63
+\BOOKMARK [3][-]{subsubsection.9.1.1}{Chosen-Plaintext Attacks Security \(CPA-Security}{subsection.9.1}% 64
+\BOOKMARK [3][-]{subsubsection.9.1.2}{Pseudorandom Ciphertexts}{subsection.9.1}% 65
+\BOOKMARK [2][-]{subsection.9.2}{One-Time Security Implies Many-Time Security}{section.9}% 66
+\BOOKMARK [2][-]{subsection.9.3}{ElGamal Encryption}{section.9}% 67
+\BOOKMARK [3][-]{subsubsection.9.3.1}{Security}{subsection.9.3}% 68
+\BOOKMARK [1][-]{section.10}{RSA \046 Digital Signatures}{}% 69
+\BOOKMARK [2][-]{subsection.10.1}{"Dividing" Mod N}{section.10}% 70
+\BOOKMARK [2][-]{subsection.10.2}{The RSA Function}{section.10}% 71
+\BOOKMARK [2][-]{subsection.10.3}{The Hardness of Factoring N}{section.10}% 72
