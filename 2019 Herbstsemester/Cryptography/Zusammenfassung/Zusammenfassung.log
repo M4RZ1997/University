@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  3 FEB 2020 14:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  4 FEB 2020 07:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2078,7 +2078,7 @@ Package rerunfilecheck Info: File `Zusammenfassung.out' has not changed.
 Here is how much of TeX's memory you used:
  43833 strings out of 492616
  958679 string characters out of 6132768
- 1129337 words of memory out of 5000000
+ 1129336 words of memory out of 5000000
  47019 multiletter control sequences out of 15000+600000
  619678 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2095,7 +2095,7 @@ frak.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c
 :/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><c:/texlive/2
 018/texmf-dist/fonts/type1/public/stix/stix-mathscr.pfb><c:/texlive/2018/texmf-
 dist/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on Zusammenfassung.pdf (25 pages, 360794 bytes).
+Output written on Zusammenfassung.pdf (25 pages, 360791 bytes).
 PDF statistics:
  528 PDF objects out of 1000 (max. 8388607)
  482 compressed objects within 5 object streams
