@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DGPExerciseToolbarBase</class>
+ <widget class="QWidget" name="DGPExerciseToolbarBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>698</width>
+    <height>269</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DGP</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>4</number>
+     </property>
+     <widget class="QWidget" name="EigenTutorial">
+      <attribute name="title">
+       <string>EigenTutorial</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="solve_sls_pb">
+         <property name="text">
+          <string>Solve Sparse Linear System</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="IsoContouring">
+      <attribute name="title">
+       <string>IsoContouring</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="show_iso_pb">
+         <property name="text">
+          <string>Show Iso-value and Level Set</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QComboBox" name="function_cb">
+         <item>
+          <property name="text">
+           <string>F(x,y)=sqrt(x*x + y*y) −1=0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>F(x,y)=y*y−sin(x*x)=0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>F(x,y)=sin(2x+2y)−cos(4x*y)+1=0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>F(x,y)=pow((3x*x −y*y), 2)*y*y −pow((x*x +y*y), 4)=0</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="CurveSmoothing">
+      <attribute name="title">
+       <string>CurveSmoothing</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Generate Curve</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="0">
+           <widget class="QSpinBox" name="num_vertices_sb">
+            <property name="prefix">
+             <string>curve vertex number = </string>
+            </property>
+            <property name="minimum">
+             <number>2</number>
+            </property>
+            <property name="maximum">
+             <number>10000</number>
+            </property>
+            <property name="value">
+             <number>30</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="gen_curve_pb">
+            <property name="text">
+             <string>Generate Curve</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QGroupBox" name="groupBox_2">
+         <property name="title">
+          <string>Smooth Curve</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QSpinBox" name="num_iter_sb">
+            <property name="prefix">
+             <string>iteration number = </string>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QDoubleSpinBox" name="epsilon_dsb">
+            <property name="prefix">
+             <string>epsilon = </string>
+            </property>
+            <property name="decimals">
+             <number>3</number>
+            </property>
+            <property name="minimum">
+             <double>0.001000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="value">
+             <double>0.001000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="lpl_smoothing_pb">
+            <property name="text">
+             <string>Laplacian Smoothing</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="osc_smoothing_pb">
+            <property name="text">
+             <string>Osculating Circle Smoothing</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="NormalAndCurvature">
+      <attribute name="title">
+       <string>NormalAndCurvature</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="groupBox_3">
+         <property name="title">
+          <string>Normal</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QComboBox" name="normal_type_cb">
+            <item>
+             <property name="text">
+              <string>Constant weights</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Area weights</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Angle weights</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="show_normal_pb">
+            <property name="text">
+             <string>Show Normal</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="groupBox_4">
+         <property name="title">
+          <string>Curvature</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QComboBox" name="curvature_type_cb">
+            <item>
+             <property name="text">
+              <string>Uniform Laplacian</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Laplace-Beltrami</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Gaussian</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="show_curvature_pb">
+            <property name="text">
+             <string>Show Curvature</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="PoissonReconstruction">
+      <attribute name="title">
+       <string>PoissonReconstruction</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_10">
+       <item row="0" column="0">
+        <widget class="QSpinBox" name="octree_depth_sb">
+         <property name="prefix">
+          <string>Octree depth = </string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>20</number>
+         </property>
+         <property name="value">
+          <number>8</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="poisson_reconstruction_pb">
+         <property name="text">
+          <string>Poisson Reconstruction</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

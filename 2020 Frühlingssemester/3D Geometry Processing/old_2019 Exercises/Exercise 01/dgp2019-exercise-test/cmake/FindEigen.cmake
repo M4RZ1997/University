@@ -1,0 +1,3 @@
+### Eigen ###
+set(EIGEN_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/externals/eigen")
+list(APPEND EIGEN_INCLUDE_DIRS "${EIGEN_INCLUDE_DIR}")

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DGPExerciseToolbarBase</class>
+ <widget class="QWidget" name="DGPExerciseToolbarBase">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>663</width>
+    <height>209</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>DGP</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="EigenTutorial">
+      <attribute name="title">
+       <string>EigenTutorial</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="solve_sls_pb">
+         <property name="text">
+          <string>Solve Sparse Linear System</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="IsoContouring">
+      <attribute name="title">
+       <string>IsoContouring</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="1" column="0">
+        <widget class="QPushButton" name="show_iso_pb">
+         <property name="text">
+          <string>Show Iso-value and Level Set</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QComboBox" name="function_cb">
+         <item>
+          <property name="text">
+           <string>F(x,y)=sqrt(x*x + y*y) −1=0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>F(x,y)=y*y−sin(x*x)=0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>F(x,y)=sin(2x+2y)−cos(4x*y)+1=0</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>F(x,y)=pow((3x*x −y*y), 2)*y*y −pow((x*x +y*y), 4)=0</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
