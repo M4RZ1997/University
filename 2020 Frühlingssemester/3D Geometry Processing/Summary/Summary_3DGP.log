@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  18 FEB 2020 15:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  19 FEB 2020 09:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1429,43 +1429,43 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./Summary_3DGP.aux)
 \openout1 = `Summary_3DGP.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 50.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 50.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 54.
  (c:/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 50.
-LaTeX Font Info:    Try loading font information for LS1+stix on input line 50.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 54.
+LaTeX Font Info:    Try loading font information for LS1+stix on input line 54.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 50.
-LaTeX Font Info:    Try loading font information for LS2+stix on input line 50.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 54.
+LaTeX Font Info:    Try loading font information for LS2+stix on input line 54.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 50.
-LaTeX Font Info:    ... okay on input line 50.
-LaTeX Font Info:    Try loading font information for T1+stix on input line 50.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
+LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Try loading font information for T1+stix on input line 54.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
@@ -1535,16 +1535,16 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 50.
+LaTeX Info: Redefining \selectfont on input line 54.
  ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 50.
+ on input line 54.
 
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 50.
+Package hyperref Info: Link coloring OFF on input line 54.
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1553,68 +1553,68 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count423
 )
-LaTeX Info: Redefining \ref on input line 50.
-LaTeX Info: Redefining \pageref on input line 50.
-LaTeX Info: Redefining \nameref on input line 50.
+LaTeX Info: Redefining \ref on input line 54.
+LaTeX Info: Redefining \pageref on input line 54.
+LaTeX Info: Redefining \nameref on input line 54.
 
 (./Summary_3DGP.out) (./Summary_3DGP.out)
 \@outlinefile=\write11
 \openout11 = `Summary_3DGP.out'.
 
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 52.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 56.
 LaTeX Font Info:    Try loading font information for LS1+stixscr on input line 
-53.
+57.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
 LaTeX Font Info:    Try loading font information for LS2+stixex on input line 5
-3.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 53.
+LaTeX Font Info:    Try loading font information for U+msa on input line 57.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 53.
+LaTeX Font Info:    Try loading font information for U+msb on input line 57.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for LS1+stixfrak on input line
- 53.
+ 57.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
 LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 5
-3.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixcal on input line 
-53.
+57.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
 LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 5
-3.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 5
-3.
+7.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
@@ -1623,10 +1623,10 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 <TeaPot_WireFrame.png, id=11, 1003.75pt x 903.375pt>
 File: TeaPot_WireFrame.png Graphic file (type png)
 <use TeaPot_WireFrame.png>
-Package pdftex.def Info: TeaPot_WireFrame.png  used on input line 53.
+Package pdftex.def Info: TeaPot_WireFrame.png  used on input line 57.
 (pdftex.def)             Requested size: 50.19043pt x 45.17139pt.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 53.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 57.
 
 
 Package Fancyhdr Warning: \headheight is too small (40.0pt): 
@@ -1637,25 +1637,18 @@ This may cause the page layout to be inconsistent, however.
 [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
  <./TeaPot_WireFrame.png (PNG copy)>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 53.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 57.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
  (./Summary_3DGP.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 53.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 53.
-
-
-Package rerunfilecheck Warning: File `Summary_3DGP.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Summary_3DGP.out':
-(rerunfilecheck)             Before: 78DDA69A40B92C4AD250F599B8E96287;66
-(rerunfilecheck)             After:  6D362B7674182E89AC8B66898BEF61CE;46.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 57.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
+Package rerunfilecheck Info: File `Summary_3DGP.out' has not changed.
+(rerunfilecheck)             Checksum: 6D362B7674182E89AC8B66898BEF61CE;46.
  ) 
 Here is how much of TeX's memory you used:
  43486 strings out of 492616
  953212 string characters out of 6132768
- 1113280 words of memory out of 5000000
+ 1114334 words of memory out of 5000000
  46811 multiletter control sequences out of 15000+600000
  576104 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1663,7 +1656,7 @@ Here is how much of TeX's memory you used:
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}<c:/texlive/2018
 /texmf-dist/fonts/type1/public/stix/STIXGeneral-Bold.pfb><c:/texlive/2018/texmf
 -dist/fonts/type1/public/stix/STIXGeneral-Regular.pfb>
-Output written on Summary_3DGP.pdf (1 page, 372428 bytes).
+Output written on Summary_3DGP.pdf (1 page, 372416 bytes).
 PDF statistics:
  31 PDF objects out of 1000 (max. 8388607)
  24 compressed objects within 1 object stream
