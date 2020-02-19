@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  19 FEB 2020 09:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  19 FEB 2020 09:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1642,15 +1642,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
  (./Lectures_3DGP.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 57.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
-
-
-Package rerunfilecheck Warning: File `Lectures_3DGP.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Lectures_3DGP.out':
-(rerunfilecheck)             Before: 78DDA69A40B92C4AD250F599B8E96287;66
-(rerunfilecheck)             After:  B09768E6A1FDB89AE77C2C97531896C1;66.
+Package rerunfilecheck Info: File `Lectures_3DGP.out' has not changed.
+(rerunfilecheck)             Checksum: B09768E6A1FDB89AE77C2C97531896C1;66.
  ) 
 Here is how much of TeX's memory you used:
  43486 strings out of 492616
