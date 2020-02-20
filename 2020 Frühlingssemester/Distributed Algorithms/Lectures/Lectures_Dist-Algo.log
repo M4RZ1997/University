@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  19 FEB 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  20 FEB 2020 10:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1683,23 +1683,13 @@ LaTeX Font Info:    Try loading font information for TS1+stix on input line 104
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
-Missing character: There is no p in font nullfont!
-Missing character: There is no q in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no . in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no B in font nullfont!
-Missing character: There is no U in font nullfont!
-Missing character: There is no S in font nullfont!
 <distributed.png, id=39, 301.125pt x 301.125pt>
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 138.
+Package pdftex.def Info: distributed.png  used on input line 160.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 138.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 160.
 
 
 Package Fancyhdr Warning: \headheight is too small (40.0pt): 
@@ -1710,142 +1700,49 @@ This may cause the page layout to be inconsistent, however.
 [1{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
  <./distributed.png>]
-Missing character: There is no ( in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no ) in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no ( in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no ) in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no k in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no ( in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no ) in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no | in font nullfont!
-Missing character: There is no ( in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no ) in font nullfont!
-Missing character: There is no " in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no " in font nullfont!
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 222.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 161.
+(paralist)                The label is: - on input line 228.
 
-
-Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 167.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 195--199
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 236.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 256--260
 
  []
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 206.
+Package pdftex.def Info: distributed.png  used on input line 282.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
-[2]
+[3]
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 221.
-(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
- [3]
-File: distributed.png Graphic file (type png)
-<use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 226.
+Package pdftex.def Info: distributed.png  used on input line 287.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
  [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 287.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 287.
  (./Lectures_Dist-Algo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 287.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 287.
 Package rerunfilecheck Info: File `Lectures_Dist-Algo.out' has not changed.
-(rerunfilecheck)             Checksum: 27C6EF9C66E4A74BA107994A85C5695F;643.
+(rerunfilecheck)             Checksum: 617B665B199030320D2D0B09755D27A0;643.
  ) 
 Here is how much of TeX's memory you used:
- 43599 strings out of 492616
- 955283 string characters out of 6132768
- 1123344 words of memory out of 5000000
- 46891 multiletter control sequences out of 15000+600000
- 598504 words of font info for 84 fonts, out of 8000000 for 9000
+ 43830 strings out of 492616
+ 959107 string characters out of 6132768
+ 1125344 words of memory out of 5000000
+ 47122 multiletter control sequences out of 15000+600000
+ 601276 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,31n,96p,1020b,868s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,30n,96p,1020b,906s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-ts1.enc}{c:/texlive/201
 8/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}<c:/texlive/2018/texmf-dist/fonts
 /type1/public/stix/STIXGeneral-Bold.pfb><c:/texlive/2018/texmf-dist/fonts/type1
@@ -1856,7 +1753,7 @@ lic/stix/STIXGeneral-Regular.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public
 fb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c:/texl
 ive/2018/texmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><c:/texlive/2018/te
 xmf-dist/fonts/type1/public/stix/stix-mathsf.pfb>
-Output written on Lectures_Dist-Algo.pdf (4 pages, 154180 bytes).
+Output written on Lectures_Dist-Algo.pdf (4 pages, 154973 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  110 compressed objects within 2 object streams

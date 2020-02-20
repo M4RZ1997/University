@@ -117,21 +117,64 @@
 				Processes $\Pi = \{ p,q,r,s \ldots \}$ \\
 				$\mid \Pi \mid = N$
 				
-				\begin{tikzpicture}[-,thick,every node/.style={shape=rectangle,inner sep=3pt,draw,thick}]
-					p			q			....	s
-  					\node{};	\node{};			\node{};
-  					\node{};	\node{};			\node{};
-  					\node{};	\node{};			\node{};
-  					BUS $\leftrightarrow$
-				\end{tikzpicture}
+				\begin{adjustwidth}{1em}{}
+					\begin{tikzpicture}
+						\coordinate (start);
+							
+						%Nodes
+						\node [right=of start] (p) {$p$};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of p] (1stp) {};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of 1stp] (2ndp) {};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of 2ndp] (3rdp) {};
+						
+						\node [right=2cm of p] (q) {$q$};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of q] (1stq) {};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of 1stq] (2ndq) {};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of 2ndq] (3rdq) {};
+						
+						\node [right=2cm of 2ndq] (ldots) {\ldots};
+						
+						\node [right=5cm of q] (s) {$s$};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of s] (1sts) {};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of 1sts] (2nds) {};
+						\node (rect) [draw,thin,minimum width=1cm,minimum height=0.5cm, below=0cm of 2nds] (3rds) {};
+						
+						\node [below left=0.5cm and 0cm of 3rdp] (pbelow) {};	
+						\node [below right=0.5cm and 0cm of 3rds] (sbelow) {};	
+						\node [below =0.175cm of 3rdq] (qbelow) {};	
+						\node [below =0.775cm of ldots] (ldotsbelow) {};	
+						
+						%Lines
+						\draw (3rdp.south) -- (3rds.south);
+						\draw (pbelow) -- (sbelow);
+						\draw[arrow] (qbelow) -- (ldotsbelow);
+						\draw[arrow] (ldotsbelow) -- (qbelow);
+							
+						%Lines
+						%\draw[arrow] (start) -- node[ anchor=south ]{$m$} (Enc.west);
+						%\draw[arrow] (Enc.east) -- node[ anchor=south ]{$c$} (Dec.west);
+						%\draw[arrow] (Enc.east) -| (Eve.north);
+						%\draw[arrow] (Dec.east) -- node[ anchor=south ]{$m'$} (stop.west);
+							
+					\end{tikzpicture}
+				\end{adjustwidth}
 				\hfill \\
 				\underline{\textsc{Components}} \\
-				\begin{tikzpicture}
-					$\updownarrow$
-					\node{Comp. A};
-					$\updownarrow$
-					\node{Comp. B};
-					$\updownarrow$
+				\begin{tikzpicture}					
+					\coordinate (start);
+					
+					%Nodes
+					\node (rect) [draw,thin,minimum width=2cm,minimum height=0.5cm, below=0.5cm of start] (CompA) {Comp. A};
+					\node (rect) [draw,thin,minimum width=2cm,minimum height=0.5cm, below=0.5cm of CompA] (CompB) {Comp. B};
+					\node [below=0.5cm of CompB] (stop) {};
+					
+					%Lines
+					\draw[arrow] (start) -- (CompA.north);
+					\draw[arrow] (CompA.north) -- (start);
+					\draw[arrow] (CompA.south) -- (CompB.north);
+					\draw[arrow] (CompB.north) -- (CompA.south);
+					\draw[arrow] (stop) -- (CompB.south);
+					\draw[arrow] (CompB.south) -- (stop);
 				\end{tikzpicture}
 				\hfill \\
 				\textsc{Events} for Component $c$:
@@ -149,12 +192,30 @@
 			\subsubsection{Layered modules}
 			\begin{adjustwidth}{2em}{}
 				\begin{tikzpicture}
-					\node{layer k+1};
-					$\downarrow$(blue) "send" || $\uparrow$(red) "deliver"
-					\node{Layer k};
-					invoke || receive
-					$\downarrow$(blue) "unreliable send" || $\uparrow$(red) "unreliable deliver"
-					\node{layer k-1};
+					\coordinate (start);
+					
+					%Nodes
+					\node (rect) [draw,thin,minimum width=5cm,minimum height=1cm] (Layerk+1) {Layer $k+1$};
+					\node (rect) [draw,thin,minimum width=5cm,minimum height=1cm, below=1cm of Layerk+1] (Layerk) {Layer $k$};
+					\node (rect) [draw,thin,minimum width=5cm,minimum height=1cm, below=1cm of Layerk] (Layerk-1) {Layer $k-1$};
+					
+					\node [below left = -0.1cm and -1cm of Layerk+1] (sendOut) {};
+					\node [below right = -0.1cm and -1cm of Layerk+1] (deliverIn) {};
+					\node [above left = -0.1cm and -1cm of Layerk] (sendIn) {};
+					\node [above right = -0.1cm and -1cm of Layerk] (deliverOut) {};
+					\node [below left = -0.1cm and -1cm of Layerk] (unSendOut) {};
+					\node [below right = -0.1cm and -1cm of Layerk] (unDeliverIn) {};
+					\node [above left = -0.1cm and -1cm of Layerk-1] (unSendIn) {};
+					\node [above right = -0.1cm and -1cm of Layerk-1] (unDeliverOut) {};
+					
+					\node [above=-0.1cm of unSendOut] (invoke) {\scriptsize invoke};
+					\node [above=-0.1cm of unDeliverIn] (receive) {\scriptsize receive};
+					
+					%Lines
+					\draw[blue, arrow] (sendOut) -- node[ anchor=west ]{"send"} (sendIn);
+					\draw[red, arrow] (deliverOut) -- node[ anchor=east ]{"deliver"} (deliverIn);
+					\draw[blue, arrow] (unSendOut) -- node[ anchor=east ]{"unreli. send"} (unSendIn);
+					\draw[red, arrow] (unDeliverOut) -- node[ anchor=west ]{"unreli. deliver"} (unDeliverIn);
 				\end{tikzpicture}
 				\hfill \\
 				Events either travel:
