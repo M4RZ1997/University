@@ -46,7 +46,7 @@
 				\begin{tabular}{|c|}
 					\hline
 					\\
-					\textit{Flight Instructions} \\
+					\textbf{\textit{Flight Instructions}} \\
 					\\
 					\hline
 				\end{tabular}
@@ -86,35 +86,11 @@
 				\hline
 			\end{tabular}
 		\end{center}
-		
-%Für Bäsi
-\begin{center}
-	\begin{tikzpicture}
-		%Rectangles
-		\node(rect) [draw, thin, text depth = 7cm, minimum height = 7cm, minimum width = 7cm] (main){\Large \textbf{Website (C)}};
-		\node[draw, thin, text depth = 4.5cm, minimum height = 4cm, minimum width = 5cm] at (main.center) (sub){\textit{SearchResultHandler (B)}};
-		\node[draw, thin, text depth = 0.5cm, minimum height = 2.5cm, minimum width = 4cm] at (sub.center){QueryExecute (A)};
-		
-		%Nodepoints
-		\node [] (queryOut) at ([yshift=3.3cm, xshift=-2.2cm]main.center) {};
-		\node [] (queryIn) at ([yshift=2.1cm, xshift=-2.2cm]main.center) {};
-		\node [] (sortedListIn) at ([yshift=3.3cm, xshift=2.1cm]main.center) {};
-		\node [] (sortedListOut) at ([yshift=2.1cm, xshift=2.1cm]main.center) {};
-		
-		\node [] (queryOut2) at ([yshift=1.6cm, xshift=-1.2cm]main.center) {};
-		\node [] (queryIn2) at ([yshift=0.7cm, xshift=-1.2cm]main.center) {};
-		\node [] (listIn) at ([yshift=1.6cm, xshift=1.5cm]main.center) {};
-		\node [] (listOut) at ([yshift=0.7cm, xshift=1.5cm]main.center) {};
-		
-		%Lines
-		\draw[arrow] (queryOut) -- node[ anchor= south east ]{Query} (queryIn);
-		\draw[arrow] (queryOut2) -- node[ anchor=south east ]{Query} (queryIn2);
-		\draw[arrow] (sortedListOut) -- node[ anchor=west ]{sortList} (sortedListIn);
-		\draw[arrow] (listOut) -- node[ anchor=north east ]{List} (listIn);
-		
-	\end{tikzpicture}		
-\end{center}				
-		
-	\end{adjustwidth}
-	
+		\hfill \\ \\		
+		The autopilot of an aircraft (C) can be easily described as a big system which has two major subparts embedded in it: One is responsible for the flight instructions and the other one is processing and interpreting the flight information which are coming from different sensors as the speed, orientation, and altitude measurements. \\
+		If one of these sensors have a malfunction (or domething similar), for example the altitude meter (A), sends wrong data to the processing part of the system which will therefore not work correctly, the autopilot will have a failure and will shut down completely. \\ \\
+		A possible \textsc{fault} which can occur in the sensor for altitude measuring is that the tube for the pressure measurement is blocked. Therefore we have an \textsc{error} state that the sensor is not working correctly and the \textsc{failure} of outputting the wrong altitude will be the result. \\
+		This wrong output will have an affect on the flight information processor (B). The \textsc{fault} here is that the data received from the sensor is faulty/false which leads to the \textsc{error} that the system cannot process or falsely interpret those data. This has the effect on a false interpretation of where the aircraft currently is and what should be given to the autopilot system (\textsc{failure}). \\
+		The autopilot (C) will get wrong information about the current altitude (\textsc{fault}) and can therefore not process which instructions should be executed (\textsc{error}). Therefore the autopilot will stop working (\textsc{failure}) and the pilot has to take control.
+	\end{adjustwidth}	
 \end{document}
