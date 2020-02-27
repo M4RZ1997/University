@@ -57,21 +57,27 @@
 	\pagestyle{fancy}
 	\section{Reliable, Scalable, and Maintainable Applications}
 	\begin{adjustwidth}{2em}{2em}
-		\textit{Introduces the terminology and approach that we're going to use throughout this book. It examines what we actually mean by words like \textbf{reliability}, \textbf{scalability}, and \textbf{maintainability}, and how we can try to achieve these goals.}
+		\begin{quote}
+			\textit{Introduces the terminology and approach that we're going to use throughout this book. It examines what we actually mean by words like \textbf{reliability}, \textbf{scalability}, and \textbf{maintainability}, and how we can try to achieve these goals.} \\
+			- Alan \textsc{Kay}
+		\end{quote}	
+		\hfill \\
+		Because nowadays most applications are \textit{data-intensive}, as opposed to \textit{compute-intensive}, the raw CPU power is rarely a limiting factor for these. The bigger problems are usually the amount and the complexity of data and the speed at which it is changing. So often the following specifications are necessary for many applications: \\
+		\begin{adjustwidth}{1em}{1em}
+			\begin{enumerate}[\footnotesize{\textbullet}]
+				\item The storage of data should be so that they, or another application which will use it, can find it easily (\textit{databases})
+				\item Remember the results of an expensive operation, to speed up reads (\textit{caches})
+				\item Users can search the databases by keyword or filter in various ways (\textit{search indexes})
+				\item The system can be handled asynchronously by sending a message to another process (\textit{stream processing})
+				\item Periodically crunch a large amount of accumulated data (\textit{batch processing})
+			\end{enumerate}
+		\end{adjustwidth}
+		\hfill \\
+		The usage of databases is very common and therefore these functionalities sound plainfully obvious. When designing and engineering a new application databases are a perfectly good tool instead of always creating a new data storage engine from scratch. \\
+		But because of different requirements there are many different characteristics for databases like various ways for caching, several approaches for search indexes. So there is still a need when building an application to figure out which tool and approach to use.
 		\subsection{Thinking about Data Systems}
 		\begin{adjustwidth}{2em}{2em}
-			Because nowadays most applications are \textit{data-intensive}, as opposed to \textit{compute-intensive}, the raw CPU power is rarely a limiting factor for these. The bigger problems are usually the amount and the complexity of data and the speed at which it is changing. So often the following specifications are necessary for many applications: \\
-			\begin{adjustwidth}{1em}{1em}
-				\begin{enumerate}[\footnotesize{\textbullet}]
-					\item The storage of data should be so that they, or another application which will use it, can find it easily (\textit{databases})
-					\item Remember the results of an expensive operation, to speed up reads (\textit{caches})
-					\item Users can search the databases by keyword or filter in various ways (\textit{search indexes})
-					\item The system can be handled asynchronously by sending a message to another process (\textit{stream processing})
-					\item Periodically crunch a large amount of accumulated data (\textit{batch processing})
-				\end{enumerate}
-			\end{adjustwidth}
-			\hfill \\
-			The usage of databases is very common and therefore these functionalities sound plainfully obvious. When designing and engineering a new application databases are a perfectly good tool instead of always creating a new data storage engine from scratch.
+			Although there are different categories of data storage tools as databases, queues or caches which differ in access patterns and therefore in their performance characteristics and how to implement them, today more and more new tools for data storage emerge which cannot be put exclusively in any of these categories, so we can put them all together and talk about \textit{\textbf{data systems}}.
 		\end{adjustwidth}
 		\subsection{Reliable}
 		\begin{adjustwidth}{2em}{2em}

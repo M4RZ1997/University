@@ -281,7 +281,225 @@
 	
 	\newpage
 	
-	\section{2nd Lecture - \today}
+	\section{Models and Abstructions - February 26, 2020}
+	\begin{adjustwidth}{2em}{2em}		
+		\subsection{Processes and Protocols}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{tikzpicture}
+				\coordinate (start);
+							
+				%Nodes
+				\node (rect) [draw,thin,minimum width=0.5cm,minimum height=0.5cm] (p) {$p$};
+				\node (rect) [draw,thin,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (q) {$q$};
+				\node [right=1cm of q] (ldots) {$\ldots$};
+				\node (rect) [draw,thin,minimum width=0.5cm,minimum height=0.5cm, right=1cm of ldots] (z) {$z$};
+				
+				\node (rect) [draw,thin,minimum width=7cm,minimum height=0.5cm, below=1.1cm of ldots] {communication abstraction};
+				
+				\node [below=1cm of p] (bp) {};
+				\node [below=1cm of q] (bq) {};
+				\node [below=1cm of z] (bz) {};
+				
+				%Lines
+				\draw (p) -- (bp);
+				\draw (q) -- (bq);
+				\draw (z) -- (bz);
+				
+			\end{tikzpicture}
+			\begin{enumerate}[-]
+				\item Set of Processes $\Pi$ \\
+				$\mid \Pi \mid = N$
+				\item A process is an automaton
+				\item A protocol is a set of processes
+			\end{enumerate}
+			\subsubsection{Execution}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item Each computation step and every step of sending a message or receiving a message is an event
+					\item An execution (history) is a sequence of all events of the processes as seen by a (hypothetical) global observer
+					\item trace = execution
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				Used for specifying the abstractions: \\
+				\begin{enumerate}[\footnotesize{\textbullet}]
+					\item \textbf{Safety properties} (\textit{something "bad" has not happened}) \\
+					If a property $P$ has been violated in some execution $E$, then there exists a prefix $E'$ of $E$ such that in every extension of $E'$, property $P$ is violated
+					\item \textbf{Liveness properties} (\textit{something "good" will happen in the future} [\textsc{eventually}]) \\
+					Property $P$ can be satisfied by some extension $\stackrel{\sim}{E}$ of a given execution $E$
+				\end{enumerate}
+				\hfill \\
+				\textit{Safety} or \textit{Liveness} alone is not very useful. Only combination of both properties.
+			\end{adjustwidth}
+			\subsubsection{Process Failures}
+			\begin{adjustwidth}{2em}{}
+				A process consists of different modules - if one of them fails the entire thing fails at once.
+				\begin{enumerate}[-]
+					\item[$\bigstar$] \underline{\textit{\textbf{Crashes}}}
+					\item \textit{Omission failures }(\textit{message sending and receiving events are omitted})
+					\item \textit{Crash-Recovery Failure}
+					\begin{enumerate}[\tiny{\textbullet}]
+						\item store(-) operation to write to stable storage
+						\item upon recovery, one can restore(-) data from this stable storage
+					\end{enumerate}
+					\item \textit{Eavesdropping Fault}
+					\item[$\bigstar$] \underline{\textit{\textbf{Arbitrary Fault (Byzantine Fault)}}}
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Cryptographic Abstraction}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[\footnotesize{\textbullet}]
+				\item \textbf{\textit{Hash functions}} (SHA-256) \\
+				$H:{ 0,1 } ^{\star} \rightarrow \{ 0,1 \} ^{k}$
+				\begin{enumerate}[-]
+					\item collision-free: difficult to find $x, x'$ with $x \neq x'$ and $H(x) = H(x')$
+				\end{enumerate}
+				\item \textbf{\textit{Message-Authentication-Code (MAC)}} (HMAC-SHA256)
+				\begin{enumerate}[-]
+					\item $\textit{authentication}(p, q, m) \rightarrow a$
+					\item $\textit{verifyAuth}(p, q, m, a) \rightarrow$ \textsc{Yes/No}
+				\end{enumerate}
+				\item \textbf{\textit{Digital Signatures}} (RSA, (EC)DSA)
+				\begin{enumerate}[-]
+					\item $\textit{sign}(p, m) \rightarrow s$
+					\item $\textit{verifySign}(p,m,s) \rightarrow$ \textsc{Yes/No}
+					\item[$\bigstar$] \underline{\textit{Correctness}}: \\
+					$\forall m,p: \ \textit{verifySign}(p, m, \textit{sign}(p,m)) \ =$ \textsc{Yes}
+					\item[$\bigstar$] \underline{\textit{Security}}: \\
+					$\forall m, p, s: \ \textit{verifySign}(p, m, s) \ =$ \textsc{No}, unless $p$ has executed $sign(p,m) \rightarrow s$
+				\end{enumerate}
+			\end{enumerate}
+		\end{adjustwidth}
+		\subsection{Communication Abstraction}
+		\begin{adjustwidth}{2em}{2em}
+			Every process can send messages to every other process.
+			\subsubsection{Stubborn point-to-point links}
+			\begin{adjustwidth}{2em}{}
+				\textbf{\underline{Events:}}
+				\begin{enumerate}[]
+					\item $\langle sl.send \mid q,m \rangle$ \{ \textit{send message $m$ to process $q$}
+					\item $\langle sl.deliver \mid p,m \rangle$ \{ deliver a received message $m$ from process $p$ 
+				\end{enumerate}
+				\textbf{\underline{Properties:}}
+				\begin{enumerate}[]
+					\item \underline{\textit{Stubborn delivery}:} \\
+					If a process sends a message $m$ to process $q$, then $m$ is infinitely often delivered at $q$.
+					\item \underline{\textit{No creation}:} \\
+					If some process $q$ delivers some message $m$ from $p$ then process $p$ has previously sent $m$ to $q$.
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Perfect point-to-point links}
+			\begin{adjustwidth}{2em}{}
+				\textbf{\underline{Events:}}
+				\begin{enumerate}[]
+					\item $\langle sl.send \mid q,m \rangle$
+					\item $\langle sl.deliver \mid p,m \rangle$
+				\end{enumerate}
+				\textbf{\underline{Properties:}}
+				\begin{enumerate}[]
+					\item \underline{\textit{Reliable delivery}:} \\
+					If a correct process sends a message $m$ to a correct process $q$ then $q$ eventually delivers $m$
+					\item \underline{\textit{No creation}:} \\
+					If process $q$ delivers some $m$ from process $p$ then $p$ has sent $m$ to $q$
+					\item \underline{\textit{At-most-once delivery:}} \\
+					Every message $m$ is delivered at most once from $p$ to $q$.
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Alg. impl. perfect links (pl) from stubborn links (sl)}
+			\begin{adjustwidth}{2em}{}
+				\underline{\textsc{Init:}} \\
+				$\mathbb{D} \leftarrow \emptyset$ \\
+				\underline{upon} $\langle pl.send \mid q,m \rangle$ \underline{do}
+				\begin{adjustwidth}{1em}{}
+					trigger $\langle sl,send \mid q,m \rangle$ \\
+					\underline{upon} $\langle sl.deliver \mid p,m \rangle$ \underline{do}
+					\begin{adjustwidth}{1em}{}
+						\underline{if} $(p,m) \not\in \mathbb{D}$ \underline{then}
+						\begin{adjustwidth}{1em}{}
+							$\mathbb{D} \leftarrow \mathbb{D} \cup \{ (p,m) \}$ \\
+							trigger $\langle pl.deliver \mid p,m \rangle$ \\
+							\ldots
+						\end{adjustwidth}
+					\end{adjustwidth}
+				\end{adjustwidth}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Timing Assumptions}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[\footnotesize{\textbullet}]
+				\item \underline{\textbf{Asynchronous model} (\textit{Logical Timing})}
+				\begin{enumerate}[-]
+					\item \textbf{\textit{One Process}} \\
+					\begin{tikzpicture}
+						%Nodes
+						\node (rect) (p) {$p$};
+						\node [right=6cm of p] (end) {};
+					
+						%Lines
+						\draw[arrow] (p) -- (end);
+					
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (e1) {$e1$};
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1.5cm of e1] (e2) {$e2$};
+					\end{tikzpicture} \\
+					If $e2$ happened after $e1$ in one process, we know the sequence of events.
+					\item \textbf{\textit{Two Processes}} \\
+					\begin{tikzpicture}
+						%Nodes
+						\node (rect) (p) {$p$};
+						\node [right=6cm of p] (endp) {};
+						
+						\node (rect) [below=0.5cm of p] (q) {$q$};
+						\node [right=6cm of q] (endq) {};
+					
+						%Lines
+						\draw[arrow] (p) -- (endp);
+						\draw[arrow] (q) -- (endq);
+					
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (e1) {$e1$};
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=3.5cm of q] (e2) {$e2$};
+						
+						\draw (e1) -- (e2);
+					\end{tikzpicture} \\
+					If we know that $e1$ caused $e2$, we know that $e2$ happened after $e1$.
+					\item \textbf{\textit{Three processes}} \\
+					\begin{tikzpicture}
+						%Nodes
+						\node (rect) (p) {$p$};
+						\node [right=6cm of p] (endp) {};
+						
+						\node (rect) [below=0.5cm of p] (q) {$q$};
+						\node [right=6cm of q] (endq) {};
+						
+						\node (rect) [below=0.5cm of q] (z) {$z$};
+						\node [right=6cm of z] (endz) {};
+					
+						%Lines
+						\draw[arrow] (p) -- (endp);
+						\draw[arrow] (q) -- (endq);
+						\draw[arrow] (z) -- (endz);
+					
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (e1) {$e1$};
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=2.5cm of q] (et) {$\stackrel{\sim}{e}$};
+						\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=4cm of z] (e2) {$e2$};
+						
+						\draw (e1) -- (et);
+						\draw (et) -- (e2);
+					\end{tikzpicture} \\
+					Transitivity holds across processes, so if $e1$ caused $\stackrel{\sim}{e}$ which cause $e2$, $e2$ happened after $e1$.
+				\end{enumerate}
+				\item Other time models exist
+			\end{enumerate}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{3rd Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
+		\subsection{sub}
+		\begin{adjustwidth}{2em}{2em}
+		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}
