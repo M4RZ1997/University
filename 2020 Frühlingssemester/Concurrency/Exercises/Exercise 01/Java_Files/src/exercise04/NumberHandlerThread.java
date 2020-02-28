@@ -22,11 +22,17 @@ public class NumberHandlerThread implements Runnable {
     }
 
     public int getDivisorCount(){
-        int count = 1;
-        for (int i = 1; i < number; i++){
+        int count = 0;
+        for (int i = 1; i < Math.sqrt(number); i++){
             if (number % i == 0){
                 count++;
             }
+        }
+        if (number != 1){
+            count *= 2;
+        }
+        if (number % Math.sqrt(number) == 0){
+            count++;
         }
         return count;
     }

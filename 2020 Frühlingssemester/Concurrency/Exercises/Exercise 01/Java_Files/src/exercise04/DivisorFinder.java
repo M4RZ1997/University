@@ -6,7 +6,7 @@ import java.util.List;
 public class DivisorFinder {
     private static final int threadAmount = 10;
     private static final int lowerBound = 1;
-    private static final int upperBound = 100000;
+    private static final int upperBound = 1000000;
     private List<Thread> threadList;
     private int numberOfInterest;
     private static int maxDivisors = 0;

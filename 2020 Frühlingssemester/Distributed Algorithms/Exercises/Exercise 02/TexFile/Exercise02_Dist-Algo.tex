@@ -134,13 +134,13 @@
 	\begin{adjustwidth}{2em}{2em}	
 		\begin{enumerate}[(a)]
 			\item \textit{If some general attacks at time $t$, then the other general attacks at the same time.} \\
-			This is a \textit{\textbf{liveness property}}, because it says that if one of the two generals attacks the other general will attack with him, so eventually something good will happen.
+			This is a \textit{\textbf{safety property}}, because 
 			\item \textit{If $m_2$ arrives after time $t$, then General A attack after General B.} \\
 			This is a \textit{\textbf{safety property}}, because this statement ensures that General A will attack if and only if it receives the message delivered by $m_2$ and not just out of thin air.
 			\item \textit{Eventually, General B will attack.} \\
-			This is a \textit{\textbf{safety property}}, because it ensures that if messenger $m_1$ has delivered the message (nothing bad has happened before), General B will attack.
+			This is a \textit{\textbf{liveness property}}, because
 			\item \textit{If messenegers $m_1$ and $m_2$ are not intercepted, then eventually both generals attack.} \\
-			This is a \textit{\textbf{safety property}}, because it says that if nothing bad has happened in the past that the generals will attack at time $t$ or directly after they received the message.
+			This is a \textit{\textbf{liveness property}}, because
 			\item \textit{If $m_1$ and $m_2$ are not intercepted, then eventually both generals attack at time $t$.} \\
 			This is a \textit{\textbf{mixture}}, because we have the safety property that both messenger will arrive in time - so before time $t$ - and the liveness property that eventually both attack at the same time $t$.
 		\end{enumerate}			
@@ -149,12 +149,9 @@
 	\section*{2.3 Unreliable clocks}
 	\begin{adjustwidth}{2em}{2em}
 		\begin{enumerate}[(a)]
-			\item \textit{Find two examples, where timing issues lead to safety violations.}
-			\begin{adjustwidth}{2em}{2em}
-			\end{adjustwidth}
-			\item \textit{Find two examples, where timing issues lead to liveness volations.}
-			\begin{adjustwidth}{2em}{2em}
-			\end{adjustwidth}
+			\item \textit{Find two examples, where timing issues lead to safety violations.} \\
+			\item \textit{Find two examples, where timing issues lead to liveness volations.} \\
+			As a first example, we can take the case from exercise 2.2. In there it could happen that $m_2$ is delivering the message after the time $t$. Therefore General A will attack after General B which violates the liveness property.
 		\end{enumerate}			
 	\end{adjustwidth}
 \end{document}
