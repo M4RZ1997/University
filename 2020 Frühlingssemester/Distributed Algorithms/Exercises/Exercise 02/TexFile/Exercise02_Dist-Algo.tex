@@ -134,13 +134,13 @@
 	\begin{adjustwidth}{2em}{2em}	
 		\begin{enumerate}[(a)]
 			\item \textit{If some general attacks at time $t$, then the other general attacks at the same time.} \\
-			This is a \textit{\textbf{safety property}}, because 
+			This is a \textit{\textbf{liveness property}}, because it ensures thatif any general attacks at time $t$ that also the other general will attack at this time, so eventually something good will happen (both will attack at the same time).
 			\item \textit{If $m_2$ arrives after time $t$, then General A attack after General B.} \\
 			This is a \textit{\textbf{safety property}}, because this statement ensures that General A will attack if and only if it receives the message delivered by $m_2$ and not just out of thin air.
 			\item \textit{Eventually, General B will attack.} \\
-			This is a \textit{\textbf{liveness property}}, because
+			This is a \textit{\textbf{liveness property}}, because it says that eventually something good will happen.
 			\item \textit{If messenegers $m_1$ and $m_2$ are not intercepted, then eventually both generals attack.} \\
-			This is a \textit{\textbf{liveness property}}, because
+			This is a \textit{\textbf{safety property}}, because it says that if nothing bad has happened before and everything was going accordingly both generals will attack.
 			\item \textit{If $m_1$ and $m_2$ are not intercepted, then eventually both generals attack at time $t$.} \\
 			This is a \textit{\textbf{mixture}}, because we have the safety property that both messenger will arrive in time - so before time $t$ - and the liveness property that eventually both attack at the same time $t$.
 		\end{enumerate}			
@@ -150,8 +150,11 @@
 	\begin{adjustwidth}{2em}{2em}
 		\begin{enumerate}[(a)]
 			\item \textit{Find two examples, where timing issues lead to safety violations.} \\
+			As a first example, we can take the case from exercise 2.2. We consider that the clock of General B is delayed behind the one from General A. So if messenger $m_2$ is arriving after time $t$, but General B's is so much delayed, that General A is still attacking before him, so the safety properties are violated. \\
+			As a second example, we can consider an automatic airplane scheduling system. We assume that each plane is on time and due to time the destination is set. The scheduling system is also stating the destination on each gate. Therefore if the planes' clocks and the system clock are out of sync, the safety property is violated.
 			\item \textit{Find two examples, where timing issues lead to liveness volations.} \\
-			As a first example, we can take the case from exercise 2.2. In there it could happen that $m_2$ is delivering the message after the time $t$. Therefore General A will attack after General B which violates the liveness property.
+			As a first example, we can take the case from exercise 2.2. If General A and General B have clocks with timing issues, they could agree on a time that is not the same in reality. So both general cannot attack at the same time. \\
+			As a second example, we can again consider the automatic airplane scheduling system. If the clocks of an airplane and the system are out of sync so that the system thinks that the plane is going to destination "A" but in reality it is going to destination "B", the liveness property is violated.
 		\end{enumerate}			
 	\end{adjustwidth}
 \end{document}
