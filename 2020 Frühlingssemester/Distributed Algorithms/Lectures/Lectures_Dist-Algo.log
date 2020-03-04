@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  27 FEB 2020 10:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  4 MAR 2020 16:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1683,7 +1683,7 @@ LaTeX Font Info:    Try loading font information for TS1+stix on input line 104
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
-<distributed.png, id=87, 301.125pt x 301.125pt>
+<distributed.png, id=119, 301.125pt x 301.125pt>
 File: distributed.png Graphic file (type png)
 <use distributed.png>
 Package pdftex.def Info: distributed.png  used on input line 160.
@@ -1830,25 +1830,119 @@ File: distributed.png Graphic file (type png)
 Package pdftex.def Info: distributed.png  used on input line 497.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [6]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 504.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 522--566
+
+ []
+
+LaTeX Font Info:    Font shape `T1/stix/bx/sc' in size <10> not available
+(Font)              Font shape `T1/stix/b/sc' tried instead on input line 576.
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 577.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 576--578
+
+ []
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 581.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 589.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 594.
+
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 505.
+Package pdftex.def Info: distributed.png  used on input line 595.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
- [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 505.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 505.
+[7]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 605.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 614.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 619.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 629.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 629.
+
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 654.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[8]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 661.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--662
+
+ []
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 668.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 673.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--680
+
+ []
+
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 694.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[9]
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 702.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+ [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 702.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 702.
  (./Lectures_Dist-Algo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 505.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 505.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 702.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 702.
 Package rerunfilecheck Info: File `Lectures_Dist-Algo.out' has not changed.
-(rerunfilecheck)             Checksum: 2FC5EB8E796DD576BE9C0DCC071B06FA;1575.
+(rerunfilecheck)             Checksum: 547BFBB71D6E5B2D4D603B31B7567AE9;2143.
  ) 
 Here is how much of TeX's memory you used:
- 43975 strings out of 492616
- 960906 string characters out of 6132768
+ 44020 strings out of 492616
+ 961410 string characters out of 6132768
  1125344 words of memory out of 5000000
- 47216 multiletter control sequences out of 15000+600000
- 607469 words of font info for 89 fonts, out of 8000000 for 9000
+ 47226 multiletter control sequences out of 15000+600000
+ 612130 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,30n,96p,1020b,1007s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}{c:/texlive/2018
@@ -1862,12 +1956,13 @@ mathcal.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathex.pfb
 ><c:/texlive/2018/texmf-dist/fonts/type1/public/stix/stix-mathfrak.pfb><c:/texl
 ive/2018/texmf-dist/fonts/type1/public/stix/stix-mathit.pfb><c:/texlive/2018/te
 xmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><c:/texlive/2018/texmf-dist/fo
-nts/type1/public/stix/stix-mathsf.pfb><c:/texlive/2018/texmf-dist/fonts/type1/p
-ublic/stix/stix-mathtt.pfb>
-Output written on Lectures_Dist-Algo.pdf (7 pages, 210858 bytes).
+nts/type1/public/stix/stix-mathscr.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
+public/stix/stix-mathsf.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix
+/stix-mathtt.pfb>
+Output written on Lectures_Dist-Algo.pdf (10 pages, 234174 bytes).
 PDF statistics:
- 250 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
- 178 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 296 compressed objects within 3 object streams
+ 114 named destinations out of 1000 (max. 500000)
+ 242 words of extra memory for PDF output out of 10000 (max. 10000000)
 

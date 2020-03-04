@@ -16,5 +16,13 @@
 \BOOKMARK [3][-]{subsubsection.2.3.2}{Perfect point-to-point links}{subsection.2.3}% 16
 \BOOKMARK [3][-]{subsubsection.2.3.3}{Alg. impl. perfect links \(pl\) from stubborn links \(sl\)}{subsection.2.3}% 17
 \BOOKMARK [2][-]{subsection.2.4}{Timing Assumptions}{section.2}% 18
-\BOOKMARK [1][-]{section.3}{3rd Lecture - February 27, 2020}{}% 19
-\BOOKMARK [2][-]{subsection.3.1}{sub}{section.3}% 20
+\BOOKMARK [1][-]{section.3}{Timing Assumptions - March 3, 2020}{}% 19
+\BOOKMARK [2][-]{subsection.3.1}{Asynchronous System}{section.3}% 20
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Happens-before relation}{subsection.3.1}% 21
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Lemma}{subsection.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.2}{Synchronous System}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.3}{Partially Synchronous Model}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.4}{Abstracting Time}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Implementing P}{subsection.3.4}% 26
+\BOOKMARK [1][-]{section.4}{4th Lecture - March 4, 2020}{}% 27
+\BOOKMARK [2][-]{subsection.4.1}{sub}{section.4}% 28

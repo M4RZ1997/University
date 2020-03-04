@@ -496,7 +496,204 @@
 	
 	\newpage
 	
-	\section{3rd Lecture - \today}
+	\section{Timing Assumptions - March 3, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Asynchronous System}
+		\begin{adjustwidth}{2em}{2em}
+			Logical clock creates a logical time
+			\begin{enumerate}[-]
+				\item Each process $p$ keeps a logical clock $lp$ (initially 0)
+				\item When an event $e$ on $p$ occurs, then $lp \ \leftarrow \ lp + 1$
+				\item When $p$ sends a message $m$ to $q$, then $p$ attaches a timestamp $ts(m) \ = \ lp$ to $m$
+				\item When $p$ receives a message $m'$ with $ts(m')$, then $p$ sets $lp \ \leftarrow \ max\{lp, ts(m')\} + 1$
+			\end{enumerate}
+			\subsubsection{Happens-before relation}
+			\begin{adjustwidth}{2em}{}
+				\begin{tikzpicture}
+					%Nodes
+					\node (rect) (p) {$p$};
+					\node [right=6cm of p] (end) {};
+					
+					%Lines
+					\draw[arrow] (p) -- (end);
+					
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (e1) {$e1$};
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1.5cm of e1] (e2) {$e2$};
+				\end{tikzpicture} \\
+				\hfill \\
+				\begin{tikzpicture}
+					%Nodes
+					\node (rect) (p) {$p$};
+					\node [right=6cm of p] (endp) {};
+								
+					\node (rect) [below=0.5cm of p] (q) {$q$};
+					\node [right=6cm of q] (endq) {};
+						
+					%Lines
+					\draw[arrow] (p) -- (endp);
+					\draw[arrow] (q) -- (endq);
+						
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (e1) {$e1$};
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=3.5cm of q] (e2) {$e2$};
+						
+					\draw (e1) -- (e2);
+				\end{tikzpicture} \\
+				\hfill \\
+				\begin{tikzpicture}
+					%Nodes
+					\node (rect) (p) {$p$};
+					\node [right=6cm of p] (endp) {};
+						
+					\node (rect) [below=0.5cm of p] (q) {$q$};
+					\node [right=6cm of q] (endq) {};
+						
+					\node (rect) [below=0.5cm of q] (z) {$z$};
+					\node [right=6cm of z] (endz) {};
+					
+					%Lines
+					\draw[arrow] (p) -- (endp);
+					\draw[arrow] (q) -- (endq);
+					\draw[arrow] (z) -- (endz);
+					
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=1cm of p] (e1) {$e1$};
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=2.5cm of q] (et) {$\stackrel{\sim}{e}$};
+					\node (rect) [draw,thin,fill=white,minimum width=0.5cm,minimum height=0.5cm, right=4cm of z] (e2) {$e2$};
+						
+					\draw (e1) -- (et);
+					\draw (et) -- (e2);
+				\end{tikzpicture} \\
+				In each of these we can say that $e1$ happens before $e2$
+			\end{adjustwidth}
+			\subsubsection{Lemma}
+			\begin{adjustwidth}{2em}{}
+				$e1$ occurs at $p$ at $lp$ \\
+				$e2$ occurs at $q$ at $lq$ \\
+				$\Rightarrow$ $e1 \rightarrow e2$, then $lp \ < \ lq$, but not the other way round!
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Synchronous System}
+		\begin{adjustwidth}{2em}{2em}
+			\underline{\textbf{\textsc{Either:}}} \\
+			\begin{enumerate}[-]
+				\item Assume every process has access to a real-time clock (\textit{\textbf{RTC}})
+			\end{enumerate}
+			\underline{\textbf{\textsc{Or:}}}
+			\begin{enumerate}[-]
+				\item Synchronous computation (bounds on computation time)
+				\item Synchonous communication (bounds on message-transmission time)
+			\end{enumerate}
+			\textsc{\textbf{Careful!}} when synchrony, assumptions are needed for safety properties
+		\end{adjustwidth}
+		\subsection{Partially Synchronous Model}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item Synchronous most of the time
+				\item When asynchronous, must not violate safety
+			\end{enumerate}
+			Formally captured by abstraction of an eventually synchonous system.
+			\begin{enumerate}[-]
+				\item Initial period of asynchrony
+				\item After some point in time (unknown to algorithm), system is synchonous
+			\end{enumerate}
+			\textsc{\textbf{Note:}} Abstract model will remain synchronous forever after sync-point. In practice, periods of synchrony and asynchrony alternate.
+		\end{adjustwidth}
+		\subsection{Abstracting Time}
+		\begin{adjustwidth}{2em}{2em}
+			\underline{\textbf{\textsc{Definition:}}} Perfect Failure Detecture $\mathbb{P}$ \\
+			\underline{\textbf{\textsc{Event:}}} $\langle \mathbb{P}.\textit{Crash} \mid p \rangle$ denotes that process $p$ has crashed. \\
+			\underline{\textbf{\textsc{Properties:}}}
+			\begin{enumerate}[]
+				\item \textsc{\textbf{Strong Completeness:}} \\
+				\underline{Eventually} every process that has crashed is detected by all correct processes.
+				\item \textsc{\textbf{Strong Accuracy:}} \\
+				For any process $p$, if $p$ detects that $q$ crashed, then $q$ has crashed.
+			\end{enumerate}
+			\hfill \\
+			\underline{Formally}, all processes are either alive \underline{forever} or they crash and stop. \\
+			Suppose a notion of time in $\mathbb{N}$:
+			\begin{enumerate}[]
+				\item $C: \mathbb{N} \rightarrow \Pi$, $C(t)$ denotes the processes that are live at time $t$.
+				\item $F: \mathbb{N} \rightarrow \Pi$, $F(t)$ denotes the proceses that are \underline{faulty} (crashed) at time $t$.
+			\end{enumerate}
+			$p \in F(t)$, then $\forall t' \geq t: \ p \in F(t')$ (crashes are irreversible)
+			\begin{enumerate}[]
+				\item $\mathbb{F} \ = \ \bigcup_{t \geq 0} F(t)$, set of all faulty processes
+				\item $\mathbb{C} \ = \ \Pi \setminus \mathbb{F}$, set of all correct processes
+			\end{enumerate}
+			\begin{quote}
+				\underline{Strong Completeness:} \\
+				$\exists t: \forall p \in \mathbb{F}, \forall q \in \mathbb{C}: \exists t' \geq t: \langle \mathbb{P}.\textit{Crash} \mid p \rangle$ occurs on process $q$ at time $t'$. \\
+				\underline{Strong Accuracy:} \\
+				$\forall q \in \mathbb{C}$ if $\langle \mathbb{P}.\textit{Crash} \mid p \rangle$ occurs on process $q$ at time $t$ then $p \in F(t)$.
+			\end{quote}
+			\subsubsection{Implementing $\mathbb{P}$}
+			\begin{adjustwidth}{2em}{}
+				\begin{tabular}{lll}
+					\begin{tabular}{l}
+						\underline{Initialization:} \\
+						\ \ start timer $\Delta$ \\
+						\ \ alive $\leftarrow \Pi$ \\
+						\ \ detected $\leftarrow \emptyset$ \\
+						\\
+						\underline{upon} timeout \underline{do}
+						\ \ \underline{for all} $p \in \Pi$ \underline{do} \\
+						\ \ \ \ \underline{if} $p \not\in \textit{alive} \wedge p \not\in \textit{detected}$ \underline{then}
+						\ \ \ \ \ \ trigger $\langle \mathbb{P}.\textit{Crash} \mid p \rangle$ \\
+						\ \ \ \ \ \ detected $\leftarrow$ detected $cup \{ p \}$ \\
+						\ \ start timer with $\Delta$ \\
+						\ \ alive $\leftarrow \emptyset$ \\
+						\ \ send msg [\textsc{ping}] to all $p \in \Pi$ \\
+						\hfill \\
+						\underline{upon} receive msg. [\textsc{ping}] from $p$ \underline{do} \\
+						\ \ send msg [\textsc{pong}] to $p$ \\
+						\hfill \\
+						\underline{upon} receiving [\textsc{pong}] from $p$ \underline{do} \\
+						\ \ alive $\leftarrow$ alive $\cup \{ p \}$
+					\end{tabular}
+				\end{tabular}
+			\end{adjustwidth}
+			\hfill \\
+			\hfill \\
+			\underline{\textbf{\textsc{Definition:}}} Leader Election \\
+			\underline{\textbf{\textsc{Event:}}} $\langle le.\textit{leader} \mid p \rangle$, elects $p$ to be leader \\
+			\underline{\textbf{\textsc{Properties}} (Eventual Leadership):} \\
+			Eventually, some process $l$ is elected leader by every correct process
+			\begin{enumerate}[]
+				\item \textbf{\textsc{Accuracy:}} \\
+				If a process is elected leader then all previously elected leaders have crashed.
+			\end{enumerate}
+			\hfill \\
+			\underline{\textbf{\textsc{Definition:}}} Eventually Perfect Failure Detector \\
+			\underline{\textbf{\textsc{Events:}}} 
+			\begin{enumerate}[]
+				\item $\langle \diamond \mathbb{P}.\textit{Suspect} \mid p \rangle$, process $p$ is suspected.
+				\item $\langle \diamond \mathbb{P}.\textit{Restore} \mid p \rangle$, process $p$ is thought to be alive.
+			\end{enumerate}
+			\underline{\textbf{\textsc{Properties}}}
+			\begin{enumerate}[]
+				\item \textbf{\textsc{Strong Completeness:}} \\
+				Eventually, every process that has crashed is suspected by every correct process
+				\item \textbf{\textsc{Eventual Strong Accuracy:}} \\
+				Eventually, every process that has crashed is suspected permanently by every correct process.
+			\end{enumerate}
+			\hfill \\
+			\begin{center}
+				\begin{tabular}{|l|l|l|l|}
+					\hline
+					Model & Processes & Timing & \\
+					\hline
+					fail-stop & crash-stop & synchronous & $\langle \mathbb{P} \rangle$ \\
+					fail-noisy & crash-stop & partially synchronous & $\langle \diamond\mathbb{P} \rangle$, $N > 2F$ \\
+					fail-silent & crash-stop & asynchronous & $N > 2F$ \\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{4th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}
