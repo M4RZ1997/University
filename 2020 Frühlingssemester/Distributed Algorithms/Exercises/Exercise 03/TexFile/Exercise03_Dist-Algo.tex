@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{reledmac}
 \usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
 
 \usepackage{pgfplots}
 \usepackage{tikz}
@@ -42,6 +44,26 @@
 	\end{adjustwidth}
 	
 	\section*{3.3 Quorum Systems}
-	\begin{adjustwidth}{2em}{2em}		
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[\footnotesize{\textbullet}]
+			\item \textsc{\textbf{Singleton}} \\
+			There mustn't be any failed process. Because:
+			\[
+				\not\exists p \in \Pi : (\not\exists Q \in \mathbb{Q}: p \in Q)
+			\]
+			\item \textsc{\textbf{Majority:}} \\
+			\textsc{maximum/minimum:} $\lfloor \frac{n-1}{2} \rfloor$, because:
+			\[
+				\forall Q \in \mathbb{Q}: \ \mid Q \mid \ = \ \lceil \frac{n+1}{2} \rceil $$ $$
+				\Rightarrow \ \mid \Pi \mid - \mid Q \mid \ = \ n - \lceil \frac{n+1}{2} \rceil \ = \ \lfloor \frac{n-1}{2} \rfloor
+			\]
+			\item \textsc{\textbf{Grid:}}
+			\begin{enumerate}[]
+				\item \textsc{minimum:} \\
+				We take the $Q$ with the fewest elements, which would be equal to the last row of the grid. Therefore we must have $k$ correct processes and at most $k^{2} - k$ faulty processes.
+				\item \textsc{maximum:} \\
+				We take the $Q$ with the most elements which would be equal to the last row with $k-1$ additional processes. Therefore we must have in total $2k-1$ correct processes, so at most $k^{2} - 2k +1$ faulty processes.
+			\end{enumerate}
+		\end{enumerate}
 	\end{adjustwidth}
 \end{document}
