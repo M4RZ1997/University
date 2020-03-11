@@ -36,11 +36,30 @@
 	\pagestyle{fancy}
 	
 	\section*{3.1 Relations among Failure Detectors}
-	\begin{adjustwidth}{2em}{2em}		
-	\end{adjustwidth}
-	
-	\section*{3.2 Perfect Failure Detector}
-	\begin{adjustwidth}{2em}{2em}		
+	\begin{adjustwidth}{2em}{2em}
+		We can implement a perfect failure detector \textit{PFD} by using a non-perfect failure detector \textit{NFD} with strong accuracy and weak comleteness as follows: \\
+		\begin{center}
+			\begin{tabular}{|l|}
+				\hline
+				Building an $PFD$ out of an $NFD$ \\
+				\hline
+				\underline{Init:} \\
+				\ \ \textit{alive} $:= \Pi$ \\
+				\ \ \textit{detected} $:= \emptyset$ \\
+				\\
+				\underline{upon} $\langle \textit{NFD}.\textit{Crash} \mid p \rangle$: \\
+				\ \ $\textit{detected} := \textit{detected} \cup \{p\}$ \\
+      			\ \ $\textit{alive} := \textit{alive} \setminus \{p\}$ \\
+      			\ \ trigger $\langle \textit{p crashed} \rangle$ to all $p' \in \Pi$ \\
+      			\\
+      			\underline{upon} $\langle \textit{p crashed} \rangle$ from $p'$: \\
+      			\ \ $\textit{detected} := \textit{detected} \cup \{p\}$ \\
+      			\ \ $\textit{alive} := \textit{alive} \setminus \{p\}$ \\
+      			\hline
+			\end{tabular}
+		\end{center}
+		\hfill \\
+		Additionally we can use the fact that if a process $p$ running \textit{NFD} detects a process $p'$ to have crashed, because of the strong accuracy property, $p'$ has actually crashed.
 	\end{adjustwidth}
 	
 	\section*{3.3 Quorum Systems}
@@ -65,5 +84,51 @@
 				We take the $Q$ with the most elements which would be equal to the last row with $k-1$ additional processes. Therefore we must have in total $2k-1$ correct processes, so at most $k^{2} - 2k +1$ faulty processes.
 			\end{enumerate}
 		\end{enumerate}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section*{3.2 Perfect Failure Detector}
+	\begin{adjustwidth}{2em}{2em}
+		First we assume that we have access to a timer, which has the follwing properties:
+		\begin{enumerate}
+			\item Each timer carries a reference to a process $p$, which is emitted as a parameter in its timeout event
+			\item Each such timer can be acessed via its parameter $p$.
+			\item Each timer can be reset - that is resetting its countdown to the value it was started with.
+		\end{enumerate}
+		With this information, we can construct a perfect failure detector using unidirectional \textsc{Heartbeats}: \\
+		\begin{center}
+			\begin{tabular}{|l|}
+				\hline
+				Implementing a perfect failure detector with heartbeats \\
+				\hline
+				\underline{Init:} \\
+				\ \ \textit{alive} $:= \Pi$ \\
+				\ \ \textit{detected} $:= \emptyset$ \\
+				\\
+				for $p \in (\Pi \setminus \{itself\})$: \\
+				\ \ \textit{Per process timer to track lifetime of remote process} \\
+				\ \ \textit{startTimer}($\Delta + \Phi + 1$, $p$) \\
+				\ \ \textit{Start timer to peridically send own heartbeats and send initial heartbeat} \\
+				\ \ \textit{startTimer}($\Delta + \Phi$, itself) \\
+				\ \ trigger $\langle p, \textsc{Heartbeat} \mid \textit{empty} \rangle$ to all $p' \in \textit{alive} \setminus \{ \textit{itself} \}$ \\
+				\\
+				\underline{upon} $\langle \textit{timeout} \mid p \rangle$: \\
+				\ \ \textit{\textbf{if}} $p == \textit{itself}$ \\
+				\ \ \ \ resetTimer(itself) \\
+				\ \ \ \ trigger $\langle p, \textsc{Heartbeat} \mid \textit{empty} \rangle$ to all $p' \in \textit{alive} \setminus \{ \textit{itself} \}$ \\
+				\ \ \textit{\textbf{else}}: \\
+				\ \ \ \ $\text{detected} := \text{detected} \cup \{p\}$
+        		\ \ \ \ $\text{alive} := \text{alive} \setminus \{p\}$
+				\ \ \ \ trigger $\langle P.\textit{Crash} \mid p \rangle$ \\
+				\\
+				\underline{upon} $\langle p, \textsc{Heartbeat} \mid empty$ \\
+				\ \ \textit{Restart timer tracking lifetime of} $p$ \\
+				\ \ resetTimer(p) \\ 
+				\hline
+			\end{tabular}
+		\end{center}
+		\hfill \\
+		Because every process (which is alive) sends a \textsc{Heartbeat} in the beginning and every $\Delta + \Phi$ and every \textsc{Heartbeat} takes at most $\Delta + \Phi$ to arrive and be processed a process from which no \textsc{Heartbeat} was received for $\Delta + \Phi + 1$ is guaranteed to be not alive and have crashed.
 	\end{adjustwidth}
 \end{document}
