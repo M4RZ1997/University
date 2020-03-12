@@ -14,6 +14,7 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{decorations.pathreplacing}
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 \usepackage{graphicx}
@@ -693,7 +694,334 @@
 	
 	\newpage
 	
-	\section{4th Lecture - \today}
+	\section{System Models - March 11, 2020}
+	\begin{adjustwidth}{-5em}{2em}
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\cellcolor{gray!80} CGR11 & \cellcolor{gray!80} processes & \cellcolor{gray!80} timing assumption & \cellcolor{gray!80} assumption & \cellcolor{gray!80} other names \\
+			\hline
+			fail-stop & crash & $\mathbb{P}$ & - & synchronous \\
+			fail-noisy & crash & $\diamond \mathbb{P}, \Omega$ & $N > 2 \mathbb{F}$ & eventually synchronous \\
+			fail-silent & crash & - & $N > 2 \mathbb{F}$ & asynchronous \\
+			fail-silent randomized & crash & - & $N > 2 \mathbb{F}$, randomness & asynchronous randomized \\
+			fail-revocery & crash-recovery & & & \\
+			fail-arbitrary-noisy & fail-arbitrary & Byz. leader detector & $N > 3 \mathbb{F}$ & "BFT" (PBFT) \\
+			fail-arbitrary-silent & -"- & - & $N > 3 \mathbb{F}$ & asynchronous Byzantine \\
+			fail-arbitrary randomized & \textsc{Byzantine} & - & $N > 3 \mathbb{F}$ & randomized Byzantine fault model \\
+			\hline
+		\end{tabular}
+	\end{adjustwidth}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Chapter 3: Distributed Storage and Shared Memory}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item Storage abstraction provided by distributed processes
+				\item Here: simplified model where $\Pi = \mathbb{C}$, designated processes act as  writing/reading clients
+			\end{enumerate}
+			\subsubsection{Main Abstraction}
+			\begin{adjustwidth}{2em}{}
+				\underline{\textbf{\textit{Shared Read-/Write-Register}}}: \\
+				\begin{tabular}{l}
+					\underline{Operations:} \\
+					\ \ read() $\rightarrow v$ \\
+					\ \ write($v$) $\rightarrow$ ACK \\
+					\\
+					\underline{Sequential implementations:} \\
+					\ \ \underline{state:} \\
+					\ \ \ \ val, initially \textsc{null} \\
+					\ \ \underline{function} read() \\
+					\ \ \ \ return val \\
+					\ \ \underline{function} write(v) \\
+					\ \ \ \ val $\leftarrow$ v
+					\ \ \ \ return ACK
+				\end{tabular}
+				\hfill \\
+				\underline{\textbf{\textit{Module Register}}} (r): \\
+				\begin{tabular}{l}
+					\underline{Events:} \\
+					\ \ $\langle r, \textsc{ Read}$ \\
+					\ \ $\langle r, \textsc{ ReadResp} \mid v$ \\
+					\ \ $\langle r, \textsc{ Write} \mid v$ \\\\
+					\ \ $\langle r, \textsc{ WriteResp}$ (acknowledgement) \\
+				\end{tabular}
+				\hfill \\
+				\underline{\textbf{\textit{Liveness:}}} \\
+				every operation eventually returns a response \\
+				\hfill \\
+				\underline{\textbf{\textit{Safety:}}} \\
+				Every read operation returns the value written by the "last write" operation, when no \underline{concurrent} operation. \\
+				\hfill \\
+				\underline{\textbf{\textit{Operations:}}} \\
+				every operation modeled by two events
+				\begin{enumerate}[-]
+					\item Invocation event
+					\item Completion event
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Definition (Preceding)}
+			\begin{adjustwidth}{2em}{}
+				Operation $o_1$ \underline{precedes} operation $o_2$ if $o_1$ completes before $o_2$ is invoked.
+			\end{adjustwidth}
+			\subsubsection{Definition (Sequential)}
+			\begin{adjustwidth}{2em}{}
+				Operations $o_1$ and $o_2$ are \underline{sequential} if $o_1$ precedes $o_2$ or $o_2$ precedes $o_1$.
+			\end{adjustwidth}
+			\subsubsection{Definition (Concurrent)}
+			\begin{adjustwidth}{2em}{}
+				Operations $o_1$ and $o_2$ are \underline{concurrent} if they are not sequential.
+			\end{adjustwidth}
+			\subsubsection{Register Example}
+			\begin{adjustwidth}{2em}{}
+				\underline{\textbf{\textit{Register Domain}}}
+				\begin{enumerate}[-]
+					\item binary register $\{ 0,1 \}$
+					\item multi-valued register
+				\end{enumerate}
+				\hfill \\
+				\underline{\textbf{\textit{Register Types}}}
+				\begin{enumerate}[-]
+					\item (1,1) 1 writer, 1 reader (SRSW register (single-writer-single-reader))
+					\item (1,N) 1 writer, N readers (MRSW register (multi-writer-single-reader))
+					\item (N,N) N writers, N readers (MRMW register (multi-writer-multi-reader))
+				\end{enumerate}
+				\hfill \\
+				\underline{\textbf{\textit{Semantics:}}}
+				\begin{enumerate}[]
+					\item \underline{\textbf{Safe:}} \\
+					A read() not concurrent with a write returns the value written by the most recent write() operation (a safe register can return any object from the domain)
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{An unsafe register}
+			\begin{adjustwidth}{2em}{2em}
+				Implement a multi-valued register (mvr) from (many) binary registers. \\
+				Domain $\mathbb{D} = [ 0,11 ]$ \\
+				4 binary registers $br-0, br-1, br-2, br-3$ \\
+				Notation mit function calls:
+				\begin{enumerate}[]
+					\item br-0.write(1)
+					\item mvr.read()
+				\end{enumerate}
+				\hfill \\
+				\begin{tabular}{|l|}
+					\hline
+					\cellcolor{gray!80} \underline{\textbf{\textit{MVR}}} \\
+					\hline
+					\ \ \underline{\textbf{state}} \\
+					\ \ \ \ \textit{br-0, br-1, br-2, br-3} initially 0 \\
+					\\
+					\ \ \underline{\textbf{function}} mvr.write($v$) \\
+					\ \ \ \ $(b_3b_2b_1b_0)_2\leftarrow v$ \\
+					\ \ \ \ \underline{for} $i \leftarrow 0,...,3$ \underline{do} \\
+					\ \ \ \ \ \ \textit{br-i}.write($b_i$) \\
+					\ \ \ \ \textbf{return} \textsc{ACK} \\
+					\\
+					\ \ \underline{\textbf{function}} mvr.read() \\
+					\ \ \ \ \underline{for} $i \leftarrow 0,...,3$ \underline{do} \\
+					\ \ \ \ \ \ $v_i \leftarrow$ \textit{br-i}.read() \\
+					\ \ \ \ \textbf{return} $(v_3v_2v_1v_0)_2z$ \\
+					\hline
+				\end{tabular}
+				\hfill \\
+				\hfill \\
+				\underline{\textbf{\textit{Execution:}}} \textit{initially mvr stores 9 =} $(1001)_2$ \\
+				\begin{center}
+					\begin{tikzpicture}[decoration=brace]
+						%Coordinates
+						\coordinate (startWrite);
+						\coordinate [right=10cm of startWrite] (endWrite);
+						\coordinate [below=2.3cm of startWrite] (startRead);
+						\coordinate [right=10cm of startRead] (endRead);
+						
+						%Nodes
+						\node [above right=0.1cm and 0.1cm of startWrite] {\textit{write}};
+						\node [below right=0.1cm and 0.1cm of startRead] {\textit{read}};
+						\node [below right=0.3cm and 0cm of startWrite] (1stEQ) {$\left[\begin{array}{c} br-0 \\ br-1 \\ br-2 \\ br-3\end{array}\right]$ = $\left[\begin{array}{c} 1 \\ 0 \\ 0 \\ 1\end{array}\right]$};
+						\node [right=0.5cm of 1stEQ] (2ndEQ) {$\left[\begin{array}{c} 1 \\ 0 \\ 0 \\ 1\end{array}\right]$};
+						\node [right=0.5cm of 2ndEQ] (3rdEQ) {$\left[\begin{array}{c} 1 \\ 1 \\ 0 \\ 1\end{array}\right]$};
+						\node [right=0.1cm of 3rdEQ] (4thEQ) {$\left[\begin{array}{c} 1 \\ 1 \\ 1 \\ 1\end{array}\right]$};
+						\node [right=0.9cm of 4thEQ] (5thEQ) {$\left[\begin{array}{c} 1 \\ 1 \\ 1 \\ 0\end{array}\right]$};
+						
+						%Circlets
+						\fill (3.7,0) circle (2pt);
+						\fill (4.1,0) circle (2pt) node[anchor=north] {br-0};
+						\fill (5.7,0) circle (2pt) node[anchor=north] {br-1};
+						\fill (6.9,0) circle (2pt) node[anchor=north] {br-2};
+						\fill (8.9,0) circle (2pt) node[anchor=north] {br-3};
+						\fill (9.3,0) circle (2pt);
+						
+						\fill (3.7,-2.3) circle (2pt);
+						\fill (4.7,-2.3) circle (2pt) node[anchor=north] {\footnotesize{$v_0 = 1$}};
+						\fill (6.2,-2.3) circle (2pt) node[anchor=north] {\footnotesize{$v_1 = 1$}};
+						\fill (7.4,-2.3) circle (2pt) node[anchor=north] {\footnotesize{$v_2 = 1$}};
+						\fill (8.4,-2.3) circle (2pt) node[anchor=north] {\footnotesize{$v_3 = 1$}};
+						\fill (9.3,-2.3) circle (2pt);
+						
+						%Braces
+						\draw[decorate, yshift=1ex] (3.7,0) -- node[above=0.4ex] {\textit{write} 7 = $(0111)_2$} (9.3,0);
+						\draw[decorate, yshift=-2.5ex]  (9.3,-2.3) -- node[below=0.4ex] {\textit{read} $\rightarrow 15$ (not in domain $\rightarrow$ \textsc{not safe})} (3.7,-2.3);
+											
+						%Arrows
+						\draw[arrow] (startWrite) -- (endWrite);
+						\draw[arrow] (startRead) -- (endRead);
+					\end{tikzpicture}
+				\end{center}
+				\hfill \\
+				\underline{\textbf{\textit{Regular Semantics:}}}
+				\begin{enumerate}[]
+					\item Only single-writer registers
+					\item \textit{Safety:}
+					\begin{adjustwidth}{1em}{}
+						\begin{enumerate}[]
+							\item A read(), not concurrent with a write(), returns the most recently written value. \\
+							Otherwise read() returns the most recently written value or the concurrently written values.
+						\end{enumerate}
+					\end{adjustwidth}
+				\end{enumerate}
+				\hfill \\
+				\underline{\textbf{\textit{Atomic Semantics:}}} \textit{(assume values written are unique)}
+				\begin{enumerate}[]
+					\item \textit{Safety:}
+					\begin{adjustwidth}{1em}{}
+						\begin{enumerate}[(1)]
+							\item -"-
+							\item If read() $\rightarrow v$ and a subsequent read() $\rightarrow w$, then write($v$) preceds write ($w$) or write($v$) is concurrent to write($w$).
+						\end{enumerate}
+					\end{adjustwidth}
+					\item \textit{Alternative characterization with linearizability}
+					\begin{adjustwidth}{1em}{}
+						\begin{enumerate}[]
+							\item Collaps each operation to its linearization point, which must occur between invocation and response, and values returned satisfy the sequential specifications of the \underline{object}.
+						\end{enumerate}
+					\end{adjustwidth}
+				\end{enumerate}
+			\end{adjustwidth}
+			\begin{adjustwidth}{-9em}{}
+				\begin{center}
+					\begin{tabular}{lll}
+						\begin{tabular}{l}
+							\begin{tikzpicture}
+								%Coordinates
+								\coordinate (origin);
+								\coordinate [above=4cm of origin] (topY);
+								\coordinate [right=6cm of origin] (topX);
+								\coordinate [above right=3cm and 3cm of origin] (topZ);
+								
+								%Nodes
+								\node [right=0.1cm of topX] (semantics) {\textit{semantics}};
+								\node [above right=0.1cm and 0.1cm of topZ] (domain) {\textit{domain}};
+								\node [above=0.1cm of topY] (registerTypes) {\textit{register-types}};
+								
+								\fill (0,1) circle (2pt) node[anchor=east]{SRSW};
+								\fill (0,2) circle (2pt) node[anchor=east]{MRSW};
+								\fill (0,3) circle (2pt) node[anchor=east]{MRMW};
+								
+								\fill (1.5,0) circle (2pt) node[anchor=north] {safe};
+								\fill (3,0) circle (2pt) node[anchor=north] {regular};
+								\fill (4.5,0) circle (2pt) node[anchor=north] {atomic};
+								
+								\fill (1,1) circle (2pt) node[anchor=north west] {binary};
+								\fill (2,2) circle (2pt) node[anchor=north west] {multi-valued};
+								
+								
+								%Lines
+								\draw[arrow] (origin) -- (topX);
+								\draw[arrow] (origin) -- (topY);
+								\draw[arrow] (origin) -- (topZ);
+								
+							\end{tikzpicture}
+						\end{tabular}
+						&
+						&
+						\begin{tabular}{l}
+							\begin{tikzpicture}
+								%Nodes
+								\node (pBot) {$p_{\bot}$};
+								\node [below=0.2cm of pBot] (r) {$r$};
+								
+								%Coordinates
+								\coordinate [right=0.2cm of pBot] (startWrite);
+								\coordinate [right=0.3cm of r] (startRead);
+								\coordinate [right=6cm of startWrite] (endWrite);
+								\coordinate [right=6cm of startRead] (endRead);
+								
+								%Circlets
+								\fill (1,0) circle (2pt);
+								\fill (2,0) circle (2pt);
+								\fill (4.5,0) circle (2pt);
+								\fill (5.5,0) circle (2pt);
+								\fill (2.5,-0.64) circle (2pt);
+								\fill (3.2,-0.64) circle (2pt);
+								\fill (4.0,-0.64) circle (2pt);
+								\fill (4.7,-0.64) circle (2pt);
+								\fill (5.3,-0.64) circle (2pt);
+								\fill (6,-0.64) circle (2pt);
+								
+								%Arrows
+								\draw[arrow] (startWrite) -- (endWrite);
+								\draw[arrow] (startRead) -- (endRead);
+								\draw[line width=0.8mm] (1,0) -- (2,0) node[above left=0.05cm and -0.3cm] {\textit{write}($x$)};
+								\draw[line width=0.8mm] (4.5,0) -- (5.5,0) node[above left=0.05cm and -0.3cm] {\textit{write}($u$)};
+								\draw[line width=0.8mm] (2.5,-0.64) -- (3.2,-0.64) node[below left=0.05cm and -0.4cm] (readOne) {$\begin{array}{c} \textit{read}_1 \\ \downarrow \\ x\end{array}$};
+								\draw[line width=0.8mm] (4.0,-0.64) -- (4.7,-0.64) node[below left=0.05cm and -0.4cm] (readTwo) {$\begin{array}{c} \textit{read}_2 \\ \downarrow \\ ?\end{array}$};
+								\draw[line width=0.8mm] (5.3,-0.64) -- (6,-0.64) node[below left=0.05cm and -0.4cm] (readThree) {$\begin{array}{c} \textit{read}_3 \\ \downarrow \\ ?\end{array}$};
+								
+								%TextNodes
+								\node [below=0.2cm of readOne] (safeOne) {$x$};
+								\node [left=2cm of safeOne] (safe) {\underline{\textbf{safe}}};
+								\node [below=0.2cm of readTwo] (safeTwo) {\textit{any}};
+								\node [below=0.2cm of readThree] (safeThree) {\textit{any}};
+								
+								\node [below=0.2cm of safe] (regular) {\underline{\textbf{regular}}};
+								\node [below=0.4cm of safeOne] (regularOne) {$x$};								
+								\node [below=0.2cm of safeTwo] (regularTwo) {$\begin{array}{c} x \\ x \\ u \\ u \end{array}$};
+								\node [below=0.2cm of safeThree] (regularThree) {$\begin{array}{c} x \\ u \\ x \\ u \end{array}$};
+								\node [below=1.5cm of regular] {\underline{\textbf{atomic}}};
+								\node [below=1.7cm of regularOne] {$x$};								
+								\node [below=0.2cm of regularTwo] {$\begin{array}{c} x \\ x \\ u \end{array}$};
+								\node [below=0.2cm of regularThree] {$\begin{array}{c} x \\ u \\ u \end{array}$};
+							\end{tikzpicture}
+						\end{tabular}
+					\end{tabular}
+				\end{center}
+			\end{adjustwidth}
+			\subsubsection{Implementation of an (1,N) Regualar Register in Fail-Silent Mode}
+			\begin{center}
+				\begin{tabular}{|l|}
+					\hline
+					\cellcolor{gray!80} \underline{\textbf{\textit{Majority-Voting}}} \\
+					\hline
+					\underline{\textbf{state:}} \\
+					\ \ \textit{val} \\
+					\ \ \textit{ts} \\
+					\ \ \textit{wts} $\leftarrow$ 0 //writer only \\
+					\\
+					\underline{\textbf{function}} rr.write($v$) \\ 
+					\ \ $\textit{wts} \leftarrow \textit{wts + 1}$ \\
+					\ \ \textit{send} message [\textsc{write}, $wts$, $v$] to all $p \in \Pi$ \\
+					\ \ \underline{wait for} message [\textsc{write-ACK}] from $>N/2$ processors \\
+					\ \ \underline{return} \textsc{ACK} \\											\\
+					\underline{upon} \textit{receive} message [\textsc{write}, $ts'$, $v$] from $w$ \underline{do} \\
+					\ \ $(val, ts) \leftarrow (v, ts')$ \\
+					\ \ \textit{send} message [\textsc{write-ACK}] to $w$ \\
+					\\
+					\underline{upon} \textit{receive} message [\textsc{read}] from $r$ \underline{do} \\
+					\ \ \textit{send} message [\textsc{readval}, $ts$, $val$] to $r$ \\
+					\\
+					\underline{\textbf{function}} rr.read() \\
+					\ \ \textit{send} message [\textsc{read}] to all $p \in \Pi$ \\
+					\ \ \underline{wait for} message [\textsc{readval}, $ts'$, $val'$] from $>N/2$ processors \\
+					\ \ let $v$ be the value $val'$ among the received pairs with the highest timestamp \\
+					\ \ \underline{return} $v$\\
+					\\
+					\hline
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{5th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

@@ -24,5 +24,14 @@
 \BOOKMARK [2][-]{subsection.3.3}{Partially Synchronous Model}{section.3}% 24
 \BOOKMARK [2][-]{subsection.3.4}{Abstracting Time}{section.3}% 25
 \BOOKMARK [3][-]{subsubsection.3.4.1}{Implementing P}{subsection.3.4}% 26
-\BOOKMARK [1][-]{section.4}{4th Lecture - March 4, 2020}{}% 27
-\BOOKMARK [2][-]{subsection.4.1}{sub}{section.4}% 28
+\BOOKMARK [1][-]{section.4}{System Models - March 11, 2020}{}% 27
+\BOOKMARK [2][-]{subsection.4.1}{Chapter 3: Distributed Storage and Shared Memory}{section.4}% 28
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Main Abstraction}{subsection.4.1}% 29
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Definition \(Preceding\)}{subsection.4.1}% 30
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Definition \(Sequential\)}{subsection.4.1}% 31
+\BOOKMARK [3][-]{subsubsection.4.1.4}{Definition \(Concurrent\)}{subsection.4.1}% 32
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Register Example}{subsection.4.1}% 33
+\BOOKMARK [3][-]{subsubsection.4.1.6}{An unsafe register}{subsection.4.1}% 34
+\BOOKMARK [3][-]{subsubsection.4.1.7}{Implementation of an \(1,N\) Regualar Register in Fail-Silent Mode}{subsection.4.1}% 35
+\BOOKMARK [1][-]{section.5}{5th Lecture - March 12, 2020}{}% 36
+\BOOKMARK [2][-]{subsection.5.1}{sub}{section.5}% 37

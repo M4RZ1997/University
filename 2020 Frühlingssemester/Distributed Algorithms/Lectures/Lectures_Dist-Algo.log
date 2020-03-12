@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  4 MAR 2020 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.2.26)  12 MAR 2020 15:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1429,42 +1429,42 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./Lectures_Dist-Algo.aux)
 \openout1 = `Lectures_Dist-Algo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 55.
  (c:/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 54.
-LaTeX Font Info:    Try loading font information for LS1+stix on input line 54.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for LS1/stix/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for LS1+stix on input line 55.
 
  (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stix.fd
 File: ls1stix.fd 2015/04/17 v1.1.2-latex STIX LS1 font definitions
 )
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 54.
-LaTeX Font Info:    Try loading font information for LS2+stix on input line 54.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for LS2/stix/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for LS2+stix on input line 55.
 
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stix.fd
 File: ls2stix.fd 2015/04/17 v1.1.2-latex STIX LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Try loading font information for T1+stix on input line 54.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Try loading font information for T1+stix on input line 55.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/t1stix.fd
 File: t1stix.fd 2015/04/17 v1.1.2-latex STIX T1 font definitions
@@ -1534,16 +1534,16 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 54.
+LaTeX Info: Redefining \selectfont on input line 55.
  ABD: EveryShipout initializing macros
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 54.
+ on input line 55.
 
 \AtBeginShipoutBox=\box74
-Package hyperref Info: Link coloring OFF on input line 54.
+Package hyperref Info: Link coloring OFF on input line 55.
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1552,70 +1552,70 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count423
 )
-LaTeX Info: Redefining \ref on input line 54.
-LaTeX Info: Redefining \pageref on input line 54.
-LaTeX Info: Redefining \nameref on input line 54.
+LaTeX Info: Redefining \ref on input line 55.
+LaTeX Info: Redefining \pageref on input line 55.
+LaTeX Info: Redefining \nameref on input line 55.
 
 (./Lectures_Dist-Algo.out) (./Lectures_Dist-Algo.out)
 \@outlinefile=\write11
 \openout11 = `Lectures_Dist-Algo.out'.
 
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 56.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 57.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <12> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 58.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 59.
 LaTeX Font Info:    Try loading font information for LS1+stixscr on input line 
-69.
+70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixscr.fd
 File: ls1stixscr.fd 2015/04/17 v1.1.2-latex STIX script LS1 font definitions
 )
-LaTeX Font Info:    Try loading font information for LS2+stixex on input line 6
-9.
+LaTeX Font Info:    Try loading font information for LS2+stixex on input line 7
+0.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixex.fd
 File: ls2stixex.fd 2015/04/17 v1.1.2-latex STIX extentions LS2 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 69.
+LaTeX Font Info:    Try loading font information for U+msa on input line 70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 69.
+LaTeX Font Info:    Try loading font information for U+msb on input line 70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Try loading font information for LS1+stixfrak on input line
- 69.
+ 70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixfrak.fd
 File: ls1stixfrak.fd 2015/04/17 v1.1.2-latex STIX fraktur LS1 font definitions
 )
-LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 6
-9.
+LaTeX Font Info:    Try loading font information for LS1+stixbb on input line 7
+0.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixbb.fd
 File: ls1stixbb.fd 2015/04/17 v1.1.2-latex STIX blackboard LS1 font definitions
 
 )
 LaTeX Font Info:    Try loading font information for LS2+stixcal on input line 
-69.
+70.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixcal.fd
 File: ls2stixcal.fd 2015/04/17 v1.1.2-latex STIX calligraphic LS2 font definiti
 ons
 )
-LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 6
-9.
+LaTeX Font Info:    Try loading font information for LS1+stixsf on input line 7
+0.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls1stixsf.fd
 File: ls1stixsf.fd 2015/04/17 v1.1.2-latex STIX sans-serif LS1 font definitions
 
 )
-LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 6
-9.
+LaTeX Font Info:    Try loading font information for LS2+stixtt on input line 7
+0.
 
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ls2stixtt.fd
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
@@ -1623,73 +1623,73 @@ File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 )
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 70.
+(paralist)                The label is: - on input line 71.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 91.
+(paralist)                The label is: - on input line 92.
 
 
-Overfull \hbox (3.64526pt too wide) in paragraph at lines 76--92
+Overfull \hbox (3.64526pt too wide) in paragraph at lines 77--93
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--92
+Underfull \hbox (badness 10000) in paragraph at lines 77--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--92
+Underfull \hbox (badness 10000) in paragraph at lines 77--93
 
  []
 
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <10> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 98.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 99.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 98.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@@underline' on input line 98.
+(hyperref)                removing `math shift' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 98.
+(hyperref)                removing `\@@underline' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 98.
+(hyperref)                removing `\hbox' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 98.
+(hyperref)                removing `\mathsurround' on input line 99.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 98.
+(hyperref)                removing `\z@' on input line 99.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 99.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 100.
+(paralist)                The label is: - on input line 101.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: \textbullet  on input line 103.
+(paralist)                The label is: \textbullet  on input line 104.
 
-LaTeX Font Info:    Try loading font information for TS1+stix on input line 104
+LaTeX Font Info:    Try loading font information for TS1+stix on input line 105
 .
 (c:/texlive/2018/texmf-dist/tex/latex/stix/ts1stix.fd
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
-<distributed.png, id=119, 301.125pt x 301.125pt>
+<distributed.png, id=155, 301.125pt x 301.125pt>
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 160.
+Package pdftex.def Info: distributed.png  used on input line 161.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 LaTeX Font Info:    Font shape `T1/stix/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/stix/b/n' tried instead on input line 160.
+(Font)              Font shape `T1/stix/b/n' tried instead on input line 161.
 
 
 Package Fancyhdr Warning: \headheight is too small (40.0pt): 
@@ -1702,33 +1702,33 @@ This may cause the page layout to be inconsistent, however.
  <./distributed.png>]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 222.
+(paralist)                The label is: - on input line 223.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 228.
+(paralist)                The label is: - on input line 229.
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 236.
+Package pdftex.def Info: distributed.png  used on input line 237.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 256--260
+Underfull \hbox (badness 10000) in paragraph at lines 257--261
 
  []
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 282.
+Package pdftex.def Info: distributed.png  used on input line 283.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [3]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 309.
+(paralist)                The label is: - on input line 310.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 317.
+(paralist)                The label is: - on input line 318.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
@@ -1738,15 +1738,15 @@ owdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep
  4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ 
 minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ p
 lus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip {\textbul
-let } on input line 326.
+let } on input line 327.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--327
+Underfull \hbox (badness 10000) in paragraph at lines 326--328
 
  []
 
 
-Overfull \hbox (0.23723pt too wide) in paragraph at lines 329--331
+Overfull \hbox (0.23723pt too wide) in paragraph at lines 330--332
 []\T1/stix/b/n/10 Liveness prop-er-ties \T1/stix/m/n/10 (\T1/stix/m/it/10 some-
 thing "good" will hap-pen in the fu-ture \T1/stix/m/n/10 [\T1/stix/m/sc/10 even
 tually\T1/stix/m/n/10 ]) 
@@ -1754,14 +1754,14 @@ tually\T1/stix/m/n/10 ])
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 338.
+(paralist)                The label is: - on input line 339.
 
 LaTeX Font Info:    Font shape `T1/stix/bx/it' in size <10> not available
-(Font)              Font shape `T1/stix/b/it' tried instead on input line 339.
+(Font)              Font shape `T1/stix/b/it' tried instead on input line 340.
 
 Package paralist Warning: Incorrect label; no or multiple counters.
 (paralist)                The label is: \relax \fontsize {5}{6}\selectfont {\te
-xtbullet } on input line 342.
+xtbullet } on input line 343.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
@@ -1771,44 +1771,44 @@ owdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep
  4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ 
 minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ p
 lus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip {\textbul
-let } on input line 353.
+let } on input line 354.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 356.
+(paralist)                The label is: - on input line 357.
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 357.
+Package pdftex.def Info: distributed.png  used on input line 358.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [4]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 360.
+(paralist)                The label is: - on input line 361.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 365.
+(paralist)                The label is: - on input line 366.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 381.
+(paralist)                The label is:  on input line 382.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 386.
+(paralist)                The label is:  on input line 387.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 396.
+(paralist)                The label is:  on input line 397.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 401.
+(paralist)                The label is:  on input line 402.
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 415.
+Package pdftex.def Info: distributed.png  used on input line 416.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [5]
 
@@ -1819,130 +1819,220 @@ owdisplayshortskip 3\p@ plus\p@ minus2\p@ \def \leftmargin \leftmargini \parsep
  4\p@ plus2\p@ minus\p@ \topsep 8\p@ plus2\p@ minus4\p@ \itemsep 4\p@ plus2\p@ 
 minus\p@ {\leftmargin \leftmargini \topsep 3\p@ plus\p@ minus\p@ \parsep 2\p@ p
 lus\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip {\textbul
-let } on input line 431.
+let } on input line 432.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 433.
+(paralist)                The label is: - on input line 434.
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 497.
+Package pdftex.def Info: distributed.png  used on input line 498.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [6]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 504.
+(paralist)                The label is: - on input line 505.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--566
+Underfull \hbox (badness 10000) in paragraph at lines 523--567
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--566
+Underfull \hbox (badness 10000) in paragraph at lines 523--567
 
  []
 
 LaTeX Font Info:    Font shape `T1/stix/bx/sc' in size <10> not available
-(Font)              Font shape `T1/stix/b/sc' tried instead on input line 576.
+(Font)              Font shape `T1/stix/b/sc' tried instead on input line 577.
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 577.
+(paralist)                The label is: - on input line 578.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--578
+Underfull \hbox (badness 10000) in paragraph at lines 577--579
 
  []
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 581.
+(paralist)                The label is: - on input line 582.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 589.
+(paralist)                The label is: - on input line 590.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 594.
+(paralist)                The label is: - on input line 595.
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 595.
+Package pdftex.def Info: distributed.png  used on input line 596.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [7]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 605.
+(paralist)                The label is:  on input line 606.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 614.
+(paralist)                The label is:  on input line 615.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 619.
+(paralist)                The label is:  on input line 620.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 629.
+(hyperref)                removing `math shift' on input line 630.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 629.
+(hyperref)                removing `math shift' on input line 630.
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 654.
+Package pdftex.def Info: distributed.png  used on input line 655.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [8]
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 661.
+(paralist)                The label is:  on input line 662.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 655--662
+Underfull \hbox (badness 10000) in paragraph at lines 656--663
 
  []
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 668.
+(paralist)                The label is:  on input line 669.
 
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is:  on input line 673.
+(paralist)                The label is:  on input line 674.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 679--680
+Underfull \hbox (badness 10000) in paragraph at lines 680--681
 
  []
 
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 694.
+Package pdftex.def Info: distributed.png  used on input line 695.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
 [9]
+Overfull \hbox (67.16069pt too wide) in paragraph at lines 699--713
+[][] 
+ []
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 717.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 756.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--757
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--757
+
+ []
+
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 702.
+Package pdftex.def Info: distributed.png  used on input line 757.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
- [10]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 702.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 702.
+[10]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 776.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 782.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 789.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 800.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 804--827
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 804--827
+
+ []
+
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 827.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[11]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 870.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 874.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 882.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 892.
+
+
+Overfull \hbox (78.5488pt too wide) in paragraph at lines 900--985
+ [] 
+ []
+
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 986.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[12]
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 1022.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+ [13]
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 1030.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+ [14]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1030.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1030.
  (./Lectures_Dist-Algo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 702.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 702.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1030.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1030.
+
 Package rerunfilecheck Info: File `Lectures_Dist-Algo.out' has not changed.
-(rerunfilecheck)             Checksum: 547BFBB71D6E5B2D4D603B31B7567AE9;2143.
+(rerunfilecheck)             Checksum: DE725A1A64D98E1094AEC24F77776D01;2918.
  ) 
 Here is how much of TeX's memory you used:
- 44020 strings out of 492616
- 961410 string characters out of 6132768
- 1125344 words of memory out of 5000000
- 47226 multiletter control sequences out of 15000+600000
- 612130 words of font info for 91 fonts, out of 8000000 for 9000
+ 44278 strings out of 492616
+ 965726 string characters out of 6132768
+ 1146416 words of memory out of 5000000
+ 47449 multiletter control sequences out of 15000+600000
+ 629726 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,30n,96p,1020b,1007s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2018/texmf-dist/fonts/enc/dvips/stix/stix-t1.enc}{c:/texlive/2018
@@ -1959,10 +2049,10 @@ xmf-dist/fonts/type1/public/stix/stix-mathrm.pfb><c:/texlive/2018/texmf-dist/fo
 nts/type1/public/stix/stix-mathscr.pfb><c:/texlive/2018/texmf-dist/fonts/type1/
 public/stix/stix-mathsf.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/stix
 /stix-mathtt.pfb>
-Output written on Lectures_Dist-Algo.pdf (10 pages, 234174 bytes).
+Output written on Lectures_Dist-Algo.pdf (14 pages, 255565 bytes).
 PDF statistics:
- 326 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 114 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 407 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 147 named destinations out of 1000 (max. 500000)
+ 314 words of extra memory for PDF output out of 10000 (max. 10000000)
 
