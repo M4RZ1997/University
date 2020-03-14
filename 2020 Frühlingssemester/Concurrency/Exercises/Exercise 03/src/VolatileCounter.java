@@ -9,10 +9,6 @@ public class VolatileCounter implements ICounter{
         this.counter++;
     }
 
-    public void decrement(){
-        this.counter--;
-    }
-
     public int getCounter(){
         return this.counter;
     }

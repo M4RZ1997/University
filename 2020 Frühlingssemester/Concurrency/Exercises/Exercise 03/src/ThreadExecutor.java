@@ -15,9 +15,6 @@ public class ThreadExecutor {
         for(int k = 0; k < n; k++){
             this.threads.add(new Thread(new IncrementThread(counter, i)));
         }
-        for(int j = 0; j < m; j++){
-            this.threads.add(new Thread(new DecrementThread(counter, i)));
-        }
     }
 
     public void runThreads(){
@@ -34,17 +31,18 @@ public class ThreadExecutor {
     }
 
     public static void main(String args[]){
-        ThreadExecutor executor = new ThreadExecutor(atomicCounter);
+        ThreadExecutor executor = new ThreadExecutor(volatileCounter);
         long startingTime = System.nanoTime();
         executor.runThreads();
         long pastTime = (System.nanoTime() - startingTime)/1000000;
-        System.out.println("atomic Counter:" + atomicCounter.getCounter());
+        System.out.println("VOLATILE Counter:" + volatileCounter.getCounter());
         System.out.println("Time:" + pastTime + "ms");
-        executor = new ThreadExecutor(volatileCounter);
+        System.out.println();
+        executor = new ThreadExecutor(atomicCounter);
         startingTime = System.nanoTime();
         executor.runThreads();
         pastTime = (System.nanoTime() - startingTime)/1000000;
-        System.out.println("volatile Counter:" + volatileCounter.getCounter());
+        System.out.println("ATOMIC Counter:" + atomicCounter.getCounter());
         System.out.println("Time:" + pastTime + "ms");
     }
 }

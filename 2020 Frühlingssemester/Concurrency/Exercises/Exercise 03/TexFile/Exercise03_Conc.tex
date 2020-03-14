@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+
+\graphicspath{{./snippets/}}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Concurrency}} \\
+		\Large Exercise 03
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{3.1 \textsc{Volatile} Counter}
+	\begin{adjustwidth}{2em}{2em}
+		When we use the volatile counter cariant the result will be false. The cause for this is that while every thread is fetching the value of the counter from the storage and not from the cache this fetching can be still concurrent and appear simultaneously. Therefore several can have the same value for the counter and increment this value and write it back. Therefore we get a falsely counter.
+	\end{adjustwidth}
+	
+	\section*{3.2 \textsc{Atomic} Counter}
+	\begin{adjustwidth}{2em}{2em}
+		When we use the AtomicInteger's CompareAndSet(expectedValue, updatedValue)-method it will return \textsc{True} if the expected value was the actual value and \textsc{False} if the expected value was wrong. This can be used in a while loop to call this method until it has worked. Therefore the right value for the counter is returned at the end. But a disadvantage of this method is thta it can take a very long time for all the threads to terminate, because it is not clear how often the CompareAndSet method is returning \textsc{False}.
+	\end{adjustwidth}
+\end{document}

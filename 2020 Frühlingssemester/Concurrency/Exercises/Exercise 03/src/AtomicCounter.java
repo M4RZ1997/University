@@ -9,13 +9,7 @@ public class AtomicCounter implements ICounter{
     }
 
     public void increment(){
-        int old = this.counter.get();
-        this.counter.compareAndSet(old, ++old);
-    }
-
-    public void decrement(){
-        int old = this.counter.get();
-        this.counter.compareAndSet(old, --old);
+        while(!this.counter.compareAndSet(this.counter.get(), this.counter.get() + 1));
     }
 
     public int getCounter(){
