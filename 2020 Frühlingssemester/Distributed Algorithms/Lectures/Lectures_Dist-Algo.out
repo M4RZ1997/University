@@ -33,5 +33,13 @@
 \BOOKMARK [3][-]{subsubsection.4.1.5}{Register Example}{subsection.4.1}% 33
 \BOOKMARK [3][-]{subsubsection.4.1.6}{An unsafe register}{subsection.4.1}% 34
 \BOOKMARK [3][-]{subsubsection.4.1.7}{Implementation of an \(1,N\) Regualar Register in Fail-Silent Mode}{subsection.4.1}% 35
-\BOOKMARK [1][-]{section.5}{5th Lecture - March 14, 2020}{}% 36
-\BOOKMARK [2][-]{subsection.5.1}{sub}{section.5}% 37
+\BOOKMARK [1][-]{section.5}{5th Lecture - March 18, 2020}{}% 36
+\BOOKMARK [2][-]{subsection.5.1}{Regular register implementation in fail-stop model}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.2}{Regular register implementation in fail-silent model}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.3}{Example execution}{section.5}% 39
+\BOOKMARK [2][-]{subsection.5.4}{Make Algorithm \(above\) \(Alg. 4.2\) atomic}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.5}{From \(1,1\) atomic to \(1,N\) atomic register}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.6}{From \(1,N\) atomic to \(N,N\) atomic register}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.7}{Register Implementation in Byzantine Model \(N > 3F\)}{section.5}% 43
+\BOOKMARK [1][-]{section.6}{6th Lecture - March 19, 2020}{}% 44
+\BOOKMARK [2][-]{subsection.6.1}{sub}{section.6}% 45

@@ -1021,7 +1021,153 @@
 	
 	\newpage
 	
-	\section{5th Lecture - \today}
+	\section{5th Lecture - March 18, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{\textsc{Regular} register implementation in \textit{fail-stop} model}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item synchronous
+				\item Perfect Failure Detector $\mathbb{P}$
+			\end{enumerate} 
+			\hfill \\
+			\underline{\textbf{(1,N) regular register (\textit{onrr})}} \\
+			tikz \\
+			\begin{tabular}{l}
+				\underline{Init:} \\
+				\ \ $val \leftarrow 1$ \\
+				\ \ $correct \leftarrow \Pi$ \\
+				\\
+				\underline{upon} $\langle \textit{onrr-Write} \mid v \rangle$ \underline{do} \\
+				\ \ send message [\textsc{write}, v] to all $p \in \Pi$ //\textit{best-effort broadcast} \\
+				\ \ \underline{wait for} receiving message [\textsc{ACK}] from all processes in \textit{correct} \\
+				\ \ \underline{trigger} $\langle \textit{onrr-WriteResponse} \rangle$ \\
+				\\
+				\underline{upon} receive message [\textsc{write}, $v'$] from process $w$ \underline{do} \\
+				\ \ $val \leftarrow v'$ \\
+				\ \ send message [\textsc{ACK}] to $w$ \\
+				\\
+				\underline{upon} $\langle \mathbb{P}\textit{-Crash} \mid c \rangle$ \underline{do} \\
+				\ \ \textit{correct} $\leftarrow$ \textit{correct $\setminus \{ c \}$ } \\
+				\\
+				\underline{upon} $\langle \textit{onrr-Read} \rangle$ \underline{do} \\
+				\ \ \underline{trigger} $\langle \textit{onrr-ReadReturn} \mid \textit{val} \rangle$
+			\end{tabular}
+		\end{adjustwidth}
+		\newpage
+		\subsection{\textsc{Regular} register implementation in \textit{fail-silent} model}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item asynchronous
+			\end{enumerate} 
+			\hfill \\
+			\underline{\textbf{(1,N) regular register with $N > 2F$}} \\
+			\begin{tabular}{l}
+				\underline{Init:} \\
+				\ \ $(ts, val) \leftarrow (o, \bot)$ \\
+				\ \ $wts \leftarrow 0$ \\
+				\ \ $rid \leftarrow 0$ \\
+				\\
+				\underline{upon} $\langle \textit{onrr-Write} \mid v \rangle$ \underline{do} \\
+				\ \ $wts \leftarrow wts+1$ \\
+				\ \ send message [\textsc{write}, $wts$, $v$] to all $p \in \Pi$ \\
+				\ \ \underline{wait for} receiving message [\textsc{ACK}, $ts'$] s.t. $ts' = wts$ from $> \frac{N}{2}$ processes \\
+				\ \ \underline{trigger} $\langle \textit{onrr-WriteResponse} \rangle$ \\
+				\\
+				\underline{upon} receive message [\textsc{write}, $ts'$, $v'$] from process $w$ \underline{do} \\
+				\ \ \underline{if} $ts' > ts$ \underline{then} \\
+				\ \ \ \ $(ts, val) \leftarrow (ts',v')$ \\
+				\ \ send message [\textsc{ACK}, $ts'$] to $w$ \\
+				\\
+				\underline{upon} $\langle \textit{onrr-Read} \rangle$ \underline{do} \\
+				\ \ $rid \leftarrow rid + 1$ \\
+				\ \ send message [\textsc{READ}, $rid$] to all processes in $\Pi$ \\
+				\ \ \underline{wait for} receive message [\textsc{VAL}, $r$, $ts'$, $v'$] s.t. $r = rid$ from $> \frac{N}{2}$ processes \\
+				\ \ $\overline{v} \leftarrow$ value $v$ in the message with the highest timestamp $ts'$ \\
+				\ \ \underline{trigger} $\langle onrr-\textit{ReadReturn} \mid \overline{v} \rangle$ \\
+				\\
+				\underline{upon} receiving message [\textsc{Read}, $r$] from process $p$ \underline{do} \\
+				\ \ send message [\textsc{VAL}, $r$, ts, val] to $p$
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection{Example execution}
+		\begin{adjustwidth}{2em}{2em}
+			tikz
+		\end{adjustwidth}
+		\newpage
+		\subsection{Make Algorithm (\textsc{above}) (Alg. 4.2) \textsc{atomic}}
+		\begin{adjustwidth}{2em}{2em}
+			(1,N)-\textsc{atomic} register (\textit{onar}) \\
+			\hfill \\
+			\begin{tabular}{l}
+				\underline{upon} $\langle onar-\textit{Read} \rangle$ \underline{do} \\
+				\ \ $rid \leftarrow rid + 1$ \\
+				\ \ send message [\textsc{READ}, $rid$] to all processes in $\Pi$ \\
+				\ \ \underline{wait for} receive message [\textsc{VAL}, $r$, $ts'$, $v'$] s.t. $r = rid$ from $> \frac{N}{2}$ processes \\
+				\ \ $(rts, rval) \leftarrow ts',v'$-pair from \textsc{VAL} message with highest $ts'$ \\
+				\ \ send message [\textsc{RWRITE}, $rts$, $rval$] to all $p \in \Pi$ \\
+				\ \ \underline{wait for} receiving message [\textsc{RACK}, $rts'$] s.t. $rts' = rts$ from $> \frac{N}{2}$ processes \\
+				\ \ \underline{trigger} $\langle \textit{onrr-ReadResponse} \mid rval \rangle$ \\
+				\\
+				\underline{upon} receive message [\textsc{RWRITE}, $ts'$, $val'$ from $r$ \underline{do} \\
+				\ \ \underline{if} $ts' > ts$ \underline{then} \\
+				\ \ \ \ $(ts, val) \leftarrow (ts',v')$ \\
+				\ \ send message [\textsc{RACK}, $ts'$] to $r$ \\
+			\end{tabular}
+			\hfill \\ \\
+			\underline{\textbf{start:}} (1,N) \textsc{regular} register \\
+			\underline{\textbf{intermediate:}} (1,1) \textsc{atomic} register \\
+			\underline{\textbf{goal:}} (1,N) \textsc{atomic} register \\
+		\end{adjustwidth}
+		\subsection{From (1,1) \textsc{atomic} to (1,N) \textsc{atomic} register}
+		\begin{adjustwidth}{2em}{2em}
+			tikz \\
+			\hfill \\
+			\underline{\textbf{Transformation:}} \\
+			\textit{implements:} (1,N) \textsc{atomic} register (\textit{onar}) \\
+			\textit{uses:} (1,1) \textsc{atomic} register ($u^2 :$ \textit{ooar.i.j}) \\
+			\begin{tabular}{l}
+				\underline{Init:}
+				\ \ $ts \leftarrow 0$ \\
+				\\
+				\underline{operation} \textit{onar-}\textsc{Write}($v$) \underline{is} \\
+				\ \ $ts \leftarrow ts + 1$ \\
+				\ \ \underline{for} $p \in \Pi$ \underline{do} \\
+				\ \ \ \ \textit{ooar.p.w}-\textsc{Write}(($ts,v$)) \\
+				\ \ \textbf{return} \textsc{ACK} \\
+				\\
+				\underline{operation} \textit{onar-}\textsc{Read}() \underline{is} \\
+				\ \ readList $\leftarrow []$ \\
+				\ \ \underline{for} $p \in \Pi$ \underline{do} \\
+				\ \ \ \ readList[p] $\leftarrow$ ooar.self.p-\textsc{Read}() \\
+				\ \ (maxts, maxval) $\leftarrow$ highest(readList) \\
+				\ \ \underline{for} $p \in \Pi$ \underline{do} \\
+				\ \ \ \ ooar.p.self-\textsc{Write}((maxts, maxval)) \\
+				\ \ \textbf{return} maxval
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection{From (1,N) \textsc{atomic} to (N,N) \textsc{atomic} register}
+		\begin{adjustwidth}{2em}{2em}
+			tikz \\
+			\hfill \\
+			\begin{enumerate}[-]
+				\item writer uses highest timestamp that it reads
+				\item timestamps become $(ts, \textit{index})$ duples (index of process)
+			\end{enumerate}
+		\end{adjustwidth}
+		\subsection{Register Implementation in \textsc{Byzantine} Model ($N > 3F$)}
+		\begin{adjustwidth}{2em}{2em}
+			tikz01 \\
+			tikz02 \\
+			\begin{enumerate}[-]
+				\item relax the specification
+				\item introduce data authentication using digital signature
+			\end{enumerate}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{6th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

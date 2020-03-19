@@ -34,7 +34,6 @@
 
 \begin{document}
 	\pagestyle{fancy}
-	
 	\section*{4.1 Emulating a (1,N) register from (1,1) registers}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{(a) Emulation is \textsc{safe} if $br.q$ are \textsc{safe} \textit{binary} (1,1)-registers}
@@ -105,7 +104,7 @@
 	
 	\section*{4.3 Register emulations without correct majority?}
 	\begin{adjustwidth}{2em}{2em}
-		An eventually perfect failure detector can suspect processes of failing even though they did not fail (as it will only be perfect at some point in the future). We already know that the Majority Voting Regular Register will be wrong if the Correct Majority assumption is violated. Initially the system may behave as in the Faile Silent Mode, because the failure Detector can initially be wrong. (Processes can Fail, but the Failure detector does not notice it). \\
-		Therefore the same assumptions as in the Fail Silent mode are needed during the initial period. If we don't have these assumptions, the same things can go wrong as in the fail-silent mode.
+		The usage of an eventually perfect failure detetor cannot relax the assumption of correct majority because processes can be suspected of having failed even they did not fail (as it will only be perfect in some point in the future). Therefore the system can behave as in the \textit{fail-silent} model. \\
+		For example we can consider a system with $\Pi$ processes and two disjoint sets $A,B \subset \Pi$ whereas $B$ has more elements than $A$. Let's assume that $(wts, val) := (1,v)$ is initially stored and $\diamond P$ suspects every process in $B$ to have failed. Therefore a new write operation (\textit{write}($w$)) will be considered to have finished if all processes in $A$ have acknowledged this writing operation. Simultaneously, $\diamond P$ will revive all processes in $B$. Therefore any read operation from a process in $B$ can only read the value of $v$ in the processes of $B$. Because it is not concurrent the assumption of regularity does not hold.
 	\end{adjustwidth}
 \end{document}

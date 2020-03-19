@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Distributed Algorithms}} \\
+		\Large Exercise 05
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\section*{5.1 Regular Register Executions}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection*{(a) Algorithm 4.1: Read-One Write-All}
+		\begin{adjustwidth}{1em}{2em}
+			We have one write process $p$, a reader process $q$ which is divided into two processes $q_1$ and $q_2$ initialized with the storage of $\bot$. First $p$ will call the \textit{write} operation which because it is not concurrent will be acknowledged and $q_1$ and $q_2$ store the yalue of $x$. Therefore the \textit{read} operation which is sequential after the \textit{write} operation and will therefore return $x$ because both $q_1$ and $q_2$ (so it does not matter which of them is read) have stored this value. We asume that the second \textit{read} operation is called by $q_1$ but before it has finished process $p$ is calling a \textit{write} operation to store the value of $y$. The process $q_1$ has already stored this value before the \textit{read} operation terminates and will therefore return $y$. The third \textit{read} operation is called by $q_2$ which is a little bit slower to write the new value and is therefore returning the value of $x$ before it will overwrite its value and acknowledge it.
+		\end{adjustwidth}
+		\subsection*{(b) Algorithm 4.2: Majority Voting Regular Register}
+		\begin{adjustwidth}{1em}{2em}
+			We have one write process $p$, a reader process $q$ and five processes $s_1$, $s_2$, $s_3$, $s_4$ and $s_5$ initialized with the storage of $\bot$. The sequential operations \textit{write} and \textit{read} will terminated as expected so now every process will have stored the value $x$ with the timestamp 1. Before the next \textit{read} operation terminates only $s_1$ have stored the value of $y$ with the timestamp 2 from the concurrent \textit{write} operation. Process $q$ will receive the messages from $s_1$, $s_2$, $s_3$ and $s_4$ and because the timestamp of $s_1$ is the highest it will return the value of $y$. For the third \textit{read} operation the process $q$ will receive messages from $s_2$, $s_3$, $s_4$ and $s_5$. Because all of them still have stored the value of $x$ because the \textit{write} operation has not terminated the \textit{read} operation will return $x$ as well.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{5.2 Read-All Write-One Regular Register}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{center}
+			\begin{tabular}{l}
+				\underline{\textbf{Implements:}} \\
+				\ \ (1,N)-RegularRegister, \textbf{instance} \textit{onrr} \\
+				\\ 
+				\underline{\textbf{Uses:}} \\
+				\ \ BestEffortBroadcast, \textbf{instance} \textit{beb} \\
+				\ \ PerfectPointToPointLinks, \textbf{instance} \textit{pl} \\
+				\ \ PerfectFailureDetector, \textbf{instance} $\mathbb{P}$ \\
+				\\
+				\underline{upon} \textbf{event} $\langle \textit{onrr, Init} \rangle$ \underline{do} \\ 
+				\ \ $val \leftarrow \bot$ \\
+				\ \ $correct \leftarrow \Pi$ \\
+				\ \ $wid \leftarrow 0$ \\
+				\ \ $rid \leftarrow 0$ \\
+				\ \ $readList \leftarrow []$ \\
+				\\
+				\underline{upon} \textbf{event} $\langle \mathbb{P}, \textit{Crash} \mid p \rangle$ \underline{do} \\
+				\ \ $correct = correct \setminus \{ p \}$ \\
+				\\
+				\underline{upon} \textbf{event} $\langle \textit{onrr, Read} \rangle$ \underline{do} \\
+				\ \ $rid = rid + 1$ \\
+				\ \ \underline{trigger} $\langle \textit{beb, Broadcast} \mid [\textsc{Read}, \textit{rid}] \rangle$ \\
+				\\
+				\underline{upon} \textbf{event} $\langle \textit{onrr, Write} \mid v \rangle$ \underline{do} \\
+				\ \ $val \leftarrow v$ \\
+				\ \ $wid := wid + 1$ \\
+				\ \ \underline{trigger} $\langle \textit{onrr, WriteReturn} \rangle$ \\
+				\\
+				\underline{upon} \textbf{event} $\langle \textit{beb, Deliver} \mid q, [\textsc{Read}, \textit{rid}] \rangle$ \\
+				\ \ \underline{trigger} $\langle \textit{pl, Send} \mid q, [\textsc{Value}, rid, wid, val] \rangle$ \\
+				\\
+				\underline{upon} \textbf{event} $\langle \textit{pl, Deliver} \mid q, [\textsc{Value}, r, id', v'] \rangle$ s.t. $r = rid$\\
+				\ \ $readList[q] \leftarrow (id', v')$ \\
+				\ \ \underline{if} $\#(readList) == \#(correct)$ \underline{then} \\
+				\ \ \ \ $v = \textit{highestval(readList)}$ \\
+				\ \ \ \ $readList = []$ \\
+				\ \ \ \ \underline{trigger} $\langle \textit{onrr, ReadReturn} \mid v \rangle$
+				
+			\end{tabular}
+		\end{center}
+	\end{adjustwidth}
+	
+	\section*{5.3 (1,1) Atomic Register}
+	\begin{adjustwidth}{2em}{2em}
+		A reader process can update its $(wts, val)$ pair in the last step of the \textit{ReadReturn}, after the if condition is fulfilled. After the value with the highest timestamp is chosen the process can update its pair with these values so it is up to date again.
+	\end{adjustwidth}
+\end{document}
