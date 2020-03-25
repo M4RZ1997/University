@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+
+\graphicspath{{./snippets/}}
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Concurrency}} \\
+		\Large Assignment 01
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section{Peterson's Algorithm}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section{Peterson's Algorithm: Fairness}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section{Linearizability and Sequentially Consistency}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Stack}
+		\begin{adjustwidth}{-2em}{2em}
+			\begin{center}
+				\begin{tabular}{lllll}
+					\begin{tabular}{l}
+						C: s.empty() \\
+						A: s.push(10) \\
+						B: s.pop() \\
+						A: s:void \\
+						A: s.push(20) \\
+						B: s:10 \\
+						A: s:void \\
+						C: s:true \\
+					\end{tabular}
+					&
+					&
+					\begin{tabular}{p{8cm}}
+						This history is linearizable and therefore as well sequential consistent because C's s.empty() call can finish before any value is pushed towards the stack. Furthermore the s.push(10) operation must happen before the pop() command and before the push(20) operation, because s.pop() will return 10. Therefore we get the following hystory.
+					\end{tabular}
+					&
+					&
+					\begin{tabular}{l}
+						C: s.empty() \\
+						C: s:true \\
+						A: s.push(10) \\
+						A: s:void \\
+						B: s.pop() \\
+						B: s:10 \\
+						A: s.push(20) \\
+						A: s:void
+					\end{tabular}
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+		\subsection{Queue}
+		\begin{adjustwidth}{-2em}{2em}
+			\begin{center}
+				\begin{tabular}{lllll}
+					\begin{tabular}{l}
+						A: q.enq(x) \\
+						B: q.enq(y) \\
+						A: q:void \\
+						B: q:void \\
+						A: q.deq() \\
+						C: q.deq() \\
+						A: q:y \\
+						C: q:y \\
+					\end{tabular}
+					&
+					&
+					\begin{tabular}{p{10cm}}
+					\end{tabular}
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+	\end{adjustwidth}
+\end{document}

@@ -34,15 +34,31 @@
 
 \begin{document}
 	\pagestyle{fancy}
-	\section*{5.1 Regular Register Executions}
+	\section*{5.1 (\textsc{new}) Regular Register Executions}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{(a) Algorithm 4.1: Read-One Write-All}
 		\begin{adjustwidth}{1em}{2em}
-			We have one write process $p$, a reader process $q$ which is divided into two processes $q_1$ and $q_2$ initialized with the storage of $\bot$. First $p$ will call the \textit{write} operation which because it is not concurrent will be acknowledged and $q_1$ and $q_2$ store the yalue of $x$. Therefore the \textit{read} operation which is sequential after the \textit{write} operation and will therefore return $x$ because both $q_1$ and $q_2$ (so it does not matter which of them is read) have stored this value. We asume that the second \textit{read} operation is called by $q_1$ but before it has finished process $p$ is calling a \textit{write} operation to store the value of $y$. The process $q_1$ has already stored this value before the \textit{read} operation terminates and will therefore return $y$. The third \textit{read} operation is called by $q_2$ which is a little bit slower to write the new value and is therefore returning the value of $x$ before it will overwrite its value and acknowledge it.
+			\subsubsection*{Execution A}
+			\begin{adjustwidth}{1em}{}
+				The execution A is not possible for the read-one write-all algorithm because a \textit{read} operation will always return the locally stored value. Hence if it is returning the new value a \textit{read} operation sequentially after the first process on the same process will also return the new value and can't return the old one.
+			\end{adjustwidth}
+			\subsubsection*{Execution B}
+			\begin{adjustwidth}{1em}{}
+				The non-concurrent \textit{write} and \textit{read} operation working as expected and will follow the validity property. Therefore any healthy process will have written and stored the new value. \\
+				Now we consider the two concurrent read operations. Furthermore we assume that $p.\textit{Write}(y)$ to happen immediately after it starts. The \textit{read} operation of $r$ can therefore return the value $y$. As process $q$ might be a bit slower, as the \textit{read} operation is caled it still can return the value $x$ because it has not received the or terminated the \textit{write} operation.
+			\end{adjustwidth}
 		\end{adjustwidth}
 		\subsection*{(b) Algorithm 4.2: Majority Voting Regular Register}
 		\begin{adjustwidth}{1em}{2em}
-			We have one write process $p$, a reader process $q$ and five processes $s_1$, $s_2$, $s_3$, $s_4$ and $s_5$ initialized with the storage of $\bot$. The sequential operations \textit{write} and \textit{read} will terminated as expected so now every process will have stored the value $x$ with the timestamp 1. Before the next \textit{read} operation terminates only $s_1$ have stored the value of $y$ with the timestamp 2 from the concurrent \textit{write} operation. Process $q$ will receive the messages from $s_1$, $s_2$, $s_3$ and $s_4$ and because the timestamp of $s_1$ is the highest it will return the value of $y$. For the third \textit{read} operation the process $q$ will receive messages from $s_2$, $s_3$, $s_4$ and $s_5$. Because all of them still have stored the value of $x$ because the \textit{write} operation has not terminated the \textit{read} operation will return $x$ as well.
+			\subsubsection*{Execution A}
+			\begin{adjustwidth}{1em}{}
+				Again the non-concurrent \textit{read/write} operations work according to the validity property. \\
+				For the two \textit{read} operation which are concurrent with the \textit{write} operation we assume the following: As $q$ is first reading it receives a message from $q$ and $p$. Process $q$ still has the value of $x$ stored but $p$ has already written $y$. Because $y$ will have the higher timestamp the \textit{read} operation will return $y$. For the second \textit{read} operation $q$ will receive messages from $q$ and $r$ which is also a moajority but both have not finished writing the new value and therefore returning $x$ hence the \textit{read} operation is returning it as well.
+			\end{adjustwidth}
+			\subsubsection*{Execution B}
+			\begin{adjustwidth}{1em}{}
+				This execution is similar to the Execution A. Process $r$ can receive a message from a process which has already written the new value $y$ and process $q$ receives only messages of processes that don't.
+			\end{adjustwidth}
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
@@ -52,7 +68,6 @@
 			\begin{tabular}{l}
 				\underline{\textbf{Implements:}} \\
 				\ \ (1,N)-RegularRegister, \textbf{instance} \textit{onrr} \\
-				\\ 
 				\underline{\textbf{Uses:}} \\
 				\ \ BestEffortBroadcast, \textbf{instance} \textit{beb} \\
 				\ \ PerfectPointToPointLinks, \textbf{instance} \textit{pl} \\
@@ -93,6 +108,6 @@
 	
 	\section*{5.3 (1,1) Atomic Register}
 	\begin{adjustwidth}{2em}{2em}
-		A reader process can update its $(wts, val)$ pair in the last step of the \textit{ReadReturn}, after the if condition is fulfilled. After the value with the highest timestamp is chosen the process can update its pair with these values so it is up to date again.
+		We can modify a reader process which is implemented as the Algorithm 4.2 such that it will store the latest value. The \textit{read} operation is executed as described in Algorithm 4.2 but before the \textit{ReadReturn} it can compare the value with the highest timestamp it received with the $(wts, val)$ pair it has stored. If the timestamp it has received is higher than the one it has stored it can update its pair. In the end it will return the value with the highest timestamp and hence we implemented an algorithm for a (1,1) \textsc{atomic} register.
 	\end{adjustwidth}
 \end{document}
