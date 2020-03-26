@@ -5,7 +5,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
 public class Filter implements Lock {
-    private int[] level;
+    private /*volatile*/ int[] level;
     private AtomicIntegerArray victim;
     private int n;
     private HashMap<Long, Integer> threadMap;

@@ -1,5 +1,5 @@
 public class Counter {
-    private volatile int counter;
+    private /*volatile*/ int counter;
 
     public Counter(){
         counter = 0;

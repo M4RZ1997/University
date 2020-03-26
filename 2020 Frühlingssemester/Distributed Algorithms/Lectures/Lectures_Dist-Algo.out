@@ -41,5 +41,11 @@
 \BOOKMARK [2][-]{subsection.5.5}{From \(1,1\) atomic to \(1,N\) atomic register}{section.5}% 41
 \BOOKMARK [2][-]{subsection.5.6}{From \(1,N\) atomic to \(N,N\) atomic register}{section.5}% 42
 \BOOKMARK [2][-]{subsection.5.7}{Register Implementation in Byzantine Model \(N > 3F\)}{section.5}% 43
-\BOOKMARK [1][-]{section.6}{6th Lecture - March 19, 2020}{}% 44
-\BOOKMARK [2][-]{subsection.6.1}{sub}{section.6}% 45
+\BOOKMARK [1][-]{section.6}{Byzantine Distributed Storage - March 25, 2020}{}% 44
+\BOOKMARK [2][-]{subsection.6.1}{Specification}{section.6}% 45
+\BOOKMARK [3][-]{subsubsection.6.1.1}{\(1,N\)-regular Register}{subsection.6.1}% 46
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Can we implement this w/o signatures?}{subsection.6.1}% 47
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Practical Leaderless Replication}{subsection.6.1}% 48
+\BOOKMARK [2][-]{subsection.6.2}{Key-Value Store \(KVS\)}{section.6}% 49
+\BOOKMARK [1][-]{section.7}{7th Lecture - March 25, 2020}{}% 50
+\BOOKMARK [2][-]{subsection.7.1}{sub}{section.7}% 51

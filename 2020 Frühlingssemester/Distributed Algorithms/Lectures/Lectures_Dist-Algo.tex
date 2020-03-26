@@ -1167,7 +1167,133 @@
 	
 	\newpage
 	
-	\section{6th Lecture - \today}
+	\section{Byzantine Distributed Storage - March 25, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Specification}
+		\begin{adjustwidth}{2em}{2em}
+			tikz \\
+			\subsubsection{$(1,N)$-\textsc{regular} Register}
+			\begin{adjustwidth}{2em}{}
+				\textsc{in:} $\langle \textit{Read} \rangle$ \hspace{1.2cm} \textsc{out:} $\langle \textit{ReadReturn} \mid v \rangle$ \\
+				\textsc{in:} $\langle \textit{Wirte} \mid v \rangle$ \hspace{1cm}\textsc{out:} $\langle WriteReturn \rangle$ \\
+				\begin{enumerate}[-]
+					\item \textbf{Termination:} \\
+					Every operation eventually terminates
+					\item \textbf{Validity:} \\
+					every \textit{read} returns either \underline{the} concurrently written value or the most recently written value
+				\end{enumerate}
+				\begin{center}
+					\begin{tabular}{l}
+						\underline{Init:} \\
+						\ \ $(ts, val, sig) \leftarrow (\bot , \bot , \bot)$ \\
+						\ \ $wts \leftarrow 0$ \\
+						\\
+						\underline{upon} \textit{write}($v$) \underline{do} \\
+						\ \ $wts \leftarrow wts + 1$ \\
+						\ \ $\sigma \leftarrow \textit{sign}(\textsc{write} \| wts \| v)$ \\
+						\ \ send message [\textsc{write}, $wts$, $v$, $\sigma$]  to all processes \\
+						\ \ \underline{wait for} messages [\textsc{ACK}, $ts'$] s.t. $ts'=wts$ from $> \frac{n+f}{2}$ processes (\textsc{Byzantine} quorum) \\
+						\\
+						\underline{upon} receive message [\textsc{write}, $ts'$, $v'$, $\sigma '$] \underline{do} \\
+						\ \ \underline{if} $ts' > ts$ \underline{then} \\
+						\ \ \ \ $(ts, val, \sigma) \leftarrow (ts', v', \sigma ')$ \\
+						\ \ send message [\textsc{ACK}, $ts'$] to writer $w$ \\
+						\\
+						\underline{upon} \textit{read()} \underline{do} \\
+						\ \ send message [\textsc{read}] to all processes \\
+						\ \ \underline{wait for} message [\textsc{value}, $ts'$, $v'$, $\sigma '$] from $> \frac{n+f}{2}$ with \textit{verifySign}($\sigma'$, \textsc{write} $\| ts' \| v'$) = \textsc{true} \\
+						\ \ let $v$ be the received value $v'$ from message with the highest timestamp $ts'$ \\
+						\ \ \textbf{return} $v$ \\
+						\\
+						\underline{upon} [\textsc{read}] \ldots					
+					\end{tabular}
+				\end{center}
+				\newpage
+				\begin{enumerate}[-]
+					\item \textbf{Termination} \\
+					$n$ replicas and $f$ faulty $\Rightarrow$ $\geq n-f$ responses \\
+					\underline{Show:} $n-f > \frac{n+f}{2}$, if $n > 3f$\\
+					\[
+						n-f > \frac{n+f}{2} \textit{, if } n > 3f \ldots
+					\]
+					\item \textbf{Validity:} \\
+					tikz
+					\item \textbf{Safety:} \\
+					$Q_w$ quorum used by writer \\
+					$Q_r$ quorum used by reader \\
+					$\mid Q_w \mid > \frac{n+f}{2}$ \\
+					$\mid Q_r \mid > \frac{n+f}{2}$ \\
+					\underline{Show:} There exists at least one correct process in $Q_w \cap Q_r$ \
+					Suppose not: \\
+					Count number of distinct correct processes in $Q_w \cap Q_r$ \\
+					number is $\geq \mid Q_w \mid - f + \mid Q_r \mid - f > \frac{n+f}{2} - f + \frac{n-f}{2} - f = n - f$ \\
+					$\Rightarrow$ So there exists at least one correct process in $Q_w \cap Q_r$
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Can we implement this w/o signatures?}
+			\begin{adjustwidth}{2em}{}
+				tikz \\
+				\begin{enumerate}[-]
+					\item could return $c$ default value
+					\item this idea can be turned into for emulating < \underline{safe} \textsc{Byzantine} registers assuming $n > 4f$ processes
+					\item (2-round protocol with $n > 3f$ exists...)
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Practical Leaderless Replication}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item clients send request directly to replicas
+					\item possibly via some coordinator
+					\item tikz
+					\item Consistency of the stored data
+					\begin{enumerate}[\small{\textbullet}]
+						\item auxiliaty service within storage system will eliminate differences - "\textit{anti-entropy}"
+						\item \textit{read-repair} by reading clients that detect inconsistent clients
+					\end{enumerate}
+					\item Quorums for reading and writing \\
+					$r$ - replicas for reading \\
+					$w$ - replicas for writing \\
+					so far: r = w $> \frac{n}{2}$ \\
+					$r = 1, w = n$ read-one write-all \\
+					$r = n, w = 1$ read-all write-one
+					\item \textbf{Strong Consistency} iff $r+w>n$ \\
+					Some systems use $r+w \leq n$
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Key-Value Store (KVS)}
+		\begin{adjustwidth}{2em}{2em}
+			tikz \\
+			\begin{enumerate}[-]
+				\item Replica set usually differs for each pair
+				\item Semantics is not formally specified
+				\begin{enumerate}[\ldots]
+					\item too expensive
+					\item atomic problematic because the reader would write
+				\end{enumerate}
+				\item Conflicts?
+				\begin{enumerate}[\small{\textbullet}]
+					\item resolved using heuristic methods
+					\item last-write wins policy
+					\begin{enumerate}[\ldots]
+						\item data loss is possible
+					\end{enumerate}
+				\end{enumerate}
+				\item Practical system ensure usually a notion of \underline{eventual consistency}
+				\item Some systems let clients merge conflicting written values
+				\begin{enumerate}[\small{\textbullet}]
+					\item often easy for applications
+					\item very difficult in general
+					\item[\ldots] \textsc{Amazon} Dynamo \\
+					tikz
+				\end{enumerate}
+			\end{enumerate}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{7th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

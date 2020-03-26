@@ -19,8 +19,10 @@ public class IncrementerThread implements Runnable{
             try
             {
                 filter.lock();
-                counter.increment();
-                turns++;
+                if (counter.getCount() < MAX_COUNT) {
+                    counter.increment();
+                    turns++;
+                }
             }catch(Exception e){}
             finally{
                 filter.unlock();

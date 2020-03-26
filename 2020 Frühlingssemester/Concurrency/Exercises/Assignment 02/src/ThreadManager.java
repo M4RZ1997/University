@@ -44,7 +44,7 @@ public class ThreadManager {
     }
 
     public static void main(String args[]){
-        ThreadManager manager = new ThreadManager(8);
+        ThreadManager manager = new ThreadManager(16);
         long startTime = System.nanoTime();
         manager.runThreads();
         long executionTime = (System.nanoTime() - startTime) / 1000000;

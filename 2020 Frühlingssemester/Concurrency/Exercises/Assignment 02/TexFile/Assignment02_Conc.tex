@@ -30,13 +30,58 @@
 
 \begin{document}
 	\pagestyle{fancy}
-	
+	\hfill
 	\section{Peterson's Algorithm}
 	\begin{adjustwidth}{2em}{2em}
+		\subsection*{\textsc{Case} 01}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection*{Single Threaded}
+			\begin{adjustwidth}{2em}{2em}
+				Counter value: 300'000 \\
+				lowest number of accesses in critical section for a thread: 300'000 \\
+				highest number of accesses in critical section for a thread: 300'000 \\
+				Number of Threads: 1 \\
+				Execution Time: 15ms
+			\end{adjustwidth}
+			\subsubsection*{Multi-Threaded}
+			\begin{adjustwidth}{2em}{2em}
+				Counter value: 300'000 \\
+				lowest number of accesses in critical section for a thread: 33'889 \\
+				highest number of accesses in critical section for a thread: 42'733 \\
+				Number of Threads: 8 \\
+				Execution Time: 190ms \\
+				SpeedUp: 15ms/190ms = 0,08
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection*{\textsc{Case} 02}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection*{Single Threaded}
+			\begin{adjustwidth}{2em}{2em}
+				Counter value: 300'000 \\
+				lowest number of accesses in critical section for a thread: 300'000 \\
+				highest number of accesses in critical section for a thread: 300'000 \\
+				Number of Threads: 1 \\
+				Execution Time: 15ms
+			\end{adjustwidth}
+			\subsubsection*{Multi-Threaded}
+			\begin{adjustwidth}{2em}{2em}
+				Counter value: 300'000 \\
+				lowest number of accesses in critical section for a thread: 32'111 \\
+				highest number of accesses in critical section for a thread: 41'052 \\
+				Number of Threads: 8 \\
+				Execution Time: 164ms \\
+				SpeedUp: 15ms/164ms = 0,09
+			\end{adjustwidth}
+		\end{adjustwidth}
 	\end{adjustwidth}
+	
+	\newpage
 	
 	\section{Peterson's Algorithm: Fairness}
 	\begin{adjustwidth}{2em}{2em}
+		The Peterson's Algorithm is \textit{starvation free}. That means that every thread that would like to acquire the lock will eventually be able to access the critical section. \\
+		The problem for fairness with this problem lies within the \textit{bounded waiting} property which says that when a thread $t$ is waiting to enter a critical section, the maximum number of times any other thread is allowed to enter the critical section before $t$ is bounded by a function of the number of contending threads. This is because the \textit{Filter} algorithm does not consider that a thread can be interrupted i.e. by the scheduler of the OS. Therefore an unbounded amount of threads can access the critical section before the interrupted thread. \\
+		This behaviour is visible if you run the program with more threads than cores you have (i.e. 16 threads on an octacore machine). The lowest number of accesses to the critical section is 9'947 and the highest number is 27'574, which is clearly showing that the algorithm is not fair in all instances.
 	\end{adjustwidth}
 	
 	\section{Linearizability and Sequentially Consistency}
@@ -46,6 +91,7 @@
 			\begin{center}
 				\begin{tabular}{lllll}
 					\begin{tabular}{l}
+						\underline{\textbf{\textit{(\textsc{old}) History}}} \\
 						C: s.empty() \\
 						A: s.push(10) \\
 						B: s.pop() \\
@@ -63,6 +109,7 @@
 					&
 					&
 					\begin{tabular}{l}
+						\underline{\textbf{\textit{(\textsc{new}) History}}} \\
 						C: s.empty() \\
 						C: s:true \\
 						A: s.push(10) \\
@@ -80,6 +127,7 @@
 			\begin{center}
 				\begin{tabular}{lllll}
 					\begin{tabular}{l}
+						\underline{\textbf{\textit{(\textsc{old}) History}}} \\
 						A: q.enq(x) \\
 						B: q.enq(y) \\
 						A: q:void \\
@@ -92,6 +140,7 @@
 					&
 					&
 					\begin{tabular}{p{10cm}}
+						This history is not linearizable and not sequentially consistent, because it is not possible that only one time $y$ is enqueued but two dequeue operations both get $y$ as return value.
 					\end{tabular}
 				\end{tabular}
 			\end{center}
