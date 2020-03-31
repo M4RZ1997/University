@@ -34,11 +34,63 @@
 
 \begin{document}
 	\pagestyle{fancy}
+	\hfill
 	\section*{6.1 \textsc{Atomic} Register Execution}
 	\begin{adjustwidth}{2em}{2em}
+		Let processes $\{p, q, r, s, t\}$ have \textbf{ranks} $\{1, 2, 3, 4, 5\}$ respectively.
+		\subsection*{(a) $read_r() \rightarrow x$ and $read_s() \rightarrow y$}
+		\begin{adjustwidth}{2em}{2em}
+			First we can say that $x$ has been written immediately after \textit{write}$_p(x)$ has started. Therefore $r$, $s$ and $t$ have stored $x$ when the $\textit{read}_r()$ operation terminates hence it returns $x$. Before $\textit{read}_s()$ operation is executed the process $s$ will store the value of $y$ because although the timestamps of both \textit{write} operation is equal to the \textbf{rank} of $q$ is higher. Therefore process $s$ can return $y$. Because the $\textit{read}_t()$ operation is called after the \textit{write} operations have finished and process $q$ has a higher rank than process $p$ it will also return $y$.
+		\end{adjustwidth}
+		\subsection*{(b) $read_r() \rightarrow y$ and $read_s() \rightarrow x$}
+		\begin{adjustwidth}{2em}{2em}
+			First we can say that $x$ has been written immediately after \textit{write}$_p(x)$ has started. Therefore $r$, $s$ and $t$ have stored $x$ when the $\textit{read}_s()$ operation terminates hence it returns $x$. Before $\textit{read}_r()$ operation is executed the process $r$ will store the value of $y$ because although the timestamps of both \textit{write} operation is equal to the \textbf{rank} of $q$ is higher. Therefore process $r$ can return $y$. Because the $\textit{read}_t()$ operation is called after the \textit{write} operations have finished and process $q$ has a higher rank than process $p$ it will also return $y$ (same argumentation as above, just switched $r$ and $s$).
+		\end{adjustwidth}
 	\end{adjustwidth}
 	
 	\section*{6.2 Erasure-Coded Storage}
 	\begin{adjustwidth}{2em}{2em}
+		\subsection*{(a) Erasure Code Picking}
+		\begin{adjustwidth}{2em}{2em}
+			A suitable erasure code for a distributed storage system with at most $\frac{n}{2}$ crashed nodes could be any $(\lceil \frac{n}{2} \rceil , n)$ erasure code. A good abstraction of such an erasure code could be the following \textit{Reed-Solomon} code: \\
+			Let $k := \lceil \frac{n}{2} \rceil$. The message $m$ which should be stored is split up into bit-strings $m_i$ of length $k$. For each of these bit-strings $m_i := (x_1, x_2, \ldots x_k)$ we compute the Lagrange polynomial $p$ such that $p(i - 1) = x_i$. These values $p(i)$ are then stored at node number $i \mid 0 \leq i \leq n-1$. \\
+			An erasure code implemented like this with $(int) f < \frac{n}{2}$ failed nodes, it holds that $n-f \geq \lceil \frac{n}{2} \rceil$, which is a sufficient number of fragments to reconstruct $m_i$. \\
+			The storage efficiency of any $(\lceil \frac{n}{2} \rceil , n)$ erasure code is $\approx 50 \%$.
+		\end{adjustwidth}
+		\newpage
+		\subsection*{(b) Modify majority voting \textsc{regular} register to an erasure-coded \textsc{safe} register}
+		\begin{adjustwidth}{2em}{2em}
+			The Algorithm 4.2 can be adjusted as the following. Not changed event handlings are left out and are similar as in the algorithm. Furthermore we assume that a suitable lagrange interpolation is available from an external source. \\
+			\begin{center}
+				\begin{tabular}{l}
+					\underline{Implements:} \\
+					\ \ $(1,N)$ \textsc{safe} register, \textit{\textbf{instance}} \textit{onsr} \\
+					\\
+					\underline{upon} $\langle \textit{onsr, \textsc{Write}} \mid v \rangle$ \underline{do} \\
+					\ \ $v = (v_1, v_2, \ldots , v_k)$ , \textbf{whereas} $k = \frac{N}{2}$ \\
+					\ \ $wts := wts + 1$ \\
+					\ \ $acks := 0$ \\
+					\ \ $p := \textit{lagrange\_interpolation} ((0, v_1), \ldots , (k-1, v_k)) $ \\
+					\ \ \underline{for} $i = 1$ to $N$: \\
+					\ \ \ \ trigger $\langle \textit{pl}, \textsc{send} \mid p_i, [\textsc{Write}, wts, p(v_i)] \rangle$ \\
+					\\
+					\underline{upon} $\langle \textit{pl}, \textsc{deliver} \mid q, [\textsc{Value}, r, ts', v'] \rangle$ s.t. $r =rid$ \underline{do} \\
+					\ \ $readlist[q] := (ts', v')$ \\
+					\ \ \underline{if} $\mid readlist \mid > N/2$ \underline{then} \\
+					\ \ \ \ $p := \textit{reconstruct\_polynom}(readlist)$ \\
+					\ \ \ \ \underline{for}  $i := 1$ to $N/2$: \\
+					\ \ \ \ \ \ $v_i := p(i- 1)$ \\
+					\ \ trigger $\langle \textit{onsr}, \textsc{ReadReturn} \mid (v_1, \cdots, v_{N/2}) \rangle$
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+		\subsection*{(c) Why is it difficult to extend this protocol to regular semantics?}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{quote}
+				\textbf{\textsc{regular}:} A read() not concurrent with a write returns the most recently written value. Otherwise read() returns the most recently written value or the concurrently written value.
+			\end{quote}
+			\hfill \\
+			For the erasure code register the information of any value $v$ is spread across $n$ different registers, whereas none of these alone has sufficient information to reconstruct that value $v$. Becuase of the need of information from multiple different registers to reconstruct $v$, it is not trivial to ensure that the read is consistent, which would lead to a \textsc{regular} behaviour.
+		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}
