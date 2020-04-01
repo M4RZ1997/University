@@ -72,15 +72,15 @@
 					\ \ $acks := 0$ \\
 					\ \ $p := \textit{lagrange\_interpolation} ((0, v_1), \ldots , (k-1, v_k)) $ \\
 					\ \ \underline{for} $i = 1$ to $N$: \\
-					\ \ \ \ trigger $\langle \textit{pl}, \textsc{send} \mid p_i, [\textsc{Write}, wts, p(v_i)] \rangle$ \\
+					\ \ \ \ trigger $\langle \textit{pl}, \textsc{send} \mid p_i, [\textsc{Write}, wts, ((i-1), p(i-1))] \rangle$ \\
 					\\
 					\underline{upon} $\langle \textit{pl}, \textsc{deliver} \mid q, [\textsc{Value}, r, ts', v'] \rangle$ s.t. $r =rid$ \underline{do} \\
 					\ \ $readlist[q] := (ts', v')$ \\
 					\ \ \underline{if} $\mid readlist \mid > N/2$ \underline{then} \\
 					\ \ \ \ $p := \textit{reconstruct\_polynom}(readlist)$ \\
 					\ \ \ \ \underline{for}  $i := 1$ to $N/2$: \\
-					\ \ \ \ \ \ $v_i := p(i- 1)$ \\
-					\ \ trigger $\langle \textit{onsr}, \textsc{ReadReturn} \mid (v_1, \cdots, v_{N/2}) \rangle$
+					\ \ \ \ \ \ $v_i := p(i - 1)$ \\
+					\ \ trigger $\langle \textit{onsr}, \textsc{ReadReturn} \mid (v_1 \| \cdots \| v_{k}) \rangle$
 				\end{tabular}
 			\end{center}
 		\end{adjustwidth}
