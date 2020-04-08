@@ -1021,7 +1021,7 @@
 	
 	\newpage
 	
-	\section{5th Lecture - March 18, 2020}
+	\section{Implementations of Registers - March 18, 2020}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{\textsc{Regular} register implementation in \textit{fail-stop} model}
 		\begin{adjustwidth}{2em}{2em}
@@ -1293,10 +1293,187 @@
 	
 	\newpage
 	
-	\section{7th Lecture - \today}
+	\section{\textsc{Chapter} 4: Reliable Broadcast - April 01, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Definition}
+		\begin{adjustwidth}{2em}{2em}
+			(\textsc{in}) $\langle \textsc{Broadcast} \mid m \rangle$ "\textit{broadcast a message} $m$" \\
+			(\textsc{out}) $\langle \textsc{Deliver} \mid p, m \rangle$ "\textit{delivers a message} $m$ \textit{from sender} $p$" \\
+			\begin{center}
+				tikz
+			\end{center}
+		\end{adjustwidth}
+		\subsection{Best-Effort Broadcast (\textsc{Unreliable})}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Definition (\textsc{Validity}):}
+			\begin{adjustwidth}{2em}{}
+				If a \textit{correct} process broadcasts a message $m$, then every \textit{correct} process eventuall delivers $m$.
+			\end{adjustwidth}
+			\subsubsection{Definition (\textsc{No Duplication}):}
+			\begin{adjustwidth}{2em}{}
+				No message is delivered more than once.
+			\end{adjustwidth}
+			\subsubsection{Definition (\textsc{No Creation}):}
+			\begin{adjustwidth}{2em}{}
+				If a process delivers a message $m$ with sender $s$, then $m$ was previously broadcasted by process $s$.
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Messages are \textsc{unique}}
+		\begin{adjustwidth}{2em}{2em}
+			\textit{How do we ensure this in practice?}
+			.
+			.
+			.
+		\end{adjustwidth}
+		\subsection{Reliable Broadcast}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Definition:}
+			\begin{adjustwidth}{2em}{}
+				Same properties as (unreliable) best-effort broadcast.
+				\paragraph{Agreement:}
+				\begin{adjustwidth}{1em}{}
+					If a message $m$ is delivered by a \textit{correct} process then every \textit{correct} process eventually delivers $m$. \\
+					\begin{center}
+						tikz
+					\end{center}
+				\end{adjustwidth}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{\textsc{Eager} Reliable Broadcast}
+		\begin{center}
+			\begin{tabular}{l}
+				\underline{Init:}
+				\ \ \textit{delivered} $\leftarrow \emptyset$ \\
+				\\
+				\underline{upon} $\langle \textit{rb-}\textsc{Broadcast} \mid m \rangle$ \underline{do} \\
+				\ \ send message [\textsc{Data}, \textit{self}, $m$] to all $p \in \Pi$ \\
+				\\
+				\underline{upon} receive message [\textsc{Data}, $s$, $m$] from $q$ \underline{do} \\
+				\ \ \underline{if} $m \not\in \textit{delivered}$ \underline{then} \\
+				\ \ \ \ \textit{delivered} $\cup \leftarrow \{ m \}$ \\
+				\ \ \ \ send message [\textsc{Data}, $s$, $m$] to all $p \in \Pi$ \\
+				\ \ \ \ trigger $\langle \textit{rb-}\textsc{Deliver} \mid s, m \rangle$
+			\end{tabular}
+		\end{center}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Implementation:}
+			\begin{center}
+				tikz
+			\end{center}
+			\begin{adjustwidth}{2em}{}
+				\textbf{A process that crashes:} \\
+				All modules crash simultaneously.
+			\end{adjustwidth}
+			\subsubsection{How adequate is this (basic) reliable broadcast?}
+			\begin{center}
+				tikz
+			\end{center}
+			\begin{adjustwidth}{2em}{}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{\textsc{Uniform} Reliable Broadcast}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Definition:}
+			\begin{adjustwidth}{2em}{}
+				Same properties as regular reliable broadcast.
+				\paragraph{Uniform Agreement:}
+				\begin{adjustwidth}{1em}{}
+					If a process delivers a message $m$, then every correct process eventually delivers $m$.
+					\begin{center}
+						tikz
+					\end{center}
+				\end{adjustwidth}
+			\end{adjustwidth}
+			\subsubsection{Implementation of URB in async. netw. with $f$ crashes and $N > 2f$}					
+			\begin{center}
+				\begin{tabular}{l}
+					$\textit{pending} \leftarrow \emptyset$ \\
+					$ack[] \leftarrow []$ \\
+					$\textit{delivered} \leftarrow \emptyset$
+					\\
+					\underline{upon} $\langle \textit{urb-}\textsc{Broadcast} \mid m \rangle$ \underline{do} \\
+					\ \ \textit{pending} $\cup \leftarrow \{ (\textit{self}, m) \}$ \\
+					\ \ send message [\textsc{Data}, \textit{self}, $m$] to all $p \in \Pi$ \\
+					\\
+					\underline{upon} receive message [\textsc{Data}, $s$, $m$] from $q$ \underline{do} \\
+					\ \ $ack[m] \leftarrow ack[m] \cup \{ q \}$ \\
+					\ \ \underline{if} ($s,m$) $\not\in$ \textit{pending} \underline{then} \\
+					\ \ \ \ \textit{pending} $\leftarrow \{ (s,m) \}$ \\
+					\ \ \ \ send message [\textsc{Data}, $s$, $m$] to all $p \in \Pi$ \\
+					\\
+					\underline{upon} $\exists(s,m) \in \textit{pending} \&\& m \not\in \textit{delivered}$ s.t. $\mid ack[m] \mid \ > \frac{N}{2}$ \underline{do} \\
+					\ \ \textit{delivered} $\cup\leftarrow \{ m \}$ \\
+					\ \ trigger $\langle \textit{urb-}\textsc{Deliver} \mid s,m \rangle$
+				\end{tabular}
+				\hfill \\
+				tikz
+			\end{center}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[\small{\textbullet}]
+					\item If $q$ delivers $m$, then it has received the \textsc{Data} messages from $> \frac{N}{2}$ processes
+					\item Since $f < \frac{n}{2}$, at least one \textsc{Data} message was sent by a correct process, this process has sent $m$ ro all other processes
+					\item All correct processes eventually send \textsc{Data} message containing $m$
+					\item all correct processes eventually deliver $m$
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Order}
+		\begin{center}
+			tikz
+		\end{center}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{\textsc{FIFO}-Order Broadcast}
+			\begin{adjustwidth}{2em}{}
+				per-sender order
+				\paragraph{Interface}
+				\begin{adjustwidth}{1em}{}
+					Same as reliable broadcast
+				\end{adjustwidth}
+				\paragraph{Properties}
+				\begin{adjustwidth}{1em}{}
+					\begin{enumerate}[-]
+						\item Validity
+						\item No Duplication
+						\item No creation
+						\item Agreement
+						\item FIFO-Order (\textbf{if} bc. $m_1 \rightarrow m_2$ \textbf{then} del. $m_1 \rightarrow m_2$) \\
+						If process broadcasts $m_1$ and subsequently broadcasts $m_2$, then no process delivers $m_2$ unless it has also delivered $m_1$ before.
+					\end{enumerate}
+				\end{adjustwidth}
+				\paragraph{Implementation}
+				\begin{adjustwidth}{1em}{}
+					\begin{enumerate}[\small{\textbullet}]
+						\item Each process adds a (local) sequence number to every payload message
+						\item For each sender, every receiver delivers payload messages according to the sequence number (requiring buffering)
+					\end{enumerate}
+				\end{adjustwidth}
+			\end{adjustwidth}
+			\subsubsection{Causal Order (broadcast):}
+			\begin{center}
+				tikz
+			\end{center}
+			\begin{adjustwidth}{2em}{}
+				\textbf{Prevent such violations of causal order:}
+				\begin{enumerate}[-]
+					\item keep track of complete history of past delivered messages
+					\item Keep a counter messages for wach sender \\
+					\begin{center}
+						tikz
+					\end{center}
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{8th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{subsub}
+			\begin{adjustwidth}{2em}{}
+			\end{adjustwidth}
 		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}

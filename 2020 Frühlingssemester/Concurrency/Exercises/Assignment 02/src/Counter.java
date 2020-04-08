@@ -1,3 +1,5 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Counter {
     private /*volatile*/ int counter;
 
@@ -7,9 +9,5 @@ public class Counter {
 
     public void increment(){
         counter++;
-    }
-
-    public int getCount(){
-        return counter;
     }
 }

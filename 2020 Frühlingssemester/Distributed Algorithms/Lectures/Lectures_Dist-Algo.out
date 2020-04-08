@@ -33,7 +33,7 @@
 \BOOKMARK [3][-]{subsubsection.4.1.5}{Register Example}{subsection.4.1}% 33
 \BOOKMARK [3][-]{subsubsection.4.1.6}{An unsafe register}{subsection.4.1}% 34
 \BOOKMARK [3][-]{subsubsection.4.1.7}{Implementation of an \(1,N\) Regualar Register in Fail-Silent Mode}{subsection.4.1}% 35
-\BOOKMARK [1][-]{section.5}{5th Lecture - March 18, 2020}{}% 36
+\BOOKMARK [1][-]{section.5}{Implementations of Registers - March 18, 2020}{}% 36
 \BOOKMARK [2][-]{subsection.5.1}{Regular register implementation in fail-stop model}{section.5}% 37
 \BOOKMARK [2][-]{subsection.5.2}{Regular register implementation in fail-silent model}{section.5}% 38
 \BOOKMARK [2][-]{subsection.5.3}{Example execution}{section.5}% 39
@@ -47,5 +47,24 @@
 \BOOKMARK [3][-]{subsubsection.6.1.2}{Can we implement this w/o signatures?}{subsection.6.1}% 47
 \BOOKMARK [3][-]{subsubsection.6.1.3}{Practical Leaderless Replication}{subsection.6.1}% 48
 \BOOKMARK [2][-]{subsection.6.2}{Key-Value Store \(KVS\)}{section.6}% 49
-\BOOKMARK [1][-]{section.7}{7th Lecture - March 25, 2020}{}% 50
-\BOOKMARK [2][-]{subsection.7.1}{sub}{section.7}% 51
+\BOOKMARK [1][-]{section.7}{Chapter 4: Reliable Broadcast - April 01, 2020}{}% 50
+\BOOKMARK [2][-]{subsection.7.1}{Definition}{section.7}% 51
+\BOOKMARK [2][-]{subsection.7.2}{Best-Effort Broadcast \(Unreliable\)}{section.7}% 52
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Definition \(Validity\):}{subsection.7.2}% 53
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Definition \(No Duplication\):}{subsection.7.2}% 54
+\BOOKMARK [3][-]{subsubsection.7.2.3}{Definition \(No Creation\):}{subsection.7.2}% 55
+\BOOKMARK [2][-]{subsection.7.3}{Messages are unique}{section.7}% 56
+\BOOKMARK [2][-]{subsection.7.4}{Reliable Broadcast}{section.7}% 57
+\BOOKMARK [3][-]{subsubsection.7.4.1}{Definition:}{subsection.7.4}% 58
+\BOOKMARK [2][-]{subsection.7.5}{Eager Reliable Broadcast}{section.7}% 59
+\BOOKMARK [3][-]{subsubsection.7.5.1}{Implementation:}{subsection.7.5}% 60
+\BOOKMARK [3][-]{subsubsection.7.5.2}{How adequate is this \(basic\) reliable broadcast?}{subsection.7.5}% 61
+\BOOKMARK [2][-]{subsection.7.6}{Uniform Reliable Broadcast}{section.7}% 62
+\BOOKMARK [3][-]{subsubsection.7.6.1}{Definition:}{subsection.7.6}% 63
+\BOOKMARK [3][-]{subsubsection.7.6.2}{Implementation of URB in async. netw. with f crashes and N > 2f}{subsection.7.6}% 64
+\BOOKMARK [2][-]{subsection.7.7}{Order}{section.7}% 65
+\BOOKMARK [3][-]{subsubsection.7.7.1}{FIFO-Order Broadcast}{subsection.7.7}% 66
+\BOOKMARK [3][-]{subsubsection.7.7.2}{Causal Order \(broadcast\):}{subsection.7.7}% 67
+\BOOKMARK [1][-]{section.8}{8th Lecture - April 1, 2020}{}% 68
+\BOOKMARK [2][-]{subsection.8.1}{sub}{section.8}% 69
+\BOOKMARK [3][-]{subsubsection.8.1.1}{subsub}{subsection.8.1}% 70
