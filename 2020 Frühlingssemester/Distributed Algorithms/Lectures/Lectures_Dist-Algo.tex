@@ -1456,7 +1456,6 @@
 				\textbf{Prevent such violations of causal order:}
 				\begin{enumerate}[-]
 					\item keep track of complete history of past delivered messages
-					\item Keep a counter messages for wach sender \\
 					\begin{center}
 						tikz
 					\end{center}
@@ -1467,7 +1466,176 @@
 	
 	\newpage
 	
-	\section{8th Lecture - \today}
+	\section{\textsc{Chapter} 6: Total-Order Broadcast - 08.04.2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Notion of Causality}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Events}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \textsc{Broadcast}($m$)
+					\item \textsc{Deliver}($m$)
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Causality Relation}
+			\begin{adjustwidth}{2em}{}
+				$m_1 \rightarrow m_2$ \\
+				when one of the 3 conditions apply:
+				\begin{enumerate}
+					\item process $p$ broadcasts $m_1$ before it broadcasts $m_2$
+					\item some process delivers $m_1$ and later broadcasts $m_2$
+					\item some message $m_3$ exists s.t. $m_1 \rightarrow m_3$ and $m_3 \rightarrow m_2$
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Causal-Order Broadcast using \textit{Vector Clocks}}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{center}
+				\begin{tabular}{l}
+					\underline{Init:} \\
+					\ \ $V \leftarrow [0]^{n}$ \\
+					\ \ $lsn \leftarrow 0$ \\
+					\ \ $\textit{pending} \leftarrow \emptyset$ \\
+					\\
+					\underline{upon} $\langle \textit{crb}-\textsc{Broadcast} \mid m \rangle$ \underline{do} \\
+					\ \ $w \leftarrow V$
+					\ \ $V[\textit{rank(self)}] \leftarrow lsn$ \\
+					\ \ $lsn \leftarrow lsn + 1$ \\
+					\ \ \underline{trigger} $\langle \textit{rb}-\textsc{Broadcast} \mid [W,m] \rangle$ \\
+					\\
+					\underline{upon} $\langle \textit{rb}-\textsc{Deliver} \mid p, [W,m] \rangle$ \underline{do} \\
+					\ \ $\textit{pending} \leftarrow \textit{pending} \cup \{ [ W,m ] \}$ \\
+					\ \ \underline{if} $\exists (\overline{p}, \overline{W}, \overline{m} \in \textit{pending} \wedge \overline{W} \leq V$ \underline{then} \\
+					\ \ \ \ $\textit{pending} \leftarrow \textit{pending} \setminus \{ [ \overline{p}, \overline{W}, \overline{m} ] \}$ \\
+					\ \ \ \ $ V[ \textit{rank}(\overline{p}) ] \leftarrow V[ \textit{rank}(\overline{p}) ] + 1 $ \\
+					\ \ \ \ trigger $\langle \textit{crb}-\textsc{Deliver} \mid \overline{p}, \overline{m} \rangle$
+				\end{tabular}
+			\end{center}
+			\subsubsection{Example}
+			\begin{adjustwidth}{2em}{}
+				tikz
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Total-Order Broadcast}
+		\begin{adjustwidth}{2em}{2em}
+			\ldots is a reliable broadcast with the following additional \underline{total-order property}:
+			\begin{quote}
+				For two messages $m_1$ and $m_2$ such that processes $p$ and $q$ have both delivered $m_1$ and $m_2$, then $p$ delivers $m_1$ before $m_2$ iff $q$ delivers $m_1$ before $m_2$. \\
+				Any delivery sequence of a process is a prefix of another process which has more messages delivered.
+			\end{quote}
+		\end{adjustwidth}
+		\subsection{Consensus}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Events}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}
+					\item[(\textsc{in})] $\langle c-\textsc{Propose} \mid v \rangle$ - \ldots proposes $v$ \ldots
+					\item[(\textsc{out})] $\langle c-\textsc{Decide} \mid v \rangle$ - \ldots decides for $v$ \ldots
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\hfill \vspace{-1cm}
+				\paragraph{Termination:}
+				\begin{adjustwidth}{1em}{}
+					Every correct process eventually decides some value.
+				\end{adjustwidth}
+				\paragraph{Validity:}
+				\begin{adjustwidth}{1em}{}
+					If a process decides a value $v$, then $v$ was proposed by some process
+				\end{adjustwidth}
+				\paragraph{Integrity:}
+				\begin{adjustwidth}{1em}{}
+					A process decides at most once.
+				\end{adjustwidth}
+				\paragraph{Agreement:}
+				\begin{adjustwidth}{1em}{}
+					No two (correct) processes decide different values.
+				\end{adjustwidth}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{From Consensus to Total-Order Broadcast}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{center}
+				\begin{tabular}{l}
+					\underline{Init:} \\
+					\ \ $\textit{unordered} \leftarrow \emptyset$ \\
+					\ \ $\textit{delivered} \leftarrow \emptyset$ \\
+					\ \ $r \leftarrow 1$ \\
+					\ \ $\textit{wait} \leftarrow \textsc{false}$ \ldots consensus is running? \\
+					\\
+					\underline{upon} $\langle \textit{tob}-\textsc{Broadcast} \mid m \rangle$ \underline{do} \\
+					\ \ \underline{trigger} $\langle \textit{rb}-\textsc{Broadcast} \mid m \rangle$ \\
+					\\
+					\underline{upon} $\langle \textit{rb}-\textsc{Deliver} \mid p, m \rangle$ \underline{do} \\
+					\ \ \underline{if} $m \not\in \textit{delivered}$ \underline{then} \\
+					\ \ \ \ $\textit{unordered} \leftarrow \textit{unordered} \cup \{ (p, m) \}$ \\
+					\\
+					\underline{upon} $\textit{unordered} \neq \emptyset \wedge \neg \textit{wait}$ \underline{do} \\
+					\ \ $\textit{wait} \leftarrow \textsc{true}$ \\
+					\ \ initialise consensus instance $c.r$ \\
+					\ \ \underline{trigger} $\langle c.r-\textsc{Propose} \mid \textit{unordered} \rangle$ \\
+					\\
+					\underline{upon} $\langle c.r-\textsc{Decide} \mid d \rangle$ \underline{do} \\
+					\ \ \underline{for} $(s,m) \in d$ in some fixed order \underline{do} \\
+					\ \ \ \ \underline{trigger} $\langle tob-\textsc{Deliver} \mid s,m\rangle$ \\
+					\ \ \ \ $\textit{delivered} \leftarrow \textit{delivered} \cup \{ m \}$ \\
+					\ \ \ \ $\textit{unordered} \leftarrow \textit{unordered} \setminus \{ (s,m) \}$ \\
+					\ \ $r \leftarrow r+1$ \\
+					\ \ $\textit{wait} \leftarrow \textsc{false}$
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+		\subsection{From Total-Order Broadcast to Consensus}
+		\begin{adjustwidth}{2em}{2em}
+			tikz
+		\end{adjustwidth}
+		\subsection{State-Machine Replication}
+		\begin{center}
+			tikz
+		\end{center}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Events}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}
+					\item[(\textsc{in})] $\langle rsm-\textsc{Execute} \mid \textit{command} \rangle$ - \ldots proposes $v$ \ldots
+					\item[(\textsc{out})] $\langle rsm-\textsc{Output} \mid \textit{response} \rangle$ - \ldots decides for $v$ \ldots
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\hfill \vspace{-1cm}
+				\paragraph{Termination:}
+				\begin{adjustwidth}{1em}{}
+					If a correct process executes a command, then the process eventually also outputs a response (for that command).
+				\end{adjustwidth}
+				\paragraph{Agreement:}
+				\begin{adjustwidth}{1em}{}
+					All correct processes output the same sequence of responses
+				\end{adjustwidth}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{From Total-Order Broadcaste to Replicated State-Machine}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{center}
+				\begin{tabular}{l}
+					\underline{Init:} \\
+					\ \ $\textit{state} \leftarrow \bot$ \\
+					\\
+					\underline{upon} $\langle \textit{rsm}-\textsc{Execute} \mid cmd \rangle$ \underline{do} \\
+					\ \ \underline{trigger} $\langle \textit{tob}-\textsc{Broadcast} \mid cmd \rangle$ \\
+					\\
+					\underline{upon} $\langle \textit{tob}-\textsc{Deliver} \mid p, cmd \rangle$ \underline{do} \\
+					\ \ $(r, \textit{state}) \leftarrow F(cmd, \textit{state})$ \\
+					\ \ \underline{trigger} $\langle \textit{rsm}-\textsc{Output} \mid r \rangle$
+				\end{tabular}
+			\end{center}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{9th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

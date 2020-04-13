@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[textheight = 600pt]{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Distributed Algorithms}} \\
+		\Large Exercise 08
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\section*{8.1 Total-Order Broadcast using Consensus}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection*{(a) Consensus does not sort \textit{deterministically} before \textit{tob-delivering}}
+		\begin{adjustwidth}{2em}{2em}
+			The problem with not sorting deterministically is that every process which calls the consensus might get a different value and therefore the processes cannot agree on which value is the last in the sequence and should be returned.
+		\end{adjustwidth}
+		\subsection*{(b) Modifying algorithm s.t. we do not require the sorting of decided payload messages}
+		\begin{adjustwidth}{2em}{2em}
+			One can store the duplet of value and timestamp such
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{8.2 Atomic Register as a Replicated State Machine}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{8.3 Replicated Register with Local Read}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+\end{document}

@@ -1,16 +1,15 @@
 package Savages;
 
-import java.util.Observable;
-
-public class CookThread extends Observable implements ICookThread {
+public class Cook implements ICook {
     private IPot foodPot;
     private boolean work = true;
     private volatile boolean orderFlag;
 
-    public CookThread(IPot pot){
+    public Cook(IPot pot){
         this.foodPot = pot;
     }
 
+    @Override
     public void terminate(){ work = false;}
 
     @Override
@@ -31,7 +30,6 @@ public class CookThread extends Observable implements ICookThread {
             throw new PotNotEmptyException();
         System.out.println("I have refilled.");
         foodPot.refill();
-        this.notifyObservers();
     }
 
     @Override

@@ -1,20 +1,24 @@
 package Savages;
 
-public abstract class AbstractSavage implements ISavageThread {
-    protected IPot foodPot;
-    protected ICookThread cook;
-    protected IExecutor executor;
+import java.util.Observable;
 
-    public AbstractSavage(IPot pot, ICookThread ct, IExecutor exec){
+public abstract class AbstractSavage implements ISavage {
+    protected IPot foodPot;
+    protected ICook cook;
+    protected IExecutor executor;
+    private int counter;
+
+    public AbstractSavage(IPot pot, ICook ct, IExecutor exec){
         this.foodPot = pot;
         this.cook = ct;
         this.executor = exec;
+        this.counter = 0;
     }
 
     @Override
     public void eat() {
         if (foodPot.isEmpty() && !cook.isPreparing()) {
-            System.out.println("Have ordered");
+            System.out.println("I have ordered");
             orderRefill();
         }
         while (foodPot.isEmpty()) {}
@@ -24,7 +28,36 @@ public abstract class AbstractSavage implements ISavageThread {
     }
 
     @Override
+    public void run() {
+        do {
+            this.executor.getLock().lock();
+            try {
+                this.eat();
+                System.out.println("Thread " + this + " has eaten " + ++counter + " times");
+            } finally {
+                this.initWaitForTurn();
+                this.executor.getLock().unlock();
+                this.waitForTurn();
+            }
+        } while (this.executor.isAlwaysHungry());
+    }
+
+    @Override
     public void orderRefill() {
         cook.order();
     }
+
+    @Override
+    public void update(Observable observable, Object o) {
+        //Do nothing in case fairness is not required
+        //Override if something should happen
+    }
+
+    @Override
+    public String toString() {
+        return super.toString().split("@")[1];
+    }
+
+    protected abstract void initWaitForTurn();
+    protected abstract void waitForTurn();
 }

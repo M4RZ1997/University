@@ -1,28 +1,31 @@
 package Savages.Ex1Savages2;
 
 import Savages.*;
-import Savages.Ex1Savages1.OnceHungrySavage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+
+import java.util.concurrent.locks.Lock;
 
 public class Ex1Savages2 implements IExecutor {
     private static final int potSize = 10;
     private int numberOfSavages;
     private IPot foodPot;
-    private ICookThread cookRunnable;
+    private ICook cookRunnable;
     private Thread cookThread;
     private List<Thread> savageThreads;
+    private final ObservableLock lock;
 
     public Ex1Savages2(int nOSavages){
+        this.lock = new ObservableLock();
         this.savageThreads = new ArrayList<>();
         this.numberOfSavages = nOSavages;
         foodPot = new FoodPot(potSize);
-        cookRunnable = new CookThread(foodPot);
+        cookRunnable = new Cook(foodPot);
         cookThread = new Thread(cookRunnable);
         for (int i = 0; i < this.numberOfSavages; i++){
-            Thread thread = new Thread(new AlwaysHungrySavage(foodPot, cookRunnable, this, numberOfSavages, i));
+            Thread thread = new Thread(new AlwaysHungrySavage(foodPot, cookRunnable, this, numberOfSavages, i, lock));
             this.savageThreads.add(thread);
         }
     }
@@ -54,5 +57,10 @@ public class Ex1Savages2 implements IExecutor {
         System.out.println("START");
         executor.runThreads();
         System.out.println("FINISHED");
+    }
+
+    @Override
+    public Lock getLock() {
+        return this.lock;
     }
 }

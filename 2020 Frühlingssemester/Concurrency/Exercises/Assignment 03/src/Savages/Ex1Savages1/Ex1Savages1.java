@@ -5,20 +5,25 @@ import Savages.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.concurrent.locks.Lock;
+
 public class Ex1Savages1 implements IExecutor {
     private static final int potSize = 5;
     private int numberOfSavages;
     private IPot foodPot;
-    private ICookThread cookRunnable;
+    private ICook cookRunnable;
     private Thread cookThread;
     private List<Thread> savageThreads;
 
+    private final ObservableLock lock;
+
 
     public Ex1Savages1(int nOSavages){
+        this.lock = new ObservableLock();
         this.savageThreads = new ArrayList<>();
         this.numberOfSavages = nOSavages;
         foodPot = new FoodPot(potSize);
-        cookRunnable = new CookThread(foodPot);
+        cookRunnable = new Cook(foodPot);
         cookThread = new Thread(cookRunnable);
         for (int i = 0; i < this.numberOfSavages; i++){
             Thread thread = new Thread(new OnceHungrySavage(foodPot, cookRunnable, this));
@@ -53,5 +58,10 @@ public class Ex1Savages1 implements IExecutor {
         System.out.println("START");
         executor.runThreads();
         System.out.println("FINISHED");
+    }
+
+    @Override
+    public Lock getLock() {
+        return this.lock;
     }
 }

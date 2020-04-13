@@ -1,10 +1,9 @@
 package Savages;
 
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public interface IExecutor {
-    Lock lock = new ReentrantLock();
+    Lock getLock();
     boolean isAlwaysHungry();
     void runThreads();
 }

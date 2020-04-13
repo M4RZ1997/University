@@ -1,6 +1,6 @@
 package Savages;
 
-public interface ICookThread extends Runnable {
+public interface ICook extends Runnable {
     void terminate();
     void cookAndRefill() throws PotNotEmptyException;
     void order();

@@ -65,6 +65,22 @@
 \BOOKMARK [2][-]{subsection.7.7}{Order}{section.7}% 65
 \BOOKMARK [3][-]{subsubsection.7.7.1}{FIFO-Order Broadcast}{subsection.7.7}% 66
 \BOOKMARK [3][-]{subsubsection.7.7.2}{Causal Order \(broadcast\):}{subsection.7.7}% 67
-\BOOKMARK [1][-]{section.8}{8th Lecture - April 1, 2020}{}% 68
-\BOOKMARK [2][-]{subsection.8.1}{sub}{section.8}% 69
-\BOOKMARK [3][-]{subsubsection.8.1.1}{subsub}{subsection.8.1}% 70
+\BOOKMARK [1][-]{section.8}{Chapter 6: Total-Order Broadcast - 08.04.2020}{}% 68
+\BOOKMARK [2][-]{subsection.8.1}{Notion of Causality}{section.8}% 69
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Events}{subsection.8.1}% 70
+\BOOKMARK [3][-]{subsubsection.8.1.2}{Causality Relation}{subsection.8.1}% 71
+\BOOKMARK [2][-]{subsection.8.2}{Causal-Order Broadcast using Vector Clocks}{section.8}% 72
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Example}{subsection.8.2}% 73
+\BOOKMARK [2][-]{subsection.8.3}{Total-Order Broadcast}{section.8}% 74
+\BOOKMARK [2][-]{subsection.8.4}{Consensus}{section.8}% 75
+\BOOKMARK [3][-]{subsubsection.8.4.1}{Events}{subsection.8.4}% 76
+\BOOKMARK [3][-]{subsubsection.8.4.2}{Properties}{subsection.8.4}% 77
+\BOOKMARK [2][-]{subsection.8.5}{From Consensus to Total-Order Broadcast}{section.8}% 78
+\BOOKMARK [2][-]{subsection.8.6}{From Total-Order Broadcast to Consensus}{section.8}% 79
+\BOOKMARK [2][-]{subsection.8.7}{State-Machine Replication}{section.8}% 80
+\BOOKMARK [3][-]{subsubsection.8.7.1}{Events}{subsection.8.7}% 81
+\BOOKMARK [3][-]{subsubsection.8.7.2}{Properties}{subsection.8.7}% 82
+\BOOKMARK [2][-]{subsection.8.8}{From Total-Order Broadcaste to Replicated State-Machine}{section.8}% 83
+\BOOKMARK [1][-]{section.9}{9th Lecture - April 8, 2020}{}% 84
+\BOOKMARK [2][-]{subsection.9.1}{sub}{section.9}% 85
+\BOOKMARK [3][-]{subsubsection.9.1.1}{subsub}{subsection.9.1}% 86
