@@ -38,17 +38,47 @@
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{(a) Consensus does not sort \textit{deterministically} before \textit{tob-delivering}}
 		\begin{adjustwidth}{2em}{2em}
-			The problem with not sorting deterministically is that every process which calls the consensus might get a different value and therefore the processes cannot agree on which value is the last in the sequence and should be returned.
 		\end{adjustwidth}
 		\subsection*{(b) Modifying algorithm s.t. we do not require the sorting of decided payload messages}
 		\begin{adjustwidth}{2em}{2em}
-			One can store the duplet of value and timestamp such
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
 	\section*{8.2 Atomic Register as a Replicated State Machine}
-	\begin{adjustwidth}{2em}{2em}
-	\end{adjustwidth}
+	\begin{center}
+		\begin{tabular}{l}
+			\underline{upon event} $\langle \textit{nnar, } \textsc{Init} \rangle$ \underline{do} \\
+			\ \ $\textit{val} = \emptyset$ \\
+			\ \ $\textit{readCount} = 0$ \\
+			\ \ $\textit{writeCount} = 0$ \\
+			\\
+			\underline{upon event} $\langle \textit{nnar, } \textsc{read} \rangle$ \underline{do} \\
+			\ \ trigger $\langle tob, \textsc{Broadcast} \mid \textsc{read} \rangle$ \\
+			\\
+			\underline{upon event} $\langle \textit{nnar, } \textsc{write} \mid v \rangle$ \underline{do} \\
+			\ \ trigger $\langle tob, \textsc{Broadcast} \mid [\textsc{write},v] \rangle$ \\
+			\\
+			\underline{upon event} $\langle \textit{tob, } \textsc{deliver} \mid p, \textsc{read} \rangle$ \underline{do} \\
+			\ \ trigger $\langle pl, \textsc{Send} \mid p, [\textsc{ReadAck},val] \rangle$ \\
+			\\
+			\underline{upon event} $\langle \textit{tob, } \textsc{deliver} \mid p, [\textsc{write},v] \rangle$ \underline{do} \\
+			\ \ $\textit{val} = v$ \\
+			\ \ trigger $\langle pl, \textsc{Send} \mid p, \textsc{WriteAck} \rangle$ \\
+			\\
+			\underline{upon event} $\langle \textit{pl, } \textsc{deliver} \mid p, \textsc{WriteAck} \rangle$ \underline{do} \\
+			\ \ $\textit{writeCount} = \textit{writeCount} + 1$ \\
+			\ \ \textbf{if} $\textit{writeCount} = \mid \Pi \mid$ \textbf{then} \\
+			\ \ \ \ $\textit{writeCount} = 0$ \\
+			\ \ \ \ trigger $\langle \textit{nnar, } \textsc{WriteReturn} \rangle$ \\
+			\\
+			\underline{upon event} $\langle \textit{pl, } \textsc{deliver} \mid p, [\textsc{ReadAck},v] \rangle$ \underline{do} \\
+			\ \ $\textit{readCount} = \textit{readCount} + 1$ \\
+			\ \ \textbf{if} $\textit{readCount} = \mid \Pi \mid$ \textbf{then} \\
+			\ \ \ \ $\textit{readCount} = 0$ \\
+			\ \ \ \ trigger $\langle \textit{nnar, } \textsc{ReadReturn} \mid v \rangle$ \\
+			\\
+		\end{tabular}
+	\end{center}
 	
 	\section*{8.3 Replicated Register with Local Read}
 	\begin{adjustwidth}{2em}{2em}
