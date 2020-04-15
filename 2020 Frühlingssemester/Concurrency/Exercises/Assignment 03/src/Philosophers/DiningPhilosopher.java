@@ -4,19 +4,28 @@ public class DiningPhilosopher implements IPhilosopher {
 
     private final IFork leftFork;
     private final IFork rightFork;
-    private static final int SLEEP_TIME = 100;
-    private static final int ITERATIONS = 100;
+    private static final int SLEEP_TIME = 1000;
 
-    public DiningPhilosopher(IFork left, IFork right) {
+    private boolean hasEaten;
+    private int eatCounter = 0;
+    private int identificationNumber;
+    private Executor executor;
+
+    public DiningPhilosopher(IFork left, IFork right, int id, Executor exec) {
         this.leftFork = left;
         this.rightFork = right;
+        this.identificationNumber = id;
+        this.executor = exec;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < ITERATIONS; i++) {
+        while (true) {
+            hasEaten = false;
             this.eat();
+            hasEaten = true;
             this.sleep();
+            while (executor.getPhilosopher(identificationNumber-1).hasNotEatenYet() && executor.getPhilosopher(identificationNumber+1).hasNotEatenYet()){}
         }
     }
 
@@ -24,7 +33,7 @@ public class DiningPhilosopher implements IPhilosopher {
     public void eat() {
         try {
             this.acquireForks();
-            System.out.println(this + ": I am eating");
+            System.out.println("Thread "+ identificationNumber + ": I am eating " + ++eatCounter + "  times");
         } finally {
             this.releaseForks(true, true);
         }
@@ -33,9 +42,14 @@ public class DiningPhilosopher implements IPhilosopher {
     @Override
     public void sleep() {
         try {
-            System.out.println(this + ": zzzzzzzzzzzzzz");
-            Thread.sleep((long) Math.random() * SLEEP_TIME);
+            System.out.println("Thread "+ identificationNumber + ": zzzzzzzzzzzzzz");
+            Thread.sleep((long) Math.random() * SLEEP_TIME + SLEEP_TIME);
         }catch(InterruptedException e){}
+    }
+
+    @Override
+    public boolean hasNotEatenYet() {
+        return !hasEaten;
     }
 
     private void acquireForks() {

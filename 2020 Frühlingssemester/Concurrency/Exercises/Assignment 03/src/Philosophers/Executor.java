@@ -19,7 +19,7 @@ public class Executor {
         }
 
         for (int i = 0; i < philosophersNumber; i++) {
-            this.philosophers.add(new DiningPhilosopher(this.forks.get(i), this.forks.get((i + 1) % philosophersNumber)));
+            this.philosophers.add(new DiningPhilosopher(this.forks.get(i), this.forks.get((i + 1) % philosophersNumber), i, this));
         }
 
         this.philosopherThreads = new ArrayList<>();
@@ -46,5 +46,13 @@ public class Executor {
         } catch (Exception e) {
             System.out.println("Threads were interrupted");
         }
+    }
+
+    public IPhilosopher getPhilosopher(int i){
+        if (i < 0)
+            i += PHILOSOPHERS_NUMBER;
+        else if (i >= PHILOSOPHERS_NUMBER)
+            i = i % PHILOSOPHERS_NUMBER;
+        return philosophers.get(i);
     }
 }
