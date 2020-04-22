@@ -38,9 +38,11 @@
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{(a) Consensus does not sort \textit{deterministically} before \textit{tob-delivering}}
 		\begin{adjustwidth}{2em}{2em}
+			A consensus decides on a set of messages to deliver. A set normally has in many practical implementations no determinsistic order and therefore all processes could deliver the same set but in a different order which violates the total order property.
 		\end{adjustwidth}
 		\subsection*{(b) Modifying algorithm s.t. we do not require the sorting of decided payload messages}
 		\begin{adjustwidth}{2em}{2em}
+		To create a total-order broadcast that does not require the sorting of decided payload messages we can change the implementation s.t. each process proposes a single message to the consensus. The consensus will the agree on delivering one message at a time. This guarantees that all processes deliver the messages in the same sequence.
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
@@ -79,8 +81,24 @@
 			\\
 		\end{tabular}
 	\end{center}
+	\begin{adjustwidth}{2em}{2em}
+		We can ensure that that this implementation terminates because of the validity and agreement properties of the total order-broadcast. These properties say that any message broadcasted by any correct process is eventually delivered by itself, hence both the \textsc{Write} and \textsc{Read} messages will eventually arrive. \\
+		Furthermore the property of a total-order broadcast that any set of messages can be  linearized to the same linear sequence across mulitple processes leads to atomicity property s.t. each process eventually has the same sequence of delivered messages. \\
+		Therefore it follows that any process deliver message $r_1$ in response to a \textsc{Read} and then returns its locally stored value, any subsequent \textsc{Read} operation with message $r_2$ - delivered after $r_1$ - is ensured to return the same or a newer value.
+	\end{adjustwidth}
 	
 	\section*{8.3 Replicated Register with Local Read}
 	\begin{adjustwidth}{2em}{2em}
+		Because total-order broadcast only guarantees, that any process has the same history of delivered messages $(m_1 \cdots m_{n-1})$ when delivering message $m_n$, but does not provide  any guarantees what the message sequence of other processes is at that moment or will be in the future. Therefore a local read might break atomicity, i.e.: \\
+		\begin{enumerate}
+			\item $p$ nnar-writes $x$, broadcasts $[WRITE, x]$
+			\item $p$ tob-delivers $[WRITE, x]$, sets $val := x$, nnar-write-returns
+			\item $p$ nnar-reads, reads locally, returns $val = x$
+			\item $q$ nnar-reads, reads locally, returns $val = \bot$
+			\item $q$ tob-delivers  $[WRITE, x]$, sets $val := x$
+		\end{enumerate}
+		\hfill \\
+		The total-order property holds, as the tob-delivered messages of both processes
+are $([WRITE, x])$. This implies that both state machines are in sync, but the atomicity property of a regular register is violated because the second read returned the earlier value that the read preceeding it.
 	\end{adjustwidth}
 \end{document}
