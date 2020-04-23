@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  8 APR 2020 15:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  22 APR 2020 15:47
 entering extended mode
 **./Lectures_Dist-Algo.tex
 (Lectures_Dist-Algo.tex
@@ -1535,7 +1535,7 @@ LaTeX Font Info:    Trying to load font information for TS1+stix on input line
 ("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/stix\ts1stix.fd"
 File: ts1stix.fd 2015/04/17 v1.1.2-latex STIX TS1 font definitions
 )
-<distributed.png, id=350, 301.125pt x 301.125pt>
+<distributed.png, id=390, 301.125pt x 301.125pt>
 File: distributed.png Graphic file (type png)
 <use distributed.png>
 Package pdftex.def Info: distributed.png  used on input line 161.
@@ -2109,25 +2109,76 @@ File: distributed.png Graphic file (type png)
 Package pdftex.def Info: distributed.png  used on input line 1636.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
  [28]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 1651.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 1695.
+
 File: distributed.png Graphic file (type png)
 <use distributed.png>
-Package pdftex.def Info: distributed.png  used on input line 1647.
+Package pdftex.def Info: distributed.png  used on input line 1697.
 (pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
- [29]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1647.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1647.
+[29]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 1700.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 1706.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 1709.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 1715.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 1723.
+
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is:  on input line 1732.
+
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 1777.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[30]
+
+Package paralist Warning: Incorrect label; no or multiple counters.
+(paralist)                The label is: - on input line 1780.
+
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 1787.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+[31]
+File: distributed.png Graphic file (type png)
+<use distributed.png>
+Package pdftex.def Info: distributed.png  used on input line 1798.
+(pdftex.def)             Requested size: 39.14761pt x 39.14761pt.
+ [32]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1798.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1798.
  (Lectures_Dist-Algo.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1647.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1647.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1798.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1798.
 
 Package rerunfilecheck Info: File `Lectures_Dist-Algo.out' has not changed.
-(rerunfilecheck)             Checksum: 0A0CD8570BA55D8A965A0043CA8028BB;6874.
+(rerunfilecheck)             Checksum: C34131334DC061AEA4CCEEC810407FBE;7600.
  ) 
 Here is how much of TeX's memory you used:
- 36826 strings out of 481556
- 826488 string characters out of 2913401
- 1186322 words of memory out of 3000000
- 51167 multiletter control sequences out of 15000+200000
+ 36873 strings out of 481556
+ 827047 string characters out of 2913401
+ 1186335 words of memory out of 3000000
+ 51177 multiletter control sequences out of 15000+200000
  651750 words of font info for 142 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,31n,98p,1022b,1020s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2149,9 +2200,9 @@ thrm.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 stix/stix-mathscr.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/stix/stix-mathsf.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on Lectures_Dist-Algo.pdf (29 pages, 371585 bytes).
+Output written on Lectures_Dist-Algo.pdf (32 pages, 387497 bytes).
 PDF statistics:
- 749 PDF objects out of 1000 (max. 8388607)
- 274 named destinations out of 1000 (max. 500000)
- 706 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 833 PDF objects out of 1000 (max. 8388607)
+ 311 named destinations out of 1000 (max. 500000)
+ 786 words of extra memory for PDF output out of 10000 (max. 10000000)
 

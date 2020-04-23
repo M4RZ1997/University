@@ -1615,7 +1615,7 @@
 				\end{adjustwidth}
 			\end{adjustwidth}
 		\end{adjustwidth}
-		\subsection{From Total-Order Broadcaste to Replicated State-Machine}
+		\subsection{From Total-Order Broadcast to Replicated State-Machine}
 		\begin{adjustwidth}{2em}{2em}
 			\begin{center}
 				\begin{tabular}{l}
@@ -1635,7 +1635,158 @@
 	
 	\newpage
 	
-	\section{9th Lecture - \today}
+	\section{\textsc{Consensus} - April 22, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Definition}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Events}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}
+					\item[(\textsc{in})] propose ($v$)
+					\item[(\textsc{out})] decide ($v$)
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \textbf{Termination:} \\
+					\ldots terminates
+					\item \textbf{Validity:} \\
+					decision value $v$ was proposed
+					\item \textbf{Integrity:} \\
+					decide at most once
+					\item \textbf{Agreement:} \\
+					No two processes decide different values
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Flooding Uniform \textsc{Consensus}}
+		\begin{center}
+			\begin{tabular}{l}
+				\underline{init:} \\
+				\ \ $\textit{correct} \leftarrow \Pi$ \\
+				\ \ $\textit{round} \leftarrow 1$ \\
+				\ \ $\textit{decision} \leftarrow \bot$ \\
+				\ \ $\textit{proposals} \leftarrow \{ \}$ \\
+				\\
+				\underline{upon} \textit{uc-} \textsc{propose}($v$) \underline{do} \\
+				\ \ $\textit{proposals} \leftarrow \textit{proposals} \cup \{ v \}$ \\
+				\ \ trigger $\langle \textit{beb-}\textsc{broadcast} \mid [\textsc{prop}, 1,\textit{proposals}] \rangle$ \\
+				\\
+				\underline{upon} $\langle \mathbb{P}-\textsc{crash} \mid p \rangle$ \underline{do} \\
+				\ \ $\textit{correct} \leftarrow \textit{correct} \setminus \{ p \}$ \\
+				\\
+				\underline{upon} $\langle \textit{beb-}\textsc{deliver} \mid p, [\textsc{prop}, r,\textit{ps}] \rangle$ \underline{such that} $r$ = \textit{round} \underline{do} \\
+				\ \ $\textit{received} \leftarrow \textit{received} \cup \{ p \}$ \\
+				\ \ $\textit{proposals} \leftarrow \textit{proposals} \cup ps$ \\
+				\\
+				\underline{upon} $\textit{correct} \subseteq \textit{received}$ \underline{do} \\
+				\ \ \underline{if} $\textit{round} < N$ \underline{then} \\
+				\ \ \ \ $\textit{round} \leftarrow \textit{round} + 1$ \\
+				\ \ \ \ $\textit{received} \leftarrow \emptyset$ \\
+				\ \ \ \ trigger $\langle \textit{beb-}\textsc{broadcast} \mid [\textsc{prop}, \textit{round},\textit{proposals}] \rangle$ \\
+				\ \ \underline{else} \hspace{8cm} // $\textit{round} = N$ \\
+				\ \ \ \ $\textit{decision} \leftarrow min(\textit{proposals})$ \\
+				\ \ \ \ \textsc{decide}(\textit{decision})
+			\end{tabular}
+		\end{center}
+		\subsection{\textsc{Consensus} Protocol with Eventual Synchrony}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item Consensus mechanism inside Paxos, Viewstamp Replication, ZooKeeper, Raff
+				\item more complex than the \textit{fail-stop} protocol (with $\mathbb{P}$) because it uses $\Omega$ $(\diamond \mathbb{P})$
+				\item[\textbf{*}] \textbf{\underline{Leader-Driven \textsc{Consensus}}}  \\
+				tikz
+				\begin{enumerate}[-]
+					\item every epoch has a leader
+				\end{enumerate}
+			\end{enumerate}
+			\subsubsection{Epoch-Change}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[]
+					\item \textbf{\underline{Event:}} $\langle \textit{ec-Start Epoch} \mid ts, \ l$
+					\item \textbf{\underline{Properties:}}
+					\begin{enumerate}[]
+						\item \textit{Monotonicity:} \\
+						If a process start epoch ($ts, \ l$) and subsequently start epoch ($ts', \ l'$), then $ts' > ts$
+						\item \textit{Consistency:} \\
+						If a process starts epoch ($ts, \ l$) and also another process starts epoch ($ts', \ l'$) and $ts = ts'$ then $l = l'$
+						\item \textit{Leadership:}
+						\begin{enumerate}[-]
+							\item There is a last epoch that is started at every process
+							\item the leader of this last epoch is correct
+						\end{enumerate}
+					\end{enumerate}
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Epoch-\textsc{Consensus}}
+			\begin{enumerate}[]
+				\item \textbf{\underline{Events:}}
+				\begin{enumerate}
+					\item[\textsc{in}] $\langle \textit{ep-}\textsc{Propose} \mid v \rangle$ \hspace{2cm} // only leader
+					\item[\textsc{out}] $\langle \textit{ep-}\textsc{Decide} \mid v \rangle$
+					\item[\textsc{in}] $\langle \textit{ep-}\textsc{Abort}\rangle$
+					\item[\textsc{out}] $\langle \textit{ep-}\textsc{Aborted} \mid \textit{state} \rangle$
+				\end{enumerate}
+				\item \textbf{\underline{Properties:}}
+				\begin{enumerate}[]
+					\item \textit{Validity:} \\
+					If a process \textit{ep-}\textsc{Decides} $v$, then $v$ was \textit{ep-}\textsc{Proposed} (by the leader) in some epoch $ts' \leq ts$
+					\item \textit{Agreement:} \\
+					(as before)
+					\item \textit{Integrity:} \\
+					(as before)
+					\item \textit{Termination:} \\
+					If the leader $l$ of epoch $ts$ is correct, and $w$ process aborts, then every correct process eventually \textit{ep-}\textsc{Decides}
+					\item \textit{Lock-In:} \\
+						If a process has \textit{ep-}\textsc{Decided} $v$ in epoch $ts' < ts$, then $w$
+					\item \textit{Abort Completeness:} \ldots	
+				\end{enumerate}
+			\end{enumerate}
+		\end{adjustwidth}
+		\subsection{Leader-Driven \textsc{Consensus}}
+		\begin{center}
+			\begin{tabular}{l}
+				\underline{Init:} \\
+				\ \ $val \leftarrow \bot$ \\
+				\ \ $\textit{proposed} \leftarrow F$ \\
+				\ \ $\textit{decided} \leftarrow F$ \\
+				\ \ Init \textit{ep-}\textsc{Consensus} with ($0, l_0$) $[ep.0]$ \\
+				\ \ $(ets, l) \leftarrow (0, l_0)$ \\
+				\\
+				\underline{upon} $\langle \textit{uc-}\textsc{Propose} \mid v \rangle$ \underline{do} \\
+				\ \ $\textit{val} \leftarrow v$ \\
+				\\
+				\underline{upon} $\langle \textit{ec-}\textsc{StartEpoch} \mid nts, nl \rangle$ \underline{do} \\
+				\ \ $(newts, newl) \leftarrow (nts, nl)$ \\
+				\ \ abort the current epoch $(ets, l)$ \ldots \\
+				\\
+				\underline{upon} $\langle \textit{ep.ts-}\textsc{Aborted} \mid \textit{state} \rangle$ \\
+				\ \ $(ets, l) \leftarrow (newts, newl)$ \\
+				\ \ Initialize $\textit{ep-}\textsc{Consensus}$ with \textit{state} and ($ets, l$)
+				\\
+				\underline{upon} $val \neq \bot \wedge l = \textit{self} \wedge \textit{proposed}=F$ \underline{do}\\
+				\ \ $\textit{proposed} \leftarrow T$ \\
+				\ \ trigger $\langle \textit{ep.ets-}\textsc{Propose} \mid \textit{val} \rangle$ \\
+				\\
+				 \underline{upon} $\langle \textit{ep.ts-}\textsc{Decide} \mid v \rangle$ \underline{such that} $ts = ets$ \underline{do} \\
+				 \ \ \underline{if} $\neq \textit{decided}$ \underline{then} \\
+				 \ \ \ \ $\textit{decided} \leftarrow T$ \\
+				 \ \ \ \ trigger $\langle \textit{uc-}\textsc{Decide} \mid v \rangle$
+			\end{tabular}
+		\end{center}
+			\subsubsection{Why Agreement?}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item if in same epoch, then $\textit{ep-}\textsc{Consensus}$ agreement property
+					\item otherwise, locking property ensures agreement
+				\end{enumerate}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{10th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

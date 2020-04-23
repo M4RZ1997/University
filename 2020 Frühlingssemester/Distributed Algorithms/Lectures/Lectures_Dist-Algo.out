@@ -80,7 +80,17 @@
 \BOOKMARK [2][-]{subsection.8.7}{State-Machine Replication}{section.8}% 80
 \BOOKMARK [3][-]{subsubsection.8.7.1}{Events}{subsection.8.7}% 81
 \BOOKMARK [3][-]{subsubsection.8.7.2}{Properties}{subsection.8.7}% 82
-\BOOKMARK [2][-]{subsection.8.8}{From Total-Order Broadcaste to Replicated State-Machine}{section.8}% 83
-\BOOKMARK [1][-]{section.9}{9th Lecture - April 8, 2020}{}% 84
-\BOOKMARK [2][-]{subsection.9.1}{sub}{section.9}% 85
-\BOOKMARK [3][-]{subsubsection.9.1.1}{subsub}{subsection.9.1}% 86
+\BOOKMARK [2][-]{subsection.8.8}{From Total-Order Broadcast to Replicated State-Machine}{section.8}% 83
+\BOOKMARK [1][-]{section.9}{Consensus - April 22, 2020}{}% 84
+\BOOKMARK [2][-]{subsection.9.1}{Definition}{section.9}% 85
+\BOOKMARK [3][-]{subsubsection.9.1.1}{Events}{subsection.9.1}% 86
+\BOOKMARK [3][-]{subsubsection.9.1.2}{Properties}{subsection.9.1}% 87
+\BOOKMARK [2][-]{subsection.9.2}{Flooding Uniform Consensus}{section.9}% 88
+\BOOKMARK [2][-]{subsection.9.3}{Consensus Protocol with Eventual Synchrony}{section.9}% 89
+\BOOKMARK [3][-]{subsubsection.9.3.1}{Epoch-Change}{subsection.9.3}% 90
+\BOOKMARK [3][-]{subsubsection.9.3.2}{Epoch-Consensus}{subsection.9.3}% 91
+\BOOKMARK [2][-]{subsection.9.4}{Leader-Driven Consensus}{section.9}% 92
+\BOOKMARK [3][-]{subsubsection.9.4.1}{Why Agreement?}{subsection.9.4}% 93
+\BOOKMARK [1][-]{section.10}{10th Lecture - April 22, 2020}{}% 94
+\BOOKMARK [2][-]{subsection.10.1}{sub}{section.10}% 95
+\BOOKMARK [3][-]{subsubsection.10.1.1}{subsub}{subsection.10.1}% 96
