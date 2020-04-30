@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage[textheight = 600pt]{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Distributed Algorithms}} \\
+		\Large Exercise 09
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\section*{9.1 Flooding Consensus}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection*{(a) Can one reduce the number of rounds for some process?}
+		\begin{adjustwidth}{2em}{2em}
+			The number of processes is $N = 2$, we can only consider to reduce the number of rounds in either $p$ or $q$ to at least $N - 1 = 1$ rounds. Therefore we can establish the following execution, where the number of rounds of $p$ is reduced to 1: \\
+			\begin{enumerate}[-]
+				\item $p$ proposes $x$, broadcasts $[PROPOSAL, 1, \{x\}]$
+				\item $q$ proposes $y$, broadcasts $[PROPOSAL, 1, \{y\}]$
+				\item $p$ beb-delivers $[PROPOSAL, 1, \{x\}]$ and $[PROPOSAL, 1, \{y\}]$.
+				\item As $p$ has received messages from all healthy processes, and $r = N - 1 = 1$ it decides $x$.
+				\item $p$ crashes. $q$ detects $p$ as having crashed.
+				\item $q$ beb-delivers $[PROPOSAL, 1, \{y\}]$. As it has received messages from all healthy processes, it proceeds to round $r = 2$.
+				\item $q$ broadcast and beb-delivers $[PROPOSAL, 2, \{y\}]$.
+				\item As $q$ has received messages from all healthy processes, and $r = N = 2$, it decides $y$.
+			\end{enumerate}
+			\hfill \\
+			Because the two processes have decided on different values, this implementation violates the \textit{uniform agreement} property (the same would hold when lowering the rounds of $q$ because of symmetry). Therefore it is not possible to lower the rounds of any process.
+		\end{adjustwidth}
+		\subsection*{(b) Is this algorithm correct if the failure detector is not perfect but only eventually perfect?}
+		\begin{adjustwidth}{2em}{2em}
+			We can establish the following implementation: \\
+			\begin{enumerate}[-]
+				\item $p$ proposes $x$, broadcasts $[PROPOSAL, 1, \{x\}]$
+				\item $q$ proposes $y$, broadcasts $[PROPOSAL, 1, \{y\}]$
+				\item $p$ beb-delivers both messages, proceeds to round $r = 2$, broadcasts $[PROPOSAL, 2, \{x, y\}]$
+				\item $q$ suspects $p$ of having crashed
+				\item $q$ beb-delivers $[PROPOSAL, 1, \{y\}]$, proceeds to round $r = 2$, broadcasts $[PROPOSAL, 2, \{y\}]$
+				\item $p$ beb-delivers $[PROPOSAL, 2, \{x, y\}]$ and $[PROPOSAL, 2, \{y\}]$, decides $x$
+				\item $q$ beb-delivers $[PROPOSAL, 2, \{y\}]$, decides $y$.
+			\end{enumerate}
+			\hfill \\
+			Again the two process have decided on different values and the usage of an eventually perfect failure detector does not lead to a correctly working algorithm because of the resulting problems shown in the example.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{9.2 Leader-Driven Consensus}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection*{(a) Why does this algorithm require a majority of correct processes?}
+		\begin{adjustwidth}{2em}{2em}
+			To establish a quorum a majority of correct processes is required. This follows from the property that two quorum must overlap in at least one process and therefore the size of any quorum must be greater than $\frac{N}{2}$ - which is only guaranteed to be achieved when the majority of processes is correct.
+		\end{adjustwidth}
+		\subsection*{(b) Which property is violated if there is no majority of correct processes?}
+		\begin{adjustwidth}{2em}{2em}
+			If there is no majority of correct processes then the \textit{lock-in} property can be violated which leads to a violation of the \textit{uniform agreement} property.
+		\end{adjustwidth}
+		\subsection*{(c) Execution example (4 processes)}
+		\begin{adjustwidth}{2em}{2em}
+			We consider a system with four processes ($p, \ q, \ r, \ s$ with ranks $1, \ 2, \ 3, \ 4$). We relax the requirement to $F = \frac{N}{2}$ (which also effects the quorum size). Therefore no majority of correct processes is required. The folowing execution can be established: \\
+			\begin{enumerate}[-]
+				\item An epoch starts for all processes, with $p$ as a leader and epoch timestamp $1$
+				\item $p$ proposes $x$
+				\item $p$ broadcasts a read
+				\item $p$ and $q$ respond with their state $(0, \bot)$
+				\item As neither process knows of a previously-decided value, $p$ broadcasts a write for value $x$
+				\item $p$ and $q$ store $(1, x)$ and respond with an accept
+				\item $p$ receives the two accepts, and broadcasts a decide for value $x$
+				\item $p$ and $q$ receive the message and decide $x$
+				\item $p$ and $q$ crash
+				\item A new epoch starts, with $r$ as leader and epoch timestamp $3$
+				\item $r$ proposes $z$.
+				\item $r$ broadcasts a read
+				\item $r$ and $s$ respond with their state $(0, \bot)$
+				\item As neither process knows of a previously-decided value, $r$ broadcasts a write for value $z$
+				\item $r$ and $z$ store $(3, z)$ and respond with an accept
+				\item $r$ receives the two accepts, and broadcasts a decide for value $z$
+				\item $r$ and $s$ receive the message and decide $z$
+			\end{enumerate}
+			\hfill \\
+			Because processes $p$ and $q$ are deciding differently than $r$ and $s$ (deciding on the value $x$ instead of $y$) this execution violates the \textit{uniform agreement} property.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{9.3 Leader-Driven Consensus, \textit{optimized}}
+	\begin{adjustwidth}{2em}{2em}
+		The epoch consensus needs the \textsc{read} and \textsc{state} messages to establish the \textit{lock-in} property. This is especially the case when a leader from an earlier epoch has decided on any value, the leader of the current epoch must decide on the same value, as well. \\
+		If we are speaken of the first epoch, there is no epoch "predating" it and therefore there cannot be an earlier decision. Because this implies that all processes are guaranteed to have the state with which they were initialised with, this set of messages can be left out.
+	\end{adjustwidth}
+\end{document}
