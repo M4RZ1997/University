@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  30 APR 2020 14:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  4 MAY 2020 11:52
 entering extended mode
 **./Zauder_Marcel_04.tex
 (Zauder_Marcel_04.tex
@@ -1225,21 +1225,19 @@ This may cause the page layout to be inconsistent, however.
 Package paralist Warning: Incorrect label; no or multiple counters.
 (paralist)                The label is: - on input line 87.
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+
+ []
+
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 108.
  (Zauder_Marcel_04.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
-
-
-Package rerunfilecheck Warning: File `Zauder_Marcel_04.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Zauder_Marcel_04.out':
-(rerunfilecheck)             Before: BBDA37C083DB5EDE01E4D28EF66B4437;432
-(rerunfilecheck)             After:  81C2E827430039AF4B5F471AAB14A96C;445.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 108.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 108.
+Package rerunfilecheck Info: File `Zauder_Marcel_04.out' has not changed.
+(rerunfilecheck)             Checksum: 81C2E827430039AF4B5F471AAB14A96C;445.
  ) 
 Here is how much of TeX's memory you used:
  32792 strings out of 481556
@@ -1260,10 +1258,15 @@ Marcel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk>
  <C:\Users\Marcel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\e
 crm1440.pk> <C:\Users\Marcel\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/
 ec/dpi600\ecxc1728.pk><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Zauder_Marcel_04.pdf (2 pages, 85559 bytes).
+type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Marcel/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Marcel/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/
+Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
+msy7.pfb>
+Output written on Zauder_Marcel_04.pdf (2 pages, 122246 bytes).
 PDF statistics:
- 286 PDF objects out of 1000 (max. 8388607)
+ 308 PDF objects out of 1000 (max. 8388607)
  17 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
