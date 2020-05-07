@@ -1786,7 +1786,216 @@
 	
 	\newpage
 	
-	\section{10th Lecture - \today}
+	\section{10th Lecture - April 29, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{sub}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{subsub}
+			\begin{adjustwidth}{2em}{}
+			\end{adjustwidth}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{Byzantine Consensus - May 6, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Weak Byzantine Consensus}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Events}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item propose($v$)
+					\item decide($v$)
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \textbf{Termination} \\
+					Eventually correct process eventually decides
+					\item \textbf{Weak Validity} \\
+					If all proceeses are correct, and all propose $v$, then no correct process decides a value different from $v$; if all processes are correct, and some correct process decides $v$, then $v$ was proposed by some process.
+					\item \textbf{Agreement} \\
+					No two correct processes decide on different values
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Strong Byzantine Consensus}
+		\begin{adjustwidth}{2em}{2em}
+			Same as waek Byzantine consensus, but with...
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \textbf{Strong Validity} \\
+					If all correct processes propose the same value $v$, then every correct process decides $v$; otherwise, a correct process must decide a special value $\square$ (\textit{blank}), or a value proposed by a correct process.
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{\textit{Special Case:} Binary Consensus}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \textbf{Strong Validity} \\
+					The decision value was proposed by a correct process.
+				\end{enumerate}
+				\hfill \\
+				Simplification because there are only two decision values.
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Fault-Tolerance}
+		\begin{adjustwidth}{2em}{2em}
+			\textit{Byzantine Consensus} requires a strong majority of correct processes.
+			\subsubsection{Theorem}
+			\begin{adjustwidth}{2em}{}
+				Every strong Byzantine Consensus protocol tolerates at most $f < \frac{N}{3}$ faulty processes.
+			\end{adjustwidth}
+			\subsubsection{Proof}
+			\begin{adjustwidth}{2em}{}
+				\underline{Suppose not.} \\
+				Consider f = 1. Then there is a Byzantine consensus protocol for N = 3 processes.
+				\paragraph{Execution A}
+				\begin{center}
+					tikz
+				\end{center}
+				\paragraph{Execution B}
+				\begin{center}
+					tikz
+				\end{center}
+				\paragraph{Execution C}
+				\begin{center}
+					tikz
+				\end{center}
+				\hfill \\
+				One can extend this argument to $N > 3$ processes, as long as $N \leq 3f$.
+			\end{adjustwidth}
+			\subsubsection{Intuition}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item processes can wait for at most $N-f$ others
+					\item among these $N-f$, a majority must be correct
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Reliable Broadcasts with Byzantine Faults}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Events}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item broadcast($m$)
+					\item deliver($m$)					
+				\end{enumerate}
+				\hfill \\
+				Byzantine broadcasts (here) can broadcast and deliver one payload message; with identified sender $s$ (to broadcast multiple payloads, run many such protocols in parallel).
+			\end{adjustwidth}
+			\subsubsection{Properties}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \textbf{Validity} \\
+					If a correct sneder $s$ broadcasts $m$, then every correct process eventually delivers $m$
+					\item \textbf{No Duplication}
+					\item \textbf{Integrity}
+					\item \textbf{Consistency} \\
+					If a correct process delivers $m$, and another correct process delivers $m'$, then $m = m'$.
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Signed Echo Broadcast}
+		\begin{center}
+			tikz
+		\end{center}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{tabular}{l}
+				\underline{Init:}
+				\ \ \textit{sentecho} $\leftarrow F$ \\
+				\ \ \textit{sentfinal} $\leftarrow F$ \\
+				\\
+				\underline{upon} \textit{cb-broadcast}($n$) \underline{do} \\
+				\ \ send messgae $[\textsc{send}, m]$ to all processes \\
+				\\
+				\underline{upon} receiving message $[\textsc{send}, m]$ from $s$ and $\neq$\textit{sentecho} \underline{do} \\
+				\ \ $\sigma \leftarrow$ \textit{sign}(\textsc{echo} $\| \textit{identifier} \| m$) \\
+				\ \ send message $[\textsc{echo}, m, \sigma ']$ from $> \frac{N+f}{2}$ distinct processes and $\neg$\textit{sentfinal} \underline{do} \\
+				\ \ $\Sigma \leftarrow$ list of received sig. $\sigma$ \\
+				\ \ send message $[\textsc{final}, m, \Sigma]$ \\
+				\ \ \textit{sentfinal} $\leftarrow T$ \\
+				\\
+				\underline{upon} receive message $[\textsc{final}, m, \Sigma]$ \underline{do} \\
+				\ \ \textbf{if} verify that $\Sigma$ contains $> \frac{N+f}{2}$ signatures on \textsc{echo} $\| \textit{identifier} \| m$ \textbf{then} \\
+				\ \ \ \ deliver($m$)
+			\end{tabular}
+			\subsubsection{Why Consistent?}
+			\begin{adjustwidth}{2em}{}
+				some $p$ has delivered $m$, then it has $> \frac{N+f}{2}$ sig. on $m$ \\
+				some $p'$ has delivered $m'$, then it has $> \frac{N+f}{2}$ sig. on $m'$ \\
+				how many distinct correct processes have signed? \\
+				$p$ has seen $> \frac{N-f}{2}$ signatures (on $m$) from correct processes \\
+				$p'$ has seen $> \frac{N-f}{2}$ signatures (on $m'$) from correct processes \\
+				This means, $p$ and $p'$ have together seen $> N -f$ signatures from correct processes. \\
+				But there are only $N-f$ correct processes \\
+				$\Rightarrow m = m'$
+			\end{adjustwidth}
+			This protocol uses signatures. \\
+			An alternative protocol uses pt-to-pt messages, where signatures are replaced by messages:
+		\end{adjustwidth}
+		\begin{center}
+			tikz
+		\end{center}
+		\subsection{Byzantine Reliable Broadcasts (\textsc{Bracha})}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Definition}
+			\begin{adjustwidth}{2em}{}
+				A protocol for Byzantine Reliable Broadcast is a Byzantine consistent broadcast that satisfies also:
+				\begin{enumerate}[-]
+					\item \textbf{Totality} \\
+					If a correct process delivers some message, then every correct process eventually delivers some message.
+				\end{enumerate}
+				Totality + Consistency = Reliability
+			\end{adjustwidth}
+			\subsubsection{Implementation (by \textsc{Bracha})}
+			\begin{adjustwidth}{2em}{}
+				Authenticator Double-Echo Broadcast
+				\begin{center}
+					tikz
+				\end{center}
+				\begin{enumerate}[-]
+					\item All correct processes sned $[\textsc{ready}, m]$ upon receiving $> \frac{N+f}{2}$ \textsc{echo} messages with $m$
+					\item All correct processes \textbf{also} send $[\textsc{ready}, m]$ after receiving $> f$ \textsc{ready} messages with $m$
+					\item[$\Rightarrow$] and a correct process delivers $m$ upon receiving $> 2f$ messages $[\textsc{ready}, m]$
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Why does this ensure totality?}
+			\begin{adjustwidth}{2em}{}
+				Suppose $p$ that has delivered $m$ \\
+				$\Rightarrow$ $p$ has received more than $2f$ \textsc{ready} messages with $m$ \\
+				$\Rightarrow$ more than $f$ \textsc{ready} messages from correct processes \\
+				$\Rightarrow$ every correct process eventually receives $>f$ \textsc{ready} messages with $m$ \\
+				$\Rightarrow$ every correct process eventually sends \textsc{ready} with $m$ \\
+				$\Rightarrow$ every correct process eventually receives $>2f$ \textsc{ready}, because $N-f > 2f$ assuming that $N > 3f$
+			\end{adjustwidth}
+			\subsubsection{How can we croadcast many payload messages?}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item Run one instance of basic broadcast for each process as a sender
+					\item After one instance delivers a message $m$, just start another one
+					\item[$\Rightarrow$] Byzantine $\lbrace^{\textit{Reliable}}_{\textit{Consistent}} \rbrace$ Broadcast Channel
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Byzantine Total Order Broadcasts}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item Analogous to model with crash failures
+				\item In principle, implement from one consensus instance for each round, as before
+				\item In practice, more complex protocols are used which are efficient.
+			\end{enumerate}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{12th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

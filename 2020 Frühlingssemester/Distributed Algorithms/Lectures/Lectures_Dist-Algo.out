@@ -91,6 +91,32 @@
 \BOOKMARK [3][-]{subsubsection.9.3.2}{Epoch-Consensus}{subsection.9.3}% 91
 \BOOKMARK [2][-]{subsection.9.4}{Leader-Driven Consensus}{section.9}% 92
 \BOOKMARK [3][-]{subsubsection.9.4.1}{Why Agreement?}{subsection.9.4}% 93
-\BOOKMARK [1][-]{section.10}{10th Lecture - April 22, 2020}{}% 94
+\BOOKMARK [1][-]{section.10}{10th Lecture - April 29, 2020}{}% 94
 \BOOKMARK [2][-]{subsection.10.1}{sub}{section.10}% 95
 \BOOKMARK [3][-]{subsubsection.10.1.1}{subsub}{subsection.10.1}% 96
+\BOOKMARK [1][-]{section.11}{Byzantine Consensus - May 6, 2020}{}% 97
+\BOOKMARK [2][-]{subsection.11.1}{Weak Byzantine Consensus}{section.11}% 98
+\BOOKMARK [3][-]{subsubsection.11.1.1}{Events}{subsection.11.1}% 99
+\BOOKMARK [3][-]{subsubsection.11.1.2}{Properties}{subsection.11.1}% 100
+\BOOKMARK [2][-]{subsection.11.2}{Strong Byzantine Consensus}{section.11}% 101
+\BOOKMARK [3][-]{subsubsection.11.2.1}{Properties}{subsection.11.2}% 102
+\BOOKMARK [2][-]{subsection.11.3}{Special Case: Binary Consensus}{section.11}% 103
+\BOOKMARK [3][-]{subsubsection.11.3.1}{Properties}{subsection.11.3}% 104
+\BOOKMARK [2][-]{subsection.11.4}{Fault-Tolerance}{section.11}% 105
+\BOOKMARK [3][-]{subsubsection.11.4.1}{Theorem}{subsection.11.4}% 106
+\BOOKMARK [3][-]{subsubsection.11.4.2}{Proof}{subsection.11.4}% 107
+\BOOKMARK [3][-]{subsubsection.11.4.3}{Intuition}{subsection.11.4}% 108
+\BOOKMARK [2][-]{subsection.11.5}{Reliable Broadcasts with Byzantine Faults}{section.11}% 109
+\BOOKMARK [3][-]{subsubsection.11.5.1}{Events}{subsection.11.5}% 110
+\BOOKMARK [3][-]{subsubsection.11.5.2}{Properties}{subsection.11.5}% 111
+\BOOKMARK [2][-]{subsection.11.6}{Signed Echo Broadcast}{section.11}% 112
+\BOOKMARK [3][-]{subsubsection.11.6.1}{Why Consistent?}{subsection.11.6}% 113
+\BOOKMARK [2][-]{subsection.11.7}{Byzantine Reliable Broadcasts \(Bracha\)}{section.11}% 114
+\BOOKMARK [3][-]{subsubsection.11.7.1}{Definition}{subsection.11.7}% 115
+\BOOKMARK [3][-]{subsubsection.11.7.2}{Implementation \(by Bracha\)}{subsection.11.7}% 116
+\BOOKMARK [3][-]{subsubsection.11.7.3}{Why does this ensure totality?}{subsection.11.7}% 117
+\BOOKMARK [3][-]{subsubsection.11.7.4}{How can we croadcast many payload messages?}{subsection.11.7}% 118
+\BOOKMARK [2][-]{subsection.11.8}{Byzantine Total Order Broadcasts}{section.11}% 119
+\BOOKMARK [1][-]{section.12}{12th Lecture - May 6, 2020}{}% 120
+\BOOKMARK [2][-]{subsection.12.1}{sub}{section.12}% 121
+\BOOKMARK [3][-]{subsubsection.12.1.1}{subsub}{subsection.12.1}% 122
