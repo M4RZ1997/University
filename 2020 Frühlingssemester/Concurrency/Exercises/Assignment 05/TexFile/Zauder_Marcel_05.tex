@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Concurrency}} \\
+		\Large Assignement 04
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\section{CASLock and CCASLock}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Execution with 4 Threads}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{tabular}{|l|r|r|}
+				\hline
+				& \underline{\textbf{CASLock}} & \underline{\textbf{CCASLock}} \\
+				\hline
+				\textbf{Counter Value} & 300'000 & 300'000 \\
+				\textbf{Executiont Time} & 39ms & 27ms \\
+				\textbf{Lowest Number of Accesses} & $\sim$ 50'000 & $\sim$ 35'000 \\
+				\textbf{Highest Number of Accesses} & $\sim$ 100'000 & $\sim$ 155'000 \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection{Execution with 8 Threads}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{tabular}{|l|r|r|}
+				\hline
+				& \underline{\textbf{CASLock}} & \underline{\textbf{CCASLock}} \\
+				\hline
+				\textbf{Counter Value} & 300'000 & 300'000 \\
+				\textbf{Executiont Time} & 60ms & 51ms \\
+				\textbf{Lowest Number of Accesses} & $\sim$ 9'000 & $\sim$ 7'000 \\
+				\textbf{Highest Number of Accesses} & $\sim$ 75'000 & $\sim$ 85'000 \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection{Peterson's Algorithm - 8 Threads (\textit{Comparison})}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{tabular}{|l|r|}
+				\hline
+				\textbf{Counter Value} & 300'000 \\
+				\textbf{Executiont Time} & 164ms \\
+				\textbf{Lowest Number of Accesses} & $\sim$ 32'000 \\
+				\textbf{Highest Number of Accesses} & $\sim$ 41'000 \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection{Conclusion}
+		\begin{adjustwidth}{2em}{2em}
+			In all executions the counter did not exceed the value of 300'000 and all accesses to the critical section sum up to 300'000 as well, which leads to the conclusion that the three different locks work correctly. The differences between the \textit{Peterson's Algorithm} and the newly implemetned \textit{CASLock} and \textit{CCASLock} lies within the fairness which was fairly given in the implementation of the former. The values between the lowest and highest access numbers in the algorithms of \textit{CASLock} and \textit{CCASLock} differ tremendously. \\
+			Furthermore we can see that the fairness comes with a huge overhead which leads to a slightly higher execution time for the \textit{Peterson's Algorithm}, whereas the \textit{CASLock} and \textit{CCASLock} are much faster. \\
+			When comparing the 4 threads and 8 threads execution of \textit{CASLock} and \textit{CCASLock} we can conclude that the more threads are involved the more overhead and waiting time is created which affects the execution time to be slower for the execution with more threads.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	\newpage
+    \section{Unbounded Lock}
+    \begin{adjustwidth}{2em}{2em}
+    	The necessaty for a \textit{non-empty queue} check in the \textit{deq()}-method follows from the following otherwise occuring problem:
+    	\begin{enumerate}[-]
+    		\item \textit{queue} has \underline{\textbf{one}} element enqueued
+    		\item \textit{Thread B} checks for empty queue $\rightarrow$ \textsc{false}
+    		\item \textit{Thread B} enters critical section
+    		\item \textit{Thread A} checks for empty queue $\rightarrow$ \textsc{false}
+    		\item \textit{Thread B} dequeues the last element in the \textit{queue} inside critical section \\
+    		$\Rightarrow$ \textit{queue} is now empty
+    		\item \textit{Thread A} enters critical section
+    		\item \textit{Thread A} tries to dequeue from an empty queue
+    	\end{enumerate}
+    \end{adjustwidth}
+    
+    \section{Queue}
+    \begin{adjustwidth}{2em}{2em}
+    	A first problem could occur within the \textit{enqueue} method. Because we are always incrementing the integer $i$, we could exceed the limit of an integer ($2^{31} - 1 \ = \ 2'147'483'647$ for a signed integer) and try to increment again the value gets reset to to $-2'147'483'648$. Therefore if we try to enqueue $2^{32} + 1$ times, and do not consider this problem and there is no exception thrown when trying to enqueue at a negative value position, the value at position $0$ is overwritten. Therefore the FIFO property is violated because the value at position $0$ was enqueued last in this example but is dequeued first. This is but a very unlikely issue which nevertheless must be accounted for. \\
+    	The much more likely problem of this algorithm is described in the following paragraph (we assume that two values were enqueued before and two threads trying to dequeue concurrently): \\
+    	\begin{center}
+    		\textit{Thread A} gets the value at position $x$, sets the value in the list to null and then is put to sleep. \textit{Thread B} gets the value at position $x+1$ and directly returns it. Then \textit{Thread A} returns its value. Therefore the value at position $x+1$ is returned before the value at position $x$. This violates the FIFO property because the value at position $x$ was clearly enqueued before the value at position $x+1$.
+    	\end{center}
+    \end{adjustwidth}    
+
+\end{document}
