@@ -1,1 +1,19 @@
-\BOOKMARK [1][-]{section.1}{1st Chapter}{}% 1
+\BOOKMARK [2][-]{subsection.0.1}{Moore's Law}{}% 1
+\BOOKMARK [2][-]{subsection.0.2}{Multicores}{}% 2
+\BOOKMARK [2][-]{subsection.0.3}{Parallelization}{}% 3
+\BOOKMARK [3][-]{subsubsection.0.3.1}{Data Parallelism}{subsection.0.3}% 4
+\BOOKMARK [3][-]{subsubsection.0.3.2}{Pipeline Parallelism}{subsection.0.3}% 5
+\BOOKMARK [3][-]{subsubsection.0.3.3}{Speculative/Optimistic Parallelism}{subsection.0.3}% 6
+\BOOKMARK [2][-]{subsection.0.4}{Shared Memory Synchronization}{}% 7
+\BOOKMARK [1][-]{section.1}{Basics}{}% 8
+\BOOKMARK [2][-]{subsection.1.1}{Formalizing a Problem}{section.1}% 9
+\BOOKMARK [2][-]{subsection.1.2}{Amdahl's Law}{section.1}% 10
+\BOOKMARK [1][-]{section.2}{Mutex}{}% 11
+\BOOKMARK [2][-]{subsection.2.1}{Partial Orders}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.2}{Total Orders}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.3}{Different Implementations}{section.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Peterson's Algorithm}{subsection.2.3}% 15
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Filter Algorithm}{subsection.2.3}% 16
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Bakery Algorithm}{subsection.2.3}% 17
+\BOOKMARK [1][-]{section.3}{Linearizability}{}% 18
+\BOOKMARK [2][-]{subsection.3.1}{Sequential vs. Concurrent}{section.3}% 19
