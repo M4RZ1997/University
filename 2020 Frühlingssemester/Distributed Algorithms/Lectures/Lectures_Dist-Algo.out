@@ -117,6 +117,17 @@
 \BOOKMARK [3][-]{subsubsection.11.7.3}{Why does this ensure totality?}{subsection.11.7}% 117
 \BOOKMARK [3][-]{subsubsection.11.7.4}{How can we croadcast many payload messages?}{subsection.11.7}% 118
 \BOOKMARK [2][-]{subsection.11.8}{Byzantine Total Order Broadcasts}{section.11}% 119
-\BOOKMARK [1][-]{section.12}{12th Lecture - May 6, 2020}{}% 120
-\BOOKMARK [2][-]{subsection.12.1}{sub}{section.12}% 121
-\BOOKMARK [3][-]{subsubsection.12.1.1}{subsub}{subsection.12.1}% 122
+\BOOKMARK [1][-]{section.12}{12th Lecture - May 13, 2020}{}% 120
+\BOOKMARK [2][-]{subsection.12.1}{Group Membership}{section.12}% 121
+\BOOKMARK [3][-]{subsubsection.12.1.1}{Formalization of group membership}{subsection.12.1}% 122
+\BOOKMARK [3][-]{subsubsection.12.1.2}{Implementation}{subsection.12.1}% 123
+\BOOKMARK [2][-]{subsection.12.2}{Group Communication Systems \(View Synchrony\)}{section.12}% 124
+\BOOKMARK [3][-]{subsubsection.12.2.1}{Popular Implementations}{subsection.12.2}% 125
+\BOOKMARK [2][-]{subsection.12.3}{Probabilistic Broadcast}{section.12}% 126
+\BOOKMARK [3][-]{subsubsection.12.3.1}{Example Probabilistic Reliable Broadcast}{subsection.12.3}% 127
+\BOOKMARK [3][-]{subsubsection.12.3.2}{Protocols for Probabilistic Broadcast}{subsection.12.3}% 128
+\BOOKMARK [2][-]{subsection.12.4}{Blockchain Consensus}{section.12}% 129
+\BOOKMARK [3][-]{subsubsection.12.4.1}{Proof of Work}{subsection.12.4}% 130
+\BOOKMARK [1][-]{section.13}{13th Lecture - May 13, 2020}{}% 131
+\BOOKMARK [2][-]{subsection.13.1}{sub}{section.13}% 132
+\BOOKMARK [3][-]{subsubsection.13.1.1}{subsub}{subsection.13.1}% 133

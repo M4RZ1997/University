@@ -1995,7 +1995,164 @@
 	
 	\newpage
 	
-	\section{12th Lecture - \today}
+	\section{12th Lecture - May 13, 2020}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection{Group Membership}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item Group composition changes
+				\item Faults occur ... process should be removed
+				\item New processes may join (also processes which have previously failed and were "born again")
+			\end{enumerate}
+			\subsubsection{Formalization of group membership}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item \underline{\textbf{Event (Indication):}} \\
+					$\langle \textit{gm-}\textsc{View} \mid V \rangle$, $V = (\textit{id},M), \ M \subseteq \mathbb{P}$ is a set of processes \\
+					"process \underline{installs} view $V$"
+					\item \underline{\textbf{Properties:}}
+					\begin{enumerate}[\textbullet]
+						\item \textit{Monotonity:} \\
+						If process $p$ installs view $V = (\textit{id}, M)$ and later installs another view $V' = (\textit{id}', M')$ then $id' > id$
+						\item \textit{Agreement:} \\
+						If process $p$ installs view $(\textit{id}, M)$ and process $q$ installs view $(\textit{id}', M')$ and $id = id'$, then $M = M'$
+						\item \textit{Completeness:} \\
+						If a process $p$ crashes (or if $p$ is added), then every correct eventually instakks a view $V = (\textit{id},M)$ s.t. $p \not\in M$ (respectively, $p \in M$)
+						\item \textit{Accuracy:} \\
+						If some process installs a view $V = (\textit{id},M)$ and :
+						\begin{enumerate}[-]
+							\item $p \not\in M$ (but $p$ was included in an earlier view), then $p$ has crashed
+							\item $p \in M$ (but $p$ was not included in an earlier view), then $p$ was added
+						\end{enumerate}
+						
+					\end{enumerate}
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Implementation}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[1)]
+					\item Implementation with \textsc{Consensus} (see CGR11)
+					\item Implementation from a failure detector (in practice)
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Group Communication Systems (View Synchrony)}
+		\begin{center}
+			tikz
+		\end{center}
+		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Popular Implementations}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}
+					\item JGroups (Java implementations)
+					\item ISIS, ...
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Probabilistic Broadcast}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}
+				\item Quorum-based protocols do not scale to large numbers of processes (only $\approx 100s$ instead of $1000s$)
+				\item Reason is that consistency implies lower bounds on messages (communcation bits) of $\Omega(N^2)$
+				\item Probabilistic protocols ensure (agreement, ...) their properties only for a large fraction of nodes
+			\end{enumerate}
+			\subsubsection{Example Probabilistic Reliable Broadcast}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item similar to reliable broadcast with crash failures
+					\item but validity only holds with high probability:
+					\begin{enumerate}[\textbullet]
+						\item \textsc{Validity:} If a process broadcasts a message $m$, then with probability at least $1 -\epsilon$, every correct process eventually delivers $m$.
+					\end{enumerate}
+				\end{enumerate}
+			\end{adjustwidth}
+			\subsubsection{Protocols for Probabilistic Broadcast}
+			\begin{adjustwidth}{2em}{}
+				\underline{\textbf{Eager Probabilistic Broadcast (\textsc{Push}-Style Gossip}} \\
+				\begin{tabular}{l}
+					\underline{Init:} \\
+					\ \ \textit{delivered} $\leftarrow \emptyset$ \\
+					\\
+					\underline{upon} $\langle \textit{pb-}\textsc{Broadcast} \mid m$ \underline{do} \\
+					\ \ \textit{delivered} $\leftarrow$ \textit{delivered} $\cup \{m\}$ \\
+					\ \ \textit{pb-}\textsc{Deliver}(\textit{self}, $m$) \\
+					\ \ \textit{gossip}($[\textsc{Gossip}, \textit{self}, m, t]$) // t = O(log $N$) \\
+					\\
+					\underline{function} \textit{gossip}($m$) \\
+					\ \ \textbf{for} $p \in$ set of $k$ randomly chosen processes in $\Pi$ \textbf{do} \\
+					\ \ \ \ \textit{lossy-}\textsc{Send} messages $m$ to $p$ \\
+					\\
+					\underline{upon} receiving $[\textsc{Gossip}, p, m, r]$ \underline{do} \\
+					\ \ \underline{if} $m \not\in \textit{delivered}$ \underline{then} \\
+					\ \ \ \ \textit{delivered} $\leftarrow$ \textit{delivered} $\cup \{ m\}$ \\
+					\ \ \ \ \textit{pb-}\textsc{Deliver}($p,m$) \\
+					\ \ \underline{if} $r>1$ \underline{then} \\
+					\ \ \ \ \textit{gossip}($[\textsc{Gossip}, p, m, r-1]$)
+				\end{tabular}
+				\hfill \\ \\
+				\underline{\textit{Efficiency}} \\
+				With $t = O(log \ N)$ and constant fan-out $k$, this reaches all processes with high probability:
+				\begin{center}
+					tikz
+				\end{center}
+				$\Rightarrow$ Push-only protocol has this limitations; Therefore in practice protocols use \textsc{Push} and \textsc{Pull} \\
+				\hfill \\
+				\underline{\textbf{\textsc{Pull}-Phase in \textsc{Push-Pull} Protocols}} \\
+				\begin{enumerate}[-]
+					\item If a process $p$ learns about the existence of some message $m$ that it has not delivered yet, then it "pulls" the message
+					\begin{enumerate}[$\rightarrow$]
+						\item send out a request for the contents of $m$ using \textsc{Push}-Style Gossip \\
+						if a process has $m$, then it sends $m$ in pt-to-pt way to $p$
+					\end{enumerate}
+					\item Processes store a fraction of the delivered messages
+				\end{enumerate}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Blockchain Consensus}
+		\begin{adjustwidth}{2em}{2em}
+			\begin{enumerate}[-]
+				\item \textit{Bitcoin} introduced a novel type of consensus protocol (called "\textsc{Nakamoto}-Consensus")
+				\item Model without knowledge of participants
+				\item But there are Byzantine participants
+				\item How to "vote" in an open system
+			\end{enumerate}
+			\subsubsection{Proof of Work}
+			\begin{adjustwidth}{2em}{}
+				\begin{enumerate}[-]
+					\item Moderately hard puzzles
+					\item Puzzles can be produced easily and all puzzles must be equally difficult 
+					\item Control difficulty of puzzles (:= T)
+				\end{enumerate}
+				\begin{center}
+					tikz
+				\end{center}
+				\hfill \\
+				\underline{\textbf{Properties}}
+				\begin{adjustwidth}{1em}{}
+					\begin{enumerate}[1)]
+						\item $P$ has no shortcut, essentially must invest $\approx 2^T steps$
+						\item many instances can be generated easily by $V$ (all of difficulty T)
+						\item $V$ must be able to check solution $t$ efficiently
+					\end{enumerate}
+				\end{adjustwidth}
+				\hfill \\ 
+				\underline{\textbf{PoW by Hashing:}}
+				\begin{adjustwidth}{1em}{}
+					\begin{enumerate}[-]
+						\item Cryptographic hash function ($H:\{ 0,1 \}^{\star} \rightarrow \{ 0,1 \}^k$)
+						\item Difficulty is a number of bits (leading) that must be $0$
+						\item Challenge: $x \in \{ 0,1\}^{\star}$
+						\item solution $t$ must satisfy $H(x \| t) < 2^{k-T}$
+						\item Prover has no other strategy than to try O($2^T$) input $t$
+					\end{enumerate}
+				\end{adjustwidth}
+			\end{adjustwidth}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\newpage
+	
+	\section{13th Lecture - \today}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{sub}
 		\begin{adjustwidth}{2em}{2em}

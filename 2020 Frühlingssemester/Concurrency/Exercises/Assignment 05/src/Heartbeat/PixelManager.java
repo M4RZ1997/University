@@ -20,6 +20,7 @@ public class PixelManager {
             this.lock.unlock();
         }
 
+        Pixel pixel = new Pixel(new Point(), 0);
         return pixel;
     }
 }

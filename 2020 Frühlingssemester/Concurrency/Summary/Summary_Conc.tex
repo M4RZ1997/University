@@ -169,6 +169,22 @@
 	\begin{adjustwidth}{2em}{2em}
 		\subsection{Sequential vs. Concurrent}
 		\begin{adjustwidth}{2em}{2em}
+			\subsubsection{Sequential}
+			\begin{adjustwidth}{1em}{}
+				Each sequential object has a state, which is usually given by a set of fields, and a set of methods, which can manipulate the state. The advantage of such an object is that the state is meaningful between method calls and can be exactly determined at a given point of time. Furthermore each method call can be observed and described in isolation, which also leads to a simplification of adding completly new methods without changing the description of old methods. But a sequential implementation takes a lot of time because each method call is processed one at a time.
+			\end{adjustwidth}
+			\subsubsection{Concurrent}
+			\begin{adjustwidth}{1em}{}
+				The method calls are not seen as an event but as an interval. Becuase of this method calls can overlap so that an object might never be between two method calls. Therefore when programming a concurrent application all possible interaction with overlapping calls must be characterized and accounted for - everything can potentially interact with everything.
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsection{Linearizability}
+		\begin{adjustwidth}{2em}{2em}
+			Each method should take an effect on the state of an object it is called on between the invocation and the response event and is also instantaneously. It can be said that an object is correct if this kind of "sequential" behaviour is correct. Any such concurrent object is linearizable. Also there do not need to be only one sequential correct order; there can be many different which are correct.
+		\end{adjustwidth}
+		\subsection{Sequential Consistent}
+		\begin{adjustwidth}{2em}{2em}
+			An object is sequential consistent if all method calls can be linearized such that the object behaviour is correct.
 		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}

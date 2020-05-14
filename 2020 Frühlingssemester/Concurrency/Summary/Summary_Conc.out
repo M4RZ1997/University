@@ -17,3 +17,7 @@
 \BOOKMARK [3][-]{subsubsection.2.3.3}{Bakery Algorithm}{subsection.2.3}% 17
 \BOOKMARK [1][-]{section.3}{Linearizability}{}% 18
 \BOOKMARK [2][-]{subsection.3.1}{Sequential vs. Concurrent}{section.3}% 19
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Sequential}{subsection.3.1}% 20
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Concurrent}{subsection.3.1}% 21
+\BOOKMARK [2][-]{subsection.3.2}{Linearizability}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.3}{Sequential Consistent}{section.3}% 23

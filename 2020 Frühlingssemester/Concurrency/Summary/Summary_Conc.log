@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  11 MAY 2020 14:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  12 MAY 2020 11:53
 entering extended mode
 **./Summary_Conc.tex
 (Summary_Conc.tex
@@ -1480,7 +1480,7 @@ e 92.
 File: ls2stixtt.fd 2015/04/17 v1.1.2-latex STIX typewriter LS2 font definitions
 
 )
-<threadly.png, id=82, 578.16pt x 708.6475pt>
+<threadly.png, id=94, 578.16pt x 708.6475pt>
 File: threadly.png Graphic file (type png)
 <use threadly.png>
 Package pdftex.def Info: threadly.png  used on input line 92.
@@ -1507,19 +1507,19 @@ Package paralist Warning: Incorrect label; no or multiple counters.
 
 File: threadly.png Graphic file (type png)
 <use threadly.png>
-Package pdftex.def Info: threadly.png  used on input line 173.
+Package pdftex.def Info: threadly.png  used on input line 175.
 (pdftex.def)             Requested size: 28.90968pt x 35.43445pt.
 [3]
 File: threadly.png Graphic file (type png)
 <use threadly.png>
-Package pdftex.def Info: threadly.png  used on input line 174.
+Package pdftex.def Info: threadly.png  used on input line 190.
 (pdftex.def)             Requested size: 28.90968pt x 35.43445pt.
  [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 190.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 190.
  (Summary_Conc.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 174.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 174.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 190.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 190.
 
 
 Package rerunfilecheck Warning: File `Summary_Conc.out' has changed.
@@ -1527,14 +1527,14 @@ Package rerunfilecheck Warning: File `Summary_Conc.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `Summary_Conc.out':
-(rerunfilecheck)             Before: 18E38715865B7641199DAE413F799122;1234
-(rerunfilecheck)             After:  38CC96B39F026EB10B066C3FFAE9AE18;1245.
+(rerunfilecheck)             Before: 7BEDAA11DF67A97F92B42C9DE3C9E548;1450
+(rerunfilecheck)             After:  71A4973A303309EC68B6DCC292A41372;1521.
  ) 
 Here is how much of TeX's memory you used:
- 35820 strings out of 481556
- 810397 string characters out of 2913401
- 1158931 words of memory out of 3000000
- 50411 multiletter control sequences out of 15000+200000
+ 35827 strings out of 481556
+ 810521 string characters out of 2913401
+ 1159931 words of memory out of 3000000
+ 50414 multiletter control sequences out of 15000+200000
  598173 words of font info for 83 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,30n,98p,1016b,815s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1547,9 +1547,9 @@ ams/MiKTeX 2.9/fonts/type1/public/stix/STIXGeneral-Regular.pfb><C:/Users/Marcel
 Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/stix/stix-mat
 hrm.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/s
 tix/stix-mathsf.pfb>
-Output written on Summary_Conc.pdf (4 pages, 172838 bytes).
+Output written on Summary_Conc.pdf (4 pages, 175880 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
- 35 named destinations out of 1000 (max. 500000)
- 170 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 164 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
+ 194 words of extra memory for PDF output out of 10000 (max. 10000000)
 
