@@ -28,9 +28,9 @@ public class PixelThread implements Runnable {
     public void run() {
         while (this.isRunning()){
             this.sendData();
-            this.awaitData();
-            this.manipulateData();
-            this.evaluateState();
+            //this.awaitData();
+            //this.manipulateData();
+            //this.evaluateState();
         }
     }
 
