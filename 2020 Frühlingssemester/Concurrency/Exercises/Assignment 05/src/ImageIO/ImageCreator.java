@@ -10,7 +10,7 @@ public class ImageCreator {
 
     }
 
-    public static void createFile(int[][] image, String filename)
+    public void createFile(int[][] image, String filename)
     {
         try {
             PrintWriter pw = new PrintWriter(filename);

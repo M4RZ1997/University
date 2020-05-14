@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.*;
 
 public class ImageParser {
-    private static int width;
-    private static int height;
+    private int width;
+    private int height;
 
     public ImageParser(){
     }
