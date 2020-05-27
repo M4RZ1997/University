@@ -1351,8 +1351,8 @@
 				\underline{upon} receive message [\textsc{Data}, $s$, $m$] from $q$ \underline{do} \\
 				\ \ \underline{if} $m \not\in \textit{delivered}$ \underline{then} \\
 				\ \ \ \ \textit{delivered} $\cup \leftarrow \{ m \}$ \\
-				\ \ \ \ send message [\textsc{Data}, $s$, $m$] to all $p \in \Pi$ \\
-				\ \ \ \ trigger $\langle \textit{rb-}\textsc{Deliver} \mid s, m \rangle$
+				\ \ \ \ trigger $\langle \textit{rb-}\textsc{Deliver} \mid s, m \rangle$ \\
+				\ \ \ \ send message [\textsc{Data}, $s$, $m$] to all $p \in \Pi$
 			\end{tabular}
 		\end{center}
 		\begin{adjustwidth}{2em}{2em}

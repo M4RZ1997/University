@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  13 MAY 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  21 MAY 2020 14:44
 entering extended mode
 **./Lectures_Dist-Algo.tex
 (Lectures_Dist-Algo.tex
@@ -2322,7 +2322,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2164.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2164.
 
 Package rerunfilecheck Info: File `Lectures_Dist-Algo.out' has not changed.
-(rerunfilecheck)             Checksum: CF5D4CC831F785E7E7EDD70B190BBE16;10512.
+(rerunfilecheck)             Checksum: BE5F03D423528A633216481C4D63F5C3;10512.
  ) 
 Here is how much of TeX's memory you used:
  37020 strings out of 481556
@@ -2350,7 +2350,7 @@ thrm.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 stix/stix-mathscr.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/stix/stix-mathsf.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/public/stix/stix-mathtt.pfb>
-Output written on Lectures_Dist-Algo.pdf (40 pages, 435134 bytes).
+Output written on Lectures_Dist-Algo.pdf (40 pages, 435131 bytes).
 PDF statistics:
  1103 PDF objects out of 1200 (max. 8388607)
  421 named destinations out of 1000 (max. 500000)
