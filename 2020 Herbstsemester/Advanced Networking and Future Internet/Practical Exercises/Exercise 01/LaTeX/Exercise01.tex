@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
+		\large Practical Exercise 01
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{1.1 Effects of loss in multimedia application and QoE}
+	\begin{adjustwidth}{2em}{2em}
+		The following table shows the MOS score compared with the corresponding SSIM score. \\
+		\begin{center}
+			\begin{tabular}{|l|c|l|}
+				\hline
+				Video & MOS & SSIM \\
+				\hline
+				rd\_0\_perc & 5 & 1.00000 \\
+				rd\_10\_perc & 4 & 0.91340 \\
+				rd\_20\_perc & 2 & 0.85851 \\
+				rd\_30\_perc & 1 & 0.83007 \\
+				rd\_40\_perc & 1 & 0.78692 \\
+				rd\_50\_perc & 1 & 0.66196 \\
+				rd\_60\_perc & 1 & 0.61703 \\
+				rd\_70\_perc & 1 & 0.51315 \\
+				rd\_80\_perc & 1 & 0.42582 \\
+				rd\_90\_perc & 1 & 0.26486 \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\hfill \\ \\		
+		As it can be seen in the table, the loss of only a few percent of the video can lead to a significantly lower MOS score. 
+	\end{adjustwidth}
+\end{document}
