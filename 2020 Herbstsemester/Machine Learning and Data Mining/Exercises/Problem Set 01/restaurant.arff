@@ -1,0 +1,28 @@
+%Restaurant Database%
+@RELATION restaurant
+
+@ATTRIBUTE choice {F, T}
+@ATTRIBUTE bar {F, T}
+@ATTRIBUTE day {F, T}
+@ATTRIBUTE hungry {F, T}
+@ATTRIBUTE patron {none, some, full}
+@ATTRIBUTE prize {cheap, inexpensive, expensive}
+@ATTRIBUTE rain {F, T}
+@ATTRIBUTE booking {F, T}
+@ATTRIBUTE type {french, italian, swiss, thai}
+@ATTRIBUTE time {0, 20, 40, 60}
+@ATTRIBUTE wait {F, T}
+
+@DATA
+T, F, F, T, some, expensive, F, T, french, 0, T
+T, F, F, T, full, cheap, F, F, thai, 40, F
+T, T, F, F, some, cheap, F, F, swiss, 0, T
+T, F, T, T, full, cheap, F, F, thai, 20, T
+T, F, T, F, full, expensive, F, T, french, 60, F
+F, T, F, T, some, inexpensive, T, F, italian, 0, T
+F, T, F, F, none, cheap, T, F, swiss, 20, F
+F, F, F, T, some, inexpensive, T, T, thai, 0, T
+F, T, T, F, full, cheap, T, F, swiss, 60, F
+T, T, T, T, full, expensive, F, T, italian, 20, F
+F, F, F, F, none, cheap, F, F, thai, 0, F
+T, T, T, T, full, cheap, F, F, swiss, 40, T
