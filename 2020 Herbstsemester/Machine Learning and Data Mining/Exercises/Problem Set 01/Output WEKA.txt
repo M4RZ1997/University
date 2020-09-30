@@ -1,0 +1,54 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.rules.OneR -B 6
+Relation:     restaurant
+Instances:    12
+Attributes:   11
+              choice
+              bar
+              day
+              hungry
+              patron
+              prize
+              rain
+              booking
+              type
+              time
+              wait
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+patron:
+	none	-> F
+	some	-> T
+	full	-> F
+(10/12 instances correct)
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances           7               58.3333 %
+Incorrectly Classified Instances         5               41.6667 %
+Kappa statistic                          0.1667
+Mean absolute error                      0.4167
+Root mean squared error                  0.6455
+Relative absolute error                 79.2683 %
+Root relative squared error            122.7289 %
+Total Number of Instances               12     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,667    0,500    0,571      0,667    0,615      0,169    0,583     0,548     F
+                 0,500    0,333    0,600      0,500    0,545      0,169    0,583     0,550     T
+Weighted Avg.    0,583    0,417    0,586      0,583    0,580      0,169    0,583     0,549     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 4 2 | a = F
+ 3 3 | b = T
