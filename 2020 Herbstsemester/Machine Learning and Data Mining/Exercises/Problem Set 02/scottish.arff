@@ -1,0 +1,24 @@
+%Scottish Database%
+@RELATION scottish
+
+@ATTRIBUTE shortbread {F, T}
+@ATTRIBUTE lager {F, T}
+@ATTRIBUTE whiskey {F, T}
+@ATTRIBUTE porridge {F, T}
+@ATTRIBUTE soccer {F, T}
+@ATTRIBUTE scottish {F, T}
+
+@DATA
+F, F, T, T, T, F
+T, F, T, T, T, F
+T, T, F, F, T, F
+T, T, F, F, F, F
+F, T, F, F, T, F
+F, F, F, T, F, F
+T, F, T, T, T, T
+F, T, F, F, T, T
+T, T, T, T, F, T
+T, T, F, T, F, T
+T, T, F, T, T, T
+T, F, T, T, F, T
+T, F, T, F, F, T

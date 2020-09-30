@@ -1,0 +1,75 @@
+=== Run information ===
+
+Scheme:       weka.classifiers.bayes.NaiveBayes 
+Relation:     scottish
+Instances:    13
+Attributes:   6
+              shortbread
+              lager
+              whiskey
+              porridge
+              soccer
+              scottish
+Test mode:    10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Naive Bayes Classifier
+
+                Class
+Attribute           F      T
+               (0.47) (0.53)
+=============================
+shortbread
+  F                4.0    2.0
+  T                4.0    7.0
+  [total]          8.0    9.0
+
+lager
+  F                4.0    4.0
+  T                4.0    5.0
+  [total]          8.0    9.0
+
+whiskey
+  F                5.0    4.0
+  T                3.0    5.0
+  [total]          8.0    9.0
+
+porridge
+  F                4.0    3.0
+  T                4.0    6.0
+  [total]          8.0    9.0
+
+soccer
+  F                3.0    5.0
+  T                5.0    4.0
+  [total]          8.0    9.0
+
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances           6               46.1538 %
+Incorrectly Classified Instances         7               53.8462 %
+Kappa statistic                         -0.1235
+Mean absolute error                      0.5529
+Root mean squared error                  0.5943
+Relative absolute error                107.0548 %
+Root relative squared error            114.7258 %
+Total Number of Instances               13     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 0,167    0,286    0,333      0,167    0,222      -0,141   0,298     0,413     F
+                 0,714    0,833    0,500      0,714    0,588      -0,141   0,310     0,486     T
+Weighted Avg.    0,462    0,581    0,423      0,462    0,419      -0,141   0,304     0,452     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 1 5 | a = F
+ 2 5 | b = T
