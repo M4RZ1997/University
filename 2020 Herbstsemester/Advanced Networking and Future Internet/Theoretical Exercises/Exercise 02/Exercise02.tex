@@ -89,8 +89,8 @@
 			B would benefit from this implementation the most because it has only a few (only 2) packets, which need to be served. On the otherhand D is at a disadvantage because it has many, small packets.
 			\item[2. DRR:] $C_1, \ D_1, \ D_2, \,\ A_1, \ C_2, \ D_3, \ D_4, \ A_2, \ A_3, \ B_1, \ C_3, \ D_5, \ D_6, \ B_2, \ C_4, \ D_7$ \\
 			D would benefit from this implementation because its packets are relatively small and in many turns multiple packets of D are served. Further C would also benefit from it, because its packet size is roughly equal to the quantum size so it gets served in every round.
-			\item[3. WFQ:] $A_1, \ B_1, \ C_1, \,\ D_2, \ C_2, \ A_2, \ D_3, \ D_4, \ D_5, \ C_3, \ A_3, \ B_2, \ D_6, \ C_4, \ D_7$ \\
-			Because WFQ is an approximation is an approximation of GPS it is relatively fair for all queues, so no queue is considerably benefitting. Some could argue that queue D is benefitting because its packages are short and follow each other in a relative short time.
+			\item[3. WFQ:] $A_1, \ B_1, \ C_1, \ D_1, \ D_2, \ C_2, \ A_2, \ D_3, \ D_4, \ D_5, \ C_3, \ A_3, \ B_2, \ D_6, \ C_4, \ D_7$ \\
+			Because WFQ is an approximation of GPS it is relatively fair for all queues, so no queue is considerably benefitting. Some could argue that queue D is benefitting because its packages are short and follow each other in a relative short time.
 		\end{enumerate}
 	\end{adjustwidth}
 \end{document}
