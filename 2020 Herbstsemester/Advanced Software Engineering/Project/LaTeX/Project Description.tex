@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Software Engineering}} \\
+		\large Project: "Scavenger Hunt"
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section{Specifications and Requirements}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[\tiny \textbullet]
+			\item Maps API: Bing, HERE etc.
+			\item Frontend: Aurelia or Angular
+			\item Backend: Python (aiohttp)
+			\item Database: MySQL
+			\item Docker
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section{Project Idea: "Scavenger Hunt"}
+	\begin{adjustwidth}{2em}{2em}
+		"Scavenger Hunt" is a two team game, each team consists of 2 players, a Commander and a Runner. At the start of a game a treasure equidistant to each Runner's starting position is randomly generated whose position can be seen by the Commander on the map. Both Runners' positions are also displayed on the map. Each Commander can give his/her teammate instructions via the Thingy where to go. If a Runner sees the other player he/she can activate an EMP such that the other Thingy is deactivated for a limited amount of time and no instructions can be sent to it. The team whose Runner is first at the treasure wins. 
+	\end{adjustwidth}
+	
+	\section{User Story}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}
+			\item Commander can see where the runner is on a map
+			\item Commander can see where the random-generated treasure is
+			\item Commander can manipulate Thingy (can command the runner)
+			\item Game is finished when one Runner is at the treasure
+			\item Two teams can play the game simultaneously
+			\item Eachn Commander needs an authentification
+			\item When game completed the path of each player is displayed on the screen + commands given (with timestamps)
+			\item EMP implementation (runner can activate an EMP which interferes with the other Thingy such that it is deactivate for a limited amount of time)
+		\end{enumerate}
+	\end{adjustwidth}
+\end{document}
