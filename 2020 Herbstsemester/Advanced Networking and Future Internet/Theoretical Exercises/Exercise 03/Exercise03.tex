@@ -36,11 +36,27 @@
 	
 	\section*{3.1 Unstructured Peer-to-Peer Networks}
 	\begin{adjustwidth}{2em}{2em}
-		\subsection*{3.1.1 Which mechanisms/approaches should be used?}
+		\subsection*{3.1.1 Which mechanisms/approaches could be used?}
 		\begin{adjustwidth}{2em}{2em}
+			The following different approaches can be considered:
+			\begin{enumerate}
+				\item Reflector Node: \\
+				Each \textsc{Query Hit} message is cached, so if the same subsequent \textsc{Query} message should be answered the reflector can use the answer from before reducing overflooding.
+				\item Randomized Forwarding: \\
+				Each \textsc{Query} message is not sent to all immediate neighbours but a random set so we can reduce overflooding.
+				\item Distributed Flow Control: \\
+				Nodes store and exchange information about the current load and can redirect requests to lessen the load on nodes.
+				\item Establishment of efficient overlay network topologies by considering underlying topology: \\
+				Assuming that all nodes are within a domain (there can be several domains). If we know the topology and want to connect to another domain then by connecting to a node which has a connection to the other domain, the other domain can be reached with the lowest amount of messages which also reduces overflooding within our domain.
+				\item Hierarchical network organization (e.g. Kazaa): \\
+				Every peer is an ordinary or super peer, and every ordinary is assigned to a super peer. The super peer are organizing themselves and protect the ordinary peers from traffic which reduces the chances of overflooding. The super peers forward queries from their own ordinary peers to other super peers and answer queries from their own ordinary peers and other super peers.
+				\item BitTorrent: \\
+				A file is distributed over many different peers (swarm). A tracker or coordinator knows which peers have which file so if any client requests a certain file the tracker will sent a list of peers which contain the file. This implementation avoids bottlenecks.
+			\end{enumerate}
 		\end{adjustwidth}
 		\subsection*{3.1.2 Could SDN be used to optimize?}
 		\begin{adjustwidth}{2em}{2em}
+			Yes, SDN can be used to optimize a P2P-network because its controller has an overview over the load on each node and can redirect transmissions such that the chance of overflooding can be reduced.
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
@@ -168,7 +184,14 @@
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
-	\section*{3.5 How does a specific P2P network deal with high churn rates?}
+	\section*{3.5 How does a specific P2P network deal with high churn rates? (Example Chord)}
 	\begin{adjustwidth}{2em}{2em}
+		A high churn rate means that many nodes join or leave the network which can lead to huge problems within a P2P-network. In a Chord implementation there exists the following algorithm for nodes joining the network:
+		\begin{enumerate}
+			\item Initialize node \textbf{n} (the rpedecessor and the finger table)
+			\item Notify other nodes to update their predecessor and finger tables
+			\item The new node takes over its responsible keys from its successor
+		\end{enumerate}
+		If many nodes leave the network it is still not a problem because every node records a whole segment of the circle adjacent to it, especially it knows the nodes preceding and following it. Therefore we can assure that the network functions even if some nodes disappear.
 	\end{adjustwidth}
 \end{document}
