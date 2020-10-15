@@ -1,0 +1,14 @@
+S01	Youth	High	No	Good	No
+S02	Youth	High	No	Excellent	No
+S03	Middle-aged	High	Yes	Good	Yes
+S04	Senior	Medium	Yes	Good	Yes
+S05	Senior	Low	Yes	Good	Yes
+S06	Senior	Low	Yes	Excellent	No
+S07	Middle-aged	Low	Yes	Excellent	Yes
+S08	Youth	Medium	No	Good	No
+S09	Youth	Low	Yes	Good	Yes
+S10	Senior	Medium	Yes	Good	Yes
+S11	Youth	High Yes	Excellent	Yes
+S12	Middle-aged	Medium	No	Excellent	Yes
+S13	Senior	Medium	No	Excellent	No
+S14	Middle-aged	High	Yes	Good	Yes

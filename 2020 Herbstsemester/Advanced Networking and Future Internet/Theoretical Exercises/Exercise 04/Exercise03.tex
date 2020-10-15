@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
+		\large Theoretical Exercise 04
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{4.1 Which MPLS Signaling Protocol should be used for Traffic Engineering?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{4.2 What is the Difference between routing and forwarding from a control plane point of view? How do labels work and which role are they playing in routing?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{4.3 How is a Forwarding Equivalence Class converted into a NHLFE and how can it be used for load balancing?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{4.4 What are the advantages and disadvantages of centralized/decentralized traffic engineering?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{4.5 Explain the mechanisms, advantages and disadvantages of hop-by-hop routing and explicit routing}
+	\begin{adjustwidth}{2em}{2em}
+		In hop-by-hop routing each node can independently decide which is the next hop for each group of IP packets. Based on the local IP forwarding table each Label Switching Router determines the next interface of the Label Switched Path. \\
+		In Explicit Routing a single Label Switching Router specifies several (loose) or all (strict explicit routing) LSRs in the Label Switched Path. That sequence is either chosen due to configuration or dynamically. \\
+		Because in explicit routing the path is pretty much predefined the need to make decision at each node along the path is eliminated therefore also the chance of routing loops is prevented. Therefore it is useful in Traffic Engineering and ensures Quality of Service. On the other hand this requires a path setup in advance, which can be done in IP networks with MPLS.
+	\end{adjustwidth}
+	
+	\section*{4.6 How do overlay networks benefit routing}
+	\begin{adjustwidth}{2em}{2em}
+		An overlay network can be used to overcome routing inefficiencies in IP networks. Because routers typically exchange connectivity information but not performance infotrmation the routing decision by minimization of nodes could be longer than over several other nodes. An overlay network can reduce the occurance of those poor routing metrics. Furthermore links may be underutilized because in a "normal" network there is no automatic load balancing. Additionally due to adding multiple paths to the decision making instead of only a single-path routing the network gains performance and robustness.
+	\end{adjustwidth}
+\end{document}
