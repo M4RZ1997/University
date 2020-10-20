@@ -34,20 +34,30 @@
 	\pagestyle{fancy}
 	\hfill
 	
-	\section*{4.1 Which MPLS Signaling Protocol should be used for Traffic Engineering?}
+	\section*{4.1 Which MPLS Signaling Protocol should be used for Traffic Engineering? (Resource reservation protocol RSVP)}
 	\begin{adjustwidth}{2em}{2em}
+		RSVP is a signaling protocol that handles bandwidth allocation and true traffic engineering across an MPLS network. Like the Label Distribution Protocol, discovery messages are sent between all hosts to exchange LSP path information. Furthermore, RSVP also includes various features controlling the flow of traffic through the network. Different to LDP which is more restricted by using the configured IGP's shortest path as transit path through the network, RSVP uses a combination of the Constrained Shortest Path First algorithm and Explicit Route Objects to determine how traffic is routed through the network.
 	\end{adjustwidth}
 	
 	\section*{4.2 What is the Difference between routing and forwarding from a control plane point of view? How do labels work and which role are they playing in routing?}
 	\begin{adjustwidth}{2em}{2em}
+		Routing is a network-wide process that determines which end-to-end paths packets take from a source to their destination. Usually it needs to be performed mostly once in the beginning which also implies a global knowledge of the network. \\
+		Forwarding is a router-local action of transferring the packet from an input link interface to the appropriate output link interface. It may make use of the packet l2 label according to the packet FEC and NHLFE rules.
 	\end{adjustwidth}
 	
 	\section*{4.3 How is a Forwarding Equivalence Class converted into a NHLFE and how can it be used for load balancing?}
 	\begin{adjustwidth}{2em}{2em}
+		A Forwarding Equivalence Class is a group of packets which are similarly forwarded over the same path when they have the same manner, such as the same destination address prefix or originating from the same application. \\
+		NHLFE is a table which includes the next hop and label stack operations. \\
+		When mapping incoming packets to FECs in a MPLS-Router the appropriate NHLFE are looked up so the right operations are applied. There can be multiple NHLFEs for one FEC. With this mapping we can balance the load by assigning different outgoing ports to the different FECs which should be sent over the network.
 	\end{adjustwidth}
+	
+	\newpage
 	
 	\section*{4.4 What are the advantages and disadvantages of centralized/decentralized traffic engineering?}
 	\begin{adjustwidth}{2em}{2em}
+		In centralized traffic engineering all information of the network are collected and processed in a central place, e.g. Overlay Networks, where a virtual topology is created. The downside is that we must manage 2 networks and it is complex and has a scalability of O(n2) connections. Routing is another way for centralized traffic engineering, but like overlay networks we need to know the network and must choose the paths, which can lead to overloading (if we use shortest path algorithms). The biggest disadvantage of this kind of implementation is thta the centralized node is a single point of failure which can shut down the whole network when failing. \\
+		In decentralized traffic engineering the information is collected at several different nodes in the system. Each of these ingress router is optimized for a part of the network with a limited scope. Problems which come from distributed TE is race-conditions and oscillations (2 ingress routers compute different values for a same parameter, and it will be changed always by both, so the parameter oscillates between 2 values). A huge advantage of this approach is the possibility of greater scalability and robustness.
 	\end{adjustwidth}
 	
 	\section*{4.5 Explain the mechanisms, advantages and disadvantages of hop-by-hop routing and explicit routing}

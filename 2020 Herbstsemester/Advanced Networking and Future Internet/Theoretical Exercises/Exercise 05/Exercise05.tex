@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
+		\large Theoretical Exercise 05
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{5.1 Explain (in detail) the main purposee(s) of Open Flow in SDN-based networks}
+	\begin{adjustwidth}{2em}{2em}
+		In the current Ethernet 'implementation' each and every switch and router have an own flow table. By introducing OpenFlow it is tried to implement a standard interface in order to separate the control plane from the forwarding plane (or control plane and data plane respectively), so the flow tables of switches and routers can be managed and programmed by a centralized controller. \\
+		Furthermore the OpenFlow Controller can instruct modifications (add/change/remove) and adjust the table entries to be able to handle the issues of introducing a centralized view, extend the programmability of the network through external application and open interfaces between the two planes. Additionally each switch has a fow/group and meter tables and secure the channel to the controller.
+	\end{adjustwidth}
+	
+	\section*{5.2 Describe the three (main) planes/abstractions in traditional computer networks}
+	\begin{adjustwidth}{2em}{2em}
+		The three main planes in traditional computer networks are the data plane, the control plane and the management plane. The data plane handles packets through filter buffering, forwarding etc. and the traffic. The control plane handles control information and signaling. THe management plane handles the collection of measurement and configuration. It is scaled on human time.
+		\subsection*{5.2.1 Explain the advantages of seperating these planes}
+		\begin{adjustwidth}{2em}{2em}
+			By seperating these three planes from one another it is called a horizontally build in which each plane has their own expected responsibilities. Furthermore this implementation has the advantage that innovation for one or more planes are much more rapid because the developers can focus only on the needed responsibilities.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{5.3 \textsc{Correct} 'facts' relating SDN}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[-]
+			\item Separation of software control from hardware
+			\item \underline{The use of northbound APIs from the SDN controller to enable programmatic and} \\ \underline{dynamic control of the underlying network infrastructure}
+			\item Increasing manual operator intervention and computer keystrokes
+			\item Supporting remote presence robotics to replace failed circuit switches
+			\item \underline{Using open interfaces and protocols for communication between various network} \\ \underline{elements}
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section*{5.4 Limitations of OpenFlow and how do other SDN-based approaches try to overcome them?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{5.5 Open Flow Tables}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+\end{document}
