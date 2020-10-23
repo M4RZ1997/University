@@ -14,8 +14,7 @@
 
 \usepackage{stackengine}
 \def\apeqA{\SavedStyle\sim}
-\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{%
-  \ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
+\def\apeq{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{\ThisStyle{\mathrel{\Centerstack{{\apeqA} {\apeqA} {\apeqA}}}}}}
 
 \usepackage{fancyhdr}
 \fancyhead[L]{\LARGE Cryptography \\
