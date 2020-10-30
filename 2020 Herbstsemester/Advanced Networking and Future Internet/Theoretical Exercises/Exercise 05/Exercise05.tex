@@ -62,9 +62,67 @@
 	
 	\section*{5.4 Limitations of OpenFlow and how do other SDN-based approaches try to overcome them?}
 	\begin{adjustwidth}{2em}{2em}
+		Since openflow requires router and switches to have simple data forwarding and the routing control functions are moved to the upper controls the architecture of the whole network is changed significantly. ForCES on the other hand defines special networking and data forwarding elements and also their communication specifications. Therefore ForCES can be easily implemented on traditional routers which don't support OpenFlow standards because the new special elements just need to be added. \\
+		Additionally in OpenFlow assumes that all the SDN switches are based on TCAM matcher such that they can be easily identified by exact match with wildcards in the header field. \\
+		In OPenFlow all routing tasks are assigned to a central controller. Therefore the scalability of the whole network is lessend because each low-level switch must communicate with this centralized controller and therefore is dependent on its capacities. To avoid such bottlenecks other designs use multi-level controller architecture such that not only one controller is responsible for the whole network.
 	\end{adjustwidth}
 	
 	\section*{5.5 Open Flow Tables}
 	\begin{adjustwidth}{2em}{2em}
+		\subsection*{S1}
+		\begin{adjustwidth}{-4em}{}
+			\begin{tabular}{|l|l|l|l|l|l|l|}
+				\hline
+				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
+				\hline
+				192.168.10.1 & 192.168.20.3 & 0a:0a:0a:0a:0a:0a & 1b:1b:1b:1b:1b:1b & 1 & 1 & Forward on port 2 \\
+				\hline
+				192.168.10.1 & 192.168.20.* & * & * & 2 & 1 & Forward on port 3 \\
+				\hline
+				\* * & * & * & * & 2 & * & Drop \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection*{S2}
+		\begin{adjustwidth}{-4em}{}
+			\begin{tabular}{|l|l|l|l|l|l|l|}
+				\hline
+				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
+				\hline
+				192.168.10.1 & 192.168.20.* & 0a:0a:0a:0a:0a:0a & * & 1 & 1 & Forward on port 2 \\
+				\hline
+				\* * & * & * & * & 2 & * & Drop \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection*{S3}
+		\begin{adjustwidth}{-4em}{}
+			\begin{tabular}{|l|l|l|l|l|l|l|}
+				\hline
+				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
+				\hline
+				192.168.10.1 & 192.168.20.3 & 0a:0a:0a:0a:0a:0a & 1c:1c:1c:1c:1c:1c & 1 & 3 & Forward on port 4 \\
+				\hline
+				192.168.10.1 & 192.168.20.* & * & * & 2 & 1 & Forward on port 3 \\
+				\hline
+				\* * & * & * & * & 2 & * & Drop \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\subsection*{S4}
+		\begin{adjustwidth}{-4em}{}
+			\begin{tabular}{|l|l|l|l|l|l|l|}
+				\hline
+				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
+				\hline
+				192.168.10.1 & 192.168.20.3 & * & 1c:1c:1c:1c:1c:1c & 2 & * & Forward to dest. \\ 
+				& & & & & & port of MAC adress \\
+				\hline
+				192.168.10.1 & 192.168.20.* & 0a:0a:0a:0a:0a:0a & * & 1 & 1 & -"- \\
+				\hline
+				\* * & * & * & * & 3 & * & Drop \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}
