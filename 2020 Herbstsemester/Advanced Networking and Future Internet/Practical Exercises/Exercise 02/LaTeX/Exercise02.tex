@@ -18,7 +18,7 @@
 \fancyhead[L]{
 	\begin{tabular}{l}
 		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
-		\large Practical Exercise 01
+		\large Practical Exercise 02
 	\end{tabular}
 }
 \fancyhead[R]{
@@ -35,7 +35,7 @@
 
 \begin{document}
 	\pagestyle{fancy}
-	\hfill
+	%\hfill
 	
 	\section*{1.4.1 How many nodes are reachable before and after starting the controller?}
 	\begin{adjustwidth}{2em}{2em}
@@ -43,9 +43,9 @@
 		\begin{adjustwidth}{2em}{2em}
 		\begin{enumerate}
 			\item \textsc{linear} \\
-			\includegraphics[scale=0.4]{linear_before.png}
+			\includegraphics[scale=0.5]{linear_before.png}
 			\item \textsc{single} \\
-			\includegraphics[scale=0.4]{single_before.png}
+			\includegraphics[scale=0.45]{single_before.png}
 			\item \textsc{tree} \\
 			\includegraphics[scale=0.5]{tree_before.png}
 		\end{enumerate}
@@ -75,7 +75,10 @@
 			\includegraphics[scale=0.42]{tree_flowtables_1.png} \\
 			\includegraphics[scale=0.42]{tree_flowtables_2.png} \\
 			\includegraphics[scale=0.42]{tree_flowtables_3.png} \\
+			\includegraphics[scale=0.42]{tree_flowtables_4.png}
 		\end{enumerate}
-		In the flowtables we can see that each packet has an in\_port which tells the switch from which port the packet came from. Each of the packets also has the information on where its destination is such that the output port can be computed. So when a packet from one port with a certain destination arrives the switch can lookup in the flowtable to determine which output-port the packet is sent out from.
+		\hfill \\
+		In the flowtables we can see that each packet has an in\_port which tells the switch from which port the packet came from. Each of the packets also has the information on where its destination is such that the output port can be computed. So when a packet from one port with a certain destination arrives the switch can lookup in the flowtable to determine which output-port the packet is sent out from. \\
+		For example we will follow a packet sent from $h2$ to $h6$ in the tree topology. First the packet arrives at switch $s3$ at the in\_port $s3-eth2$. Because the destination is $00:00:00:00:00:06$ the packet is sent out from port $s3-eth3$. Then the packet arrives at switch $s2$ on in\_port $s2-eth1$ and is sent further from port $s2-eth3$. After arriving at switch $s1$ at in\_port $s1-eth1$ and sent then from $s1-eth2$ to in\_port $s5-eth3$ it is sent to switch $s6$ by using port $s5-eth1$. At $s6$ the packet arrives at in\_port $s6-eth3$ which in the end leads to the packet be sent from port $s6-eth2$ to the node $h6$; arriving at its destination.
 	\end{adjustwidth}	
 \end{document}
