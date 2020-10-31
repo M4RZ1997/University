@@ -15,7 +15,7 @@
 \fancyhead[L]{
 	\begin{tabular}{l}
 		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
-		\large Theoretical Exercise 05
+		\large Theoretical Exercise 06
 	\end{tabular}
 }
 \fancyhead[R]{
@@ -34,95 +34,51 @@
 	\pagestyle{fancy}
 	\hfill
 	
-	\section*{5.1 Explain (in detail) the main purposee(s) of Open Flow in SDN-based networks}
+	\section*{6.1 Virtualization adn Virtual Machines}
 	\begin{adjustwidth}{2em}{2em}
-		In the current Ethernet 'implementation' each and every switch and router have an own flow table. By introducing OpenFlow it is tried to implement a standard interface in order to separate the control plane from the forwarding plane (or control plane and data plane respectively), so the flow tables of switches and routers can be managed and programmed by a centralized controller. \\
-		Furthermore the OpenFlow Controller can instruct modifications (add/change/remove) and adjust the table entries to be able to handle the issues of introducing a centralized view, extend the programmability of the network through external application and open interfaces between the two planes. Additionally each switch has a fow/group and meter tables and secure the channel to the controller.
-	\end{adjustwidth}
-	
-	\section*{5.2 Describe the three (main) planes/abstractions in traditional computer networks}
-	\begin{adjustwidth}{2em}{2em}
-		The three main planes in traditional computer networks are the data plane, the control plane and the management plane. The data plane handles packets through filter buffering, forwarding etc. and the traffic. The control plane handles control information and signaling. THe management plane handles the collection of measurement and configuration. It is scaled on human time.
-		\subsection*{5.2.1 Explain the advantages of seperating these planes}
+		\subsection*{6.1.1 How can Virtualization improve resource utilization and flexibility?}
 		\begin{adjustwidth}{2em}{2em}
-			By seperating these three planes from one another it is called a horizontally build in which each plane has their own expected responsibilities. Furthermore this implementation has the advantage that innovation for one or more planes are much more rapid because the developers can focus only on the needed responsibilities.
+		\end{adjustwidth}
+		\subsection*{6.1.2 How can Layer 2 Switching make the migration process of virtual machines in a network seamless?}
+		\begin{adjustwidth}{2em}{2em}
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
-	\section*{5.3 \textsc{Correct} 'facts' relating SDN}
+	\section*{6.2 How can SDN and NFV can reduce costs and improve DCN management?}
 	\begin{adjustwidth}{2em}{2em}
-		\begin{enumerate}[-]
-			\item Separation of software control from hardware
-			\item \underline{The use of northbound APIs from the SDN controller to enable programmatic and} \\ \underline{dynamic control of the underlying network infrastructure}
-			\item Increasing manual operator intervention and computer keystrokes
-			\item Supporting remote presence robotics to replace failed circuit switches
-			\item \underline{Using open interfaces and protocols for communication between various network} \\ \underline{elements}
+	\end{adjustwidth}
+	
+	\section*{6.3 What are the advantages and disadvantages of using butterfly, clos (and folded clos), and flattened butterflies topology?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{6.4 How does data travel from Processor 2 to Processor 5 in the given butterfly network?}
+	\begin{adjustwidth}{2em}{2em}
+		Assuming that the network depicts a \textit{wrapped} butterfly network, such that rank 0 gets merged with rank 3. The packet transmitted over the links has the following form: \\
+		\begin{adjustwidth}{-4em}{}
+			\begin{tabular}{|c|c|c|}
+				\hline
+				Header = 101 (because we want to the send the payload to processor 5) & message M & trailer like checksum etc. \\
+				\hline
+			\end{tabular}
+		\end{adjustwidth}
+		\begin{enumerate}[\small \textbullet]
+			\item The packet is sent out from processor 2 and arrives at N(0,2). The leftmost bit of the header is removed to decide the direction. Since it is 1, the right link which connects to N(1,6) is selected.
+			\item After arriving at N(1,6) the 0 of the header is "dequeued" which lead to the selection of the left link of the node transferring the packet to node N(2,4).
+			\item Since the header is now 1 the right link is selected to send the packet to node N(3,5).
+			\item The header is now empty and processor 5 receives the packet including the payload and the trailer.
 		\end{enumerate}
 	\end{adjustwidth}
 	
-	\section*{5.4 Limitations of OpenFlow and how do other SDN-based approaches try to overcome them?}
+	\section*{6.5 What are the advantages of high-radix over low-radix?}
 	\begin{adjustwidth}{2em}{2em}
-		Since openflow requires router and switches to have simple data forwarding and the routing control functions are moved to the upper controls the architecture of the whole network is changed significantly. ForCES on the other hand defines special networking and data forwarding elements and also their communication specifications. Therefore ForCES can be easily implemented on traditional routers which don't support OpenFlow standards because the new special elements just need to be added. \\
-		Additionally in OpenFlow assumes that all the SDN switches are based on TCAM matcher such that they can be easily identified by exact match with wildcards in the header field. \\
-		In OPenFlow all routing tasks are assigned to a central controller. Therefore the scalability of the whole network is lessend because each low-level switch must communicate with this centralized controller and therefore is dependent on its capacities. To avoid such bottlenecks other designs use multi-level controller architecture such that not only one controller is responsible for the whole network.
+		A good example for an high-radix topology would be the flattened butterfly topology, because all of the routers in the lowest dimension are fully connected to each other. Therefore the routers can exploit the advantage of packaging locality where each package can be packaged locally with short cables, which can significantly reduce the network's cost. Furthermore by reducing the diameter of the network, high-radix networks are more adventageous both for latency and power - ultimately affecting the costs more.
 	\end{adjustwidth}
 	
-	\section*{5.5 Open Flow Tables}
+	\section*{6.6 How can Traffic Engineering be applied in Data Centres and what are the opportunities and challenges?}
 	\begin{adjustwidth}{2em}{2em}
-		\subsection*{S1}
-		\begin{adjustwidth}{-4em}{}
-			\begin{tabular}{|l|l|l|l|l|l|l|}
-				\hline
-				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
-				\hline
-				192.168.10.1 & 192.168.20.3 & 0a:0a:0a:0a:0a:0a & 1b:1b:1b:1b:1b:1b & 1 & 1 & Forward on port 2 \\
-				\hline
-				192.168.10.1 & 192.168.20.* & * & * & 2 & 1 & Forward on port 3 \\
-				\hline
-				\* * & * & * & * & 2 & * & Drop \\
-				\hline
-			\end{tabular}
+		Because Data Centres consist of 10's and 100's of thousand hosts which are often closely coupled the load must be managed and balanced to avoid bottlenecks. Also there is a huge communication traffic between each host which can easily lead to performance issues if some nodes are overloaded. In this scenario introducing Traffic Enginnering can help, because its goal is to avoid congestions by keeping the links from being overloaded. Therefore improving the performance of the traditional switching protocols can lead to an huge performance increase of the whole data centre. \\ 
+		The opportunities of using Traffic Engineering in Data Centres are that network gets more efficient because of low propagation delay and high capacity and the ability of using specialized topologies like Fat Tree or Clos Networks which enable the use of hierarchical addressing. Also TE enables the flexible movement of workload by replicating the services on multiple servers and data centres. Finally TE has the ability to control both network and hosts which can be used to optimize routing and server placement as well as moving the network functionality to an end host. \\
+		The most common challenges for Traffic Engineering are that in data centres many switches, hosts, and VMs must work together which affects the need of scalability. Also in data centres the churn rate, failures of components or VM migration, can be really high which must be considered when implementing Traffic Engineering. Furthermore the Traffic itself can be very volatile and most likely occur in unpredictable patterns. There are also special performance requirements because the applications can be delay-sensitive or the resources are isolated between each tenant.
 		\end{adjustwidth}
-		\subsection*{S2}
-		\begin{adjustwidth}{-4em}{}
-			\begin{tabular}{|l|l|l|l|l|l|l|}
-				\hline
-				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
-				\hline
-				192.168.10.1 & 192.168.20.* & 0a:0a:0a:0a:0a:0a & * & 1 & 1 & Forward on port 2 \\
-				\hline
-				\* * & * & * & * & 2 & * & Drop \\
-				\hline
-			\end{tabular}
-		\end{adjustwidth}
-		\subsection*{S3}
-		\begin{adjustwidth}{-4em}{}
-			\begin{tabular}{|l|l|l|l|l|l|l|}
-				\hline
-				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
-				\hline
-				192.168.10.1 & 192.168.20.3 & 0a:0a:0a:0a:0a:0a & 1c:1c:1c:1c:1c:1c & 1 & 3 & Forward on port 4 \\
-				\hline
-				192.168.10.1 & 192.168.20.* & * & * & 2 & 1 & Forward on port 3 \\
-				\hline
-				\* * & * & * & * & 2 & * & Drop \\
-				\hline
-			\end{tabular}
-		\end{adjustwidth}
-		\subsection*{S4}
-		\begin{adjustwidth}{-4em}{}
-			\begin{tabular}{|l|l|l|l|l|l|l|}
-				\hline
-				IP src & IP dst & MAC src & Mac dst & Priority & Port & Instruction \\
-				\hline
-				192.168.10.1 & 192.168.20.3 & * & 1c:1c:1c:1c:1c:1c & 2 & * & Forward to dest. \\ 
-				& & & & & & port of MAC adress \\
-				\hline
-				192.168.10.1 & 192.168.20.* & 0a:0a:0a:0a:0a:0a & * & 1 & 1 & -"- \\
-				\hline
-				\* * & * & * & * & 3 & * & Drop \\
-				\hline
-			\end{tabular}
-		\end{adjustwidth}
-	\end{adjustwidth}
 \end{document}
