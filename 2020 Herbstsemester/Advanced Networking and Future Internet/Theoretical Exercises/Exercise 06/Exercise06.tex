@@ -34,28 +34,62 @@
 	\pagestyle{fancy}
 	\hfill
 	
-	\section*{6.1 Virtualization adn Virtual Machines}
+	\section*{6.1 Virtualization and Virtual Machines}
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{6.1.1 How can Virtualization improve resource utilization and flexibility?}
 		\begin{adjustwidth}{2em}{2em}
+			By sharing its resources across multiple environments using virtualization allows one computer to do the jobs of multiple computers. Easier said a maximum of server utilization can be achieved with a minimum of servers. By sharing the resources and the infrastructure also more users can be served per physical computer which lowers the cost significantly. \\
+			A virtual machine is an isolated software container with an operating system and application. These have the advantage that many of them can be run on one physical computer and by using an Hypervisor or Virtual Machine Manager these are decoupled from the physical source and the resources (like storage, network and computing resources) are allocated dynamically which is further improving the performance ability of the physical components.
 		\end{adjustwidth}
 		\subsection*{6.1.2 How can Layer 2 Switching make the migration process of virtual machines in a network seamless?}
 		\begin{adjustwidth}{2em}{2em}
+			In Data Centres which are using Traffic Engineering migration of VMs is a huge challenge which needs to be overcome. Services can be replicated at multiple servers and data centres. By using Layer 2 Ethernet Switching  is a cheaper switching equipment with fixed addresses and auto-configuration, but when migrating a machine from one server to another the routing tables do not need to be changed and the same IP-Address can be used when using migrating a VM on a new server. Therefore the migration is a seamless process.
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
 	\section*{6.2 How can SDN and NFV can reduce costs and improve DCN management?}
 	\begin{adjustwidth}{2em}{2em}
+		The data center network interconnects all of its resources and is also restrained by that very interconnectivity. NFV is used in most DCN so that virtual nodes can be set up on top of standardized high-volume servers. Since NFV is not dependent on SDN it is possible to implement NFV with VNF using existing networking paradigms. But SDN can accomplish a certain need of NFV which is the need of a central control to manage and monitor its VNFs. SDNs main function is to separate the control plane and the data plane of the network and control them in a central node. If we now use them in tandem we can get the control agility of forwarding devices and network application agility thanks to NFV, so both together are highly efficient, elastic and scalable which in turn improves the DCN efficiency. This significantly lowers the cost of the DCN because highly specialized hardware is not needed anymore, but standardized server hardware and cheaper locations can be used.
 	\end{adjustwidth}
 	
 	\section*{6.3 What are the advantages and disadvantages of using butterfly, clos (and folded clos), and flattened butterflies topology?}
 	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[\small \textbullet]
+			\item \textsc{Butterfly}
+			\begin{enumerate}[-]
+				\item \textbf{Advantages} \\
+				maximal N/k + 1 hops, destination address can be used for the route through the nodes directly
+				\item \textbf{Disadvantages} \\
+				Lack of path diversity, always the same route and no redundancy, no exploitation of traffic locality. Costlier and complexer than other topologies.
+			\end{enumerate}
+			\item \textsc{Clos}
+			\begin{enumerate}[-]
+				\item \textbf{Advantages}
+				Load balancing possibities
+				\item \textbf{Disadvantages}
+				Double the resource cost of butterfly topology
+			\end{enumerate}
+			\item \textsc{Folded Clos}
+			\begin{enumerate}[-]
+				\item \textbf{Advantages}
+				Exploit traffic locality
+				\item \textbf{Disadvantages}
+				Higher cost
+			\end{enumerate}
+			\item \textsc{Flattened Butterfly}
+			\begin{enumerate}[-]
+				\item \textbf{Advantages}
+				Path diversity through two directional paths and better performance than butterfly thanks to removing intermediate stages. Also now exploitation of traffic locations.
+				\item \textbf{Disadvantages}
+				Costlier and complexer than other topologies.
+			\end{enumerate}
+		\end{enumerate}
 	\end{adjustwidth}
 	
 	\section*{6.4 How does data travel from Processor 2 to Processor 5 in the given butterfly network?}
 	\begin{adjustwidth}{2em}{2em}
 		Assuming that the network depicts a \textit{wrapped} butterfly network, such that rank 0 gets merged with rank 3. The packet transmitted over the links has the following form: \\
-		\begin{adjustwidth}{-4em}{}
+		\begin{adjustwidth}{-5em}{}
 			\begin{tabular}{|c|c|c|}
 				\hline
 				Header = 101 (because we want to the send the payload to processor 5) & message M & trailer like checksum etc. \\
