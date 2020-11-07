@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
+		\large Theoretical Exercise 07
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{7.1 What are the advantages of using Multicasting instead of other existing communication methods (3 examples)?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{7.2 Which of the following Ethernet addresses can be used in a multimedia context between you and other members in a \textsc{Multicast Group}?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{7.3 What are the purposes of the following protocols?}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[\small \textbullet]
+			\item IGMP \\
+			The Internet Group Management Protocol is used to determine which hosts are part of the multicast group and should receive a multicast message.
+			\item MOSPF
+			\item PIM
+			\item MSDP \\
+			The Multicast Source Discovery Protocol is used to create robust interconnections of domains without a central RP in a single domain.
+			\item BGMP
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section*{7.4 Describe 3 issues of Multicast IP}
+	\begin{adjustwidth}{2em}{2em}
+		One problem for IP Multicast could be the security, because any receiver can join a multicast group to receive the sent traffic which therefore should be encrypted to ensure that nobody that does not have the permissions top receive the data can use the information which is sent over multicast. Furthermore any sender can send traffic to a global multicast address which can lead to the risk of denial-of-service attacks. Therefore in such cases it must be ensured that only certain sources can distribute over such multicasts. \\
+		Another problem of IP Multicast is the scalability because routers involved in a multicast networks have certain routing entries of a special form. Therefore output interfaces must be implemented by every router which want to join a multicast network. \\
+		A third problem is that every multicast network needs a deployment and management overhead and also requires the support of both unicast and multicast routing protocols.
+	\end{adjustwidth}
+\end{document}
