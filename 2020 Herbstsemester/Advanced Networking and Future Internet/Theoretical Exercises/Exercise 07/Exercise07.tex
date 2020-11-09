@@ -36,10 +36,28 @@
 	
 	\section*{7.1 What are the advantages of using Multicasting instead of other existing communication methods (3 examples)?}
 	\begin{adjustwidth}{2em}{2em}
+		From the lecture we know that multicast applications can be: Audio/Video conferencing, push technologies, Gaming, parallel computing, TV, … \\
+		Multicast can send messages to more than one recipient simultaneously, but instead of broadcast it does not need to send to all possible receivers. Therefore receivers which do not need the information do not receive it. An additional problem when using broadcast is that the bandwidth is always needed which is not the case when using multicast. With multicast is only needed when actually sending messages and needs the bandwidth.
 	\end{adjustwidth}
 	
 	\section*{7.2 Which of the following Ethernet addresses can be used in a multimedia context between you and other members in a \textsc{Multicast Group}?}
 	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}
+			\item 01-00-5E-00-00-0A: \\
+			This Multicast Address corresponds to the following Ethernet Addresses: \\
+			xxx.0.0.10 or xxx.128.0.10, therefore also for 224.0.0.10. The range 224.0.0.0 to 224.0.0.255 is a special well-known multicast address, so using this would not be advisable.
+			\item 01-00-5E-0A-0B-0C:
+			This Multicast Address corresponds to the following Ethernet Addresses: \\
+			xxx.10.11.12 or xxx.138.11.12. In this range there are no special or reserved Ethernet Addresses so it is a good address to use.
+			\item 01-00-5E-0A-1B-2C:
+			This Multicast Address corresponds to the following Ethernet Addresses: \\
+			xxx.10.27.44 or xxx.138.27.44. In this range there are no special or reserved Ethernet Addresses so it is a good address to use.
+			\item 01-00-5E-00-00-FF:
+			This Multicast Address corresponds to the following Ethernet Addresses: \\
+			xxx.0.0.255 or xxx.128.0.255, therefore also for 224.0.0.255 which is again in the special well-known multicast address. Therefore not recommandable to use.
+			\item 01-00-6E-00-01-0A:
+			Every Multicast Address must begin with "01-00-5E", therefore this is not a valid Multicast Address.
+		\end{enumerate}
 	\end{adjustwidth}
 	
 	\section*{7.3 What are the purposes of the following protocols?}
@@ -47,11 +65,14 @@
 		\begin{enumerate}[\small \textbullet]
 			\item IGMP \\
 			The Internet Group Management Protocol is used to determine which hosts are part of the multicast group and should receive a multicast message.
-			\item MOSPF
-			\item PIM
+			\item MOSPF \\
+			The Multicast Open Shortest Path First is used to calculate the shortest route to a destination given an algorithm and the knowledge of the network topology.
+			\item PIM \\
+			The Protocol Independent Multicast does not include a topology discovery mechanism, but only using the routing information which are supplied by other routing protocols. Therefore it works independent from the used routing protocol.
 			\item MSDP \\
 			The Multicast Source Discovery Protocol is used to create robust interconnections of domains without a central RP in a single domain.
-			\item BGMP
+			\item BGMP \\
+			The Border Gateway Multicast Protocol was used to create a true inter-domain multicast routing protocol
 		\end{enumerate}
 	\end{adjustwidth}
 	
