@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{layout}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
+		\large Theoretical Exercise 08
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headsep}{35pt}
+\setlength{\textheight}{600pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{8.1 Information-Centric Networks}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection*{8.1.1 What are the advantages of the adoption of an information-centric network instead of the current host-centric architecture?}
+		\begin{adjustwidth}{2em}{2em}
+			The ICN architectures leverage in-network storage for caching, multipparty communication through replication, and interaction models that decouple senders and receivers. The common goal is to achieve efficient and reliable distribution of content providing a general platform for communication services that are today only available in dedicated systems, for example peer-to-peer overlays and proprietary content distribution networks. \\
+			Furthermore because IP traffic is inreasing without an end in sight, the demand for mass distribution and replication of large amount of resources is also increasing. Therefore if there is more interest in accessing named content regardless of endpoint locators ICN will come in handy because it is more scalable and cost-efficient. \\
+			Additionally ICN is more persistent due to the named objects not being bound to any local parts and therefore decoupling producer from consumers. In an host-centric architecture the information are most often bound to a specific local part of an URI which can be useless if the object is moved or the information is no longer available if the site is unreachable for some reason.
+		\end{adjustwidth}
+		\subsection*{8.1.2 What mechanisms in ICN support natively events, such as multicast and flash crowd?}
+		\begin{adjustwidth}{2em}{2em}
+			Because in ICN the information is directly addressed multicasting is easily supported because if a router gets more interest requests on one information those are aggregated and therefore the flow of messages in a network is lessened. Also the occurances of flash crowds can be lessened because interest requests are most likely coming from the same intermediate router which will aggregate those request which will lessen the number of requests arriving at the source.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{8.2 How does the routing happen if the requested content can be found:}
+	\begin{adjustwidth}{2em}{2em}
+		\subsection*{8.2.1 in the Content Store of router CR B?}
+		\begin{adjustwidth}{2em}{2em}
+		\end{adjustwidth}
+		\subsection*{8.2.2 If the content can no longer be found in the Publisher 1 node?}
+		\begin{adjustwidth}{2em}{2em}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\section*{8.3 Describe the CS, FIB, and PIT components of a router in an ICN architecture, what kinds of information can be found in each, and what happens in the case of a match from the subscriber request in each field?}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[\small \textbullet]
+			\item \textbf{Content Store:} \\
+			The Content Store is a database that provides opportunistic caching. It stores the data which is associated with a name, so when a name from a request is matching with an object in the Content Store, its associated data is returned.
+			\item \textbf{Forwarding Information Base:} \\
+			The FIB is a database that, for a set of prefixes, records a list of interfaces that can be used to retrieve data packets with names under the corresponding prefixes. The list of interfaces for each prefix can be ranked, and additional information can be associated with interfaces, in order to faciliate forwarding strategy decisions. If a match is found in this database the request is forwarded to a router which could have the information stored in its Content Store.
+			\item \textbf{Pending Interest Table:} \\
+			The PIT is a database that records received and not yet satisfied interests with the interfaces from where they were received. Additionally the information of the interfaces to where interest were forwarded can be stored inside this database. If a match is found the data of both interests is aggregated into a single PIT entry.
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section*{8.4 How does the PSI architecture differ from the traditional TCP/IP stack, and what are the advantages and disadvantages?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{8.5 How are caching and subscriber mobility features achieved in a traditional ICN paradigm? Why is the publisher mobility a more difficult task (example from exercise 02)?}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+\end{document}
