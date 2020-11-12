@@ -1,0 +1,18 @@
+bash-4.4# iperf3 -c `host server-$NEED_UUID | cut -d ' ' -f 4`
+Connecting to host 10.1.0.35, port 5201
+[  5] local 10.1.0.34 port 58986 connected to 10.1.0.35 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   999 MBytes  8.37 Gbits/sec    0   3.12 MBytes
+[  5]   1.00-2.00   sec  1005 MBytes  8.44 Gbits/sec    0   3.12 MBytes
+[  5]   2.00-3.00   sec   990 MBytes  8.31 Gbits/sec    0   3.12 MBytes
+[  5]   3.00-4.00   sec  1018 MBytes  8.52 Gbits/sec    0   3.12 MBytes
+[  5]   4.00-5.00   sec  1.12 GBytes  9.59 Gbits/sec    0   3.12 MBytes
+[  5]   5.00-6.00   sec  1024 MBytes  8.60 Gbits/sec    0   3.12 MBytes
+[  5]   6.00-7.00   sec  1.03 GBytes  8.84 Gbits/sec    0   3.12 MBytes
+[  5]   7.00-8.00   sec  1.01 GBytes  8.65 Gbits/sec    0   3.12 MBytes
+[  5]   8.00-9.00   sec  1.03 GBytes  8.85 Gbits/sec    0   3.12 MBytes
+[  5]   9.00-10.00  sec  1.01 GBytes  8.71 Gbits/sec    0   3.12 MBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  10.1 GBytes  8.69 Gbits/sec    0             sender
+[  5]   0.00-10.00  sec  10.1 GBytes  8.69 Gbits/sec                  receiver
