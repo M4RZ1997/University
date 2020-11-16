@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{layout}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Advanced Networking and Future Internet}} \\
+		\large Theoretical Exercise 09
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headsep}{35pt}
+\setlength{\textheight}{600pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	\section*{9.1 Uncompressed Audio \& Video}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}
+			\item \textbf{Audio} \\
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				\textbf{Quality} & \textbf{Sample Rate (kHz)} & \textbf{Quantization Level} & \textbf{Bandwidth (Mbps/Gbps)} \\
+				\hline
+				AM Radio (stereo) & 11.025 & 8 & 0.1764 Mbps \\
+				FM Radio (stereo) & 22.05 & 16 & 0.7056 Mbps \\
+				HD/DVD Audio & 192 & 24 & 4.608 Mbps \\
+				\hline
+			\end{tabular}
+			\item \textbf{Video} \\
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\textbf{Quality} & \textbf{Resolution} & \textbf{Bits Per Pixel} & \textbf{FPS} & \textbf{Bandwidth (Mbps/Gbps)} \\
+				\hline
+				4k Video & 3840 x 2160 & 24 & 24 & 4'777.574 Mbps / 4.777 Gbps \\
+				5k Video & 5140 x 2880 & 36 & 30 & 15'987.456 Mbps / 15.987 Gbps \\
+				8k Video & 7680 x 4320 & 48 & 60 & 95'551.488 Mbps / 95.551 Gbps \\
+				\hline
+			\end{tabular}
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section*{9.2 Digitization of Audio Data}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{9.3 Source Encoding}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{9.4 MPEG Audio}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{9.5 Huffman Coding}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}
+			\item Encoding of \textbf{IACEANFI}: \\
+			0000 11 10 001 11 0001 01 0000
+			\item Encoding of \textbf{MARCEL\_ZAUDER}: \\
+			\begin{tabular}{ccc}
+				\begin{tabular}{|r|r|}
+					\hline
+					\textbf{Symbol} & \textbf{Weight} \\
+					\hline
+					M & 1/13 \\
+					A & 2/13 \\
+					R & 2/13 \\
+					C & 1/13 \\
+					E & 2/13 \\
+					L & 1/13 \\
+					Z & 1/13 \\
+					U & 1/13 \\
+					D & 1/13 \\
+					'space' & 1/13 \\
+					\hline					
+				\end{tabular}
+				&
+				\begin{tabular}{|r|r|}
+					\hline
+					\textbf{Symbol} & \textbf{Encoding} \\
+					\hline
+					A & 11 \\
+					M & 101 \\
+					E & 001 \\
+					R & 000 \\
+					L & 1001 \\
+					C & 1000 \\
+					U & 0111 \\
+					Z & 0110 \\
+					'space' & 0101 \\
+					D & 0100 \\					
+					\hline
+				\end{tabular}
+				&
+				\begin{tabular}{p{6cm}}
+					\textbf{Encoding}: \\
+					101 11 000 1000 001 1001 \\ 0101 \\ 0110 11 0111 0100 001 000
+				\end{tabular}
+			
+			\end{tabular}
+			\item What do we call codes of this property?
+			Code of this type is called a prefix code. A prefix code requires that ther is no whole code word in the system that is a prefix of any other code word in the system. Therefore no seperator is required.
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section*{9.6 Pulse Code Modulation}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+\end{document}
