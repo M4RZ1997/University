@@ -54,9 +54,11 @@
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{8.2.1 in the Content Store of router CR B?}
 		\begin{adjustwidth}{2em}{2em}
+			An interest message is sent to the router CR A which makes an entry in its PIT. CR A does not have the data in its Content Storage, but in the FIB there is a match for the requested data sending the interest message to CR B. A PIT entry is made and because CR B has the data in its Content Storage it will return this information to CR A which will ultimately send this data to the requester.
 		\end{adjustwidth}
 		\subsection*{8.2.2 If the content can no longer be found in the Publisher 1 node?}
 		\begin{adjustwidth}{2em}{2em}
+			First when the interest message is received by the routers A and C they will check if the information is stored in their Content Store. If not the interest request is forwarded to Publisher 1 but because the information is no longer there the FIBs will be updated and the request sender will not receive any data.
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
@@ -74,9 +76,23 @@
 	
 	\section*{8.4 How does the PSI architecture differ from the traditional TCP/IP stack, and what are the advantages and disadvantages?}
 	\begin{adjustwidth}{2em}{2em}
+		The TCP/IP is centered around the pair-wise communication between end hosts. PSI uses naming information at the network layer and therefore is able to deploy in-network caching and multicast and therefore creates a more efficient and faster delivery of information to the user. TCP/IP is based on an underlying host-centric communication model and is therefore required to also send the specific server address with each request. In ICN the information is decoupled from its source/host and therefore the requester does not need to know where exactly this information came from. Since the information itself is named requests in an ICN network do not need to specify the source-destination host. \\
+		After a request is sent the ICN network itself is responsible to search for the best and most efficient way to get the information and send it back to the requester. This search is base on location-independent names.
+		THE PURSUIT project and its continuation (PSIT) use a publish-subscribe protocol stack instead of the IP protocol stack and consist of three different functions:
+		\begin{enumerate}[\small \textbullet]
+			\item \textsc{rendezvous}
+			\item \textsc{topology management}
+			\item \textsc{forwarding}
+		\end{enumerate}
+		When the rendezvous function matches a subscription to a publication, the topology management function is notified and creates a route between the publisher and the subscriber. This route is ultimately used by the forwarding function so the router is able to send data across this link. \\
+		A multicast transmission is created in PURSUIT by encoding the entire multicast tree into a Bloom filter. After a message arrives at a Forwarding Node the FN joins all tags of its outgoing links with the Bloom filter in the packet and forwards the data to any other node mathcing a tag in tha packet. \\
+		Because routing and forwarding is seperated the Topology Manager is able to calculate paths using complex criteria like load balancing, without the need to signal to all FN. But this is only used adequately for an intra-domain communication. \\
+		PURSUIT is able to use on- and off-path caching but the first variant is not very effective in this kind of networks because of the decoupled nature of name resolution and data routing and therefore the increased likelyhood of requests for the same information reaching the same Rendezvous Node using two completely different paths for data transferring.
 	\end{adjustwidth}
 	
 	\section*{8.5 How are caching and subscriber mobility features achieved in a traditional ICN paradigm? Why is the publisher mobility a more difficult task (example from exercise 02)?}
 	\begin{adjustwidth}{2em}{2em}
+		It is distinguished between on-path and off-path caching. On-path caching uses the ability of the network to exploit information which is cached along a path taken by a name resolution and can just send back the stored data. On the other hand off-path caching using the information stored outside of the path. WHen using an ICN architecture with decoupled  name resolution and data routing, the off-path variant must be supported by the name resolution, which uses the caches as regular information publisher. \\
+		Mobile subscribers can just send new subscriptions for information after a handoff, which are then stored in the PITs of the routers. Publisher mobility is more difficult to support, since the name resolution system or the routing tables need to be updated. For example, if the Publisher 1 would change position, then the whole network has to be notified that Publisher 1 has changed its position. Therefore every routing table and the name resolution system needs to be updated.
 	\end{adjustwidth}
 \end{document}
