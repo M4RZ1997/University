@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <experiment boot="kollaps:1.0">
         <services>
-                <service name="dashboard" image="kollaps/redis:1.0" supervisor="true" port="8088"/>
-                <service name="logger"  image="kollaps/redis:1.0" supervisor="true" />
-                <service name="client1" image="kollaps/redis:1.0" command="['server', '0', '0']"/>
-				<service name="server" image="kollaps/redis:1.0" share="false"/>
+                <service name="dashboard" image="kollaps/dashboard:1.0" supervisor="true" port="8088"/>
+                <service name="logger"  image="kollaps/logger:1.0" supervisor="true" />
+                <service name="client1" image="kollaps/iperf3-client:1.0" command="['server', '0', '0']"/>
+                <service name="server" image="kollaps/redis:1.0" share="false"/>
         </services>
         <bridges>
                 <bridge name="s1"/>
@@ -18,9 +18,6 @@
         <dynamic>
                 <schedule name="client1" time="0.0" action="join"/>
                 <schedule name="server"  time="0.0" action="join"/>
-
-                <schedule name="client1" time="120.0" action="crash"/>
-                <schedule name="server"  time="120.0" action="leave"/>
-
         </dynamic>
 </experiment>
+
