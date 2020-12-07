@@ -1,0 +1,21 @@
+user_4@yahoocluster-34:~/redis-cluster$ redis-benchmark -t set,get -h 172.17.0.2 -p 6379
+====== SET ======
+  100000 requests completed in 2.71 seconds
+  50 parallel clients
+  3 bytes payload
+  keep alive: 1
+
+87.91% <= 1 milliseconds
+100.00% <= 2 milliseconds
+36927.62 requests per second
+
+====== GET ======
+  100000 requests completed in 2.74 seconds
+  50 parallel clients
+  3 bytes payload
+  keep alive: 1
+
+98.61% <= 1 milliseconds
+99.99% <= 2 milliseconds
+100.00% <= 2 milliseconds
+36523.01 requests per second

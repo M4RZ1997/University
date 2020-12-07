@@ -44,6 +44,8 @@
 	
 	\section*{10.1 Why are Special Encoding and the use of Zig-Zag Order necessary for the compression? Would the compression be possible using only DCT and Quantization?}
 	\begin{adjustwidth}{2em}{2em}
+		A good example for lossless data compression would be the entropy encoding which is used for compressing a JPEG image. The image components are arranged in a zig-zag order to be able to run the RLE (run-length encoding) algorithm which groups similar frequencies together, length codes the zeros and uses the Huffman coding algorithm for the rest. The RLE is a lossless data compression form which stores sequences in which the same data value occurs in consecutive data elements in single data values. Therefore the more runs are made the less the file size might become. The Huffman or arithmetic encoding is then used to encode the values to binary dependent on the occurrance frequency, meaning the more a value is occurring the less bits are used to encode it. \\
+		A compression without zig-zag order or other special encoding methods would lead to many redundant values, which would lead to a still lossless compression but the file would be much larger.
 	\end{adjustwidth}
 	
 	\section*{10.2 Different Encoding Algorithms}
@@ -89,12 +91,12 @@
 					W & 10001 \\
 					'space' & 00001 \\
 					G & 00000 \\
-					R & 000001 \\
-					O & 000000 \\		
+					R & 100001 \\
+					O & 100000 \\		
 					\hline
 				\end{tabular}
 			\end{tabular}
-			\hfill \\
+			\newpage
 			\textbf{Tree:} \\
 			\begin{tikzpicture}[
     			scale = 1, transform shape, thick, every node/.style = {draw, circle, minimum size = 5mm},
@@ -213,21 +215,43 @@
 	\begin{adjustwidth}{2em}{2em}
 		\subsection*{10.2.1 What are the roles of each type of frame in traditional video encoding (I, P, and B), and what kind of information is encoded in each of the types?}
 		\begin{adjustwidth}{2em}{2em}
+			I-frames (intra-coded pictures) is a complete image encoded without any reference to another frame; for example in JPEG for Y, Cb, Cr. The P-Frames holds information about the changes in the image from the previous frame. The data encoded are motion vectors for the prediction and transform coefficients for the prediction correction. The B-Frames holds information about the differences for both the previous and future frame.
 		\end{adjustwidth}
 		\subsection*{10.2.1 Different frame losses have different effects in overall video res-construction, what is the effect of loss of frames I, P, and B?}
 		\begin{adjustwidth}{2em}{2em}
+			When loosing an I-Frame the following P and B-Frames cannot be encoded. Also if in the I-Frame there is an error this will lead to errors in the corresponding P and B-Frames as well. To minimize this corruption probability the I-Frames must occur periodically. \\
+			A loss of a P-Frame will lead to the following P and B-Frames not being able to be decoded. \\
+			A loss of a B-Frame is the less concern because it only has information about itself, so any other previous and future frame can still be decoded.
 		\end{adjustwidth}
 	\end{adjustwidth}
 	
 	\section*{10.4 How can motion estimation be achieved with the use of Macro-Blocks (block-matching algorithm)?}
 	\begin{adjustwidth}{2em}{2em}
+		A macro-block is a combination of 4 blocks (8x8) for the Luminance Y, 1 block for Chromatic-red and 1 block for Chromatic-blue. Each of these macro-blocks is compared pixel-by-pixel with the corresponding macro-block of the preceding I or P-frame. The algorithm searches for similarities in the previous or future frame and if found the Macro-Block is encoded. If no close match is found the constraints are relaxed and in a limited area around this macro-blick another search is executed. If a match is found additionally to the Macro-Block encoding the motion vector and the prediction error are also encoded as well. Typically, only Y Luminance values are used for the motion estimation.
 	\end{adjustwidth}
 	
 	\section*{10.5 Explain the components and steps in MPEG-1 encoding and decoding.}
 	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}
+			\item \textbf{Encoder} \\
+			The first step for encoding is to calculate the difference between the current and previous frames. Additionally the frame is used for motion estimation \& compensation which searches for similar macro-blocks. After this the frame is put through the DCT and Quantization algorithm. This so prepared frame is then put through the invers for the synthetization-analysis concept in which it is preconstructed so it can be used for the motion estimation. Last the fram is encoded with entropy encoding.
+			\item \textbf{Decoder} \\
+			First the data is decoded with a similar entropy decoder and then the Quantization and DCT are reversed by using there inverse algorithm. In the motion compensation block we have a storage for the previous and future picture so the encoded frame can be reconstructed. The process of decoding is much easier than the encoding.
+		\end{enumerate}
 	\end{adjustwidth}
 	
 	\section*{10.6 Bonus Question}
 	\begin{adjustwidth}{2em}{2em}
+		\subsection*{10.6.1 Analyzing Outputs and Importance of each Step}
+		\begin{adjustwidth}{2em}{2em}
+			First the image is grayscaled because the luminance of an image is much more important than colors. Then the quantization is run. In there 8x8 blocks are extracted from the image and the DCT algorithm is run over them and then they are put together to create a whole dct image. This idct\_whole image is then used for the dequantization. In there the image is again split up in the 8x8 blocks and then are used in the inverse DCT algorithm to recreate the image. \\
+			After the recreation the SSIM and PSNR values are computed by comparing the recreated and the initial image.
+		\end{adjustwidth}
+		\subsection*{10.6.2 Other Quantization Matrixes}
+		\begin{adjustwidth}{2em}{2em}
+			When using the qt\_y matrix we have the highest SSIM and PSNR values, therefore it is the most similar reconstructed image and the edges in the picture are very sharp. \\
+			Using the qt\_cr matrix the results are pretty much the same as when we use the default matrix. Also the SSIM and PSNR values are similar to the ones the default matrix was generating. \\
+			The qt\_cb matrix has the lowest values for both SSIM and PSNR. In the comparison image it can be seen when zooming into the reconstructed image. In there the edges between the eye and the face are a little bit more blurry than when comparing it with the reconstructed image when using the qt\_y matrix.
+		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}

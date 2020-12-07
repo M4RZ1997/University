@@ -1,0 +1,45 @@
+docker ps:
+-------------------------------------------------
+user_4@yahoocluster-34:~/redis-cluster$ docker ps
+CONTAINER ID        IMAGE                    COMMAND                  CREATED             STATUS              PORTS               NAMES
+7d96666e90c4        redis-cluster_sentinel   "entrypoint.sh"          6 seconds ago       Up 2 seconds        6379/tcp            redis-cluster_sentinel_3
+75e305f3812c        redis-cluster_sentinel   "entrypoint.sh"          6 seconds ago       Up 1 second         6379/tcp            redis-cluster_sentinel_2
+c415963b1e61        redis:3                  "docker-entrypoint.s…"   22 seconds ago      Up 18 seconds       6379/tcp            redis-cluster_slave_4
+8c8cf319891f        redis:3                  "docker-entrypoint.s…"   22 seconds ago      Up 19 seconds       6379/tcp            redis-cluster_slave_3
+d7e711ff3d49        redis:3                  "docker-entrypoint.s…"   22 seconds ago      Up 18 seconds       6379/tcp            redis-cluster_slave_2
+0299144254d3        redis-cluster_sentinel   "entrypoint.sh"          18 hours ago        Up 18 hours         6379/tcp            redis-cluster_sentinel_1
+33a7bfa30e14        redis:3                  "docker-entrypoint.s…"   18 hours ago        Up 18 hours         6379/tcp            redis-cluster_slave_1
+4194b2bc523f        redis:3                  "docker-entrypoint.s…"   18 hours ago        Up 18 hours         6379/tcp            redis-cluster_master_1
+-------------------------------------------------
+
+redis benchmark:
+-------------------------------------------------
+user_4@yahoocluster-34:~/redis-cluster$ redis-benchmark -t set,get -h 172.17.0.2 -p 6379
+====== SET ======
+  100000 requests completed in 2.77 seconds
+  50 parallel clients
+  3 bytes payload
+  keep alive: 1
+
+5.41% <= 1 milliseconds
+98.71% <= 2 milliseconds
+99.93% <= 3 milliseconds
+99.94% <= 4 milliseconds
+99.95% <= 17 milliseconds
+99.96% <= 18 milliseconds
+99.97% <= 19 milliseconds
+99.99% <= 20 milliseconds
+100.00% <= 20 milliseconds
+36088.05 requests per second
+
+====== GET ======
+  100000 requests completed in 2.66 seconds
+  50 parallel clients
+  3 bytes payload
+  keep alive: 1
+
+97.91% <= 1 milliseconds
+99.98% <= 2 milliseconds
+100.00% <= 2 milliseconds
+37579.86 requests per second
+-------------------------------------------------

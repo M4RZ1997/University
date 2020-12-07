@@ -1,0 +1,5 @@
+Connecting Command:
+ssh -o ProxyCommand='ssh ds2020@clusterinfo.unineuchatel.ch -i ~/.ssh/id_rsa_ds2020 -W "%h:%p"' user_4@yahoocluster-x.maas -i ~/.ssh/id_rsa_ds2020
+
+Test Check:
+java -javaagent:$(pwd)/target/matrix-multiplication-fatJar.jar -cp $(pwd)/target/matrix-multiplication-fatJar.jar hefr.matrix.POPMain 1000 2 2 machines.txt results.txt

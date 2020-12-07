@@ -1,0 +1,1 @@
+bash-4.4# redis-benchmark -t set -n 100000 -q -h ThunderStorm_server-$NEED_UUID

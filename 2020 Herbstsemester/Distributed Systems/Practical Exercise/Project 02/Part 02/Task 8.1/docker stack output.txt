@@ -1,0 +1,7 @@
+user_4@yahoocluster-18:~/thunderstorm$ docker stack deploy -c single_point-to-point.yaml ThunderStorm
+Creating network ThunderStorm_outside
+Creating service ThunderStorm_dashboard-227f4147-0d88-4385-a8f3-c74e0285363e
+Creating service ThunderStorm_logger-227f4147-0d88-4385-a8f3-c74e0285363e
+Creating service ThunderStorm_client1-227f4147-0d88-4385-a8f3-c74e0285363e
+Creating service ThunderStorm_server-227f4147-0d88-4385-a8f3-c74e0285363e
+Creating service ThunderStorm_bootstrapper

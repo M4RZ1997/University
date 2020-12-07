@@ -1,0 +1,15 @@
+qt_default
+SSIM of the reconstructed image 0.9700559485748523
+PSNR of reconstructed image 43.22332406984045
+
+qt_y
+SSIM of the reconstructed image 0.9895531000670531
+PSNR of reconstructed image 47.46169233042338
+
+qt_cr
+SSIM of the reconstructed image 0.9681241802928318
+PSNR of reconstructed image 42.66840053905657
+
+qt_cb
+SSIM of the reconstructed image 0.9532215662874766
+PSNR of reconstructed image 40.12248065709852

@@ -1,0 +1,107 @@
+version: "3.3"
+services:
+  bootstrapper:
+    image: kollaps:1.0
+    command: ["-s", "67290a56-a1d1-458d-b3e6-62d4e821b7ba"]
+    deploy:
+      mode: global
+    environment:
+      NEED_UUID: '67290a56-a1d1-458d-b3e6-62d4e821b7ba'
+      NEED_ORCHESTRATOR: swarm
+      NUMBER_OF_GODS: 1
+      POOL_PERIOD: 0.05
+      MAX_FLOW_AGE: 2
+      SHM_SIZE: 8000000000
+      AERON_LIB_PATH: /home/daedalus/Documents/aeron4need/cppbuild/Release/lib/libaeronlib.so
+      AERON_THREADING_MODE: SHARED
+      AERON_TERM_BUFFER_LENGTH: 134217728
+      AERON_IPC_TERM_BUFFER_LENGTH: 134217728
+    labels:
+      boot67290a56-a1d1-458d-b3e6-62d4e821b7ba: "true"
+    volumes:
+      - '/home/user_4/thunderstorm/double_client_redis_benchmark.xml:/topology.xml'
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    networks:
+      - NEEDnet
+
+  dashboard-67290a56-a1d1-458d-b3e6-62d4e821b7ba:
+    image: kollaps/dashboard:1.0
+    ports:
+      - "8088:8088"
+    hostname: dashboard
+    deploy:
+      replicas: 1
+    environment:
+      NEED_UUID: '67290a56-a1d1-458d-b3e6-62d4e821b7ba'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+      - outside
+
+  logger-67290a56-a1d1-458d-b3e6-62d4e821b7ba:
+    image: kollaps/logger:1.0
+    hostname: logger
+    deploy:
+      replicas: 1
+    environment:
+      NEED_UUID: '67290a56-a1d1-458d-b3e6-62d4e821b7ba'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+      - outside
+
+  client1-67290a56-a1d1-458d-b3e6-62d4e821b7ba:
+    image: kollaps/iperf3-client:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: ['server', '0', '0']
+    hostname: client1
+    labels:
+      67290a56-a1d1-458d-b3e6-62d4e821b7ba: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '67290a56-a1d1-458d-b3e6-62d4e821b7ba'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  client2-67290a56-a1d1-458d-b3e6-62d4e821b7ba:
+    image: kollaps/iperf3-client:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    command: ['server', '0', '0']
+    hostname: client2
+    labels:
+      67290a56-a1d1-458d-b3e6-62d4e821b7ba: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '67290a56-a1d1-458d-b3e6-62d4e821b7ba'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+  server-67290a56-a1d1-458d-b3e6-62d4e821b7ba:
+    image: kollaps/redis:1.0
+    entrypoint: ["/bin/sh", "-c", "mkfifo /tmp/NEED_hang; exec /bin/sh <> /tmp/NEED_hang #"]
+    hostname: server
+    labels:
+      67290a56-a1d1-458d-b3e6-62d4e821b7ba: "true"
+    deploy:
+      replicas: 1
+      endpoint_mode: dnsrr
+    environment:
+      NEED_UUID: '67290a56-a1d1-458d-b3e6-62d4e821b7ba'
+      NEED_ORCHESTRATOR: swarm
+    networks:
+      - NEEDnet
+
+networks:
+  NEEDnet:
+    external:
+      name: test_overlay
+  outside:
+    driver: overlay

@@ -1,0 +1,5 @@
+E:\Documents\GitHub\University\2020 Herbstsemester\Distributed Systems\Practical Exercise\Project 03\redis-cluster>docker ps
+CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS                          PORTS                    NAMES
+030ba883403e        redis-cluster_sentinel            "entrypoint.sh"          6 seconds ago       Up 5 seconds                    6379/tcp                 redis-cluster_sentinel_1
+9ae4c3bcbd00        redis:3                           "docker-entrypoint.s…"   6 seconds ago       Up 6 seconds                    6379/tcp                 redis-cluster_slave_1
+75dcb7c5b08b        redis:3                           "docker-entrypoint.s…"   7 seconds ago       Up 6 seconds                    6379/tcp                 redis-cluster_master_1

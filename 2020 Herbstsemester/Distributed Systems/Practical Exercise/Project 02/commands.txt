@@ -3,3 +3,7 @@ ssh -o ProxyCommand='ssh ds2020@clusterinfo.unineuchatel.ch -i ~/.ssh/id_rsa_ds2
 
 Test Check:
 java -javaagent:$(pwd)/target/matrix-multiplication-fatJar.jar -cp $(pwd)/target/matrix-multiplication-fatJar.jar hefr.matrix.POPMain 1000 2 2 machines.txt results.txt
+
+REDIS Command:
+redis-benchmark -t set -n 100000 -q -h ThunderStorm_server-$NEED_UUID
+redis-benchmark -t set -l -q -h ThunderStorm_server-$NEED_UUID

@@ -1,0 +1,8 @@
+user_4@yahoocluster-18:~/thunderstorm$ docker stack deploy -c double_client_redis_benchmark.yaml ThunderStorm
+Creating network ThunderStorm_outside
+Creating service ThunderStorm_bootstrapper
+Creating service ThunderStorm_dashboard-c9d7d93e-b954-462e-8e5e-7fcd1f8e72a9
+Creating service ThunderStorm_logger-c9d7d93e-b954-462e-8e5e-7fcd1f8e72a9
+Creating service ThunderStorm_client1-c9d7d93e-b954-462e-8e5e-7fcd1f8e72a9
+Creating service ThunderStorm_client2-c9d7d93e-b954-462e-8e5e-7fcd1f8e72a9
+Creating service ThunderStorm_server-c9d7d93e-b954-462e-8e5e-7fcd1f8e72a9

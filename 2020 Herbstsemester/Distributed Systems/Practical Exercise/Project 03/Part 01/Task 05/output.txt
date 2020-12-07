@@ -1,0 +1,151 @@
+Listing 5 before PAUSE:
+user_4@yahoocluster-34:~/redis-cluster$ docker-compose exec sentinel redis-cli -p 26379 SENTINEL get-master-addr-by-name mymaster
+1) "172.17.0.2"
+2) "6379"
+
+Listing 5 after PAUSE:
+user_4@yahoocluster-34:~/redis-cluster$ docker-compose exec sentinel redis-cli -p 26379 SENTINEL get-master-addr-by-name mymaster
+1) "172.17.0.6"
+2) "6379"
+
+
+Listing 10 OUTPUT:
+user_4@yahoocluster-34:~/redis-cluster$ docker-compose logs sentinel
+Attaching to redis-cluster_sentinel_2, redis-cluster_sentinel_3, redis-cluster_sentinel_1
+sentinel_2  |                 _._
+sentinel_2  |            _.-``__ ''-._
+sentinel_2  |       _.-``    `.  `_.  ''-._           Redis 3.2.12 (00000000/0) 64 bit
+sentinel_2  |   .-`` .-```.  ```\/    _.,_ ''-._
+sentinel_2  |  (    '      ,       .-`  | `,    )     Running in sentinel mode
+sentinel_2  |  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 26379
+sentinel_2  |  |    `-._   `._    /     _.-'    |     PID: 1
+sentinel_2  |   `-._    `-._  `-./  _.-'    _.-'
+sentinel_2  |  |`-._`-._    `-.__.-'    _.-'_.-'|
+sentinel_2  |  |    `-._`-._        _.-'_.-'    |           http://redis.io
+sentinel_2  |   `-._    `-._`-.__.-'_.-'    _.-'
+sentinel_2  |  |`-._`-._    `-.__.-'    _.-'_.-'|
+sentinel_2  |  |    `-._`-._        _.-'_.-'    |
+sentinel_2  |   `-._    `-._`-.__.-'_.-'    _.-'
+sentinel_2  |       `-._    `-.__.-'    _.-'
+sentinel_2  |           `-._        _.-'
+sentinel_2  |               `-.__.-'
+sentinel_2  |
+sentinel_2  | 1:X 03 Dec 12:59:03.074 # Sentinel ID is d7929dbe00f991a78bef4eefe2996278b9b372f0
+sentinel_2  | 1:X 03 Dec 12:59:03.074 # +monitor master mymaster 172.17.0.2 6379 quorum 2
+sentinel_2  | 1:X 03 Dec 12:59:03.075 * +slave slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 12:59:03.158 * +slave slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 12:59:03.241 * +slave slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 12:59:03.324 * +slave slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 12:59:04.402 * +sentinel sentinel 840b56137660bbf9e79054e40050d4c2697fd3e5 172.17.0.4 26379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 12:59:04.962 * +sentinel sentinel bdca6c117a102f384100b621e5216ae09666d867 172.17.0.8 26379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:32.689 # +sdown master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:32.772 # +odown master mymaster 172.17.0.2 6379 #quorum 2/2
+sentinel_2  | 1:X 03 Dec 13:03:32.772 # +new-epoch 1
+sentinel_2  | 1:X 03 Dec 13:03:32.772 # +try-failover master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:32.806 # +vote-for-leader d7929dbe00f991a78bef4eefe2996278b9b372f0 1
+sentinel_2  | 1:X 03 Dec 13:03:32.890 # 840b56137660bbf9e79054e40050d4c2697fd3e5 voted for d7929dbe00f991a78bef4eefe2996278b9b372f0 1
+sentinel_2  | 1:X 03 Dec 13:03:32.890 # bdca6c117a102f384100b621e5216ae09666d867 voted for d7929dbe00f991a78bef4eefe2996278b9b372f0 1
+sentinel_2  | 1:X 03 Dec 13:03:32.965 # +elected-leader master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:32.965 # +failover-state-select-slave master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:33.036 # +selected-slave slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:33.036 * +failover-state-send-slaveof-noone slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:33.103 * +failover-state-wait-promotion slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:33.890 # +promoted-slave slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:33.890 # +failover-state-reconf-slaves master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:33.926 * +slave-reconf-sent slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:34.859 * +slave-reconf-inprog slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:34.859 * +slave-reconf-done slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:34.959 * +slave-reconf-sent slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:34.960 * +slave-reconf-inprog slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:35.014 # -odown master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:36.036 * +slave-reconf-done slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:36.119 * +slave-reconf-sent slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.041 * +slave-reconf-inprog slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.041 * +slave-reconf-done slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.103 # +failover-end master mymaster 172.17.0.2 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.103 # +switch-master mymaster 172.17.0.2 6379 172.17.0.6 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.104 * +slave slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.6 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.104 * +slave slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.6 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.104 * +slave slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.6 6379
+sentinel_2  | 1:X 03 Dec 13:03:37.104 * +slave slave 172.17.0.2:6379 172.17.0.2 6379 @ mymaster 172.17.0.6 6379
+sentinel_2  | 1:X 03 Dec 13:03:42.148 # +sdown slave 172.17.0.2:6379 172.17.0.2 6379 @ mymaster 172.17.0.6 6379
+sentinel_1  |                 _._
+sentinel_1  |            _.-``__ ''-._
+sentinel_1  |       _.-``    `.  `_.  ''-._           Redis 3.2.12 (00000000/0) 64 bit
+sentinel_1  |   .-`` .-```.  ```\/    _.,_ ''-._
+sentinel_1  |  (    '      ,       .-`  | `,    )     Running in sentinel mode
+sentinel_1  |  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 26379
+sentinel_1  |  |    `-._   `._    /     _.-'    |     PID: 1
+sentinel_1  |   `-._    `-._  `-./  _.-'    _.-'
+sentinel_1  |  |`-._`-._    `-.__.-'    _.-'_.-'|
+sentinel_1  |  |    `-._`-._        _.-'_.-'    |           http://redis.io
+sentinel_1  |   `-._    `-._`-.__.-'_.-'    _.-'
+sentinel_1  |  |`-._`-._    `-.__.-'    _.-'_.-'|
+sentinel_1  |  |    `-._`-._        _.-'_.-'    |
+sentinel_1  |   `-._    `-._`-.__.-'_.-'    _.-'
+sentinel_1  |       `-._    `-.__.-'    _.-'
+sentinel_1  |           `-._        _.-'
+sentinel_1  |               `-.__.-'
+sentinel_1  |
+sentinel_1  | 1:X 03 Dec 12:57:53.425 # Sentinel ID is 840b56137660bbf9e79054e40050d4c2697fd3e5
+sentinel_1  | 1:X 03 Dec 12:57:53.426 # +monitor master mymaster 172.17.0.2 6379 quorum 2
+sentinel_1  | 1:X 03 Dec 12:57:53.427 * +slave slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:03.510 * +fix-slave-config slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:23.564 * +slave slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:23.598 * +slave slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:23.632 * +slave slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:33.686 * +fix-slave-config slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:33.686 * +fix-slave-config slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:58:33.687 * +fix-slave-config slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:59:04.962 * +sentinel sentinel bdca6c117a102f384100b621e5216ae09666d867 172.17.0.8 26379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 12:59:05.009 * +sentinel sentinel d7929dbe00f991a78bef4eefe2996278b9b372f0 172.17.0.9 26379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 13:03:32.408 # +sdown master mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 13:03:32.848 # +new-epoch 1
+sentinel_1  | 1:X 03 Dec 13:03:32.890 # +vote-for-leader d7929dbe00f991a78bef4eefe2996278b9b372f0 1
+sentinel_1  | 1:X 03 Dec 13:03:33.511 # +odown master mymaster 172.17.0.2 6379 #quorum 3/2
+sentinel_1  | 1:X 03 Dec 13:03:33.511 # Next failover delay: I will not start a failover before Thu Dec  3 13:03:43 2020
+sentinel_1  | 1:X 03 Dec 13:03:34.002 # +config-update-from sentinel d7929dbe00f991a78bef4eefe2996278b9b372f0 172.17.0.9 26379 @ mymaster 172.17.0.2 6379
+sentinel_1  | 1:X 03 Dec 13:03:34.002 # +switch-master mymaster 172.17.0.2 6379 172.17.0.6 6379
+sentinel_1  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.6 6379
+sentinel_1  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.6 6379
+sentinel_1  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.6 6379
+sentinel_1  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.2:6379 172.17.0.2 6379 @ mymaster 172.17.0.6 6379
+sentinel_1  | 1:X 03 Dec 13:03:39.011 # +sdown slave 172.17.0.2:6379 172.17.0.2 6379 @ mymaster 172.17.0.6 6379
+sentinel_3  |                 _._
+sentinel_3  |            _.-``__ ''-._
+sentinel_3  |       _.-``    `.  `_.  ''-._           Redis 3.2.12 (00000000/0) 64 bit
+sentinel_3  |   .-`` .-```.  ```\/    _.,_ ''-._
+sentinel_3  |  (    '      ,       .-`  | `,    )     Running in sentinel mode
+sentinel_3  |  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 26379
+sentinel_3  |  |    `-._   `._    /     _.-'    |     PID: 1
+sentinel_3  |   `-._    `-._  `-./  _.-'    _.-'
+sentinel_3  |  |`-._`-._    `-.__.-'    _.-'_.-'|
+sentinel_3  |  |    `-._`-._        _.-'_.-'    |           http://redis.io
+sentinel_3  |   `-._    `-._`-.__.-'_.-'    _.-'
+sentinel_3  |  |`-._`-._    `-.__.-'    _.-'_.-'|
+sentinel_3  |  |    `-._`-._        _.-'_.-'    |
+sentinel_3  |   `-._    `-._`-.__.-'_.-'    _.-'
+sentinel_3  |       `-._    `-.__.-'    _.-'
+sentinel_3  |           `-._        _.-'
+sentinel_3  |               `-.__.-'
+sentinel_3  |
+sentinel_3  | 1:X 03 Dec 12:59:03.016 # Sentinel ID is bdca6c117a102f384100b621e5216ae09666d867
+sentinel_3  | 1:X 03 Dec 12:59:03.016 # +monitor master mymaster 172.17.0.2 6379 quorum 2
+sentinel_3  | 1:X 03 Dec 12:59:03.017 * +slave slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 12:59:03.116 * +slave slave 172.17.0.6:6379 172.17.0.6 6379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 12:59:03.199 * +slave slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 12:59:03.283 * +slave slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 12:59:04.402 * +sentinel sentinel 840b56137660bbf9e79054e40050d4c2697fd3e5 172.17.0.4 26379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 12:59:05.009 * +sentinel sentinel d7929dbe00f991a78bef4eefe2996278b9b372f0 172.17.0.9 26379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 13:03:32.848 # +new-epoch 1
+sentinel_3  | 1:X 03 Dec 13:03:32.890 # +vote-for-leader d7929dbe00f991a78bef4eefe2996278b9b372f0 1
+sentinel_3  | 1:X 03 Dec 13:03:32.966 # +sdown master mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 13:03:33.037 # +odown master mymaster 172.17.0.2 6379 #quorum 3/2
+sentinel_3  | 1:X 03 Dec 13:03:33.037 # Next failover delay: I will not start a failover before Thu Dec  3 13:03:42 2020
+sentinel_3  | 1:X 03 Dec 13:03:34.002 # +config-update-from sentinel d7929dbe00f991a78bef4eefe2996278b9b372f0 172.17.0.9 26379 @ mymaster 172.17.0.2 6379
+sentinel_3  | 1:X 03 Dec 13:03:34.002 # +switch-master mymaster 172.17.0.2 6379 172.17.0.6 6379
+sentinel_3  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.5:6379 172.17.0.5 6379 @ mymaster 172.17.0.6 6379
+sentinel_3  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.7:6379 172.17.0.7 6379 @ mymaster 172.17.0.6 6379
+sentinel_3  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.3:6379 172.17.0.3 6379 @ mymaster 172.17.0.6 6379
+sentinel_3  | 1:X 03 Dec 13:03:34.003 * +slave slave 172.17.0.2:6379 172.17.0.2 6379 @ mymaster 172.17.0.6 6379
+sentinel_3  | 1:X 03 Dec 13:03:39.009 # +sdown slave 172.17.0.2:6379 172.17.0.2 6379 @ mymaster 172.17.0.6 6379
