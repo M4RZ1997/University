@@ -1,0 +1,16 @@
+from __future__ import print_function
+
+%load_ext autoreload
+%autoreload 2
+
+import time
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.io import loadmat
+from sklearn.model_selection import train_test_split
+from assignment1 import hog_features, sigmoid, cost_function, gradient_function, logistic_SGD, gda, predict_function
+
+# Set default parameters for plots
+plt.rcParams['figure.figsize'] = (12.0, 6.0)
+plt.rcParams['image.interpolation'] = 'nearest'
+plt.rcParams['image.cmap'] = 'gray'
