@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{layout}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{calc, shapes, backgrounds}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{graphicx} 
+\graphicspath{ {./images/} }
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\Large \textbf{\textsc{Distributed Systems}} \\
+		\large Project 03 - Part 01
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headsep}{35pt}
+\setlength{\textheight}{600pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	
+	All required files are in their respective directories with specified names.	
+	
+	\section*{Task 01 - Creating a Simple Spring Boot TODO List App}
+	\begin{adjustwidth}{2em}{2em}
+		The Spring Boot tries to connect to a certain IP address in its container to connect to the redis container. But because this container does not know that there is another container with the redis components it cannot connect to this IP. Therefore we have to build a network around both containers so they can know from each other.
+	\end{adjustwidth}
+	
+	\section*{Task 04 - Do We Need Sentinels?}
+	\begin{adjustwidth}{2em}{2em}
+		The application does not work anymore, because one of the slaves does not find any route to its master, therefore failing the whole aplication. This is the expected behaviour because with no sentinels the cluster is not automatically restored and one of the slaves does not have a functioning master anymore. \\
+		Therefore it is necessary for such a case that sentinels are implemented to restore the cluster if one of the master fails. Obviously when working with sentinels the setup is much more elaborate to get it to work than when using just slaves. So if one can guarantee that the masters will not fail using only slaves would be enough. Otherwise the usage of sentinels is preferred because a crash of only one master can otherwise lead to the whole application to fail.
+	\end{adjustwidth}
+\end{document}

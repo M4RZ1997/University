@@ -1,0 +1,28 @@
+user_4@yahoocluster-34:~/spring-boot-redis$ docker exec -it redis-1 redis-cli --cluster create 172.21.0.2:6379 172.21.0.4:6379 172.21.0.5:6379
+>>> Performing hash slots allocation on 3 nodes...
+Master[0] -> Slots 0 - 5460
+Master[1] -> Slots 5461 - 10922
+Master[2] -> Slots 10923 - 16383
+M: 3f577bd7f14f3b55a41b8a742cadff0bfc7e5e12 172.21.0.2:6379
+   slots:[0-5460] (5461 slots) master
+M: dba10397558a02c177424f8cb7dc1506bea81148 172.21.0.4:6379
+   slots:[5461-10922] (5462 slots) master
+M: fdc494fc13a5e6d018be7c98b8548eedda9d2fc6 172.21.0.5:6379
+   slots:[10923-16383] (5461 slots) master
+Can I set the above configuration? (type 'yes' to accept): yes
+>>> Nodes configuration updated
+>>> Assign a different config epoch to each node
+>>> Sending CLUSTER MEET messages to join the cluster
+Waiting for the cluster to join
+..
+>>> Performing Cluster Check (using node 172.21.0.2:6379)
+M: 3f577bd7f14f3b55a41b8a742cadff0bfc7e5e12 172.21.0.2:6379
+   slots:[0-5460] (5461 slots) master
+M: dba10397558a02c177424f8cb7dc1506bea81148 172.21.0.4:6379
+   slots:[5461-10922] (5462 slots) master
+M: fdc494fc13a5e6d018be7c98b8548eedda9d2fc6 172.21.0.5:6379
+   slots:[10923-16383] (5461 slots) master
+[OK] All nodes agree about slots configuration.
+>>> Check for open slots...
+>>> Check slots coverage...
+[OK] All 16384 slots covered.

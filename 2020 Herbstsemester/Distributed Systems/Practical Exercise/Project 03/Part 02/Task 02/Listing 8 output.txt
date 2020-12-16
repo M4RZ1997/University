@@ -1,0 +1,2 @@
+user_4@yahoocluster-34:~/spring-boot-redis$ docker exec -it redis-1 redis-cli --scan
+todo-list::getList
