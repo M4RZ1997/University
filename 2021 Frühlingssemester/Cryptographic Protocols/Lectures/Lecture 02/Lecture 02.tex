@@ -1,0 +1,293 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage[hoffset = 1px]{geometry}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\setcounter{chapter}{1}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptographic Protocols}}}
+\end{center}
+ 
+{\let\clearpage\relax \chapter{Techniques \\ (circuits, public-key cryptography)}}
+
+\section{Programs as circuits}
+\begin{adjustwidth}{2em}{2em}
+	Every program on inputs $x_1, ... , x_n$ computes a function $f(x_1, ..., x_n)$. Represented by a Turing machines or by a circuit.
+	\subsection{Cook-Levin Theorem}
+	\begin{adjustwidth}{2em}{}
+		Every problem decided by a non-deterministic Turin machine (an NP-problem) in polynomial time can be formulated as the satisfiability problem (SAT) of a polynomial sized circuit. 
+	\end{adjustwidth}
+	From computer architecture, we know that every computation is represented by binary stateful circuits. \\
+	Here we formulate all programs as circuits and evaluate the circuits in "encrypted" form.
+	\subsection{Circuit for testing equality of numbers}
+	\begin{adjustwidth}{2em}{}
+		Given two numbers $x$ and $y$ in binary:
+		\[
+			[x]_2 \ = \ x_{n-1}x_{n-2}...x_1x_0 $$$$
+			[y]_2 \ = \ y_{n-1}y_{n-2}...y_1y_0
+		\]
+		Determine if they are equal.
+		\begin{align*}
+			& i \leftarrow n \\
+			& \textit{while } i \ \geq \ 0 \textit{ do} \\
+			& \ \ \ i \leftarrow i-1 \\
+			& \ \ \ \textit{if } x_i \neq y_i \textit{ then } \\
+			& \ \ \ \ \ \ \textit{return } 0 \\
+			& \textit{return } 1
+		\end{align*}
+		A circuit must unroll the loop and execute all iterations.
+		\begin{align*}
+			& i \leftarrow n \\
+			& d_n \leftarrow  0 \\
+			& \textit{while } i \ \geq \ 0 \textit{ do} \\
+			& \ \ \ i \leftarrow i-1 \\
+			& \ \ \ d_i \leftarrow d_{i+1} \vee (x_i \oplus y_i) \\
+			& \textit{return } \neg d_0 & // d_0 \equiv x \textit{ differs from } y
+		\end{align*}
+		\begin{tikzpicture}
+		\end{tikzpicture}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Mathematics of public-key cryptography}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[-]
+		\item Modular arithmetic \\
+		"computing modulo a number m" ($a \textit{ mod } m$)
+		\item $\mathbb{Z}_m \ = \ {0, ..., m-1}$ \\
+		with addition mod $m$
+		\item $\mathbb{Z}_p^{\star} \ = \ {1, ..., p-1}$ \\
+		with multiplication mod $m$
+		\item A group $\mathbb{G}$ is cyclic if there exists some $g$ and every element in $\mathbb{G}$ can be obtained by computing $g^i$, for some $i \geq 0$.
+		\item $\mathbb{G}$ is finite \\
+		$|\mathbb{G}|$ is the number of elements in $\mathbb{G}$
+		\item $g^0, g^1, g^2, ..., g^{|\mathbb{G}| -1} = g^0$
+		\item $\mathbb{G} = <g>$, $g$ is generator of $\mathbb{G}$
+		\item $\mathbb{Z}_m$ integers mod $m$ with addition is cyclic
+		\item $\mathbb{Z}_{11}^{\star}$: \\
+		$<3> \ = \ {1,3,9,5,4} \ \neq \ \mathbb{Z}_{11}^{\star}$ \\
+		$<2> \ = \ {1,2,4,8,5,10,9,7,3,6} \ = \ \mathbb{Z}_{11}^{\star}$
+		\item $\mathbb{Z}_p^{\star}$ is cyclic for any prime $p$ with $|\mathbb{Z}_p^{\star}| \ = \ p-1$
+		\item $q|p-1$ with $q$ prime, then there is a cyclic group of order $q$, defined by multiplication modulo $p$ \\
+		$\Rightarrow$ used in cryptography
+	\end{enumerate}
+\end{adjustwidth}
+
+\section{Discrete Logarithm Problem}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[-]
+		\item Computing logarithm is the inverse of exponentiation
+		\item Given $\mathbb{G} = <g>$, then the discrete logarithmof some $y \in \mathbb{G}$ is the number $i$ s.t. $g^i = y$. \\
+		E.g. $\mathbb{G} \subset \mathbb{Z}_p^{\star}$, $i$ s.t. $g^i \equiv y (\textit{ mod } p)$.
+	\end{enumerate}
+	\subsubsection{DLP}
+	\begin{adjustwidth}{2em}{}
+		DLP: Given $y = g^x$ for $x \leftarrow \mathbb{Z}_q$, comput $x$
+	\end{adjustwidth}
+	\subsubsection{CDH}
+	\begin{adjustwidth}{2em}{}
+		Given $x, y$ s.t.:
+		\begin{align*}
+			& x = g^a \textit{ for } a \leftarrow \mathbb{Z}_q \\
+			& y = g^b \textit{ for } b \leftarrow \mathbb{Z}_q
+		\end{align*}
+		compute $g^{a \cdot b}$. (Computational Diffie-Hellman Problem)
+	\end{adjustwidth}
+	\subsubsection{DDH}
+	\begin{adjustwidth}{2em}{}
+		Given either $x,y,z$ computed as:
+		\begin{align*}
+			& x = g^a \textit{ for } a \leftarrow \mathbb{Z}_q \\
+			& y = g^b \textit{ for } b \leftarrow \mathbb{Z}_q \\
+			& z = g^c \textit{ for } c \leftarrow \mathbb{Z}_q
+		\end{align*}
+		or given:
+		\begin{align*}
+			& x = g^a \textit{ for } a \leftarrow \mathbb{Z}_q \\
+			& y = g^b \textit{ for } b \leftarrow \mathbb{Z}_q \\
+			& z = g^{a \cdot b}
+		\end{align*}
+		decide, which is the case.
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Public-Key Encryption}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[-]
+		\item \textsc{KeyGen}() $\rightarrow$ ($pk, sk$)
+		\item \textsc{Enc}($pk, m$) $\rightarrow c$
+		\item \textsc{Dec}($sk, c$) $\rightarrow m'$
+	\end{enumerate}
+	\subsubsection{Completeness}
+	\begin{adjustwidth}{2em}{}
+		$\forall m: (pk, sk) \leftarrow$ \textsc{KeyGen}() \\
+		\textsc{Dec}($sk$, \textsc{Enc}($pk,m$)) = $m$
+	\end{adjustwidth}
+	\subsubsection{Security}
+	\begin{adjustwidth}{2em}{}
+		\begin{enumerate}[-]
+			\item An encryption of a message $m$ are indistinguishable from random elements of ciphertext space
+			\item For two messages $m_1, m_2$, no adversary can distinguish the \textsc{Enc}($pk, m_1$) from \textsc{Enc}($pk, m_2$)
+		\end{enumerate}
+	\end{adjustwidth}
+	\subsection{ElGamal Public-Key Cryptosystem (Textbook)}
+	\begin{adjustwidth}{2em}{}
+		\begin{tabular}{ll}
+			\multicolumn{2}{l}{\textsc{KeyGen}()} \\
+			& $x \leftarrow \mathbb{Z}_q$ \\
+			& $y \leftarrow g^x$ \\
+			& return ($y, x$) \\
+			\\
+			\multicolumn{2}{l}{\textsc{Enc}($y, m$)} \\
+			& $r \leftarrow \mathbb{Z_q}$ \\
+			& $R \leftarrow g^r$ \\
+			& $c \leftarrow m \cdot y^r$ \\
+			& return (($R, c$)) \\
+			\\
+			\multicolumn{2}{l}{\textsc{Dec}($x, (R,c)$)} \\
+			& $m' \leftarrow c/R^x$ \\
+			& return ($m'$) \\
+		\end{tabular}
+		\subsubsection{Completeness}
+		\[
+			m' = c/R^x = m \cdot y^r / R^x = m \cdot g^{xr} / g^{rx} = m
+		\]
+		\subsubsection{Security}
+		\begin{adjustwidth}{2em}{}
+			Decide whether, for some $m$, ($y, R, c$) is ($g^x, g^r, m \cdot g^{xr}$) or is ($g^x, g^r, m \cdot g^z$) for $z \leftarrow \mathbb{Z}_q$, corresponds to the decisional DH-problem.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	\subsection{RSA Cryptosystem (Textbook)}
+	\begin{adjustwidth}{2em}{}
+		Here exponentiation modulo $N$, where $N = p \cdot q$ and $p,q$ are prime. \\
+		In practice, $|p| = |q| \approx 1000$. \\
+		$\mathbb{Z}_N^{\star}$: Set of integers mod $N$ that are coprime with $N$ ($N = p \cdot q$) \\
+		$|\mathbb{Z}_N^{\star}| = \phi (N) = (p-1)(q-1)$
+		\subsubsection{Theorem}
+		\begin{adjustwidth}{2em}{}
+			For all $a \in \mathbb{Z}_N^{\star}$ we have:
+			\[
+				a^{\phi (N)} \equiv 1 \textit{ (mod N)}
+			\]
+		\end{adjustwidth}
+		\begin{tabular}{ll}
+			\multicolumn{2}{l}{\textsc{KeyGen}()} \\
+			& $p,q \leftarrow $ random primes \\
+			& $N \leftarrow p \cdot q$ \\
+			& $e$ (fixed) exponent, prime \\
+			& $d \leftarrow e^{-1} \textit{ mod } (\phi (N) = (p-1)(q-1))$ \\
+			& return ($(N,e), d$) \\
+			\\
+			\multicolumn{2}{l}{\textsc{Enc}($(N, e), m$)} \\
+			& return ($m^e \textit{ mod } N$) \\
+			\\
+			\multicolumn{2}{l}{\textsc{Dec}($d, c$)} \\
+			& return ($c^d \textit{ mod } N$) \\
+		\end{tabular}
+		\subsubsection{Completeness}
+		\begin{adjustwidth}{2em}{-4em}
+			\textsc{Dec}($d$, \textsc{Enc}($(N,e),m$)) =  \textsc{Dec}($d$, $m^e \textit{ mod } N$) = $m^{d \cdot e} \textit{ mod } N$ = $m^{1 + k \phi (N)} \textit{ mod } N $ = $m$
+		\end{adjustwidth}
+		\subsubsection{Security}
+		\begin{adjustwidth}{2em}{}
+			If factoring is easy, then RSA is broken.
+		\end{adjustwidth}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Digital Signatures}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[-]
+		\item provides authenticity and integrity
+		\item dual to public-key encryption
+	\end{enumerate}
+	\subsection{Digital Signature Scheme}
+	\begin{adjustwidth}{2em}{}
+		\textsc{KeyGen}() $\rightarrow (pk, sk)$ \\
+		\textsc{Sign}() $\rightarrow \sigma$ \\
+		\textsc{Verify}($pk, m, \sigma$) $\rightarrow$ \textsc{false, true}
+		\subsubsection{Completeness}
+		\begin{align*}
+			\forall m: \ & (pk, sk) \leftarrow \textsc{KeyGen}() \\
+			& \textsc{Verify}(pk, m, \textsc{Sign}(sk, m)) \ = \ \textsc{true}
+		\end{align*}
+		\subsubsection{Security}
+		\begin{adjustwidth}{2em}{}
+			Security means that no adversary can create a message/sign pair, s.t. \textsc{Verify}($pk, m, \sigma$) = \textsc{true}, unless $\sigma$ is output of \textsc{Sign}($sk, m$).
+		\end{adjustwidth}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Textbook RSA}
+\begin{adjustwidth}{2em}{2em}
+	Directly uses RSA function to produce the signatures - \underline{not secure!} \\ \\
+	\begin{tabular}{ll}
+		\multicolumn{2}{l}{\textsc{KeyGen}()} \\
+		& $p,q \leftarrow $ random primes \\
+		& $N \leftarrow p \cdot q$ \\
+		& $e$ (fixed) exponent, prime \\
+		& $d \leftarrow e^{-1} \textit{ mod } (p-1)(q-1)$ \\
+		& $sk \leftarrow d$ \\
+		& $pk \leftarrow (N, e)$ \\
+		& return ($pk, sk$) \\
+		\\
+		\multicolumn{2}{l}{\textsc{Sign}($sk, m$)} \\
+		& $\sigma \leftarrow m^d \textit{ mod } N$ \\
+		& return ($\sigma$) \\
+		\\
+		\multicolumn{2}{l}{\textsc{Verify}($pk, m, \sigma$)} \\
+		& return ($\sigma ^e \stackrel{?}{\equiv} m \ (\textit{mod } N)$) \\
+	\end{tabular} \\
+	\hfill \\
+	Not secure because anyone could pick some $\sigma ^{\star}$, compute $m \leftarrow \sigma ^{\star e}$. This would pass the verification algorithm. \\
+	To make it secure we can use a Hash-Function to compute $\sigma = \mathbb{H}(m)^d$ mod $N$, where $\mathbb{H}$ is a full-domain Hash-Function. Also in the verification $\mathbb{H}$ must be used on $m$.
+\end{adjustwidth}
+
+\section{Schnorr Signatures}
+\begin{adjustwidth}{2em}{2em}
+	Group $\mathbb{G} = <g>$, cyclic \\
+	$\mid \mathbb{G} \mid = q$, $q$ prime \\
+	$\mathbb{G} \subset \mathbb{Z}_p$, $p$ prime \\
+	$p = m \cdot q + 1$ \\
+	DLP is hard in $\mathbb{G}$ \\
+	Hash function $\mathbb{H}: \{ 0,1 \} ^{\star} \rightarrow \mathbb{Z}_p$ \\
+	\begin{tabular}{ll}
+		\multicolumn{2}{l}{\textsc{KeyGen}()} \\
+		& $x \leftarrow \mathbb{Z}_q$ \\
+		& $y \leftarrow g^x$ \\
+		& return ($y, x$) \\
+		\multicolumn{2}{l}{\textsc{Sign}($x, m$)} \\
+		& $r \leftarrow \mathbb{Z_q}$ \\
+		& $t \leftarrow g^r$ \\
+		& $c \leftarrow \mathbb{H}(m \| t)$ \\
+		& $s \leftarrow r - c \cdot x$ \\
+		& return (($(c, s)$)) \\
+		\\
+		\multicolumn{2}{l}{\textsc{Verify}($y, m, (c, s)$)} \\
+		& return ($c \stackrel{?}{\equiv} \mathbb{H}(m \| g^s \cdot y^c)$ (in $\mathbb{Z}_p$)) \\
+	\end{tabular}
+	\subsection{Completeness}
+	\begin{align*}
+		\hat{t} \ & = \ g^s \cdot y^c \\
+		& = \ g^{r-cx} g^{x \cdot c} \\
+		& = \ g^r \\
+		& = \ t 
+	\end{align*}
+	\subsection{Security}
+	\begin{adjustwidth}{2em}{}
+		One can prove that breaking this is equivalent to computing discrete log of $y$.
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\end{document}

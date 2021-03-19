@@ -1,0 +1,129 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Internet of Things}} \\
+		\large Exercise 02
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{2.1 Explain multihop communication and describe a scenario when it is useful}
+	\begin{adjustwidth}{2em}{2em}
+		In multihop communication nodes are used between sender and receiver to work as repeater and such making it easier and more cost effective (because of a lower energy consumption, when sending over a large distance). \\
+		Using multihop communication is then profitable, when the data/information must be sent over a huge distant. This is because the more distance must be covered the more energy is required when only using one node as a repeater. If more nodes are used as repeater, therefore more hops are introduced, the energy consumption is not exploding as fast, when the distance gets longer, than when using only a few nodes.
+	\end{adjustwidth}
+	
+	\section*{2.2 What is the minimum time a sensor node has to go to sleep to make it a profitable operation with the following parameters?}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[a)]
+			\item t(down) = 3ms; t(up) = 3ms; I(active) = 15 mA; I(sleep) = 25 $\mu$A. \\
+			For an operation to be profitable it must be:
+			\[
+				E_{saved} > E_{overhead}
+			\]
+			, where:
+			\begin{align*}
+				E_{saved} \ & = \ (t_{event} - t_1) \cdot I_{active} - (\tau _{down} \cdot (I_{active} + I_{sleep}) / 2 + (t_{event} - t_1 - \tau _{down}) \cdot I_{sleep}) \\
+				E_{overhead} \ & = \ \tau _{up} \cdot (I_{active} + I_{sleep}) / 2
+			\end{align*}
+			We search for the lowest $t_{event} - t_1 = T$. \\
+			With our imformation we get:
+			\begin{align*}
+				E_{overhead} \ & = \ 3ms \cdot (15mA + 25 \mu A) / 2 \\
+				& = \ 3ms \cdot (15025 \mu A) / 2 \\
+				& = \ 3ms \cdot 7512.5 \mu A \\
+				& = \ 22537.5 \mu A \cdot ms \\
+			\end{align*}
+			Therefore:
+			\begin{align*}
+				22537.5\mu A \cdot ms \ & < \ T \cdot 15000 \mu A - (3ms \cdot (15000 \mu A + 25 \mu A) / 2 + (T - 3ms) \cdot 25 \mu A) \\
+				& < \ 15000 \mu A \cdot T - (22537.5 \mu A \cdot ms + 25 \mu A \cdot T - 75 \mu A \cdot ms) \\
+				& < \ 15000 \mu A \cdot T - 22537.5 \mu A \cdot ms - 25 \mu A \cdot T + 75 \mu A \cdot ms \\
+				& < \ 14975 \mu A \cdot T - 22462.5 \mu A \cdot ms \\
+				45000 \mu A \cdot ms \ & < \ 14975 \mu A \cdot T \\
+				T \ & > \ 3.005 ms 
+			\end{align*}
+			\newpage
+			\item t(down) = 4.5ms; t(up) = 4.5ms; I(active) = 10 mA; I(sleep) = 15 $\mu$A. \\
+			For an operation to be profitable it must be:
+			\[
+				E_{saved} > E_{overhead}
+			\]
+			, where:
+			\begin{align*}
+				E_{saved} \ & = \ (t_{event} - t_1) \cdot I_{active} - (\tau _{down} \cdot (I_{active} + I_{sleep}) / 2 + (t_{event} - t_1 - \tau _{down}) \cdot I_{sleep}) \\
+				E_{overhead} \ & = \ \tau _{up} \cdot (I_{active} + I_{sleep}) / 2
+			\end{align*}
+			We search for the lowest $t_{event} - t_1 = T$. \\
+			With our imformation we get:
+			\begin{align*}
+				E_{overhead} \ & = \ 4.5ms \cdot (10mA + 15 \mu A) / 2 \\
+				& = \ 4.5ms \cdot (10015 \mu A) / 2 \\
+				& = \ 4.5ms \cdot 5007.5 \mu A \\
+				& = \ 22533.75 \mu A \cdot ms \\
+			\end{align*}
+			Therefore:
+			\begin{align*}
+				22533.75\mu A \cdot ms \ & < \ T \cdot 10000 \mu A - (4.5ms \cdot (10000 \mu A + 15 \mu A) / 2 + (T - 4.5ms) \cdot 15 \mu A) \\
+				& < \ 10000 \mu A \cdot T - (22533.75 \mu A \cdot ms + 15 \mu A \cdot T - 67.5 \mu A \cdot ms) \\
+				& < \ 10000 \mu A \cdot T - 22533.75 \mu A \cdot ms - 15 \mu A \cdot T + 67.5 \mu A \cdot ms \\
+				& < \ 9985 \mu A \cdot T - 22466.25 \mu A \cdot ms \\
+				45000 \mu A \cdot ms \ & < \ 9985 \mu A \cdot T \\
+				T \ & > \ 4.507 ms 
+			\end{align*}
+		\end{enumerate}
+	\end{adjustwidth}
+	
+	\section*{2.3 Sensor node with following specifications}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{enumerate}[]
+			\item ERF32MG microcontroller: I(sleep) = 250 $\mu$A, I(busy)= 20 mA
+			\item CC1020 transceiver: I(send/receive)= 10 mA, data rate: 19,2 kbps
+			\item Measurement plus processing time: 10 ms
+		\end{enumerate}
+		\noindent Every second a measurement is being made and processed imediately and send in one 96 byte packet to the sink. The voltage is 5V.
+		\begin{enumerate}[a)]
+			\item Compute the (average) power consumption, assuming that the node will instantly return to sleep mode after a duty cycle and no cost for state switching will occur.
+			\begin{align*}
+				\texttt{Microcontroller: } & \ (10 ms \cdot 20mA + 990ms \cdot 250 \mu A) / 1000 ms = 0.4475 mA \\
+				\texttt{Transceiver: } & (96 \cdot 8bit / 19.2 kbps \cdot 10mA ) / 1000ms = 0.4 mA \\
+				\Rightarrow \ & \ \texttt{Total of: } 0.8575 mA \\
+				\Rightarrow \ & \ P = U \cdot I = 5V \cdot 0.8475 mA = 4.239 mW
+			\end{align*}
+			On average the node consumes 4.239 mW of power.
+			\item The sensor node is powered by three 5V batteries with a parallel connection. Each battery has a capacity of 1000 mAh. Given the duty cycle (switching to sleeping mode) above and assuming ideal batteries, how long will a sensor node be able to operate? Assume a linear battery model without self-discharge. \\
+			From \textit{a)} we know that the device uses 0.8475 mA, therfore:
+			\begin{align*}
+				t \ & = \ 3000 mAh / 0.8475 mA = 3539.82 h \ = \ 147 d \ 11h \ 9 min
+			\end{align*}
+		\end{enumerate}
+	\end{adjustwidth}
+\end{document}

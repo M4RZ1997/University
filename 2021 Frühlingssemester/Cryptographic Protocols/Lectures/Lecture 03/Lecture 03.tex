@@ -1,0 +1,195 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage[hoffset = 1px]{geometry}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\setcounter{chapter}{2}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptographic Protocols}}}
+\end{center}
+ 
+{\let\clearpage\relax \chapter{Blind Digital Signatures}}
+
+\section{General}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[-]
+		\item Protocol between a user $\mathbb{A}$ and signer $\mathbb{B}$ (with a signature scheme)
+		\item $\mathbb{A}$ inputs a message
+		\item $\mathbb{A}$ obtains a signature of $\mathbb{B}$ on $m$
+		\item $\mathbb{B}$ will not learn message he signs and not see any association between information in the protocol and a signature seen later
+	\end{enumerate}
+	\begin{tikzpicture}
+	\end{tikzpicture}
+	\begin{enumerate}[-]
+		\item blind signature must be unforgeable as ordinary dig.sig.
+		\item anyone can verify signature using $pk$
+		\item $\mathbb{B}$ learns nothing about messages he signs, except for total count
+	\end{enumerate}
+\end{adjustwidth}
+
+\section{Blind Signatures for RSA}
+\begin{adjustwidth}{2em}{2em}
+	\textsc{KeyGen}() as in RSA \\
+	\begin{tabular}{lllll}
+		\multicolumn{2}{l}{$\mathbb{A} (m \in \{0,1\})^{\star}$} & & \multicolumn{2}{l}{$\mathbb{B} (sk)$} \\
+		& $r \leftarrow \mathbb{Z}_N$ \\
+		& $\overline{h} \leftarrow \mathbb{H}(m) \cdot r^{-e} \textit{ mod } N$ \\
+		\multicolumn{5}{c}{$\stackrel{\overline{h}}{\longrightarrow}$} \\
+		& & & & $\overline{s} \leftarrow \overline{h}^d \textit{ mod } N)$ \\
+		\multicolumn{5}{c}{$\stackrel{\overline{s}}{\longleftarrow}$} \\
+		& $s \leftarrow \overline{s} / r$ \\
+		& // $s$ is Rsa Signature on $m$ \\
+		\\
+		& & & & \textsc{Verifier} \\
+		& & & & $s^e \stackrel{?}{\equiv} \mathbb{H}(m)$ \\
+	\end{tabular}
+	\subsection{Completeness}
+	\begin{align*}
+		s \ & \equiv \ \overline{s}^e \cdot r^{-e} \\
+		& \equiv \ (\overline{h}^{de}) \cdot r^{-e} \\
+		& \equiv \ (\overline{h}) \cdot r^{-e} \\
+	\end{align*}
+	\subsection{Blindness}
+	\begin{adjustwidth}{2em}{}
+		\begin{enumerate}[-]
+			\item B signs a random
+		\end{enumerate}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Blind Schnorr Signature Scheme}
+\begin{adjustwidth}{2em}{2em}
+	hello
+	\subsection{Signing Protocol}
+	\begin{tabular}{lllll}
+		\multicolumn{2}{l}{User $\mathbb{A} (m \in \{0,1\})^{\star}$} & & \multicolumn{2}{l}{Signer $\mathbb{B} (pk (y = g^x), sk)$} \\
+		& & & & $r \leftarrow \mathbb{Z}_q$ \\
+		& & & & $t \leftarrow g^r$ \\
+		\multicolumn{5}{c}{$\stackrel{t}{\longleftarrow}$} \\
+		& $\alpha , \beta \leftarrow \mathbb{Z}_q$ \\
+		& $\overline{t} \leftarrow t \cdot g^{-\alpha} \cdot y^{-\beta}$ \\
+		& $\overline{c} \leftarrow \mathbb{H}(m \| \overline{t})$ \\
+		& $c \leftarrow \overline{c} + \beta$ \\
+		\multicolumn{5}{c}{$\stackrel{c}{\longrightarrow}$} \\		
+		& & & & $s \leftarrow r - c \cdot x$ \\
+		\multicolumn{5}{c}{$\stackrel{s}{\longleftarrow}$} \\
+		& $\overline{s} \leftarrow s - \alpha$ \\
+		& return $(\overline{c}, \overline{s})$
+	\end{tabular} \\
+	\hfill \\
+	Verification as in the ordinary scheme:
+	\begin{tabular}{ll}
+		\multicolumn{2}{l}{\textsc{Verify}($pk, m, (\overline{c}, \overline{s})$)} \\
+		& return ($\overline{c} \stackrel{?}{=} \mathbb{H}(m \| g^{\overline{s} \cdot y^{\overline{c}}})$) \\
+	\end{tabular}
+	\subsection{Completeness}
+	\begin{align*}
+		\hat{t} \ & = \ g^{\overline{s}} \cdot y^{\overline{c}} \\
+		& = \ g^{s- \alpha} g^{x \cdot \overline{c}} \\
+		& = \ g^{r - cx - \alpha + x \overline{c}} \\
+		& = \ g^{r + x(\overline{c} - c) - \alpha} \\
+		& = \ t \cdot g^{x \cdot -\beta} \cdot g^{-\alpha} \\
+		& = \ t \cdot y^{-\beta} \cdot g^{- \alpha} \\
+		& = \ \overline{t}
+	\end{align*}
+	Signature is ordinary Schnorr Signature.
+	\subsection{Blindness}
+	\begin{adjustwidth}{2em}{}
+		\begin{enumerate}[-]
+			\item $\mathbb{B}$ sees only $\mathbb{H}(m \| ...)$
+			\item $\mathbb{B}$ sees $\mathbb{H}(m \| ...) + \beta$, where $\beta$ is a random blinding factor
+			\item $\mathbb{B}$ sees $(\overline{c}, \overline{s})$, where:
+			\[
+				\overline{c} = c - \beta $$$$
+				\overline{s} = s - \alpha
+			\]
+			\item Signature is unlinkable with signing protocol.
+		\end{enumerate}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Anonymous Digital Cash (\textsc{Chaum}, 1985)}
+\begin{adjustwidth}{2em}{2em}
+	User $\mathbb{A}$: wallet \\
+	Shop $\mathbb{S}$: exchanges service for payment \\
+	Bank $\mathbb{B}$: creates coins, stores balance for $\mathbb{A}$ and $\mathbb{S}$
+	\subsection{Security Goals}
+	\begin{adjustwidth}{2em}{}
+		\subsubsection{Completeness}
+		\begin{adjustwidth}{2em}{}
+			If $\mathbb{A}$ withdraws a coin from $\mathbb{B}$, then $\mathbb{B}$ debits it from balance of $\mathbb{A}$. \\
+			If $\mathbb{A}$ transfers this coin to $\mathbb{S}$, then $\mathbb{B}$ will credit coin to balance of $\mathbb{S}$
+		\end{adjustwidth}
+		\subsubsection{Security}
+		\begin{adjustwidth}{2em}{}
+			$\mathbb{B}$ does not credit a coin to $\mathbb{S}$ unless $\mathbb{B}$ has issued the coin to some user $\mathbb{X}$ and user $\mathbb{X}$ has transferred coin to $\mathbb{S}$.
+		\end{adjustwidth}
+		\subsubsection{Anonymity}
+		\begin{adjustwidth}{2em}{}
+			If $\mathbb{B}$ credits a coin to some $\mathbb{Y}$, then $\mathbb{B}$ cannot link this coin to any withdrawal by a user.
+		\end{adjustwidth}
+	\end{adjustwidth}
+	\subsection{Protocol to withdraw (issue) coin}
+	\begin{tikzpicture}
+	\end{tikzpicture}
+	\begin{tabular}{ll}
+		\multicolumn{2}{l}{User $\mathbb{A}$} \\
+		& $m \leftarrow \{ 0,1 \}^{\star}$ \\
+		& $\overline{m} \leftarrow$ blinded $m$ \\
+		& send message (\textsc{bling-sig}, $\overline{m}$, $m$) to $\mathbb{B}$ and run blind sig. protocol \\
+		& wait for (\textsc{sig}, $\overline{m}$, $\overline{\sigma}$) message from $\mathbb{B}$ \\
+		& $\sigma \leftarrow$ unblind $\sigma$ \\
+		& store($u$, $m$, $\sigma$) \\
+		\\
+		\multicolumn{2}{l}{Bank $\mathbb{B}$} \\
+		& upon receiving msg (\textsc{bling-sig}, $\overline{m}$, $m$) from $\mathbb{A}$ \\
+		& $bal_A \leftarrow bal_A - u$ \\
+		& run blind sig. protocol with $\mathbb{A}$ \\
+		& send message (\textsc{sig}, $\overline{m}$, $\overline{\sigma}$) to $\mathbb{A}$
+	\end{tabular}
+	\subsection{Protocol to withdraw (issue) coin}
+	\begin{adjustwidth}{2em}{}
+		\begin{enumerate}[-]
+			\item User $\mathbb{A}$ spends coin to $\mathbb{S}$
+			\item Each coin can only be spent once
+		\end{enumerate}
+	\end{adjustwidth}
+	\begin{tikzpicture}
+	\end{tikzpicture}
+	\begin{tabular}{ll}
+		\multicolumn{2}{l}{User $\mathbb{A}$} \\
+		& send message (\textsc{spend}, $u$, $m$, $\sigma$) to $\mathbb{S}$ \\
+		& wait for (\textsc{ack}) or (\textsc{nack} message from $\mathbb{S}$ \\
+		\\
+		\multicolumn{2}{l}{Shop $\mathbb{S}$} \\
+		& upon receiving msg (\textsc{spend}, $u$, $m$, $\sigma$) from $\mathbb{A}$ \\
+		& send message (\textsc{deposit}, $u$, $m$, $\sigma$) to $\mathbb{B}$ \\
+		& wait for msg (\textsc{result},$m$, $b$) from $\mathbb{B}$ \\
+		& if $b = $ \textsc{true} \\
+		& \indent deliver goods or service to $\mathbb{A}$ and send msg (\textsc{ack}) to $\mathbb{A}$ \\
+		& else \\
+		& \indent send msg (\textsc{nack}) to $\mathbb{A}$ \\
+		\\
+		\multicolumn{2}{l}{Bank $\mathbb{B}$} \\
+		& upon receiving msg (\textsc{deposit}, $u$, $m$, $\sigma$) \\
+		& if \textsc{Verify($pk, u, m, \sigma$)} and $m \not\in \mathbb{M}$ \\
+		& \indent $\mathbb{M} \leftarrow \mathbb{M} \cup \{ m \}$ \\
+		& \indent $bal_S \leftarrow bal_S + u$ \\
+		& \indent send msg. (\textsc{result},$m$, \textsc{true}) \\
+		& else \\
+		& \indent send msg. (\textsc{result},$m$, \textsc{false}) \\
+	\end{tabular}
+\end{adjustwidth}
+
+\end{document}

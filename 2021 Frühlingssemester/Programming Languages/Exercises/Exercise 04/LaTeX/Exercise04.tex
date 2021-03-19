@@ -1,0 +1,103 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+\usepackage{colortbl}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Programming Languages}} \\
+		\large Exercise 04
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\subsection*{4.1 Monomorphic or Polymorphic Functions}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{tcolorbox}
+			\begin{verbatim}
+				mod :: Int -> Int -> Int
+				factors n = [x \mid x <- [1..n-1], mod n x == 0 ]
+			\end{verbatim}
+		\end{tcolorbox}
+		\noindent The function factors is monomorphic because it only accepts inputs of type \texttt{Int} and always will return a result of type \texttt{[Int]}. \\
+		\texttt{factors :: Int -> [Int]} \\
+		\begin{tcolorbox}
+			\begin{verbatim}
+				isPerfect = sum (factors n) == n
+			\end{verbatim}
+		\end{tcolorbox}
+		\noindent The function isPerfect is monomorphic because it only accepts inputs of type \texttt{Int} and always will return a result of type \texttt{Boolean}. \\
+		\texttt{isPerfect :: Int -> Boolean}
+		\begin{tcolorbox}
+			\begin{verbatim}
+				insert _ n [] = [n]
+				insert 0 n l = n:l
+				insert i n (x:xs) = x : insert (i-1) n xs
+			\end{verbatim}
+		\end{tcolorbox}
+		\noindent The function insert n is polymorphic because the type of input for n could be either one element or a list. \\
+		\texttt{insert :: Int -> a -> [a] -> [a]} or \texttt{Int -> [a] -> [a] -> [a]} \\
+		\begin{tcolorbox}
+			\begin{verbatim}
+				mH (a, b, c) = c
+			\end{verbatim}
+		\end{tcolorbox}
+		\noindent The function mH is polymorphic because the type of input and output can vary. \\
+		\texttt{mH :: a -> b -> c -> c}
+	\end{adjustwidth}
+	
+	\subsection*{4.2 Square Function}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{tcolorbox}
+			\begin{verbatim}
+				square :: Int -> Int
+				square :: Float -> Float
+				square :: Char -> Char
+				square :: Double -> Double
+			\end{verbatim}
+		\end{tcolorbox}
+		\noindent Because a square of a char is not defined in a sensible way, this type of input and output would be invalid.
+	\end{adjustwidth}
+	
+	\subsection*{4.3 Function to calculate Circumference of a Circle and Area of a Rectangle}
+	\begin{adjustwidth}{2em}{2em}	
+		\begin{tcolorbox}
+			\begin{verbatim}
+				data Shape = Circle Float | Rectangle Float Float
+				
+				exercise :: Shape -> Float
+				exercise (Circle a) =  2 * 3.14 * a
+				exercise (Rectangle a b) = a * b
+			\end{verbatim}
+		\end{tcolorbox}	
+	\end{adjustwidth}
+\end{document}

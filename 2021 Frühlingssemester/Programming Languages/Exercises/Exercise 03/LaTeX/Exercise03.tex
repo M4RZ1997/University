@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+\usepackage{colortbl}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Programming Languages}} \\
+		\large Exercise 03
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\subsection*{3.1 Why does the piece of code not raise an error?}
+	\begin{adjustwidth}{2em}{2em}
+		Because of using \textit{"lazy load/execution"} in functional programming this code would not raise an error. This is because when defining \textit{funcl y z = y}, z is not needed for executing this computation. Therefore the \textit{sqrt(-5)} is not considered for the output and therefore no error occurs.
+	\end{adjustwidth}
+	
+	\subsection*{3.2 Small Program Definition}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{tcolorbox}
+			\begin{verbatim}
+				if n = 0 then
+				    return -1
+				else
+				    return n*2
+			\end{verbatim}
+		\end{tcolorbox}
+		\subsubsection*{3.2.1 Pattern Matching}
+		\begin{adjustwidth}{2em}{}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					pattern 0 = -1
+					pattern n = n*2
+				\end{verbatim}
+			\end{tcolorbox}
+		\end{adjustwidth}
+		\subsubsection*{3.2.2 Guards}
+		\begin{adjustwidth}{2em}{}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					guards n | n == 0  = -1
+					           | n >= 1  = n*2
+				\end{verbatim}
+			\end{tcolorbox}
+		\end{adjustwidth}
+		\subsubsection*{3.2.3 Lambda Expression}
+		\begin{adjustwidth}{2em}{}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					lambda = ( \n -> if n == 0 then -1 
+					          else n*2 )
+				\end{verbatim}
+			\end{tcolorbox}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\subsection*{3.3 Program that computes the sum of all members of a list}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{tcolorbox}
+			\begin{verbatim}
+				listsum[] = 0
+				listsum(x:xs) = x + listsum xs
+				
+				main = print $ listsum[1,2,3,4,5,6,7,8,9]
+			\end{verbatim}
+		\end{tcolorbox}		
+	\end{adjustwidth}
+	
+	\subsection*{3.4 Catalan Numbers in Haskell}
+	\begin{adjustwidth}{2em}{2em}
+	\begin{tcolorbox}
+		\begin{verbatim}
+			fac 0 = 1
+			fac n = n * fac (n-1)
+			
+			getList n = [0..n]
+			catalan n = fac (2*n) / (fac(n+1) * fac(n))
+			
+			firstNcatalan n = map catalan (getList(n-1))
+			
+			main = print $ firstNcatalan 17
+		\end{verbatim}
+	\end{tcolorbox}
+	\end{adjustwidth}
+\end{document}

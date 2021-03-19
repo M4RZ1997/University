@@ -1,0 +1,195 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage[hoffset = 1px]{geometry}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\begin{document}
+ \begin{center}
+ \huge{\textbf{\underline{Cryptographic Protocols}}}
+ \end{center}
+ 
+ {\let\clearpage\relax \chapter{Introduction}}
+ \begin{enumerate}[-]
+ 	\item Computing with encrypted data
+ 	\item Authentication without giving away data
+ 	\item Cryptographic voting protocol
+ 	\item Blockchains that respect privacy
+ 	\item Generate a random number that cannot be biased
+ 	\item Sealed-bid auction without a trusted auctioneer
+ \end{enumerate}
+ 
+ \section{Examples}
+ \begin{adjustwidth}{2em}{2em}
+ 	\subsection{Generate a random bit (coin flip)}
+ 	\begin{adjustwidth}{2em}{2em}
+ 		\begin{center}\begin{tikzpicture}
+ 		\end{tikzpicture}\end{center}
+ 		\begin{enumerate}[-]
+ 			\item Without cryptography, this is not possible among \textbf{\underline{two}} parties
+ 			\item Use a cryptographic hash-function $\mathbb{H}$
+ 			\begin{enumerate}[\tiny{\textbullet}]
+ 				\item $\mathbb{H}$ is collision-free (\& one way)
+ 				\item $\mathbb{H}$ could be SHA-2
+ 			\end{enumerate}
+ 			(special case of commitment)
+ 		\end{enumerate}
+ 		\begin{center}\begin{tikzpicture}
+ 		\end{tikzpicture}\end{center}
+ 		\subsubsection{Why secure?}
+ 		\begin{adjustwidth}{1em}{}
+ 			\begin{enumerate}[-]
+ 				\item because $c$ does not reveal anything about $a$, therefore \textsc{Bob} cannot bias $b$
+ 				\item because \textsc{Alice} cannot find two distinct $(a,x) \neq (\tilde{a}, \tilde{x})$, s.t.:
+ 				\[
+ 					\mathbb{H}(a \| x) = \mathbb{H}(\tilde{a} \| \tilde{x}) = c,
+ 				\]
+ 				she cannot change her bit (or will be caught)
+ 				\item if one of the parties is honest (pick bit uniformly at random) the resultin $a \oplus b$ is uniform
+ 			\end{enumerate}
+ 		\end{adjustwidth}
+ 	\end{adjustwidth}
+ 	\subsection{Millionaire's Problem}
+ 	\begin{adjustwidth}{2em}{2em}
+ 		A and B want to find out who is richer, but not leak more about their wealth
+ 		\begin{center}\begin{tikzpicture}
+ 		\end{tikzpicture}\end{center}
+ 		This is easy with a trusted (third) party $\mathbb{T}$
+ 		\begin{center}\begin{tikzpicture}
+ 		\end{tikzpicture}\end{center}
+ 		\subsubsection{Examples}
+ 		\begin{adjustwidth}{1em}{}
+ 			\begin{enumerate}[-]
+ 				\item auctions
+ 				\item elections
+ 				\item matchings
+ 			\end{enumerate}
+ 		\end{adjustwidth}
+ 		No easy solution here!
+ 	\end{adjustwidth}
+ \end{adjustwidth}
+ 
+ \section{Why do computers see their data and programs?}
+ \begin{adjustwidth}{2em}{2em}
+ 	$\rightsquigarrow$ Trusted computing base
+ 	\begin{center}\begin{tikzpicture}
+ 	\end{tikzpicture}\end{center}
+ \end{adjustwidth}
+ 
+ \section{Examples}
+ \begin{adjustwidth}{2em}{2em}
+ 	\subsection{Computing with encrypted data}
+ 	\begin{adjustwidth}{2em}{2em}
+ 		\begin{center}\begin{tikzpicture}
+ 		\end{tikzpicture}\end{center}
+ 		\[
+ 			y \ = \ Dec(sk, Eval(pk, f, Enc(pk, x))) \ = \ f(x)
+ 		\]
+ 		$\rightsquigarrow$ homomorphic encryption
+ 	\end{adjustwidth}
+ 	\subsection{Secret vote among three}
+ 	\begin{adjustwidth}{2em}{2em}
+ 		Parties $p_1, \ p_2, \ p_3$ \\
+ 		Each has one binary vote $v_i$ on a proposal \\
+ 		Goal is to compute privately $s \ = \ \sum_i v_i$ and not disclose more information about $v_1, \ v_2, \ v_3$ than follows from $s$
+ 		\subsubsection{Protocol}
+ 		\begin{adjustwidth}{2em}{}
+ 			\begin{enumerate}[-]
+ 				\item \underline{primitive} $split(b) \rightarrow (x_1, x_2, x_3)$ to "share" or distribute bit $b$ among 3 parties
+ 				\item use prime $p$ (e.g. 7)
+ 			\end{enumerate}
+ 			\begin{tabular}{ll}
+ 				\underline{b} \\
+ 				& $x_1 \leftarrow \mathbb{Z}_p$ \\
+ 				& $x_2 \leftarrow \mathbb{Z}_p$ \\
+ 				& $x_3 \leftarrow \mathbb{Z}_p$ s.t. $x_1 + x_2 + x_3 \equiv b (mod p)$\\
+ 				& return ($x_1 , x_2, x_3$)
+ 			\end{tabular}
+ 			Parties are connected by secure channels (confidential \& authenticated)
+ 		\end{adjustwidth}
+ 		\subsubsection{Protocol for $p_i$ ($v_i$)}
+ 		\begin{adjustwidth}{2em}{}
+ 			$(x_{i1}, x_{i2}, x_{i3}) \leftarrow split(v_i)$ \\
+ 			\underline{send} $x_{ij}$ to $p_j$ for $j = 1,2,3$ \\
+ 			\underline{receive} $x_{ji}$ from $p_j$ for $j = 1,2,3$ \\
+ 			$y_i \leftarrow (x_{1i} + x_{1i} + x_{1i})$ mod $p$ \\
+ 			\underline{send} $y_i$ to $p_j$ for $j = 1,2,3$ \\
+ 			\underline{receiv} $y_j$ to $p_j$ for $j = 1,2,3$ \\
+ 			\underline{output} $(y_1 + y_2 + y_3)$ mod $p$
+ 		\end{adjustwidth}
+ 		\subsubsection{Completeness}
+ 		\begin{adjustwidth}{2em}{}
+ 			If every party follows the protocol, then every party outputs $s = v_1 + v_2 + v_3$
+ 			\[
+ 				s \equiv \sum_j y_j
+ 			\]
+ 		\end{adjustwidth}
+ 		\subsubsection{Security}
+ 		\begin{adjustwidth}{2em}{}
+ 			\begin{enumerate}
+ 				\item $split(b) \rightarrow (x_1, x_2, x_3)$ hides $b$ because any two values give no information on $b$ ($\rightarrow$ one-time-pad)
+ 				\item given $s$ and $x_{ji}$ for $j = 1,2,3$ then party $p_i$ has no more information about $v_j$ for $j \neq i$ than what follows from $s$ and $v_i$
+ 			\end{enumerate} 			
+ 		\end{adjustwidth}
+ 	\end{adjustwidth}
+ \end{adjustwidth}
+ 
+ \section{Goals}
+ \begin{adjustwidth}{2em}{2em}
+ 	\subsection{Privacy}
+ 	\begin{adjustwidth}{2em}{}
+ 		No party learns more information than the output \\
+ 		$\Rightarrow$ information contains its own input, output, protocol messages
+ 		... as if completed by a trusted party $\mathbb{T}$
+ 	\end{adjustwidth}
+ 	\subsection{Correctness}
+ 	\begin{adjustwidth}{2em}{}
+ 		Every party receives the correct output \\
+ 		$\Rightarrow$ if inpit of a faulty party is not clear the protocol computes a consistent output for all correct parties
+ 	\end{adjustwidth}
+ 	\subsection{Input Independence}
+ 	\begin{adjustwidth}{2em}{}
+ 		Inputs of faulty parties must not depend in any way on inputs of correct parties
+ 	\end{adjustwidth}
+ 	\subsection{Fairness}
+ 	\begin{adjustwidth}{2em}{}
+ 		Faulty parties receive output if and only if correct parties received an output \\
+ 		$\rightsquigarrow$ fair contract signing
+ 	\end{adjustwidth}
+ \end{adjustwidth}
+ 
+ \section{Types of Faults}
+ \begin{adjustwidth}{2em}{2em}
+ 	\begin{enumerate}[\tiny\textbullet]
+ 		\item All faulty parties are controlled by an adversary $\mathbb{A}$
+ 		\item \underline{Semi-Honest Behaviour:}
+ 		\begin{enumerate}[-]
+ 			\item Faulty parties execute protocol correctly, but leak all interval values to $\mathbb{A}$
+ 			\item "read-only" attack on a server
+ 			\item "passive-corruption"
+ 		\end{enumerate}
+ 		\item \underline{Malicious Behaviour:}
+ 		\begin{enumerate}[-]
+ 			\item Faulty parties behave arbitrarily, act against the correct parties
+ 			\item coordinated attack by $\mathbb{A}$
+ 		\end{enumerate}
+ 	\end{enumerate}
+ \end{adjustwidth}
+ 
+ \section{Types of Computations}
+ \begin{adjustwidth}{2em}{2em}
+ 	\begin{enumerate}[\tiny\textbullet]
+ 		\item Any polynomial-time computable program
+ 		\item Usually, without interaction with users, only with initial inputs \\
+ 		$\rightarrow$ secure function evaluation
+ 		\item Usually, with one common output (public)... but individual outputs would be possible
+ 	\end{enumerate}
+ \end{adjustwidth}
+ \end{document}

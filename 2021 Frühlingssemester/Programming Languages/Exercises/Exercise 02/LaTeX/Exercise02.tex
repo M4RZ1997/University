@@ -1,0 +1,165 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+\usepackage{colortbl}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Programming Languages}} \\
+		\large Exercise 02
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\subsection*{1.1 PostScript}
+	\begin{adjustwidth}{2em}{2em}
+		\subsubsection*{1.1.1 What kinds of stacks does PostScript manage and what are their roles?}
+		\begin{adjustwidth}{2em}{}
+			First we have an \textbf{Operand Stack} which holds (arbitrary) operands and results of PostScript operators. \\
+			Then we have a \textbf{Dictionary Stack}, which holds only dictionaries where keys and values may be stores. \\
+			An \textbf{Execution Stack} holds executable objects like procedures in stages of the execution. \\
+			And last we have the \textbf{Graphics State Stack} that keeps track of current coordinates.
+		\end{adjustwidth}
+		\subsubsection*{1.1.2 What is the way of defining a procedure in the PostScript program?}
+		\begin{adjustwidth}{2em}{}
+			Procedures are defined by binding names to literal or executable objects. For example we can create the following line of code:
+			\begin{adjustwidth}{2em}{2em}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					/square { dup mul } def
+				\end{verbatim}
+			\end{tcolorbox}
+			\end{adjustwidth}
+			\noindent With this we created a procedure square, which first doublicates the top element of the stack and then multiplies both of the elements. Therefore we can write:
+			\begin{adjustwidth}{2em}{2em}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					3 square
+				\end{verbatim}
+			\end{tcolorbox}
+			\end{adjustwidth}
+			\noindent and get the result 9. \\
+			A procedure calculating $((x+y) / 2) \cdot 2$ looks like the following:
+			\begin{adjustwidth}{2em}{2em}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					/calculation { add 2 div 2 mul } def
+				\end{verbatim}
+			\end{tcolorbox}
+			\end{adjustwidth}
+			\noindent So the whole program can look like the following (example for $x=3$ and $y=4$):
+			\begin{adjustwidth}{2em}{2em}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					/procedure { add 2 div 2 mul } def
+					/sBuf { 20 string } def
+					/showInt { sBuf cvs show } def
+					/printCalculation { procedure showInt } def
+					
+					/Times-Roman findfont 18 scalefont setfont
+					100 500 moveto
+					3 4 printCalculation
+					showpage
+				\end{verbatim}
+			\end{tcolorbox}
+			\end{adjustwidth}
+		\end{adjustwidth}
+		\subsubsection*{1.1.3 Procedure for printing 10 random numbers on separate lines}
+		\begin{adjustwidth}{2em}{}
+			\begin{tcolorbox}
+				\begin{verbatim}
+					/LM 100 def
+					/FS 18 def
+					/newline {
+					    currentpoint exch pop
+					    FS 2 add sub
+					    LM exch moveto
+					} def
+					/sBuf { 20 string } def
+					/showInt { sBuf cvs show } def
+					
+					/Times-Roman findfont 18 scalefont setfont
+					LM 600 moveto
+					1 1 10 { rand showInt newline } for
+					showpage
+				\end{verbatim}
+			\end{tcolorbox}
+		\end{adjustwidth}
+	\end{adjustwidth}
+	
+	\subsection*{1.2 Catalan Numbers in PostScript}
+	\begin{adjustwidth}{2em}{2em}
+	\begin{tcolorbox}
+		\begin{verbatim}
+			/LM 100 def % left margine
+			/UM 700 def % upper margine
+			/FS 18 def % font size
+
+			/showNum { 20 string cvs show } def
+
+			/showCatalan {
+			    (C \( n = ) show dup showNum ( \) = ) show calculation showNum
+			} def
+
+			/factorial{
+			    dup 1 lt { pop 1 } { dup 1 sub factorial mul }
+			    ifelse
+			} def
+
+			/newLine {
+			    currentpoint exch pop
+			    FS 2 add sub
+			    LM exch moveto
+			} def
+
+			/catalan { 0 exch 1 exch { showCatalan newLine } for } def
+
+			/calculation {
+			    dup nominator exch denominator div
+			} def
+
+			/nominator { 2 mul factorial } def
+
+			/denominator { dup nplus1fact exch factorial mul } def
+
+			/nplus1fact { 1 add factorial } def
+
+			/Times-Roman findfont FS scalefont setfont
+			%Usage: n catalan
+			LM UM moveto
+			17 catalan
+		\end{verbatim}
+	\end{tcolorbox}
+	\hfill \\
+	\noindent First we create a for loop by adding 0 and 1 in front of $n$ using \textit{exch}. Inside the for loop each \textbf{Catalan-Number} is computed by first calculating the nominator and then the denominator. In the end both are used in a division to get the result. These values are then printed with the \textit{showNum} procedure and each value has its individual line, by using the \textit{newLine} procedure.
+	\end{adjustwidth}
+\end{document}

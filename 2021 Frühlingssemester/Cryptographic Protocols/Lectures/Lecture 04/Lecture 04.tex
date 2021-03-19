@@ -1,0 +1,213 @@
+\documentclass{report}
+\usepackage{hyperref}
+\usepackage[hoffset = 1px]{geometry}
+\usepackage{amsmath}
+\usepackage{scalerel,amssymb}
+\usepackage{paralist}
+\usepackage{changepage}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\setcounter{chapter}{3}
+
+\begin{document}
+\begin{center}
+\huge{\textbf{\underline{Cryptographic Protocols}}}
+\end{center}
+ 
+{\let\clearpage\relax \chapter{Homomorphic Encryption}}
+
+\section{Grand Goal}
+\begin{adjustwidth}{2em}{2em}
+	\textbf{Computation with encrypted data.}
+	\begin{tikzpicture}
+	\end{tikzpicture}
+	No interaction between user and cloud. User holds $sk$ (private key). \\
+	Intriguing problem, first posed in 1978
+\end{adjustwidth}
+
+\section{Single-Homomorphic Encryption}
+\begin{adjustwidth}{2em}{2em}
+	Encryption scheme supports an operation $\oplus$ such that:
+	\begin{align*}
+		\textsc{Enc}(x) \ \oplus \ \textsc{Enc}(y) \ = \ \textsc{Enc}(x + y)
+	\end{align*}
+	\textsc{or} an operation $\otimes$ such that:
+	\begin{align*}
+		\textsc{Enc}(x) \ \otimes \ \textsc{Enc}(y) \ = \ \textsc{Enc}(x \cdot y)
+	\end{align*}
+	where $x, y \in \mathbb{GF}(2)$ or $\mathbb{GF}(p)$
+	\begin{enumerate}[$\rightarrow$]
+		\item such schemes exist and are efficient
+		\item Additively kommutative ElGamal; Paillier scheme
+	\end{enumerate}
+\end{adjustwidth}
+
+\section{Fully-Homomorphic Encryption}
+\begin{adjustwidth}{2em}{2em}
+	Encryption scheme supports an operation $\oplus$ such that:
+	\begin{align*}
+		\textsc{Enc}(x) \ \oplus \ \textsc{Enc}(y) \ = \ \textsc{Enc}(x + y)
+	\end{align*}
+	\textsc{and} an operation $\otimes$ such that:
+	\begin{align*}
+		\textsc{Enc}(x) \ \otimes \ \textsc{Enc}(y) \ = \ \textsc{Enc}(x \cdot y)
+	\end{align*}
+	where $x, y \in \mathbb{GF}(2)$ or $\mathbb{GF}(p)$
+	\begin{enumerate}[$\rightarrow$]
+		\item exist since 2009, Gentry
+		\item not very practical
+	\end{enumerate}
+\end{adjustwidth}
+
+\section{Examples}
+\begin{adjustwidth}{2em}{2em}
+	\subsection{ElGamal-based Single-Homomorphic Encryption}
+	\begin{adjustwidth}{2em}{}
+		Recall textbook ElGamal in $\mathbb{G} = <g>, \ \mid \mathbb{G} \mid = q$: \\
+		\begin{tabular}{lll}
+			\textsc{KeyGen}() & \textsc{Enc}($m,y$) & \textsc{Dec}($x,(R,C)$) \\
+			\indent $x \leftarrow \mathbb{Z}_q$ & \indent $r \leftarrow \mathbb{Z}_q$ & \indent $\hat{m} \leftarrow c / R^x$ \\
+			\indent $y \leftarrow g^x$ & \indent $R \leftarrow g^r$ & \indent return $\hat{m}$ \\
+			\indent return $(y,x)$ & \indent $C \leftarrow m \cdot y^r$ \\
+			& \indent return $(R,C)$
+		\end{tabular}
+		\begin{enumerate}[-]
+			\item already multiplication homomorphic
+			\item but mapping of integers to and from elements of $\mathbb{G}$ can be hard
+			\item but addition is preferred
+		\end{enumerate}
+	\end{adjustwidth}
+	\subsection{Additively homomorphic ElGamal}
+	\begin{adjustwidth}{2em}{}
+		\begin{enumerate}[-]
+			\item use textbook ElGamal
+			\item works only for small plaintexts, numbers e.g. from 0 to max
+		\end{enumerate}
+		\begin{tabular}{lll}
+			\textsc{KeyGen}() & \textsc{AH-Enc}($y,a$) & \textsc{AH-Dec}($x, (R,C)$) \\
+			\indent $x \leftarrow \mathbb{Z}_q$ & \indent return \textsc{Enc}$y, g^a$ & \indent $h \leftarrow \textsc{Dec}(x, (R,C))$ \\
+			\indent $y \leftarrow g^x$ & & \indent // brute-force search for  $i = 0,1,..., max$\\
+			\indent return $(y,x)$ & & \indent if $g^i = h$ then:\\
+			& & \indent \indent return $i$ \\
+			& & \indent return \textsc{Error}
+		\end{tabular} \\
+		\hfill \\
+		\begin{align*}
+			\textsc{AH-Enc}(y, a) \oplus \textsc{AH-Enc}(y,b) \ & = \ (R_a, C_a) \oplus (R_b, C_b) \\
+			& = \ (R_a \cdot R_b, C_a \cdot C_b) \\
+			& = \ \textsc{AH-Enc}(y, (a+b) \textit{ mod } q)
+		\end{align*}
+		\begin{enumerate}[...]
+			\item $q \approx 2^{256}$
+			\item $max \ \approx 10^6$
+			\item $a,b \in [-max/2, \ max/2]$ using $a' = q + a$ for $a<0$
+		\end{enumerate}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{Voting protocol using Additional Homomorphic Encryption}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}
+		\item Parties $P_1, ..., P_n$
+		\item Each party $P_i$ votes $v_i \in \{ -1, 1 \}$
+		\item One authority $\mathbb{A}$
+	\end{enumerate}
+	\begin{enumerate}[1.]
+		\item $\mathbb{A}$ generates \\
+		\indent $(pk, sk) \leftarrow \textsc{KeyGen}()$ \\
+		$\mathbb{A}$ sends $pk$ to $P_1, ..., P_n$
+		\item $\mathbb{A}$ computes \\
+		\indent $c_0 \leftarrow \textsc{Enc}(pk, 0)$ \\
+		and sends $c_0$ to $P_1$ \\
+		for $i = 1,...,n$ do \\
+		\indent $P_i$ receives $c_{i-1}$ \\
+		\indent $P_i$ computes \\
+		\indent \indent $c_i \leftarrow c_{i-1} \oplus \textsc{Enc}(y, v_i)$ \\
+		\indent $P_i$ sends $c_i$ to $P_{i+1}$ // $P_n$ sends to $\mathbb{A}$
+		\item $\mathbb{A}$ receives $c_n$ from $P_n$ computes \\
+		\indent $z \leftarrow \textsc{Dec}(x, c_n)$ // $z = \sum_{i=1}^n v_i$ \\
+		$\mathbb{A}$ publishes $z$
+	\end{enumerate}
+	\underline{Remarks:}
+	\begin{enumerate}[-]
+		\item sending must use secure channels
+		\item not robust (against malicious $\stackrel{\sim}{P_i}$)
+		\begin{enumerate}[a)]
+			\item $\stackrel{\sim}{P_i}$ encrypt $+n$
+			\item $\stackrel{\sim}{P_i}$ refuse to send $c_i$
+			\item $\mathbb{A}$ refuses to decrypt
+		\end{enumerate}
+		\item defenses exist for all these:
+		\begin{enumerate}[a)]
+			\item use zero-knowledge proofs
+			\item use public bulletin board for communication
+			\item distributed implementation of $\mathbb{A}$ using a group of admins
+		\end{enumerate}
+		\item Helios implements most of this (heliosvoting.org)
+	\end{enumerate}
+\end{adjustwidth}
+
+\section{Zero-Knowledge Proofs}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[-]
+		\item How to prove a statement is true without any more information
+		\item How to prove knowledge of "password" without giving information about it?
+		\item Many application in cryptographic protocols
+		\item Goldwasser \& Micali received Turing Award for it
+	\end{enumerate}
+	\subsection{Two kinds of proofs}
+	\begin{enumerate}[\small\textbullet]
+		\item Proofs for statements
+		\begin{enumerate}[-]
+		 \item Griven a Boolean formula $\Psi$ in $n$ variables, there exists an assignment s.t. $\Psi \equiv \textsc{true}$
+		 \item Given two graphs $\mathbb{G}_0$ and $\mathbb{G}_1$, they are isomorphic
+		 \item Given a graph $\mathbb{G}$, there exists a Hamiltonian circuit in $\mathbb{G}$
+		 \item Given a graph $\mathbb{G}$, there is a 3-coloring of $\mathbb{G}$
+		\end{enumerate}
+		\item Proofs of knowledge
+		\begin{enumerate}[-]
+		 \item Given $y$ (a public key DH$\sim$) "I know" $x$ such that $y = g^x$
+		 \item Given $h \in \{ 0,1 \}^k$, "I know" an $x$ s.t. $\mathbb{H}(x) = h$ for some one-way function $\mathbb{H}$
+		 \item Given $N$, "I know" $P, Q$ s.t. $N = P \cdot Q$
+		\end{enumerate}
+	\end{enumerate}
+\end{adjustwidth}
+
+\section{Model (Proofs of Statement)}
+\begin{adjustwidth}{2em}{2em}
+	\begin{tikzpicture}
+	\end{tikzpicture}
+	\subsubsection{Requirements}
+	\begin{adjustwidth}{2em}{}
+		\begin{enumerate}
+			\item \textbf{Completeness:} If statement $S$ holds, prover $\mathbb{P}$ correct and $\mathbb{V}$ correct, then $\mathbb{V}$ accepts.
+			\item \textbf{Soundness:} If $S$ is \textsc{false}, then (honest) $\mathbb{V}$ will reject with at least a constant probability (no matter what the malicious $\mathbb{P}$ does)
+			\item \textbf{Zero-Knowledge:} $\mathbb{V}$ learns only that $S$ holds (and not more). \\
+			\indent ($\mathbb{V}$ could also have simulated the whole protocol with itself)
+		\end{enumerate}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\section{ZKP for Graph Isomorphism}
+\begin{adjustwidth}{2em}{2em}
+	\begin{enumerate}[\small\textbullet]
+		\item $\mathbb{P}$ and $\mathbb{V}$ are given two graphs $G_0 = (V, E_0)$ and $G_1 = (V, E_1)$.
+		\item $\mathbb{P}$ knows an isomorphism betwenn $G_0$ and $G_1$, i.e. bijective function:
+		\[
+			f: V \rightarrow V
+		\]
+		s.t. $\forall v,w \in V: \ (v,w) \in E_0 \ \Leftrightarrow \ (f(v), f(w)) \in E_1$
+	\end{enumerate}
+	\subsubsection{Protocol}
+	\begin{tikzpicture}
+	\end{tikzpicture}
+	\begin{adjustwidth}{2em}{}
+	\end{adjustwidth}
+\end{adjustwidth}
+
+\end{document}

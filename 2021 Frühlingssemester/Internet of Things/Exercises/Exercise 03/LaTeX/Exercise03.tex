@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+
+\usepackage{colortbl}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Internet of Things}} \\
+		\large Exercise 03
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{3.1 What is the difference between event-driven and multi-threading concurrency}
+	\begin{adjustwidth}{2em}{2em}
+	\end{adjustwidth}
+	
+	\section*{3.2 Low-Energy Earliest Deadline First}
+	\begin{adjustwidth}{2em}{2em}
+		\begin{tabular}{|l|l|l|l|}
+			\hline
+			\rowcolor{gray!80} Task & Arrival Time [s] & Deadline [s] & Length [MI] \\
+			\hline
+			t1 & 0 & 4 & 900 \\
+			t2 & 2 & 8 & 1800 \\
+			t3 & 2.5 & 8 & 450 \\
+			t4 & 5 & 20 & 1000 \\
+			t5 & 6 & 14 & 800 \\
+			\hline
+			\rowcolor{gray!80} \multicolumn{2}{|l|}{Processor Speed [MIPS]} & \multicolumn{2}{|l|}{Voltage} \\
+			\hline
+			\multicolumn{2}{|l|}{200} & \multicolumn{2}{|l|}{1.5} \\
+			\multicolumn{2}{|l|}{300} & \multicolumn{2}{|l|}{2} \\
+			\multicolumn{2}{|l|}{450} & \multicolumn{2}{|l|}{3.5} \\
+			\hline
+		\end{tabular}
+	\end{adjustwidth}
+	\begin{adjustwidth}{-8.5em}{}
+		\begin{align*}
+			t_0 = 0: & \\
+			& 0 + \frac{900}{200} \not\leq 4 \ \Rightarrow \ \textsc{false} \\
+			& 0 + \frac{900}{300} \leq 4 \ \Rightarrow \ t = 3 \Rightarrow t1 \textit{ scheduled on } 2V  \\
+			t_1 = 2: & \\
+			& 2 + \frac{300}{200} \leq 4 \Rightarrow \ t = 3.5 \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 3.5 + \frac{1800}{450} = 7.5 \leq 8  \Rightarrow t1 \textit{ scheduled on } 1.5V \\
+			t_2 = 2.5: & \\
+			& 2.5 + \frac{200}{200} \leq 4 \Rightarrow \ t = 3.5 \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 3.5 + \frac{1800}{450} = 7.5 \leq 8  \Rightarrow \exists \tau_3 \textit{ with 450 MI: } 7.5 + \frac{450}{450} = 8.5 \not\leq 8 \Rightarrow \textsc{break}\\
+			& 2.5 + \frac{200}{300} \leq 4 \Rightarrow \ t = 3.1\overline{6} \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 3.1\overline{6} + \frac{1800}{450} = 7.1\overline{6} \leq 8  \Rightarrow \exists \tau_3 \textit{ with 450 MI: } 7.1\overline{6} + \frac{450}{450} = 8.1\overline{6} \not\leq 8 \Rightarrow \textsc{break}\\
+			& 2.5 + \frac{200}{450} \leq 4 \Rightarrow \ t = 2.9\overline{4} \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 2.9\overline{4} + \frac{1800}{450} = 6.9\overline{4} \leq 8  \Rightarrow \exists \tau_3 \textit{ with 450 MI: } 6.9\overline{4} + \frac{450}{450} = 7.9\overline{4} \leq 8 \Rightarrow \textsc{ok}\\
+			t_3 = 5: & \\
+			& 7.9\overline{4} + \frac{1000}{450} \leq 20 \Rightarrow \textsc{ok} \\
+			t_4 = 6: & \\
+			& 7.9\overline{4} + \frac{800}{450} = 9.7\overline{1} \leq 14 \Rightarrow 9.7\overline{1} + \frac{1000}{450} \leq 20 \Rightarrow \textsc{ok} \\
+			t_6 = 7.9\overline{4}: & \\
+			& 7.9\overline{4} + \frac{800}{200} = 11.9\overline{4} \leq 14 \ \Rightarrow \exists \tau_5 \textit{ with 1000 MI: } 11.9\overline{4} + \frac{1000}{450} = 14.1\overline{6} \leq 20 \Rightarrow \textsc{ok} \\
+			t_5 = 11.9\overline{4}: & \\
+			& 11.9\overline{4} + \frac{1000}{200} = 16.9\overline{4} \leq 20 \Rightarrow t5 \textit{ scheduled on } 1.5V
+		\end{align*}
+	\end{adjustwidth}
+	\begin{adjustwidth}{2em}{2em}
+		Therefore we get the execution plan: \\
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\rowcolor{gray!80} Time[s] & Processor Speed [MIPS] & Voltage \\
+			\hline
+			0-2 & 300 & 2V \\
+			2-2.5 & 200 & 1.5V \\
+			2.5-7.9$\overline{4}$ & 450 & 3.5V \\
+			7.9$\overline{4}$-16.9$\overline{4}$ & 200 & 1.5V \\
+			\hline
+		\end{tabular}
+	\end{adjustwidth}
+\end{document}
