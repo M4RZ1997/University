@@ -65,14 +65,14 @@
 			\end{verbatim}
 		\end{tcolorbox}
 		\noindent The function insert n is polymorphic because the type of input for n could be either one element or a list. \\
-		\texttt{insert :: Int -> a -> [a] -> [a]} or \texttt{Int -> [a] -> [a] -> [a]} \\
+		\texttt{insert :: Int -> a -> [a] -> [a]}
 		\begin{tcolorbox}
 			\begin{verbatim}
 				mH (a, b, c) = c
 			\end{verbatim}
 		\end{tcolorbox}
 		\noindent The function mH is polymorphic because the type of input and output can vary. \\
-		\texttt{mH :: a -> b -> c -> c}
+		\texttt{mH :: (a, b, c) -> c}
 	\end{adjustwidth}
 	
 	\subsection*{4.2 Square Function}
@@ -94,7 +94,7 @@
 			\begin{verbatim}
 				data Shape = Circle Float | Rectangle Float Float
 				
-				exercise :: Shape -> Float
+				--exercise :: Shape -> Float
 				exercise (Circle a) =  2 * 3.14 * a
 				exercise (Rectangle a b) = a * b
 			\end{verbatim}
