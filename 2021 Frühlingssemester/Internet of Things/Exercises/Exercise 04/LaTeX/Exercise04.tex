@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{paralist}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac}
+\usepackage{changepage}
+\usepackage{amsmath}
+
+\usepackage{colortbl}
+
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\usepackage{fancyhdr}
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Internet of Things}} \\
+		\large Exercise 04
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		16-124-836 \\
+		Marcel \textsc{Zauder}
+	\end{tabular}
+}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{hyperref}
+
+\begin{document}
+	\pagestyle{fancy}
+	\hfill
+	
+	\section*{4.1 Describe the challenge of using RSSI as a means of determining distances in real environments}
+	\begin{adjustwidth}{2em}{2em}
+		The problem when using RSSI for determining distances is that due to environmental factors the received signal strength values and therefore the curve can be pretty much unstable and therefore it can be hard to determine the exact position of the sender node. These environmental factors can be for example objects that can block the signal like hills, trees, buildings, etc. or interference with other signals.
+	\end{adjustwidth}
+	
+	\section*{4.2 Distance between the two nodes}
+	\begin{adjustwidth}{2em}{2em}
+		Because we know that the ultrasound signal is sent 0.5 seconds after the radio signal, it needs 2.5 seconds longer to reach the other node than the radio signal. Therefore we can set up the following equation:
+		\[
+			340 \textit{ m/s } \cdot (x + 2.5s) \ = \ 3 * 10^8 \textit{ m/s } \cdot x
+		\]
+		We can calculate for $x$:
+		\begin{align*}
+			x \cdot 340 \textit{ m/s } + 850m \ & = \ x \cdot 300'000'000 \textit{ m/s } \\
+			850m \ & = \ x \cdot 299'999'660 \textit{ m/ s} \\
+			x \ & \approx \ 2.833 * 10^{-6}s
+		\end{align*}
+		Therefore the distance between both nodes is:
+		\[
+			s \ = \ \frac{850}{299'999'660}s \cdot 300'000'000 \textit{ m\ s} \ \approx \ 850.000963 m
+		\]
+	\end{adjustwidth}
+\end{document}

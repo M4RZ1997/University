@@ -43,7 +43,7 @@ def randomsubgroup(q, p):
     while True:
         h = random.randint(2, p-1)
         g = power(h, (p-1)/q, p)
-        if (g != 1L):
+        if (g != 1):
             break
     return g
 
@@ -71,6 +71,7 @@ def Parameters(qbits, pbits):
 
 # Diffie-Hellman key agreement demo
 #
+
 (g, q, p) = Parameters(160, 1024)     # For testing only! INSECURE!
 # (g, q, p) = Parameters(256, 2024)     # For use in practice
 
@@ -89,4 +90,6 @@ power(B, a, p)
 
 # Bob computes the shared key
 power(A, b, p)
+
+print("Hello World")
 

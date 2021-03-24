@@ -39,6 +39,8 @@
 	
 	\section*{3.1 What is the difference between event-driven and multi-threading concurrency}
 	\begin{adjustwidth}{2em}{2em}
+		When using the event-driven concurrency approach it can happen that one single handler can take a lot of time to complete/terminate, which can cause to a "traffic jam" for other requests will not be handled for a long time. In multi-threading concurrency this is not the case because other threads are handled independently from each other and requests will be handled regardless another request is taken a very long time to complete. \\
+		Furthermore event-driven concurrency has a very inexpensive memory cost, whereas the memory cost of multi-thread concurrency is much higher.
 	\end{adjustwidth}
 	
 	\section*{3.2 Low-Energy Earliest Deadline First}
@@ -72,7 +74,9 @@
 			& 2.5 + \frac{200}{200} \leq 4 \Rightarrow \ t = 3.5 \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 3.5 + \frac{1800}{450} = 7.5 \leq 8  \Rightarrow \exists \tau_3 \textit{ with 450 MI: } 7.5 + \frac{450}{450} = 8.5 \not\leq 8 \Rightarrow \textsc{break}\\
 			& 2.5 + \frac{200}{300} \leq 4 \Rightarrow \ t = 3.1\overline{6} \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 3.1\overline{6} + \frac{1800}{450} = 7.1\overline{6} \leq 8  \Rightarrow \exists \tau_3 \textit{ with 450 MI: } 7.1\overline{6} + \frac{450}{450} = 8.1\overline{6} \not\leq 8 \Rightarrow \textsc{break}\\
 			& 2.5 + \frac{200}{450} \leq 4 \Rightarrow \ t = 2.9\overline{4} \Rightarrow \exists \tau_2 \textit{ with 1800 MI: } 2.9\overline{4} + \frac{1800}{450} = 6.9\overline{4} \leq 8  \Rightarrow \exists \tau_3 \textit{ with 450 MI: } 6.9\overline{4} + \frac{450}{450} = 7.9\overline{4} \leq 8 \Rightarrow \textsc{ok}\\
-			t_3 = 5: & \\
+		\end{align*}
+		\begin{align*}
+		t_3 = 5: & \\
 			& 7.9\overline{4} + \frac{1000}{450} \leq 20 \Rightarrow \textsc{ok} \\
 			t_4 = 6: & \\
 			& 7.9\overline{4} + \frac{800}{450} = 9.7\overline{1} \leq 14 \Rightarrow 9.7\overline{1} + \frac{1000}{450} \leq 20 \Rightarrow \textsc{ok} \\

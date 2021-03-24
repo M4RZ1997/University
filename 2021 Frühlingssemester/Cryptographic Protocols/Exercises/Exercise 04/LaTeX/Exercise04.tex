@@ -10,6 +10,8 @@
 \usepackage{colortbl}
 
 \usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes.geometric, arrows}
@@ -37,6 +39,12 @@
 \fancyfoot[C]{\thepage}
 \renewcommand{\footrulewidth}{0.4pt}
 
+\pgfplotstableset{% global config, for example in the preamble
+  every head row/.style={before row=\toprule,after row=\midrule},
+  every last row/.style={after row=\bottomrule},
+  fixed,precision=6,
+}
+
 \usepackage{hyperref}
 \begin{document}
 	%\KOMAoptions{paper=landscape,DIV=last}
@@ -45,11 +53,34 @@
 	\pagestyle{fancy}
 	\hfill
 	
-	\section*{4.1 Textbook ElGamal encryption in Python}
-	\begin{adjustwidth}{-6em}{}
-	\end{adjustwidth}
-	
 	\section*{4.2 Additively homomorphic ElGamal encryption}
-	\begin{adjustwidth}{-6em}{}
+	\begin{adjustwidth}{2em}{2em}
+		\pgfplotstabletypeset[
+  		columns/maxVal/.style={column name=Value (MAX), column type = {r|}},
+  		columns/time1/.style={column name=Time (First), column type = {l}},
+  		columns/time2/.style={column name=Time (Second), column type = {l}},
+		]{data_ElGamal.txt}
+		
+		\begin{figure}[h!]
+			\begin{tikzpicture}
+				\begin{axis}[
+					height = 5cm,
+					width = 11cm,
+   					xlabel={Value (MAX)},
+   					ylabel={Time [s]},
+    				legend pos=south east,
+    				legend entries={First, Second},
+    				scaled x ticks=false,
+    				]
+  					\addplot table [x=maxVal,y=time1] {data_ElGamal.txt};
+  					\addplot table [x=maxVal,y=time2] {data_ElGamal.txt};
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
+		\noindent As we can see for both bit lengths of $P$ and $Q$ the time increases linearly with the value of \textit{MAX}. Also one can see that the difference between the first stage and second is pretty much equal to a tripling of the time needed. This is what we would expect because the length of $P$ is doubled and $Q \ \approx \ 1.5$ times the first value. Therefore the execution time is also  linearly dependent from those values.
+		\subsection*{4.2.BONUS Reduce the time of Decryption}
+		\begin{adjustwidth}{2em}{}
+			One could make the code multithreaded, such that each thread takes one number from a "token generator" and runs the code with this number. After termination of one thread it gets another number/token from the "token generator" until one found the right value for max and the whole program terminates. The speedup of this code would be equivalent to how many threads one can run because every computational step for each number is independent from each other.
+		\end{adjustwidth}
 	\end{adjustwidth}
 \end{document}
