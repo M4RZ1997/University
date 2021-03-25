@@ -1,8 +1,13 @@
 % ------------------------------------------------------------------------------------------------- %
 % 								marzstyle.sty 	Marcel Zauder 23/03/2021							%
-% Stylesheet by Marcel
+% Stylesheet by Marcel                                                                              %
 % ------------------------------------------------------------------------------------------------- %
-
+% ################################################################################################# %
+% ---------------------------------------- User Credentials --------------------------------------- %
+% PLEASE ADJUST
+\newcommand{\name}{Zauder}
+\newcommand{\surname}{Marcel Matti}
+\newcommand{\immatriculationnr}{16-124-836}
 % ################################################################################################# %
 % ----------------------------------------- Miscellaneous ----------------------------------------- %
 \usepackage{geometry}
@@ -38,7 +43,7 @@
 % ################################################################################################# %
 % --------------------------------------------- Math ---------------------------------------------- %
 \usepackage{amsmath}
-\usepackage{scalerel,amssymb}
+\usepackage{scalerel}
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % --------------------------------------- Computer Science ---------------------------------------- %
@@ -66,6 +71,7 @@
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ----------------------------------------- Graphicspath ------------------------------------------ %
+% If images are needed, best practice is to create folder images and save all pictures in there
 \graphicspath{ {./images/} }
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
@@ -91,6 +97,9 @@
 % ################################################################################################# %
 % ---------------------------------------- New Commands ------------------------------------------- %
 % ############ Header Command ############ %
+% Creates a nice header with title, subtitle, immatriculation number and name
+% (Only title and subtitle must be defined)
+% Example: \runningheads{Computer Science}{Lecture 05}
 \newcommand{\runningheads}[2]{
 	\fancyhead[L]{
 		\begin{tabular}{l}
@@ -100,17 +109,25 @@
 	}
 	\fancyhead[R]{
 		\begin{tabular}{r}
-			16-124-836 \\
-			Marcel \textsc{Zauder}
+			\immatriculationnr \\
+			\surname \ \textsc{\name}
 		\end{tabular}
 	}
 }
 % ####################################### %
 
 % ########### Section Indents ########### %
-\newcommand{\sectionstart}{\begin{adjustwidth}{2em}{2em}}
-\newcommand{\subsectionstart}{\begin{adjustwidth}{2em}{}}
-\newcommand{\sectionend}{\end{adjustwidth}}
+% Example:
+% \sectionstart
+%	...
+%	\subsectionstart
+%		...
+%	\sectionend
+%	...
+% \sectionend
+\newcommand{\sectionstart}{\begin{adjustwidth}{2em}{2em}} % Indent left and right
+\newcommand{\subsectionstart}{\begin{adjustwidth}{2em}{}} % Indent only left
+\newcommand{\sectionend}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
 % ####################################### %
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %

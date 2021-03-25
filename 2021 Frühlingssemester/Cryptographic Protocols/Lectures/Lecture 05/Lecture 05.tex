@@ -1,0 +1,182 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{5}
+
+\runningheads{Cryptographic Protocols}{Lecture 05: Zero Knowledge Proofs}
+
+\begin{document}
+ 
+	\section{Analysis}
+	\sectionstart
+		\begin{enumerate}
+			\item Completeness
+			\item Soundness
+			\item Zero-Knowledge
+		\end{enumerate}
+		\subsection{Completeness}
+		\subsectionstart
+			If $\mathbb{G}_0 \tilde{=} \mathbb{G}_1$ then $\mathbb{V}$ always accepts
+		\sectionend
+		\subsection{Soundness}
+		\subsectionstart
+			If $\mathbb{G}_0 \tilde{\neq} \mathbb{G}_1$ then $\mathbb{V}$ rejects with probability at least $\frac{1}{2}$. (But cheating prover may also succeed with probability at most $\frac{1}{2}$. This is called the \textit{soundness error} of the scheme. To reduce it to $2^{-k}$, then repeat the protocol $k$ times.)
+		\sectionend
+		\subsection{Intuition here}
+		\subsectionstart
+			\begin{enumerate}[-]
+				\item If $\mathbb{P}$ could answer both challenges, then statement must be true!
+				\item If model both as machines (Turing Machines or VMs), then one can take a snapshot of both after $\mathbb{P}$ has sent first message. Then run protocol to completion; Then restart protocol from snapshot and run it until $\mathbb{V}$ picks a different challenge (b). \\
+				This gives $\mathbb{V}$ both permutations $\rho _0$ and $\rho _1$ \\
+				$\mathbb{G}_0 \stackrel{\tilde{=}}{\rho _0} \mathbb{H}$ and $\mathbb{G}_1 \stackrel{\tilde{=}}{\rho _1} \mathbb{H}$ \\
+				so, $\mathbb{V}$ could extract the isomorphism between $\mathbb{G}_0$ and $\mathbb{G}_1$
+				\item Gedankenexperiment
+			\end{enumerate}
+		\sectionend
+		\subsection{Zero-Knowledge}
+		\subsectionstart
+			What is "computational knowledge"? \\
+			If a party can generate a random variable $T$ with exactly the same (or an indistinguishable) distribution, then this party gains no (useful) information from $T$. \\
+			Here, $\mathbb{V}$ can generate (simulate) a transcript $T$ of an accepting protocol execution. \\
+			same distribution $\Leftrightarrow$ perfect zero knowledge \\
+			indistinguishable distribution $\Leftrightarrow$ computational zero knowledge. \\
+			$\mathbb{V}$ can simulate transcript $T$:
+			\begin{enumerate}
+				\item $\tilde{b} \leftarrow \{ 0,1 \}$
+				\item $\tilde{\rho} \leftarrow$ permutation of $\mathbb{V}$
+				\item $\tilde{H} = \tilde{\rho} (\mathbb{G}_{\tilde{b}})$, i.e. isomorph to $\mathbb{G}_{\tilde{b}}$
+			\end{enumerate}
+			Distribution ($H, b, \rho$) in real protocol same as ($\tilde{H}, \tilde{b}, \tilde{\rho}$) in simulated execution.
+			\begin{enumerate}[$\Rightarrow$]
+				\item $\mathbb{V}$ leaves no information through ZKP
+				\item $\mathbb{V} $ cannot transfer this to any third party
+			\end{enumerate}
+		\sectionend
+		\subsection{What can be proved "in zero-knowledge"?}
+		\subsectionstart
+			\begin{enumerate}[-]
+				\item GI problem $\not\in$ P \\
+				\indent GI is believed to be between P and NP (like factoring, or DL)
+				\item If one NP-complete problem has a ZKP, then any problem in NP has a ZKP (polynomial time) \\
+				\indent 3-Colorability of a graph $\mathbb{G}$ is NP-complete and has ZKP
+			\end{enumerate}
+		\sectionend
+		\subsection{Can one use these protocols for online authentication?}
+		\subsectionstart
+			In principle yes, BUT in practice more efficient schemes exist.
+		\sectionend
+	\sectionend
+	
+	\section{Zero-Knowledge Proofs of Knowledge (ZKPK)}
+	\sectionstart
+		Want to prove knowledge about secrets $\alpha, \beta, \gamma, ...$ such that $\Psi (\alpha, \beta, \gamma, ...)$ holds
+		\subsubsection{Example: Prover $\mathbb{P}$}
+		\subsectionstart
+			Prover $\mathbb{P}$ knows that it knows $\alpha$ s.t. $g^{\alpha} = y$.
+		\sectionend
+		\subsubsection{Notation}
+		\subsectionstart
+			$PK \{ (\alpha, \beta, \gamma, ...): \ \Psi (\alpha, \beta, \gamma, ...)\}$, where $\alpha$, $\beta$ are known to $\mathbb{P}$ e.g. $PR\{ (\alpha): \ y = g^{\alpha} \} $
+		\sectionend
+		\subsection{Formalizing ZKPK (3-Move Protocol or $\Sigma$-Protocol)}
+		\sectionstart
+			\begin{tikzpicture}
+			\end{tikzpicture}
+			To convince $\mathbb{V}$, $\mathbb{P}$ should demonstrate that it knows such a secret $(\alpha, \beta, \gamma, ...)$ s.t. $\ \Psi (\alpha, \beta, \gamma, ...)$. \\
+			Formalized using \textit{extraction} of the secret $\alpha, \beta, ...$ from $\mathbb{P}$. Using an extractor $\mathbb{E}$, an efficient algorithm that extracts secrets $\alpha, \beta, ...$ from $\mathbb{P}$ when given two protocol runs (transcripts) with same commitment
+		\sectionend
+		\subsection{Definition}
+		\subsectionstart
+			A zero-knowledge proof-of-knowledge (ZKPK) is a 3-Move protocol for a relation $\Psi$ satisfies
+			\subsubsection{Completeness}
+			\subsectionstart
+				If $\mathbb{P}$ has input $x$ s.t. $\Psi (x)$ then $\mathbb{V}$ accepts.
+			\sectionend
+			\subsubsection{Soundness}
+			\subsectionstart
+				There is an efficient knowledge extractor $\mathbb{E}$ s.t. $\mathbb{E}((t,c,s), (t,c',s')) \rightarrow x$ when $c \neq c'$ and $\Psi (x)$ (both transcripts are from executions where $\mathbb{V}$ accepts).
+			\sectionend
+			\subsubsection{Zero-Knowledge}
+			\subsectionstart
+				$\mathbb{V}$ can simulate transcripts $(t,c,s)$ on its own with same (or indistinguishable) distribution \\
+				$\Leftrightarrow$ \\
+				$\exists$ simulator $\mathbb{S}$ that produces $(t,c,s)$... but may use different order
+			\sectionend
+		\sectionend
+		\subsection{ZKPK of a Discrete Logarithm ("Schnorr Proof")}
+		\subsectionstart
+			Again, $G = <g>$ of order $q$.
+			\[
+				\Psi (x): g^x = y
+			\]
+			\begin{tikzpicture}
+			\end{tikzpicture}
+			\subsubsection{Completeness?}
+			\subsectionstart
+				If $\mathbb{P}$ and $\mathbb{V}$ honest then:
+				\[
+					t \ = \ g^r \ = \ g^{r-cx+cx} \ = \ g^s \cdot g^{x \cdot c} \ = \ g^s \cdot y^c
+				\]
+				Thus $\mathbb{V}$ accepts.
+			\sectionend
+			\subsubsection{Soundness?}
+			\subsectionstart
+				Two executions with $(t,c,s)$ and $(t,c',s')$ (Note $c \neq c'$):
+				\begin{align*}
+					\Rightarrow & \ t = g^s \cdot y^c = g^{s'} \cdot y^{c'} \\
+					\Leftrightarrow & \ g^{s-s'} = y^{c'-c} = g^{x \cdot (c' - c)} \\
+					\Leftrightarrow & \ s - s' \equiv x (c' - c) \ (\textit{mod } q) \\
+					\Leftrightarrow & \ x \equiv \frac{s-s'}{c'-c} \ (\textit{mod } q)
+				\end{align*}
+				This $x$ satisfies $g^x = y$.
+			\sectionend
+			\subsubsection{Zero-Knowledge?}
+			\subsectionstart
+				$\mathbb{V}$ chooses triples $(t,c,s)$ on its own:
+				\begin{align*}
+					c & \leftarrow \mathbb{Z}_q \\
+					s & \leftarrow \mathbb{Z}_q \\
+					t & \leftarrow g^s \cdot y^c \indent (\textit{in G})\\
+				\end{align*}
+				A triple $(t,c,s)$ has same distribution as a transcript of an accepting execution
+			\sectionend
+		\sectionend
+	\sectionend
+	
+	\section{Commitment Schemes}
+	\sectionstart
+		\begin{enumerate}[-]
+			\item How to pick a uniformly random bit among two parties s.t. no single party can bias this bit
+			\item Cryptographic primitive for a sender $\mathbb{S}$ and a receiver $\mathbb{R}$
+		\end{enumerate}
+		\subsection{Definition}
+		\subsectionstart
+			A commitment scheme has 3 algorithms: \textsc{KeyGen()}, \textsc{Com()}, \textsc{Ver()}.
+			\begin{enumerate}
+				\item $\textsc{KeyGen()} \rightarrow pk$ \\
+				\indent probabilistic
+				\item $\textsc{Com(pk, x, r)} \rightarrow c$ \\
+				\indent deterministic \\
+				\indent outputs commitment $c \in \{ 0,1 \} ^{\star}$ \\
+				\indent $x \in \{ 0,1 \} ^{\star}$ \\
+				\indent $r \in R$, randomness, chosen $r \leftarrow R$ by $\mathbb{S}$
+				\item $\textsc{Ver(pk, x, r, c)} \rightarrow \ \textsc{true/false}$ \\
+				\indent deterministic, outputs boolean indicating whether $x$ and $r$ correctly "open" commitment $c$ \\
+				\indent Run by receiver $\mathbb{R}$
+			\end{enumerate}
+			\subsubsection{Completeness}
+			\subsectionstart
+				...
+			\sectionend
+			\subsubsection{Binding}
+			\subsectionstart
+				...
+			\sectionend
+			\subsubsection{Hiding}
+			\subsectionstart
+				...
+			\sectionend
+		\sectionend
+	\sectionend
+
+\end{document}
