@@ -47,7 +47,7 @@
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % --------------------------------------- Computer Science ---------------------------------------- %
-\usepackage{minted} % nice code snippet preview
+\usepackage{minted} % nice code snippet preview; NEEDS PYTHON pygmentize package
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % -------------------------------------------- Tables --------------------------------------------- %
@@ -118,16 +118,16 @@
 
 % ########### Section Indents ########### %
 % Example:
-% \sectionstart
+% \startsection
 %	...
-%	\subsectionstart
+%	\startsubsection
 %		...
-%	\sectionend
+%	\closesection
 %	...
-% \sectionend
-\newcommand{\sectionstart}{\begin{adjustwidth}{2em}{2em}} % Indent left and right
-\newcommand{\subsectionstart}{\begin{adjustwidth}{2em}{}} % Indent only left
-\newcommand{\sectionend}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
+% \closesection
+\newcommand{\startsection}{\begin{adjustwidth}{2em}{2em}} % Indent left and right
+\newcommand{\startsubsection}{\begin{adjustwidth}{2em}{}} % Indent only left
+\newcommand{\closesection}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
 % ####################################### %
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
