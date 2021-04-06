@@ -1,0 +1,31 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{5}
+
+\runningheads{Internet of Things}{Exercise 05}
+
+\begin{document}
+	\section{Describe three requirements of time synchronization schemes for WSNs}
+	\startsection
+		The scheme must be robust such that a node failure does not have a huge impact on other nodes or the whole network. \\
+		The scheme must support a sensible scalability factor, such that it can be deployed on a large number of nodes. \\
+		The scheme should be precise enough in order to be able to arrange the different events based on microsecond accuracy.
+	\closesection
+	
+	\section{Two sensor nodes}
+	\startsection
+		\subsection{What is clock B's drift from clock A}
+		\startsubsection
+			The drift of clock B from clock A is $5s / 100s$
+		\closesection
+		\subsection{Give an equation for the linear relation of the two clocks}
+		\startsubsection
+			$C_B (t) = 1.05 \cdot C_A (t)$
+		\closesection
+		\subsection{What is the clock skew of B to A}
+		\startsection
+			The skew is 5 seconds.
+		\closesection
+	\closesection
+\end{document}

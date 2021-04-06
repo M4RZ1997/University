@@ -1,0 +1,53 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\runningheads{Programming Language}{Exercise 05}
+
+\setcounter{chapter}{5}
+
+\begin{document}
+	\section{Which occurences are bound and which are free?}
+	\startsection
+		\subsection{$(\lambda x.x) \ y \ (\lambda y.yx ) \ x$}
+		\startsection
+			The first $x$ (This does not count the $\lambda x$ so for me the first one is always without the $\lambda$) is bound by the lambda calculus, the first $y$ is free, the second $y$ is bound by the lambda calculus, and both last $x$ are free.
+		\closesection
+		\subsection{$((\lambda x . \lambda y . \lambda z.xyz) \ (\lambda x.yx) \ y \ (\lambda x.zx)))$}
+		\startsection
+			The first $x,y,z$ are bounded by the lambda calculus, the second $x$ is bounded, the second and third $y$ are free, the third $x$ is bounded and the second $z$ is free.
+		\closesection
+		\subsection{$\lambda y.(\lambda x . \ z \ (x \ (\lambda x . \ y \ (z)))) \ (\lambda z. \ y (x \ (z)))$}
+		\startsection
+			All $x$ except the last one and all $y$ are bounded, whereas the last $x$ and the first two $z$ are free, and the last $z$ is bounded.
+		\closesection
+	\closesection
+	
+	\section{Reducing lambda-expressions to their normal form}
+	\startsection
+		\subsection{$(\lambda x . (\lambda z. \ zy) \ x) \ (\lambda x. \ x)$}
+		\startsection
+			\begin{align*}
+				(\lambda x . (\lambda z. \ zy) \ x) \ (\lambda x. \ x) \ & = \ (\lambda z. \ zy) \ (\lambda x. \ x) && \beta \textit{-reduction} \\
+				& = \ (\lambda x . \ xy) && \beta \textit{-reduction} \\
+				& = \ xy
+			\end{align*}
+		\closesection
+		\subsection{$(\lambda x . \ xxy) \ (\lambda x . \ xxy)$}
+		\startsection
+			\begin{align*}
+				(\lambda x . \ xxy) \ (\lambda x . \ xxy) \ & = \ (\lambda x . \ xxy) \ (\lambda x . \ xxy) y  && \beta \textit{-reduction} \\
+				& = \ ((\lambda x . \ xxy) \ (\lambda x . \ xxy) y) y  && \beta \textit{-reduction} \\
+				& = \ ((\lambda x . \ xxy) \ (\lambda x . \ xxy) y) y) y && \beta \textit{-reduction} \\
+				& = \ \textit{ad infinum} \Rightarrow \textit{ no normal form available}
+		\end{align*}
+		\closesection
+		\subsection{$P  \equiv (\lambda x. \ x \ (xy)) I $ where $I \equiv \lambda u. \ u$}
+		\startsection
+			\begin{align*}
+				(\lambda x. \ x \ (xy)) \ (\lambda u. \ u) \ & = \ (\lambda u. \ u) (\lambda u. \ u y) && \beta \textit{-reduction} \\
+				& = \ (\lambda u. \ uy) && \beta \textit{-reduction} \\
+				& = \ uy && \beta \textit{-reduction} \\
+			\end{align*}
+		\closesection
+	\closesection
+\end{document}
