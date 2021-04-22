@@ -28,8 +28,9 @@
 		\startsection
 			\begin{align*}
 				(\lambda x . (\lambda z. \ zy) \ x) \ (\lambda x. \ x) \ & = \ (\lambda z. \ zy) \ (\lambda x. \ x) && \beta \textit{-reduction} \\
-				& = \ (\lambda x . \ xy) && \beta \textit{-reduction} \\
-				& = \ xy
+				& = \ (\lambda x . \ x)y && \beta \textit{-reduction} \\
+				& = \ (\lambda y . \ y) && \beta \textit{-reduction} \\
+				& = \ y
 			\end{align*}
 		\closesection
 		\subsection{$(\lambda x . \ xxy) \ (\lambda x . \ xxy)$}
@@ -44,9 +45,10 @@
 		\subsection{$P  \equiv (\lambda x. \ x \ (xy)) I $ where $I \equiv \lambda u. \ u$}
 		\startsection
 			\begin{align*}
-				(\lambda x. \ x \ (xy)) \ (\lambda u. \ u) \ & = \ (\lambda u. \ u) (\lambda u. \ u y) && \beta \textit{-reduction} \\
-				& = \ (\lambda u. \ uy) && \beta \textit{-reduction} \\
-				& = \ uy && \beta \textit{-reduction} \\
+				(\lambda x. \ x \ (xy)) \ (\lambda u. \ u) \ & = \ (\lambda u. \ u) ((\lambda u. \ u) y) && \beta \textit{-reduction} \\
+				& = \ (\lambda u. \ u)y && \beta \textit{-reduction} \\
+				& = \ (\lambda y. \ y) && \beta \textit{-reduction} \\
+				& = \ y \\
 			\end{align*}
 		\closesection
 	\closesection

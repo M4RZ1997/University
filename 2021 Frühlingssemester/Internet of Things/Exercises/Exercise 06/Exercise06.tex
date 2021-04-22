@@ -1,0 +1,79 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{6}
+
+\runningheads{Internet of Things}{Exercise 06}
+
+\begin{document}
+	\section{Minimum Connected Dominating Sets based on MPR}
+	\startsection
+		\textbf{Graph:} \\
+		\startsection
+			\begin{tikzpicture}
+				\begin{scope}[every node/.style={circle,thick,draw}]
+    				\node[fill=MarzRed] (A) at (0,0) {a};
+    				\node[fill=MarzRoyal] (B) at (2,0) {b};
+    				\node[fill=MarzRoyal] (C) at (1,-2) {c};
+    				\node[fill=MarzGreen] (D) at (3,-2) {d};
+    				\node[fill=MarzRoyal] (E) at (2,-4) {e};
+    				\node[fill=MarzRoyal] (F) at (4,0) {f} ;
+    				\node[fill=MarzRoyal] (G) at (5,-2) {g} ;
+    				\node[fill=MarzRed] (H) at (6,0) {h} ;
+    				\node[fill=MarzRoyal] (I) at (4,-4) {i} ;
+    				\node[fill=MarzRed] (J) at (6,-4) {j} ;
+    				\node[fill=MarzRed] (K) at (7,-2) {k} ;
+				\end{scope}
+				\begin{scope}
+    				\path [-] (A) edge (B);
+    				\path [-] (A) edge (C);
+    				\path [-] (B) edge (C);
+    				\path [-] (B) edge (F);
+    				\path [-] (F) edge (H);
+    				\path [-] (C) edge (D);
+    				\path [-] (D) edge (B);
+    				\path [-] (D) edge (F);
+    				\path [-] (D) edge (G);
+    				\path [-] (F) edge (G);
+    				\path [-] (G) edge (H);
+    				\path [-] (G) edge (K);
+    				\path [-] (H) edge (K);
+    				\path [-] (E) edge (C);
+    				\path [-] (E) edge (D);
+    				\path [-] (E) edge (I);
+    				\path [-] (D) edge (I);
+    				\path [-] (G) edge (I);
+    				\path [-] (J) edge (I);
+    				\path [-] (J) edge (G);
+    				\path [-] (J) edge (K);
+				\end{scope}
+			\end{tikzpicture}
+		\closesection
+		1-hop neighbour list of $d$:  $L1 \ = \ [b,c,e,f,g,i]$ \\
+		2-hop neighbour list of $d$: $L2 \ = \ [a,h,j,k]$ \\
+		\\
+		1. Because $g$ is the only node which has a direct connection to the node $k$, it will be put into the set. \\
+		2. Remove nodes $h,k,j$ from $L2$ because they are now connected: $L2 \ = \ [a]$ \\
+		3. Calculate $\delta(y)$ for each node in $L1$:
+		\startsection
+			$\delta (b) \ = \ \mid [a] \mid \ = \ 1$ \\
+			$\delta (c) \ = \ \mid [a] \mid \ = \ 1$ \\
+			$\delta (e) \ = \ \mid [] \mid \ = \ 0$ \\
+			$\delta (f) \ = \ \mid [] \mid \ = \ 0$ \\
+			$\delta (g) \ = \ \mid [] \mid \ = \ 0$ \\
+			$\delta (i) \ = \ \mid [] \mid \ = \ 0$
+		\closesection
+		4. Select node $y$ with highest $\delta(y)$: Node $b$ \textsc{or} $c$ \\
+		5. Remove node $a$ from $L2$ because it is now connected $\Rightarrow$ each 2-hop node is connected and the algorithm terminates. \\
+		Therefore we have the \textbf{two} \textit{Minimum CDS} of $d$:
+		\startsection
+			$[d,g,b]$, if node $b$ has a higher remaining energy value than $c$. \\
+			$[d,g,c]$, if node $c$ has a higher remaining energy value than $b$.
+		\closesection
+	\closesection
+	
+	\section{Why is Coverage Control in WSNs essential?}
+	\startsection
+		Coverage Control is essential because the activation of too many sensors and therefore the huge generation of data can congest and overload the network and therefore can be counter-productive. Also energy can be "wasted" by using unnecessary sensors or forwarding of data packets. So it should be always checked that the sensing range $s$ is always greater than the transmission range $r$, then the active routers are sufficient and no new sensors must be introduced. In the end the main goal of coverage control is to preserve the coverage within an area.
+	\closesection
+\end{document}

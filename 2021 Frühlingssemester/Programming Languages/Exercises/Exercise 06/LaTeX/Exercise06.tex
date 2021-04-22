@@ -1,0 +1,43 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\runningheads{Programming Language}{Exercise 06}
+
+\setcounter{chapter}{5}
+
+\begin{document}
+	\section{Reduction Sequence}
+	\startsection
+		We get the following reduction sequence:
+		\begin{align*}
+			((( Y  \ t) 1 ) k) \ & \rightarrow \ \textit{\textbf{if} } (\textit{\textbf{isZero} } 1) \ 0 \ (\textit{\textbf{add} } k \ ((Y \ t) \ (\textit{\textbf{pred} } 1)k)) \\
+			& \rightarrow \ \textit{\textbf{if} } (\textit{\textbf{False}}) \ 0 \ (\textit{\textbf{add} } k \ ((Y \ t) \ 0 \ k)) \\
+			& \rightarrow \ \textit{\textbf{add} } k \ (\textit{\textbf{if} } (\textit{\textbf{isZero} } 0) \ 0 \ (\textit{\textbf{add} } k \ ((Y \ t) \ (\textit{\textbf{pred} } 0)k)) \\
+			& \rightarrow \ \textit{\textbf{add} } k \ (\textit{\textbf{if} } (\textit{\textbf{True}}) \ 0 \ (...)) \\
+			& \rightarrow \ \textit{\textbf{add} } k \ 0 \\
+			& \rightarrow \ k
+		\end{align*}
+	\closesection
+	
+	\section{List Operators}
+	\startsection
+		\subsection{Non-Recursive From}
+		\startsubsection
+			\textit{\textbf{append}} = $\lambda \textit{\textbf{f}}. \lambda l_1.\lambda l_2.$ \textit{\textbf{if}} (\textit{\textbf{null}} $l_1$) $l_2$ (\textit{\textbf{cons}} (\textit{\textbf{head}} $l_1$)) (\textit{\textbf{f}} (\textit{\textbf{tail}} $l_1$) $l_2$)
+		\closesection
+		\subsection{Test your Result}
+		\startsubsection
+			We get the following sequence with $L_1 \ = \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{cons} } 2 \textit{ \textbf{nil}})$ and $L_2 = \textit{\textbf{cons} } 3 \textit{ \textbf{nil}}$:
+			\begin{align*}
+				\textit{\textbf{append} } L_1 \ L_2 \ & \rightarrow \ \textit{\textbf{if} } (\textit{\textbf{null} } L_1) \ L_2 \ (\textit{\textbf{cons} } (\textit{\textbf{head} } L_1) \ (\textit{\textbf{f} } (\textit{\textbf{tail} } L_1) \ L_2)) \\
+				& \rightarrow \ \textit{\textbf{if} } (\textit{\textbf{False}}) \ L_2 \ (\textit{\textbf{cons} } 1 \ (\textit{\textbf{f} } (\textit{\textbf{tail} } (\textit{\textbf{cons} } 2 \textit{ \textbf{nil}})) \ L_2)) \\
+				& \rightarrow \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{if} } (\textit{\textbf{null} } (\textit{\textbf{cons} } 2 \textit{ \textbf{nil}})) \ L_2 \ (\textit{\textbf{cons} } (\textit{\textbf{head} } (\textit{\textbf{cons} } 2 \textit{ \textbf{nil}})) \ (\textit{\textbf{f} } (\textit{\textbf{tail} } (\textit{\textbf{cons} } 2 \textit{ \textbf{nil}})) \ L_2)) \\
+				& \rightarrow \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{if} } (\textit{\textbf{False}}) \ L_2 \ (\textit{\textbf{cons} } 2) \ (\textit{\textbf{f} } (\textit{\textbf{nil}}) \ L_2)) \\
+				& \rightarrow \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{cons} } 2 \ (\textit{\textbf{f} } (\textit{\textbf{nil}}) \ L_2)) \\
+				& \rightarrow \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{cons} } 2 \ (\textit{\textbf{if} } (\textit{\textbf{null} } \textit{\textbf{nil}}) \ L_2 \ (\textit{\textbf{cons} } (\textit{\textbf{head} } \textit{\textbf{nil}}) \ (\textit{\textbf{f} } (\textit{\textbf{tail} } \textit{\textbf{nil}}) \ L_2))) \\
+				& \rightarrow \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{cons} } 2 \ (\textit{\textbf{if} } (\textit{\textbf{True}}) \ \textit{\textbf{cons} } 3 \textit{ \textbf{nil}} \ (...)) \\
+				& \rightarrow \ \textit{\textbf{cons} } 1 \ (\textit{\textbf{cons} 2} \ (\textit{\textbf{cons} } 3 \textit{ \textbf{nil}}))
+			\end{align*}
+		\closesection
+	\closesection
+\end{document}

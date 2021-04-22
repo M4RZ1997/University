@@ -1,0 +1,25 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{7}
+
+\runningheads{Internet of Things}{Exercise 07}
+
+\begin{document}
+	\section{Briefly describe three Sources of Energy Waste in MAC Protocols.}
+	\startsection
+		One source is the idle listening to a channel in order to receive possible data. Another one is the occurance of overhearing, which can happen when nodes receive packets which are destined to other nodes. Usually this happens when there is a heavy load and high node density. A third example is the occurance of over-emitting. This happens when messages are transmitted but the receiver is not ready to receive it.
+	\closesection
+	
+	\section{What is the Difference between MaxMAC and WiseMac Contention-Based Protocols?}
+	\startsection
+		A WiseMAC contention-based protocol is a single-channel CSMA protocol. In this every node samples a medium with the same, but not synchronized, sampling period. The sender knows when the receiver will wake up and can postpone the preamble trnasmission. The data then follows, which can then be received and acknowledged, with possible additional scheduling, by the receiver. \\
+		On the other hand MaxMAC is an extension of this WiseMac protocol. In this the wakeup interval is not constant, but it is dynamically adjusted depending on the traffic, the more data is sent the shorter the wakeup interval is. Because staying in these different modes is limited each node communicates with each other in which state he currently is and how long he will remain in that state.
+	\closesection
+	
+	\section{LEACH is more difficult to adapt to Changing Topologies than X-MAC, describe why.}
+	\startsection
+		In LEACH a network is formed as a star topology with two hierarchical levels. Each cluster consists of one cluster head and a number of ordinary nodes which can directly communicate with these cluster heads. On the other hand the cluster heads can communicate with a single base station. Because the cluster heads and the base station can be really far away from each other direct communication with high transmission power is used for these nodes. A LEACH protocol is organised into a setup phase and a steady phase. In the setup phase nodes are self-selecting themself in order to become a cluster head and sends advertisement packets to other nodes. Based on the reveived signal strength the ordinary nodes selects his preferred cluster head and sends back an acknowledgement. In order to ensure energy efficient operation those cluster heads may rotate through several nodes such that the burden of energy consumption is distributed among several nodes. Therefore when topologies are changing this can cause many problems because of eventually needing new cluster heads or higher transmission power to be able to reach all nodes in the network. \\
+		On the other hand X-MAC uses short preamble packets with the destination embedded in the packet. In order to to provide mpore energy efficient and lower latency operation the transmission energy and period burdens are reduced as much as possible. Because in an X-MAC environment all nodes communicate with each other directly, this protocol would suit a changing topology much more than the LEACH approach.
+	\closesection
+\end{document}
