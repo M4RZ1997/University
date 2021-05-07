@@ -1,0 +1,18 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{9}
+
+\runningheads{Internet of Things}{Exercise 09}
+
+\begin{document}
+	\section{In regards to RMST Reliability Placement, briefly explain why it is beneficial to use a hop-by-hop approach over an end-to-end approach.}
+	\startsection
+		In a hop-by-hop approach each node along the path caches the data even if it was not the destination of the packet. Furthermore the loss detection happens at each node along the path and not only at the sinks (end points) which is the case in an end-to-end approach. Also repar requests do not need to travel on a reverse (multi-hop) path from the sinks to the sources, but are sent from the immediate neighbours. At least if the data is not found in the caches of a node, Repair Requests are forwarded to the next hop towards the source. Both of the last points can significantly lower the latency, because a repair request does not need to travel as far as in the end-to-end approach.
+	\closesection
+	
+	\section{TCP is a standard Internet protocol that is widely utilized in various domains. Describe three problems of TCP in relation to IoT environments.}
+	\startsection
+		One problem of TCP is that it has a particularly large header overhead which is at least 12 bytes greater in size than a UDP header. Another issue is that due to the three-way handshake a high latency can occur for the transport. The last problem is that due to the TCP being a unicast protocol it does not support any multicast.
+	\closesection
+\end{document}

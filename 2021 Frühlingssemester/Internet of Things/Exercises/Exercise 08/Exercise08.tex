@@ -1,0 +1,78 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{8}
+
+\runningheads{Internet of Things}{Exercise 08}
+
+\begin{document}
+	\section{Difference between pro-active and reactive routing. Give a scenario where each routing approach could be suitable.}
+	\startsection
+		In pro-active routing the routing tables are precalculated and the updated each time there is a change. On the other hand reactive routing establishes routes on-demand. \\
+		Because of the need ot precalculation for the pro-active approach, it is not as suitable for networks with a lot of nodes, because the overhead and the storage requirement for storing all routing tables become very high. Therefore for a network with many nodes a reactive approach is much more suitable. \\
+		For a scenario with only a few nodes but with a high demand of a low delay level between the nodes a pro-active approach is much more suitable, because in a reactive approach the routes are computed on-demand and therefore the delay level is mich higher than for the pro-active routing.
+	\closesection
+	
+	\section{Given the probabilty of packet loss in a WSN is 0.12 (both directions)[assume 1-hop communication].}
+	\startsection
+		\subsection{What is the probability for non-successful packet transmission?}
+		\startsubsection
+			$p \ = \ 1 - (1-0.12) \times (1-0.12) \ = \ 1 - 0.88 \times 0.88 \ = \ 0.2256$
+		\closesection
+		\subsection{What is the probability of successful packet delivery after 5 attempts?}
+		\startsubsection
+			$s(5) \ = \ 0.2256^{5-1} \times (1-0.2256) \ = \ 2.006 \times 10^{-3}$
+		\closesection
+	\closesection
+	
+	\section{Given the following network (not to scale):}
+	\startsection
+		\begin{tikzpicture}
+				\begin{scope}[every node/.style={circle,thick,draw,inner sep=0pt,text width=6mm,align=center,}]
+					\node[fill=MarzGreen] (S) at (0,0) {\textbf{S}};
+					
+    				\node (A) at (-1,-1) {A};
+    				\node (B) at (2,-0.5) {B};
+    				\node (C) at (3,0.5) {C};
+    				\node (D) at (3,-1.5) {D};
+    				\node (E) at (4,-0.5) {E};
+    				\node (F) at (4,-2.5) {F};
+    				\node (G) at (5.5, -2) {G};
+    				\node (H) at (4,-4) {H};
+    				\node (I) at (6,0) {I};
+    				\node (J) at (6.5,-2.5) {J};
+    				\node (K) at (7.5,-2) {K};
+    				\node (L) at (8,0.5) {L} ;
+    				\node (M) at (8.5,-0.5) {M} ;
+    				\node (N) at (8, -3) {N} ;
+    				
+    				\node[fill=MarzRed] (Dest) at (7.5,-4) {\textbf{D}};
+				\end{scope}
+				\begin{scope}
+    				\path [-] (A) edge (B);
+    				\path [-] (A) edge (S);
+    				\path [-,draw=MarzRed] (S) edge (B);
+    				\path [-] (B) edge (C);
+    				\path [-,draw=MarzRed] (B) edge (D);
+    				\path [-] (C) edge (E);
+    				\path [-] (D) edge (E);
+    				\path [-,draw=MarzRed] (D) edge (F);
+    				\path [-,draw=MarzRed] (E) edge (G);
+    				\path [-,draw=MarzRed] (E) edge (I);
+    				\path [-,draw=MarzRed] (F) edge (G);
+    				\path [-] (F) edge (H);
+    				\path [-] (H) edge (J);
+    				\path [-,draw=MarzRed] (J) edge (K);
+    				\path [-,draw=MarzRed] (K) edge (I);
+    				\path [-,draw=MarzRed] (K) edge (L);
+    				\path [-,draw=MarzRed] (L) edge (M);
+    				\path [-,draw=MarzRed] (M) edge (N);
+    				\path [-,draw=MarzRed] (N) edge (Dest);
+				\end{scope}
+		\end{tikzpicture}
+		\hfill \\
+		Derive the path that a packet is routed from the source (S) to the destination (D) with the GPSR algorithm. Quote the state (greedy $|$ perimeter) on each node for forwarding packets. \\
+		Assuming that distance (K, \textbf{D}estination) is bigger than distance (J, \textbf{D}estination): \\
+		\textbf{S}ource (greedy) $\rightarrow$ B (greedy) $\rightarrow$ D (greedy) $\rightarrow$ F (greedy) $\rightarrow$ G (perimeter) $\rightarrow$ E (perimeter) $\rightarrow$ I (perimeter) $\rightarrow$ K (greedy) $\rightarrow$ J (perimeter) $\rightarrow$ K (perimeter) $\rightarrow$ L (perimeter) $\rightarrow$ M (perimeter) $\rightarrow$ N (greedy) $\rightarrow$ \textbf{D}estination
+	\closesection
+\end{document}

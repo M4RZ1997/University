@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{B} \PYG{p}{:}\PYG{o}{:=} \PYG{n}{BD} \PYG{o}{|} \PYG{n}{D}
+\PYG{n}{D} \PYG{p}{:}\PYG{o}{:=} \PYG{l+m+mi}{0} \PYG{o}{|} \PYG{l+m+mi}{1}
+\end{Verbatim}

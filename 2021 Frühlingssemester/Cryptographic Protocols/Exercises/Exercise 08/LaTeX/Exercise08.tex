@@ -9,16 +9,123 @@
 	\startsection
 		\subsection{Correctness}
 		\startsubsection
+			We can raise the following equation:
+			\begin{align*}
+				\alpha \ & = \ m \oplus r \\
+				& = \ z \oplus y_0 \oplus r \\
+				& = \ x_c \oplus y_0 \oplus r \\
+				& = \ x_{y_0 \oplus y_1} \oplus y_0 \oplus r \\
+			\end{align*}
+			If $y_0 = y_1$, then the $\binom{2}{1}$-OTS, will return the value of $x_0 = r$, so for our equation we get:
+			\begin{align*}
+				\alpha \ & = \ x_0 \oplus y_0 \oplus r \\
+				& = \ r \oplus y_0 \oplus r \\
+				& = \ y_0 \ = \ y_1
+			\end{align*}
+			,which is obviously the correct value $\mathbb{S}$ wants to have. \\
+			If $y_0 = \neg y_1$, then the $\binom{2}{1}$-OTS, will return the value of $x_1 = r \oplus d$ , so for our equation we get:
+			\begin{align*}
+				\alpha \ & = \ x_1 \oplus y_0 \oplus r \\
+				& = \ r \oplus d \oplus y_0 \oplus r \\
+				& = \ d \oplus y_0
+			\end{align*}
+			, which is $\alpha = y_0$, if $d = 0$, and $\alpha = y_1$, if $d = 1$.
 		\closesection
 		\subsection{Security for S}
 		\startsubsection
+			The receiver $\mathbb{R}$ only learns the blinded values of either $x_0$ or $x_1$. Therefore it cannot derive from these values what the chosen value of $d$ was. 
 		\closesection
 		\subsection{Security for R}
 		\startsubsection
+			Because $\mathbb{R}$ is calculating $x_c \oplus y_0$, $\mathbb{S}$ cannot calculate the other value, which $\mathbb{S}$ did not receive, because it cannot work back the index of which $x_c$ $\mathbb{R}$ has gotten from the $\binom{2}{1}$-OTS. Therefore also the security for $\mathbb{R}$ is given.
 		\closesection
 	\closesection
-	
+	\newpage
 	\section{More efficient Oblivious Transfer}
 	\startsection
+		\subsection{Protocol}
+		\startsubsection
+			\subsubsection{Key Generation}
+			\startsubsection
+				We know that $n = 2^k$ is the number of inputs. Let $l_1, ..., l_k$ and $r_1,...,r_k$ be random bits. Furthermore $j_0 = 0$. We now consider a balanced binary tree of depth $k$ and $j_0$ as its root node. Let $j_{i,x}$ be any non-root node in the tree, whereas $i \geq 1$ and $x \in \{l, r \}^i$ which indicates which left and right edges to travers to reach each node. \\
+				All $j_{i,x}$ are defined as follows:
+				\[
+					j_{i, x'l} \ = \ j_{i - 1, x'} \oplus l_i \indent \textit{For left children nodes} $$$$
+					j_{i, x'r} \ = \ j_{i - 1, x'} \oplus r_i \indent \textit{For right children nodes}
+				\]
+				$x' \in \{l, r \} ^{i-1}$ describes the sequence of edges to reach the predecessor of node $j_{i,x}$. \\
+				The leaf nodes of the tree are named $k_0,...,k_{n-1}$. This leaves are random bits, which are the solution of an \textsc{xor} operation of random bits. Furthermore for each $k_i, k_j$, where $j \neq i$ the XOR operation sequence differs in at least one instance applied to $j_0$ to produce it. Because all $l_i$ and $r_i$ are randomly chosen the knowledge of any $k_i$ does not leak any information of another $k_j$ where $i \neq j$.
+			\closesection
+			\subsubsection{$\binom{n}{1}$-Oblivious Transfer}
+			\startsubsection
+				We are now constructing a protocol for an $\binom{n}{1}$-OT, where $n = 2^k$:
+				\begin{adjustwidth}{-4em}{0em}
+				\begin{center}
+					\begin{tabular}{lcl}
+						\hline
+						\textbf{S($x_0 ,..., x_{n-1}$)} && \textbf{R(y)} \\
+						\hline
+						$j_0 = 0$ && $k_y = 0$ \\
+						&& Binary representation of $y$: \\
+						&& $(y_1 ... y_k)_2 := y$ \\
+						\textit{Key generation as shown in the previous section} \\
+						\textsc{For} $i = 1$ \textsc{to} $k$: \\
+						$\ \ \ \ l_i \leftarrow \{ 0,1 \}$ \\
+						$\ \ \ \ r_i \leftarrow \{ 0,1 \}$ \\
+						$\ \ \ \ j_{i, x'l} \ = \ j_{i - 1, x'} \oplus l_i$ \\
+						$\ \ \ \ j_{i, x'r} \ = \ j_{i - 1, x'} \oplus r_i$ \\
+						\textit{Setting up the leaves:} \\
+						$k_0, ..., k_{n-1} \ = \ j_{k, l...l}, ..., j_{k, r...r}$ \\
+						\\
+						$c_i = x_i \oplus k_i$ & $\stackrel{c_0, ..., c_{n-1}}{\longrightarrow}$ \\
+						\textsc{For} $i = 1$ \textsc{to} $k$: && \textsc{For} $i = 1$ \textsc{to} $k$: \\
+						& 
+							\begin{tabular}{c|c|c}
+								\cline{2-2}
+								$\stackrel{l_i , r_i}{\longrightarrow}$ & \multirow{2}{*}{$\binom{2}{1}$-OT} & $\stackrel{y_i}{\longleftarrow}$ \\
+								&& $\stackrel{j_i}{\longrightarrow}$ \\
+								\cline{2-2}
+							\end{tabular}
+						\\
+						&& $k_y = k_y \oplus j_i$ \\
+						&& \textsc{Return} $c_y \oplus k_y$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\end{adjustwidth}
+			\closesection
+		\closesection
+		\subsection{Cost}
+		\startsubsection
+			We assume that the $\binom{2}{1}$-OT is implemented as defined in the lecture. Therefore this protocol uses a total of:
+			\begin{enumerate}[\small \textbullet]
+				\item $k$ $\binom{2}{1}$-OT are used, therefore:
+				\begin{enumerate}[-]
+					\item $2k$ public-key operations
+					\item $3k$ message rounds
+					\item $O(k(1 + \lambda)) = O(k + k \lambda)$ bits
+				\end{enumerate}
+				\item $2k$ random bits
+				\item $2^{k+1} - 2$ XOR operations for key generation
+				\item $2^k$ XOR operations for encryption
+				\item $k$ XOR operations for key retrieval
+				\item $1$ XOR operation for decryption
+				\item $2^k = n$ bits and one message round for the transfer of the ciphertexts
+			\end{enumerate}
+			\hfill \\
+			Therefore our total costs are:
+			\paragraph{Computational Cost}
+			\startsubsection
+				$2k = 2 \log_{2}(n)$ expensive public-key operations and $O(n)$ cheap XOR operations
+			\closesection
+			\paragraph{Latency}
+			\startsubsection
+				$3k + 1$ message rounds
+			\closesection
+			\paragraph{Communication Complexity}
+			\startsubsection
+				$O(n + k \lambda)$ bits transferred
+			\closesection
+		\closesection
 	\closesection
 \end{document}

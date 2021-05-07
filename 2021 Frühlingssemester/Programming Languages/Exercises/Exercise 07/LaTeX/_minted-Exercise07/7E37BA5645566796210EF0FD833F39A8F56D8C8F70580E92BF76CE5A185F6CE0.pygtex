@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Prog} \PYG{p}{:}\PYG{o}{:=} \PYG{l+s+s1}{\PYGZsq{}ON\PYGZsq{}} \PYG{n}{Stmt}
+\PYG{n}{Stmt} \PYG{p}{:}\PYG{o}{:=} \PYG{n}{Expr} \PYG{l+s+s1}{\PYGZsq{}TOTAL\PYGZsq{}} \PYG{n}{Stmt}
+     \PYG{o}{|}   \PYG{n}{Expr} \PYG{l+s+s1}{\PYGZsq{}TOTAL\PYGZsq{}} \PYG{l+s+s1}{\PYGZsq{}OFF\PYGZsq{}}
+\PYG{n}{Expr} \PYG{p}{:}\PYG{o}{:=} \PYG{n}{Expr1} \PYG{l+s+s1}{\PYGZsq{}+\PYGZsq{}} \PYG{n}{Expr2}
+     \PYG{o}{|}   \PYG{n}{Expr1} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}} \PYG{n}{Expr2}
+     \PYG{o}{|}   \PYG{n}{Expr1} \PYG{l+s+s1}{\PYGZsq{}*\PYGZsq{}} \PYG{n}{Expr2}
+     \PYG{o}{|}   \PYG{n}{Expr1} \PYG{l+s+s1}{\PYGZsq{}/\PYGZsq{}} \PYG{n}{Expr2}
+     \PYG{o}{|}   \PYG{l+s+s1}{\PYGZsq{}IF\PYGZsq{}} \PYG{n}{Expr1} \PYG{l+s+s1}{\PYGZsq{},\PYGZsq{}} \PYG{n}{Expr2} \PYG{l+s+s1}{\PYGZsq{},\PYGZsq{}} \PYG{n}{Expr3}
+     \PYG{o}{|}   \PYG{l+s+s1}{\PYGZsq{}LASTANSWER\PYGZsq{}}
+     \PYG{o}{|}   \PYG{l+s+s1}{\PYGZsq{}(\PYGZsq{}} \PYG{n}{Expr} \PYG{l+s+s1}{\PYGZsq{})\PYGZsq{}}
+     \PYG{o}{|}   \PYG{n}{Num}
+\end{Verbatim}

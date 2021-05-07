@@ -1,0 +1,106 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\runningheads{Programming Language}{Exercise 07}
+
+\setcounter{chapter}{7}
+
+\begin{document}
+	\section{Calculator Language Extension Subtraction  and Division}
+	\startsection
+		\subsection{Abstract Syntax}
+		\startsubsection
+			\begin{minted}{python}
+Prog ::= 'ON' Stmt
+Stmt ::= Expr 'TOTAL' Stmt
+     |   Expr 'TOTAL' 'OFF'
+Expr ::= Expr1 '+' Expr2
+     |   Expr1 '-' Expr2
+     |   Expr1 '*' Expr2
+     |   Expr1 '/' Expr2
+     |   'IF' Expr1 ',' Expr2 ',' Expr3
+     |   'LASTANSWER'
+     |   '(' Expr ')'
+     |   Num
+			\end{minted}
+		\closesection
+		\subsection{Semantic Functions}
+		\startsubsection
+			In order to be able to output \texttt{"NOT A NUMBER"} the domain must be extended so the program can also return a \textit{string}. Furthermoe I make the assumption that when the calculator is returnig \texttt{"NOT A NUMBER"} the following expressions shall be disregarded.
+			\subsubsection{Programs}
+			\startsubsection
+				\textbf{P}: Program $\rightarrow$ (Int*$|$String) \\
+				\textbf{P}[ON S] = \textbf{S} [S] (0)
+			\closesection
+			\subsubsection{Statements}
+			\startsubsection
+				\textbf{S}: ExprSequence $\rightarrow$ (Int$|$String) $\rightarrow$ (Int*$|$String) \\
+				\textbf{S}[E TOTAL S](n) = let n' = \textbf{E}(n) in \textit{cons}(n', \textbf{S}[S](n')) \\
+				\textbf{S}[E TOTAL OFF](n) = [\textbf{E}[E](n)]
+			\closesection
+			\subsubsection{Expressions}
+			\startsubsection
+				\textbf{E}: Expression $\rightarrow$ (Int$|$String) $\rightarrow$ (Int$|$String) \\
+				\textbf{E}[E](\texttt{"NOT A NUMBER"}) $\rightarrow$ \texttt{"NOT A NUMBER"} \\
+				\textbf{E}[E1 + E2](n) = \textbf{E}[E1](n) + \textbf{E}[E2](n) \\
+				\textbf{E}[E1 - E2](n) = \textbf{E}[E1](n) - \textbf{E}[E2](n) \\
+				\textbf{E}[E1 * E2](n) = \textbf{E}[E1](n) $\times$ \textbf{E}[E2](n) \\
+				\textbf{E}[E1 / E2](n) = E[IF E2, \texttt{"NOT A NUMBER"}, \textbf{E}[E1](n) : \textbf{E}[E2](n)](n) \\
+				\textbf{E}[IF E1, E2, E3](n) = if E[E1](n) = 0 then \textbf{E}[E2](n) else \textbf{E}[E3](n) \\
+				\textbf{E}[LASTANSWER](n) = n \\
+				\textbf{E}[(E)](n) = \textbf{E}[E](n)  \\
+				\textbf{E}[N](n) = N \\
+				\textbf{E}[String](n) = String \\
+				\textbf{E}[E anyOperator \texttt{"NOT A NUMBER"}] = \texttt{"NOT A NUMBER"}
+			\closesection
+		\closesection
+	\closesection
+	\newpage
+	\section{Language of Binary Numbers}
+	\startsection
+		My solution is based on the \textbf{Denotational Semantics} by \textit{D. A. Schmidt}.
+		\subsection{Abstract Syntax}
+		\startsubsection
+			B denotes the binary numeral and D the binary digit. A binary numeral is a sequence of binary digits. The binary number should be mapped to its corresponding decimal number:
+			\begin{minted}{python}
+B ::= BD | D
+D ::= 0 | 1
+			\end{minted}
+		\closesection
+		\subsection{Semantic Functions}
+		\startsubsection
+			\textbf{B}: Binary-Numeral $\rightarrow$ Int \\
+			\textbf{B}[BD] = ((\textbf{B}[B] * 2) + \textbf{D}[D] \\
+			\textbf{B}[D] = \textbf{D}[D] \\
+			\\
+			\textbf{D}: Binary-Numeral $\rightarrow$ Int \\
+			\textbf{D}[0] = 0 \\
+			\textbf{D}[1] = 1 \\
+		\closesection
+		\subsection{Domain}
+		\startsubsection
+			The domain of this language would be: \\
+			\texttt{Binary-Numeral} $\rightarrow$ \texttt{Binary-Numeral} $\rightarrow$ \texttt{Int} $\rightarrow$ \texttt{Int}
+		\closesection
+		\subsection{Test}
+		\startsubsection
+			We want to test our function with the input '10100':
+			\begin{align*}
+				\textbf{B}['10100'] \ & = \ ((\textbf{B}[1010]*2) + \textbf{D}[0]) \\
+				& = \ ((((\textbf{B}[101]*2) + \textbf{D}[0])*2) + \textbf{D}[0]) \\
+				& = \ (((((\textbf{B}[10]*2) + \textbf{D}[1])*2) + \textbf{D}[0])*2) + \textbf{D}[0]) \\
+				& = \ ((((((((\textbf{B}[1]*2) + \textbf{D}[0])*2) + \textbf{D}[1])*2) + \textbf{D}[0])*2) + \textbf{D}[0]) \\
+				& = \ ((((((((\textbf{D}[1]*2) + \textbf{D}[0])*2) + \textbf{D}[1])*2) + \textbf{D}[0])*2) + \textbf{D}[0]) \\
+				& = \ ((((((((1*2) + 0)*2) + 1)*2) + 0)*2) + 0) \\
+				& = \ (((((((2 + 0)*2) + 1)*2) + 0)*2) + 0) \\
+				& = \ ((((((2*2) + 1)*2) + 0)*2) + 0) \\
+				& = \ (((((4 + 1)*2) + 0)*2) + 0) \\
+				& = \ ((((5*2) + 0)*2) + 0) \\
+				& = \ (((10 + 0)*2) + 0) \\
+				& = \ ((10*2) + 0) \\
+				& = \ (20 + 0) \\
+				& = \ 20
+			\end{align*}
+		\closesection
+	\closesection
+\end{document}

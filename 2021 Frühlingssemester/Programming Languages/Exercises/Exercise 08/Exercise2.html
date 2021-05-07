@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Platypus</title>
+    <script type="text/javascript">
+        //Please write your code here
+        var animal = {}
+
+        var mammal = Object.create(animal);
+        mammal.numNip = 0;
+        mammal.getNumberOfNipples = function() {
+            alert("Number of nipples : " + this.numNip.toString());
+        }
+        mammal.nurse = function () {
+            alert("I am nursing");
+        }
+
+        var oviparus = Object.create(animal);
+        oviparus.spawn = function () {
+            alert("I am laying eggs");
+        }
+
+        var dolphin = Object.create(mammal);
+        dolphin.numNip = 2;
+        dolphin.swim = function () {
+            alert("I can swim");
+        }
+
+        var snake = Object.create(oviparus);
+        snake.crawl = function () {
+            alert("I am crawling");
+        }
+
+        var platypus = Object.assign(mammal,oviparus);
+        platypus.numNip = 6;
+    </script>
+</head>
+<body>
+<pre id="output"></pre>
+<a href="Platypus.html#" onclick="mammal.getNumberOfNipples();">mammal's number of nipples</a> <br><br>
+
+<a href="Platypus.html#" onclick="dolphin.swim();">dolphin swimming</a> <br><br>
+<a href="Platypus.html#" onclick="dolphin.nurse();">dolphin's nursing</a> <br><br>
+<a href="Platypus.html#" onclick="dolphin.getNumberOfNipples();">dolphin number of nipples</a> <br><br>
+
+
+<a href="Platypus.html#" onclick="snake.crawl();">snake crawling</a> <br><br>
+<a href="Platypus.html#" onclick="snake.spawn();">snake spawning</a> <br><br>
+
+<a href="Platypus.html#" onclick="platypus.nurse();">platypus nursing</a> <br><br>
+<a href="Platypus.html#" onclick="platypus.spawn();">platypus spawning</a> <br><br>
+<a href="Platypus.html#" onclick="platypus.getNumberOfNipples();">platypus's number of nipples</a> <br><br>
+</body>
+</html>
+
+
+
