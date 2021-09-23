@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  4 MAY 2021 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  7 SEP 2021 11:18
 entering extended mode
 **./BACHELOR-Arbeit.tex
 (BACHELOR-Arbeit.tex
@@ -172,31 +172,707 @@ Package: lipsum 2019/01/02 v2.2 150 paragraphs of Lorem Ipsum dummy text
 .tex"
 File: lipsum.ltd.tex 2019/01/02 v2.2 The Lorem ipsum dummy text
 ))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgfplots\pgfplots
+.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+ts.revision.tex")
+Package: pgfplots 2018/03/28 v1.16 Data Visualization (1.16)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/frontendlayer
+\tikz.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/basiclayer\pg
+f.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgf
+rcs.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfutil-common.tex"
+\pgfutil@everybye=\toks18
+\pgfutil@tempdima=\dimen146
+\pgfutil@tempdimb=\dimen147
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfutil-common-lists.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfutil-latex.def"
+\pgfutil@abb=\box48
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ms\everyshi.sty"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfrcs.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf\pgf.revisio
+n.tex")
+Package: pgfrcs 2020/01/08 v3.1.5b (3.1.5b)
+))
+Package: pgf 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/basiclayer\pg
+fcore.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/systemlayer\p
+gfsys.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer
+\pgfsys.code.tex"
+Package: pgfsys 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfkeys.code.tex"
+\pgfkeys@pathtoks=\toks19
+\pgfkeys@temptoks=\toks20
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfkeysfiltered.code.tex"
+\pgfkeys@tmptoks=\toks21
+))
+\pgf@x=\dimen148
+\pgf@y=\dimen149
+\pgf@xa=\dimen150
+\pgf@ya=\dimen151
+\pgf@xb=\dimen152
+\pgf@yb=\dimen153
+\pgf@xc=\dimen154
+\pgf@yc=\dimen155
+\pgf@xd=\dimen156
+\pgf@yd=\dimen157
+\w@pgf@writea=\write3
+\r@pgf@reada=\read3
+\c@pgf@counta=\count188
+\c@pgf@countb=\count189
+\c@pgf@countc=\count190
+\c@pgf@countd=\count191
+\t@pgf@toka=\toks22
+\t@pgf@tokb=\toks23
+\t@pgf@tokc=\toks24
+\pgf@sys@id@count=\count192
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer
+\pgf.cfg"
+File: pgf.cfg 2020/01/08 v3.1.5b (3.1.5b)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer
+\pgfsys-pdftex.def"
+File: pgfsys-pdftex.def 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer
+\pgfsys-common-pdf.def"
+File: pgfsys-common-pdf.def 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer
+\pgfsyssoftpath.code.tex"
+File: pgfsyssoftpath.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfsyssoftpath@smallbuffer@items=\count193
+\pgfsyssoftpath@bigbuffer@items=\count194
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/systemlayer
+\pgfsysprotocol.code.tex"
+File: pgfsysprotocol.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xcolor\xcolor.sty
+"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\colo
+r.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcore.code.tex"
+Package: pgfcore 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+h.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hcalc.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hutil.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hparser.code.tex"
+\pgfmath@dimen=\dimen158
+\pgfmath@count=\count195
+\pgfmath@box=\box49
+\pgfmath@toks=\toks25
+\pgfmath@stack@operand=\toks26
+\pgfmath@stack@operation=\toks27
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.basic.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.trigonometric.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.random.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.comparison.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.base.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.round.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.misc.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfunctions.integerarithmetics.code.tex")))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+hfloat.code.tex"
+\c@pgfmathroundto@lastzeros=\count196
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfint
+.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorepoints.code.tex"
+File: pgfcorepoints.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@picminx=\dimen159
+\pgf@picmaxx=\dimen160
+\pgf@picminy=\dimen161
+\pgf@picmaxy=\dimen162
+\pgf@pathminx=\dimen163
+\pgf@pathmaxx=\dimen164
+\pgf@pathminy=\dimen165
+\pgf@pathmaxy=\dimen166
+\pgf@xx=\dimen167
+\pgf@xy=\dimen168
+\pgf@yx=\dimen169
+\pgf@yy=\dimen170
+\pgf@zx=\dimen171
+\pgf@zy=\dimen172
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorepathconstruct.code.tex"
+File: pgfcorepathconstruct.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@path@lastx=\dimen173
+\pgf@path@lasty=\dimen174
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorepathusage.code.tex"
+File: pgfcorepathusage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@shorten@end@additional=\dimen175
+\pgf@shorten@start@additional=\dimen176
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorescopes.code.tex"
+File: pgfcorescopes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfpic=\box50
+\pgf@hbox=\box51
+\pgf@layerbox@main=\box52
+\pgf@picture@serial@count=\count197
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoregraphicstate.code.tex"
+File: pgfcoregraphicstate.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgflinewidth=\dimen177
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoretransformations.code.tex"
+File: pgfcoretransformations.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@pt@x=\dimen178
+\pgf@pt@y=\dimen179
+\pgf@pt@temp=\dimen180
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorequick.code.tex"
+File: pgfcorequick.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoreobjects.code.tex"
+File: pgfcoreobjects.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorepathprocessing.code.tex"
+File: pgfcorepathprocessing.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorearrows.code.tex"
+File: pgfcorearrows.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfarrowsep=\dimen181
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoreshade.code.tex"
+File: pgfcoreshade.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@max=\dimen182
+\pgf@sys@shading@range@num=\count198
+\pgf@shadingcount=\count199
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoreimage.code.tex"
+File: pgfcoreimage.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoreexternal.code.tex"
+File: pgfcoreexternal.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfexternal@startupbox=\box53
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorelayers.code.tex"
+File: pgfcorelayers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcoretransparency.code.tex"
+File: pgfcoretransparency.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorepatterns.code.tex"
+File: pgfcorepatterns.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/basiclayer\
+pgfcorerdf.code.tex"
+File: pgfcorerdf.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgf
+moduleshapes.code.tex"
+File: pgfmoduleshapes.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfnodeparttextbox=\box54
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgf
+moduleplot.code.tex"
+File: pgfmoduleplot.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/compatibility
+\pgfcomp-version-0-65.sty"
+Package: pgfcomp-version-0-65 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@nodesepstart=\dimen183
+\pgf@nodesepend=\dimen184
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/compatibility
+\pgfcomp-version-1-18.sty"
+Package: pgfcomp-version-1-18 2020/01/08 v3.1.5b (3.1.5b)
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgf
+for.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/utilities\pgf
+keys.sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gfkeys.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pgf/math\pgfmath.
+sty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+h.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/utilities\p
+gffor.code.tex"
+Package: pgffor 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/math\pgfmat
+h.code.tex")
+\pgffor@iter=\dimen185
+\pgffor@skip=\dimen186
+\pgffor@stack=\toks28
+\pgffor@toks=\toks29
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlay
+er/tikz\tikz.code.tex"
+Package: tikz 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries\p
+gflibraryplothandlers.code.tex"
+File: pgflibraryplothandlers.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgf@plot@mark@count=\count266
+\pgfplotmarksize=\dimen187
+)
+\tikz@lastx=\dimen188
+\tikz@lasty=\dimen189
+\tikz@lastxsaved=\dimen190
+\tikz@lastysaved=\dimen191
+\tikz@lastmovetox=\dimen192
+\tikz@lastmovetoy=\dimen193
+\tikzleveldistance=\dimen194
+\tikzsiblingdistance=\dimen195
+\tikz@figbox=\box55
+\tikz@figbox@bg=\box56
+\tikz@tempbox=\box57
+\tikz@tempbox@bg=\box58
+\tikztreelevel=\count267
+\tikznumberofchildren=\count268
+\tikznumberofcurrentchild=\count269
+\tikz@fig@count=\count270
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgf
+modulematrix.code.tex"
+File: pgfmodulematrix.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+\pgfmatrixcurrentrow=\count271
+\pgfmatrixcurrentcolumn=\count272
+\pgf@matrix@numberofcolumns=\count273
+)
+\tikz@expandcount=\count274
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarytopaths.code.tex"
+File: tikzlibrarytopaths.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+ts.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tscore.code.tex"
+\t@pgfplots@toka=\toks30
+\t@pgfplots@tokb=\toks31
+\t@pgfplots@tokc=\toks32
+\pgfplots@tmpa=\dimen196
+\c@pgfplots@coordindex=\count275
+\c@pgfplots@scanlineindex=\count276
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/sys\pg
+fplotssysgeneric.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/libs\p
+gfplotslibrary.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/oldpgf
+compatib\pgfplotsoldpgfsupp_loader.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries\p
+gflibraryfpu.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/util\p
+gfplotsutil.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/listst
+ructure\pgfplotsliststructure.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/listst
+ructure\pgfplotsliststructureext.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/listst
+ructure\pgfplotsarray.code.tex"
+\c@pgfplotsarray@tmp=\count277
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/listst
+ructure\pgfplotsmatrix.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/numtab
+le\pgfplotstableshared.code.tex"
+\c@pgfplotstable@counta=\count278
+\t@pgfplotstable@a=\toks33
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/listst
+ructure\pgfplotsdeque.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/util\p
+gfplotsbinary.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/util\p
+gfplotsbinary.data.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/util\p
+gfplotsutil.verb.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/libs\p
+gflibrarypgfplots.surfshading.code.tex"
+\c@pgfplotslibrarysurf@no=\count279
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/sys\pg
+flibrarypgfplots.surfshading.pgfsys-pdftex.def")))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/util\p
+gfplotscolormap.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots/util\p
+gfplotscolor.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tsstackedplots.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tsplothandlers.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tsmeshplothandler.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tsmeshplotimage.code.tex")))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+ts.scaling.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tscoordprocessing.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+ts.errorbars.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+ts.markers.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+tsticks.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgfplots\pgfplo
+ts.paths.code.tex")
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarydecorations.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/modules\pgf
+moduledecorations.code.tex"
+\pgfdecoratedcompleteddistance=\dimen197
+\pgfdecoratedremainingdistance=\dimen198
+\pgfdecoratedinputsegmentcompleteddistance=\dimen199
+\pgfdecoratedinputsegmentremainingdistance=\dimen256
+\pgf@decorate@distancetomove=\dimen257
+\pgf@decorate@repeatstate=\count280
+\pgfdecorationsegmentamplitude=\dimen258
+\pgfdecorationsegmentlength=\dimen259
+)
+\tikz@lib@dec@box=\box59
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarydecorations.pathmorphing.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries/d
+ecorations\pgflibrarydecorations.pathmorphing.code.tex"))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibrarydecorations.pathreplacing.code.tex"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries/d
+ecorations\pgflibrarydecorations.pathreplacing.code.tex"))
+\pgfplots@numplots=\count281
+\pgfplots@xmin@reg=\dimen260
+\pgfplots@xmax@reg=\dimen261
+\pgfplots@ymin@reg=\dimen262
+\pgfplots@ymax@reg=\dimen263
+\pgfplots@zmin@reg=\dimen264
+\pgfplots@zmax@reg=\dimen265
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/frontendlay
+er/tikz/libraries\tikzlibraryplotmarks.code.tex"
+File: tikzlibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pgf/libraries\p
+gflibraryplotmarks.code.tex"
+File: pgflibraryplotmarks.code.tex 2020/01/08 v3.1.5b (3.1.5b)
+)))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.s
+ty"
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption3.
+sty"
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen266
+\captionmargin@=\dimen267
+\captionwidth=\dimen268
+\caption@tempdima=\dimen269
+\caption@indent=\dimen270
+\caption@parindent=\dimen271
+\caption@hangindent=\dimen272
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count282
+\c@continuedfloat=\count283
+Package caption Info: float package is loaded.
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\subcaptio
+n.sty"
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+\c@subfigure=\count284
+\c@subtable=\count285
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/minted\minted.sty
+"
+Package: minted 2017/07/19 v2.5 Yet another Pygments shim for LaTeX
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvoptio
+ns.sty"
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds
+.sty"
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvset
+keys.sty"
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fvextra\fvextra.s
+ty"
+Package: fvextra 2019/02/04 v1.4 fvextra - extensions and patches for fancyvrb
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
 ("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/etoolbox\etoolbox
 .sty"
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count188
+\etb@tempcnta=\count286
 )
-\chapheadtopskip=\skip60
-\chapheadsep=\skip61
-\chapheadbelowskip=\skip62
-) (BACHELOR-Arbeit.aux)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/fancyvrb\fancyvrb
+.sty"
+Package: fancyvrb 2021/01/20 v3.7 verbatim text (tvz,hv)
+\FV@CodeLineNo=\count287
+\FV@InFile=\read4
+\FV@TabBox=\box60
+\c@FancyVerbLine=\count288
+\FV@StepNumber=\count289
+\FV@OutFile=\write4
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/upquote\upquote.s
+ty"
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lineno\lineno.sty
+"
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count290
+\output=\toks34
+\linenoprevgraf=\count291
+\linenumbersep=\dimen273
+\linenumberwidth=\dimen274
+\c@linenumber=\count292
+\c@pagewiselinenumber=\count293
+\c@LN@truepage=\count294
+\c@internallinenumber=\count295
+\c@internallinenumbers=\count296
+\quotelinenumbersep=\dimen275
+\bframerule=\dimen276
+\bframesep=\dimen277
+\bframebox=\box61
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\c@FV@TrueTabGroupLevel=\count297
+\c@FV@TrueTabCounter=\count298
+\FV@TabBox@Group=\box62
+\FV@TmpLength=\skip60
+\c@FV@HighlightLinesStart=\count299
+\c@FV@HighlightLinesStop=\count300
+\FV@LoopCount=\count301
+\FV@NCharsBox=\box63
+\FV@BreakIndent=\dimen278
+\FV@BreakIndentNChars=\count302
+\FV@BreakSymbolSepLeft=\dimen279
+\FV@BreakSymbolSepLeftNChars=\count303
+\FV@BreakSymbolSepRight=\dimen280
+\FV@BreakSymbolSepRightNChars=\count304
+\FV@BreakSymbolIndentLeft=\dimen281
+\FV@BreakSymbolIndentLeftNChars=\count305
+\FV@BreakSymbolIndentRight=\dimen282
+\FV@BreakSymbolIndentRightNChars=\count306
+\c@FancyVerbLineBreakLast=\count307
+\FV@LineBox=\box64
+\FV@LineIndentBox=\box65
+\FV@LineWidth=\dimen283
+) ("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\calc.sty"
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count308
+\calc@Bcount=\count309
+\calc@Adimen=\dimen284
+\calc@Bdimen=\dimen285
+\calc@Askip=\skip61
+\calc@Bskip=\skip62
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count310
+\calc@Cskip=\skip63
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\shellesc.st
+y"
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 75.
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ifplatform\ifplat
+form.sty"
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftex
+cmds.sty"
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwa
+rerr.sty"
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/catchfile\catch
+file.sty"
+Package: catchfile 2019/12/09 v1.8 Catch the contents of a file (HO)
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/etexcmds\etexcm
+ds.sty"
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\ifluatex.
+sty"
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+))
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/xstring\xstring.s
+ty"
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/generic/xstring\xstring
+.tex"
+\integerpart=\count311
+\decimalpart=\count312
+)
+Package: xstring 2019/02/06 v1.83 String manipulations (CT)
+)
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/framed\framed.sty
+"
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip64
+\fb@frw=\dimen286
+\fb@frh=\dimen287
+\FrameRule=\dimen288
+\FrameSep=\dimen289
+)
+\minted@appexistsfile=\read5
+\minted@bgbox=\box66
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count313
+\c@minted@pygmentizecounter=\count314
+\@float@every@listing=\toks35
+\c@listing=\count315
+)
+runsystem(if not exist _minted-BACHELOR-Arbeit mkdir _minted-BACHELOR-Arbeit)..
+.executed.
+
+\chapheadtopskip=\skip65
+\chapheadsep=\skip66
+\chapheadbelowskip=\skip67
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: 
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: includehead 
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
+* v-part:(T,H,B)=(51.8381pt, 672.0pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=472.03123pt
+* \textheight=630.0pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-20.43188pt
+* \headheight=12.0pt
+* \headsep=30.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/changepage\change
+page.sty"
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count316
+\cp@tempcnt=\count317
+))
+runsystem(for ^%i in (pygmentize.exe pygmentize.bat pygmentize.cmd) do set > BA
+CHELOR-Arbeit.aex <nul: /p x=^%~$PATH:i>> BACHELOR-Arbeit.aex)...executed.
+
+runsystem(del BACHELOR-Arbeit.aex)...executed.
+
+ (BACHELOR-Arbeit.aux)
 \openout1 = `BACHELOR-Arbeit.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -205,18 +881,18 @@ LaTeX Font Info:    ... okay on input line 4.
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
-* v-part:(T,H,B)=(99.58464pt, 581.57433pt, 113.81102pt)
+* modes: includehead 
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
+* v-part:(T,H,B)=(51.8381pt, 672.0pt, 71.13188pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=430.00462pt
-* \textheight=581.57433pt
-* \oddsidemargin=19.8752pt
-* \evensidemargin=19.8752pt
-* \topmargin=-9.68535pt
+* \textwidth=472.03123pt
+* \textheight=630.0pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-20.43188pt
 * \headheight=12.0pt
-* \headsep=25.0pt
+* \headsep=30.0pt
 * \topskip=10.0pt
 * \footskip=30.0pt
 * \marginparwidth=65.0pt
@@ -236,41 +912,55 @@ LaTeX Font Info:    ... okay on input line 4.
 ("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-
 pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count189
-\scratchdimen=\dimen146
-\scratchbox=\box48
-\nofMPsegments=\count190
-\nofMParguments=\count191
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count192
-\MPscratchDim=\dimen147
-\MPnumerator=\count193
-\makeMPintoPDFobject=\count194
-\everyMPtoPDFconversion=\toks19
+\scratchcounter=\count318
+\scratchdimen=\dimen290
+\scratchbox=\box67
+\nofMPsegments=\count319
+\nofMParguments=\count320
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count321
+\MPscratchDim=\dimen291
+\MPnumerator=\count322
+\makeMPintoPDFobject=\count323
+\everyMPtoPDFconversion=\toks37
 )
 ("C:\Users\Marcel\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epst
 opdf-base.sty"
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-)
-<example-image-1x1.pdf, id=1, 200.75pt x 200.75pt>
+) ABD: EveryShipout initializing macros
+Package pgfplots notification 'compat/show suggested version=true': you might b
+enefit from \pgfplotsset{compat=1.16} (current compat level: 1.9).
+
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: changepage package is loaded.
+\caption@adjustwidth@hsize=\dimen292
+\caption@adjustwidth@linewidth=\dimen293
+Package caption Info: End \AtBeginDocument code.
+<example-image-1x1.pdf, id=4, 200.75pt x 200.75pt>
 File: example-image-1x1.pdf Graphic file (type pdf)
 <use example-image-1x1.pdf>
-Package pdftex.def Info: example-image-1x1.pdf  used on input line 9.
-(pdftex.def)             Requested size: 64.49806pt x 64.49861pt.
- [1
+Package pdftex.def Info: example-image-1x1.pdf  used on input line 10.
+(pdftex.def)             Requested size: 70.8018pt x 70.80266pt.
+<./images/OpenVolumeMeshVR.png, id=5, 1844.39063pt x 385.44pt>
+File: ./images/OpenVolumeMeshVR.png Graphic file (type png)
+<use ./images/OpenVolumeMeshVR.png>
+Package pdftex.def Info: ./images/OpenVolumeMeshVR.png  used on input line 19.
+(pdftex.def)             Requested size: 354.02342pt x 73.98128pt.
+[1
+
 
 {C:/Users/Marcel/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/M
-arcel/AppData/Local/Programs/MiKTeX 2.9/tex/latex/mwe/example-image-1x1.pdf>] [
-1] (BACHELOR-Arbeit.toc
+arcel/AppData/Local/Programs/MiKTeX 2.9/tex/latex/mwe/example-image-1x1.pdf> <.
+/images/OpenVolumeMeshVR.png>] [1] (BACHELOR-Arbeit.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
 )
-\tf@toc=\write3
-\openout3 = `BACHELOR-Arbeit.toc'.
+\tf@toc=\write6
+\openout6 = `BACHELOR-Arbeit.toc'.
 
  [1
 
@@ -282,68 +972,68 @@ Chapter 1.
 Chapter 2.
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 45.
+(Font)              using `OT1/cmr/bx/n' instead on input line 59.
 
 [3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
-<halfedge_halfface.png, id=45, 501.875pt x 251.94125pt>
+<halfedge_halfface.png, id=51, 501.875pt x 251.94125pt>
 File: halfedge_halfface.png Graphic file (type png)
 <use halfedge_halfface.png>
-Package pdftex.def Info: halfedge_halfface.png  used on input line 65.
-(pdftex.def)             Requested size: 215.0023pt x 107.93282pt.
+Package pdftex.def Info: halfedge_halfface.png  used on input line 91.
+(pdftex.def)             Requested size: 236.01561pt x 118.4816pt.
 [4] [5 <./halfedge_halfface.png>]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--91
+Underfull \hbox (badness 10000) in paragraph at lines 105--121
 
  []
 
 [6
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 108--118
+Underfull \hbox (badness 10000) in paragraph at lines 138--148
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--158
+Underfull \hbox (badness 10000) in paragraph at lines 149--188
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--166
+Underfull \hbox (badness 10000) in paragraph at lines 196--199
 
  []
 
 [7]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 166.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 200.
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--175
+Underfull \hbox (badness 10000) in paragraph at lines 202--210
 
  []
 
-[8] [9]
+[8]
+Overfull \hbox (6.49728pt too wide) in paragraph at lines 213--217
+\OT1/cmr/m/n/10 Another prob-lem was that the ori-en-ta-tion of the in-ter-face
+ menu of-ten serverely re-stricted the workspace.
+ []
+
+[9]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 229--230
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
 
- []
-
-
-Overfull \hbox (2.30171pt too wide) in paragraph at lines 220--224
-[]\OT1/cmr/m/n/10 Modifizierungsmodus -Extrude -Subdividing -Verschiebungsmodus
- von Ver-tices, Edges und Faces 
  []
 
 [10
@@ -353,45 +1043,202 @@ Chapter 5.
 [11
 
 ]
-Chapter 6.
-[12
+<./images/CellMode_Explanation/InitialState.png, id=83, 1046.40938pt x 668.4975
+pt>
+File: ./images/CellMode_Explanation/InitialState.png Graphic file (type png)
+<use ./images/CellMode_Explanation/InitialState.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/InitialState.png  used o
+n input line 310.
+(pdftex.def)             Requested size: 183.12437pt x 116.98882pt.
 
-] (BACHELOR-Arbeit.bbl) [13
+Overfull \hbox (2.44939pt too wide) in paragraph at lines 310--312
+ [][] 
+ []
+
+<./images/CellMode_Explanation/InitialState_labeled.png, id=84, 1046.40938pt x 
+668.4975pt>
+File: ./images/CellMode_Explanation/InitialState_labeled.png Graphic file (type
+ png)
+<use ./images/CellMode_Explanation/InitialState_labeled.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/InitialState_labeled.png
+  used on input line 316.
+(pdftex.def)             Requested size: 183.12437pt x 116.98882pt.
+
+Overfull \hbox (2.44939pt too wide) in paragraph at lines 316--318
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 322--323
+
+ []
+
+<./images/CellMode_Explanation/FirstStep.png, id=85, 1046.40938pt x 667.74469pt
+>
+File: ./images/CellMode_Explanation/FirstStep.png Graphic file (type png)
+<use ./images/CellMode_Explanation/FirstStep.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/FirstStep.png  used on i
+nput line 324.
+(pdftex.def)             Requested size: 156.95464pt x 100.15738pt.
+\openout4 = `BACHELOR-Arbeit.pyg'.
+
+(_minted-BACHELOR-Arbeit/default-pyg-prefix.pygstyle)
+(_minted-BACHELOR-Arbeit/default.pygstyle)
+(_minted-BACHELOR-Arbeit/2A82AD55F5AC13511DBA5FDA36A7CF6AF290AED9DF18B2A2E3C962
+49D295A06D.pygtex
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
+ [12 <./images/CellMode_Explanation/InitialState.png> <./images/CellMode_Explan
+ation/InitialState_labeled.png> <./images/CellMode_Explanation/FirstStep.png>])
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--339
+
+ []
+
+<./images/CellMode_Explanation/AdjacentFaces.png, id=91, 1045.65656pt x 667.744
+69pt>
+File: ./images/CellMode_Explanation/AdjacentFaces.png Graphic file (type png)
+<use ./images/CellMode_Explanation/AdjacentFaces.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/AdjacentFaces.png  used 
+on input line 340.
+(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
+<./images/CellMode_Explanation/FaceArray_One.png, id=92, 1044.90375pt x 666.991
+88pt>
+File: ./images/CellMode_Explanation/FaceArray_One.png Graphic file (type png)
+<use ./images/CellMode_Explanation/FaceArray_One.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_One.png  used 
+on input line 355.
+(pdftex.def)             Requested size: 156.72879pt x 100.04446pt.
+<./images/CellMode_Explanation/CheckedArray_One.png, id=93, 1044.90375pt x 666.
+99188pt>
+File: ./images/CellMode_Explanation/CheckedArray_One.png Graphic file (type png
+)
+<use ./images/CellMode_Explanation/CheckedArray_One.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_One.png  us
+ed on input line 362.
+(pdftex.def)             Requested size: 156.72879pt x 100.04446pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--368
+
+ []
+
+<./images/CellMode_Explanation/FaceArray_Two.png, id=94, 1045.65656pt x 667.744
+69pt>
+File: ./images/CellMode_Explanation/FaceArray_Two.png Graphic file (type png)
+<use ./images/CellMode_Explanation/FaceArray_Two.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Two.png  used 
+on input line 374.
+(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
+<./images/CellMode_Explanation/CheckedArray_Two.png, id=95, 1045.65656pt x 667.
+74469pt>
+File: ./images/CellMode_Explanation/CheckedArray_Two.png Graphic file (type png
+)
+<use ./images/CellMode_Explanation/CheckedArray_Two.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Two.png  us
+ed on input line 381.
+(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 369--387
+
+ []
+
+[13 <./images/CellMode_Explanation/AdjacentFaces.png> <./images/CellMode_Explan
+ation/FaceArray_One.png> <./images/CellMode_Explanation/CheckedArray_One.png>]
+\openout4 = `BACHELOR-Arbeit.pyg'.
+
+
+(_minted-BACHELOR-Arbeit/16DB3ED623B3F44C3AE10B7C6ECA323EF290AED9DF18B2A2E3C962
+49D295A06D.pygtex)
+File: ./images/CellMode_Explanation/FaceArray_Two.png Graphic file (type png)
+<use ./images/CellMode_Explanation/FaceArray_Two.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Two.png  used 
+on input line 399.
+(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
+<./images/CellMode_Explanation/CheckedArray_Three.png, id=101, 1045.65656pt x 6
+67.74469pt>
+File: ./images/CellMode_Explanation/CheckedArray_Three.png Graphic file (type p
+ng)
+<use ./images/CellMode_Explanation/CheckedArray_Three.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Three.png  
+used on input line 406.
+(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
+<./images/CellMode_Explanation/FaceArray_Four.png, id=102, 1046.40938pt x 668.4
+975pt>
+File: ./images/CellMode_Explanation/FaceArray_Four.png Graphic file (type png)
+<use ./images/CellMode_Explanation/FaceArray_Four.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Four.png  used
+ on input line 418.
+(pdftex.def)             Requested size: 156.95464pt x 100.2703pt.
+<./images/CellMode_Explanation/CheckedArray_Four.png, id=103, 1045.65656pt x 66
+8.4975pt>
+File: ./images/CellMode_Explanation/CheckedArray_Four.png Graphic file (type pn
+g)
+<use ./images/CellMode_Explanation/CheckedArray_Four.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Four.png  u
+sed on input line 425.
+(pdftex.def)             Requested size: 156.8417pt x 100.2703pt.
+ [14 <./images/CellMode_Explanation/FaceArray_Two.png> <./images/CellMode_Expla
+nation/CheckedArray_Two.png> <./images/CellMode_Explanation/CheckedArray_Three.
+png>]
+File: ./images/CellMode_Explanation/FaceArray_Two.png Graphic file (type png)
+<use ./images/CellMode_Explanation/FaceArray_Two.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Two.png  used 
+on input line 437.
+(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
+<./images/CellMode_Explanation/CheckedArray_Five.png, id=107, 1045.65656pt x 66
+8.4975pt>
+File: ./images/CellMode_Explanation/CheckedArray_Five.png Graphic file (type pn
+g)
+<use ./images/CellMode_Explanation/CheckedArray_Five.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Five.png  u
+sed on input line 444.
+(pdftex.def)             Requested size: 156.8417pt x 100.2703pt.
+ [15 <./images/CellMode_Explanation/FaceArray_Four.png> <./images/CellMode_Expl
+anation/CheckedArray_Four.png> <./images/CellMode_Explanation/CheckedArray_Five
+.png>]
+Chapter 6.
+[16
+
+] (BACHELOR-Arbeit.bbl) [17
 
 ] (BACHELOR-Arbeit.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+runsystem(del BACHELOR-Arbeit.pyg)...executed.
+
  ) 
 Here is how much of TeX's memory you used:
- 3736 strings out of 481556
- 61438 string characters out of 2913401
- 511689 words of memory out of 3000000
- 18950 multiletter control sequences out of 15000+200000
- 537907 words of font info for 43 fonts, out of 3000000 for 9000
+ 28419 strings out of 481556
+ 713997 string characters out of 2913401
+ 1189445 words of memory out of 3000000
+ 43161 multiletter control sequences out of 15000+200000
+ 538515 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,11n,47p,1027b,250s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 71i,12n,100p,1027b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Marcel/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Marcel/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/User
-s/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.
-pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmti10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/Marcel/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/Marcel/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Us
-ers/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmss17.pfb><
-C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lmss8.p
-fb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lms
-y10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/l
-m/lmsy8.pfb>
-Output written on BACHELOR-Arbeit.pdf (15 pages, 241647 bytes).
+9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Marcel/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Marcel/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/User
+s/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmr8.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr9.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Marcel/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Marcel/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/User
+s/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt1
+0.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmtt9.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/lm/lmss17.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/public/lm/lmss8.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/lm/lmsy10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/lm/lmsy8.pfb>
+Output written on BACHELOR-Arbeit.pdf (19 pages, 6117869 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
+ 163 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 88 words of extra memory for PDF output out of 10000 (max. 10000000)
 

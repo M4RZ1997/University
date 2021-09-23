@@ -5,6 +5,16 @@
 \usepackage{float}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage{lipsum}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{width=10cm,compat=1.9}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption,float}
+
+\usepackage{minted}
+
+\usepackage{geometry}
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter
@@ -21,5 +31,32 @@
 \newlength{\chapheadtopskip}\setlength{\chapheadtopskip}{10pt}
 \newlength{\chapheadsep}\setlength{\chapheadsep}{30pt}
 \newlength{\chapheadbelowskip}\setlength{\chapheadbelowskip}{15pt}
+
+\graphicspath{ {./images/} }
+
+\newgeometry{
+	hmargin=2.5cm,
+	bottom=25mm,
+	height=150mm,
+	includehead,
+	headsep = 30pt,
+	textheight= 630pt
+}
+
+% ########### Section Indents ########### %
+\usepackage{changepage} % for adjustwidth/indent
+
+% Example:
+% \startsection
+%	...
+%	\startsubsection
+%		...
+%	\closesection
+%	...
+% \closesection
+\newcommand{\startsection}{\begin{adjustwidth}{1em}{1em}} % Indent left and right
+\newcommand{\startsubsection}{\begin{adjustwidth}{1em}{0.5em}} % Indent only left
+\newcommand{\closesection}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
+% ####################################### %
 
 \renewcommand{\bibsection}{\chapter*{Literature}}

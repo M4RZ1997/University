@@ -1,0 +1,52 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{11}
+
+\runningheads{Cryptographic Protocols}{Exercise 11}
+\begin{document}
+	\section{Arithmetic Circuits}
+	\startsection
+		Let $GF(q)$ be a finite fireld of order $q > 2$. Then \textsc{true} is associated with $1 \in GF(q)$ and \textsc{false} with $0 \in GF(q)$. A binary circuit $C_b$ can then be transformed to an equivalent arithmetic circuit by exchanging the four gates with the following operations:
+		\subsection{Logical \textsc{and}}
+		\startsubsection
+			\textsc{and}($x, y$) = $x \cdot y \ (mod \ 2)$ \\
+			$\Rightarrow \ \textsc{and}(x, y) = 1 \ \Leftrightarrow \ x = y = 1$
+		\closesection
+		\subsection{Logical \textsc{not}}
+		\startsubsection
+			\textsc{not}($x$) = $(x+1) \ (mod \ 2)$ \\
+			$\Rightarrow \ \textsc{not}(0) = 1$ and \textsc{not}$(1) = 0$
+		\closesection
+		\subsection{Logical \textsc{or}}
+		\startsubsection
+			We know that $x \vee y \ = \ \neg(\neg x \wedge \neg y)$, so in our notation: \\
+			$\textsc{OR}(x, y) \ = \ \textsc{not}(\textsc{and}(\textsc{not}(x), \textsc{not}(y))) \ = \ (((x+1) \ (mod \ 2)) \cdot ((y+1) \ (mod \ 2)) + 1) \ (mod \ 2)$ \\
+			$\Rightarrow \ \textsc{or}(0,0) \ = \ 0$ and $\textsc{or}(0, 1) \ = \ \textsc{or}(1, 0) \ = \ \textsc{or}(1, 1) \ = \ 1$
+		\closesection
+		\subsection{Logical \textsc{xor}}
+		\startsubsection
+			\textsc{xor}($x, y$) = $(x+y) \ (mod \ 2)$ \\
+			$\Rightarrow \ \textsc{xor}(0, 0) \ = \ \textsc{xor}(1, 1) \ = \ 0$ and $\textsc{xor}(0, 1) \ = \ \textsc{xor}(1, 0) \ = \ 1$
+		\closesection
+	\closesection
+	
+	\section{Multiplication Gate with Preprocessing}
+	\startsection
+		We have a finite field $GF(q)$ of prime order with $x,y,z,w_j, w_k, m_j, m_k, w_t$ as defined in the exercise. We can then create the following equation:
+		\begin{align*}
+			m_j m_k + m_j y + m_k x + z & = (w_j - x) \cdot (w_k - y) + (w_j - x) \cdot y + (w_k - y) \cdot x + xy \\
+			& = w_j w_k - w_j y - w_k x + xy + w_j y - xy + w_k x - xy + xy \\
+			& = w_j w_k
+		\end{align*}
+		Therefore the requirement $m_j m_k + m_j y + m_k x + z \ = \ w_j w_k$ is fulfilled and hence the product $w_t = w_j w_k$ can be calculated from $m_j, m_k, y, x, z$ by using the following steps for each of the summands:
+		\begin{enumerate}[]
+			\item $\left[w_j - x, w_k - y\right]$ can be calculated locally as parties possess sharings of $w_j$, $x$, $w_k$ and $y$, and subtraction is a local operation.
+			\item $m_j = w_j - x$ and $m_k = w_k - y$ can the be reconstructed as described in the exercise, using the protocol for output wires.
+			\item $m_j \cdot m_k$ can the be calculated as a local multiplication of two reconstructed values.
+			\item $[m_j \cdot y]$ and $[m_k \cdot x]$ can then similarly be calculated locally using the multiplication with a constant as discussed in the lecture, since the parties posess sharings $[x]$ of $x$ and $[y]$ of $y$.
+			\item $[z]$ is known to the parties as they agreed on this during the preprocessing step.
+		\end{enumerate}
+		As such, each party can calculated $m_j \cdot m_k + [m_j \cdot y] + [m_k \cdot x] + [z]$ locally, with values that are either known by all parties or have a sharing of it. So given that each party possesses the pre-shared sharings of $[x]$, $[y]$ $[z] = x \cdot y$, the multiplication can be optimized to only consist of local operations and a reconstruction operation at the end.
+	\closesection
+\end{document}

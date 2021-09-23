@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{use\PYGZus{}module}\PYG{p}{(}\PYG{n}{library}\PYG{p}{(}\PYG{n}{hiordlib}\PYG{p}{))}\PYG{o}{.}
+\PYG{n+nf}{partition}\PYG{p}{(}\PYG{k+kt}{E}\PYG{p}{,}\PYG{k+kt}{[]}\PYG{p}{,}\PYG{k+kt}{[]}\PYG{p}{,}\PYG{k+kt}{[]}\PYG{p}{)}\PYG{o}{.}
+\PYG{n+nf}{partition}\PYG{p}{(}\PYG{k+kt}{E}\PYG{p}{,[}\PYG{k+kt}{H}\PYG{o}{|}\PYG{k+kt}{T}\PYG{p}{],[}\PYG{k+kt}{H}\PYG{o}{|}\PYG{k+kt}{T1}\PYG{p}{],}\PYG{k+kt}{L2}\PYG{p}{)} \PYG{k+kt}{:\PYGZhy{}} \PYG{k+kt}{H} \PYG{o}{\PYGZlt{}} \PYG{k+kt}{E}\PYG{p}{,} \PYG{n}{partition}\PYG{p}{(}\PYG{k+kt}{E}\PYG{p}{,}\PYG{k+kt}{T}\PYG{p}{,}\PYG{k+kt}{T1}\PYG{p}{,}\PYG{k+kt}{L2}\PYG{p}{)}\PYG{o}{.}
+\PYG{n+nf}{partition}\PYG{p}{(}\PYG{k+kt}{E}\PYG{p}{,[}\PYG{k+kt}{H}\PYG{o}{|}\PYG{k+kt}{T}\PYG{p}{],}\PYG{k+kt}{L1}\PYG{p}{,[}\PYG{k+kt}{H}\PYG{o}{|}\PYG{k+kt}{T2}\PYG{p}{])} \PYG{k+kt}{:\PYGZhy{}} \PYG{k+kt}{H} \PYG{o}{\PYGZgt{}} \PYG{k+kt}{E}\PYG{p}{,} \PYG{n}{partition}\PYG{p}{(}\PYG{k+kt}{E}\PYG{p}{,}\PYG{k+kt}{T}\PYG{p}{,}\PYG{k+kt}{L1}\PYG{p}{,}\PYG{k+kt}{T2}\PYG{p}{)}\PYG{o}{.}
+\end{Verbatim}

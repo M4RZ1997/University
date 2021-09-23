@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{grandfather}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{male}\PYG{p}{(}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{W}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)}
+\PYG{n}{grandmother}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{female}\PYG{p}{(}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{W}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)}
+\PYG{n}{grandparent}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{W}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)}
+\PYG{n}{grandson}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{male}\PYG{p}{(}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{W}\PYG{p}{)}
+\PYG{n}{granddaughter}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{female}\PYG{p}{(}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{W}\PYG{p}{)}
+\PYG{n}{grandchild}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{W}\PYG{p}{,}\PYG{n}{X}\PYG{p}{),} \PYG{n}{parent}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{W}\PYG{p}{)}
+\end{Verbatim}

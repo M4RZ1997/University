@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{for} each edge boundary of currentFace :
+	\PYG{k}{if} edge is boundary of at least two faces :
+		add currentFace to FaceArray
+		check faces adjacent to currentFace ...
+	otherwise :
+		\PYG{k}{return} \PYG{n+nb}{false}
+\end{Verbatim}

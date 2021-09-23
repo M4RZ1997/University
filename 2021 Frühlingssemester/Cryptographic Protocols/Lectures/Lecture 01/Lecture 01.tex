@@ -111,7 +111,7 @@
  				& $x_2 \leftarrow \mathbb{Z}_p$ \\
  				& $x_3 \leftarrow \mathbb{Z}_p$ s.t. $x_1 + x_2 + x_3 \equiv b (mod p)$\\
  				& return ($x_1 , x_2, x_3$)
- 			\end{tabular}
+ 			\end{tabular} \\
  			Parties are connected by secure channels (confidential \& authenticated)
  		\end{adjustwidth}
  		\subsubsection{Protocol for $p_i$ ($v_i$)}
@@ -119,7 +119,7 @@
  			$(x_{i1}, x_{i2}, x_{i3}) \leftarrow split(v_i)$ \\
  			\underline{send} $x_{ij}$ to $p_j$ for $j = 1,2,3$ \\
  			\underline{receive} $x_{ji}$ from $p_j$ for $j = 1,2,3$ \\
- 			$y_i \leftarrow (x_{1i} + x_{1i} + x_{1i})$ mod $p$ \\
+ 			$y_i \leftarrow (x_{1i} + x_{2i} + x_{3i})$ mod $p$ \\
  			\underline{send} $y_i$ to $p_j$ for $j = 1,2,3$ \\
  			\underline{receiv} $y_j$ to $p_j$ for $j = 1,2,3$ \\
  			\underline{output} $(y_1 + y_2 + y_3)$ mod $p$

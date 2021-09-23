@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{o}{[]} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+	\PYG{n}{Double}\PYG{o}{[]} \PYG{n}{mh} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Double}\PYG{o}{[}\PYG{l+m+mi}{2}\PYG{o}{]}\PYG{p}{;}
+	\PYG{n}{mh}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mf}{100.2}\PYG{p}{;}
+	\PYG{n}{mh}\PYG{o}{[}\PYG{l+m+mi}{1}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mf}{200.2}\PYG{p}{;}
+	
+	\PYG{n}{Number}\PYG{o}{[]} \PYG{n}{nm} \PYG{o}{=} \PYG{n}{mh}\PYG{p}{;}
+	
+	\PYG{n}{nm}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]} \PYG{o}{=} \PYG{l+m+mf}{1000.5f}\PYG{p}{;}
+	
+	\PYG{n}{System}\PYG{p}{.}\PYG{n+na}{out}\PYG{p}{.}\PYG{n+na}{println}\PYG{p}{(}\PYG{n}{nm}\PYG{o}{[}\PYG{l+m+mi}{0}\PYG{o}{]}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

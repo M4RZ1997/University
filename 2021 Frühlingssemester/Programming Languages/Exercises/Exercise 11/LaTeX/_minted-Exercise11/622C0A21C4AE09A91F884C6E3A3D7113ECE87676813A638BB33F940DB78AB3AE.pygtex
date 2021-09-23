@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{article} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{a}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{article} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{the}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{noun} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{girl}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{noun} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{boy}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{pronoun} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{that}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{pronoun} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{this}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{auxiliary} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{is}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{verb} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{sleeps}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{verb} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{p}{[}\PYG{n}{likes}\PYG{p}{]}\PYG{o}{.}
+
+\PYG{n+nf}{subject} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{article}\PYG{p}{,} \PYG{n}{noun}\PYG{o}{.}
+\PYG{n+nf}{subject} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{pronoun}\PYG{o}{.}
+\PYG{n+nf}{subject1} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{article}\PYG{p}{,} \PYG{n}{noun}\PYG{o}{.}
+\PYG{n+nf}{predicate} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{auxiliary}\PYG{o}{.}
+\PYG{n+nf}{predicate} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{verb}\PYG{o}{.}
+\PYG{n+nf}{object} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{article}\PYG{p}{,} \PYG{n}{noun}\PYG{o}{.}
+
+\PYG{n+nf}{sentence} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{sp}\PYG{o}{.}
+\PYG{n+nf}{sentence} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{spo}\PYG{o}{.}
+\PYG{n+nf}{sp} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{subject}\PYG{p}{,} \PYG{p}{[}\PYG{n}{sleeps}\PYG{p}{]}\PYG{o}{.}
+\PYG{n+nf}{spo} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{subject1}\PYG{p}{,} \PYG{p}{[}\PYG{n}{likes}\PYG{p}{],} \PYG{n}{object}\PYG{o}{.}
+\PYG{n+nf}{spo} \PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZgt{}} \PYG{n}{pronoun}\PYG{p}{,} \PYG{n}{auxiliary}\PYG{p}{,} \PYG{n}{object}\PYG{o}{.}
+\end{Verbatim}

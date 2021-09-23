@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{monday}\PYG{p}{,}\PYG{n}{english}\PYG{p}{,}\PYG{n}{simple}\PYG{p}{)}\PYG{o}{.}
+\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{tuesday}\PYG{p}{,}\PYG{n}{programming}\PYG{p}{,}\PYG{n}{medium}\PYG{p}{)}\PYG{o}{.}
+\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{tuesday}\PYG{p}{,}\PYG{n}{ai}\PYG{p}{,}\PYG{n}{hard}\PYG{p}{)}\PYG{o}{.}
+\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{wednesday}\PYG{p}{,}\PYG{n}{hacking}\PYG{p}{,}\PYG{n}{hard}\PYG{p}{)}\PYG{o}{.}
+\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{thursday}\PYG{p}{,}\PYG{n}{networking}\PYG{p}{,}\PYG{n}{medium}\PYG{p}{)}\PYG{o}{.}
+\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{friday}\PYG{p}{,}\PYG{n}{pl}\PYG{p}{,}\PYG{n}{easiest}\PYG{p}{)}\PYG{o}{.}
+
+\PYG{n}{write\PYGZus{}day\PYGZus{}schedule}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{Z}\PYG{p}{)} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{write}\PYG{p}{(}\PYG{n}{X}\PYG{p}{),} \PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{} \PYGZhy{} \PYGZsq{}}\PYG{p}{),} \PYG{n}{write}\PYG{p}{(}\PYG{n}{Y}\PYG{p}{),} \PYG{n}{write}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{} \PYGZhy{} \PYGZsq{}}\PYG{p}{),} \PYG{n}{write}\PYG{p}{(}\PYG{n}{Z}\PYG{p}{),} \PYG{n}{nl}\PYG{o}{.}
+\PYG{n}{write\PYGZus{}schedule} \PYG{p}{:}\PYG{o}{\PYGZhy{}} \PYG{n}{forall}\PYG{p}{(}\PYG{n}{day\PYGZus{}lecture\PYGZus{}compl}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{Z}\PYG{p}{),}\PYG{n}{write\PYGZus{}day\PYGZus{}schedule}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,}\PYG{n}{Y}\PYG{p}{,}\PYG{n}{Z}\PYG{p}{))}\PYG{o}{.}
+\end{Verbatim}

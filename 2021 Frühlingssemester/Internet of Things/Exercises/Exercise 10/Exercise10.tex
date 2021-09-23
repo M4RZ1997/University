@@ -1,0 +1,34 @@
+\documentclass{report}
+\usepackage{E:/Documents/GitHub/University/LaTeX/marzstyle}
+
+\setcounter{chapter}{10}
+
+\runningheads{Internet of Things}{Exercise 10}
+
+\begin{document}
+	\section{CoAP support four basic methods which are easily mapped to HTTP. Briefly describe the four methods in CoAP.}
+	\startsection
+		\subsection{\textsc{get} Method}
+		\startsubsection
+			The \textsc{get} method retrieves a representation for the information corresponding to the resource identified by the request URI.
+		\closesection
+		\subsection{\textsc{post} Method}
+		\startsubsection
+			Using the \textsc{post} method the representation enclosed in the resource identified by the request UWI is processed, s.t. this results either in a new resource or the target resource to be updated.
+		\closesection
+		\subsection{\textsc{put} Method}
+		\startsubsection
+			With the \textsc{put} method a resource identified by the request URI is either updated or created with the enclosed representation.
+		\closesection
+		\subsection{\textsc{delete} Method}
+		\startsubsection
+			Using the \textsc{delete} method the resource identified by the request URI can be deleted.
+		\closesection
+	\closesection
+	
+	\section{Describe the publish-subscribe pattern used in Message Queuing Telemetry Transport Protocol. What are the benefits of this mechanism?}
+	\startsection
+		In MQTT the publishers and subscribers connect to a Broker server. When the publisher publishes information to the server all subscribers are then notified and given this information. \\
+		This has the benefit that the subscribers do not need to request information in a certain interval and check whether they changed or not but are instantly given thiss information as soon as the infromation was published by the publishers. This also provides transition flexibility and a simplicity of the implementation.
+	\closesection
+\end{document}

@@ -22,5 +22,15 @@
 \contentsline {subsection}{\numberline {3.3.3}Conclusion}{9}%
 \contentsline {chapter}{\numberline {4}Specifications}{10}%
 \contentsline {chapter}{\numberline {5}Implementation}{11}%
-\contentsline {chapter}{\numberline {6}Documentation: OpenVolumeMeshVR}{12}%
-\contentsline {chapter}{Literature}{13}%
+\contentsline {section}{\numberline {5.1}Functionality for both VR and Mouse-Keyboard Control}{11}%
+\contentsline {section}{\numberline {5.2}Representation of each Component}{11}%
+\contentsline {section}{\numberline {5.3}Creation of CustomMesh to represent Faces and Cells}{11}%
+\contentsline {section}{\numberline {5.4}Algorithm to Move Components}{11}%
+\contentsline {subsection}{\numberline {5.4.1}Moving Vertices}{11}%
+\contentsline {subsection}{\numberline {5.4.2}Moving Edges}{11}%
+\contentsline {subsection}{\numberline {5.4.3}Moving Faces}{11}%
+\contentsline {subsection}{\numberline {5.4.4}Moving Cells}{12}%
+\contentsline {section}{\numberline {5.5}Algorithm for Finding Cells}{12}%
+\contentsline {section}{\numberline {5.6}Save and Load OVM Files}{15}%
+\contentsline {chapter}{\numberline {6}Documentation: OpenVolumeMeshVR}{16}%
+\contentsline {chapter}{Literature}{17}%
