@@ -20,3 +20,4 @@ Others
 *.xlsx
 *.docx
 *.pdf
+_minted*
