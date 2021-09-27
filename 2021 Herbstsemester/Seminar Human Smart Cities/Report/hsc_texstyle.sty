@@ -1,0 +1,139 @@
+% ################################################################################################# %
+% ----------------------------------------- Miscellaneous ----------------------------------------- %
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac} % for enumerating pages
+\usepackage{changepage} % for adjustwidth/indent
+\usepackage{paralist} % for enumerating
+\usepackage{hyperref}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Geometry -------------------------------------------- %
+\newgeometry{
+	hmargin=2.5cm,
+	bottom=25mm,
+	height=150mm,
+	includehead,
+	headsep = 30pt,
+	textheight= 630pt
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Special Symbols ----------------------------------------- %
+\usepackage{graphicx}
+\usepackage{stix}
+% ## TableFlip ## %
+\newcommand{\tableflip}{$($\rotatebox{45}{$\smile$}$^{\circ}\smwhtsquare^{\circ})\rotatebox{45}{$\smile$}\mkern-6mu\frown$\raisebox{0.5ex}{$\bot$}$\mkern-3.5mu-\mkern-3.5mu$\raisebox{0.5ex}{$\bot$}}
+
+\usepackage{stackengine}
+% ## approximately equivalent ## %
+\def\apeq{\SavedStyle\sim}
+\def\apequiv{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{\ThisStyle{\mathrel{\Centerstack{{\apeq} {\apeq} {\apeq}}}}}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------------- Math ---------------------------------------------- %
+\usepackage{amsmath}
+\usepackage{scalerel}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------------- Tables --------------------------------------------- %
+\usepackage{colortbl}
+\usepackage{pgfplotstable}
+\usepackage{multirow}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- PGF/Tikz-Plots ----------------------------------------- %
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+
+% ## Nice Arrow ## %
+\tikzstyle{arrow} = [thick,->,>=stealth]
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Debugging Tools ----------------------------------------- %
+\usepackage{layout}
+%\usepackage{showframe}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Graphicspath ------------------------------------------ %
+% If images are needed, best practice is to create folder images and save all pictures in there
+\graphicspath{ {./images/} }
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- MARZColor ------------------------------------------- %
+\usepackage{xcolor}
+\definecolor{MarzDarkBlue}{rgb}{0.1, 0, 0.2}
+\definecolor{MarzBlue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{MarzRoyal}{rgb}{0.2, 0.2, 0.8}
+\definecolor{MarzGreen}{rgb}{0, 0.4, 0}
+\definecolor{MarzPurple}{rgb}{0.5, 0, 0.5}
+\definecolor{MarzGold}{rgb}{1.0, 0.84, 0}
+\definecolor{MarzRed}{rgb}{1.0, 0, 0}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Page Style ------------------------------------------- %
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyheadoffset{0pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- New Commands ------------------------------------------- %
+% ############ Header Command ############ %
+% Creates a nice header with title, subtitle, immatriculation number and name
+% (Only title and subtitle must be defined)
+% Example: \runningheads{Computer Science}{Lecture 05}
+\newcommand{\runningheads}[2]{
+	\fancyhead[L]{
+		\begin{tabular}{l}
+			\LARGE \textbf{\textsc{#1}} \\
+			\large #2
+		\end{tabular}
+	}
+	\fancyhead[R]{
+		\begin{tabular}{r}
+			\immatriculationnr \\
+			\surname \ \textsc{\name}
+		\end{tabular}
+	}
+}
+% ####################################### %
+
+% ########### Section Indents ########### %
+% Example:
+% \startsection
+%	...
+%	\startsubsection
+%		...
+%	\closesection
+%	...
+% \closesection
+\newcommand{\startsection}{\begin{adjustwidth}{2em}{2em}} % Indent left and right
+\newcommand{\startsubsection}{\begin{adjustwidth}{2em}{}} % Indent only left
+\newcommand{\closesection}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
+% ####################################### %
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------- Adjust White-Spaces---------------------------------------- %
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+% --- Patch \chapter
+\patchcmd{\@makechapterhead}{50\p@}{\chapheadtopskip}{}{}% Space from top of page to CHAPTER X
+\patchcmd{\@makechapterhead}{20\p@}{\chapheadsep}{}{}% Space between CHAPTER X and CHAPTER TITLE
+\patchcmd{\@makechapterhead}{40\p@}{\chapheadbelowskip}{}{}% Space between CHAPTER TITLE and text
+% --- Patch \chapter*
+\patchcmd{\@makeschapterhead}{50\p@}{\chapheadtopskip}{}{}% Space from top of page to CHAPTER TITLE
+\patchcmd{\@makeschapterhead}{40\p@}{\chapheadbelowskip}{}{}% SPace between CHAPTER TITLE and text
+\makeatother
+% Set new lengths
+\newlength{\chapheadtopskip}\setlength{\chapheadtopskip}{10pt}
+\newlength{\chapheadsep}\setlength{\chapheadsep}{30pt}
+\newlength{\chapheadbelowskip}\setlength{\chapheadbelowskip}{15pt}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
