@@ -99,7 +99,7 @@
 % ---------------------------------------- New Commands ------------------------------------------- %
 % ############ Header Command ############ %
 % Creates a nice header with title, subtitle, immatriculation number and name
-% (Only title and subtitle must be defined)
+% (Only title and subtitle must be defined, name and matriculation number are set in previous sections)
 % Example: \runningheads{Computer Science}{Lecture 05}
 \newcommand{\runningheads}[2]{
 	\fancyhead[L]{
@@ -130,5 +130,11 @@
 \newcommand{\startsubsection}{\begin{adjustwidth}{2em}{}} % Indent only left
 \newcommand{\closesection}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
 % ####################################### %
+
+% ######## No-Page-Brake Chapter ######## %
+% Used when a new chapter should start but a page break is not desired
+\newcommand{\nopagebreakchapter}[1]{{\let\clearpage\relax \chapter{#1}}}
+% ####################################### %
+
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %

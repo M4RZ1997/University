@@ -45,7 +45,7 @@
 			\item \textit{What are similarities between monitors and message passing?} \\
 			In (buffered) message passing and a monitor both use signaling to imply that a condition has been met. When using a monitor a thread does not need to care about synchronization similar to asynchronous message passing.
 			\item \textit{What are the differences between monitors and message passing?} \\
-			A monitor locks other threads from accessing a resource which is already held by a certain thread whereas in buffered message passing the "consumer thread" is first asking with a \textit{signal} message if there is a value to take and if there is the buffer will send the value to the consumer requesting it with a synchronous \textit{take} message.
+			A monitor blocks other threads from accessing a resource which is already held by a certain thread whereas in buffered message passing the "consumer thread" is first asking with a \textit{signal} message if there is a value to take and if there is the buffer will send the value to the consumer requesting it with a synchronous \textit{take} message.
 		\end{enumerate}
 	\closesection
 	
@@ -162,22 +162,17 @@
 	
 	\section{Monitor from a Binary Semaphore}
 	\startsection
-		Ich weiß ist noch falsch, aber einfach mal als Platzhalter.
 		\begin{minted}{java}
-public class Monitor {
+private final Semaphore semaphore = new Semaphore(1)
 
-	private final Semaphore semaphore = new Semaphore(1);
-
-
-	public void wait() {
-		semaphore.acquire();
-	}
-
-	public void notify() {
-		semaphore.release();
-	}
+public void monitor_wrap(Function f) {
+	semaphore.acquire()
+	try {
+		execute f
+	} finally { semaphore.release() }
 }
-
 		\end{minted}
+		\hfill \\
+		Every method call in the monitor should call the monitor\textunderscore wrap method with parameter of the method itself, so it is wrapped with a semaphore acquisition and thus mutex is guaranteed.
 	\closesection
 \end{document}
