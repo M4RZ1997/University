@@ -1,5 +1,13 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: Exercise01.aux
-I found no \citation commands---while reading file Exercise01.aux
-I found no \bibdata command---while reading file Exercise01.aux
-I found no \bibstyle command---while reading file Exercise01.aux
-(There were 3 error messages)
+The style file: alphadin.bst
+Database file #1: literature.bib
+Warning--entry type for "WCDT" isn't style-file defined
+--line 7 of file literature.bib
+Warning--entry type for "WSM" isn't style-file defined
+--line 13 of file literature.bib
+Warning--entry type for "IMSI" isn't style-file defined
+--line 19 of file literature.bib
+Warning--to sort, need author or key in IMSI
+Warning--to sort, need author or key in WSM
+Warning--to sort, need author or key in WCDT
+(There were 6 warnings)
