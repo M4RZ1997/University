@@ -1,3 +1,8 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: example_report.aux
-The style file: plain.bst
+The style file: alphadin.bst
 Database file #1: references.bib
+Warning--entry type for "NokiaWisdomOfTheCrowds" isn't style-file defined
+--line 105 of file references.bib
+Warning--entry type for "NokiaAVACrowdAnalytics" isn't style-file defined
+--line 113 of file references.bib
+(There were 2 warnings)
