@@ -1,0 +1,23 @@
+APPOINTMENT = (hello -> converse -> goodbye -> STOP).
+
+HOLIDAY = (arrive -> relax -> leave -> HOLIDAY).
+
+SPEED = (on -> ON),
+ON = (off -> SPEED | speed -> ON).
+
+LEFTONCE = (ahead -> INTERNALSTATE),
+INTERNALSTATE = (right -> LEFTONCE | left -> STOP).
+
+TREBLE = (in[n:1..3] -> out[n*3] -> TREBLE).
+
+//FIVETICK = (tick -> tick -> tick -> tick -> tick -> STOP).
+
+const COUNTER = 5
+FIVETICK  = TICK[1],
+TICK[n:1..COUNTER] = (when (n<COUNTER) tick -> TICK[n+1]
+				| when (n==COUNTER) tick -> STOP).
+
+PERSON = (workday -> WORKDAY | holiday -> HOLIDAY),
+WORKDAY = (sleep -> work -> PERSON),
+HOLIDAY = (sleep -> SLEEPHOLIDAY),
+SLEEPHOLIDAY = (play -> PERSON | shop -> PERSON).
