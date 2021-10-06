@@ -1,0 +1,53 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+%\runningheads{Privacy and Data Security}{Exercise 01}
+
+\fancyhead[L]{
+	\begin{tabular}{l}
+		\LARGE \textbf{\textsc{Concurrency}} \\
+		\large Exercise 03
+	\end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{r}
+		Marcel Zauder 16-124-836 \\
+		Pascal Gerig 16-104-721
+	\end{tabular}
+}
+
+\setcounter{chapter}{3}
+
+\begin{document}
+	\section{Several Questions}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{What does a safety property do in FSP?} \\
+			A safety property in FSP is an expression that defines which actions are allowed. Actions that were not specified within a safety property are considered to lead to an \textsc{error}.
+			\item \textit{Is the busy-wait mutex protocol fair? Justify your answer.} \\
+			Yes, it is, because assuming that P1 wants to enter the critical section, but can't because P2 is currently in the CS. Therefore \textit{enter1} is \textsc{true}, \textit{enter2} is \textsc{true}, and \textit{turn} is P2. P1 is therefore currently in the busy wait loop. Eventually P2 will terminate its CS, assuming that none of the processes crashes, otherwise no progrss could be made if P2 crashes while in the CS, and set \textit{enter2} to false. Therefore P1 will leave the busy loop and enter the CS. If P2 wants to enter the CS again it will wait until P1 has finished its CS.
+			\item \textit{Can you ensure safety for shared data in concurrent programs without using any kind of locks?} \\
+			\item \textit{The Java language designers decided to implement concurrency based on monitors. What is the main reason behind this decision?} \\
+		\end{enumerate}
+	\closesection
+	
+	\section{FSP Processes}
+	\startsection
+		As shown below with the LTSA tool both process definitions are not equal, because in T1 \textit{c} is a shared action, whereas in T2 it is a seperate action for both traces. \\
+		\begin{tabular}{ccc}
+			\includegraphics[scale=0.6]{T1.png} && \includegraphics[scale=0.6]{T2.png} \\
+			R = (a->c->R). && T2 = (a->b->c->T2 | b->a->c->T2). \\
+			S = (b->c->S). \\
+			||T1 = (R || S).
+		\end{tabular}
+	\closesection
+	
+	\section{FM Radio}
+	\startsection
+	\closesection
+	
+	\section{Stack Implementation}
+	\startsection
+	\closesection
+\end{document}
