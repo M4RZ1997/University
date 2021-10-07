@@ -100,6 +100,7 @@
 % ############ Header Command ############ %
 % Creates a nice header with title, subtitle, immatriculation number and name
 % (Only title and subtitle must be defined, name and matriculation number are set in previous sections)
+% if an author is defined the author will be displayed instead of the hardcoded name and immatriculation number
 % Example: \runningheads{Computer Science}{Lecture 05}
 \newcommand{\runningheads}[2]{
 	\fancyhead[L]{
@@ -110,13 +111,15 @@
 	}
 	\fancyhead[R]{
 		\begin{tabular}{r}
-			\immatriculationnr \\
-			\surname \ \textsc{\name}
+			\ifx\@author\empty
+				\immatriculationnr \\
+				\surname \ \textsc{\name}
+			\else
+				\@author
+			\fi
 		\end{tabular}
 	}
 }
-% ####################################### %
-
 % ########### Section Indents ########### %
 % Example:
 % \startsection
@@ -136,5 +139,9 @@
 \newcommand{\nopagebreakchapter}[1]{{\let\clearpage\relax \chapter{#1}}}
 % ####################################### %
 
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Variables -------------------------------------------- %
+\global\let\@author\@empty
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %

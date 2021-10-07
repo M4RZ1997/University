@@ -1,8 +1,58 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: example_report.aux
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: example_report.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'name_of_file' (item size: 1) to 9 items.
 The style file: alphadin.bst
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: references.bib
 Warning--entry type for "NokiaWisdomOfTheCrowds" isn't style-file defined
 --line 105 of file references.bib
 Warning--entry type for "NokiaAVACrowdAnalytics" isn't style-file defined
 --line 113 of file references.bib
+You've used 11 entries,
+            4793 wiz_defined-function locations,
+            979 strings with 9117 characters,
+and the built_in function-call counts, 10483 in all, are:
+= -- 1109
+> -- 270
+< -- 317
++ -- 361
+- -- 100
+* -- 824
+:= -- 1698
+add.period$ -- 21
+call.type$ -- 11
+change.case$ -- 69
+chr.to.int$ -- 11
+cite$ -- 11
+duplicate$ -- 229
+empty$ -- 712
+format.name$ -- 180
+if$ -- 2062
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 62
+newline$ -- 85
+num.names$ -- 33
+pop$ -- 98
+preamble$ -- 1
+purify$ -- 91
+quote$ -- 0
+skip$ -- 463
+stack$ -- 0
+substring$ -- 1155
+swap$ -- 70
+text.length$ -- 54
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 112
+warning$ -- 0
+while$ -- 81
+width$ -- 13
+write$ -- 176
 (There were 2 warnings)

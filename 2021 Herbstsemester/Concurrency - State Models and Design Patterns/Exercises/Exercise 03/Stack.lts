@@ -1,0 +1,8 @@
+LOCK = (acquire -> release -> LOCK).
+
+PUSH = (acquire -> dostuff -> release -> PUSH).
+
+POP = (acquire -> dostuff2 -> release -> POP).
+
+property STACK = (acquire -> dostuff -> release -> STACK | acquire -> dostuff2 -> release -> STACK).
+||STACK = ( {a,b}::PUSH || {a,b}::POP || {a,b}::LOCK ).

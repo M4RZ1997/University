@@ -2,20 +2,10 @@
 
 \usepackage{../../../../../LaTeX/marzstyle}
 
-%\runningheads{Privacy and Data Security}{Exercise 01}
+\author{Marcel \textsc{Zauder} 16-124-836 \\
+	Pascal \textsc{Gerig} 16-104-721}
 
-\fancyhead[L]{
-	\begin{tabular}{l}
-		\LARGE \textbf{\textsc{Concurrency}} \\
-		\large Exercise 03
-	\end{tabular}
-}
-\fancyhead[R]{
-	\begin{tabular}{r}
-		Marcel Zauder 16-124-836 \\
-		Pascal Gerig 16-104-721
-	\end{tabular}
-}
+\runningheads{Concurrency}{Exercise 03}
 
 \setcounter{chapter}{3}
 
@@ -26,8 +16,11 @@
 			\item \textit{What does a safety property do in FSP?} \\
 			A safety property in FSP is an expression that defines which actions are allowed. Actions that were not specified within a safety property are considered to lead to an \textsc{error}.
 			\item \textit{Is the busy-wait mutex protocol fair? Justify your answer.} \\
-			Yes, it is, because assuming that P1 wants to enter the critical section, but can't because P2 is currently in the CS. Therefore \textit{enter1} is \textsc{true}, \textit{enter2} is \textsc{true}, and \textit{turn} is P2. P1 is therefore currently in the busy wait loop. Eventually P2 will terminate its CS, assuming that none of the processes crashes, otherwise no progrss could be made if P2 crashes while in the CS, and set \textit{enter2} to false. Therefore P1 will leave the busy loop and enter the CS. If P2 wants to enter the CS again it will wait until P1 has finished its CS.
+			We will consider the implementation of slide 19 of the lecture. \\
+			Yes, it is, because assuming that P1 wants to enter the critical section, but can't because P2 is currently in the CS. Therefore \textit{enter1} is \textsc{true}, \textit{enter2} is \textsc{true}, and \textit{turn} is P2. P1 is therefore currently in the busy wait loop. Eventually P2 will terminate its CS, assuming that none of the processes crashes, otherwise no progrss could be made if P2 crashes while in the CS, and set \textit{enter2} to false. Therefore P1 will leave the busy loop and enter the CS. If P2 wants to enter the CS again it will wait until P1 has finished its CS. \\
+			For an abitrary implemenentation of a busy-wait mutex this would sometimes not be the case.
 			\item \textit{Can you ensure safety for shared data in concurrent programs without using any kind of locks?} \\
+			It would be possible if one can ensure that all operations that access the shared data are atomic. For example in Java there are atomic data types already implemented, e.g. AtomicInteger or ConcurrentLinkedQueue. With these types read and write operations are atomic (CompareAndSet operations are used to modify, change the data). 
 			\item \textit{The Java language designers decided to implement concurrency based on monitors. What is the main reason behind this decision?} \\
 		\end{enumerate}
 	\closesection
