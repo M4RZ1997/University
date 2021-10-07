@@ -1,13 +1,11 @@
-\documentclass{article}
-
-\usepackage{../../../LaTeX/marzstyle}
-
-%\runningheads{Privacy and Data Security}{Exercise 01}
+\documentclass[a4paper,12pt]{article}
+\usepackage{unifrsr}
+\usepackage{hsc_texstyle}
 
 \fancyhead[L]{
 	\begin{tabular}{l}
-		\LARGE \textbf{\textsc{Seminar Human Smart Cities}} \\
-		\large \textsc{Proposal} Wisdom of the Crowds
+		\LARGE \textbf{\textsc{Human Smart Cities}} \\
+		\large Proposal
 	\end{tabular}
 }
 \fancyhead[R]{
@@ -19,25 +17,53 @@
 }
 
 \begin{document}
-	\hfill	
-	\section{Introduction}
-	\startsection
-	\closesection
+	\seminartitle{Human Smart Cities Seminar} % The title of the seminar
+
+	\title{Wisdom of the Crowds \\ Can Crowd-Sourcing coexist with today's Data Security regulations?} % The title of your project
+
+	\author{Pascal Gerig (16-104-721)\thanks{\email{pascal.gerig@students.unibe.ch}, University of Bern}
+   		\and Lorenzo Wipfli  (13-933-262)\thanks{\email{lorenzo.wipfli@students.unibe.ch}, University of Bern}
+   		\and Marcel Zauder  (16-124-836)\thanks{\email{marcel.zauder@students.unibe.ch}, University of Bern}
+   	}	% Note: XX-XXX-XXX is the student's matriculation number
+   	% The author(s), separated by \and
+
+	\supervisor{Prof. Edy Portmann} % Name of the supervisor
+
+	\assistant{Moreno Colombo \and Jhonny Pincay} %Name of the assistant(s)
+
+	\date{\today} % Note: if this is left out, today's date will be used, this is the submission date!
+
+	\maketitle
 	
+	\pagestyle{fancy}
+	\hfill
+
 	\section{Background and Motivation}
 	\startsection
+		The concept of smart cities is booming and therefore collecting data from citizen becomes more and more important. Due to the entry into force of the new \textit{General Data Protection Regulations} in 2018 these crowd-sourcing methods need to be revised in order to conform with these regulations - especially after the law enforcement nowadays imposes hefty fines against non-compliers, i.e. Amazon was fined nearly 750 million Euros on the 16. July 2021 for non-compliance with general data processing principles \cite{EnforcementTracker}. Therefore (smart) cities would be interested to know if the methods for crowd-sourcing conform to the rules and restrictions of GDPR.
 	\closesection
 	
 	\section{Problem Statement and Research Question}
 	\startsection
-		It can be difficult to gather information about needs and challenges or identify and locating problems within a city. Therefore it is proposed that only data should be used that is already available in the city, i.e. social media to detetct problems belonging to a certain domain. Additionally feedbacks from citizens can be used in a smart way to infer to certain challenges or needs. Another part of this research is the question on how citizens can be motivated to get involved in improving the city.
+		The report will address the following two questions:
+		\begin{enumerate}
+			\item What methods do exist in order to gather information from citizen?
+			\item Do these methods comply with the newly enforced General Data Protection and other Privacy Regulations?
+		\end{enumerate}
+		The first part is needed, so an enumeration of the used methods is present in order to discuss those proceedings in terms of Data and Privacy Security. The second question is relevant because the personal privacy concern is increasing and large fines are imposed if one does not comply with the new regulations. To answer these questions corresponding literature is discussed and both parts are merged in order to give advice on what to watch out for when developing or establishing a crowd-sourcing method and which methods do or do not comply with current regulations.
 	\closesection
 	
 	\section{Objectives}
 	\startsection
+		The goal of the report is to find out to what extent today's methods for crowd-sourcing do comply with current privacy regulations and whether these can be revised or completely new methods need to be developed.
 	\closesection
 	
-	\section{Used Methods}
+	\section{Methodology}
 	\startsection
+		Explore literature regarding wisdom of the crowds in smart cities and its methods for crowd-sourcing and a review of current data privacy literature, i.e. GDPR. The findings of the first search will then be discussed with regards to the second.
 	\closesection
+	
+	\newpage
+	\bibliography{references}
+		\bibliographystyle{alphadin}
 \end{document}

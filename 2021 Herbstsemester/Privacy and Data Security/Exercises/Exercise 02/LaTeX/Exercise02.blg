@@ -1,7 +1,22 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: Exercise02.aux
 The style file: alphadin.bst
 Database file #1: literature.bib
-Warning--entry type for "YouTubePP" isn't style-file defined
+Warning--entry type for "SignalPP" isn't style-file defined
 --line 1 of file literature.bib
-Warning--to sort, need author or key in YouTubePP
-(There were 2 warnings)
+Warning--entry type for "InstagramPP" isn't style-file defined
+--line 7 of file literature.bib
+Warning--entry type for "20MinutenAppStore" isn't style-file defined
+--line 13 of file literature.bib
+Warning--entry type for "BlickAppStore" isn't style-file defined
+--line 19 of file literature.bib
+Warning--entry type for "FAZAppStore" isn't style-file defined
+--line 25 of file literature.bib
+Warning--entry type for "NZZAppStore" isn't style-file defined
+--line 31 of file literature.bib
+Warning--to sort, need author or key in InstagramPP
+Warning--to sort, need author or key in SignalPP
+Warning--to sort, need author or key in 20MinutenAppStore
+Warning--to sort, need author or key in BlickAppStore
+Warning--to sort, need author or key in FAZAppStore
+Warning--to sort, need author or key in NZZAppStore
+(There were 12 warnings)

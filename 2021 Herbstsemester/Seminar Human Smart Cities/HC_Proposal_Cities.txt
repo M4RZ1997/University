@@ -1,0 +1,23 @@
+Topic 1: Crowd-sourcing and data security? Can they coexist? If not how can be gap the divide between them?
+
+Background/Motivation: Smart cities are booming, also new privacy laws that prohibits gathering of data. The institutions are slowly able to fine tohers, so (smart) cities would be interested to know if the methods for crowd sourcing
+confoorm to these rules and restrictions. More focus on wisdom of the crowds, important tool to research and improve things, but gathering may be problematic.
+ 
+Research question: 1 What for methods exist for wisdom of crowds. 2 Example GDPR: Do they respect privacy?
+Why relevant: We need an enumeration of the methods to be able to discuss those in terms of Data Security.
+First question relevant to answer second one.
+How do we answer?: Discussion of literature.
+Why is it relevant?: Again personal privacy concern. Globally, GDPR has growing authority, and through this responsible institutions.
+
+How do we answer: Merging of privacy and crowd sourcing literature.
+
+Objectives: How much need is there still for developing crowd sourcing in concern to privacy?
+
+Methodology: Explore literature regarding wisdom of crowds in smart cities. Review of current data privacy literature, example GDPR. Discusion of first mentioned with regards to second.
+
+
+
+
+Topic 2: What has been already done with crowdsourcing in cities? What were the resuts?
+
+->

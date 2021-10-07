@@ -1,0 +1,174 @@
+% unifrsr.sty
+% A small package for Human-IST seminar project reports. It makes sure that the
+% title page layout is as required.
+%
+% This style has been strongly modified from the style used at the University
+% of Geneva, Vision Group.
+%
+% Author: Jean Hennebert 2005-2006
+% Adapted for new unifr logo: Angelika Garz 2013
+% Adapted for Human-IST: Pierre Vanhulst 2015
+% Adapted for seminars: Moreno Colombo 2018
+%
+%%%%%%
+%
+% Identification
+%
+%%%%%%
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{unifrsr}
+
+%   v1.1 Original version
+%   (c) University of Fribourg, DIUF, 
+%
+%%%%%%
+%
+% Package loading
+%
+%%%%%%
+%
+\RequirePackage{graphics}
+\RequirePackage{rotating}
+\RequirePackage{epstopdf}
+\RequirePackage[export]{adjustbox}
+%
+%%%%%%
+%
+% Body of Package
+%
+%%%%%%
+%
+% set up the page dimensions. This assumes a4 paper.
+%
+% vertical
+\voffset -13mm
+\topmargin 0mm
+\headheight 5mm
+\headsep 12.5mm
+\textheight 235mm
+%
+% horizontal
+\hoffset 0mm
+\oddsidemargin 5mm
+\textwidth 150mm
+%
+\reversemarginpar
+% set up new commands for defining the email address and tech. report no.,
+% etc.
+%
+\newcommand*{\email}[1]{\textsf{#1}}
+\newcommand*{\seminartitle}[1]{\def\seminarname{#1}}
+\newcommand*{\supervisor}[1]{\def\supervis{#1}}
+\newcommand*{\assistant}[1]{\def\assist{#1}}
+
+\newcommand\StoreAddress[3]{% store the address for later printing
+  \g@addto@macro\addresses{\par\raisebox{0.6ex}{\small#1}#2{#3}}%
+}
+%
+\newcommand{\keywords}[1]{\begin{center}{\bfseries Keywords:} #1\end{center}}
+%
+% redefine maketitle to do what we want
+%
+\renewcommand\maketitle{\begin{titlepage}%
+%\let\footnotesize\small
+%\let\footnoterule\relax
+\let \footnote \thanks
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\newlength{\datewordlength}
+\settowidth{\datewordlength}{\large Date: }
+\newlength{\datelength}
+\settowidth{\datelength}{\large \@date}
+\noindent
+
+
+\begin{figure}
+        \centering
+                \includegraphics[width=.2\textwidth,valign=t]{figs/UNF_Logo_100pr_pos.eps}
+        \hfill
+                \includegraphics[width=.2\textwidth,valign=t]{figs/human-ist_logo.eps}
+        \vspace{30mm}
+\end{figure}
+
+%\hspace*{\fill}
+%\parbox[b]{\datewordlength}{%
+%\large
+%Date: \\
+%N${}^\mathrm{o}$
+%}%
+%\parbox[b]{\datelength}{%
+%\large
+%\@date \\
+%}%
+
+\vskip 20mm%
+\begin{center}%
+    
+    {\LARGE \textsc \@title \vskip \baselineskip \par}%
+        
+    {\large
+     \begin{tabular}[t]{c}%
+        \@author
+     \end{tabular} \vskip \baselineskip \par}%
+
+    
+    \vfill%
+	{\normalsize \textsc{Supervisor:} \vskip \baselineskip%
+		\begin{tabular}[t]{c}%
+			\supervis%
+		\end{tabular}%
+	}
+	
+	\ifdefined\assist{%
+		\vfill%
+		{\normalsize \textsc{Assistant(s):} \vskip \baselineskip%
+			\begin{tabular}[t]{c}%
+				\assist%
+			\end{tabular}%
+		}
+	}\else{}\fi
+	
+    \vfill%
+    {\textsc \@date}
+    \vfill%
+    %\scriptsize{\textsc{DIUF Research Report}} 
+    %\par
+    %{\parskip .5em \scriptsize Department of Informatics $\bullet$ Blvd de P\'erolles 90 $\bullet$ 1700 Fribourg $\bullet$ Switzerland \par}
+    \ifdefined\seminarname{%
+		\large{\textsc{{\seminarname} - Proposal}}
+    }\else{}\fi
+	\vskip \baselineskip \par
+    \par
+    
+    %\vfill%
+    
+\end{center}\par
+\@ifundefined{@acceptedfor}{}{%
+    \vskip \baselineskip%
+    \parbox[t]{150mm}{%
+    \small
+    {\bfseries Accepted for:} \@acceptedfor
+    }
+}
+\@thanks
+\vfil\null
+\end{titlepage}%
+
+\setcounter{footnote}{0}%
+\global\let\thanks\relax
+\global\let\maketitle\relax
+\global\let\@thanks\@empty
+\global\let\@author\@empty
+\global\let\@date\@empty
+\global\let\@assist\@empty
+\global\let\@seminarname\@empty
+\global\let\@supervis\@empty
+\global\let\@title\@empty
+\global\let\@acceptedfor\@empty
+\global\let\@email\@empty
+\global\let\title\relax
+\global\let\author\relax
+\global\let\date\relax
+\global\let\and\relax
+\global\let\email\relax
+}
