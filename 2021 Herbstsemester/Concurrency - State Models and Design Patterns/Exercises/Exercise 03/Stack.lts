@@ -1,8 +1,12 @@
 LOCK = (acquire -> release -> LOCK).
 
-PUSH = (acquire -> dostuff -> release -> PUSH).
+PUSH = (push[v:0..1] -> PUSH).
 
-POP = (acquire -> dostuff2 -> release -> POP).
+POP = (pop[v:0..1] -> POP).
 
-property STACK = (acquire -> dostuff -> release -> STACK | acquire -> dostuff2 -> release -> STACK).
-||STACK = ( {a,b}::PUSH || {a,b}::POP || {a,b}::LOCK ).
+SAVESPACES = (push[v:0..1] -> SAVESPACE[v]),
+SAVESPACE[n:0..1] = (push[v:0..1] -> pop[v] -> SAVESPACE[n] | pop[n] -> SAVESPACES).
+
+property ACQUIREFIRST = (acquire -> {push[v:0..1], pop[v:0..1]} -> release -> ACQUIREFIRST).
+
+||STACK = ( PUSH || POP || LOCK || SAVESPACES || ACQUIREFIRST).
