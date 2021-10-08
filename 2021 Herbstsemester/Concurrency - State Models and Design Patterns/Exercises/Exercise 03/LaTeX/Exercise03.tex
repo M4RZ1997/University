@@ -36,11 +36,51 @@
 		\end{tabular}
 	\closesection
 	
+	\newpage	
+	
 	\section{FM Radio}
 	\startsection
+		The radio is implemented as follows:
+		\startsubsection
+			\begin{minted}{bash}
+const MAXFREQ = 10
+const BOTFREQ = 1
+
+RADIO = OFF,
+OFF = (on -> HIGHESTFREQ | reset -> OFF | scan -> OFF),
+HIGHESTFREQ = (off -> OFF | scan -> VALID[MAXFREQ] | scan -> INVALID[MAXFREQ] | 
+	reset -> HIGHESTFREQ),
+VALID[n:1..MAXFREQ] = (off -> OFF | lock -> LOCK[n] | reset -> HIGHESTFREQ),
+INVALID[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] | 
+	when (n > BOTFREQ) scan -> INVALID[n-1] | 
+	when (n == BOTFREQ) end -> NOTFOUND | reset -> HIGHESTFREQ),
+LOCK[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] | 
+	when (n > BOTFREQ) scan -> INVALID[n-1] | 
+	when (n == BOTFREQ) end -> NOTFOUND | reset -> HIGHESTFREQ),
+NOTFOUND = (off -> OFF | reset -> HIGHESTFREQ).
+			\end{minted}
+		\closesection
 	\closesection
 	
 	\section{Stack Implementation}
 	\startsection
+		The stack is implemented as follows:
+		\startsubsection
+			\begin{minted}{bash}
+LOCK = (acquire -> release -> LOCK).
+
+PUSH = (push[v:0..1] -> PUSH).
+
+POP = (pop[v:0..1] -> POP).
+
+SAVESPACES = (push[v:0..1] -> SAVESPACE[v]),
+SAVESPACE[n:0..1] = (push[v:0..1] -> pop[v] -> SAVESPACE[n] | pop[n] -> SAVESPACES).
+
+property ACQUIREFIRST = (acquire -> {push[v:0..1], pop[v:0..1]} -> release -> ACQUIREFIRST).
+
+||STACK = ( PUSH || POP || LOCK || SAVESPACES || ACQUIREFIRST).
+			\end{minted}
+		\closesection
+		With the SAVESPACES the number of slots the stack has can be changed. The property is used  so before any \textit{push} or \textit{pop} operation is executed the lock has to be acquired and after the execution the lock is always released.
 	\closesection
 \end{document}
