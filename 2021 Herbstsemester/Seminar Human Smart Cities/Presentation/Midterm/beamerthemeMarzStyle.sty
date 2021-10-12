@@ -1,0 +1,46 @@
+% ------------------------------------------------------------------------------------------------- %
+% 						   beamerthemeMarzStyle.sty Marcel Zauder 23/03/2021						%
+% Beamertheme by Marcel                                                            					%
+% ------------------------------------------------------------------------------------------------- %
+\ProvidesPackage{beamerthemeMarzStyle}[2021/10/12]
+% ################################################################################################# %
+% ----------------------------------------- Miscellaneous ----------------------------------------- %
+\usepackage{tikz}
+\useinnertheme{circles}
+\usecolortheme{orchid}
+\graphicspath{{../images}}
+% ################################################################################################# %
+% ------------------------------------ Beamer Template - Canvas ----------------------------------- %
+\setbeamertemplate{background canvas}{
+	\ifnum\c@framenumber=1
+		% Titlepage
+	\else
+		\begin{tikzpicture}[overlay, remember picture]
+			\node[left=0.2cm] at (current page.30){
+				\includegraphics[scale=1]{human-ist_logo.eps}
+			};
+		\end{tikzpicture}
+	\fi
+}
+% ----------------------------------- Beamer Template - Footline ---------------------------------- %
+\defbeamertemplate*{footline}{MarzStyle-footline}
+{
+	\leavevmode
+	\hbox
+	{
+		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=2ex,right]{author in head/foot}%
+			\ifnum\c@framenumber=1	%First Slide
+				\color{white}
+			\else
+				\usebeamerfont{author in head/foot}\insertshortauthor~~(\insertshortinstitute)
+			\fi
+ 		\end{beamercolorbox}%
+  
+  		\begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=2ex,right]{date in head/foot}%
+    		\usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{1em}
+    		\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  		\end{beamercolorbox}
+	}
+	\vskip0pt
+}
+% ################################################################################################# %

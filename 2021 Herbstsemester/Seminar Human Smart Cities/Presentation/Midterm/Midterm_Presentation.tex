@@ -1,97 +1,81 @@
-\documentclass[12pt,aspectratio=169]{beamer}
-\usetheme{Marburg}
-\graphicspath{{../images}}
+\documentclass{beamer}
 
-\usepackage[utf8]{inputenc}
+\mode<presentation>
+\usetheme{MarzStyle}
+
 \usepackage[english]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{graphicx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
 
 \begin{document}
-\author{Pascal Gerig, Lorenzo Wipfli, Marcel Zauder}
-\newcommand{\TT}{Can Crowd-Sourcing coexist with today's Data Security Regulations?}
-\newcommand{\TB}{Literature}
-\newcommand{\BG}{Ia - Background}
-\newcommand{\MO}{Ib - Motivation}
-\newcommand{\RQ}{II - Problem Statement and Research Questions}
-\newcommand{\MT}{III - Methodology}
-
-\title{\TT}
-%\setbeamercovered{transparent} 
-\setbeamertemplate{navigation symbols}{\href{www.egmon.com.br}{www.egmon.com.br}}
-\institute{Igreja Presbiteriana Central} 
-\date{\today} 
-%\subject{}
+	\author{Pascal Gerig, Lorenzo Wipfli, Marcel Zauder}
+	\title{Can Crowd-Sourcing coexist with today's Data Security Regulations?}
+	\institute{\includegraphics[scale=1.5]{human-ist_logo.eps} \\ HUMAN-IST}
+	\date{\today}
 
 \begin{frame}
-\titlepage
+	\titlepage
 \end{frame}
 
-\LARGE
+	\institute{HUMAN-IST}
 
-%\section{\IN}
-\begin{frame}{\TT}
-	\begin{block}{\BG}
-		\begin{enumerate}[-]
+%\AtBeginSection[]
+%{
+%  \begin{frame}<beamer>
+%    \frametitle{Outline}{
+%    	\tableofcontents[currentsection]
+%    }
+%  \end{frame}
+%}
+
+\begin{frame}{Background and Motivation}
+	\begin{block}{Background}
+		\begin{enumerate}[]
 			\item Data collection by smart cities from population
 		\end{enumerate}
 	\end{block}
 \end{frame}
 
-\begin{frame}{\TT}
-	\begin{block}{\BG}
-		\begin{enumerate}[-]
+\begin{frame}{Background and Motivation}
+	\begin{block}{Background}
+		\begin{enumerate}[]
 			\item GDPR introduction in 2018
 			\item Law enforcements impose hefty fines
 		\end{enumerate}
 	\end{block}
 \end{frame}
 
-\begin{frame}{\TT}
-	\begin{block}{\BG}
-		Me is a Picture
-		%slide from Privacy for fines
-	\end{block}
+\begin{frame}{Background and Motivation}
+	\includegraphics[scale=0.7]{EnforcementTracker_21-10-12.png}
 \end{frame}
 
-\begin{frame}{\TT}
-	\begin{block}{\MO}
-		\begin{enumerate}[-]
+\begin{frame}{Background and Motivation}
+	\begin{block}{Motivation}
+		\begin{enumerate}[]
 			\item Important to comply with new regulations (GDPR)
 		\end{enumerate}
 	\end{block}
 \end{frame}
 
-\begin{frame}{\TT}
-	\begin{block}{\RQ}
+\begin{frame}{Problem Statement and Research Question}
+	\begin{block}{Research Question I}
 		What methods do exist in order to gather information from citizen?
 	\end{block}
 \end{frame}
 
-\begin{frame}{\TT}
-	\begin{block}{\RQ}
+\begin{frame}{Problem Statement and Research Question}
+	\begin{block}{Research Question II}
 		What aspects do Human Smart Cities need to consider in order to comply with GDPR?
 	\end{block}
 \end{frame}
 
-\begin{frame}{\TT}
-	\begin{block}{\MT}
-		Following the Design Science Research principles
-	\end{block}
-\end{frame}
-
-\begin{frame}{\TT}
-	\begin{block}{\MT \ - Artifact}
+\begin{frame}{Methodology}
+	Following the Design Science Research principles
+	\begin{block}{Artifact}
 		Design principles and guidelines for designing crowd-sourcing methods
 	\end{block}
-\end{frame}
-
-\begin{frame}{\TT}
-	\begin{block}{\MT}
-		\begin{enumerate}[-]
+	\begin{block}{Proceeding}
+		\begin{enumerate}[]
 			\item literature review
 			\item design artifact
 			\item descriptive artifact evaluation

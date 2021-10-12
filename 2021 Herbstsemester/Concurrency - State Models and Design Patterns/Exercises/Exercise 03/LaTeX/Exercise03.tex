@@ -61,7 +61,7 @@ LOCK[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] |
 NOTFOUND = (off -> OFF | reset -> HIGHESTFREQ | scan -> NOTFOUND).
 			\end{minted}
 		\closesection
-		The idea with our implementation is that we can define the highest and lowest frequency possible. With both of these defined during a scan each frequency is checked whether it is valid or not. If it is valid the frequency is locked otherwise the next frequency is checked. If the last frequency is checked and it is not a valid option the radio will reach the state NOTFOUND, in which2 it is only possible to turn off the radio or reset it; another scan will only lead to the same state. When in the OFF state we assume that only the on action is turning the radio on another action won't change the state.
+		The idea with our implementation is that we can define the highest and lowest frequency possible. With both of these defined during a scan each frequency is checked whether it is valid or not. If it is valid the frequency is locked otherwise the next frequency is checked. If the last frequency is checked and it is not a valid option the radio will reach the state NOTFOUND, in which it is only possible to turn off the radio or reset it; another scan will only lead to the same state. When in the OFF state we assume that only the on action is turning the radio on another action won't change the state.
 	\closesection
 	
 	\section{Stack Implementation}
