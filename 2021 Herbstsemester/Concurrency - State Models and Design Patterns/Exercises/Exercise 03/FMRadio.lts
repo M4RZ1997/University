@@ -7,4 +7,4 @@ HIGHESTFREQ = (off -> OFF | scan -> VALID[MAXFREQ] | scan -> INVALID[MAXFREQ] | 
 VALID[n:1..MAXFREQ] = (off -> OFF | lock -> LOCK[n] | reset -> HIGHESTFREQ),
 INVALID[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] | when (n > BOTFREQ) scan -> INVALID[n-1] | when (n == BOTFREQ) end -> NOTFOUND | reset -> HIGHESTFREQ),
 LOCK[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] | when (n > BOTFREQ) scan -> INVALID[n-1] | when (n == BOTFREQ) end -> NOTFOUND | reset -> HIGHESTFREQ),
-NOTFOUND = (off -> OFF | reset -> HIGHESTFREQ).
+NOTFOUND = (off -> OFF | reset -> HIGHESTFREQ | scan -> NOTFOUND).

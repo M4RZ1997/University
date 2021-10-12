@@ -22,6 +22,7 @@
 			\item \textit{Can you ensure safety for shared data in concurrent programs without using any kind of locks?} \\
 			It would be possible if one can ensure that all operations that access the shared data are atomic. For example in Java there are atomic data types already implemented, e.g. AtomicInteger or ConcurrentLinkedQueue. With these types read and write operations are atomic (CompareAndSet operations are used to modify, change the data). 
 			\item \textit{The Java language designers decided to implement concurrency based on monitors. What is the main reason behind this decision?} \\
+			Because every object in Java can be logically associated with a monitor, implementing concurrency with these is much easier to use instead of always having to instantiate a lock or semaphore.
 		\end{enumerate}
 	\closesection
 	
@@ -57,9 +58,10 @@ INVALID[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] |
 LOCK[n:1..MAXFREQ] = (off -> OFF | when (n > BOTFREQ) scan -> VALID[n-1] | 
 	when (n > BOTFREQ) scan -> INVALID[n-1] | 
 	when (n == BOTFREQ) end -> NOTFOUND | reset -> HIGHESTFREQ),
-NOTFOUND = (off -> OFF | reset -> HIGHESTFREQ).
+NOTFOUND = (off -> OFF | reset -> HIGHESTFREQ | scan -> NOTFOUND).
 			\end{minted}
 		\closesection
+		The idea with our implementation is that we can define the highest and lowest frequency possible. With both of these defined during a scan each frequency is checked whether it is valid or not. If it is valid the frequency is locked otherwise the next frequency is checked. If the last frequency is checked and it is not a valid option the radio will reach the state NOTFOUND, in which2 it is only possible to turn off the radio or reset it; another scan will only lead to the same state. When in the OFF state we assume that only the on action is turning the radio on another action won't change the state.
 	\closesection
 	
 	\section{Stack Implementation}
