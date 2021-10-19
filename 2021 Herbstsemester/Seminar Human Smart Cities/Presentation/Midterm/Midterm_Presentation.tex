@@ -2,6 +2,7 @@
 
 \mode<presentation>
 \usetheme{MarzStyle}
+\graphicspath{{../images/}}
 
 \usepackage[english]{babel}
 \usepackage[scaled=.90]{helvet}
@@ -38,10 +39,19 @@
 
 \begin{frame}{Background and Motivation}
 	\begin{block}{Background}
-		\begin{enumerate}[]
-			\item GDPR introduction in 2018
-			\item Law enforcements impose hefty fines
-		\end{enumerate}
+		\begin{tabular}{lc}
+			\begin{tabular}{p{4.9cm}}
+				\begin{enumerate}[]
+					\item GDPR introduction in 2018
+					\item Law enforcements impose hefty fines
+				\end{enumerate}
+			\end{tabular}
+			&
+			\begin{tabular}{c}
+				\hfill \\ \vspace{0.3cm}
+				\includegraphics[scale=0.9]{GDPR.jpg}
+			\end{tabular}
+		\end{tabular}
 	\end{block}
 \end{frame}
 
@@ -55,6 +65,9 @@
 			\item Important to comply with new regulations (GDPR)
 		\end{enumerate}
 	\end{block}
+	\begin{adjustwidth}{-2em}{}
+		\includegraphics[scale=0.3]{Enforcement_Tracker_Fines.png}
+	\end{adjustwidth}	
 \end{frame}
 
 \begin{frame}{Problem Statement and Research Question}
@@ -64,8 +77,14 @@
 \end{frame}
 
 \begin{frame}{Problem Statement and Research Question}
+	\vspace{1cm}
 	\begin{block}{Research Question II}
-		What aspects do Human Smart Cities need to consider in order to comply with GDPR?
+		\begin{wrapfigure}{r}{0.5\textwidth}
+			\vspace{-2cm} \hspace{-0.4cm}
+			\includegraphics[width=1.2\linewidth]{Smart_City_Wheel_extended.png}
+		\end{wrapfigure}
+		What aspects do Human Smart Cities need to consider in order to comply with GDPR? \\
+		\includegraphics[scale=0.2]{Smart_City_Wheel.png}
 	\end{block}
 \end{frame}
 
