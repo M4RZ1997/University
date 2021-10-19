@@ -16,7 +16,7 @@
 			\item \textit{Why are immutable classes inherently safe?} \\
 			Immutable classes are only instantiated once and its state cannot be changed after that. Therefore they are inherently safe because threads that have access to this class only read its state but are unable to change it.
 			\item \textit{What is "balking"?} \\
-			The balking pattern is a software design pattern that only executes an action on an object when the object is in a particular state. It is used when objects are generally only in a state that is prone to balking temporarily but for an unknown amount of time. The object will make itself not available while being in an "incorrect" state until it reaches a correct state again, i.e. A object wants to read a text file and upon a calling method invoked by another object wants to access information via a get method an that object, the object would "balk" at this request.
+			The balking pattern is a software design pattern that only executes an action on an object when the object is in a particular state. It is used when objects are generally only in a state that is prone to balking temporarily but for an unknown amount of time. The object will make itself not available and will return any call instantly (in Java there will be an exception thrown) while being in an "incorrect" state until it reaches a correct state again, i.e. A object wants to read a text file and upon a calling method invoked by another object wants to access information via a get method an that object, the object would "balk" at this request. 
 			\item \textit{When is partial synchronization better than full synchronization?} \\
 			In partial synchronization only the "critical sections" are synchronized. This is useful when objects have both mutable and immutable instance variables or when methods can be split up in parts that are not critical sections and ones that are.
 			\item \textit{How does containment avoid the need for synchronization?} \\
@@ -36,7 +36,7 @@ const M = 5
 SAVAGE = (getserving -> SAVAGE).
 COOK = (fillpot -> COOK).
 
-MEAL = LARGEPOT[0],
+MEAL = LARGEPOT[M],
 LARGEPOT[n:0..M] = (when (n>0) getserving -> LARGEPOT[n-1] 
 			| when (n==0) fillpot -> LARGEPOT[M]).
 
@@ -72,6 +72,6 @@ LIFT[i:0..8] = (enter -> LIFT[i+1]
 	
 	\section{Thread-Safe MessageQueue}
 	\startsection
-		See the attached MessageQueue.java file.
+		See the attached MessageQueue files. We are using the Containment pattern, because \textit{full-synchronization} is not a particular fitting solution because of the edge cases, that we cannot add to a full queue and remove from an emtpy queue, which would need balking, which would lead to a very "ugly" implementation. Therefore we decided to use the containment pattern, because for \textit{partial synchronization}, which would be possible to implement, there is too little code to justify using it.
 	\closesection
 \end{document}

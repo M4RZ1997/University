@@ -1,0 +1,9 @@
+const M = 5
+
+SAVAGE = (getserving -> SAVAGE).
+COOK = (fillpot -> COOK).
+
+MEAL = LARGEPOT[0],
+LARGEPOT[n:0..M] = (when (n>0) getserving -> LARGEPOT[n-1] | when (n==0) fillpot -> LARGEPOT[M]).
+
+||DININGSAVAGES = (SAVAGE || COOK || MEAL).
