@@ -52,6 +52,11 @@
 \newblock \url{http://dx.doi.org/10.1109/JIOT.2019.2921879}. --
 \newblock DOI 10.1109/JIOT.2019.2921879
 
+\bibitem[LW18]{LanierWeylBlueprint}
+\textsc{Lanier}, Jaron ; \textsc{Weyl}, E~G.:
+\newblock A blueprint for a better digital society.
+\newblock {In: }\emph{Harvard Business Review} 26 (2018)
+
 \bibitem[NOK]{NokiaAVACrowdAnalytics}
 \textsc{NOKIA}:
 \newblock \emph{Nokia Ava Crowd Analytics}.
@@ -76,6 +81,12 @@
   research} 7 (2012), 12, S. 49--62.
 \newblock \url{http://dx.doi.org/10.4067/S0718-18762012000300006}. --
 \newblock DOI 10.4067/S0718--18762012000300006
+
+\bibitem[Tim19]{LanierWeylNYTOpinion}
+\textsc{Times}, The New~Y.:
+\newblock \emph{Jaron Lanier Fixes the Internet | NYT Opinion}.
+\newblock \url{\\ https://www.youtube.com/watch?v=Np5ri-KktNs}.
+\newblock \,Version:\,2019
 
 \bibitem[WWZ{\etalchar{+}}19]{CrowdPoweredSmartCities}
 \textsc{Wang}, Jiangtao ; \textsc{Wang}, Yasha ; \textsc{Zhang}, Daqing ;

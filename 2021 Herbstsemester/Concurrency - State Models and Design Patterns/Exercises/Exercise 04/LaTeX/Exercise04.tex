@@ -59,7 +59,7 @@ LIFT[i:0..8] = (enter -> LIFT[i+1]
 			\item \textit{Which values can the variable i have in non-error states?} \\
 			The variable \textit{i} can be all the values from 0 to 8 so the FSP is in a non-error state.
 			\item \textit{What kind of property is used and what does it guarantee?} \\
-			This property is a liveness property which guarantees that the LIFT[0] state can always be reached.
+			This property is a safety property which guarantees that the variable \textit{i} never reaches a value greater than 8.
 			\item \textit{Provide an action trace that violates the provided property.} \\
 			An action trace that violates the provided property would be: \\
 			enter -> enter -> enter -> enter -> enter -> enter -> enter -> enter -> enter \\

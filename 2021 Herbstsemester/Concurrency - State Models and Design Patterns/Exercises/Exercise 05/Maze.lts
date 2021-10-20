@@ -1,0 +1,12 @@
+const STARTTILE = 6
+
+Maze = TILE[STARTTILE],
+TILE[0] = (north -> STOP | east -> TILE[1]),
+TILE[1] = (east -> TILE[2] | south -> TILE[4] | west -> TILE[0]),
+TILE[2] = (west -> TILE[1] | south -> TILE[5]),
+TILE[3] = (east -> TILE[4] | south -> TILE[6]),
+TILE[4] = (north -> TILE[1] | west -> TILE[3]),
+TILE[5] = (north -> TILE[2] | south -> TILE[8]),
+TILE[6] = (north -> TILE[3]),
+TILE[7] = (east -> TILE[8]),
+TILE[8] = (north -> TILE[5] | west -> TILE[7]).

@@ -1,0 +1,11 @@
+PHIL = ( sitdown
+-> right.get -> left.get -> eat
+-> left.put -> right.put -> arise -> PHIL ).
+
+PHIL2 = ( sitdown
+-> left.get -> right.get -> eat
+-> right.put -> left.put -> arise -> PHIL2 ).
+
+FORK = ( get -> put -> FORK).
+
+||DINERS(N=1) = forall [i:0..N-1]( phil[i*2]:PHIL || {phil[i*2].left,phil[(((i*2)-1)+(2*N))%(2*N)].right}::FORK || phil[i*2+1]:PHIL2 || {phil[i*2+1].left,phil[(((i*2+1)-1)+(2*N))%(2*N)].right}::FORK ).
