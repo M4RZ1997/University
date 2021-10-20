@@ -14,6 +14,7 @@
 	\startsection
 		\begin{enumerate}[a)]
 			\item \textit{When should a guarded method be preferred over balking?} \\
+			Guarded methods should be used if a thread can afford to wait and can tolerate an indefinite postponement. Otherwise if a thread can execute other actions while waiting for a resource balking should be used.
 			\item \textit{What is in your opinion the best strategy to deal with an InterruptedException? Justify your answer!} \\
 			One way to handle an InterruptedException is to propagate it to the caller so it can determine what should be done when such a situation occurs. Unfortunately when the code is part of a Runnable, which will most often be the case, nothing can be thrown, therefore the status should be restored. \\
 			In my opinion one should use a custom exception handling, such that for every circumstance an individually fitted handling can be created. For instance, when a thread is waiting for an I/O-operation and is interrupted any resource that is held by it can be closed before the thread is terminated. Handling such exceptions correctly and in a predefined way fitting to the circumstances can balance the responsiveness and robustness of the application.
@@ -27,6 +28,7 @@
 			A third way is to use pre-emption such that when a process needs a resource that is currently held by another one, it should be able to ask the process to give the resource to it and then return it after finishing its actions. \\
 			A last way is to avoid wait-for-cycles, so no process in a cycle would wait for a resource currently being held by its successor.
 			\item \textit{Why is it generally a good idea to avoid deadlocks from the beginning instead of relying on deadlock detection techniques?} \\
+			Deadlock avoidance is a much better paradigm because looking at the example for how deadlocks can be detected, there can still be other reasons why a thread can sometimes need more time to execute a task than considered beforehand. But the detection algorithm would think that there exists a deadlock and would initiate measures in order to deal with that potential deadlock. All in all it is much more difficult to detect a deadlock than beforehand programming code that is actually avoiding any possibility of a deadlock.
 			\item \textit{Why is progress a liveness rather than a safety issue?} \\
 			Liveness tells us that (eventually) something good will happen, therefore it ensures that \textit{progress} is being made. A program can also make progress while being in a wrong state, so it cannot check if during the hold trace sequence something bad has happened but will only check if the liveness property can be reached at any time. Therefore progress is not a safety issue.
 			\item \textit{Why should you usually prefer notifyAll() to notify()?} \\
@@ -45,9 +47,12 @@
 			When using a queue before the philosophers are sitting down at the table and only letting n-1 philosophers at most sit at the table, we would also avoid a deadlock because there are enough forks such that at least one philosopher can eat. Because there is a FIFO queue beforehand it is also a fairer improvement but it can happen that one philosopher is sitting at the table, already acquired a fork, but because he is really slow and the other philosophers are much faster at acquiring the other forks he can also starve, but this is less of a problem than in the example before.
 			\item \textit{Philosopher can talk with each other and ask for fork (Pre-Emption)} \\
 			In this improvenment example the philosophers can talk with the philosopher next to him, if they want to acquire the fork already held by that philosopher in order to ask to get access for it. In regards to fairness this is a pretty good solution similar to the second one, because one philosopher will only starve if he is really slow and other philosophers are always taking his already acquired fork away.
-			\item \textit{No idea} \\
+			\item \textit{Pick up both forks simultaneously} \\
+			Another way to avoid a deadlock is to ensure that each philosopher can either take both forks simultaneously or none. This could be "implemented" by using a waiter which is asked for both forks at one time and only gives permission if both of these forks are available. In regards to fairness this solution is not very good because a philosopher that is very slow can be "overtaken" by other philosophers that are much faster and therefore will starve.
 		\end{enumerate}
 	\closesection
+	
+	\newpage
 	
 	\section{Dining Philosophers - Deadlock Avoidance FSP/LTSA}
 	\startsection
