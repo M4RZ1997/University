@@ -1,0 +1,35 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\runningheads{Computervision}{Assignment 01}
+
+\setcounter{chapter}{1}
+
+
+\begin{document}
+	\section{Blur Kernel}
+	\startsection
+		Last digit of matriculation number: 6 $\Rightarrow$ $6 \ mod \ 4 = 2$ \\
+		$\Rightarrow \ k_2 = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix}$
+	\closesection
+
+	\section{Discretization of E}
+	\startsection
+		\textit{Finite difference approximation of the objective function E: Choose forward differences for the discretization.
+In particular, use eq. (6) for the Gaussian prior implementation and derive the corresponding discretization
+for the anisotropic prior. Write the main steps of your calculations in the report.} \\
+	\closesection
+	
+	\section{Gradient Calculations}
+	\startsection
+		\begin{enumerate}[(a)]
+			\item \textit{Compute the gradient $\Delta_u E$ at pixels inside the image, i.e. $1 \leq i \leq m-2$ and $1 \leq j \leq n-2$} \\
+			\item \textit{Compute the gradient $\Delta_u E$ at the four corners, i.e. $(i,j) \in \{ (0,0); (0,n-1);(m-1,0);(m-1,n-1)) \}$} \\
+			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the upper edge, i.e. $i = 0$} \\
+			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the left edge, i.e. $j = 0$} \\
+			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the right edge, i.e. $j = n - 1$} \\
+			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the lower edge, i.e. $i = m-1$}
+		\end{enumerate}
+	\closesection
+\end{document}
