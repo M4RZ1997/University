@@ -36,7 +36,7 @@
 		\end{enumerate}
 	\closesection
 	
-	\section{Dining Philosophers 1.0}
+	\section{Dining Philosophers - Deadlock Avoidance IDEAS}
 	\startsection
 		\begin{enumerate}
 			\item \textit{One Philosopher takes forks in reverse order} \\
@@ -49,7 +49,7 @@
 		\end{enumerate}
 	\closesection
 	
-	\section{Dining Philosophers 2.0}
+	\section{Dining Philosophers - Deadlock Avoidance FSP/LTSA}
 	\startsection
 		The idea here is that each philosopher with an odd ID first grabs his left fork and then the right fork and each philosopher with an even ID first grabs his right fork and then the left fork and therefore this implementation avoids a deadlock:
 		\begin{minted}{shell}
