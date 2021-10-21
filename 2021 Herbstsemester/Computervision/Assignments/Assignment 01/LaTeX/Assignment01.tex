@@ -18,18 +18,52 @@
 	\startsection
 		\textit{Finite difference approximation of the objective function E: Choose forward differences for the discretization.
 In particular, use eq. (6) for the Gaussian prior implementation and derive the corresponding discretization
-for the anisotropic prior. Write the main steps of your calculations in the report.} \\
+for the anisotropic prior. Write the main steps of your calculations in the report.}
+		\subsection{Discretization of anisotropic total variation regularization term}
+		\startsubsection
+			The second term is defined as:
+			\[ R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | \nabla u[i,j] | _1 \hspace{2cm} (5)\]
+			The analytic derivative with forward differences is defined as follows:
+			\[ \nabla u[x] \ = \ \lim_{\epsilon \rightarrow 0} \frac{u[x + \epsilon] - u[x]}{\epsilon} \]
+			The grid step $\epsilon$ is set to 1, because it is the smalles possible grid step:
+			\[ \nabla u[i,j] \ \simeq \ \begin{bmatrix} u[i+1,j] - u[i,j] \\ u[i,j+1] - u[i,j] \end{bmatrix} \]
+			Because we are applying the L1-norm on this derivative we can write:
+			\[ | \nabla u[i,j] | _1 \ \simeq \ | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | \]
+			Now we need to make sure that the formula doesn't reach "out-of-bounds":
+			\subsubsection{1. Every pixel except the ones with $u[i,j] = u[m-1,j]$ and $u[i,j] = u[j,n-1]$}
+			\[
+				\Rightarrow \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] |
+			\]
+			\subsubsection{2. Every pixel with $u[i,j] = u[m-1,j]$}
+			\[
+				\Rightarrow \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] |
+			\]
+			\subsubsection{3. Every pixel with $u[i,j] = u[j,n-1]$}
+			\[
+				\Rightarrow \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] |
+			\]
+			\subsubsection{Joined together this will give us the discretized regularization term}
+				\[
+					\hspace{-2.5cm} R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \hspace{1.5cm} (7)
+				\]
+		\closesection
+		\subsection{Simplification of term (3) $| u \ast k_2 -g |$}
+		\startsubsection
+			\[
+				| u \ast k_2 - g | ^2 \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \sum_{p=0}^{1} \sum_{q=0}^{1} k(p,q) \ u[i-p+1, j-q+1] | _2 ^2 \hspace{2cm} (3)
+			\]
+		\closesection
 	\closesection
 	
 	\section{Gradient Calculations}
 	\startsection
 		\begin{enumerate}[(a)]
-			\item \textit{Compute the gradient $\Delta_u E$ at pixels inside the image, i.e. $1 \leq i \leq m-2$ and $1 \leq j \leq n-2$} \\
-			\item \textit{Compute the gradient $\Delta_u E$ at the four corners, i.e. $(i,j) \in \{ (0,0); (0,n-1);(m-1,0);(m-1,n-1)) \}$} \\
-			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the upper edge, i.e. $i = 0$} \\
-			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the left edge, i.e. $j = 0$} \\
-			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the right edge, i.e. $j = n - 1$} \\
-			\item \textit{Compute the gradient $\Delta_u E$ at pixels on the lower edge, i.e. $i = m-1$}
+			\item \textit{Compute the gradient $\nabla_u E$ at pixels inside the image, i.e. $1 \leq i \leq m-2$ and $1 \leq j \leq n-2$} \\
+			\item \textit{Compute the gradient $\nabla_u E$ at the four corners, i.e. $(i,j) \in \{ (0,0); (0,n-1);(m-1,0);(m-1,n-1)) \}$} \\
+			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the upper edge, i.e. $i = 0$} \\
+			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the left edge, i.e. $j = 0$} \\
+			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the right edge, i.e. $j = n - 1$} \\
+			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the lower edge, i.e. $i = m-1$}
 		\end{enumerate}
 	\closesection
 \end{document}
