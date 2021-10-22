@@ -8,7 +8,7 @@
 
 
 \begin{document}
-	\section{Blur Kernel}
+	\section*{Blur Kernel}
 	\startsection
 		Last digit of matriculation number: 6 $\Rightarrow$ $6 \ mod \ 4 = 2$ \\
 		$\Rightarrow \ k_2 = \begin{pmatrix} \frac{1}{2} & 0 \\ 0 & \frac{1}{2} \end{pmatrix}$
@@ -34,36 +34,278 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\[
 				\Rightarrow \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] |
 			\]
-			\subsubsection{2. Every pixel with $u[i,j] = u[m-1,j]$}
+			\subsubsection{2. Every pixel with $u[i,j] = u[m-1,j]$ (lower edge)}
 			\[
 				\Rightarrow \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] |
 			\]
-			\subsubsection{3. Every pixel with $u[i,j] = u[j,n-1]$}
+			\subsubsection{3. Every pixel with $u[i,j] = u[j,n-1]$ (right edge)}
 			\[
 				\Rightarrow \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] |
 			\]
 			\subsubsection{Joined together this will give us the discretized regularization term}
 				\[
-					\hspace{-2.5cm} R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \hspace{1.5cm} (7)
+					\hspace{-2.5cm} R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \hspace{1cm} (7)
 				\]
+				Simplifying this:
+				\begin{align*}
+					R_{TV}[u] \ & = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | && + | u[i,j+1] - u[i,j] | \\
+					&&& + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \\
+					& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | && +  \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] | \\
+					&&& + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \\
+					& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | && + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \\
+					&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | \\
+					& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} | u[i+1,j] - u[i,j] | && + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] | \hspace{3cm} (7a)
+				\end{align*}
 		\closesection
 		\subsection{Simplification of term (3) $| u \ast k_2 -g |$}
 		\startsubsection
-			\[
-				| u \ast k_2 - g | ^2 \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \sum_{p=0}^{1} \sum_{q=0}^{1} k(p,q) \ u[i-p+1, j-q+1] | _2 ^2 \hspace{2cm} (3)
-			\]
+			Taking the term (3) and simplifying it by appliying the kernel $k_2$ to it:
+			\begin{align*}
+				| u \ast k_2 - g | ^2 \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \sum_{p=0}^{1} \sum_{q=0}^{1} k(p,q) \ u[i-p+1, j-q+1] | _2 ^2 && (3) \\
+				& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - (\frac{1}{2} \ u[i+1,j+1] + 0 + 0 + \frac{1}{2} \ u[i,j]) | _2 ^2 \\
+				& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \frac{1}{2} \ u[i+1,j+1] - \frac{1}{2} \ u[i,j] | _2 ^2 \\
+				& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 && (3a)
+			\end{align*}
+		\closesection
+		\subsection{Simplification of Gaussian Prior Regularization Term (6)}
+		\startsubsection
+			\begin{align*}
+				R_{GP}[u] \ & = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i+1,j] - u[i,j] )^2 && + ( u[i,j+1] - u[i,j] )^2 \\
+				&&& + \sum_{j=0}^{n-2} ( u[m-1,j+1] - u[m-1,j] )^2 + \sum_{i=0}^{m-2} ( u[i+1,n-1] - u[i,n-1] )^2 \\
+				& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i+1,j] - u[i,j] )^2 && +  \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \\
+				&&& + \sum_{j=0}^{n-2} ( u[m-1,j+1] - u[m-1,j] )^2 + \sum_{i=0}^{m-2} ( u[i+1,n-1] - u[i,n-1] )^2 \\
+				& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i+1,j] - u[i,j] )^2 && + \sum_{i=0}^{m-2} ( u[i+1,n-1] - u[i,n-1] )^2 \\
+				&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 + \sum_{j=0}^{n-2} ( u[m-1,j+1] - u[m-1,j] )^2 \\
+				& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 && + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \hspace{3cm} (6a)
+				\end{align*}
+		\closesection
+		\subsection{Full Energy Terms}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+				$E_{NR}[u] \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 \hspace{5cm} (I)$
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\begin{align*}
+				E_{GP}[u] \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] && - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 \\
+				&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \hspace{1cm} (II)
+			\end{align*}
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\begin{align*}
+				E_{TV}[u] \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] && - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 \\
+				&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] | \hspace{1cm} (III)
+			\end{align*}
 		\closesection
 	\closesection
 	
+	\newpage
+	\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+	
 	\section{Gradient Calculations}
 	\startsection
-		\begin{enumerate}[(a)]
-			\item \textit{Compute the gradient $\nabla_u E$ at pixels inside the image, i.e. $1 \leq i \leq m-2$ and $1 \leq j \leq n-2$} \\
-			\item \textit{Compute the gradient $\nabla_u E$ at the four corners, i.e. $(i,j) \in \{ (0,0); (0,n-1);(m-1,0);(m-1,n-1)) \}$} \\
-			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the upper edge, i.e. $i = 0$} \\
-			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the left edge, i.e. $j = 0$} \\
-			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the right edge, i.e. $j = n - 1$} \\
-			\item \textit{Compute the gradient $\nabla_u E$ at pixels on the lower edge, i.e. $i = m-1$}
-		\end{enumerate}
+		\subsection{Compute the gradient $\nabla_u E$ at pixels inside the image, \\ i.e. $1 \leq i \leq m-2$ and $1 \leq j \leq n-2$}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\startsubsection
+				First I will derive the Gussian prior regularization term and then add this to the derivative from the no regularization term, in order to get the whole derivative.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\startsubsection
+					\vspace{0.2cm} In order to derive this term, the terms that matter for a particular $u[i,j]$ are "filtered" out and will create a new function $R_{GP}^*(u)$ (the $K$ which will occur is always the rest of the function which does not matter for the particular case), which is then derived to get the solution:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{GP}^*(u) \ & = \ (u[i,j] - u[i-1,j])^2 + (u[i+1,j] - u[i,j])^2 + (u[i,j+1] - u[i,j])^2 + (u[i,j] - u[i,j-1])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[i,j]} \ & = \ 2 * (u[i,j] - u[i-1,j]) - 2 (u[i+1,j] - u[i,j]) - 2 (u[i,j+1] - u[i,j]) + 2 (u[i,j] - u[i,j-1]) \\
+						& = \ 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+			\closesection
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\startsubsection
+			\closesection
+		\closesection
+		\subsection{Compute the gradient $\nabla_u E$ at the four corners, \\ i.e. $(i,j) \in \{ (0,0); (0,n-1);(m-1,0);(m-1,n-1)) \}$}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+					\begin{enumerate}[(i)]
+						\item \textbf{For $u[0,0]$:}
+						\begin{align*}
+							R_{GP}^*(u) \ & = \ (u[1,0] - u[0,0])^2 + (u[0,1] - u[0,0])^2 + K \\
+							\frac{\partial R_{GP}^*(u)}{\partial u[0,0]} \ & = \ -2 * (u[1,0] - u[0,0]) - 2 (u[0,1] - u[0,0]) \\
+							& = \ 2 * (2 * u[0,0] - u[1,0] - u[0,1])
+						\end{align*}
+						\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+						\item \textbf{For $u[0,n-1]$:}
+						\begin{align*}
+							R_{GP}^*(u) \ & = \ (u[0,n-1] - u[0,n-2])^2 + (u[1,n-1] - u[0,n-1])^2 + K \\
+							\frac{\partial R_{GP}^*(u)}{\partial u[0,n-1]} \ & = \ 2 * (u[0,n-1] - u[0,n-2]) - 2 (u[1,n-1] - u[0,n-1]) \\
+							& = \ 2 * (2 * u[0,n-1] - u[1,n-1] - u[0,n-2])
+						\end{align*}
+						\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+						\item \textbf{For $u[m-1,0]$:}
+						\begin{align*}
+							R_{GP}^*(u) \ & = \ (u[m-1,0] - u[m-2,0])^2 + (u[m-1,1] - u[m-1,0])^2 + K \\
+							\frac{\partial R_{GP}^*(u)}{\partial u[m-1,0]} \ & = \ 2 * (u[m-1,0] - u[m-2,0]) - 2 (u[m-1,1] - u[m-1,0]) \\
+							& = \ 2 * (2 * u[m-1,0] - u[m-2,0] - u[m-1,1])
+						\end{align*}
+						\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+						\item \textbf{For $u[m-1,n-1]$:}
+						\begin{align*}
+							R_{GP}^*(u) \ & = \ (u[m-1,n-1] - u[m-1,n-2])^2 + (u[m-1,n-1] - u[m-2,n-2])^2 + K \\
+							\frac{\partial R_{GP}^*(u)}{\partial u[m-1,n-1]} \ & = \ 2 * (u[m-1,n-1] - u[m-1,n-2]) + 2 (u[m-1,n-1] - u[m-2,n-2]) \\
+							& = \ 2 * (2 * u[m-1,n-1] - u[m-1,n-2] - u[m-2,n-1])
+						\end{align*}
+						\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+					\end{enumerate}
+				\closesection
+			\closesection
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\startsubsection
+			\closesection
+		\closesection
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the upper edge, \\ i.e. $i = 0$ and $1 \leq j \leq n-2$}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{GP}^*(u) \ & = \ (u[1,j] - u[0,j])^2 + (u[0,j+1] - u[0,j])^2 + (u[0,j] - u[0,j-1])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[0,j]} \ & = \ -2 * (u[1,j] - u[0,j]) - 2 (u[0,j+1] - u[0,j]) + 2 (u[0,j] - u[0,j-1]) \\
+						& = \ 2 * (3 * u[0,j] - u[1,j] - u[0,j-1] - u[0,j+1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+			\closesection
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\startsubsection
+			\closesection
+		\closesection
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the left edge, \\ i.e. $j = 0$ and $1 \leq i \leq m-2$}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{GP}^*(u) \ & = \ (u[i+1,0] - u[i,0])^2 + (u[i,0] - u[i-1,0])^2 + (u[i,1] - u[i,0])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[0,j]} \ & = \ -2 * (u[i+1,0] - u[i,0]) + 2 (u[i,0] - u[i-1,0]) - 2 (u[i,1] - u[i,0]) \\
+						& = \ 2 * (3 * u[i,0] - u[i+1,0] - u[i-1,0] - u[i,1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+			\closesection
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\startsubsection
+			\closesection
+		\closesection
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the right edge, \\ i.e. $j = n - 1$ and $1 \leq i \leq m-2$}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{GP}^*(u) \ & = \ (u[m-1,j] - u[m-2,j])^2 + (u[m-1,j] - u[m-1,j-1])^2 + (u[m-1,j+1] - u[m-1,j])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[0,j]} \ & = \ 2 * (u[m-1,j] - u[m-2,j]) + 2 (u[m-1,j] - u[m-1,j-1]) - 2 (u[m-1,j+1] - u[m-1,j]) \\
+						& = \ 2 * (3 * u[m-1,j] - u[m-2,j] - u[m-1,j-1] - u[m-1,j+1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+			\closesection
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\startsubsection
+			\closesection
+		\closesection
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the lower edge, \\ i.e. $i = m-1$ and $1 \leq j \leq n-2$}
+		\startsubsection
+			\subsubsection{No Regularization $\lambda = 0$}
+			\startsubsection
+			\closesection
+			\subsubsection{Gaussian Prior Regularization Term}
+			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{GP}^*(u) \ & = \ (u[i,n-1] - u[i,n-2])^2 + (u[i,n-1] - u[i-1,n-1])^2 + (u[i+1,n-1] - u[i,n-1])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[0,j]} \ & = \ 2 * (u[i,n-1] - u[i,n-2]) + 2 (u[i,n-1] - u[i-1,n-1]) - 2 (u[i+1,n-1] - u[i,n-1]) \\
+						& = \ 2 * (3 * u[i,n-1] - u[i,n-2] - u[i-1,n-1] - u[i+1,n-1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla I(u) + \nabla R_{GP}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+			\closesection
+			\subsubsection{Anisotropic Total Variation Regularization Term}
+			\startsubsection
+			\closesection
+		\closesection
 	\closesection
 \end{document}
