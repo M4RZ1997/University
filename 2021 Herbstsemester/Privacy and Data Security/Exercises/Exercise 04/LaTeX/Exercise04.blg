@@ -10,46 +10,44 @@ Reallocating 'wiz_functions' (item size: 4) to 6000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: literature.bib
-Warning--empty pages in Riordan1998EnvironmentalKG
 You've used 1 entry,
             4793 wiz_defined-function locations,
-            895 strings with 6432 characters,
-and the built_in function-call counts, 572 in all, are:
-= -- 58
-> -- 19
-< -- 14
-+ -- 18
-- -- 6
-* -- 34
-:= -- 114
-add.period$ -- 1
+            898 strings with 6535 characters,
+and the built_in function-call counts, 1029 in all, are:
+= -- 108
+> -- 25
+< -- 26
++ -- 31
+- -- 9
+* -- 81
+:= -- 170
+add.period$ -- 2
 call.type$ -- 1
-change.case$ -- 5
+change.case$ -- 6
 chr.to.int$ -- 1
-cite$ -- 2
-duplicate$ -- 16
-empty$ -- 35
-format.name$ -- 11
-if$ -- 105
+cite$ -- 1
+duplicate$ -- 21
+empty$ -- 72
+format.name$ -- 16
+if$ -- 203
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 15
+missing$ -- 6
+newline$ -- 17
 num.names$ -- 3
-pop$ -- 6
+pop$ -- 8
 preamble$ -- 1
-purify$ -- 7
+purify$ -- 8
 quote$ -- 0
-skip$ -- 32
+skip$ -- 42
 stack$ -- 0
-substring$ -- 24
-swap$ -- 3
-text.length$ -- 2
+substring$ -- 118
+swap$ -- 6
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 10
-warning$ -- 1
-while$ -- 5
+warning$ -- 0
+while$ -- 7
 width$ -- 2
-write$ -- 19
-(There was 1 warning)
+write$ -- 23

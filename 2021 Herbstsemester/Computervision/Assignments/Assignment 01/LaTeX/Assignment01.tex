@@ -22,7 +22,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 		\subsection{Discretization of anisotropic total variation regularization term}
 		\startsubsection
 			The second term is defined as:
-			\[ R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | \nabla u[i,j] | _1 \hspace{2cm} (5)\]
+			\[ R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m} \sum_{j=0}^{n} | \nabla u[i,j] | _1 \hspace{2cm} (5)\]
 			The analytic derivative with forward differences is defined as follows:
 			\[ \nabla u[x] \ = \ \lim_{\epsilon \rightarrow 0} \frac{u[x + \epsilon] - u[x]}{\epsilon} \]
 			The grid step $\epsilon$ is set to 1, because it is the smalles possible grid step:
@@ -32,29 +32,29 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			Now we need to make sure that the formula doesn't reach "out-of-bounds":
 			\subsubsection{1. Every pixel except the ones with $u[i,j] = u[m-1,j]$ and $u[i,j] = u[j,n-1]$}
 			\[
-				\Rightarrow \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] |
+				\Rightarrow \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] |
 			\]
-			\subsubsection{2. Every pixel with $u[i,j] = u[m-1,j]$ (lower edge)}
+			\subsubsection{2. Every pixel with $u[i,j] = u[m,j]$ (lower edge)}
 			\[
-				\Rightarrow \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] |
+				\Rightarrow \sum_{j=0}^{n-1} | u[m,j+1] - u[m,j] |
 			\]
-			\subsubsection{3. Every pixel with $u[i,j] = u[j,n-1]$ (right edge)}
+			\subsubsection{3. Every pixel with $u[i,j] = u[j,n]$ (right edge)}
 			\[
-				\Rightarrow \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] |
+				\Rightarrow \sum_{i=0}^{m-1} | u[i+1,n] - u[i,n] |
 			\]
 			\subsubsection{Joined together this will give us the discretized regularization term}
 				\[
-					\hspace{-2.5cm} R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \hspace{1cm} (7)
+					\hspace{-1.5cm} R[u] \ = \ | \nabla u | _1 \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | + \sum_{j=0}^{n-1} | u[m,j+1] - u[m,j] | + \sum_{i=0}^{m-1} | u[i+1,n] - u[i,n] | \hspace{1cm} (7)
 				\]
 				Simplifying this:
 				\begin{align*}
-					R_{TV}[u] \ & = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} && | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | \\
-					&&& + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \\
-					& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} && | u[i+1,j] - u[i,j] | +  \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] | \\
-					&&& + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \\
-					& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} && | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m-2} | u[i+1,n-1] - u[i,n-1] | \\
-					&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] + \sum_{j=0}^{n-2} | u[m-1,j+1] - u[m-1,j] | \\
-					& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} && | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] | \hspace{3cm} (7a)
+					R_{TV}[u] \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} && | u[i+1,j] - u[i,j] | + | u[i,j+1] - u[i,j] | \\
+					&&& + \sum_{j=0}^{n-1} | u[m,j+1] - u[m,j] | + \sum_{i=0}^{m-1} | u[i+1,n] - u[i,n] | \\
+					& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} && | u[i+1,j] - u[i,j] | +  \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] | \\
+					&&& + \sum_{j=0}^{n-1} | u[m,j+1] - u[m,j] | + \sum_{i=0}^{m-1} | u[i+1,n] - u[i,n] | \\
+					& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} && | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m-1} | u[i+1,n] - u[i,n] | \\
+					&&& + \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] + \sum_{j=0}^{n-1} | u[m,j+1] - u[m,j] | \\
+					& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n} && | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] | \hspace{3cm} (7a)
 				\end{align*}
 		\closesection
 		\subsection{Simplification of term (3) $| u \ast k_2 -g |^2$}
@@ -71,13 +71,13 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 		\startsubsection
 			\vspace{-0.5cm}
 			\begin{align*}
-				R_{GP}[u] \ & = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} && ( u[i+1,j] - u[i,j] )^2 + ( u[i,j+1] - u[i,j] )^2 \\
-				&&& + \sum_{j=0}^{n-2} ( u[m-1,j+1] - u[m-1,j] )^2 + \sum_{i=0}^{m-2} ( u[i+1,n-1] - u[i,n-1] )^2 \\
-				& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} && ( u[i+1,j] - u[i,j] )^2 +  \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \\
-				&&& + \sum_{j=0}^{n-2} ( u[m-1,j+1] - u[m-1,j] )^2 + \sum_{i=0}^{m-2} ( u[i+1,n-1] - u[i,n-1] )^2 \\
-				& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} && ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-2} ( u[i+1,n-1] - u[i,n-1] )^2 \\
-				&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 + \sum_{j=0}^{n-2} ( u[m-1,j+1] - u[m-1,j] )^2 \\
-				& = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} && ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \hspace{3cm} (6a)
+				R_{GP}[u] \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} && ( u[i+1,j] - u[i,j] )^2 + ( u[i,j+1] - u[i,j] )^2 \\
+				&&& + \sum_{j=0}^{n-1} ( u[m,j+1] - u[m,j] )^2 + \sum_{i=0}^{m-1} ( u[i+1,n] - u[i,n] )^2 \\
+				& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} && ( u[i+1,j] - u[i,j] )^2 +  \sum_{i=0}^{m-2} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \\
+				&&& + \sum_{j=0}^{n-1} ( u[m,j+1] - u[m,j] )^2 + \sum_{i=0}^{m-1} ( u[i+1,n] - u[i,n] )^2 \\
+				& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} && ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} ( u[i+1,n] - u[i,n] )^2 \\
+				&&& + \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2 + \sum_{j=0}^{n-1} ( u[m,j+1] - u[m,j] )^2 \\
+				& = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n} && ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2 \hspace{3cm} (6a)
 				\end{align*}
 		\closesection
 		\subsection{Full Energy Terms}
@@ -89,12 +89,12 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\subsubsection{Gaussian Prior Regularization Term}
 			\begin{align*}
 				E_{GP}[u] \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] && - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 \\
-				&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 \hspace{1cm} (II)
+				&&& + \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2 \hspace{1cm} (II)
 			\end{align*}
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\begin{align*}
 				E_{TV}[u] \ & = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] && - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 \\
-				&&& + \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} | u[i,j+1] - u[i,j] | \hspace{1cm} (III)
+				&&& + \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] | \hspace{1cm} (III)
 			\end{align*}
 		\closesection
 	\closesection
@@ -104,7 +104,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 	
 	\section{Gradient Calculations}
 	\startsection
-		\subsection{Compute the gradient $\nabla_u E$ at pixels inside the image, \\ i.e. $1 \leq i \leq m-2$ and $1 \leq j \leq n-2$}
+		\subsection{Compute the gradient $\nabla_u E$ at pixels inside the image, \\ i.e. $1 \leq i \leq m-1$ and $1 \leq j \leq n-1$}
 		\startsubsection
 			\subsubsection{No Regularization $\lambda = 0$}
 			\startsubsection
@@ -113,7 +113,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				\[
 					E_{NR}(u) = | u \ast k_2 - g | ^2 \ = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 := D(u)
 				\]
-				\vspace{-0.8cm} \paragraph{Derivative of $E_{NR}(u) \ (D(u))$}
+				\vspace{-0.8cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
 					The terms that contain the particular $u[i,j]$ are filtered out to create a new term $D^*(u)$ with the rest of the function which will count as a constant denoted as $K$. This new function will then be derived to get the solution:
 					\begin{adjustwidth}{-4em}{}
@@ -130,7 +130,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\subsubsection{Gaussian Prior Regularization Term}
 			\startsubsection
 				First I will derive the Gaussian prior regularization term and then add this to the derivative from the no-regularization term, in order to get the whole derivative.
-				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2$}
 				\startsubsection
 					\vspace{0.2cm} In order to derive this term, the terms that matter for a particular $u[i,j]$ are "filtered" out and will create a new function $R_{GP}^*(u)$ (the $K$ which will occur is always the rest of the function which does not matter for the particular case), which is then derived to get the solution:
 				\closesection
@@ -139,19 +139,19 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 					\begin{align*}
 						R_{GP}^*(u) \ & = \ (u[i,j] - u[i-1,j])^2 + (u[i+1,j] - u[i,j])^2 + (u[i,j+1] - u[i,j])^2 + (u[i,j] - u[i,j-1])^2 + K \\
 						\frac{\partial R_{GP}^*(u)}{\partial u[i,j]} \ & = \ 2 * (u[i,j] - u[i-1,j]) - 2 (u[i+1,j] - u[i,j]) - 2 (u[i,j+1] - u[i,j]) + 2 (u[i,j] - u[i,j-1]) \\
-						& = \ 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1]) & (RGPa)
+						& = \ 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1])
 					\end{align*}
 				\end{adjustwidth}
-				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$ ((Da) + (RGPa))}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{GP}(u)$}
 				\startsubsection
 					Adding both derivatives together we will get:
 					\begin{adjustwidth}{-4em}{}
 						\vspace{-0.5cm}
 						\begin{align*}
 							\nabla E_{GP}(u) \ & = \ u[i,j]  && \hspace{-0.9cm} + \frac{1}{2} u[i+1,j+1] + \frac{1}{2} u[i-1,j-1] - g[i,j] - g[i-1,j-1] \\
-							&&& \hspace{-1.75cm} + 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1]) \\
-							& = \ 9 * u[i,j] && \hspace{-0.3cm} + \frac{1}{2} * (u[i+1,j+1] + u[i-1,j-1]) \\
-							&&& \hspace{-1.75cm} - 2 * (u[i-1,j] + u[i+1,j] + u[i,j-1] + u[i-1,j+1]) - g[i,j] - g[i-1,j-1]
+							&&& \hspace{-1.75cm} + \lambda \times 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1]) \\
+							& = \ (8\lambda + 1) * && \hspace{-0.2cm} u[i,j] + \frac{1}{2} * (u[i+1,j+1] + u[i-1,j-1]) \\
+							&&& \hspace{-1.75cm} - 2\lambda * (u[i-1,j] + u[i+1,j] + u[i,j-1] + u[i-1,j+1]) - g[i,j] - g[i-1,j-1]
 						\end{align*}
 					\end{adjustwidth}
 				\closesection
@@ -161,12 +161,12 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\closesection
 		\closesection
 		
-		\subsection{Compute the gradient $\nabla_u E$ at the four corners, \\ i.e. $(i,j) \in \{ (0,0); (0,n-1);(m-1,0);(m-1,n-1)) \}$}
+		\subsection{Compute the gradient $\nabla_u E$ at the four corners, \\ i.e. $(i,j) \in \{ (0,0); (0,n);(m,0);(m,n)) \}$}
 		\startsubsection
 			\subsubsection{No Regularization $\lambda = 0$}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ (D(u))$}
+				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
 					\vspace{0.2cm} The naming convention is the same:
 					\begin{enumerate}[(i)]
@@ -175,28 +175,26 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 						\begin{align*}
 							D^*(u) \ & = \ (g[0,0] - \frac{1}{2} (u[1,1] + u[0,0]))^2) + K \\
 							\frac{\partial D^*(u)}{\partial u[0,0]} \ & = \ - (g[0,0] - \frac{1}{2} (u[1,1] + u[0,0])) \\
-							& = \ \frac{1}{2} u[0,0]  + \frac{1}{2} u[1,1] - g[0,0] \hspace{4cm} (Dbi)
+							& = \ \frac{1}{2} u[0,0]  + \frac{1}{2} u[1,1] - g[0,0] \hspace{4cm} (D_{i}(u))
 						\end{align*}
-						\item \textbf{For $u[0,n-1]$:}
+						\item \textbf{For $u[0,n]$:}
 						\vspace{-0.4cm}
 						\begin{align*}
-							D^*(u) \ & = \ (g[0,n-1] - \frac{1}{2} (u[1,n] + u[0,n-1]))^2) + K \\
-							\frac{\partial D^*(u)}{\partial u[0,n-1]} \ & = \ - (g[0,n-1] - \frac{1}{2} (u[1,n] + u[0,n-1])) \\
-							& = \ \frac{1}{2} u[0,n-1]  + \frac{1}{2} u[1,n] - g[0,n-1] \hspace{3cm} (Dbii)
+							D^*(u) \ & = \ K \\
+							\frac{\partial D^*(u)}{\partial u[0,n]} \ & = \ 0 \hspace{8cm} (D_{ii}(u))
 						\end{align*}
-						\item \textbf{For $u[m-1,0]$:}
+						\item \textbf{For $u[m,0]$:}
 						\vspace{-0.4cm}
 						\begin{align*}
-							D^*(u) \ & = \ (g[m-1,0] - \frac{1}{2} (u[m,1] + u[m-1,0]))^2) + K \\
-							\frac{\partial D^*(u)}{\partial u[m-1,0]} \ & = \ - (g[m-1,0] - \frac{1}{2} (u[m,1] + u[m-1,0])) \\
-							& = \ \frac{1}{2} u[m-1,0]  + \frac{1}{2} u[m,1] - g[m-1,0] \hspace{2.5cm} (Dbiii)
+							D^*(u) \ & = \ K \\
+							\frac{\partial D^*(u)}{\partial u[m,0]} \ & = \ 0 \hspace{8cm} (D_{iii}(u))
 						\end{align*}
-						\item \textbf{For $u[m-1,n-1]$:}
+						\item \textbf{For $u[m,n]$:}
 						\vspace{-0.4cm}
 						\begin{align*}
 							D^*(u) \ & = \ (g[m-1,n-1] - \frac{1}{2} (u[m,n] + u[m-1,n-1]))^2) + K \\
-							\frac{\partial D^*(u)}{\partial u[m-1,n-1]} \ & = \ - (g[m-1,n-1] - \frac{1}{2} (u[m,n] + u[m-1,n-1])) \\
-							& = \ \frac{1}{2} u[m-1,n-1]  + \frac{1}{2} u[m,n] - g[m-1,n-1] \hspace{1.5cm} (Dbiv)
+							\frac{\partial D^*(u)}{\partial u[m,n]} \ & = \ - (g[m-1,n-1] - \frac{1}{2} (u[m,n] + u[m-1,n-1])) \\
+							& = \ \frac{1}{2} u[m,n]  + \frac{1}{2} u[m-1,n-1] - g[m-1,n-1] \hspace{1.5cm} (D_{iv}(u))
 						\end{align*}
 					\end{enumerate}
 				\closesection
@@ -204,7 +202,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\subsubsection{Gaussian Prior Regularization Term}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2$}
 				\startsubsection
 					\vspace{0.2cm} The naming convention is the same:
 					\begin{enumerate}[(i)]
@@ -214,67 +212,67 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 							\frac{\partial R_{GP}^*(u)}{\partial u[0,0]} \ & = \ -2 * (u[1,0] - u[0,0]) - 2 (u[0,1] - u[0,0]) \\
 							& = \ 2 * (2 * u[0,0] - u[1,0] - u[0,1])
 						\end{align*}
-						\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+						\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D_{i}(u) + \lambda \times \nabla R_{GP}(u)$}
 						\startsubsection
 							Adding both derivatives together we will get:
 							\vspace{-0.3cm}
 							\begin{align*}
-								\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[0,0]  + \frac{1}{2} u[1,1] - g[0,0] + 2 * (2 * u[0,0] - u[1,0] - u[0,1]) \\
-								& = \ 4.5 * u[0,0] + \frac{1}{2} u[1,1] - 2*(u[1,0] + u[0,1]) - g[0,0]
+								\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[0,0]  + \frac{1}{2} u[1,1] - g[0,0] + \lambda \times 2 * (2 * u[0,0] - u[1,0] - u[0,1]) \\
+								& = \ (4\lambda + \frac{1}{2}) * u[0,0] + \frac{1}{2} u[1,1] - 2\lambda*(u[1,0] + u[0,1]) - g[0,0]
 							\end{align*}
 						\closesection
-						\item \textbf{For $u[0,n-1]$:}
+						\item \textbf{For $u[0,n]$:}
 						\begin{align*}
-							R_{GP}^*(u) \ & = \ (u[0,n-1] - u[0,n-2])^2 + (u[1,n-1] - u[0,n-1])^2 + K \\
-							\frac{\partial R_{GP}^*(u)}{\partial u[0,n-1]} \ & = \ 2 * (u[0,n-1] - u[0,n-2]) - 2 (u[1,n-1] - u[0,n-1]) \\
-							& = \ 2 * (2 * u[0,n-1] - u[1,n-1] - u[0,n-2])
+							R_{GP}^*(u) \ & = \ (u[0,n] - u[0,n-1])^2 + (u[1,n] - u[0,n])^2 + K \\
+							\frac{\partial R_{GP}^*(u)}{\partial u[0,n]} \ & = \ 2 * (u[0,n] - u[0,n-1]) - 2 (u[1,n] - u[0,n]) \\
+							& = \ 2 * (2 * u[0,n] - u[1,n] - u[0,n-1])
 						\end{align*}
-						\vspace{-1cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+						\vspace{-1cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D_{ii}(u) + \lambda \times \nabla R_{GP}(u)$}
 						\startsubsection
 							Adding both derivatives together we will get:
 						\closesection
 						\begin{adjustwidth}{-6em}{}
 							\vspace{-0.6cm}
 							\begin{align*}
-								\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[0,n-1]  + \frac{1}{2} u[1,n] - g[0,n-1] + 2 * (2 * u[0,n-1] - u[1,n-1] - u[0,n-2]) \\
-								& = \ 4.5 * u[0,n-1] + \frac{1}{2} u[1,n] - 2*(u[1,n-1] + u[0,n-2]) - g[0,n-1]
+								\nabla E_{GP}(u) \ & = \ 0 + \lambda \times 2 * (2 * u[0,n] - u[1,n] - u[0,n-1]) \\
+								& = \ 2\lambda * (2 * u[0,n] - u[1,n] - u[0,n-1])
 							\end{align*}
 						\end{adjustwidth}
-						\item \textbf{For $u[m-1,0]$:}
+						\item \textbf{For $u[m,0]$:}
 						\begin{align*}
-							R_{GP}^*(u) \ & = \ (u[m-1,0] - u[m-2,0])^2 + (u[m-1,1] - u[m-1,0])^2 + K \\
-							\frac{\partial R_{GP}^*(u)}{\partial u[m-1,0]} \ & = \ 2 * (u[m-1,0] - u[m-2,0]) - 2 (u[m-1,1] - u[m-1,0]) \\
-							& = \ 2 * (2 * u[m-1,0] - u[m-2,0] - u[m-1,1])
+							R_{GP}^*(u) \ & = \ (u[m,0] - u[m-1,0])^2 + (u[m,1] - u[m,0])^2 + K \\
+							\frac{\partial R_{GP}^*(u)}{\partial u[m,0]} \ & = \ 2 * (u[m,0] - u[m-1,0]) - 2 (u[m,1] - u[m,0]) \\
+							& = \ 2 * (2 * u[m,0] - u[m-1,0] - u[m,1])
 						\end{align*}
-						\vspace{-1cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+						\vspace{-1cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D_{iii}(u) + \lambda \times \nabla R_{GP}(u)$}
 						\startsubsection
 							Adding both derivatives together we will get:
 						\closesection
 						\begin{adjustwidth}{-6em}{}
 							\vspace{-0.6cm}
 							\begin{align*}
-								\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[m-1,0]  + \frac{1}{2} u[m,1] - g[m-1,0] + 2 * (2 * u[m-1,0] - u[m-2,0] - u[m-1,1]) \\
-								& = \ 4.5 * u[m-1,0] + \frac{1}{2} u[m,1] - 2*(u[m-2,0] + u[m-1,1]) - g[m-1,0]
+								\nabla E_{GP}(u) \ & = \ 0 + \lambda \times 2 * (2 * u[m,0] - u[m-1,0] - u[m,1]) \\
+								& = \ 2\lambda * (2 * u[m,0] - u[m-1,0] - u[m,1])
 							\end{align*}
 						\end{adjustwidth}
-						\item \textbf{For $u[m-1,n-1]$:}
+						\item \textbf{For $u[m,n]$:}
 						\begin{adjustwidth}{-8em}{}
 							\vspace{-0.5cm}
 							\begin{align*}
-								R_{GP}^*(u) \ & = \ (u[m-1,n-1] - u[m-1,n-2])^2 + (u[m-1,n-1] - u[m-2,n-2])^2 + K \\
-								\frac{\partial R_{GP}^*(u)}{\partial u[m-1,n-1]} \ & = \ 2 * (u[m-1,n-1] - u[m-1,n-2]) + 2 (u[m-1,n-1] - u[m-2,n-2]) \\
-								& = \ 2 * (2 * u[m-1,n-1] - u[m-1,n-2] - u[m-2,n-1])
+								R_{GP}^*(u) \ & = \ (u[m,n] - u[m,n-1])^2 + (u[m,n] - u[m-1,n])^2 + K \\
+								\frac{\partial R_{GP}^*(u)}{\partial u[m,n]} \ & = \ 2 * (u[m,n] - u[m,n-1]) + 2 (u[m,n] - u[m-1,n]) \\
+								& = \ 2 * (2 * u[m,n] - u[m,n-1] - u[m-1,n])
 							\end{align*}
 						\end{adjustwidth}
-						\vspace{-0.6cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+						\vspace{-0.6cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D_{iv}(u) + \lambda \times \nabla R_{GP}(u)$}
 						\startsubsection
 							Adding both derivatives together we will get:
 						\closesection
 						\begin{adjustwidth}{-9em}{}
 							\vspace{-0.6cm}
 							\begin{align*}
-								\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[m-1,n-1]  + \frac{1}{2} u[m,n] - g[m-1,n-1] + 2 * (2 * u[m-1,n-1] - u[m-1,n-2] - u[m-2,n-1]) \\
-								& = \ 4.5 * u[m-1,n-1] + \frac{1}{2} u[m,n] - 2*(u[m-1,n-2] + u[m-2,n-1]) - g[m-1,n-1]
+								\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[m,n]  + \frac{1}{2} u[m-1,n-1] - g[m-1,n-1] + \lambda \times 2 * (2 * u[m,n] - u[m,n-1] - u[m-1,n]) \\
+								& = \ (4\lambda + \frac{1}{2}) * u[m,n] + \frac{1}{2} u[m-1,n-1] - 2\lambda*(u[m,n-1] + u[m-1,n]) - g[m-1,n-1]
 							\end{align*}
 						\end{adjustwidth}
 					\end{enumerate}
@@ -285,12 +283,12 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\closesection
 		\closesection
 		
-		\subsection{Compute the gradient $\nabla_u E$ at pixels on the upper edge, \\ i.e. $i = 0$ and $1 \leq j \leq n-2$}
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the upper edge, \\ i.e. $i = 0$ and $1 \leq j \leq n-1$}
 		\startsubsection
 			\subsubsection{No Regularization $\lambda = 0$}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ (D(u))$}
+				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
 					The naming convention is the same:
 					\vspace{-0.2cm}
@@ -304,7 +302,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\subsubsection{Gaussian Prior Regularization Term}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2$}
 				\startsubsection
 					\vspace{0.2cm} The naming convention is the same:
 				\closesection
@@ -316,7 +314,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 						& = \ 2 * (3 * u[0,j] - u[1,j] - u[0,j-1] - u[0,j+1])
 					\end{align*}
 				\end{adjustwidth}
-				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{GP}(u)$}
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
@@ -326,12 +324,12 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\closesection
 		\closesection
 		
-		\subsection{Compute the gradient $\nabla_u E$ at pixels on the left edge, \\ i.e. $j = 0$ and $1 \leq i \leq m-2$}
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the left edge, \\ i.e. $j = 0$ and $1 \leq i \leq m-1$}
 		\startsubsection
 			\subsubsection{No Regularization $\lambda = 0$}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ (D(u))$}
+				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
 					The naming convention is the same:
 					\vspace{-0.2cm}
@@ -345,7 +343,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\subsubsection{Gaussian Prior Regularization Term}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2$}
 				\startsubsection
 					\vspace{0.2cm} The naming convention is the same:
 				\closesection
@@ -357,7 +355,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 						& = \ 2 * (3 * u[i,0] - u[i+1,0] - u[i-1,0] - u[i,1])
 					\end{align*}
 				\end{adjustwidth}
-				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{GP}(u)$}
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
@@ -367,40 +365,40 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\closesection
 		\closesection
 		
-		\subsection{Compute the gradient $\nabla_u E$ at pixels on the right edge, \\ i.e. $j = n - 1$ and $1 \leq i \leq m-2$}
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the right edge, \\ i.e. $j = n$ and $1 \leq i \leq m-1$}
 		\startsubsection
 			\subsubsection{No Regularization $\lambda = 0$}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ (D(u))$}
+				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
 					The naming convention is the same:
 				\closesection
 				\begin{adjustwidth}{-6em}{}
 					\vspace{-0.6cm}
 					\begin{align*}
-						D^*(u) \ & = \ (g[i,n-1] - \frac{1}{2} (u[i+1,n] + u[i,n-1]))^2 + (g[i-1,n-2] - \frac{1}{2} (u[i,n-1] + u[i-1,n-2]))^2 + K \\
-						\frac{\partial D^*(u)}{\partial u[i,n-1]} \ & = \ - (g[i,n-1] - \frac{1}{2} (u[i+1,n] + u[i,n-1])) - (g[i-1,n-2] - \frac{1}{2} (u[i,n-1] + u[i-1,n-2])) \\
-						& = \ u[i,n-1]  + \frac{1}{2} (u[i+1,n] + u[i-1,n-2]) - g[i,n-1] - g[i-1,n-2] \hspace{4cm} (De)
+						D^*(u) \ & = \ (g[i-1,n-1] - \frac{1}{2} (u[i,n] + u[i-1,n-1]))^2 + K \\
+						\frac{\partial D^*(u)}{\partial u[i,n]} \ & = \ - (g[i-1,n-1] - \frac{1}{2} (u[i,n] + u[i-1,n-1])) \\
+						& = \ \frac{1}{2} u[i,n]  + \frac{1}{2} (u[i-1,n-1] - g[i-1,n-1] \hspace{4cm} (De)
 					\end{align*}
 				\end{adjustwidth}
 			\closesection
 			\subsubsection{Gaussian Prior Regularization Term}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2$}
 				\startsubsection
 					\vspace{0.2cm} The naming convention is the same:
 				\closesection
 				\begin{adjustwidth}{-4em}{}
 					\vspace{-0.5cm}
 					\begin{align*}
-						R_{GP}^*(u) \ & = \ (u[m-1,j] - u[m-2,j])^2 + (u[m-1,j] - u[m-1,j-1])^2 + (u[m-1,j+1] - u[m-1,j])^2 + K \\
-						\frac{\partial R_{GP}^*(u)}{\partial u[0,j]} \ & = \ 2 * (u[m-1,j] - u[m-2,j]) + 2 (u[m-1,j] - u[m-1,j-1]) - 2 (u[m-1,j+1] - u[m-1,j]) \\
-						& = \ 2 * (3 * u[m-1,j] - u[m-2,j] - u[m-1,j-1] - u[m-1,j+1])
+						R_{GP}^*(u) \ & = \ (u[i,n] - u[i,n-1])^2 + (u[i,n] - u[i-1,n])^2 + (u[i+1,n] - u[i,n])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[i,n]} \ & = \ 2 * (u[i,n] - u[i,n-1]) + 2 (u[i,n] - u[i-1,n]) - 2 (u[i+1,n] - u[i,n]) \\
+						& = \ 2 * (3 * u[i,n] - u[i,n-1] - u[i-1,n] - u[i+1,n])
 					\end{align*}
 				\end{adjustwidth}
-				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{GP}(u)$}
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
@@ -410,40 +408,40 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 			\closesection
 		\closesection
 		
-		\subsection{Compute the gradient $\nabla_u E$ at pixels on the lower edge, \\ i.e. $i = m-1$ and $1 \leq j \leq n-2$}
+		\subsection{Compute the gradient $\nabla_u E$ at pixels on the lower edge, \\ i.e. $i = m$ and $1 \leq j \leq n-1$}
 		\startsubsection
 			\subsubsection{No Regularization $\lambda = 0$}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ (D(u))$}
+				\vspace{-0.4cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
 					The naming convention is the same:
 				\closesection
 				\begin{adjustwidth}{-7em}{}
 					\vspace{-0.6cm}
 					\begin{align*}
-						D^*(u) \ & = \ (g[m-1,j] - \frac{1}{2} (u[m,j+1] + u[m-1,j]))^2 + (g[m-2,j-1] - \frac{1}{2} (u[m-1,j] + u[m-2,j-1]))^2 + K \\
-						\frac{\partial D^*(u)}{\partial u[m-1,j]} \ & = \ - (g[m-1,j] - \frac{1}{2} (u[m,j+1] + u[m-1,j])) - (g[m-2,j-1] - \frac{1}{2} (u[m-1,j] + u[m-2,j-1])) \\
-						& = \ u[m-1,j]  + \frac{1}{2} (u[m,j+1] + u[m-2,j-1]) - g[m-1,j] - g[m-2,j-1] \hspace{4cm} (Df)
+						D^*(u) \ & = \ (g[m-1,j-1] - \frac{1}{2} (u[m,j] + u[m-1,j-1]))^2 + K \\
+						\frac{\partial D^*(u)}{\partial u[m,j]} \ & = \ - (g[m-1,j-1] - \frac{1}{2} (u[m,j] + u[m-1,j-1])) \\
+						& = \ \frac{1}{2} u[m,j]  + \frac{1}{2} (u[m-1,j-1] - g[m-1,j-1] \hspace{4cm} (Df)
 					\end{align*}
 				\end{adjustwidth}
 			\closesection
 			\subsubsection{Gaussian Prior Regularization Term}
 			\startsubsection
 				I will follow the same process as before.
-				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2$}
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{GP}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m} \sum_{j=0}^{n-1} ( u[i,j+1] - u[i,j] )^2$}
 				\startsubsection
 					\vspace{0.2cm} The naming convention is the same:
 				\closesection
 				\begin{adjustwidth}{-4em}{}
 					\vspace{-0.5cm}
 					\begin{align*}
-						R_{GP}^*(u) \ & = \ (u[i,n-1] - u[i,n-2])^2 + (u[i,n-1] - u[i-1,n-1])^2 + (u[i+1,n-1] - u[i,n-1])^2 + K \\
-						\frac{\partial R_{GP}^*(u)}{\partial u[0,j]} \ & = \ 2 * (u[i,n-1] - u[i,n-2]) + 2 (u[i,n-1] - u[i-1,n-1]) - 2 (u[i+1,n-1] - u[i,n-1]) \\
-						& = \ 2 * (3 * u[i,n-1] - u[i,n-2] - u[i-1,n-1] - u[i+1,n-1])
+						R_{GP}^*(u) \ & = \ (u[m,j] - u[m-1,j])^2 + (u[m,j] - u[m,j-1])^2 + (u[m,j+1] - u[m,j])^2 + K \\
+						\frac{\partial R_{GP}^*(u)}{\partial u[m,j]} \ & = \ 2 * (u[m,j] - u[m-1,j]) + 2 (u[m,j] - u[m,j-1]) - 2 (u[m,j+1] - u[m,j]) \\
+						& = \ 2 * (3 * u[m,j] - u[m-1,j] - u[m,j-1] - u[m,j+1])
 					\end{align*}
 				\end{adjustwidth}
-				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \nabla R_{GP}(u)$}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{GP}(u)$}
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
