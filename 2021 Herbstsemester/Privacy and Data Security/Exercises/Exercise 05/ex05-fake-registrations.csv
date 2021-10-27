@@ -1,0 +1,75 @@
+Nachname,Vorname,E-Mail,PLZ,Ort,System,Semester,Points
+Ali,Muhammad,muhammad.ali@students.unibe.ch,3270,Aarberg,Android,5,89
+Althaus,Luca,luca.althaus@students.unibe.ch,4912,Aarwangen,MacOS,4,15
+Alpos,Orestis,orestis.alpos@inf.unibe.ch,3510,Konolfingen,Android,3,77
+Amores Sesar,Ignacio,ignacio.amores@inf.unibe.ch,3000,Bern,iOS,4,28
+Andreasyan,Narek,narek.andreasyan@unifr.ch,2500,Biel,Windows,10,31
+Asadauskas,Marius Paulius,marius.asadauskas@students.unibe.ch,3294,Büren,Windows,3,7
+Ayinkamiye,Leïla,leila.ayinkamiye@students.unibe.ch,3400,Burgdorf,MacOS,4,9
+Berger,Reto,reto.berger@students.unibe.ch,2608,Courtelary,Windows,7,42
+Briner,Dominik,dominik.briner@students.unibe.ch,3235,Erlach,Windows,11,41
+Bristle,Mirko David Tobias,mirko.bristle@students.unibe.ch,3312,Fraubrunnen,Android,1,93
+Brühwiler,Peter Martin,peter.bruehwiler@students.unibe.ch,3714,Frutigen,MacOS,10,66
+Brunner,Julien Pierre,julien.brunner@students.unibe.ch,3800,Interlaken,Windows,1,82
+Brunner,Michael Sebastian,michael.brunner@students.unibe.ch,3510,Konolfingen,MacOS,12,82
+Brütsch,Martina,martina.bruetsch@students.unibe.ch,2520,La Neuveville,iOS,1,66
+Bucheli,Philippe,philippe.bucheli@unifr.ch,3177,Laupen,iOS,6,38
+Bühlmann,Noah Florian,noah.buehlmann@students.unibe.ch,2740,Moutier,Windows,8,16
+Burkhalter,Rafael,rafael.burkhalter@students.unibe.ch,2560,Nidau,MacOS,12,3
+Butphrom,Yanisa,yanisa.butphrom@unifr.ch,3763,Niedersimmental,Windows,3,25
+Cacciatore,Marco Tobia,marco.cacciatore@students.unibe.ch,3860,Oberhasli,Windows,4,33
+Camozzi,Giorgio,giorgio.camozzi@unifr.ch,3770,Obersimmental,Windows,7,30
+Desarzens,Stéphane Patrick,stephane.desarzens@students.unibe.ch,3792,Saanen,Windows,1,82
+Drazyk,Manuel,manuel.drazyk@unifr.ch,3150,Schwarzenburg,Android,2,54
+Egger,Dominic Mathias,dominic.egger@students.unibe.ch,3662,Seftigen,Windows,11,38
+Eisenring,Yvonne,yvonne.eisenring@unifr.ch,3534,Signau,Windows,5,29
+Fakhari,Atefeh,atefeh.fakhari@unifr.ch,3600,Thun,iOS,9,83
+Flückiger,Liubov,liubov.flueckiger@students.unibe.ch,3456,Trachselwald,Windows,3,66
+Frey,Dominik,dominik.frey@students.unibe.ch,3380,Wangen,MacOS,12,21
+Fries,Christian,christian.fries@unifr.ch,2500,Biel,Windows,5,41
+Gerig,Pascal Dominik,pascal.gerig@students.unibe.ch,2520,La Neuveville,MacOS,8,6
+Helmy,Annina Katharina,annina.helmy@students.unibe.ch,2560,Nidau,Windows,1,27
+Herrmann,David Joel,david.herrmann@students.unibe.ch,2608,Courtelary,Linux,11,30
+Hosmann,Michel,michel.hosmann@students.unibe.ch,2740,Moutier,Windows,5,20
+Kiener,Mauro,mauro.kiener@students.unibe.ch,3000,Bern,MacOS,6,92
+Kunz,Janis Jonathan,janis.kunz@students.unibe.ch,3150,Schwarzenburg,MacOS,11,21
+Kutzschebauch,Lennart Platon,lennart.kutzschebauch@students.unibe.ch,3177,Laupen,Android,11,71
+Lehnherr,David Benjamin,david.lehnherr@students.unibe.ch,3235,Erlach,MacOS,5,38
+Lerena,Dona Anna Maria,dona.lerena@students.unibe.ch,3270,Aarberg,MacOS,4,48
+Lerena,Leandro Patricio Kai,leandro.lerena@students.unibe.ch,3294,Büren,MacOS,1,27
+Liniger,Patrick Daniel,patrick.liniger@inf.unibe.ch,3312,Fraubrunnen,Android,7,84
+Lüthi,Thomas,thomas.luethi1@students.unibe.ch,3380,Wangen,Android,7,23
+Meier,Tatjana Nathalie Shamalle,tatjana.meier@students.unibe.ch,3400,Burgdorf,iOS,8,5
+MÉNÉTREY,Jämes,james.menetrey@unine.ch,3456,Trachselwald,Windows,5,45
+Micic,Jovana,jovana.micic@students.unibe.ch,3510,Konolfingen,Windows,10,41
+Mirzargar,Seyedehsharareh,seyedehsharareh.mirzargar@students.unibe.ch,3534,Signau,MacOS,11,15
+Moudi,Jonas,jonas.moudi@students.unibe.ch,3600,Thun,Linux,6,18
+Mugutdinov,Salautdin,salautdin.mugutdinov@students.unibe.ch,3662,Seftigen,MacOS,11,37
+Oeftiger,Julius,julius.oeftiger@students.unibe.ch,3714,Frutigen,Windows,12,75
+Papaux,Hervé,herve.papaux@unifr.ch,3763,Niedersimmental,MacOS,10,3
+Rao,Renato Claudio,renato.rao@students.unibe.ch,3770,Obersimmental,Android,11,53
+Raucher,Moritz,moritz.raucher@students.unibe.ch,3792,Saanen,Android,11,95
+Ross,Nicholas,nicholas.ross@unine.ch,3800,Interlaken,Windows,6,2
+Roux,Dominique Marcel,dominique.roux@students.unibe.ch,3860,Oberhasli,Windows,11,73
+Schaller,Alain,alain.schaller@unifr.ch,4912,Aarwangen,Windows,12,93
+Schmidt,Valeria,valeria.schmidt@unifr.ch,4912,Aarwangen,Windows,3,55
+Schmucker,Adrian Walter,adrian.schmucker@students.unibe.ch,3860,Oberhasli,Windows,12,31
+Seeholzer,Lukas Benjamin,lukas.seeholzer@students.unibe.ch,3800,Interlaken,Linux,4,3
+Senn,Michael Andreas,michael.senn@students.unibe.ch,3792,Saanen,iOS,2,60
+Senti,Bruno Andrea,bruno.senti@students.unibe.ch,3770,Obersimmental,MacOS,1,54
+Sillaber,Christian,christian.sillaber@unibe.ch,3763,Niedersimmental,MacOS,7,31
+Steinhauer-Froidevaux,Nathalie,nathalie.steinhauer@inf.unibe.ch,3714,Frutigen,MacOS,4,25
+Thalmann,Benno,benno.thalmann@unifr.ch,3662,Seftigen,MacOS,10,11
+Uruqi,Arian,arian.uruqi@unifr.ch,3600,Thun,iOS,8,35
+Vonlanthen,Jérôme David Julien,jerome.vonlanthen@unifr.ch,3534,Signau,Linux,4,13
+Walliser,Sascha Andre,sascha.walliser@students.unibe.ch,3510,Konolfingen,Linux,10,62
+Weyermann,Julian Dominic,julian.weyermann@students.unibe.ch,3456,Trachselwald,MacOS,10,11
+Wicht,François-Xavier,francois-xavier.wicht@unifr.ch,3400,Burgdorf,Windows,1,15
+Wipfli,Lorenzo,lorenzo.wipfli@students.unibe.ch,4912,Aarwangen,MacOS,10,33
+Wipfli,Elias,elias.wipfli@students.unibe.ch,3860,Oberhasli,Linux,3,71
+Wu,Veronika Zhao Xuan,veronika.wu@students.unibe.ch,3800,Interlaken,Windows,12,46
+Würsten,Marcel Ernst,marcel.wuersten@students.unibe.ch,3792,Saanen,MacOS,11,75
+Zanolini,Luca,luca.zanolini@inf.unibe.ch,3456,Trachselwald,Linux,8,56
+Zauder,Marcel Matti,marcel.zauder@students.unibe.ch,3770,Obersimmental,MacOS,11,48
+Zeiter,Sandrine,sandrine.zeiter@unifr.ch,3763,Niedersimmental,Android,9,31
+Zuber,Joël Luca,joel.zuber@students.unibe.ch,3714,Frutigen,Windows,3,2
