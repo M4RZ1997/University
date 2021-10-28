@@ -1,20 +1,21 @@
-Nachname;Vorname;E-Mail;PLZ;Ort;System;Semester;Points
-Ali;Muhammad;muhammad.ali@students.unibe.ch;3270;Aarberg;Android;5;89
-Bristle;Mirko David Tobias;mirko.bristle@students.unibe.ch;3312;Fraubrunnen;Android;1;93
-Brunner;Julien Pierre;julien.brunner@students.unibe.ch;3800;Interlaken;Windows;1;82
-Brunner;Michael Sebastian;michael.brunner@students.unibe.ch;3510;Konolfingen;MacOS;12;82
-Desarzens;Stéphane Patrick;stephane.desarzens@students.unibe.ch;3792;Saanen;Windows;1;82
-Drazyk;Manuel;manuel.drazyk@unifr.ch;3150;Schwarzenburg;Android;2;54
-Gerig;Pascal Dominik;pascal.gerig@students.unibe.ch;2520;La Neuveville;MacOS;8;6
-Kutzschebauch;Lennart Platon;lennart.kutzschebauch@students.unibe.ch;3177;Laupen;Android;11;71
-Lerena;Leandro Patricio Kai;leandro.lerena@students.unibe.ch;3294;Büren;MacOS;1;27
-Lüthi;Thomas;thomas.luethi1@students.unibe.ch;3380;Wangen;Android;7;23
-MÉNÉTREY;Jämes;james.menetrey@unine.ch;3456;Trachselwald;Windows;5;45
-Moudi;Jonas;jonas.moudi@students.unibe.ch;3600;Thun;Linux;6;18
-Schmucker;Adrian Walter;adrian.schmucker@students.unibe.ch;3860;Oberhasli;Windows;12;31
-Senn;Michael Andreas;michael.senn@students.unibe.ch;3792;Saanen;iOS;2;60
-Vonlanthen;Jérôme David Julien;jerome.vonlanthen@unifr.ch;3534;Signau;Linux;4;13
-Weyermann;Julian Dominic;julian.weyermann@students.unibe.ch;3456;Trachselwald;MacOS;10;11
-Zauder;Marcel Matti;marcel.zauder@students.unibe.ch;3770;Obersimmental;MacOS;11;48
-Zeiter;Sandrine;sandrine.zeiter@unifr.ch;3763;Niedersimmental;Android;9;31
-Zuber;Joël Luca;joel.zuber@students.unibe.ch;3714;Frutigen;Windows;3;2
+Nachname;Vorname;E-Mail;PLZ;Ort;System;Semester;Points;
+Ali;Muhammad;muhammad.ali@students.unibe.ch;3270;Aarberg;Android;5;89;
+Bristle;Mirko David Tobias;mirko.bristle@students.unibe.ch;3312;Fraubrunnen;Android;1;93;
+Brunner;Michael Sebastian;michael.brunner@students.unibe.ch;3510;Konolfingen;MacOS;12;82;
+Brunner;Julien Pierre;julien.brunner@students.unibe.ch;3800;Interlaken;Windows;1;82;
+Desarzens;Stéphane Patrick;stephane.desarzens@students.unibe.ch;3792;Saanen;Windows;1;82;
+Drazyk;Manuel;manuel.drazyk@unifr.ch;3150;Schwarzenburg;Android;2;54;x
+Gerig;Pascal Dominik;pascal.gerig@students.unibe.ch;2520;La Neuveville;MacOS;8;6;x
+Kutzschebauch;Lennart Platon;lennart.kutzschebauch@students.unibe.ch;3177;Laupen;Android;11;71;x
+Lerena;Leandro Patricio Kai;leandro.lerena@students.unibe.ch;3294;Büren;MacOS;1;27;
+Lüthi;Thomas;thomas.luethi1@students.unibe.ch;3380;Wangen;Android;7;23;
+MÉNÉTREY;Jämes;james.menetrey@unine.ch;3456;Trachselwald;Windows;5;45;
+Moudi;Jonas;jonas.moudi@students.unibe.ch;3600;Thun;Linux;6;18;
+Schmucker;Adrian Walter;adrian.schmucker@students.unibe.ch;3860;Oberhasli;Windows;12;31;
+Senn;Michael Andreas;michael.senn@students.unibe.ch;3792;Saanen;iOS;2;60;
+Vonlanthen;Jérôme David Julien;jerome.vonlanthen@unifr.ch;3534;Signau;Linux;4;13;
+Weyermann;Julian Dominic;julian.weyermann@students.unibe.ch;3456;Trachselwald;MacOS;10;11;
+Wipfli;Lorenzo;lorenzo.wipfli@students.unibe.ch;4912;Aarwangen;MacOS;10;33;
+Zauder;Marcel Matti;marcel.zauder@students.unibe.ch;3770;Obersimmental;MacOS;11;48;
+Zeiter;Sandrine;sandrine.zeiter@unifr.ch;3763;Niedersimmental;Android;9;31;
+Zuber;Joël Luca;joel.zuber@students.unibe.ch;3714;Frutigen;Windows;3;2;

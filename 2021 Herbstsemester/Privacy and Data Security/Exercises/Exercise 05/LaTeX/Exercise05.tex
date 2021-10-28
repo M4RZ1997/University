@@ -4,17 +4,65 @@
 
 \runningheads{Privacy and Data Security}{Exercise 05}
 
+\usepackage{csvsimple}
+\UseRawInputEncoding
+\usepackage{booktabs}
+
 \setcounter{chapter}{5}
-\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 
 \begin{document}
 	\section{$k$-Anonymity and and $l$-Diversity}
 	\startsection
+		\subsection{Table of 20 Random Selected Entries}
+		\begin{adjustwidth}{-8em}{}
+			\begin{tabular}{|l|l|l|l|l|l|l|l|}\hline
+				\bfseries Name & \bfseries Surname & \bfseries E-Mail & \bfseries PLZ & \bfseries City & \bfseries System & \bfseries Semester & \bfseries Points
+				\csvreader[head to column names]{../ex05_fake_dataset_comma.csv}{}{\\ \hline \csvcoli&\csvcolii&\small\csvcoliii&\csvcoliv&\csvcolv&\csvcolvi&\csvcolvii&\csvcolviii} % 
+\\ \hline
+			\end{tabular}
+		\closesection
+		
+		\setcounter{subsection}{0}
+		\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+		
 		\subsection{Define identifiers, two quasi-identifying attributes, and one sensitive attribute.}
 		\startsubsection
+			\textbf{Identifiers:} Name, Surname and E-Mail adress. \\
+			\textbf{Quasi-Identifying Attributes:} PLZ and/or City (are dependent on each other), Points \\
+			\textbf{Sensitive Attribute:} System
 		\closesection
 		\subsection{Sanitize this data by computing a 3-anonymized version of this data by hand.}
 		\startsubsection
+		\begin{tabular}{ccccc}
+			\hline
+			\textbf{PLZ-Range} && \textbf{Points-Range} && \textbf{System} \\
+			\hline
+			2500-3200 && 0-100 && MacOS \\
+			&&&& Android \\
+			&&&& Android \\
+			\hline
+			3200-3900 && 0-15 && Windows \\
+			&&&& MacOS \\
+			&&&& Linux \\
+			\cmidrule{2-5}
+			&& 16-30 && Linux \\
+			&&&& Android \\
+			&&&& MacOS \\
+			\cmidrule{2-5}
+			&& 31-50 && Android \\
+			&&&& Windows \\
+			&&&& MacOS \\
+			&&&& Windows \\
+			&&&& MacOS \\
+			\cmidrule{2-5}
+			&& 50-100 && iOS \\
+			&&&& MacOS \\
+			&&&& Windows \\
+			&&&& Windows \\
+			&&&& Android \\
+			&&&& Android \\
+			\hline
+		\end{tabular}
 		\closesection
 		\subsection{Does it become easier or more difficult to derive a 5-anonymized data set?}
 		\startsubsection

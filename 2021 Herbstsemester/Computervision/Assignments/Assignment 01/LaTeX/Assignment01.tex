@@ -156,8 +156,32 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 					\end{adjustwidth}
 				\closesection
 			\closesection
+			\newpage
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\startsubsection
+				First I will derive the anisotropic total variation regularization term and then add the result to the derivative of the image data term calculated before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{ATV}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] |$}
+				\startsubsection
+					\vspace{0.2cm} In order to derive this term, the terms that matter for a particular $u[i,j]$ are "filtered" out and will create a new function $R_{ATV}^*(u)$ (the $K$ which will occur is always the rest of the function which does not matter for the particular case), which is then derived to get the solution:
+				\closesection
+				\begin{adjustwidth}{-7em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{ATV}^*(u) \ & = \ |u[i,j] - u[i-1,j]| + |u[i+1,j] - u[i,j]| + |u[i,j+1] - u[i,j]| + |u[i,j] - u[i,j-1]| + K \\
+						\frac{\partial R_{ATV}^*(u)}{\partial u[i,j]} \ & = \ sign(u[i,j] - u[i-1,j]) - sign(u[i+1,j] - u[i,j]) - sign(u[i,j+1] - u[i,j]) + sign(u[i,j] - u[i,j-1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{ATV}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+				\begin{adjustwidth}{-6em}{}
+						\vspace{-0.5cm}
+						\begin{align*}
+						\nabla E_{ATV}(u) \ & = \ u[i,j] && + \frac{1}{2} u[i+1,j+1] + \frac{1}{2} u[i-1,j-1] - g[i,j] - g[i-1,j-1] \\
+						&&& \hspace{-1.75cm} + sign(u[i,j] - u[i-1,j]) - sign(u[i+1,j] - u[i,j]) - sign(u[i,j+1] - u[i,j]) + sign(u[i,j] - u[i,j-1])
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 		\closesection
 		
@@ -278,8 +302,82 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 					\end{enumerate}
 				\closesection
 			\closesection
+			
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{ATV}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] |$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+					\begin{enumerate}[(i)]
+						\item \textbf{For $u[0,0]$:}
+						\begin{align*}
+							R_{ATV}^*(u) \ & = \ |u[1,0] - u[0,0]| + |u[0,1] - u[0,0]| + K \\
+							\frac{\partial R_{ATV}^*(u)}{\partial u[0,0]} \ & = \ -sign(u[1,0] - u[0,0]) - sign(u[0,1] - u[0,0])
+						\end{align*}
+						\vspace{-0.8cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D_{i}(u) + \lambda \times \nabla R_{ATV}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+							\vspace{-0.3cm}
+						\closesection
+						\begin{adjustwidth}{-6em}{}
+							\begin{align*}
+								\nabla E_{ATV}(u) \ & = \ \frac{1}{2} u[0,0]  + \frac{1}{2} u[1,1] - g[0,0] + \lambda \times (-sign(u[1,0] - u[0,0]) - sign(u[0,1] - u[0,0])) \\
+								& = \ \frac{1}{2} u[0,0]  + \frac{1}{2} u[1,1] - g[0,0] - \lambda \times (sign(u[1,0] - u[0,0]) + sign(u[0,1] - u[0,0]))
+							\end{align*}
+						\closesection
+						\item \textbf{For $u[0,n]$:}
+						\begin{align*}
+							R_{ATV}^*(u) \ & = \ |u[0,n] - u[0,n-1]| + |u[1,n] - u[0,n]| + K \\
+							\frac{\partial R_{ATV}^*(u)}{\partial u[0,n]} \ & = \ sign(u[0,n] - u[0,n-1]) - sign(u[1,n] - u[0,n])
+						\end{align*}
+						\vspace{-0.8cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D_{ii}(u) + \lambda \times \nabla R_{ATV}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+						\begin{adjustwidth}{-6em}{}
+							\vspace{-0.6cm}
+							\begin{align*}
+								\nabla E_{ATV}(u) \ & = \ 0 + \lambda \times (sign(u[0,n] - u[0,n-1]) - sign(u[1,n] - u[0,n])) \\
+								& = \ \lambda \times (sign(u[0,n] - u[0,n-1]) - sign(u[1,n] - u[0,n]))
+							\end{align*}
+						\end{adjustwidth}
+						\item \textbf{For $u[m,0]$:}
+						\begin{align*}
+							R_{ATV}^*(u) \ & = \ |u[m,0] - u[m-1,0]| + |u[m,1] - u[m,0]| + K \\
+							\frac{\partial R_{ATV}^*(u)}{\partial u[m,0]} \ & = \ sign(u[m,0] - u[m-1,0]) - sign(u[m,1] - u[m,0])
+						\end{align*}
+						\vspace{-0.8cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D_{iii}(u) + \lambda \times \nabla R_{ATV}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+						\begin{adjustwidth}{-6em}{}
+							\vspace{-0.6cm}
+							\begin{align*}
+								\nabla E_{ATV}(u) \ & = \ 0 + \lambda \times (sign(u[m,0] - u[m-1,0]) - sign(u[m,1] - u[m,0])) \\
+								& = \ \lambda \times (sign(u[m,0] - u[m-1,0]) - sign(u[m,1] - u[m,0]))
+							\end{align*}
+						\end{adjustwidth}
+						\item \textbf{For $u[m,n]$:}
+						\begin{adjustwidth}{-8em}{}
+							\vspace{-0.5cm}
+							\begin{align*}
+								R_{ATV}^*(u) \ & = \ |u[m,n] - u[m,n-1]| + |u[m,n] - u[m-1,n]| + K \\
+								\frac{\partial R_{ATV}^*(u)}{\partial u[m,n]} \ & = \ sign(u[m,n] - u[m,n-1]) + sign(u[m,n] - u[m-1,n])
+							\end{align*}
+						\end{adjustwidth}
+						\vspace{-0.6cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D_{iv}(u) + \lambda \times \nabla R_{ATV}(u)$}
+						\startsubsection
+							Adding both derivatives together we will get:
+						\closesection
+						\begin{adjustwidth}{-12em}{}
+							\vspace{-0.6cm}
+							\begin{align*}
+								\nabla E_{ATV}(u) \ & = \ \frac{1}{2} u[m,n]  + \frac{1}{2} u[m-1,n-1] - g[m-1,n-1] + \lambda \times (sign(u[m,n] - u[m,n-1]) + sign(u[m,n] - u[m-1,n]))
+							\end{align*}
+						\end{adjustwidth}
+					\end{enumerate}
+				\closesection
 			\closesection
 		\closesection
 		
@@ -318,9 +416,38 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
+				\begin{adjustwidth}{-7em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[0,j]  + \frac{1}{2} u[1,j+1] - g[0,j] + \lambda \times 2 * (3 * u[0,j] - u[1,j] - u[0,j-1] - u[0,j+1]) \\
+						& = \ (6 \lambda + \frac{1}{2}) * u[0,j]  + \frac{1}{2} u[1,j+1] - 2\lambda*(u[1,j] + u[0,j-1] + u[0,j+1]) - g[0,j]
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{ATV}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] |$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{ATV}^*(u) \ & = \ |u[1,j] - u[0,j]| + |u[0,j+1] - u[0,j]| + |u[0,j] - u[0,j-1]| + K \\
+						\frac{\partial R_{ATV}^*(u)}{\partial u[0,j]} \ & = \ -sign(u[1,j] - u[0,j]) - sign(u[0,j+1] - u[0,j]) + sign(u[0,j] - u[0,j-1])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{ATV}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+				\begin{adjustwidth}{-10em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{ATV}(u) \ & = \ \frac{1}{2} u[0,j]  + \frac{1}{2} u[1,j+1] - g[0,j] + \lambda \times 2 * (sign(u[0,j] - u[0,j-1]) - sign(u[1,j] - u[0,j]) - sign(u[0,j+1] - u[0,j]))
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 		\closesection
 		
@@ -359,11 +486,42 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
+				\begin{adjustwidth}{-7em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[i,0]  + \frac{1}{2} u[i+1,1] - g[i,0] + \lambda \times 2 * (3 * u[i,0] - u[i+1,0] - u[i-1,0] - u[i,1]) \\
+						& = \ (6 \lambda + \frac{1}{2}) * u[i,0]  + \frac{1}{2} u[i+1,1] - 2\lambda*(u[i+1,0] + u[i-1,0] + u[i,1]) - g[i,0]
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{ATV}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] |$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{ATV}^*(u) \ & = \ |u[i+1,0] - u[i,0]| + |u[i,0] - u[i-1,0]| + |u[i,1] - u[i,0]| + K \\
+						\frac{\partial R_{ATV}^*(u)}{\partial u[i,0]} \ & = \ -sign(u[i+1,0] - u[i,0]) + sign(u[i,0] - u[i-1,0]) - sign(u[i,1] - u[i,0])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{ATV}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+				\begin{adjustwidth}{-7em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{ATV}(u) \ & = \ \frac{1}{2} u[i,0]  + \frac{1}{2} u[i+1,1] - g[i,0] + \lambda \times (sign(u[i,0] - u[i-1,0]) - sign(u[i+1,0] - u[i,0]) - sign(u[i,1] - u[i,0]))
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 		\closesection
+		
+		\newpage
 		
 		\subsection{Compute the gradient $\nabla_u E$ at pixels on the right edge, \\ i.e. $j = n$ and $1 \leq i \leq m-1$}
 		\startsubsection
@@ -402,11 +560,43 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
+				\begin{adjustwidth}{-7em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[i,n]  + \frac{1}{2} (u[i-1,n-1] - g[i-1,n-1] + \lambda \times 2 * (3 * u[i,n] - u[i,n-1] - u[i-1,n] - u[i+1,n]) \\
+						& = \ (6 \lambda + \frac{1}{2}) * u[i,n]  + \frac{1}{2} (u[i-1,n-1] - 2\lambda*(u[i,n-1] + u[i-1,n] + u[i+1,n]) - g[i-1,n-1]
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{ATV}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] |$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{ATV}^*(u) \ & = \ |u[i,n] - u[i,n-1]| + |u[i,n] - u[i-1,n]| + |u[i+1,n] - u[i,n]| + K \\
+						\frac{\partial R_{ATV}^*(u)}{\partial u[i,n]} \ & = \ sign(u[i,n] - u[i,n-1]) + sign(u[i,n] - u[i-1,n]) - sign(u[i+1,n] - u[i,n])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{ATV}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+				\begin{adjustwidth}{-6em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{ATV}(u) \ & = \ \frac{1}{2} && u[i,n]  + \frac{1}{2} (u[i-1,n-1] - g[i-1,n-1] \\
+						&&& + \lambda \times (sign(u[i,n] - u[i,n-1]) + sign(u[i,n] - u[i-1,n]) - sign(u[i+1,n] - u[i,n]))
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 		\closesection
+		
+		\newpage
 		
 		\subsection{Compute the gradient $\nabla_u E$ at pixels on the lower edge, \\ i.e. $i = m$ and $1 \leq j \leq n-1$}
 		\startsubsection
@@ -445,9 +635,39 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				\startsubsection
 					Adding both derivatives together we will get:
 				\closesection
+				\begin{adjustwidth}{-7em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{GP}(u) \ & = \ \frac{1}{2} u[m,j]  + \frac{1}{2} (u[m-1,j-1] - g[m-1,j-1] + \lambda \times 2 * (3 * u[m,j] - u[m-1,j] - u[m,j-1] - u[m,j+1]) \\
+						& = \ (6 \lambda + \frac{1}{2}) * u[m,j]  + \frac{1}{2} (u[m-1,j-1] - 2\lambda*(u[m-1,j] + u[m,j-1] + u[m,j+1]) - g[m-1,j-1]
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 			\subsubsection{Anisotropic Total Variation Regularization Term}
 			\startsubsection
+				I will follow the same process as before.
+				\vspace{-0.4cm} \paragraph{Derivative of $R_{ATV}(u) = \sum_{i=0}^{m-1} \sum_{j=0}^{n} | u[i+1,j] - u[i,j] | + \sum_{i=0}^{m} \sum_{j=0}^{n-1} | u[i,j+1] - u[i,j] |$}
+				\startsubsection
+					\vspace{0.2cm} The naming convention is the same:
+				\closesection
+				\begin{adjustwidth}{-4em}{}
+					\vspace{-0.5cm}
+					\begin{align*}
+						R_{ATV}^*(u) \ & = \ |u[m,j] - u[m-1,j]| + |u[m,j] - u[m,j-1]| + |u[m,j+1] - u[m,j]| + K \\
+						\frac{\partial R_{ATV}^*(u)}{\partial u[m,j]} \ & = \ sign(u[m,j] - u[m-1,j]) + sign(u[m,j] - u[m,j-1]) - sign(u[m,j+1] - u[m,j])
+					\end{align*}
+				\end{adjustwidth}
+				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{ATV}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{ATV}(u)$}
+				\startsubsection
+					Adding both derivatives together we will get:
+				\closesection
+				\begin{adjustwidth}{-6em}{}
+					\vspace{-0.6cm}
+					\begin{align*}
+						\nabla E_{ATV}(u) \ & = \ \frac{1}{2} && u[m,j]  + \frac{1}{2} (u[m-1,j-1] - g[m-1,j-1] \\
+						&&& + \lambda \times (sign(u[m,j] - u[m-1,j]) + sign(u[m,j] - u[m,j-1]) - sign(u[m,j+1] - u[m,j]))
+					\end{align*}
+				\end{adjustwidth}
 			\closesection
 		\closesection
 	\closesection
