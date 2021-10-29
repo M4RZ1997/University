@@ -111,7 +111,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				For simplification and because this term's derivative is used at the later points of this exercise, I will call the particular term:
 				\vspace{-0.4cm}
 				\[
-					E_{NR}(u) = | u \ast k_2 - g | ^2 \ = \ \sum_{i=0}^{m-2} \sum_{j=0}^{n-1} ( u[i+1,j] - u[i,j] )^2 + \sum_{i=0}^{m-1} \sum_{j=0}^{n-2} ( u[i,j+1] - u[i,j] )^2 := D(u)
+					E_{NR}(u) = | u \ast k_2 - g | ^2 \ = \ \sum_{i=0}^{m-1} \sum_{j=0}^{n-1} | g[i,j] - \frac{1}{2} \ (u[i+1,j+1] + \ u[i,j]) | _2 ^2 := D(u)
 				\]
 				\vspace{-0.8cm} \paragraph{Derivative of  $E_{NR}(u) \ = \ D(u)$}
 				\startsubsection
@@ -119,7 +119,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 					\begin{adjustwidth}{-4em}{}
 					\vspace{-0.5cm}
 						\begin{align*}
-							D^*(u) \ & = \ (g[i,j] - \frac{1}{2} (u[i+1,j+1] + u[i,j]))^2) + (g[i-1,j-1] - \frac{1}{2} (u[i,j] + u[i-1,j-1]))^2) + K \\
+							D^*(u) \ & = \ (g[i,j] - \frac{1}{2} (u[i+1,j+1] + u[i,j]))^2 + (g[i-1,j-1] - \frac{1}{2} (u[i,j] + u[i-1,j-1]))^2 + K \\
 							\frac{\partial D^*(u)}{\partial u[i,j]} \ & = \ - (g[i,j] - \frac{1}{2} (u[i+1,j+1] + u[i,j])) - (g[i-1,j-1] - \frac{1}{2} (u[i,j] + u[i-1,j-1])) \\
 							& = \ - g[i,j] + \frac{1}{2} u[i+1,j+1] + \frac{1}{2} u[i,j] - g[i-1,j-1] + \frac{1}{2} u[i,j] + \frac{1}{2} u[i-1,j-1] \\
 							& = \ u[i,j]  + \frac{1}{2} u[i+1,j+1] + \frac{1}{2} u[i-1,j-1] - g[i,j] - g[i-1,j-1] & (Da)
@@ -179,7 +179,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 						\vspace{-0.5cm}
 						\begin{align*}
 						\nabla E_{ATV}(u) \ & = \ u[i,j] && + \frac{1}{2} u[i+1,j+1] + \frac{1}{2} u[i-1,j-1] - g[i,j] - g[i-1,j-1] \\
-						&&& \hspace{-1.75cm} + sign(u[i,j] - u[i-1,j]) - sign(u[i+1,j] - u[i,j]) - sign(u[i,j+1] - u[i,j]) + sign(u[i,j] - u[i,j-1])
+						&&& \hspace{-1.75cm} + \lambda \times (sign(u[i,j] - u[i-1,j]) - sign(u[i+1,j] - u[i,j]) - sign(u[i,j+1] - u[i,j]) + sign(u[i,j] - u[i,j-1]))
 					\end{align*}
 				\end{adjustwidth}
 			\closesection
@@ -445,7 +445,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 				\begin{adjustwidth}{-10em}{}
 					\vspace{-0.6cm}
 					\begin{align*}
-						\nabla E_{ATV}(u) \ & = \ \frac{1}{2} u[0,j]  + \frac{1}{2} u[1,j+1] - g[0,j] + \lambda \times 2 * (sign(u[0,j] - u[0,j-1]) - sign(u[1,j] - u[0,j]) - sign(u[0,j+1] - u[0,j]))
+						\nabla E_{ATV}(u) \ & = \ \frac{1}{2} u[0,j]  + \frac{1}{2} u[1,j+1] - g[0,j] + \lambda \times (sign(u[0,j] - u[0,j-1]) - sign(u[1,j] - u[0,j]) - sign(u[0,j+1] - u[0,j]))
 					\end{align*}
 				\end{adjustwidth}
 			\closesection
