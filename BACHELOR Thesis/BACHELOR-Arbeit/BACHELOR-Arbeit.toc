@@ -1,36 +1,36 @@
 \babel@toc {english}{}
-\contentsline {chapter}{\numberline {1}Introduction}{2}%
-\contentsline {chapter}{\numberline {2}Research}{3}%
-\contentsline {section}{\numberline {2.1}Virtual Reality}{3}%
-\contentsline {subsection}{\numberline {2.1.1}Beginnings}{3}%
-\contentsline {subsection}{\numberline {2.1.2}Today}{3}%
-\contentsline {subsection}{\numberline {2.1.3}Future}{3}%
-\contentsline {section}{\numberline {2.2}VR Hardware: HTC Vive}{3}%
-\contentsline {section}{\numberline {2.3}Provided Software}{3}%
-\contentsline {subsection}{\numberline {2.3.1}Google Blocks}{3}%
-\contentsline {subsection}{\numberline {2.3.2}Google Tilt Brush}{3}%
-\contentsline {subsection}{\numberline {2.3.3}Masterpiece VR}{4}%
-\contentsline {subsection}{\numberline {2.3.4}Microsoft Maquette}{4}%
-\contentsline {section}{\numberline {2.4}Unreal Engine 4}{4}%
-\contentsline {section}{\numberline {2.5}OpenVolumeMesh}{4}%
-\contentsline {chapter}{\numberline {3}Intuition Study}{6}%
-\contentsline {section}{\numberline {3.1}Concept and Execution}{6}%
-\contentsline {section}{\numberline {3.2}Tables}{6}%
-\contentsline {section}{\numberline {3.3}Results and Evaluation}{8}%
-\contentsline {subsection}{\numberline {3.3.1}Impression and Layout}{8}%
-\contentsline {subsection}{\numberline {3.3.2}Object Interaction}{8}%
-\contentsline {subsection}{\numberline {3.3.3}Conclusion}{9}%
-\contentsline {chapter}{\numberline {4}Specifications}{10}%
-\contentsline {chapter}{\numberline {5}Implementation}{11}%
-\contentsline {section}{\numberline {5.1}Functionality for both VR and Mouse-Keyboard Control}{11}%
-\contentsline {section}{\numberline {5.2}Representation of each Component}{11}%
-\contentsline {section}{\numberline {5.3}Creation of CustomMesh to represent Faces and Cells}{11}%
-\contentsline {section}{\numberline {5.4}Algorithm to Move Components}{11}%
-\contentsline {subsection}{\numberline {5.4.1}Moving Vertices}{11}%
-\contentsline {subsection}{\numberline {5.4.2}Moving Edges}{11}%
-\contentsline {subsection}{\numberline {5.4.3}Moving Faces}{11}%
-\contentsline {subsection}{\numberline {5.4.4}Moving Cells}{12}%
-\contentsline {section}{\numberline {5.5}Algorithm for Finding Cells}{12}%
-\contentsline {section}{\numberline {5.6}Save and Load OVM Files}{15}%
-\contentsline {chapter}{\numberline {6}Documentation: OpenVolumeMeshVR}{16}%
-\contentsline {chapter}{Literature}{17}%
+\contentsline {chapter}{\numberline {1}Introduction}{2}{}%
+\contentsline {chapter}{\numberline {2}Research}{3}{}%
+\contentsline {section}{\numberline {2.1}Virtual Reality}{3}{}%
+\contentsline {subsection}{\numberline {2.1.1}Beginnings}{3}{}%
+\contentsline {subsection}{\numberline {2.1.2}Today}{3}{}%
+\contentsline {subsection}{\numberline {2.1.3}Future}{3}{}%
+\contentsline {section}{\numberline {2.2}VR Hardware: HTC Vive}{3}{}%
+\contentsline {section}{\numberline {2.3}Provided Software}{3}{}%
+\contentsline {subsection}{\numberline {2.3.1}Google Blocks}{3}{}%
+\contentsline {subsection}{\numberline {2.3.2}Google Tilt Brush}{3}{}%
+\contentsline {subsection}{\numberline {2.3.3}Masterpiece VR}{4}{}%
+\contentsline {subsection}{\numberline {2.3.4}Microsoft Maquette}{4}{}%
+\contentsline {section}{\numberline {2.4}Unreal Engine 4}{4}{}%
+\contentsline {section}{\numberline {2.5}OpenVolumeMesh}{4}{}%
+\contentsline {chapter}{\numberline {3}Intuition Study}{6}{}%
+\contentsline {section}{\numberline {3.1}Concept and Execution}{6}{}%
+\contentsline {section}{\numberline {3.2}Tables}{6}{}%
+\contentsline {section}{\numberline {3.3}Results and Evaluation}{8}{}%
+\contentsline {subsection}{\numberline {3.3.1}Impression and Layout}{8}{}%
+\contentsline {subsection}{\numberline {3.3.2}Object Interaction}{8}{}%
+\contentsline {subsection}{\numberline {3.3.3}Conclusion}{9}{}%
+\contentsline {chapter}{\numberline {4}Specifications}{10}{}%
+\contentsline {chapter}{\numberline {5}Implementation}{11}{}%
+\contentsline {section}{\numberline {5.1}Functionality for both VR and Mouse-Keyboard Control}{11}{}%
+\contentsline {section}{\numberline {5.2}Representation of each Component}{11}{}%
+\contentsline {section}{\numberline {5.3}Creation of CustomMesh to represent Faces and Cells}{11}{}%
+\contentsline {section}{\numberline {5.4}Algorithm to Move Components}{11}{}%
+\contentsline {subsection}{\numberline {5.4.1}Moving Vertices}{11}{}%
+\contentsline {subsection}{\numberline {5.4.2}Moving Edges}{11}{}%
+\contentsline {subsection}{\numberline {5.4.3}Moving Faces}{11}{}%
+\contentsline {subsection}{\numberline {5.4.4}Moving Cells}{12}{}%
+\contentsline {section}{\numberline {5.5}Algorithm for Finding Cells}{12}{}%
+\contentsline {section}{\numberline {5.6}Save and Load OVM Files}{15}{}%
+\contentsline {chapter}{\numberline {6}Documentation: OpenVolumeMeshVR}{16}{}%
+\contentsline {chapter}{Literature}{17}{}%

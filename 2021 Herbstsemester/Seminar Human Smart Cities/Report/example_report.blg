@@ -1,62 +1,71 @@
 This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: example_report.aux
-Reallocating 'name_of_file' (item size: 1) to 11 items.
 Reallocating 'name_of_file' (item size: 1) to 9 items.
-The style file: alphadin.bst
+The style file: biblatex.bst
+Reallocating 'name_of_file' (item size: 1) to 19 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'wiz_functions' (item size: 4) to 6000 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
 Reallocating 'singl_function' (item size: 4) to 100 items.
-Database file #1: references.bib
-Warning--entry type for "LanierWeylNYTOpinion" isn't style-file defined
---line 113 of file references.bib
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: example_report-blx.bib
+Database file #2: references.bib
 Warning--string name "september" is undefined
 --line 117 of file references.bib
-Warning--entry type for "NokiaWisdomOfTheCrowds" isn't style-file defined
---line 121 of file references.bib
-Warning--entry type for "NokiaAVACrowdAnalytics" isn't style-file defined
---line 129 of file references.bib
-You've used 13 entries,
-            4793 wiz_defined-function locations,
-            990 strings with 9399 characters,
-and the built_in function-call counts, 11510 in all, are:
-= -- 1214
-> -- 297
-< -- 347
-+ -- 396
-- -- 110
-* -- 882
-:= -- 1869
-add.period$ -- 24
-call.type$ -- 13
-change.case$ -- 78
-chr.to.int$ -- 13
-cite$ -- 13
-duplicate$ -- 261
-empty$ -- 784
-format.name$ -- 197
-if$ -- 2268
-int.to.chr$ -- 1
-int.to.str$ -- 0
-missing$ -- 73
-newline$ -- 96
-num.names$ -- 39
-pop$ -- 112
+Biblatex version: 3.16
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+You've used 15 entries,
+            6393 wiz_defined-function locations,
+            1304 strings with 12273 characters,
+and the built_in function-call counts, 96893 in all, are:
+= -- 6450
+> -- 2246
+< -- 549
++ -- 2757
+- -- 1142
+* -- 7105
+:= -- 10947
+add.period$ -- 0
+call.type$ -- 15
+change.case$ -- 202
+chr.to.int$ -- 152
+cite$ -- 28
+duplicate$ -- 10275
+empty$ -- 8681
+format.name$ -- 1053
+if$ -- 19224
+int.to.chr$ -- 0
+int.to.str$ -- 30
+missing$ -- 0
+newline$ -- 545
+num.names$ -- 650
+pop$ -- 5122
 preamble$ -- 1
-purify$ -- 104
+purify$ -- 288
 quote$ -- 0
-skip$ -- 533
+skip$ -- 2634
 stack$ -- 0
-substring$ -- 1210
-swap$ -- 76
-text.length$ -- 58
-text.prefix$ -- 4
-top$ -- 0
-type$ -- 132
+substring$ -- 11239
+swap$ -- 2402
+text.length$ -- 518
+text.prefix$ -- 23
+top$ -- 1
+type$ -- 498
 warning$ -- 0
-while$ -- 89
-width$ -- 15
-write$ -- 201
-(There were 4 warnings)
+while$ -- 1585
+width$ -- 0
+write$ -- 531
+(There was 1 warning)

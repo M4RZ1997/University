@@ -1,6 +1,9 @@
 \documentclass[a4paper,12pt]{report}
 \usepackage{unifrsr}
 \usepackage{hsc_texstyle}
+\usepackage[style=alphabetic, backend=bibtex]{biblatex}
+\addbibresource{references.bib}
+%\pgfplotsset{compat=1.18}
 
 \begin{document}
 	\seminartitle{Human Smart Cities Seminar} % The title of the seminar
@@ -44,7 +47,8 @@
 
 		\section{Background and Motivation}
 		\startsection
-			It's all standard \LaTeX, as you can see. This is a very nice paper: \cite{NokiaWisdomOfTheCrowds} \cite{NokiaAVACrowdAnalytics} \cite{SmartIdeasForSmartCities} \cite{CrowdPoweredSmartCities} \cite{MakingCitiesSmarter} \cite{WisdomOfStakeholders} \cite{CrowdSourcing} \cite{MobileCrowdSourcing} \cite{SmartCityJeddah} \cite{NextWaveOfInnovation} \cite{zadeh} \cite{LanierWeylBlueprint} \cite{LanierWeylNYTOpinion}
+			It's all standard \LaTeX, as you can see. This is a very nice paper: \\
+			\nocite{*}
 		\closesection
 		
 	\chapter{General Data Protection Regulation}
@@ -62,6 +66,6 @@
 
 	\newpage
 	\addcontentsline{toc}{chapter}{Bibliography}
-	\bibliography{references}
-		\bibliographystyle{alphadin}
+	\printbibliography
 \end{document}
+
