@@ -5,6 +5,11 @@ LaTeX Files
 *.log
 *.out
 *.gz
+*.bbl
+*.bcf
+*.blg
+*.synctex.gz
+*.toc
 
 ###################################################################
 JetBrains
