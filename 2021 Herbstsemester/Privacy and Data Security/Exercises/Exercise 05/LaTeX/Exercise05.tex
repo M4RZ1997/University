@@ -33,43 +33,81 @@
 		\closesection
 		\subsection{Sanitize this data by computing a 3-anonymized version of this data by hand.}
 		\startsubsection
-		\begin{tabular}{ccccc}
-			\hline
-			\textbf{PLZ-Range} && \textbf{Points-Range} && \textbf{System} \\
-			\hline
-			2500-3200 && 0-100 && MacOS \\
-			&&&& Android \\
-			&&&& Android \\
-			\hline
-			3200-3900 && 0-15 && Windows \\
-			&&&& MacOS \\
-			&&&& Linux \\
-			\cmidrule{2-5}
-			&& 16-30 && Linux \\
-			&&&& Android \\
-			&&&& MacOS \\
-			\cmidrule{2-5}
-			&& 31-50 && Android \\
-			&&&& Windows \\
-			&&&& MacOS \\
-			&&&& Windows \\
-			&&&& MacOS \\
-			\cmidrule{2-5}
-			&& 50-100 && iOS \\
-			&&&& MacOS \\
-			&&&& Windows \\
-			&&&& Windows \\
-			&&&& Android \\
-			&&&& Android \\
-			\hline
-		\end{tabular}
+			I will define PLZ and Points-Ranges, in order to create clusters that share characteristics with each other, ensuring 3-Anonymity (see Table \ref{tab:3anonymDS}).
 		\closesection
+		\begin{table}\begin{center}
+			\begin{tabular}{ccccc}
+				\hline
+				\textbf{PLZ-Range} && \textbf{Points-Range} && \textbf{System} \\
+				\hline
+				2500-3200 && 0-100 && MacOS \\
+				&&&& Android \\
+				&&&& Android \\
+				\hline
+				3200-5000 && 0-15 && Windows \\
+				&&&& MacOS \\
+				&&&& Linux \\
+				\cmidrule{2-5}
+				&& 16-30 && Linux \\
+				&&&& Android \\
+				&&&& MacOS \\
+				\cmidrule{2-5}
+				&& 31-50 && Android \\
+				&&&& Windows \\
+				&&&& MacOS \\
+				&&&& Windows \\
+				&&&& MacOS \\
+				\cmidrule{2-5}
+				&& 50-100 && iOS \\
+				&&&& MacOS \\
+				&&&& Windows \\
+				&&&& Windows \\
+				&&&& Android \\
+				&&&& Android \\
+				\hline
+			\end{tabular}
+		\caption{\label{tab:3anonymDS}3-Anonymity Dataset}
+		\end{center}\end{table}
 		\subsection{Does it become easier or more difficult to derive a 5-anonymized data set?}
 		\startsubsection
 			It is easy to determine a 5-anonymized data set, because one can take the subsets from 5.1.b and merge them together such that the set containing the least entries does contain at least 5 items.
 		\closesection
 		\subsection{Sanitize the entries to satisfy 3-diversity.}
 		\startsubsection
+			Using the previously created 3-Anonymity data set, by adjusting the ranges clusters can be created which contain at least 3 different System types, in order to ensure 3-Diversity (see Table \ref{tab:3diverseDS}).
 		\closesection
+		\begin{table}\begin{center}
+			\begin{tabular}{ccccc}
+				\hline
+				\textbf{PLZ-Range} && \textbf{Points-Range} && \textbf{System} \\
+				\hline
+				2500-3750 && 0-15 && Windows \\
+				&&&& MacOS \\
+				&&&& MacOS \\
+				&&&& Android \\
+				\cmidrule{2-5}
+				&& 16-30 && Linux \\
+				&&&& Android \\
+				&&&& MacOS \\
+				\hline
+				3150-3800 && 46-80 && MacOS \\
+				&&&& Android \\
+				&&&& iOS \\
+				&&&& Android \\
+				\cmidrule{2-5}
+				&& 81-100 && MacOS \\
+				&&&& Windows \\
+				&&&& Windows \\
+				&&&& Android \\
+				&&&& Android \\
+				\hline
+				3450-5000 && 31-45 && Android \\
+				&&&& Windows \\
+				&&&& MacOS \\
+				&&&& Windows \\
+				\hline
+			\end{tabular}
+		\caption{\label{tab:3diverseDS}3-Diversity Dataset}
+		\end{center}\end{table}
 	\closesection
 \end{document}

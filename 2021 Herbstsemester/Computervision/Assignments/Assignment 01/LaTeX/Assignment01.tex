@@ -139,7 +139,7 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 					\begin{align*}
 						R_{GP}^*(u) \ & = \ (u[i,j] - u[i-1,j])^2 + (u[i+1,j] - u[i,j])^2 + (u[i,j+1] - u[i,j])^2 + (u[i,j] - u[i,j-1])^2 + K \\
 						\frac{\partial R_{GP}^*(u)}{\partial u[i,j]} \ & = \ 2 * (u[i,j] - u[i-1,j]) - 2 (u[i+1,j] - u[i,j]) - 2 (u[i,j+1] - u[i,j]) + 2 (u[i,j] - u[i,j-1]) \\
-						& = \ 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1])
+						& = \ 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i,j+1])
 					\end{align*}
 				\end{adjustwidth}
 				\vspace{-0.4cm} \paragraph{Derivative of $\nabla E_{GP}(u) \ = \ \nabla D(u) + \lambda \times \nabla R_{GP}(u)$}
@@ -149,9 +149,9 @@ for the anisotropic prior. Write the main steps of your calculations in the repo
 						\vspace{-0.5cm}
 						\begin{align*}
 							\nabla E_{GP}(u) \ & = \ u[i,j]  && \hspace{-0.9cm} + \frac{1}{2} u[i+1,j+1] + \frac{1}{2} u[i-1,j-1] - g[i,j] - g[i-1,j-1] \\
-							&&& \hspace{-1.75cm} + \lambda \times 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i-1,j+1]) \\
+							&&& \hspace{-1.75cm} + \lambda \times 2 * (4 * u[i,j] - u[i-1,j] - u[i+1,j] - u[i,j-1] - u[i,j+1]) \\
 							& = \ (8\lambda + 1) * && \hspace{-0.2cm} u[i,j] + \frac{1}{2} * (u[i+1,j+1] + u[i-1,j-1]) \\
-							&&& \hspace{-1.75cm} - 2\lambda * (u[i-1,j] + u[i+1,j] + u[i,j-1] + u[i-1,j+1]) - g[i,j] - g[i-1,j-1]
+							&&& \hspace{-1.75cm} - 2\lambda * (u[i-1,j] + u[i+1,j] + u[i,j-1] + u[i,j+1]) - g[i,j] - g[i-1,j-1]
 						\end{align*}
 					\end{adjustwidth}
 				\closesection
