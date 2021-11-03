@@ -14,10 +14,14 @@
 	\startsection
 		\begin{enumerate}[a)]
 			\item \textit{When should you consider using asynchronous invocations?} \\
+			The intent of using asynchronous invocations is to avoid waiting for a request. This is achieved by decoupling the sending activity from the receiving activity. This can be useful if a client requests a value of a resource but do not need it immediately. When using asynchronous invocations the client can reutrn to its activities, while not needing to wait for the host to return the requested value, therefore this can lead to a possible improvement ins speed of the algorithm.
 			\item \textit{In what sense can a direct invocation be asynchronous?} \\
 			\item \textit{What is an “early reply”?} \\
+			An "early reply" means that a host already returns a requested resource but afterwards still performs useful activities.
 			\item \textit{What are “futures”?} \\
+			Futures are objects that used when a client requests a resource but do not need the value immediately. Therefore a Future object can be returned by the host before it is actually calculating its value, such that the client can perform activities which do not need the value of the future until it reaches the point where it needs the value and then waits for the value to be given to the future by the host.
 			\item \textit{When are futures better than early replies?} \\
+			Futures should be used if the calculation of a requested resource can take a long time. In such a case the client can request a future from a host such that the host can start the calculation of the value of the requested resource and the client can perform other activities which do not need the Future's value. Therefore a huge waiting time can be prevented.
 		\end{enumerate}
 	\closesection
 	
@@ -26,8 +30,10 @@
 		\begin{enumerate}[a)]
 			\item \textit{Why does the call Thread.currentThread().join() not make much sense in a thread’s concurrent run
 method?} \\
+			\textit{Thread.currentThread().join()} blocks the current thread forever which can lead to a whole application preventing from exiting and therefore to be stuck. This is because the when calling these methods it will lead to the currentThread to wait for itself to terminate which will never happen because it will wait for itself.
 			\item \textit{Why can you encounter an IllegalMonitorStateException when calling notifyAll() in a code block
 that is not synchronized?} \\
+			The caller of notifyAll() (as well as wait() and notify()) is required to own the monitor for which it's invoking these methods. If the call is made from within an unsynchronized block, the caller does not own the monitor/lock which is necessary and therefore a IllegalMonitorStateException is thrown.
 			\item \textit{What happens with the thread when the code execution gets to the end of the thread’s run method
 (suppose no loop is involved in the run method)?} \\
 			After a thread reached the end of its run method it will terminate and will not be in the state of a Runnable anymore.
