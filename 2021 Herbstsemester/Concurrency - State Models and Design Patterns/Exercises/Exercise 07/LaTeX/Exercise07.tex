@@ -1,0 +1,46 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\author{Marcel \textsc{Zauder} 16-124-836 \\
+	Pascal \textsc{Gerig} 16-104-721}
+
+\runningheads{Concurrency}{Exercise 07}
+
+\setcounter{chapter}{7}
+
+\begin{document}
+	\section{Several Questions}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{When should you consider using asynchronous invocations?} \\
+			\item \textit{In what sense can a direct invocation be asynchronous?} \\
+			\item \textit{What is an “early reply”?} \\
+			\item \textit{What are “futures”?} \\
+			\item \textit{When are futures better than early replies?} \\
+		\end{enumerate}
+	\closesection
+	
+	\section{Several Questions 2}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{Why does the call Thread.currentThread().join() not make much sense in a thread’s concurrent run
+method?} \\
+			\item \textit{Why can you encounter an IllegalMonitorStateException when calling notifyAll() in a code block
+that is not synchronized?} \\
+			\item \textit{What happens with the thread when the code execution gets to the end of the thread’s run method
+(suppose no loop is involved in the run method)?} \\
+			After a thread reached the end of its run method it will terminate and will not be in the state of a Runnable anymore.
+			\item \textit{Why do some Java apps not terminate, even though their GUI has been closed, and how can you
+mitigate that problem?} \\
+			If a thread that has a loop in its run method it will never reach the end of it, so it will never terminate. Another cause can be that a thread is still waiting on something and was never notified. Because the thread is still in the Runnable state the Java app will not terminate. In order to mitigate this we can implement a stop method, which is called when the GUI is called which will terminate all threads that are still running, like interrupting them or "forcefully kill" them (the first one is the better option).
+			\item \textit{Name one reason for using a while loop in a thread’s run method. Justify your selected reason.} \\
+		\end{enumerate}
+	\closesection
+	
+	\section{Snow Flakes}
+	\startsection
+		\begin{enumerate}
+		\end{enumerate}
+	\closesection
+\end{document}
