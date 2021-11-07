@@ -16,6 +16,7 @@
 			\item \textit{When should you consider using asynchronous invocations?} \\
 			The intent of using asynchronous invocations is to avoid waiting for a request. This is achieved by decoupling the sending activity from the receiving activity. This can be useful if a client requests a value of a resource but do not need it immediately. When using asynchronous invocations the client can reutrn to its activities, while not needing to wait for the host to return the requested value, therefore this can lead to a possible improvement ins speed of the algorithm.
 			\item \textit{In what sense can a direct invocation be asynchronous?} \\
+			In direct invocation the task is relayed to the helper directly without synchronization. This is done by calling an unsynchronized stateless method which invokes the helper. Because the invocation isn’t synchronized, it is asynchronous and can accepts other requests. If the helper is mutable, then it should be protected by a synchronized accessor.
 			\item \textit{What is an “early reply”?} \\
 			An "early reply" means that a host already returns a requested resource but afterwards still performs useful activities.
 			\item \textit{What are “futures”?} \\
@@ -41,11 +42,12 @@ that is not synchronized?} \\
 mitigate that problem?} \\
 			If a thread that has a loop in its run method it will never reach the end of it, so it will never terminate. Another cause can be that a thread is still waiting on something and was never notified. Because the thread is still in the Runnable state the Java app will not terminate. In order to mitigate this we can implement a stop method, which is called when the GUI is called which will terminate all threads that are still running, like interrupting them or "forcefully kill" them (the first one is the better option).
 			\item \textit{Name one reason for using a while loop in a thread’s run method. Justify your selected reason.} \\
+			A while loop can be useful if a thread's activity should be manually stopped and restarted. When in a while loop and the thread is waiting/sleeping it can be easily woken up by notifying it. If there is no while loop a new thread must be created each time an activity should be resumed. Instead the threads are initialised in the beginning and woken up when they are needed.
 		\end{enumerate}
 	\closesection
 	
 	\section{Snow Flakes}
 	\startsection
-		See the SnowFlakes.zip.
+		See the SnowFlakes src.
 	\closesection
 \end{document}
