@@ -9,6 +9,14 @@
 \begin{document}
 	\section{$k$-Anonymity and and $l$-Diversity}
 	\startsection
+		\subsection{Distinct $l$-Diversity}
+		\startsubsection
+			For the distinct $l$-Diversity it is trivial to show that $l$-divers sanitized dataset also satisfies $l$-Anonymity. $l$-Diversity says that every subset contains at least $l$ different values of the sensitive attributes. Because this is a given each subset must at least contain $l$ different entries in order to satisfy this statement. This is of course the definition of $l$-Anonymity which is therefore also satisfied.
+		\closesection
+		\subsection{Probabilistic $l$-Diversity}
+		\startsubsection
+			The definition of probabilistic $l$-Diversity is that any value has a relative frequency of at most $\frac{1}{l}$. Therefore if a sanitized dataset fulfills this requirement each subset will have at least $l$ entries, which is also satisfying the $l$-Anonymity criteria.
+		\closesection
 	\closesection
 	
 	\section{Implementing $k$-Anonymity with the Mondrian Algorithm}
@@ -19,6 +27,13 @@
 		\subsection{Normalized Certainty Penalty}
 		\textit{Using only PLZ and points as QI (and represented as numerical attributes), and with system as S, compute at least a 3-, 5-, and 10-anonymization of the dataset and report its NCP. \\ What is the NCP of a 1-anonymization and that of a 74-anonymization?}
 		\startsubsection
+			For the different k-anonymizations we get the NCP values:
+			\begin{enumerate}[(1)]
+				\item 3-Anonymity: 16,40\%
+				\item 5-Anonymity: 26,49\%
+				\item 10-Anonymity: 48,08\%
+			\end{enumerate}
+			The NCP of a 1-anonymization would be 0,00 \% and for 74-anonymization the NCP would be 100,00\%.
 		\closesection
 		
 		\subsection{Normalized Certainty Penalty of Permutations}
