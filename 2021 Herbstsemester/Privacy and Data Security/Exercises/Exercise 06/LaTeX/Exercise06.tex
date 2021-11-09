@@ -39,6 +39,14 @@
 		\subsection{Normalized Certainty Penalty of Permutations}
 		\textit{Permute the dataset randomly (e.g., calling shuf) and observe the outcome. Extend the algorithm (using randomization) to compute improved 3-, 5-, and 10-anonymizations, that is, achieving better NCP than under a).}
 		\startsubsection
+			When shuffling the data beforehand the NPCs change in a range of $\pm \textit{a couple of} \%$. \\
+			In order to automate the whole process a new class was created with the following code:
+			\begin{minted}{python}
+import os
+
+def automated_anonymization():
+	os (shuf data/ex06_fake_dataset.csv > randomized_dataset.csv)
+			\end{minted}
 		\closesection
 	\closesection
 \end{document}
