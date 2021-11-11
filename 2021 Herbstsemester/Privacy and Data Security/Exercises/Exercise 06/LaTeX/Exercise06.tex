@@ -44,9 +44,23 @@
 			\begin{minted}{python}
 import os
 
-def automated_anonymization():
-	os (shuf data/ex06_fake_dataset.csv > randomized_dataset.csv)
+if __name__ == '__main__':
+    for i in range(10):
+        os.system("python anonymizer.py a d 5 | findstr NCP") # for windows
+        os.system("python anonymizer.py a d 5 | grep NCP") # for linux
 			\end{minted}
+			With this command we can run the anonymizer algorithm several times and get the lowest NCP. The shuffling of the data is done within the read\_dataset script:
+			\begin{minted}{python}
+def read_data():
+	data = []
+	data_file = open('data/ex06_fake_dataset.csv', 'rU')
+	#######################
+	# parseFile into data #
+	#######################
+	random.shuffle(data)
+	return data
+			\end{minted}
+			This is only possible if we use "Ort" as a QI instead of the PLZ.
 		\closesection
 	\closesection
 \end{document}

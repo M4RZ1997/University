@@ -1,0 +1,68 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\author{Marcel \textsc{Zauder} 16-124-836 \\
+	Pascal \textsc{Gerig} 16-104-721}
+
+\runningheads{Concurrency}{Exercise 08}
+
+\setcounter{chapter}{8}
+
+\begin{document}
+	\section{Several Questions}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{Why are servers (e.g., web servers) usually structured as thread-per-message gateways?} \\
+			\item \textit{What are condition objects?} \\
+			\item \textit{Why does the SimpleConditionObject from the lecture not need any instance variables?} \\
+			\item \textit{What are “permits” and “latches”?} \\
+		\end{enumerate}
+	\closesection
+	
+	\section{Questions about Futures}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{Which implementation would you prefer for this kind of problem? Is there any considerable difference at all? Justify your answer!} \\
+			\item \textit{Write a new class FutureTaskExecDemo.java that uses an ExecutorService implementation to compute the future task and to execute the clients, instead of creating explicit new threads. What is the benefit of using executors?} \\
+			\item \textit{Add a time constraint such that the client thread waits for at most a given amount of time for the result.} \\
+		\end{enumerate}
+	\closesection
+	
+	\section{Nested Monitor}
+	\startsection
+		In order to avoid the deadlock, the \textit{synchronized} keywords need to be removed from the \textit{put()} and \textit{get()} method in the \textit{TheNest} buffer. Otherwise only one of each thread can either enter the \textit{put()} or \textit{get()} method, therefore the farmer blocking the access for the hen to put the egg into the nest, but because the farmer is waiting for the hen to notify the farmer that an egg was laid into the buffer, we have a deadlock.
+	\closesection
+	
+	\section{Thread Speed Evaluation}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{What amount of processing cores does the CPU in your notebook have and what’s the model / manufacturer of it?} \\
+			Intel Core i7-9700k, 8-Core Processor
+			\item \textit{Does the implementation scale well, i.e., more concurrent threads help greatly to reduce the overall calculation time? Please provide concrete runtimes you experienced!} \\
+			\begin{tabular}{ccc}
+				\begin{tabular}{|l|r|r|}
+					\hline
+					\bfseries Total Amount of Threads & \bfseries Time [ms] & \bfseries Result (until first error)\\
+					\hline
+					10 & 3 & 3.0... \\
+					50 & 8 & 3.12... \\
+					100 & 11 & 3.13... \\
+					500 & 37 & 3.13... \\
+					1000 & 74 & 3.140... \\
+					5000 & 319 & 3.1413... \\
+					10000 & 666 & 3.1414... \\
+					50000 & 2896 & 3.14157...\\
+					100000 & 5577 & 3.14158... \\
+					500000 & 25992 & 3.141590... \\
+					1000000 & 54899 & 3.141591... \\	
+					\hline				
+				\end{tabular}
+			\end{tabular}
+			\item \textit{Depending on your results, why or why not does the solution scale well?} \\
+			\item \textit{How would you improve the runtime with respect to faster calculations (without changing the algorithm)?} \\
+			\item \textit{Which algorithm would you recommend as drop-in replacement for the Leibniz formula for faster calculation?} \\
+			\item \textit{Why do the runtimes with identical parameters vary so much?} \\
+		\end{enumerate}
+	\closesection
+\end{document}
