@@ -12,7 +12,7 @@
 	\section{Gradient Descent}
 	\startsection
 		\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
-		\subsection{No Regularization Gradient Descent}
+		\subsection*{No Regularization Gradient Descent}
 		\startsubsection
 			When using the Gradient Descent Algorithm with \textbf{no} \textit{Ragularization Term} ($\lambda = 0$) we get the output (\ref{fig:GD_NR}). The \textit{Loss Data Term} is therefore very low with $0.00002$ which is expected because the only thing the algorithm is trying to do is to reverse the previous blurring step. Therefore an image is created which will reproduce the blurred image when the blurring step is applied. On the other hand we get a huge squared distance difference between the deblurred and the original image with 8.21802. This is because the image contains many artifacts and the previous white parts are now in a gray shade. The artifacts (rastering of the whole image) can be traced back to the used kernel. Additionally what is noticable is that the top right and bottom left corner were unaffected because the derivative for both these cases are 0 due to the used kernel and therefore the algorithm cannot adjust those values correctly, because there is too less information in order to do that. This inaccuracy also has an effect on the adjacent pixels because the algorithm tries to create an image which will produce the same result when the blurring is repeated.
 		\closesection
@@ -28,6 +28,29 @@
 				Using the \textit{Anisotropic Total Variation Regularization Term} produces the best result for the Gradient Descent method. Again it is uniforming the values of the pixels that are approximately the same, by lessening the gradient between them. For a $\lambda = 0.0075$ (\ref{fig:GD_ATV0075}) the difference to the original image is only 0.09336. Also the Loss Data Term is very small with 0.02146. Also a $\lambda$ value of $0.01$ still produces a very good deblurring result. \\
 				A higher $\lambda$ on the other hand will quickly lead to worse results in which a noise is introduced, "ruining" the previous steps in order to deblur the image. Also the \textit{Loss Data Term} is "exploding" with a value of 3.24555. Therefore a correct $\lambda$ value is of highest priority for this approach.
 			\closesection
+		\closesection
+		\subsection{Sum of Squared Distances (of Anisotropic Total Variation)}
+		\startsubsection
+			\begin{tikzpicture}
+				\begin{axis}[
+					xmin = 0, xmax = 0.1,
+    				ymin = 0, ymax = 8,
+   					xtick distance = 0.01,
+    				ytick distance = 1,
+    				grid = both,
+    				minor tick num = 1,
+    				major grid style = {lightgray},
+    				minor grid style = {lightgray!25},
+    				width = 0.9\textwidth,
+    				height = 0.25\textwidth,
+    				legend cell align = {left},
+    				legend pos = north west
+    				]
+    				
+					\addplot[blue, mark = *] coordinates {(0.001, 3.64547)(0.005, 0.33214)(0.0075, 0.09336)(0.01, 0.14907)(0.05, 2.33578) (0.1, 7.59344)}; 				
+    				
+				\end{axis}
+			\end{tikzpicture}
 		\closesection
 		
 		\newpage
@@ -122,22 +145,4 @@
 		\closesection
 	\closesection
 	\newpage
-	
-	\section{Linearization + Gauss-Seidel}
-	\startsection
-	\closesection
-	
-	\section{Linearization + SOR}
-	\startsection
-	\closesection
-	
-	\section{Other Questions}
-	\startsection
-		\subsection{Effect of the $\lambda$ value}
-		\startsubsection
-		\closesection
-		\subsection{Sum of Squared Distances}
-		\startsubsection
-		\closesection
-	\closesection
 \end{document}
