@@ -31,56 +31,33 @@
 		\begin{align*}
 			e^{\epsilon} \ & \geq \ \frac{P[\fancyletter{M}(X^n) \in Y]}{P[\fancyletter{M}(\overline{X}^n) \in Y]} \ && \hspace*{-2.5cm} \leq \ \frac{\frac{1-\delta}{2}}{\frac{\delta}{n} + \frac{1 - \delta}{2}} \\
 			& \Leftrightarrow \ \frac{P[\fancyletter{M}(X^n) \in Y]}{P[\fancyletter{M}(\overline{X}^n) \in Y]} \ && \hspace*{-2.5cm} \leq \ \frac{1 - \delta}{\frac{2\delta}{n} + 1 - \delta } \\
-			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{\delta + 1 - \frac{2 \delta}{n} + 1 - \delta}{\frac{2 \delta}{n} + 1 - \delta} + 1 \\
-			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{2 \delta \frac{2 \delta}{n}}{\frac{2 \delta}{n} + 1 - \delta} + 1 \\
-			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{\frac{2 (n - 1) \delta}{n}}{\frac{2 \delta}{n} + 1 - \delta} + 1 \\
-			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{2 (n - 1) \delta}{2 \delta + n - \delta n} + 1 \\
-			& \Leftrightarrow && \hspace*{-2.5cm} = \ -\frac{2 (n - 1) \delta}{2 (n-1) \delta - n} + 1 && \hspace*{-3cm} \sim 1 \ \textit{for big $n$}\\
+			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{1 - \delta - \frac{2 \delta}{n} - 1 + \delta}{\frac{2 \delta}{n} + 1 - \delta} + 1 \\
+			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{-\frac{2 \delta}{n}}{\frac{2 \delta}{n} + 1 - \delta} + 1 \\
+			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{-2 \delta}{2 \delta + n - \delta n} + 1 \\
+			& \Leftrightarrow && \hspace*{-2.5cm} = \ \frac{2 \delta}{2 (n-1) \delta - n} + 1 && \hspace*{-3cm} \sim 1 \ \textit{for big $n$}\\
 		\end{align*}
 		Because we get, that the formula is approximately around $1$, we can approximate this with $1 + x \approx e^x$. Therefore:
 		\[
-			-\frac{2 (n - 1) \delta}{2 (n-1) \delta - n} + 1 \ \approx \ e^{-\frac{2 (n - 1) \delta}{2 (n-1) \delta - n}} \ ,\textit{therefore $\epsilon \approx -\frac{2 (n - 1) \delta}{2 (n-1) \delta - n}$  $(\approx \frac{1}{n})$ for big $n$}
+			\frac{2 \delta}{2 (n-1) \delta - n} + 1 \ \approx \ e^{\frac{2 \delta}{2 (n-1) \delta - n}} \ ,\textit{therefore $\epsilon \approx \frac{2 \delta}{2 (n-1) \delta - n}$  $(\approx \frac{1}{n})$ for big $n$}
 		\]
 	\closesection
-	
+	\newpage
 	\section{Differential Privacy - Practice}
 	\startsection
+	The corresponding Jupyter Notebook is also handed in.
 	\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 		\subsection{$\epsilon$-differential histogramm on attribute \textsc{Ort}}
 		\startsubsection
-			\subsubsection{$\epsilon \ = \ 0.1$}
-			\startsubsection
-			\closesection
-			\subsubsection{$\epsilon \ = \ 0.5$}
-			\startsubsection
-			\closesection
-			\subsubsection{$\epsilon \ = \ 2$}
-			\startsubsection
-			\closesection
+			\includegraphics[scale=0.4]{DP_Orte.png}
 		\closesection
 		\subsection{$\epsilon$-differential histogramm on attribute \textsc{System}}
 		\startsubsection
-			\subsubsection{$\epsilon \ = \ 0.1$}
-			\startsubsection
-			\closesection
-			\subsubsection{$\epsilon \ = \ 0.5$}
-			\startsubsection
-			\closesection
-			\subsubsection{$\epsilon \ = \ 2$}
-			\startsubsection
-			\closesection
+			\includegraphics[scale=0.4]{DP_System.png}
 		\closesection
 		\subsection{$\epsilon$-differential histogramm on attribute \textsc{Points}}
 		\startsubsection
-			\subsubsection{$\epsilon \ = \ 0.1$}
-			\startsubsection
-			\closesection
-			\subsubsection{$\epsilon \ = \ 0.5$}
-			\startsubsection
-			\closesection
-			\subsubsection{$\epsilon \ = \ 2$}
-			\startsubsection
-			\closesection
+			\includegraphics[scale=0.4]{DP_Points.png}
 		\closesection
+	The higher the $\epsilon$ value is the more do the original and the newly calculated look alike. If the $\epsilon$ is very small the histogram looks very different but it can happen that the information one can get from the histogram is not usable at all.
 	\closesection
 \end{document}
