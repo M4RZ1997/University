@@ -20,6 +20,19 @@ def get_normalization_matrix(x):
     # --------------------------------------------------------------
 
     # Get centroid and mean-distance to centroid
+    T = np.zeros((3, 3))
+
+    # Compute Centroid
+    centroid = np.mean(x, 1)
+
+    # Mean-Distances to Centroid
+    mean_distance = np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2*x.shape[1]))
+
+    T[0, 0] = 1 / mean_distance
+    T[0, 2] = - 1 / mean_distance * centroid[0]
+    T[1, 1] = 1 / mean_distance
+    T[1, 2] = - 1 / mean_distance * centroid[1]
+    T[2, 2] = 1
 
     return T
 
@@ -38,15 +51,18 @@ def eight_points_algorithm(x1, x2, normalize=True):
     if normalize:
         # Construct transformation matrices to normalize the coordinates
         # TODO
+        Tx1 = get_normalization_matrix(x1)
+        Tx2 = get_normalization_matrix(x2)
 
         # Normalize inputs
         # TODO
-        pass
+        norm_x1 = np.apply_along_axis(lambda x: np.matmul(Tx1, x), 0, x1)
+        norm_x2 = np.apply_along_axis(lambda x: np.matmul(Tx2, x), 0, x2)
 
     # Construct matrix A encoding the constraints on x1 and x2
     # TODO
 
-    # Solve for f using SVD
+    # Solve for F using SVD
     # TODO
 
     # Enforce that rank(F)=2

@@ -1,0 +1,72 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\author{Marcel \textsc{Zauder} 16-124-836 \\
+	Pascal \textsc{Gerig} 16-104-721}
+
+\runningheads{Concurrency}{Exercise 09}
+
+\setcounter{chapter}{9}
+
+\begin{document}
+	\section{Several Questions}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{What criteria might you use to prioritize threads (list at least 5 different criteria)?}
+			\begin{enumerate}[(i)]
+				\item Based on the due time/desired completion time of a process.
+				\item Based on any representation of priorization, i.e. task priority, cost etc.
+				\item Based on the time the service was requested (FIFO).
+				\item Based on the expected time a thread needs to be served.
+				\item Based on how many other tasks are waiting for the result of  this particular task.
+			\end{enumerate}
+			\item \textit{What are different possible definitions of fairness (list at least 3 different definitions)?}
+			\begin{enumerate}[(i)]
+				\item \textit{Weak Fairness} \\
+				A transition or a process should not wait an unbounded amount of time to execute if it is enabled continuously.
+				\item \textit{Strong Fairness} \\
+				A transition or a process should not wait an unbounded amount of time to execute if it is enabled infinitely often.
+				\item \textit{Linear Waiting} \\
+				A transition or a process making a request will be served before any other process was served more than once.
+				\item \textit{FIFO} \\
+				A transition or a process making a request will be served before any other process that made a request after that.
+			\end{enumerate}
+			\item \textit{What are Pass-Throughs?} \\
+			With \textit{Pass-Throughs} the host maintains a set of immutable references to helper objects. All messages are then relayed to these within unsynchronized methods.
+			\item \textit{What is Lock-Splitting?} \\
+			In \textit{Lock-Splitting} instead of using the same lock for each method of a class an individual lock is created for each method, i.e. one lock for writing and one lock for reading.
+			\item \textit{When should you consider using optimistic methods (list at least 3 different enablers)?}
+			\begin{enumerate}[(i)]
+				\item Clients can tolerate either failure or retries.
+				\item Avoidance or Coping of livelocks.
+				\item Before a failure occurs the program can rollback into a non-fail state and try again.
+			\end{enumerate}
+		\end{enumerate}
+	\closesection
+	\setcounter{section}{2}
+	\section{Additional Several Questions}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{How do threads waiting in a Thread.join() loop get aware of that thread’s termination?} \\
+			When \textit{t.join()} is called the thread/process which is calling that method is waiting while the referenced thread is \textsc{alive}. After \textit{t} terminates the \textit{join()} will also leave the wait-loop and terminate. It is also possible to wait for a given amount of time and if the referenced thread throws an \textit{InterruptedException} the \textit{join}-method will as well.
+			\item \textit{How could you optimize the code below?}
+			\begin{minted}{java}
+Thread t = new Thread(new Runnable() {
+	@Override
+	public void run() {
+		<insert your code here>
+	}
+});
+t.start();
+t.join();
+			\end{minted}
+			\item \textit{Are String objects in Java mutable or immutable? Justify your answer!} \\
+			A \textsc{String} object in Java is immutable, because the documentation says so?!
+			\item \textit{Does the FSP progress property below enforce fairness? Justify your answer!}
+			\begin{minted}{shell}
+progress HeadsOrTales = {head, tale}
+			\end{minted}
+		\end{enumerate}
+	\closesection
+\end{document}
