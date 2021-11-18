@@ -1,5 +1,8 @@
+import random
+
 import numpy as np
 import matplotlib.pyplot as plt
+import numpy.linalg
 
 
 def get_normalization_matrix(x):
@@ -24,6 +27,7 @@ def get_normalization_matrix(x):
 
     # Compute Centroid
     centroid = np.mean(x, 1)
+    print(centroid)
 
     # Mean-Distances to Centroid
     mean_distance = np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2*x.shape[1]))
@@ -48,6 +52,9 @@ def eight_points_algorithm(x1, x2, normalize=True):
     """
     N = x1.shape[1]
 
+    if N < 8:  # not enough entries for eight-point-algorithm
+        return
+
     if normalize:
         # Construct transformation matrices to normalize the coordinates
         # TODO
@@ -61,17 +68,56 @@ def eight_points_algorithm(x1, x2, normalize=True):
 
     # Construct matrix A encoding the constraints on x1 and x2
     # TODO
+    # 1. Get a random subset of 8 points of the input
+    # (a) Get random set with 8 different indices within range N (without duplicates)
+    indices = random.sample(range(N), 8)
+    # (b) Get new sample subset of both inputs (with 8 entries)
+    sample_x1 = np.zeros((8, 2))
+    sample_x2 = np.zeros((8, 2))
+    j = 0
+    for i in indices:
+        sample_x1[j][0] = x1[0][i]
+        sample_x1[j][1] = x1[1][i]
+        sample_x2[j][0] = x2[0][i]
+        sample_x2[j][1] = x2[1][i]
+        j += 1
+
+    # (c) Split up vertices in its x and y components
+    vector_x1 = sample_x1.T[0].T
+    vector_y1 = sample_x1.T[1].T
+    vector_x2 = sample_x2.T[0].T
+    vector_y2 = sample_x2.T[1].T
+
+    # 2. Compute matrix A
+    A = np.zeros((8, 9))
+    A[:, 0] = vector_x2*vector_x1
+    A[:, 1] = vector_x2*vector_y1
+    A[:, 2] = vector_x2
+    A[:, 3] = vector_y2*vector_x1
+    A[:, 4] = vector_y2*vector_y1
+    A[:, 5] = vector_y2
+    A[:, 6] = vector_x1
+    A[:, 7] = vector_y1
+    A[:, 8] = np.ones((1, 8))
 
     # Solve for F using SVD
     # TODO
+    [U, S, V] = numpy.linalg.svd(A)
+    F = V[:, 8].reshape(3, 3)
 
     # Enforce that rank(F)=2
     # TODO
+    [U, S, V] = np.linalg.svd(F)
+    # Throw out smallest singular value (S contains singular values in descending order)
+    S_prime = np.zeros((3,3))
+    S_prime[0, 0] = S[0]
+    S_prime[1, 1] = S[1]
+    F = U * S_prime * V.T
 
     if normalize:
         # Transform F back
         # TODO
-        pass
+        F = np.matmul(np.matmul(norm_x2.T, F), norm_x1)
 
     return F
 
