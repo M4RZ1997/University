@@ -1,6 +1,7 @@
 import random
 
 import numpy as np
+from scipy.linalg import null_space
 import matplotlib.pyplot as plt
 import numpy.linalg
 
@@ -27,16 +28,26 @@ def get_normalization_matrix(x):
 
     # Compute Centroid
     centroid = np.mean(x, 1)
-    print(centroid)
 
     # Mean-Distances to Centroid
-    mean_distance = np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2*x.shape[1]))
+    mean_distance = np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2 * x.shape[1]))
 
     T[0, 0] = 1 / mean_distance
     T[0, 2] = - 1 / mean_distance * centroid[0]
     T[1, 1] = 1 / mean_distance
     T[1, 2] = - 1 / mean_distance * centroid[1]
     T[2, 2] = 1
+
+    """ Test for correctness of squared mean distance equals 2
+    norm_x = np.apply_along_axis(lambda v: np.matmul(T, v), 0, x)
+    mean = np.zeros((344, 1))
+    for i in range(norm_x.shape[1]):
+        mean[i] = np.sum(np.square(norm_x[:2, i]))
+    print(np.mean(mean))
+    """
+
+    norm_x = np.apply_along_axis(lambda v: np.matmul(T, v), 0, x)
+    print(np.mean(norm_x, 1))
 
     return T
 
@@ -117,7 +128,7 @@ def eight_points_algorithm(x1, x2, normalize=True):
     if normalize:
         # Transform F back
         # TODO
-        F = np.matmul(np.matmul(norm_x2.T, F), norm_x1)
+        F = np.matmul(np.matmul(Tx2.T, F), Tx1)
 
     return F
 
@@ -130,6 +141,9 @@ def right_epipole(F):
 
     # The epipole is the null space of F (F * e = 0)
     # TODO
+    e = null_space(F)
+    print(e.shape)
+    print(e)
 
     return e
 
