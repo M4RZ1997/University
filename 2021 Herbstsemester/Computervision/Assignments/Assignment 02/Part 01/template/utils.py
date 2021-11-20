@@ -29,13 +29,12 @@ def get_normalization_matrix(x):
     # Compute Centroid
     centroid = np.mean(x, 1)
 
-    # Mean-Distances to Centroid
-    mean_distance = np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2 * x.shape[1]))
+    s = 1 / np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2 * x.shape[1]))
 
-    T[0, 0] = 1 / mean_distance
-    T[0, 2] = - 1 / mean_distance * centroid[0]
-    T[1, 1] = 1 / mean_distance
-    T[1, 2] = - 1 / mean_distance * centroid[1]
+    T[0, 0] = s
+    T[0, 2] = - s * centroid[0]
+    T[1, 1] = s
+    T[1, 2] = - s * centroid[1]
     T[2, 2] = 1
 
     """ Test for correctness of squared mean distance equals 2
@@ -45,9 +44,6 @@ def get_normalization_matrix(x):
         mean[i] = np.sum(np.square(norm_x[:2, i]))
     print(np.mean(mean))
     """
-
-    norm_x = np.apply_along_axis(lambda v: np.matmul(T, v), 0, x)
-    print(np.mean(norm_x, 1))
 
     return T
 
@@ -79,51 +75,33 @@ def eight_points_algorithm(x1, x2, normalize=True):
 
     # Construct matrix A encoding the constraints on x1 and x2
     # TODO
-    # 1. Get a random subset of 8 points of the input
-    # (a) Get random set with 8 different indices within range N (without duplicates)
-    indices = random.sample(range(N), 8)
-    # (b) Get new sample subset of both inputs (with 8 entries)
-    sample_x1 = np.zeros((8, 2))
-    sample_x2 = np.zeros((8, 2))
-    j = 0
-    for i in indices:
-        sample_x1[j][0] = x1[0][i]
-        sample_x1[j][1] = x1[1][i]
-        sample_x2[j][0] = x2[0][i]
-        sample_x2[j][1] = x2[1][i]
-        j += 1
 
-    # (c) Split up vertices in its x and y components
-    vector_x1 = sample_x1.T[0].T
-    vector_y1 = sample_x1.T[1].T
-    vector_x2 = sample_x2.T[0].T
-    vector_y2 = sample_x2.T[1].T
-
-    # 2. Compute matrix A
-    A = np.zeros((8, 9))
-    A[:, 0] = vector_x2*vector_x1
-    A[:, 1] = vector_x2*vector_y1
-    A[:, 2] = vector_x2
-    A[:, 3] = vector_y2*vector_x1
-    A[:, 4] = vector_y2*vector_y1
-    A[:, 5] = vector_y2
-    A[:, 6] = vector_x1
-    A[:, 7] = vector_y1
-    A[:, 8] = np.ones((1, 8))
+    A = np.zeros((x1.shape[1], 9))
+    for i in range(x1.shape[1]):
+        A[i, 0] = norm_x2[0, i] * norm_x1[0, i]
+        A[i, 1] = norm_x2[0, i] * norm_x1[1, i]
+        A[i, 2] = norm_x2[0, i]
+        A[i, 3] = norm_x2[1, i] * norm_x1[0, i]
+        A[i, 4] = norm_x2[1, i] * norm_x1[1, i]
+        A[i, 5] = norm_x2[1, i]
+        A[i, 6] = norm_x1[0, i]
+        A[i, 7] = norm_x1[1, i]
+        A[i, 8] = 1.0
 
     # Solve for F using SVD
     # TODO
-    [U, S, V] = numpy.linalg.svd(A)
-    F = V[:, 8].reshape(3, 3)
+    U, S, V = numpy.linalg.svd(A)
+    F = V.T[:, 8].reshape(3, 3)
 
     # Enforce that rank(F)=2
     # TODO
-    [U, S, V] = np.linalg.svd(F)
+    U, S, V = np.linalg.svd(F)
+
     # Throw out smallest singular value (S contains singular values in descending order)
-    S_prime = np.zeros((3,3))
+    S_prime = np.zeros((3, 3))
     S_prime[0, 0] = S[0]
     S_prime[1, 1] = S[1]
-    F = U * S_prime * V.T
+    F = np.matmul(np.matmul(U, S_prime), V)
 
     if normalize:
         # Transform F back
@@ -142,16 +120,31 @@ def right_epipole(F):
     # The epipole is the null space of F (F * e = 0)
     # TODO
     e = null_space(F)
-    print(e.shape)
-    print(e)
+    e = e/e[2]
 
     return e
 
 
-def plot_epipolar_line(im, F, x, e):
+def plot_epipolar_line(im, F, x, e, plot = None):
     """
     Plot the epipole and epipolar line F*x=0 in an image. F is the fundamental matrix
     and x a point in the other image.
     """
     m, n = im.shape[:2]
     # TODO
+    # plt.plot(100, 50, "ro")
+    # plt.plot(e[0], e[1], "wo")
+
+    line = np.dot(F, x)
+
+    # epipolar line parameter and values
+    t = np.linspace(0, n, 100)
+    lt = np.array([(line[2] + line[0] * tt) / (-line[1]) for tt in t])
+
+    # take only line points inside the image
+    ndx = (lt >= 0) & (lt < m)
+
+    if plot is None:
+        plot = plt
+
+    plot.plot(t[ndx], lt[ndx], linewidth=2)
