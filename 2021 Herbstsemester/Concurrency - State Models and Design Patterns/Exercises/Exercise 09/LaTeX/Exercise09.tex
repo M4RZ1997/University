@@ -44,7 +44,9 @@
 			\end{enumerate}
 		\end{enumerate}
 	\closesection
-	\setcounter{section}{2}
+	
+	\newpage
+	\setcounter{section}{2}	
 	\section{Additional Several Questions}
 	\startsection
 		\begin{enumerate}[a)]
@@ -61,12 +63,14 @@ Thread t = new Thread(new Runnable() {
 t.start();
 t.join();
 			\end{minted}
+			Because the thread is started and directly afterwards it is joined, there is no need for a thread implementation, but the code in the run method itself can just be executed directly.
 			\item \textit{Are String objects in Java mutable or immutable? Justify your answer!} \\
-			A \textsc{String} object in Java is immutable, because the documentation says so?!
+			A \textsc{String} object in Java is immutable, because once it is generated this particular instance cannot be changed. In order to create strings on runtime, A StringBuilder should be used.
 			\item \textit{Does the FSP progress property below enforce fairness? Justify your answer!}
 			\begin{minted}{shell}
 progress HeadsOrTales = {head, tale}
 			\end{minted}
+			No, it does not, because it only ensures that either the action \textit{head} or \textit{tale} can be executed at any time, but it does not ensure that it is actually executed.
 		\end{enumerate}
 	\closesection
 \end{document}
