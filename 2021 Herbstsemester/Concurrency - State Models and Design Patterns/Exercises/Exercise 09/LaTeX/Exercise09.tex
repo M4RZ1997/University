@@ -41,6 +41,7 @@
 				\item Clients can tolerate either failure or retries.
 				\item Avoidance or Coping of livelocks.
 				\item Before a failure occurs the program can rollback into a non-fail state and try again.
+				\item The chance of a collition is negligible.
 			\end{enumerate}
 		\end{enumerate}
 	\closesection
@@ -65,7 +66,7 @@ t.join();
 			\end{minted}
 			Because the thread is started and directly afterwards it is joined, there is no need for a thread implementation, but the code in the run method itself can just be executed directly.
 			\item \textit{Are String objects in Java mutable or immutable? Justify your answer!} \\
-			A \textsc{String} object in Java is immutable, because once it is generated this particular instance cannot be changed. In order to create strings on runtime, A StringBuilder should be used.
+			A \textsc{String} object in Java is immutable, because once it is generated this particular instance cannot be changed. In order to create strings on runtime, A StringBuilder should be used. Also there does not exist any method call on a \textsc{String} object that changes the object itself but creates a new modified \textsc{String} object.
 			\item \textit{Does the FSP progress property below enforce fairness? Justify your answer!}
 			\begin{minted}{shell}
 progress HeadsOrTales = {head, tale}

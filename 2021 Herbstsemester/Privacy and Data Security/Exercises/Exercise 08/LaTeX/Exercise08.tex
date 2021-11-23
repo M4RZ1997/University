@@ -12,12 +12,193 @@
 		\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
 		\subsection{Bayesian Network Model}
 		\startsubsection
+			\begin{tikzpicture}
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X11) at (0,0) {$X_{11}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X12) at (3,0) {$X_{12}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X1m) at (9,0) {$X_{1m}$};
+				
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X21) at (0,-1.5) {$X_{21}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X22) at (3,-1.5) {$X_{22}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X2m) at (9,-1.5) {$X_{2m}$};
+				
+				\node[circle] at (0,-2.5){$\vdots$};
+				\node[circle] at (3,-2.5){$\vdots$};
+				\node[circle] at (9,-2.5){$\vdots$};
+				
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xn1) at (0,-3.5) {$X_{n1}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xn2) at (3,-3.5) {$X_{n2}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xnm) at (9,-3.5) {$X_{nm}$};
+				
+				
+				\draw[arrow] (X11) -- (X12);
+				\draw[thick] (X12) -- (5,0);
+				\draw[dashed, thick] (5,0) -- (7,0);
+				\draw[arrow] (7,0) -- (X1m);
+				
+				\draw[arrow] (X21) -- (X22);
+				\draw[thick] (X22) -- (5,-1.5);
+				\draw[dashed, thick] (5,-1.5) -- (7,-1.5);
+				\draw[arrow] (7,-1.5) -- (X2m);
+				
+				\draw[arrow] (Xn1) -- (Xn2);
+				\draw[thick] (Xn2) -- (5,-3.5);
+				\draw[dashed, thick] (5,-3.5) -- (7,-3.5);
+				\draw[arrow] (7,-3.5) -- (Xnm);
+			\end{tikzpicture}
+			\subsubsection{Joint Distribution $P_X$}
+			\[
+				P_{X_{i, t}} \ = \ \prod_{i = 0}^n f_i(X_{i, t-1})
+			\]
 		\closesection
 		\subsection{\textsc{Mechanism}: Report Obfuscated Location}
 		\startsubsection
+			\begin{tikzpicture}
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O11) at (0,0) {$O_{11}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X11) at (0,-1.25) {$X_{11}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O12) at (3,0) {$O_{12}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X12) at (3,-1.25) {$X_{12}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O1m) at (9,0) {$O_{1m}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X1m) at (9,-1.25) {$X_{1m}$};
+				
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O21) at (0,-2.5) {$O_{21}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X21) at (0,-3.75) {$X_{21}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O22) at (3,-2.5) {$O_{22}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X22) at (3,-3.75) {$X_{22}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O2m) at (9,-2.5) {$O_{2m}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X2m) at (9,-3.75) {$X_{2m}$};
+				
+				\node[circle] at (0,-4.75){$\vdots$};
+				\node[circle] at (3,-4.75){$\vdots$};
+				\node[circle] at (9,-4.75){$\vdots$};
+				
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (On1) at (0,-5.75) {$O_{n1}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xn1) at (0,-7) {$X_{n1}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (On2) at (3,-5.75) {$O_{n2}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xn2) at (3,-7) {$X_{n2}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (Onm) at (9,-5.75) {$O_{nm}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xnm) at (9,-7) {$X_{nm}$};
+				
+				
+				\draw[arrow] (X11) -- (X12);
+				\draw[thick] (X12) -- (5,-1.25);
+				\draw[dashed, thick] (5,-1.25) -- (7,-1.25);
+				\draw[arrow] (7,-1.25) -- (X1m);
+				\draw[arrow] (O11) -- (X11);
+				\draw[arrow] (O12) -- (X12);
+				\draw[arrow] (O1m) -- (X1m);
+				
+				\draw[arrow] (X21) -- (X22);
+				\draw[thick] (X22) -- (5,-3.75);
+				\draw[dashed, thick] (5,-3.75) -- (7,-3.75);
+				\draw[arrow] (7,-3.75) -- (X2m);
+				\draw[arrow] (O21) -- (X21);
+				\draw[arrow] (O22) -- (X22);
+				\draw[arrow] (O2m) -- (X2m);
+				
+				\draw[arrow] (Xn1) -- (Xn2);
+				\draw[thick] (Xn2) -- (5,-7);
+				\draw[dashed, thick] (5,-7) -- (7,-7);
+				\draw[arrow] (7,-7) -- (Xnm);
+				\draw[arrow] (On1) -- (Xn1);
+				\draw[arrow] (On2) -- (Xn2);
+				\draw[arrow] (Onm) -- (Xnm);
+			\end{tikzpicture}
+			\subsubsection{Joint Distribution $P_X$}
+			\[
+				P_{X_{i, t}} \ = \ \prod_{i = 0}^n (1- q) * f_i(X_{i, t-1}) * \frac{q}{R}
+			\]
 		\closesection
 		\subsection{\textsc{Mechanism}: Report Pairwise Co-Locations}
 		\startsubsection
+			\begin{tikzpicture}
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O11) at (0,0) {$O_{11}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X11) at (0,-1.25) {$X_{11}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O12) at (3,0) {$O_{12}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X12) at (3,-1.25) {$X_{12}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O1m) at (9,0) {$O_{1m}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X1m) at (9,-1.25) {$X_{1m}$};
+				
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O21) at (0,-2.5) {$O_{21}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X21) at (0,-3.75) {$X_{21}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O22) at (3,-2.5) {$O_{22}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X22) at (3,-3.75) {$X_{22}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (O2m) at (9,-2.5) {$O_{2m}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (X2m) at (9,-3.75) {$X_{2m}$};
+				
+				\node[circle] at (0,-4.75){$\vdots$};
+				\node[circle] at (3,-4.75){$\vdots$};
+				\node[circle] at (9,-4.75){$\vdots$};
+				
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (On1) at (0,-5.75) {$O_{n1}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xn1) at (0,-7) {$X_{n1}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (On2) at (3,-5.75) {$O_{n2}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xn2) at (3,-7) {$X_{n2}$};
+				\node[rectangle, draw=MarzBlue, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (Onm) at (9,-5.75) {$O_{nm}$};
+				\node[circle, draw = MarzRed, ultra thick, text=black, fill=lightgray] (Xnm) at (9,-7) {$X_{nm}$};
+				
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C121) at (1.75,-2.5) {$C_{121}$};
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C1n1) at (1.75,-4.5) {$C_{1n1}$};
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C2n1) at (1.75,-6) {$C_{2n1}$};
+				
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C122) at (4.75,-2.5) {$C_{122}$};
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C1n2) at (4.75,-4.5) {$C_{1n2}$};
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C2n2) at (4.75,-6) {$C_{2n2}$};
+				
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C12m) at (10.75,-2.5) {$C_{12m}$};
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C1nm) at (10.75,-4.5) {$C_{1nm}$};
+				\node[rectangle, draw=MarzGreen, ultra thick, text=black, fill=lightgray, rounded corners=0.1cm] (C2nm) at (10.75,-6) {$C_{2nm}$};
+				
+				
+				\draw[arrow] (X11) -- (X12);
+				\draw[thick] (X12) -- (5,-1.25);
+				\draw[dashed, thick] (5,-1.25) -- (7,-1.25);
+				\draw[arrow] (7,-1.25) -- (X1m);
+				\draw[arrow] (O11) -- (X11);
+				\draw[arrow] (O12) -- (X12);
+				\draw[arrow] (O1m) -- (X1m);
+				
+				\draw[arrow] (X21) -- (X22);
+				\draw[thick] (X22) -- (5,-3.75);
+				\draw[dashed, thick] (5,-3.75) -- (7,-3.75);
+				\draw[arrow] (7,-3.75) -- (X2m);
+				\draw[arrow] (O21) -- (X21);
+				\draw[arrow] (O22) -- (X22);
+				\draw[arrow] (O2m) -- (X2m);
+				
+				\draw[arrow] (Xn1) -- (Xn2);
+				\draw[thick] (Xn2) -- (5,-7);
+				\draw[dashed, thick] (5,-7) -- (7,-7);
+				\draw[arrow] (7,-7) -- (Xnm);
+				\draw[arrow] (On1) -- (Xn1);
+				\draw[arrow] (On2) -- (Xn2);
+				\draw[arrow] (Onm) -- (Xnm);
+				
+				\draw[arrow] (X11) -- (C121);
+				\draw[arrow] (X11) -- (C1n1);
+				\draw[arrow] (X21) -- (C121);
+				\draw[arrow] (X21) -- (C2n1);
+				\draw[arrow] (Xn1) -- (C1n1);
+				\draw[arrow] (Xn1) -- (C2n1);
+				
+				\draw[arrow] (X12) -- (C122);
+				\draw[arrow] (X12) -- (C1n2);
+				\draw[arrow] (X22) -- (C122);
+				\draw[arrow] (X22) -- (C2n2);
+				\draw[arrow] (Xn2) -- (C1n2);
+				\draw[arrow] (Xn2) -- (C2n2);
+				
+				\draw[arrow] (X1m) -- (C12m);
+				\draw[arrow] (X1m) -- (C1nm);
+				\draw[arrow] (X2m) -- (C12m);
+				\draw[arrow] (X2m) -- (C2nm);
+				\draw[arrow] (Xnm) -- (C1nm);
+				\draw[arrow] (Xnm) -- (C2nm);
+			\end{tikzpicture}
+			\subsubsection{Joint Distribution $P_X$}
+			\[
+				P_{C_{i,j,t}} \ = \ P[X_{i,t} = X_{j,t}\ , \ i \neq j] \ = \ \frac{P_{X_{i, t}} * P_{X_{j, t}}}{R} $$$$
+				P_{X_{i, t}} \ = \ \prod_{i = 0}^n (1- q) * f_i(X_{i, t-1}) * \frac{q}{R}
+			\]
 		\closesection
 	\closesection
 \end{document}
