@@ -29,6 +29,7 @@ def get_normalization_matrix(x):
     # Compute Centroid
     centroid = np.mean(x, 1)
 
+    # s = np.sqrt(2) / np.mean(np.apply_along_axis(lambda v: np.linalg.norm(v - centroid), 0, x))
     s = 1 / np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2 * x.shape[1]))
 
     T[0, 0] = s
@@ -115,10 +116,15 @@ def right_epipole(F):
     """
     Computes the (right) epipole from a fundamental matrix F.
     (Use with F.T for left epipole.)
+
+    Description EPIPOLES:
+    The epipole shows where the other camera would be located on the image.
+    Every epipolar line associated with a point from that camera will go through this point.
+    If both images were taken parallel to each other the epipoles would be at infinity and therefore the
+    epipolar lines would be parallel as well.
     """
 
     # The epipole is the null space of F (F * e = 0)
-    # TODO
     e = null_space(F)
     e = e/e[2]
 
@@ -129,22 +135,38 @@ def plot_epipolar_line(im, F, x, e, plot = None):
     """
     Plot the epipole and epipolar line F*x=0 in an image. F is the fundamental matrix
     and x a point in the other image.
+
+    Description EPIPOLAR LINES
+    The epipolar line of a point x from another image, is a line which corresponds to all possible positions at which
+    this point can be in this image. It will eventually meet all other epipolar lines at the epipole.
     """
     m, n = im.shape[:2]
-    # TODO
-    # plt.plot(100, 50, "ro")
+    #
     # plt.plot(e[0], e[1], "wo")
 
-    line = np.dot(F, x)
+    epipolar_line = np.dot(F, x)
 
-    # epipolar line parameter and values
-    t = np.linspace(0, n, 100)
-    lt = np.array([(line[2] + line[0] * tt) / (-line[1]) for tt in t])
+    """
+    sample_size = 4
+    # Take sample x coordinates to create a line on the image
+    image_x_coord = np.linspace(0, n, sample_size)
+    image_y_coord = np.zeros(sample_size)
+    i = 0
+    # Compute corresponding y coordinate with el0*x + el1*y + el2 = 0
+    for x in image_x_coord:
+        image_y_coord[i] = (epipolar_line[0] * x + epipolar_line[2]) / (- epipolar_line[1])
+        i += 1
+    """
 
-    # take only line points inside the image
-    ndx = (lt >= 0) & (lt < m)
+    # Refactored algorithm from above (nicer/less code)
+    image_x_coord = np.linspace(0, n, 4)
+    image_y_coord = np.array([(epipolar_line[2] + epipolar_line[0] * x) / (-epipolar_line[1]) for x in image_x_coord])
+
+    # Points that are outside the image are discarded
+    in_image = (image_y_coord >= 0) & (image_y_coord < m)
 
     if plot is None:
         plot = plt
 
-    plot.plot(t[ndx], lt[ndx], linewidth=2)
+    # plot the line onto the image plot
+    plot.plot(image_x_coord[in_image], image_y_coord[in_image], linewidth=2)
