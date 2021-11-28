@@ -29,8 +29,8 @@ def get_normalization_matrix(x):
     # Compute Centroid
     centroid = np.mean(x, 1)
 
-    # s = np.sqrt(2) / np.mean(np.apply_along_axis(lambda v: np.linalg.norm(v - centroid), 0, x))
-    s = 1 / np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2 * x.shape[1]))
+    s = np.sqrt(2) / np.mean(np.apply_along_axis(lambda v: np.linalg.norm(v - centroid), 0, x))
+    # s = 1 / np.sqrt(np.sum(np.square(np.apply_along_axis(lambda v: v - centroid, 0, x))) / (2 * x.shape[1]))
 
     T[0, 0] = s
     T[0, 2] = - s * centroid[0]
@@ -125,7 +125,11 @@ def right_epipole(F):
     """
 
     # The epipole is the null space of F (F * e = 0)
-    e = null_space(F)
+    # e = null_space(F)
+
+    U, S, V = np.linalg.svd(F)
+    e = V.T[:, 2]
+
     e = e/e[2]
 
     return e
