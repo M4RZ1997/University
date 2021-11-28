@@ -1,0 +1,43 @@
+\documentclass{report}
+
+\usepackage{../../../../LaTeX/marzstyle}
+
+\author{\\ Marcel Matti Zauder}
+\runningheads{Concurrency - State Models and Design Patterns}{Summary}
+
+\fancypagestyle{plain}{} % fancyhdr also on first Chapter pages
+
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-20pt}{30pt}
+
+
+\begin{document}
+	\chapter{Introduction}	
+	\section{Concurrency and Parallelism}
+	\startsection
+		A concurrent program, unlike a sequential program, has multiple threads of control which may be executed as parallel processes. \\
+		A \textit{thread} and \textit{process} in Computer Science have multiple, overlapping, and inconsitent meanings. Generally, a \textit{"process"} is associated with an instance of a running software program, which contains its own address space, whereas a \textit{"thread"} refers to a \textit{"thread of control"} within a given process and therefore does not contain its own address space but shares the space of the process with multiple other threads. \\ \\
+		In order to execute a concurrent program different approaches can be chosen:
+		\begin{enumerate}[-]
+			\item \textsc{Multiprogramming}: \\
+			The processes are sharing one or more processors.
+			\item \textsc{Multiprocessing}: \\
+			Each process runs on its own processor with access to a shared memory.
+			\item \textsc{Distributed Processing}: \\
+			Each process runs on its own processor while being connected to others via a network.
+		\end{enumerate}
+	\closesection
+	\section{\textsc{Challenges}: Safety and Liveness}
+	\startsection
+	\closesection
+	\section{Expressing Concurrency}
+	\startsection
+		\subsection{Process Creation}
+		\startsubsection
+		\closesection
+		\subsection{Communication and Synchronization}
+		\startsubsection
+		\closesection
+	\closesection
+\end{document}
