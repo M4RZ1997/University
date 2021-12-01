@@ -1,0 +1,84 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\author{Marcel \textsc{Zauder} 16-124-836 \\
+	Pascal \textsc{Gerig} 16-104-721}
+
+\runningheads{Concurrency}{Exercise 11}
+
+\setcounter{chapter}{11}
+
+\begin{document}
+	\section{Several Questions: Petri Nets}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{List and briefly explain all the elements a Petri net consists of.} \\
+			A Petri net consists of the following elements:
+			\begin{enumerate}[(i)]
+				\item A finite set P of places, which can hold tokens.
+				\item A finite set T of transitions, which generate token when a certain requirement of tokens input from different places is reached.
+				\item An Input function which lists the requirements for transitions to be able to "fire".
+				\item An Output function which lists the output for every transition when itis fired.
+				\item (An initial state, called marking, which defines in which places tokens are already available.) - is not part of a PetriNet but should be also available.
+			\end{enumerate}
+			\item \textit{What is the reachability set of a net?} \\
+			The reachability set of a PetriNet is the set of all markings (different placements of tokens) that can be reached from a certain initial marking state (similar to the number of possible states that can be reached).
+			\item \textit{How can you compute the reachability set of a net?} \\
+			If a Petri net is not k-bounded the reachability set would be undefined, or better said it has infinite states that can be reached. \\
+			If it is k-bounded we can construct a "reachability graph" by iteratively adding all markings, step by step, that are reachable from the previous state.
+			\item \textit{Write a condition in natural language which guarantees that a net is bounded.} \\
+			There exists no cycle in the PetriNet which has a net-positive output of tokens, so that when executing the cycle once we have at most the same amount of tokens as before executing it.
+		\end{enumerate}
+	\closesection
+	
+	\section{Petri Nets Examples}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{Provide the definition of the Petri net in figure 1.}
+				\[
+					P \ = \ \{ v,w,x,y,z \} \hspace{2cm} T \ = \ \{ a,b,c,d \} $$$$
+					I(a) \ = \ \{ v,w \} \hspace{1cm} I(b) \ = \ \{ w,x \} \hspace{1cm} I(c) \ = \ \{ y \} \hspace{1cm} I(d) \ = \ \{ z \} $$$$
+					O(a) \ = \ \{ y \} \hspace{1cm} O(b) \ = \ \{ z \} \hspace{1cm} O(c) \ = \ \{ v,w \} \hspace{1cm} O(d) \ = \ \{ w,x \} $$$$
+					m \ = \ \{ w,x,x,y,y,y \}
+				\]
+			\item \textit{Provide the definition of the Petri net in figure 2.}
+				\[
+					P \ = \ \{ a,b,c,d \} \hspace{2cm} T \ = \ \{ x,y \} $$$$
+					I(x) \ = \ \{ a,b \} \hspace{2cm} I(y) \ = \ \{ d,c \} $$$$
+					O(x) \ = \ \{ b,d,c \} \hspace{2cm} O(y) \ = \ \{ b \} $$$$
+					m \ = \ \{ a,a,b \}
+				\]
+			\item \textit{Is the Petri net in Figure 2 bounded?} \\
+			Yes it is 4-bounded because \textit{x} can fire 2-times, therefore 2 tokens are in \textbf{b}, \textbf{d}, and \textbf{c} and then \textit{y} can fire 2-times such that in \textbf{b} there are 4 tokens and the PetriNet is now deadlocked.
+			\item \textit{Is the Petri net in Figure 2 safe?} \\
+			No, it is not safe, because after \textit{x} was fired 2-times, \textbf{a} does not have any tokens left and therefore \textit{x} cannot fire again, therfore the PetriNets will get into a deadlocked state when \textbf{d} and \textbf{c} are also empty, which will eventually be the case after \textit{y} was fired also 2-times.
+			\item \textit{Is the Petri net in Figure 2 conservative?} \\
+			No, it is not conservative because x requires two tokens in order to fire, but generates 3.
+			\item \textit{Are all the transitions live in the Petri net in Figure 2?} \\
+			At this point in time not all transitions are live because \textit{y} cannot fire as \textbf{d} and \textbf{c} do not have any tokens. In order to be life \textit{x} must have fired at least once to fill \textbf{d} and \textbf{c}.
+		\end{enumerate}
+	\closesection
+	
+	\section{Several Questions: Lock Objects and Threads}
+	\startsection
+		\begin{enumerate}[a)]
+			\item \textit{How can you enable fairness in the Java class Semaphore?} \\
+			When instantiating a semaphore one can give a second argument after the integer which indicates the number of semaphores that exists, which is either \textit{true} or \textit{false}. If it is \textit{true} the fairness for the semaphore is enabled:
+			\begin{minted}{java}
+private final Semaphore semaphore = new Semaphore(MAX_AVAILABLE, true);		
+			\end{minted}
+			\item \textit{Which fairness strategy does the Java class Semaphore support?} \\
+			When a semaphore/lock is released the thread with the longest waiting time is given the semaphore/lock (FIFO processing).
+			\item \textit{What is the purpose of daemon threads in Java?} \\
+			Daemon threads are low-priority threads whose only role is to provide services to user threads. Because of that daemon threads will not prevent the JVM from exiting once all user threads have finished their execution.
+			\item \textit{How can you create a daemon thread in Java?} \\
+			After a thread was created which should use a \textit{daemon thread}, we can run the following code:
+			\begin{minted}{java}
+NewThread daemonThread = new NewThread();
+daemonThread.setDaemon(true);
+daemonThread.start();
+			\end{minted}
+		\end{enumerate}
+	\closesection
+\end{document}
