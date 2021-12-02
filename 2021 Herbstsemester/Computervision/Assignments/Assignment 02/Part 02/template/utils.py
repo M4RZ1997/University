@@ -106,13 +106,31 @@ def eight_points_algorithm(x1, x2, normalize=True):
 def ransac(x1, x2, threshold, num_steps=1000, random_seed=42):
     if random_seed is not None:
         np.random.seed(random_seed)  # we are using a random seed to make the results reproducible
+
     # TODO setup variables
-    for _ in range(num_steps):
-        pass # TODO main loop
+    most_inliers = None
+    optimal_count = 0.0
+
     # TODO calculate initial inliers with with the best candidate points
+    for _ in range(num_steps):
+        selected_points = np.random.choice(x1.shape[1], 8, replace=False)
+        helper_fundamental_matrix = eight_points_algorithm(x1[:, selected_points], x2[:, selected_points])
+        squared_error = np.square(np.sum(x2 * (helper_fundamental_matrix @ x1), axis=0))
+        help_inliers = squared_error < threshold
+        count = help_inliers.sum()
+        if count > optimal_count:
+            most_inliers = help_inliers
+            optimal_count = count
+
     # TODO estimate F with all the inliers
     # TODO find final inliers with F
-    return F, inliers  # F is estimated fundamental matrix and inliers is an indicator (boolean) numpy array
+    while True:
+        F = eight_points_algorithm(x1[:, most_inliers], x2[:, most_inliers])
+        squared_error = np.square(np.sum(x2 * (F @ x1), axis=0))
+        inliers = squared_error < threshold
+        if (inliers == most_inliers).all():
+            return F, inliers # F is estimated fundamental matrix and inliers is an indicator (boolean) numpy array
+        most_inliers = inliers
 
 
 def decompose_essential_matrix(E, x1, x2):
@@ -127,6 +145,21 @@ def decompose_essential_matrix(E, x1, x2):
     Pl = np.concatenate((Rl, tl), axis=1)
 
     # TODO: Compute possible rotations and translations
+    # from https://stackoverflow.com/questions/22807039/decomposition-of-essential-matrix-validation-of-the-four-possible-solutions-for/22808118#22808118
+    U, S, V = np.linalg.svd(E)
+    if np.linalg.det(U) < 0:
+        U = -U
+    if np.linalg.det(V) < 0:
+        V = -V
+
+    W = np.array([[0, -1, 0],
+                  [1, 0, 0],
+                  [0, 0, 1]])
+    R1 = U @ W.T @ V
+    R2 = U @ W @ V
+
+    t1 = U[:, 2].reshape(3, 1)
+    t2 = -t1
 
     # Four possibilities
     Pr = [np.concatenate((R1, t1), axis=1),
