@@ -129,7 +129,7 @@ def ransac(x1, x2, threshold, num_steps=1000, random_seed=42):
         squared_error = np.square(np.sum(x2 * (F @ x1), axis=0))
         inliers = squared_error < threshold
         if (inliers == most_inliers).all():
-            return F, inliers # F is estimated fundamental matrix and inliers is an indicator (boolean) numpy array
+            return F, inliers  # F is estimated fundamental matrix and inliers is an indicator (boolean) numpy array
         most_inliers = inliers
 
 
