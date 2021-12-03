@@ -50,7 +50,7 @@
 					m \ = \ \{ a,a,b \}
 				\]
 			\item \textit{Is the Petri net in Figure 2 bounded?} \\
-			Yes it is 4-bounded because \textit{x} can fire 2-times, therefore 2 tokens are in \textbf{b}, \textbf{d}, and \textbf{c} and then \textit{y} can fire 2-times such that in \textbf{b} there are 4 tokens and the PetriNet is now deadlocked.
+			Yes it is 3-bounded because \textit{x} can fire 2-times, therefore 1 token is in \textbf{b}, \textbf{d}, and \textbf{c} and then \textit{y} can fire 2-times such that in \textbf{b} there are 3 tokens and the PetriNet is now deadlocked.
 			\item \textit{Is the Petri net in Figure 2 safe?} \\
 			No, it is not safe, because after \textit{x} was fired 2-times, \textbf{a} does not have any tokens left and therefore \textit{x} cannot fire again, therfore the PetriNets will get into a deadlocked state when \textbf{d} and \textbf{c} are also empty, which will eventually be the case after \textit{y} was fired also 2-times.
 			\item \textit{Is the Petri net in Figure 2 conservative?} \\
