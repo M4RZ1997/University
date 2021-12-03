@@ -14,6 +14,10 @@
 # al prove that `r >= 3` is secure against nonadaptive chosen-plaintext
 # attacks.
 #
+import hmac
+import sys
+
+
 def smallcipher_encrypt(key, tweak, hashalg, m, a, b, r):
 	L = m // b
 	R = m % b
