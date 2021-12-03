@@ -5,6 +5,11 @@ Implementation of the Luhn-Algorithm assuming that the last digit is the checksu
 
 
 def luhn(s):
+    try:
+        s = int(s)
+    except ValueError:
+        return "Input is not a number"
+
     last_digit = s % 10
     s_without_last = str(s)[:-1]
     sum = 0
@@ -29,5 +34,6 @@ def luhn(s):
 
 
 if __name__ == "__main__":
-    print("Is a Luhn-correct checksum:", luhn(989373674))
-    print("Is a Luhn-correct checksum:", luhn(79927398713))
+    print("Is a Luhn-correct checksum:", luhn("989373674"))
+    print("Is a Luhn-correct checksum:", luhn("79927398713"))
+    print("Is a Luhn-correct checksum:", luhn("156G54546G"))
