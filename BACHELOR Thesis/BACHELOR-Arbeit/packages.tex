@@ -2,12 +2,11 @@
 \usepackage[bottom=4cm, top=3.5cm]{geometry}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
-\usepackage{float}
 \usepackage[square,sort,comma,numbers]{natbib}
 \usepackage{lipsum}
-\usepackage{pgfplots}
-\usepackage{tikz}
-\pgfplotsset{width=10cm,compat=1.9}
+\usepackage{hyperref}
+\usepackage{paralist} % for enumerating
+\usepackage{wrapfig}
 
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage{subcaption,float}
@@ -15,6 +14,19 @@
 \usepackage{minted}
 
 \usepackage{geometry}
+
+% ---------------------------------------- PGF/Tikz-Plots ----------------------------------------- %
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{calc}
+
+% ## Nice Arrow ## %
+\tikzstyle{arrow} = [thick,->,>=stealth]
+% ------------------------------------------------------------------------------------------------- %
+
+\pgfplotsset{width=10cm,compat=1.9}
 
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \makeatletter

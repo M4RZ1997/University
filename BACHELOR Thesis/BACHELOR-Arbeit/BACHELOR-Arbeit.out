@@ -1,31 +1,44 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Research}{}% 2
-\BOOKMARK [1][-]{section.2.1}{Virtual Reality}{chapter.2}% 3
-\BOOKMARK [2][-]{subsection.2.1.1}{Beginnings}{section.2.1}% 4
-\BOOKMARK [2][-]{subsection.2.1.2}{Today}{section.2.1}% 5
-\BOOKMARK [2][-]{subsection.2.1.3}{Future}{section.2.1}% 6
-\BOOKMARK [1][-]{section.2.2}{VR Hardware: HTC Vive}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.3}{Provided Software}{chapter.2}% 8
-\BOOKMARK [2][-]{subsection.2.3.1}{Google Blocks}{section.2.3}% 9
-\BOOKMARK [2][-]{subsection.2.3.2}{Google Tilt Brush}{section.2.3}% 10
-\BOOKMARK [2][-]{subsection.2.3.3}{Masterpiece VR}{section.2.3}% 11
-\BOOKMARK [2][-]{subsection.2.3.4}{Microsoft Maquette}{section.2.3}% 12
-\BOOKMARK [1][-]{section.2.4}{Unreal Engine 4}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.5}{OpenVolumeMesh}{chapter.2}% 14
-\BOOKMARK [0][-]{chapter.3}{Intuition Study}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Concept and Execution}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{Tables}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.3}{Results and Evaluation}{chapter.3}% 18
-\BOOKMARK [2][-]{subsection.3.3.1}{Impression and Layout}{section.3.3}% 19
-\BOOKMARK [2][-]{subsection.3.3.2}{Object Interaction}{section.3.3}% 20
-\BOOKMARK [2][-]{subsection.3.3.3}{Conclusion}{section.3.3}% 21
-\BOOKMARK [0][-]{chapter.4}{Specifications}{}% 22
-\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 23
-\BOOKMARK [1][-]{section.5.1}{Functionality for both VR and Mouse-Keyboard Control}{chapter.5}% 24
-\BOOKMARK [1][-]{section.5.2}{Representation of each Component}{chapter.5}% 25
-\BOOKMARK [1][-]{section.5.3}{Creation of CustomMesh to Represent Face}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.4}{Algorithm to Move Components}{chapter.5}% 27
-\BOOKMARK [1][-]{section.5.5}{Algorithm for Finding Cells}{chapter.5}% 28
-\BOOKMARK [1][-]{section.5.6}{Save and Load OVM Files}{chapter.5}% 29
-\BOOKMARK [0][-]{chapter.6}{Documentation: OpenVolumeMeshVR}{}% 30
-\BOOKMARK [0][-]{chapter.6}{Literature}{}% 31
+\BOOKMARK [1][-]{section.1.1}{Methodology}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Motivation and Goal}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Limitations}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Research}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Virtual Reality}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{Beginnings of VR in Computer Science}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{Today}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.3}{Future}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{Provided Software}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{Google Blocks}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{Google Tilt Brush}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.3}{Masterpiece VR}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.4}{Microsoft Maquette}{section.2.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Unreal Engine 4}{chapter.2}% 15
+\BOOKMARK [1][-]{section.2.4}{OpenVolumeMesh}{chapter.2}% 16
+\BOOKMARK [1][-]{section.2.5}{Conclusion}{chapter.2}% 17
+\BOOKMARK [0][-]{chapter.3}{Intuition Study}{}% 18
+\BOOKMARK [1][-]{section.3.1}{Concept and Execution}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.2}{Tables}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.3}{Results and Evaluation}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.3.1}{Impression and Layout}{section.3.3}% 22
+\BOOKMARK [2][-]{subsection.3.3.2}{Object Interaction}{section.3.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.3}{Conclusion}{section.3.3}% 24
+\BOOKMARK [0][-]{chapter.4}{Documentation OpenVolumeMeshVR}{}% 25
+\BOOKMARK [1][-]{section.4.1}{Spawning and Placing Entities}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.2}{Finding and Generating Cells}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.3}{Moving different Entities}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.4}{Delete Entities}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.5}{Save and Load OVM Files}{chapter.4}% 30
+\BOOKMARK [0][-]{chapter.5}{Implementation}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Project Structure}{chapter.5}% 32
+\BOOKMARK [1][-]{section.5.2}{Functionality for both VR and Mouse-Keyboard Control}{chapter.5}% 33
+\BOOKMARK [1][-]{section.5.3}{Representation of Components}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.4}{Creation of CustomMesh to represent Faces and Cells}{chapter.5}% 35
+\BOOKMARK [1][-]{section.5.5}{Integration and Use of OpenVolumeMesh}{chapter.5}% 36
+\BOOKMARK [1][-]{section.5.6}{Algorithm for Moving Components}{chapter.5}% 37
+\BOOKMARK [1][-]{section.5.7}{Algorithm for Finding Cells}{chapter.5}% 38
+\BOOKMARK [1][-]{section.5.8}{Implementing additional Modes}{chapter.5}% 39
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}% 40
+\BOOKMARK [1][-]{section.6.1}{Comparison: Set Goal - Actual Outcome}{chapter.6}% 41
+\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 42
+\BOOKMARK [0][-]{section*.28}{Literature}{}% 43
+\BOOKMARK [0][-]{appendix.A}{Intuition Study: Evaluation Sheet}{}% 44
