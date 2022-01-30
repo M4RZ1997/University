@@ -2,27 +2,21 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: BACHELOR-Arbeit.aux
 The style file: alphadin.bst
 Database file #1: literature.bib
 Warning--entry type for "UE4" isn't style-file defined
---line 31 of file literature.bib
+--line 76 of file literature.bib
 Warning--entry type for "GB4" isn't style-file defined
---line 37 of file literature.bib
+--line 82 of file literature.bib
 Warning--entry type for "GTB" isn't style-file defined
---line 43 of file literature.bib
+--line 88 of file literature.bib
 Warning--entry type for "MSM" isn't style-file defined
---line 49 of file literature.bib
+--line 94 of file literature.bib
 Warning--entry type for "MVR" isn't style-file defined
---line 55 of file literature.bib
+--line 100 of file literature.bib
 Warning--entry type for "OVM" isn't style-file defined
---line 61 of file literature.bib
-Warning--entry type for "VRHistory" isn't style-file defined
---line 67 of file literature.bib
-Warning--entry type for "VRUseCases" isn't style-file defined
---line 73 of file literature.bib
-Warning--entry type for "Hei61" isn't style-file defined
---line 79 of file literature.bib
+--line 106 of file literature.bib
 Warning--to sort, need author or key in GB4
 Warning--to sort, need author or key in GTB
 Warning--to sort, need author or key in MVR
 Warning--to sort, need author or key in MSM
 Warning--to sort, need author or key in UE4
 Warning--to sort, need author or key in OVM
-(There were 15 warnings)
+(There were 12 warnings)

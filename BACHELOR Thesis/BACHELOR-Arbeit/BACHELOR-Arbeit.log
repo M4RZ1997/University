@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  17 JAN 2022 15:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  30 JAN 2022 22:08
 entering extended mode
 **./BACHELOR-Arbeit.tex
 (BACHELOR-Arbeit.tex
@@ -1013,7 +1013,17 @@ CHELOR-Arbeit.aex <nul: /p x=^%~$PATH:i>> BACHELOR-Arbeit.aex)...executed.
 
 runsystem(del BACHELOR-Arbeit.aex)...executed.
 
- (BACHELOR-Arbeit.aux)
+ (BACHELOR-Arbeit.aux
+
+LaTeX Warning: Label `pic:picB.5' multiply defined.
+
+
+LaTeX Warning: Label `pic:picB.6' multiply defined.
+
+
+LaTeX Warning: Label `pic:picB.5' multiply defined.
+
+)
 \openout1 = `BACHELOR-Arbeit.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -1143,7 +1153,7 @@ on with the same identifier (name{page.1}) has been already used, duplicate ign
 ored
 <to be read again> 
                    \relax 
-l.29 \end{abstract}
+l.31 \end{abstract}
                     [1] (BACHELOR-Arbeit.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 3.
@@ -1153,7 +1163,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.44 ...\numberline {7}Future Work}{26}{chapter.7}
+l.52 ...ine {chapter}{Literature}{24}{section*.23}
                                                   % [1
 
 ])
@@ -1166,137 +1176,133 @@ Chapter 1.
 
 ] [4]
 Chapter 2.
-[5
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 79--81
-
- []
-
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
-(Font)              using `OT1/cmr/bx/n' instead on input line 92.
+(Font)              using `OT1/cmr/bx/n' instead on input line 70.
 
-[6] [7]
-<halfedge_halfface.png, id=310, 501.875pt x 251.94125pt>
-File: halfedge_halfface.png Graphic file (type png)
-<use halfedge_halfface.png>
-Package pdftex.def Info: halfedge_halfface.png  used on input line 126.
+[5
+
+] [6]
+<./images/halfedge_halfface.png, id=295, 501.875pt x 251.94125pt>
+File: ./images/halfedge_halfface.png Graphic file (type png)
+<use ./images/halfedge_halfface.png>
+Package pdftex.def Info: ./images/halfedge_halfface.png  used on input line 104
+.
 (pdftex.def)             Requested size: 236.01561pt x 118.4816pt.
- [8 <./halfedge_halfface.png>]
+ [7 <./images/halfedge_halfface.png>]
 Chapter 3.
 
 Package paralist Warning: Incorrect label; no or multiple counters.
-(paralist)                The label is: - on input line 143.
+(paralist)                The label is: - on input line 119.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--177
+Underfull \hbox (badness 10000) in paragraph at lines 135--153
 
  []
 
-[9
+[8
 
-] [10]
+] [9]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 262.
- [11]
-Overfull \hbox (6.49728pt too wide) in paragraph at lines 275--279
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 238.
+ [10]
+Overfull \hbox (2.58061pt too wide) in paragraph at lines 251--255
 \OT1/cmr/m/n/10 Another prob-lem was that the ori-en-ta-tion of the in-ter-face
- menu of-ten serverely re-stricted the workspace.
+ menu of-ten severely re-stricted the workspace.
  []
 
-[12] [13]
+[11] [12]
 Chapter 4.
-<./images/InGame_Screenshots/FP_View.png, id=360, 1049.42062pt x 597.73312pt>
+<./images/InGame_Screenshots/FP_View.png, id=345, 1126.2075pt x 606.76688pt>
 File: ./images/InGame_Screenshots/FP_View.png Graphic file (type png)
 <use ./images/InGame_Screenshots/FP_View.png>
 Package pdftex.def Info: ./images/InGame_Screenshots/FP_View.png  used on input
- line 292.
-(pdftex.def)             Requested size: 424.82523pt x 241.97113pt.
-[14
+ line 268.
+(pdftex.def)             Requested size: 448.42822pt x 241.6007pt.
+[13
 
- <./images/InGame_Screenshots/FP_View.png>]
-<./images/InGame_Screenshots/FP_PauseMenu.png, id=369, 293.59688pt x 340.27126p
+ <./images/InGame_Screenshots/FP_View.png>] [14]
+<./images/InGame_Screenshots/FP_PauseMenu.png, id=358, 293.59688pt x 340.27126p
 t>
 File: ./images/InGame_Screenshots/FP_PauseMenu.png Graphic file (type png)
 <use ./images/InGame_Screenshots/FP_PauseMenu.png>
 Package pdftex.def Info: ./images/InGame_Screenshots/FP_PauseMenu.png  used on 
-input line 338.
+input line 311.
 (pdftex.def)             Requested size: 165.2138pt x 191.47998pt.
- [15] [16 <./images/InGame_Screenshots/FP_PauseMenu.png>]
+ [15 <./images/InGame_Screenshots/FP_PauseMenu.png>]
 Chapter 5.
-<./images/Blueprint_Explanation/CPP_Icon.png, id=382, 1828.8325pt x 2055.68pt>
+<./images/Blueprint_Explanation/CPP_Icon.png, id=367, 1828.8325pt x 2055.68pt>
 File: ./images/Blueprint_Explanation/CPP_Icon.png Graphic file (type png)
 <use ./images/Blueprint_Explanation/CPP_Icon.png>
 Package pdftex.def Info: ./images/Blueprint_Explanation/CPP_Icon.png  used on i
-nput line 358.
+nput line 331.
 (pdftex.def)             Requested size: 47.206pt x 53.04178pt.
-<./images/Blueprint_Explanation/Blueprint_Icon.png, id=383, 64.74188pt x 63.236
+<./images/Blueprint_Explanation/Blueprint_Icon.png, id=368, 64.74188pt x 63.236
 25pt>
 File: ./images/Blueprint_Explanation/Blueprint_Icon.png Graphic file (type png)
 
 <use ./images/Blueprint_Explanation/Blueprint_Icon.png>
 Package pdftex.def Info: ./images/Blueprint_Explanation/Blueprint_Icon.png  use
-d on input line 360.
+d on input line 333.
 (pdftex.def)             Requested size: 47.206pt x 46.10995pt.
-<./images/Blueprint_Explanation/Actor_Icon.png, id=384, 65.49469pt x 63.23625pt
+<./images/Blueprint_Explanation/Actor_Icon.png, id=369, 65.49469pt x 63.23625pt
 >
 File: ./images/Blueprint_Explanation/Actor_Icon.png Graphic file (type png)
 <use ./images/Blueprint_Explanation/Actor_Icon.png>
 Package pdftex.def Info: ./images/Blueprint_Explanation/Actor_Icon.png  used on
- input line 362.
+ input line 335.
 (pdftex.def)             Requested size: 35.4009pt x 34.18083pt.
-<./images/Blueprint_Explanation/Pawn_Icon.png, id=385, 64.74188pt x 63.23625pt>
+<./images/Blueprint_Explanation/Pawn_Icon.png, id=370, 64.74188pt x 63.23625pt>
 
 File: ./images/Blueprint_Explanation/Pawn_Icon.png Graphic file (type png)
 <use ./images/Blueprint_Explanation/Pawn_Icon.png>
 Package pdftex.def Info: ./images/Blueprint_Explanation/Pawn_Icon.png  used on 
-input line 363.
+input line 336.
 (pdftex.def)             Requested size: 35.4009pt x 34.57933pt.
-<./images/Blueprint_Explanation/HUD_Icon.png, id=386, 65.49469pt x 63.23625pt>
+<./images/Blueprint_Explanation/HUD_Icon.png, id=371, 65.49469pt x 63.23625pt>
 File: ./images/Blueprint_Explanation/HUD_Icon.png Graphic file (type png)
 <use ./images/Blueprint_Explanation/HUD_Icon.png>
 Package pdftex.def Info: ./images/Blueprint_Explanation/HUD_Icon.png  used on i
-nput line 364.
+nput line 337.
 (pdftex.def)             Requested size: 35.4009pt x 34.18083pt.
 
-Overfull \hbox (177.21382pt too wide) in paragraph at lines 350--383
+Overfull \hbox (177.21382pt too wide) in paragraph at lines 323--356
 [][]| 
  []
 
-<./images/Project_Structure.png, id=389, 235.63031pt x 694.09312pt>
+<./images/Project_Structure.png, id=374, 225.09094pt x 723.45282pt>
 File: ./images/Project_Structure.png Graphic file (type png)
 <use ./images/Project_Structure.png>
-Package pdftex.def Info: ./images/Project_Structure.png  used on input line 386
+Package pdftex.def Info: ./images/Project_Structure.png  used on input line 359
 .
-(pdftex.def)             Requested size: 141.61081pt x 417.1475pt.
+(pdftex.def)             Requested size: 132.16817pt x 424.81334pt.
 
-Overfull \hbox (330.42043pt too wide) in paragraph at lines 384--392
+Overfull \hbox (330.42043pt too wide) in paragraph at lines 357--365
 [][]| 
  []
 
-<./images/VRCharacter.png, id=390, 335.75438pt x 288.3272pt>
+<./images/VRCharacter.png, id=375, 335.75438pt x 288.3272pt>
 File: ./images/VRCharacter.png Graphic file (type png)
 <use ./images/VRCharacter.png>
-Package pdftex.def Info: ./images/VRCharacter.png  used on input line 399.
+Package pdftex.def Info: ./images/VRCharacter.png  used on input line 372.
 (pdftex.def)             Requested size: 165.2138pt x 141.87549pt.
-[17
+[16
 
  <./images/Blueprint_Explanation/CPP_Icon.png> <./images/Blueprint_Explanation/
 Blueprint_Icon.png> <./images/Blueprint_Explanation/Actor_Icon.png> <./images/B
 lueprint_Explanation/Pawn_Icon.png> <./images/Blueprint_Explanation/HUD_Icon.pn
 g> <./images/Project_Structure.png>]
-<./images/VisualCode.png, id=402, 1160.08406pt x 297.36093pt>
+<./images/VisualCode.png, id=386, 1160.08406pt x 297.36093pt>
 File: ./images/VisualCode.png Graphic file (type png)
 <use ./images/VisualCode.png>
-Package pdftex.def Info: ./images/VisualCode.png  used on input line 407.
+Package pdftex.def Info: ./images/VisualCode.png  used on input line 380.
 (pdftex.def)             Requested size: 401.22942pt x 102.84372pt.
-<./images/UProperties.png, id=404, 825.83531pt x 192.72pt>
+<./images/UProperties.png, id=388, 825.83531pt x 192.72pt>
 File: ./images/UProperties.png Graphic file (type png)
 <use ./images/UProperties.png>
-Package pdftex.def Info: ./images/UProperties.png  used on input line 419.
+Package pdftex.def Info: ./images/UProperties.png  used on input line 392.
 (pdftex.def)             Requested size: 448.42822pt x 104.64949pt.
- [18 <./images/VRCharacter.png> <./images/VisualCode.png>]
+ [17 <./images/VRCharacter.png> <./images/VisualCode.png>]
 \openout3 = `BACHELOR-Arbeit.pyg'.
 
  (_minted-BACHELOR-Arbeit/default-pyg-prefix.pygstyle)
@@ -1305,170 +1311,29 @@ Package pdftex.def Info: ./images/UProperties.png  used on input line 419.
 9E2D800C4F.pygtex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2.
-) [19 <./images/UProperties.png>]
-<./images/CellMode_Explanation/InitialState.png, id=420, 1046.40938pt x 668.497
-5pt>
-File: ./images/CellMode_Explanation/InitialState.png Graphic file (type png)
-<use ./images/CellMode_Explanation/InitialState.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/InitialState.png  used o
-n input line 456.
-(pdftex.def)             Requested size: 183.12437pt x 116.98882pt.
-
-Overfull \hbox (2.44939pt too wide) in paragraph at lines 456--458
- [][] 
- []
-
-<./images/CellMode_Explanation/InitialState_labeled.png, id=421, 1046.40938pt x
- 668.4975pt>
-File: ./images/CellMode_Explanation/InitialState_labeled.png Graphic file (type
- png)
-<use ./images/CellMode_Explanation/InitialState_labeled.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/InitialState_labeled.png
-  used on input line 462.
-(pdftex.def)             Requested size: 183.12437pt x 116.98882pt.
-
-Overfull \hbox (2.44939pt too wide) in paragraph at lines 462--464
- [][] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 468--469
-
- []
-
-<./images/CellMode_Explanation/FirstStep.png, id=422, 1046.40938pt x 667.74469p
-t>
-File: ./images/CellMode_Explanation/FirstStep.png Graphic file (type png)
-<use ./images/CellMode_Explanation/FirstStep.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/FirstStep.png  used on i
-nput line 470.
-(pdftex.def)             Requested size: 156.95464pt x 100.15738pt.
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 471.
-See the caption package documentation for explanation.
-
-[20 <./images/CellMode_Explanation/InitialState.png> <./images/CellMode_Explana
-tion/InitialState_labeled.png>]
+) [18 <./images/UProperties.png>]
+<./images/CellMode_Explanation/ClosedInFace.png, id=406, 413.29407pt x 309.4059
+4pt>
+File: ./images/CellMode_Explanation/ClosedInFace.png Graphic file (type png)
+<use ./images/CellMode_Explanation/ClosedInFace.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/ClosedInFace.png  used o
+n input line 431.
+(pdftex.def)             Requested size: 129.8057pt x 97.17538pt.
 \openout3 = `BACHELOR-Arbeit.pyg'.
 
 
-(_minted-BACHELOR-Arbeit/2A82AD55F5AC13511DBA5FDA36A7CF6AF290AED9DF18B2A2E3C962
-49D295A06D.pygtex)
-Underfull \hbox (badness 10000) in paragraph at lines 484--485
-
+(_minted-BACHELOR-Arbeit/B408E43FC5813E032E8B51FA2C5DED40F290AED9DF18B2A2E3C962
+49D295A06D.pygtex
+Overfull \hbox (353.81746pt too wide) in paragraph at lines 427--1
+[][]
  []
 
-<./images/CellMode_Explanation/AdjacentFaces.png, id=429, 1045.65656pt x 667.74
-469pt>
-File: ./images/CellMode_Explanation/AdjacentFaces.png Graphic file (type png)
-<use ./images/CellMode_Explanation/AdjacentFaces.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/AdjacentFaces.png  used 
-on input line 486.
-(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 487.
-See the caption package documentation for explanation.
-
-<./images/CellMode_Explanation/FaceArray_One.png, id=430, 1044.90375pt x 666.99
-188pt>
-File: ./images/CellMode_Explanation/FaceArray_One.png Graphic file (type png)
-<use ./images/CellMode_Explanation/FaceArray_One.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_One.png  used 
-on input line 501.
-(pdftex.def)             Requested size: 156.72879pt x 100.04446pt.
-<./images/CellMode_Explanation/CheckedArray_One.png, id=431, 1044.90375pt x 666
-.99188pt>
-File: ./images/CellMode_Explanation/CheckedArray_One.png Graphic file (type png
-)
-<use ./images/CellMode_Explanation/CheckedArray_One.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_One.png  us
-ed on input line 508.
-(pdftex.def)             Requested size: 156.72879pt x 100.04446pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 496--514
-
- []
-
-[21 <./images/CellMode_Explanation/FirstStep.png> <./images/CellMode_Explanatio
-n/AdjacentFaces.png>]
-<./images/CellMode_Explanation/FaceArray_Two.png, id=440, 1045.65656pt x 667.74
-469pt>
-File: ./images/CellMode_Explanation/FaceArray_Two.png Graphic file (type png)
-<use ./images/CellMode_Explanation/FaceArray_Two.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Two.png  used 
-on input line 520.
-(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
-<./images/CellMode_Explanation/CheckedArray_Two.png, id=441, 1045.65656pt x 667
-.74469pt>
-File: ./images/CellMode_Explanation/CheckedArray_Two.png Graphic file (type png
-)
-<use ./images/CellMode_Explanation/CheckedArray_Two.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Two.png  us
-ed on input line 527.
-(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 515--533
-
- []
-
-\openout3 = `BACHELOR-Arbeit.pyg'.
-
-
-(_minted-BACHELOR-Arbeit/16DB3ED623B3F44C3AE10B7C6ECA323EF290AED9DF18B2A2E3C962
-49D295A06D.pygtex)
-File: ./images/CellMode_Explanation/FaceArray_Two.png Graphic file (type png)
-<use ./images/CellMode_Explanation/FaceArray_Two.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Two.png  used 
-on input line 545.
-(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
-<./images/CellMode_Explanation/CheckedArray_Three.png, id=442, 1045.65656pt x 6
-67.74469pt>
-File: ./images/CellMode_Explanation/CheckedArray_Three.png Graphic file (type p
-ng)
-<use ./images/CellMode_Explanation/CheckedArray_Three.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Three.png  
-used on input line 552.
-(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
- [22 <./images/CellMode_Explanation/FaceArray_One.png> <./images/CellMode_Expla
-nation/CheckedArray_One.png> <./images/CellMode_Explanation/FaceArray_Two.png> 
-<./images/CellMode_Explanation/CheckedArray_Two.png>]
-<./images/CellMode_Explanation/FaceArray_Four.png, id=451, 1046.40938pt x 668.4
-975pt>
-File: ./images/CellMode_Explanation/FaceArray_Four.png Graphic file (type png)
-<use ./images/CellMode_Explanation/FaceArray_Four.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Four.png  used
- on input line 564.
-(pdftex.def)             Requested size: 156.95464pt x 100.2703pt.
-<./images/CellMode_Explanation/CheckedArray_Four.png, id=452, 1045.65656pt x 66
-8.4975pt>
-File: ./images/CellMode_Explanation/CheckedArray_Four.png Graphic file (type pn
-g)
-<use ./images/CellMode_Explanation/CheckedArray_Four.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Four.png  u
-sed on input line 571.
-(pdftex.def)             Requested size: 156.8417pt x 100.2703pt.
-File: ./images/CellMode_Explanation/FaceArray_Two.png Graphic file (type png)
-<use ./images/CellMode_Explanation/FaceArray_Two.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/FaceArray_Two.png  used 
-on input line 583.
-(pdftex.def)             Requested size: 156.8417pt x 100.15738pt.
-<./images/CellMode_Explanation/CheckedArray_Five.png, id=453, 1045.65656pt x 66
-8.4975pt>
-File: ./images/CellMode_Explanation/CheckedArray_Five.png Graphic file (type pn
-g)
-<use ./images/CellMode_Explanation/CheckedArray_Five.png>
-Package pdftex.def Info: ./images/CellMode_Explanation/CheckedArray_Five.png  u
-sed on input line 590.
-(pdftex.def)             Requested size: 156.8417pt x 100.2703pt.
+[19 <./images/CellMode_Explanation/ClosedInFace.png>]) [20]
 \openout3 = `BACHELOR-Arbeit.pyg'.
 
 
 (_minted-BACHELOR-Arbeit/9FFE651A595D057C06683BA824CFB6F2F94DA824B6FE36372D90B6
-9E2D800C4F.pygtex [23 <./images/CellMode_Explanation/CheckedArray_Three.png> <.
-/images/CellMode_Explanation/FaceArray_Four.png> <./images/CellMode_Explanation
-/CheckedArray_Four.png> <./images/CellMode_Explanation/CheckedArray_Five.png>])
+9E2D800C4F.pygtex)
 \openout3 = `BACHELOR-Arbeit.pyg'.
 
 
@@ -1478,70 +1343,198 @@ sed on input line 590.
 
 
 (_minted-BACHELOR-Arbeit/84E52470CF0B277F87D206A107D999DDF94DA824B6FE36372D90B6
-9E2D800C4F.pygtex) [24]
+9E2D800C4F.pygtex) [21]
 Chapter 6.
-[25
+[22
 
 ]
 Chapter 7.
-[26
+[23
 
-] (BACHELOR-Arbeit.bbl) [27
+] (BACHELOR-Arbeit.bbl) [24
 
 ]
 Appendix A.
-<./images/Intuitiontest_Questionnaire.png, id=498, 698.61pt x 856.70062pt>
+<./images/Intuitiontest_Questionnaire.png, id=457, 698.61pt x 856.70062pt>
 File: ./images/Intuitiontest_Questionnaire.png Graphic file (type png)
 <use ./images/Intuitiontest_Questionnaire.png>
 Package pdftex.def Info: ./images/Intuitiontest_Questionnaire.png  used on inpu
-t line 678.
+t line 557.
 (pdftex.def)             Requested size: 401.22942pt x 492.02386pt.
-[28
+[25
 
  <./images/Intuitiontest_Questionnaire.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 680.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 680.
+Appendix B.
+<./images/CellMode_Explanation/InitialState.png, id=463, 1187.93813pt x 652.688
+43pt>
+File: ./images/CellMode_Explanation/InitialState.png Graphic file (type png)
+<use ./images/CellMode_Explanation/InitialState.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/InitialState.png  used o
+n input line 565.
+(pdftex.def)             Requested size: 207.89229pt x 114.22218pt.
+<./images/CellMode_Explanation/InitialState_labeled.png, id=464, 1187.93813pt x
+ 652.68843pt>
+File: ./images/CellMode_Explanation/InitialState_labeled.png Graphic file (type
+ png)
+<use ./images/CellMode_Explanation/InitialState_labeled.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/InitialState_labeled.png
+  used on input line 571.
+(pdftex.def)             Requested size: 207.89229pt x 114.22218pt.
+<./images/CellMode_Explanation/SelectedHalfFace.png, id=465, 1333.98375pt x 639
+.13782pt>
+File: ./images/CellMode_Explanation/SelectedHalfFace.png Graphic file (type png
+)
+<use ./images/CellMode_Explanation/SelectedHalfFace.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/SelectedHalfFace.png  us
+ed on input line 579.
+(pdftex.def)             Requested size: 200.08893pt x 95.86653pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 580.
+See the caption package documentation for explanation.
+
+<./images/CellMode_Explanation/AdjacentEdges.png, id=466, 1330.9725pt x 639.137
+82pt>
+File: ./images/CellMode_Explanation/AdjacentEdges.png Graphic file (type png)
+<use ./images/CellMode_Explanation/AdjacentEdges.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/AdjacentEdges.png  used 
+on input line 585.
+(pdftex.def)             Requested size: 199.63725pt x 95.86653pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 586.
+See the caption package documentation for explanation.
+
+[26
+
+ <./images/CellMode_Explanation/InitialState.png> <./images/CellMode_Explanatio
+n/InitialState_labeled.png> <./images/CellMode_Explanation/SelectedHalfFace.png
+> <./images/CellMode_Explanation/AdjacentEdges.png>]
+<./images/CellMode_Explanation/StepOne.png, id=474, 1301.61281pt x 624.08156pt>
+
+File: ./images/CellMode_Explanation/StepOne.png Graphic file (type png)
+<use ./images/CellMode_Explanation/StepOne.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/StepOne.png  used on inp
+ut line 591.
+(pdftex.def)             Requested size: 195.23349pt x 93.60818pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 592.
+See the caption package documentation for explanation.
+
+<./images/CellMode_Explanation/HandleList1.png, id=475, 1419.05156pt x 608.2725
+pt>
+File: ./images/CellMode_Explanation/HandleList1.png Graphic file (type png)
+<use ./images/CellMode_Explanation/HandleList1.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/HandleList1.png  used on
+ input line 597.
+(pdftex.def)             Requested size: 212.84854pt x 91.23694pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 598.
+See the caption package documentation for explanation.
+
+<./images/CellMode_Explanation/StepTwo.png, id=476, 1419.80438pt x 610.53094pt>
+
+File: ./images/CellMode_Explanation/StepTwo.png Graphic file (type png)
+<use ./images/CellMode_Explanation/StepTwo.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/StepTwo.png  used on inp
+ut line 603.
+(pdftex.def)             Requested size: 212.96147pt x 91.57568pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 604.
+See the caption package documentation for explanation.
+
+<./images/CellMode_Explanation/HandleList2.png, id=477, 1433.355pt x 615.0478pt
+>
+File: ./images/CellMode_Explanation/HandleList2.png Graphic file (type png)
+<use ./images/CellMode_Explanation/HandleList2.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/HandleList2.png  used on
+ input line 609.
+(pdftex.def)             Requested size: 214.99397pt x 92.25319pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 610.
+See the caption package documentation for explanation.
+
+<./images/CellMode_Explanation/StepThree.png, id=478, 1434.86063pt x 614.295pt>
+
+File: ./images/CellMode_Explanation/StepThree.png Graphic file (type png)
+<use ./images/CellMode_Explanation/StepThree.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/StepThree.png  used on i
+nput line 615.
+(pdftex.def)             Requested size: 215.2198pt x 92.14026pt.
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 616.
+See the caption package documentation for explanation.
+
+[27 <./images/CellMode_Explanation/StepOne.png> <./images/CellMode_Explanation/
+HandleList1.png> <./images/CellMode_Explanation/StepTwo.png> <./images/CellMode
+_Explanation/HandleList2.png>]
+<./images/CellMode_Explanation/HandleList3.png, id=487, 1434.10782pt x 612.0365
+6pt>
+File: ./images/CellMode_Explanation/HandleList3.png Graphic file (type png)
+<use ./images/CellMode_Explanation/HandleList3.png>
+Package pdftex.def Info: ./images/CellMode_Explanation/HandleList3.png  used on
+ input line 621.
+(pdftex.def)             Requested size: 215.10689pt x 91.80151pt.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 622.
+See the caption package documentation for explanation.
+
+[28 <./images/CellMode_Explanation/StepThree.png> <./images/CellMode_Explanatio
+n/HandleList3.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 626.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 626.
  (BACHELOR-Arbeit.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 680.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 680.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 626.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 626.
 Package rerunfilecheck Info: File `BACHELOR-Arbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 9B88DCA77E3A17B6B682955959B23CAB;2924.
+(rerunfilecheck)             Checksum: 1524E1B99DA128DAD7D8C50BDA1C998F;2979.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 runsystem(del BACHELOR-Arbeit.pyg)...executed.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 680.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 626.
  ) 
 Here is how much of TeX's memory you used:
- 33621 strings out of 481556
- 811994 string characters out of 2913401
- 1339766 words of memory out of 3000000
- 48099 multiletter control sequences out of 15000+200000
- 538683 words of font info for 46 fonts, out of 3000000 for 9000
+ 33574 strings out of 481556
+ 810374 string characters out of 2913401
+ 1340766 words of memory out of 3000000
+ 48064 multiletter control sequences out of 15000+200000
+ 538075 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,25n,100p,1686b,1022s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 71i,25n,100p,1694b,1022s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmbx10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmbx12.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/Marcel/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Marcel/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/User
-s/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmitt
-10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Marcel/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Marcel/AppD
-ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Use
-rs/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti
-12.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmtt10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmtt9.pfb>
-Output written on BACHELOR-Arbeit.pdf (30 pages, 7176780 bytes).
+9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Users/Marcel/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/Marcel/AppD
+ata/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/Us
+ers/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmr7.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/Marcel/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Marcel/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Us
+ers/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
+i12.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmtt10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on BACHELOR-Arbeit.pdf (30 pages, 7162398 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 130 named destinations out of 1000 (max. 500000)
- 500 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 566 PDF objects out of 1000 (max. 8388607)
+ 124 named destinations out of 1000 (max. 500000)
+ 495 words of extra memory for PDF output out of 10000 (max. 10000000)
 

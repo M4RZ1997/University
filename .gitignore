@@ -11,6 +11,8 @@ LaTeX Files
 *.synctex.gz
 *.toc
 *.xml
+_minted*
+*.pyc
 
 ###################################################################
 JetBrains
@@ -26,6 +28,4 @@ Others
 **/Podcast
 *.xlsx
 *.docx
-_minted*
-*.pyc
 *.pptx
