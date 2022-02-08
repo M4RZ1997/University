@@ -1,0 +1,93 @@
+\documentclass{report}
+
+\usepackage{../../../../LaTeX/marzstyle}
+
+\runningheads{Privacy and Data Security}{Summary}
+
+\fancypagestyle{plain}{} % fancyhdr also on first Chapter pages
+
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
+
+
+\begin{document}
+	\chapter{Privacy}
+	\textsc{Privacy} concerns information about individuals or groups of people. Those should be able to be hidden or to hide the information of themselves. \textsc{Privacy} also allows to release information selectively and for a certain purpose.
+	\section{\textsc{Context} of information}
+	\startsection
+		The \textsc{Context} is defined to be the domain, setting, or the interaction in which information is transferred. Its elements are the people, relationship and trust, traditions, values, purposes and goals, time and place, and laws.
+	\closesection
+	\section{\textsc{Informational Norm}}
+	\startsection
+		The \textsc{Informational Norm} concerns an information flow and is defined by the following five elements:
+		\begin{enumerate}[\textbullet]
+			\item sender
+			\item recipient
+			\item subject
+			\item information type (attributes)
+			\item transmission principle (circumstances of the information flow)
+		\end{enumerate}
+		This norm can be one of two types:
+		\begin{enumerate}
+			\item \textbf{Normative} \\
+			How the actors should behave
+			\item \textbf{Descriptive} \\
+			Practice of the actors
+		\end{enumerate}
+	\closesection
+	\section{\textsc{Contextual Integrity}}
+	\startsection
+		\textsc{Privacy} as \textsc{Contextual Integrity} means that an information flow respects the information norm of its context.
+	\closesection
+	
+	\hfill \\
+	
+	\nopagebreakchapter{Principles of Computer Security}
+	\section{Access Control}
+	\startsection
+		A Reference Monitor is a logical concept to model if requests from subjects to objects are permitted. The associated policies define the permitted operations for each subject-object pair.
+	\closesection
+	
+	\chapter{Tracking}
+	\section{Active Tracking Methods}
+	\startsection
+		\subsection{Cookies}
+		\startsubsection
+			Because HTTP is stateless a method must be provided to enable continuity and sessions. Cookies address this problem by being set by the servers in a browser saving personalization, logins, and tracking information. The browser sends this cookie with every request it makes to that server.
+			\subsubsection{1st-Party Cookie}
+			\startsubsection
+				Set by the server in URL from which the DOM originates.
+			\closesection
+			\subsubsection{3rd-Party Cookie}
+			\startsubsection
+				When DOM includes some information from 3rd-party servers the original server requests this information and the response might contain a 3rd-party cookie which is primarily used for tracking.
+			\closesection
+		\closesection
+		\subsection{Tracking Pixels}
+		\startsubsection
+			Typically 1x1 transparent images included by an external server via the DOM. Most often used on websites or in e-mails.
+		\closesection
+		\subsection{Identifiers on device or browser}
+		\startsubsection
+			More often used for mobile devices like IMSI, GAID, or IDFA-ID. For desktop PCs this is not very common.
+		\closesection
+		\subsection{Evercookie}
+		\startsubsection
+			Using other methods for storing a cookie in browsers. The goal is to recreate the same cookie on every visit. For example Flash, local and session storage, or ETags (HTTP element to facilitate coding).
+		\closesection
+		\subsection{Cookie Syncing}
+		\startsubsection
+			Correlate 1st-party cookies sent by different servers, across domains. \\
+			Domain \textbf{A} places cookie and makes the browser to include some content from another Domain \textbf{B} via personalized URL, which includes the tracking data. Domain \textbf{B} can associate this with identifier used by \textbf{A}. All domains that are using this cookie merge all data collected individually.
+		\closesection
+	\closesection
+	\section{Passive Tracking Methods}
+	\startsection
+		The client doesn't need to take any action. These trackers are not visible on the client and are usually called fingerprinting.
+	\closesection
+	
+	\chapter{Data Anonymization}
+	
+	\chapter{$\epsilon$-Closeness}
+\end{document}
