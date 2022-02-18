@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k}{for} each edge of face X:
-	\PYG{k}{if} all adjacent faces \PYG{k}{return} \PYG{n+nb}{false} :
-		\PYG{k}{return} \PYG{n+nb}{false}
-\PYG{k}{return} \PYG{n+nb}{true}
-\end{Verbatim}

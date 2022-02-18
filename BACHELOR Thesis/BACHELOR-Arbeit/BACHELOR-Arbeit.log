@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  30 JAN 2022 22:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.14)  16 FEB 2022 16:40
 entering extended mode
 **./BACHELOR-Arbeit.tex
 (BACHELOR-Arbeit.tex
@@ -1321,8 +1321,12 @@ n input line 431.
 (pdftex.def)             Requested size: 129.8057pt x 97.17538pt.
 \openout3 = `BACHELOR-Arbeit.pyg'.
 
+runsystem(pygmentize -l bash -f latex -P commandprefix=PYG -F tokenmerge -o _mi
+nted-BACHELOR-Arbeit/D8FD390F12450AA8E62CC7868FB0E2D7F290AED9DF18B2A2E3C96249D2
+95A06D.pygtex BACHELOR-Arbeit.pyg)...executed.
 
-(_minted-BACHELOR-Arbeit/B408E43FC5813E032E8B51FA2C5DED40F290AED9DF18B2A2E3C962
+
+(_minted-BACHELOR-Arbeit/D8FD390F12450AA8E62CC7868FB0E2D7F290AED9DF18B2A2E3C962
 49D295A06D.pygtex
 Overfull \hbox (353.81746pt too wide) in paragraph at lines 427--1
 [][]
@@ -1487,6 +1491,9 @@ Package caption Warning: The option `hypcap=true' will be ignored for this
 (caption)                particular \caption on input line 622.
 See the caption package documentation for explanation.
 
+runsystem(del _minted-BACHELOR-Arbeit\B408E43FC5813E032E8B51FA2C5DED40F290AED9D
+F18B2A2E3C96249D295A06D.pygtex)...executed.
+
 [28 <./images/CellMode_Explanation/StepThree.png> <./images/CellMode_Explanatio
 n/HandleList3.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 626.
@@ -1508,10 +1515,10 @@ runsystem(del BACHELOR-Arbeit.pyg)...executed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 626.
  ) 
 Here is how much of TeX's memory you used:
- 33574 strings out of 481556
- 810374 string characters out of 2913401
+ 33576 strings out of 481556
+ 810533 string characters out of 2913401
  1340766 words of memory out of 3000000
- 48064 multiletter control sequences out of 15000+200000
+ 48065 multiletter control sequences out of 15000+200000
  538075 words of font info for 44 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,25n,100p,1694b,1022s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1532,7 +1539,7 @@ ers/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmt
 i12.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
 msfonts/cm/cmtt10.pfb><C:/Users/Marcel/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on BACHELOR-Arbeit.pdf (30 pages, 7162398 bytes).
+Output written on BACHELOR-Arbeit.pdf (30 pages, 7162402 bytes).
 PDF statistics:
  566 PDF objects out of 1000 (max. 8388607)
  124 named destinations out of 1000 (max. 500000)

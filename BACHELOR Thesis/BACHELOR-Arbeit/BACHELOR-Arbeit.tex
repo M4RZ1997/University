@@ -445,20 +445,20 @@ CFA(HalfFaceHandle):
     |   return false
     if HalfFaceHandle closed-in:
     |   add HalfFaceHandle to HandleList
-    |   for each edge of HalfFaceHandle:
+    |   for each half_edge of HalfFaceHandle:
     |   |   int failedCalculations = 0
-    |   |   opp_edge = opposite of edge
+    |   |   opp_half_edge = opposite of half_edge
     |   |   Initialize empty adjacentHFH
-    |   |   save all half-faces adjacent to opp_edge in adjacentHFH
+    |   |   save all half-faces adjacent to opp_half_edge in adjacentHFH
     |   |   sort adjacentHFH
     |   |   for each halffacehandle in adjacentHFH:
     |   |   |   if halffacehandle is not in HandleList 
-    |   |   |   AND opp_edge does not belong to any half-face in HandleList:
+    |   |   |   AND opp_half_edge does not belong to any half-face in HandleList:
     |   |   |   |   if halffacehandle is in CheckedHandleList:
     |   |   |   |   |   failedCalculations++
     |   |   |   |   if CFA(halffacehandle) returns false
     |   |   |   |   |   failedCalculations++
-    |   |   if for allhalffacehandles in adjacentHFH check failed:
+    |   |   if for all halffacehandles in adjacentHFH check failed:
     |   |   |   Remove HalfFaceHandle from HandleList
     |   |   |   return false
     |   return true
