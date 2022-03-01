@@ -1,0 +1,21 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\runningheads{Network Security}{Exercise 01}
+
+\setcounter{chapter}{1}
+\setcounter{section}{3}
+
+\begin{document}
+	\section{Question 4}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Explain the difference between symmetric and asymmetric encryption.}
+		\startsubsection
+			Symmetric encryption uses a single key that needs to be shared among the people who need to receive the message while asymmetric encryption uses a pair of public key and a private key to encrypt and decrypt messages when communicating. \\
+			Symmetric encryption has smaller cipher texts compared to original playin text file and is usually used to transmit big data. On the other hand, asymmetric encryption has a larger cipher text and is used to transmit small data - it also requires high consumption of resources. The problem with symmetric encryption is that only one key is used which is therefore susceptible confiential problems in having higher chance of the key becoming compromised. \\
+			Symmetric encryption is much fast than its asymmetric counter part, but the distribution of the key requires a secure channel whereas it is infeasible to brute force the decryption key from an asymmetric encryption.
+		\closesection
+	\closesection
+\end{document}

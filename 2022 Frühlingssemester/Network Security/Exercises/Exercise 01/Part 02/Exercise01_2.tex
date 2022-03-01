@@ -1,0 +1,64 @@
+\documentclass{report}
+
+\usepackage[usegeometry]{typearea}% load before geometry
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\runningheads{Network Security}{Exercise 01}
+
+\setcounter{chapter}{1}
+\setcounter{section}{1}
+
+
+\begin{document}
+	\KOMAoptions{paper=landscape,DIV=last}
+	\newgeometry{hmargin=2.5cm,bottom=25mm,height=150mm,includehead, textheight= 480pt}
+	\fancyheadoffset{0pt}% recalculate headwidth for fancyhdr
+	\pagestyle{fancy}
+	
+	\section{Question 2}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Which entries are related? Fill X in the appropriate field. Use the above:}
+		\startsubsection
+			\begin{tabular}{|p{4cm}|M{2.5cm}|M{2.5cm}|M{2.5cm}|M{2.5cm}|M{2.5cm}|M{2.5cm}|}
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				~ & Release of message contents & Traffic analysis & Masquerade & Replay & Modification of messages & Denial of service \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Peer Entity Authentication & ~ & ~ & X & X & ~ & X \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Data Origin Authentication & ~ & ~ & ~ & ~ & X & ~ \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Access Control & ~ & ~ & X & ~ & ~ & ~ \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Confidentiality & \centering X & ~ & ~ & ~ & ~ & ~ \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Traffic Flow Confidentiality & ~ & X & ~ & ~ & ~ & ~ \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Data Integrity & ~ & ~ & ~ & X & X & ~ \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Non-Repudiation & ~ & ~ & X & ~ & ~ & ~ \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				Availability & ~ & ~ & ~ & ~ & ~ & X \\
+				~ & ~ & ~ & ~ & ~ & ~ & ~ \\
+				\hline
+			\end{tabular}
+		\closesection
+	\closesection
+\end{document}

@@ -1,0 +1,107 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\runningheads{Network Security}{Exercise 01}
+
+\setcounter{chapter}{1}
+\setcounter{section}{4}
+
+\begin{document}
+	\section{Question 5}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Find gcd(85327,59840).}
+		\begin{align*}
+			a = 85327, \ b = 59840 \\
+			\Rightarrow && 85327 \div 59840 && = && 1 \ & R \ 25487 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 59840, \ b = 25487 \\
+			\Rightarrow && 59840 \div 25487 && = && 2 \ & R \ 8866 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 25487, \ b = 8866 \\
+			\Rightarrow && 25487 \div 8866 && = && 2 \ & R \ 7755 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 8866, \ b = 7755 \\
+			\Rightarrow && 8866 \div 7755 && = && 1 \ & R \ 1111 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 7755, \ b = 1111 \\
+			\Rightarrow && 7755 \div 1111 && = && 6 \ & R \ 1089 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 1111, \ b = 1089 \\
+			\Rightarrow && 1111 \div 1089 && = && 1 \ & R \ 22 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 1089, \ b = 22 \\
+			\Rightarrow && 1089 \div 22 && = && 49 \ & R \ 11 \\
+			\textsc{Switch: } a = b, \ b = R \\
+			a = 22, \ b = 11 \\
+			\Rightarrow && 22 \div 11 && = && 2 & \ R \ 0 \\
+		\end{align*}
+		\subsection{Are numbers in A relative prime? Justify your answer.}
+		\startsubsection
+			No, they are not because $11$ is their greatest common divisor.
+			\begin{align*}
+				85327 \div 11 \ &= \ 7757 \\
+				59840 \div 11 \ &= \ 5440
+			\end{align*}
+		\closesection
+		\subsection{Using Fermat’s theorem find $4^{225} \textit{ mod } 13$}
+		\startsubsection
+			We know from \textsc{Fermat's Little Theorem} that :
+			\[
+				4^{12} \ \equiv \ 1 \ (\textit{mod } 13)
+			\]
+			Furthermore from the rules of modulo-arithmetic, we know:
+			\begin{align*}
+				\textit{if} && a \ \equiv \ b \ (\textit{mod } n) &\textit{ and } c \ \equiv \ d \ (\textit{mod } n) \\
+				\textit{then} && ac \ &\equiv \ bd \ (\textit{mod } n)
+			\end{align*}
+			Therefore we know that:
+			\[
+				4^{216} \ \equiv \ 1 \ (\textit{mod } 13)
+			\]
+			Because:
+			\[
+				4^{9} \ = \ 262.144 \ \equiv \ 12 \ (\textit{mod } 13)
+			\]
+			Our result would be:
+			\[
+				4^{225} \textit{ mod } 13 = 12
+			\]
+		\closesection
+		\subsection{Using the Miller-Rabin test, say whether n=104717 is probably prime.}
+		\startsubsection
+			Find $k$ and $q$:
+			\[
+				n-1 \ = \ 104716 \ = \ 2^2 \times 26179 \ = \ 2^k \times q
+			\]
+			RNG for $a$: $a = 10$
+			\begin{align*}
+				10^{26179} \ mod \ 104716 \ & = \ 77440 \\
+				(10^{26179})^2 \ mod \ 104716 \ & = \ 77712 \\
+				\Rightarrow \textit{Test return composite!}
+			\end{align*}
+			Therefore 104717 is not a prime!
+		\closesection
+		\subsection{Compute the set of integers that solve the equation $3^k \equiv 12 (\textit{ mod } 23)$ for k.}
+		\startsubsection
+			We know from the rules of modulo-arithmetic:
+			\begin{align*}
+				\textit{if} && a \ \equiv \ b \ (\textit{mod } n) &\textit{ and } c \ \equiv \ d \ (\textit{mod } n) \\
+				\textit{then} && ac \ &\equiv \ bd \ (\textit{mod } n)
+			\end{align*}
+			Furthermore we know (because 23 is prime) that:
+			\[
+				3^{22} \ \equiv \ 1 \ (\textit{mod } 23)
+			\]
+			Therefore we need to find $j$:
+			\[
+				3^{j} \ \equiv \ 12 \ (\textit{mod } 23) \hspace*{5em}, 0 < j < 22
+			\]
+			This is the case for $j \ = \ 4$ and $j \ = \ 15$. Hence, the set of integers, that solve this equation would be:
+			\[
+				\fancyletter{S} \ = \ \{k \ | \ k = a \times 22 + j, \ a \in \mathbb{N}, \ j \in \{ 4, 15 \} \}
+			\]
+		\closesection
+	\closesection
+\end{document}

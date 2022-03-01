@@ -1,0 +1,29 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\runningheads{Network Security}{Exercise 01}
+
+\setcounter{chapter}{1}
+
+
+\begin{document}
+	\section{Question 1}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{List and briefly define the three key objectives of computer security.}
+		\startsubsection
+			~ \vspace*{-2em}
+			\paragraph{Confidentiality} \hfill \\
+			If two persons are communicating with each other it must be assured that no third person (attacker/adversary) can detect what information is transferred between to parties.
+			\paragraph{Authenticity} \hfill \\
+			Ensuring that the two parties communicating with each other are actually transferring the information with each other and not with an attacker between both.
+			\paragraph{Integrity} \hfill \\
+			No attacker can modify or alter the data/information that is transferred between two parties.
+		\closesection
+		\subsection{Consider that all data of a private clinic are handled by a server with vulnerability against a ransomware attack. In which way (with examples) could the confidentiality, integrity, and availability requirements be affected in such a case? Compare the degree of their importance.}
+		\startsubsection
+			In a ransomware attack the attacker encrypts the data such that nobody but him is able to access it and demands a ransom to release it. Therefore with a vulnerability like that the availability is affected predominantly. However, the more important aspects for a private clinic would be integrity and confidentiality because if an attacker would have access to these data he can sell these sensitive personal data to multiple companies. Furthermore, if the data is altered by an adversary this could lead to health risks for the patients because of the use of wrong medications. The availability of this data may be not that important of a factor in a private clinic because most dossiers and notes are still available as paper is the major medium used in a clinic. However, in the hypothetical case that the clinic is only saving their data on this server this availability problem can also lead to problems i.e. X-Rays or MRIs can't be accessed and the cause of the patient's suffer cannot be determined.
+		\closesection
+	\closesection
+\end{document}
