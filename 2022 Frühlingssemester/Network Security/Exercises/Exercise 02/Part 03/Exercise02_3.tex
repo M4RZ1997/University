@@ -12,5 +12,37 @@
 	\section{Question 3}
 	\startsection
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Can you find the encryption algorithm? Is it secure? Why?}
+		\startsubsection
+			\textsc{Ciphertext}: SIDKHKDM AF HCRKIABIE SHIMC KD LFEAILA \\
+			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{The snow lay thick on the steps and the snowflakes driven by the wind looked back in the headlights of the cars}
+		\closesection
+		\subsection{Encryption with Playfair matrix}
+		\startsubsection
+			\textsc{Playfair Matrix}:
+			\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+				\hline
+				\hspace*{-0.4em} J/K & C & D & E & F \\
+				\hline
+				U & N & P & Q & S \\
+				\hline
+				Z & V & W & X & Y \\
+				\hline
+				R & A & L & G & O \\
+				\hline
+				B & I & T & H & M \\
+				\hline
+			\end{tabular}
+			\hfill \\ \\
+			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{I only regret that} I have but one life to give for my country \\
+			\textsc{Cleaned Plaintext}: \changetextcolor{MarzBlue}{IONLYREGRETXTHAT} \\
+			\textsc{Ciphertext}: \changetextcolor{MarzRoyal}{MAPAZOQHGKHWHMLI}
+		\closesection
+		\subsection{Encryption with Viginere Cipher}
+		\startsubsection
+			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{cryptographic} \\
+			\textsc{(3-letter) Key}: \changetextcolor{MarzGreen}{wut}wutwutwutw \\
+			\textsc{Ciphertext}: \changetextcolor{MarzRoyal}{ylrlnhcltlbby}
+		\closesection
 	\closesection
 \end{document}

@@ -12,5 +12,92 @@
 	\section{Question 4}
 	\startsection
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Given Plaintext and Key}
+		\startsubsection
+			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00} \\
+			\textsc{Key}: \hspace*{2.6em} \changetextcolor{MarzGreen}{02 02 02 02 02 02 02 02 02 02 02 02 02 02 02 02}
+			\subsubsection{Show the original contents of STATE as a 4x4 matrix}
+			\startsubsection
+				\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+					\hline
+					0F & 0B & 07 & 03 \\
+					\hline
+					0E & 0A & 06 & 02 \\
+					\hline
+					0D & 09 & 05 & 01 \\
+					\hline
+					0C & 08 & 04 & 00 \\
+					\hline
+				\end{tabular}
+			\closesection
+			\subsubsection{Show the value of STATE after initial AddRoundKey}
+			\startsubsection
+				\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+					\hline
+					0D & 09 & 05 & 01 \\
+					\hline
+					0C & 08 & 04 & 00 \\
+					\hline
+					0F & 0B & 07 & 03 \\
+					\hline
+					0E & 0A & 06 & 02 \\
+					\hline
+				\end{tabular}
+			\closesection
+			\subsubsection{Show the value of STATE after SubBytes}
+			\startsubsection
+				\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+					\hline
+					D7 & 01 & 6B & 7C \\
+					\hline
+					FE & 30 & F2 & 63 \\
+					\hline
+					76 & 2B & C5 & 7B \\
+					\hline
+					AB & 67 & 6F & 77 \\
+					\hline
+				\end{tabular}
+			\closesection
+			\subsubsection{Show the value of STATE after ShiftRows}
+			\startsubsection
+				\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+					\hline
+					D7 & 01 & 6B & 7C \\
+					\hline
+					30 & F2 & 63 & FE \\
+					\hline
+					C5 & 7B & 76 & 2B \\
+					\hline
+					77 & AB & 67 & 6F \\
+					\hline
+				\end{tabular}
+			\closesection
+			\subsubsection{Show the value of STATE after MixColumns}
+			\startsubsection
+				\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+					\hline
+					57 & D8 & 62 & A3 \\
+					\hline
+					94 & DE & 50 & 8F \\
+					\hline
+					EF & E5 & 4D & 65 \\
+					\hline
+					79 & C1 & 66 & 8B \\
+					\hline
+				\end{tabular}
+			\closesection
+		\closesection
+		\subsection{Show the first eight words of the key expansion for a 128-bit key of value 1. Assume that you are in the first round.}
+		\startsubsection
+			128-bit \textsc{Key}: \changetextcolor{MarzGreen}{00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01} \\ \\
+			$\fancyletter{W}(0) \ = \ \begin{bmatrix} 0x0 \\ 0x0 \\ 0x0 \\ 0x0 \end{bmatrix}$, 
+			$\fancyletter{W}(1) \ = \ \begin{bmatrix} 0x0 \\ 0x0 \\ 0x0 \\ 0x0 \end{bmatrix}$, 
+			$\fancyletter{W}(2) \ = \ \begin{bmatrix} 0x0 \\ 0x0 \\ 0x0 \\ 0x0 \end{bmatrix}$, 
+			$\fancyletter{W}(3) \ = \ \begin{bmatrix} 0x0 \\ 0x0 \\ 0x0 \\ 0x1 \end{bmatrix}$ \\
+			$\fancyletter{W}(4) \ = \ \begin{bmatrix} 0x62 \\ 0x63 \\ 0x7c \\ 0x63 \end{bmatrix}$, 
+			$\fancyletter{W}(5) \ = \ \begin{bmatrix} 0x62 \\ 0x63 \\ 0x7c \\ 0x63 \end{bmatrix}$, 
+			$\fancyletter{W}(6) \ = \ \begin{bmatrix} 0x62 \\ 0x63 \\ 0x7c \\ 0x63 \end{bmatrix}$, 
+			$\fancyletter{W}(7) \ = \ \begin{bmatrix} 0x62 \\ 0x63 \\ 0x7c \\ 0x62 \end{bmatrix}$ \\
+		\closesection
 	\closesection
 \end{document}

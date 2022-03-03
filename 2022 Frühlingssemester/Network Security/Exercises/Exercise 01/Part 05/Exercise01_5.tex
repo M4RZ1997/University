@@ -77,11 +77,26 @@
 			\]
 			RNG for $a$: $a = 10$
 			\begin{align*}
-				10^{26179} \ mod \ 104716 \ & = \ 77440 \\
-				(10^{26179})^2 \ mod \ 104716 \ & = \ 77712 \\
-				\Rightarrow \textit{Test return composite!}
+				10^{26179} \ mod \ 104717 \ & = \ 1 \\
+				\Rightarrow \textit{Test returns "inconclusive"}
 			\end{align*}
-			Therefore 104717 is not a prime!
+			RNG for $a$: $a = 7312$
+			\begin{align*}
+				7312^{26179} \ mod \ 104717 \ & = \ 104716 \\
+				\Rightarrow \textit{Test returns "inconclusive"}
+			\end{align*}
+			RNG for $a$: $a = 18988$
+			\begin{align*}
+				18988^{26179} \ mod \ 104717 \ & = \ 1 \\
+				\Rightarrow \textit{Test returns "inconclusive"}
+			\end{align*}
+			RNG for $a$: $a = 23753$
+			\begin{align*}
+				23753^{26179} \ mod \ 104717 \ & = \ 1618 \\
+				(23753^{26179})^2 \ mod \ 104717 \ & = \ 104716 \\
+				\Rightarrow \textit{Test returns "inconclusive"}
+			\end{align*}
+			Therefore 104717 is a prime with a chance of more than 99.6\%!
 		\closesection
 		\subsection{Compute the set of integers that solve the equation $3^k \equiv 12 (\textit{ mod } 23)$ for k.}
 		\startsubsection
