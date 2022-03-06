@@ -15,7 +15,19 @@
 		\subsection{Can you find the encryption algorithm? Is it secure? Why?}
 		\startsubsection
 			\textsc{Ciphertext}: SIDKHKDM AF HCRKIABIE SHIMC KD LFEAILA \\
-			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{The snow lay thick on the steps and the snowflakes driven by the wind looked back in the headlights of the cars}
+			\textsc{Text used for encryption}: \changetextcolor{MarzGreen}{The snow lay thick on the steps and the snowflakes driven by the wind looked back in the headlights of the cars} \\ \\
+			As the task description was very ambiguous and very unclear/incomplete, I googled and found out that the text can be used for coding the alphabet as follows (reference \href{https://www.chegg.com/homework-help/cryptography-and-network-security-7th-edition-chapter-3-problem-5p-solution-9780134444635}{Chegg-Website}): \\ \\
+			\begin{tabular}{|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|M{0.3cm}|}
+				\hline
+				a & b & c & d & e & f & g & h & i & j & k & l & m & n & o & p & q & r & s & t \\
+				\hline
+				t & h & e & s & n & o & w & l & a & y & i & c & k & p & d & f & r & v & b & g \\
+				\hline
+			\end{tabular}
+			\hfill \\
+			Therefore the decryption of the \textsc{Ciphertext} would be: \\
+			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{basilisk to leviathan blake is contact} \\ \\
+			On first sight this encryption does look very secure, however as we have a 1-to-1 correspondence of each letter an analysis can be made for large texts on the frequency of each letter and therefore the letter with the most occurences can be mapped to the letter 'e', the second most-often letter to 't' and so on. For smaller texts like this example it might be already sufficient enough but not the very best method to encrypt something.
 		\closesection
 		\subsection{Encryption with Playfair matrix}
 		\startsubsection

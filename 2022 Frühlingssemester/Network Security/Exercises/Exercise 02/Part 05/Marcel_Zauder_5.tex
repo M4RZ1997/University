@@ -14,11 +14,11 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{Is it possible to perform encryption and decryption operations in parallel on multiple blocks of plain text in CBC mode? Justify your answer.}
 		\startsubsection
-			No, it is not because the result of the previous block is always carried over in otder to encrypt/decrypt the next block.
+			No, it is not because the result of the previous block is always carried over in order to encrypt/decrypt the next block.
 		\closesection
 		\subsection{If a bit error occurs in the transmission of a cipher text character in 8-bit CFB mode, how far does the error propagate?}
 		\startsubsection
-			The error will obvious affect the decryption of the ciphertext block. Furthermore, this error block will stay in the initialization vector for another $64/8 = 8$ blocks, hence, affecting in total 9 blocks.
+			The error will obviously affect the decryption of the associated ciphertext block. Furthermore, this error block will stay in the initialization vector for another $64/8 = 8$ blocks, hence, affecting in total 9 blocks.
 		\closesection
 		\subsection{CBC mode}
 		\startsubsection
