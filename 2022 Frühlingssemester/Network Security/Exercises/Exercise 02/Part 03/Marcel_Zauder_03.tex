@@ -27,7 +27,12 @@
 			\hfill \\
 			Therefore the decryption of the \textsc{Ciphertext} would be: \\
 			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{basilisk to leviathan blake is contact} \\ \\
-			On first sight this encryption does look very secure, however as we have a 1-to-1 correspondence of each letter an analysis can be made for large texts on the frequency of each letter and therefore the letter with the most occurences can be mapped to the letter 'e', the second most-often letter to 't' and so on. For smaller texts like this example it might be already sufficient enough but not the very best method to encrypt something.
+			On first sight this encryption does look very secure, however as we have a 1-to-1 correspondence of each letter an analysis can be made for large texts on the frequency of each letter and therefore the letter with the most occurences can be mapped to the letter 'e', the second most-often letter to 't' and so on. For smaller texts like this example it might be already sufficient enough but not the very best method to encrypt something. \\
+			For this particular encryption scheme there are also "only":
+			\[
+				26! \ = \ 403.291.461.126.605.635.584.000.000 \ < \ 2^{89}
+			\]
+			different possible keys.
 		\closesection
 		\subsection{Encryption with Playfair matrix}
 		\startsubsection
@@ -47,8 +52,8 @@
 			\end{tabular}
 			\hfill \\ \\
 			\textsc{Plaintext}: \changetextcolor{MarzDarkRed}{I only regret that} I have but one life to give for my country \\
-			\textsc{Cleaned Plaintext}: \changetextcolor{MarzBlue}{IONLYREGRETXTHAT} \\
-			\textsc{Ciphertext}: \changetextcolor{MarzRoyal}{MAPAZOQHGKHWHMLI}
+			\textsc{Cleaned Plaintext\footnote{As we would have an odd amount of letters an "X" is appended at the end}}: \changetextcolor{MarzBlue}{IONLYREGRETXTHAT}IHAVEBUTONELIFETOGIVEFORMYCOUNTRYX \\
+			\textsc{Ciphertext}: \changetextcolor{MarzRoyal}{MAPAZOQHGKHWHMLI}TMIAKHPBASDGMCDHROCAFKRAFOFANPBLZY
 		\closesection
 		\subsection{Encryption with Viginere Cipher}
 		\startsubsection

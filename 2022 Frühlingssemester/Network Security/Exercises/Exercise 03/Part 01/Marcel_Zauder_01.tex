@@ -18,18 +18,23 @@
 		\startsubsection
 			\subsubsection{Asymmetric encryption can be used for confidentiality but not for authentication}
 			\startsubsection
+				\textbf{False}, if one uses the private key for encryption - or the private key to create a signature - authenticity can also be ensured.
 			\closesection
 			\subsubsection{In asymmetric encryption, plaintext is transformed into ciphertext using two keys and a decryption algorithm.}
 			\startsubsection
+				\textbf{False}, one key is used for encryption and a different but related key is used for decryption.
 			\closesection
 			\subsubsection{Much of the theory of public-key cryptosystems is based on number theory.}
 			\startsubsection
+				\textbf{True}, especially modulo operations are often used in creating the key, enciphering and deciphering.
 			\closesection
 			\subsubsection{A public-key encryption scheme is not vulnerable to a brute-force attack.}
 			\startsubsection
+				\textbf{False}, as the public key and the private key are mathematically related it might be easier to find this relation than brute-forcing all different keys.
 			\closesection
 			\subsubsection{The defense against the brute-force approach for RSA is to use a large key space.}
 			\startsubsection
+				\textbf{True}, as brute-forcing is a "viable" option the prime numbers must be very large - making also the key space very large - in order to have the same level of security as symmetric encryption.
 			\closesection
 		\closesection
 	\closesection

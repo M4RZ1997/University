@@ -14,6 +14,7 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{Which ciphers offer harder reversibility - Block or Stream? Why?}
 		\startsubsection
+			Stream ciphers use an XOR operation on the plaintext to create ciphertext. Stream-based encryption is easily reversed by XORing the ciphertext outputs. Block ciphers encrypt more bits at a time, making the decryption comparatively complex.
 		\closesection
 	\closesection
 \end{document}
