@@ -1,0 +1,170 @@
+% ------------------------------------------------------------------------------------------------- %
+% 							lcs_texstyle.sty 	Marcel Zauder 23/03/2021							%
+% Stylesheet by Marcel                                                                              %
+\ProvidesPackage{lcs_texstyle}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- User Credentials --------------------------------------- %
+% PLEASE ADJUST
+\newcommand{\name}{Zauder}
+\newcommand{\surname}{Marcel Matti}
+\newcommand{\immatriculationnr}{16-124-836}
+% ################################################################################################# %
+% ----------------------------------------- Miscellaneous ----------------------------------------- %
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{reledmac} % for enumerating pages
+\usepackage{changepage} % for adjustwidth/indent
+\usepackage{paralist} % for enumerating
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{titlesec} % for chapter indentation and page skipping modifications
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- Geometry -------------------------------------------- %
+\newgeometry{
+	hmargin=2.5cm,
+	bottom=25mm,
+	height=150mm,
+	includehead,
+	headsep = 30pt,
+	textheight= 630pt
+}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Special Symbols ----------------------------------------- %
+\usepackage{graphicx}
+\usepackage{stix}
+% ## TableFlip ## %
+\newcommand{\tableflip}{$($\rotatebox{45}{$\smile$}$^{\circ}\smwhtsquare^{\circ})\rotatebox{45}{$\smile$}\mkern-6mu\frown$\raisebox{0.5ex}{$\bot$}$\mkern-3.5mu-\mkern-3.5mu$\raisebox{0.5ex}{$\bot$}}
+
+\usepackage{stackengine}
+% ## approximately equivalent ## %
+\def\apeq{\SavedStyle\sim}
+\def\apequiv{\setstackgap{L}{\dimexpr.5pt+1.5\LMpt}\ensurestackMath{\ThisStyle{\mathrel{\Centerstack{{\apeq} {\apeq} {\apeq}}}}}}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------------- Math ---------------------------------------------- %
+\usepackage{amsmath}
+\usepackage{scalerel}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Computer Science ---------------------------------------- %
+\usepackage{minted} % nice code snippet preview; NEEDS PYTHON pygmentize package
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------------- Tables --------------------------------------------- %
+\usepackage{colortbl}
+\usepackage{pgfplotstable}
+\usepackage{multirow}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- PGF/Tikz-Plots ----------------------------------------- %
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{calc}
+
+% ## Nice Arrow ## %
+\tikzstyle{arrow} = [thick,->,>=stealth]
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% --------------------------------------- Debugging Tools ----------------------------------------- %
+\usepackage{layout}
+%\usepackage{showframe}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ----------------------------------------- Graphicspath ------------------------------------------ %
+% If images are needed, best practice is to create folder images and save all pictures in there
+\graphicspath{ {./images/} }
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------- MARZColor ------------------------------------------- %
+\usepackage{xcolor}
+\definecolor{MarzDarkBlue}{rgb}{0.1, 0, 0.2}
+\definecolor{MarzBlue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{MarzRoyal}{rgb}{0.2, 0.2, 0.8}
+\definecolor{MarzGreen}{rgb}{0, 0.4, 0}
+\definecolor{MarzPurple}{rgb}{0.5, 0, 0.5}
+\definecolor{MarzGold}{rgb}{1.0, 0.84, 0}
+\definecolor{MarzRed}{rgb}{1.0, 0, 0}
+\definecolor{MarzDarkRed}{rgb}{0.75, 0, 0}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Page Style ------------------------------------------- %
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyheadoffset{0pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[C]{\thepage}
+\renewcommand{\footrulewidth}{0.4pt}
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ---------------------------------------- New Commands ------------------------------------------- %
+% ############ Header Command ############ %
+% Creates a nice header with title, subtitle, immatriculation number and name
+% (Only title and subtitle must be defined, name and matriculation number are set in previous sections)
+% if an author is defined the author will be displayed instead of the hardcoded name and immatriculation number
+% Example: \runningheads{Computer Science}{Lecture 05}
+\newcommand{\runningheads}[2]{
+	\fancyhead[L]{
+		\begin{tabular}{l}
+			\LARGE \textbf{\textsc{#1}} \\
+			\large #2
+		\end{tabular}
+	}
+	\fancyhead[R]{
+		\begin{tabular}{r}
+			\ifx\@author\empty
+				\immatriculationnr \\
+				\surname \ \textsc{\name}
+			\else
+				\@author
+			\fi
+		\end{tabular}
+	}
+}
+% ########### Section Indents ########### %
+% Example:
+% \startsection
+%	...
+%	\startsubsection
+%		...
+%	\closesection
+%	...
+% \closesection
+\newcommand{\startsection}{\begin{adjustwidth}{2em}{2em}} % Indent left and right
+\newcommand{\startsubsection}{\begin{adjustwidth}{2em}{}} % Indent only left
+\newcommand{\closesection}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
+
+% Citation for text >100 words
+\newcommand{\beginbigcite}{\begin{adjustwidth}{1cm}{1cm}}
+\newcommand{\closebigcite}{\end{adjustwidth}}
+% ####################################### %
+
+% ######## No-Page-Brake Chapter ######## %
+% Used when a new chapter should start but a page break is not desired
+\newcommand{\nopagebreakchapter}[1]{{\let\clearpage\relax \chapter{#1}}}
+% ####################################### %
+
+% ############ Fancy Letters ############ %
+\newcommand{\fancyletter}[1]{\mathcal{#1}}
+\newcommand{\fancytextletter}[1]{$\mathcal{#1}$}
+% ####################################### %
+
+% #### New Column-Types for Tabulars #### %
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} % Middle-Top
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % Middle-Middle
+% ####################################### %
+
+% ########## Text-Color Changer ######### %
+\newcommand{\changetextcolor}[2]{{\color{#1} #2}}
+% ####################################### %
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% ------------------------------------------ Variables -------------------------------------------- %
+\global\let\@author\@empty
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %

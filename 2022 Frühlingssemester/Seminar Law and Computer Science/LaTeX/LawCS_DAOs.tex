@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{lcs_mainpage}
+\usepackage{lcs_texstyle}
+\usepackage{hyperref, nameref, setspace}
+
+\usepackage[
+  backend=bibtex8,
+  style=authoryear-comp,
+  defernumbers=true,
+  sorting=nty,
+  firstinits=true,
+  uniquename=init,
+  uniquelist=false,
+  refsegment=section,
+  citestyle=numeric
+]{biblatex}
+\addbibresource{references.bib}
+\AtEveryBibitem{\clearfield{shorthand}} 
+
+
+\begin{document}	
+	\seminartitle{Seminar Law and Computer Science} % The title of the seminar
+
+	\title{Decentralized Finances \\ - \\ How can decentralized structures and their DeFi activities be classified under corporate and/or civil law?} % The title of your project
+
+	\author{Miro Schüpbach (17-109-851)\thanks{\email{miro.schuepbach@students.unibe.ch}, University of Bern}
+   		\and Marcel Zauder  (16-124-836)\thanks{\email{marcel.zauder@students.unibe.ch}, University of Bern}
+   	}	% Note: XX-XXX-XXX is the student's matriculation number
+   	% The author(s), separated by \and
+
+	\supervisor{Prof. Dr. Christian Cachin \\ Prof. Dr. Mirjam Eggen \\ Dr. Christian Sillaber} % Name of the supervisor
+
+	\assistant{Semir Hermidas} %Name of the assistant(s)
+
+	\date{\today} % Note: if this is left out, today's date will be used, this is the submission date!
+
+	\maketitle	
+
+	\begin{abstract}
+		
+	\end{abstract}
+	
+	\pagenumbering{Roman}
+	\renewcommand{\contentsname}{Inhaltsverzeichnis}
+	{\setstretch{0.9}\tableofcontents}
+	
+	\newpage
+	\nocite{*}
+	\addcontentsline{toc}{chapter}{Material/Literatur}
+	\printbibliography[title=Material/Literatur, heading=bibnumbered]
+	
+	\chapter*{Abkürzungsverzeichnis}
+	\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+	
+	\newgeometry{
+		hmargin=25mm,
+		bottom=25mm,
+		left=25mm,
+		right=40mm,
+		height=150mm,
+		includehead,
+		headsep = 30pt,
+		textheight= 630pt
+	}
+	
+	\setcounter{page}{1}
+	\pagenumbering{arabic} 
+	\chapter{Introduction}
+
+	\section{Research Questions}
+	\startsection
+	\closesection
+	
+	
+	\chapter{Procedure}
+	
+	\section{Methodology}
+	\startsection
+	\closesection
+	
+	\section{Limitations}
+	\startsection
+	\closesection
+	
+	
+	\chapter{DAO - Computer Science}
+	
+	\section{Dash}
+	\startsection
+	\closesection
+	
+	\section{ConstitutionDAO}
+	\startsection
+	\closesection
+	
+	\section{Similarities and Differences}
+	\startsection
+	\closesection
+	
+	\section{Vulnerabilities and Potential Attack Opportunities}
+	\startsection
+	\closesection
+	
+	
+	\chapter{DAO - Law}
+		
+	
+	\chapter{Conclusion}
+\end{document}
