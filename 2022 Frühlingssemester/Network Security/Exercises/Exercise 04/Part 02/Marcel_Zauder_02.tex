@@ -30,4 +30,110 @@
 			& = \ 229
 		\end{align*}
 	\closesection
+	
+	\section{Question 3}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{State the value of the padding field in SHA-512 if the length of the message is:}
+		\startsubsection
+			\subsubsection{5000 bits}
+			\startsubsection
+				\begin{enumerate}
+					\item Calculate size of the data in the last block:
+					\[
+						5000 \ mod \ 1024 \ = \ 904
+					\]
+					\item Add the size of the length field (128 bit) to the last block size:
+					\[
+						904 + 128 \ = \ 1032
+					\]
+					\item Because $1032 > 1024$ the last block is now:
+					\[
+						1032 \ mod \ 1024 \ = \ 8
+					\]
+					\item The length of the padding field is therefore:
+					\[
+						1024 - 8 \ = \ 1016 \textit{ bits}
+					\]
+					\item Therefore the padding consists of one 1 and 1015 zeros, hence the value is:
+					\[
+						\textit{Value of Padding:} \ 2^{1015}
+					\]
+				\end{enumerate}
+			\closesection
+			\subsubsection{5001 bits}
+			\startsubsection
+				\begin{enumerate}
+					\item Calculate size of the data in the last block:
+					\[
+						5001 \ mod \ 1024 \ = \ 905
+					\]
+					\item Add the size of the length field (128 bit) to the last block size:
+					\[
+						905 + 128 \ = \ 1033
+					\]
+					\item Because $1032 > 1024$ the last block is now:
+					\[
+						1033 \ mod \ 1024 \ = \ 9
+					\]
+					\item The length of the padding field is therefore:
+					\[
+						1024 - 9 \ = \ 1015 \textit{ bits}
+					\]
+					\item Therefore the padding consists of one 1 and 1014 zeros, hence the value is:
+					\[
+						\textit{Value of Padding:} \ 2^{1014}
+					\]
+				\end{enumerate}
+			\closesection
+			\subsubsection{5002 bits}
+			\startsubsection
+				\begin{enumerate}
+					\item Calculate size of the data in the last block:
+					\[
+						5002 \ mod \ 1024 \ = \ 906
+					\]
+					\item Add the size of the length field (128 bit) to the last block size:
+					\[
+						906 + 128 \ = \ 1034
+					\]
+					\item Because $1032 > 1024$ the last block is now:
+					\[
+						1034 \ mod \ 1024 \ = \ 10
+					\]
+					\item The length of the padding field is therefore:
+					\[
+						1024 - 10 \ = \ 1014 \textit{ bits}
+					\]
+					\item Therefore the padding consists of one 1 and 1013 zeros, hence the value is:
+					\[
+						\textit{Value of Padding:} \ 2^{1013}
+					\]
+				\end{enumerate}
+			\closesection
+		\closesection
+		\subsection{State the value of the length field in SHA-512 if the length of the message is:}
+		\startsubsection
+			\subsubsection{5000 bits}
+			\startsubsection
+				0x00000000000000000000000000001388
+			\closesection
+			\subsubsection{5001 bits}
+			\startsubsection
+				0x00000000000000000000000000001389
+			\closesection
+			\subsubsection{5002 bits}
+			\startsubsection
+				0x0000000000000000000000000000138A
+			\closesection
+		\closesection
+	\closesection
+	
+	\section{Question 4}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Explain the differences in the algorithms of SHA-3 and MD-5. Which one is used today? Why?}
+		\startsubsection
+		\closesection
+	\closesection
 \end{document}
