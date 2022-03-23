@@ -16,9 +16,11 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{Consider the following hash function. Messages are in the form of a sequence of numbers in $\fancyletter{Z}_n, \ M \ = \ (a_1a_2...a_t)$. The hash value is calculated as $\sum_{i=1}^t a_i$ for some predefined value $n$. Does this hash function satisfy any of the requirements for a hash function listed in Table 1.}
 		\startsubsection
+			The \textit{Variable Input Size}, \textit{Fixed Output Size}, and \textit{Efficiency} properties are all satisfied. The fourth property, \textit{Preimage Resistant (One-Way Property)}, is not fulfilled as a message only consisting of the value $h$ has the hash-value $H(h) \ = \ h$. Also property 5, \textit{Second Preimage Resistant (Weak Collision Resistant)}, is not fulfilled as to any message M the decimal digit $0$ can be added to the sequence; leading to the same hash value. Hence, also property 6 is not satisfied.
 		\closesection
 		\subsection{Repeat part (A) for the hash function $h \ = \ \left(\sum_{i=1}^t (a_i)^2\right) \ mod \ n$.}
 		\startsubsection
+			Again the \textit{Variable Input Size}, \textit{Fixed Output Size}, and \textit{Efficiency} properties are all satisfied. Property 4 is also satisfied if $n$ is a large composite number, because taking square roots modulo such an integer $n$ is considered to be infeasible. Properties 5 and 6 are not satisfied as "$-M$" will have the same hash value as $M$ for instance.
 		\closesection
 		\subsection{Calculate the hash function of part (B) for $M \ = \ (189, \ 632, \ 900, \ 722, \ 349)$ and $n \ = \ 989$.}
 		\vspace*{-2em}
