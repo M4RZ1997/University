@@ -16,9 +16,17 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{What is a Public-Key Certificate? How is this being used (having the overall X.509 scheme in mind) and what advantages does it bring against other techniques? (keep it less than 200-250 words)}
 		\startsubsection
+			A Public-Key Certificate is used as an electronic document to ensure the validity of a public key. It contains some information about the key itself, about the identity of the key's owner and a digital signature in order to verify the content's within the certificate. One of the main advantages using this certificate is to enable secure authentication and also ensuring the integrity. The Public-Key Certificate is issued by a trusted thir-party, a so called certificate authority, in order to verify the identities of parties partaking in an exchange of information using the internet.
 		\closesection
-		\subsection{Explain briefly what a Certificate Authority and a Public-Key Infrastructureis.}
+		\subsection{Explain briefly what a Certificate Authority and a Public-Key Infrastructure is.}
 		\startsubsection
+			A certificate authority issues public-key certificates in order to validate a person's identity. These PKCs form a part of the Public-Key infrastructure, a system that uses encryption technology to secure messages and data. The four main components of this PKI are:
+			\begin{enumerate}
+				\item Public Key Encryption
+				\item Trusted Third Parties (CA for example)
+				\item Registration Authority
+				\item Certificate Database or Store
+			\end{enumerate}
 		\closesection
 	\closesection
 \end{document}

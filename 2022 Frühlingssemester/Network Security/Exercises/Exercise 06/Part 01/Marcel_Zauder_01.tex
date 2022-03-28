@@ -1,0 +1,33 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{6}
+
+\runningheads{Network Security}{Exercise 0\exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{0}
+
+
+\begin{document}
+	\section{Question 1}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{List the three main forms of authentication. Which one can be the most secure? Why?}
+		\startsubsection
+		\closesection
+		
+		\subsection{An old website is storing its user’s passwords in plain text. You are hired to enhance its security. How would you store and use the passwords (and why)?What type of password attacks are there? What would your counter-measures for them be?}
+		\startsubsection
+		\closesection
+		
+		\subsection{A website is using one common salt for all user’s passwords, along with server-side hashing. Would using a different salt per user improve the security (and why)? Does a longer salt provide better security (and why)? Would you recommend (or not) to store the salts in an encrypted form (and why)? Assuming no salt was used, would client-side hashing (instead of server-side hashing) decrease the security (and why)?}
+		\startsubsection
+		\closesection
+		
+		\subsection{A website is sending "plaintext" passwords over HTTPS. Would the website be safer if these passwords were encrypted (and why)?}
+		\startsubsection
+		\closesection
+	\closesection
+\end{document}
