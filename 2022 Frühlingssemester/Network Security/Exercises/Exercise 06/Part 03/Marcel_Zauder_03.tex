@@ -2,7 +2,7 @@
 
 \usepackage{../../../../../LaTeX/marzstyle}
 
-\newcommand{\exercisenr}{0}
+\newcommand{\exercisenr}{6}
 
 \runningheads{Network Security}{Exercise 0\exercisenr}
 
@@ -14,5 +14,42 @@
 	\section{Question 3}
 	\startsection
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{What type of authentication is the following? Describe the steps of a reflection attack against it.}
+		\startsubsection
+			The picture shows a mutual authentication type with the use of a shared key between $A$ and $B$. \\
+			A possible reflection attack for this type would look as the following:
+			\begin{enumerate}
+				\item Adversary \fancytextletter{Z} sends $\fancyletter{A}$ and $R_1$ to \fancytextletter{B}
+				\item \fancytextletter{B} sends the encrypted $f\{K_{\fancyletter{A}\fancyletter{B}}, R_1\}$ and $R_2$ to \fancytextletter{Z}
+				\item \fancytextletter{Z} does not know shared key, hence:
+				\begin{enumerate}
+					\item \fancytextletter{Z} opens another channel and sends $\fancyletter{A}$ and $R_2$ (from above) to \fancytextletter{B}
+					\item \fancytextletter{B} sends the encrypted $f\{K_{\fancyletter{A}\fancyletter{B}}, R_2\}$ and another $R_3$ to \fancytextletter{Z}
+				\end{enumerate}
+				\item \fancytextletter{Z} can now send $f\{K_{\fancyletter{A}\fancyletter{B}}, R_2\}$ to \fancytextletter{B}
+				\item[$\Rightarrow$] \fancytextletter{Z} is now authenticated as \fancytextletter{A} to \fancytextletter{B}
+			\end{enumerate}
+		\closesection
+		
+		\subsection{A server is using Lamport’s Hash without salt. How does it work exactly? What are its main strengths and weaknesses?}
+		\startsubsection
+			A server \fancytextletter{S} always knows the number $n$, which is always decremented, the user name and the corresponding password in the form of $\texttt{hash}^n(\texttt{password})$. This also means that the password itself is not leaked to the \fancytextletter{S}. The Authentication process would now look as the following:
+			\begin{enumerate}
+				\item \fancytextletter{A} wants to authenticate itself
+				\item \fancytextletter{S} sends \fancytextletter{A} the current value of $n$
+				\item \fancytextletter{A} computes $\texttt{hash}^n(\texttt{password})$
+				\item \fancytextletter{A} sends the computed value to \fancytextletter{B}
+				\item \fancytextletter{S} compares the received value with the stored value
+				\item If both values match \fancytextletter{S} decrements the number n
+				\item \fancytextletter{S} asks \fancytextletter{A} for $\texttt{hash}^{n-1}(\texttt{password})$
+			\end{enumerate}
+			As previously mentioned its main advantage is that the server \fancytextletter{S} does not need to know the actual password itself in order to authenticate a user. The disadvantage of this approach is that the number of logins is limited by the number $n$ as resetting it would cause some security issues and mutual authentication is not provided.
+		\closesection
+		
+		\subsection{The following protocol is based on DES encryption in CBC mode. What type of authentication does it offer? Explain what is the main vulnerability of this approach? With that in mind, how can this protocol be enhanced?}
+		\startsubsection
+			This authentication is based on the Needham-Schroeder protocol seen in the lecture. The only difference is that the nonces are not decremented. \\
+			The main problem here would be occuring if $K_{\fancyletter{A}\fancyletter{B}}\{N_2,N_3\}$ can be easily split up into $K_{\fancyletter{A}\fancyletter{B}}\{N_2\}$ and $K_{\fancyletter{A}\fancyletter{B}}\{N_3\}$. Then this authentication protocol is prone to replay attacks. This can be counter-measured by either making it infeasible to split up the encrypted message into its subparts, i.e. not using simple concatenation or altering the nonce $N_2$ so that not the actual encrypted value is shared.
+		\closesection
 	\closesection
 \end{document}
