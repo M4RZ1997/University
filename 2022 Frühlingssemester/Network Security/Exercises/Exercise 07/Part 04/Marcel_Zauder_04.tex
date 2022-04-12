@@ -18,15 +18,25 @@
 		\startsubsection
 			\subsubsection{Pairwise Keys}
 			\startsubsection
+				Pairwise Keys are usually used for the communication between a pair of devices. Most often between a STA and an AP. These keys are derived dynamically from a master key and are valid for a limited amount of time.
 			\closesection
 			\subsubsection{Group Keys}
 			\startsubsection
+				A Group Key is a shared key among all communication members connected to the same AP, and is used to secure multicast/broadcast traffic.
 			\closesection
 			\subsubsection{Temporal Key Integrity Protocol (TKIP)}
 			\startsubsection
+				TKIP is an encryption protocol designed to provide more secure encryption than the notoriously weak Wired Equivalent Privacy. TKIP is the encryption method used in Wi-Fi Protected Access (WPA). TKIP is a suite of algorithms that works as a "wrapper" to WEP, which allows users of legacy WLAN equipment to upgrade to TKIP without replacing hardware. To increase the strength of the key used to encrypt each data packet, TKIP includes four additional algorithms:
+				\begin{enumerate}[-]
+					\item A cryptographic message integrity check to protect packets
+					\item An initialization-vector sequencing mechanism that includes hashing, as opposed to WEP's plain text transmission
+					\item A per-packet key-mixing function to increase cryptographic strength
+					\item A re-keying mechanism to provide key generation every 10,000 packets.
+				\end{enumerate}
 			\closesection
 			\subsubsection{Counter Mode-CBC MAC Protocol (CCMP)}
 			\startsubsection
+				CCMP uses the Advanced Encryption Standard (AES) combined with Cipher Block Chaining Countermode (CBC-CTR) for data confidentiality and Cipher Block Chaining Message Authentication Code (CBC-MAC) for encryption and message integrity as well as authentication.
 			\closesection
 		\closesection
 		

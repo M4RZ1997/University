@@ -136,6 +136,8 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{Explain the differences in the algorithms of SHA-3 and MD-5. Which one is used today? Why?}
 		\startsubsection
+			Both algorithms add a padding to the message, but MD-5 adds an additional 64 bit length information. SHA-3 splits the message with padding into k parts with each r bits and uses the iteration function f to perform an absorption phase, where each part is padded again, then combined with the previous result into the function. The absorption phase begins with a zero vector initialization. Afterwards the squeezing phase is started from the final result of the absorption phase and in each of the squeezing step a number of r bits are extracted to get the hash value. \\
+			MD-5 on the other hand only initializes a 4 word buffer of fixed constants and performs 512 bit steps.  SHA-3 is slower than MD-5 due to the higher number of computations performed, this is also the reason why MD-5 is more widely used. It must be mentioned that MD-5 has high security risks, and should not be used for implementations that strive for a high security level. Rather it should only be used for a quick checksum check.
 		\closesection
 	\closesection
 \end{document}
