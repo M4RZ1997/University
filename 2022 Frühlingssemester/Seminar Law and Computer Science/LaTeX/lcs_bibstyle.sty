@@ -1,0 +1,200 @@
+\ProvidesPackage{lcs_bibstyle}
+
+\usepackage[
+  backend=biber,
+  maxcitenames=2,
+  bibstyle=authoryear-icomp,
+  citestyle=alphabetic,
+  citetracker=true,
+]{biblatex}
+\addbibresource{LAW_article_references.bib}
+\addbibresource{LAW_online_references.bib}
+\addbibresource{CS_references.bib}
+
+\setlength\bibitemsep{0.9\itemsep}
+
+\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
+\renewcommand*{\mkbibnamegiven}[1]{\textsc{#1}}
+\renewcommand*{\mkbibnameprefix}[1]{\textsc{#1}}
+\DefineBibliographyStrings{german}{ 
+   andothers = {et\addabbrvspace al\adddot},
+   andmore   = {et\addabbrvspace al\adddot},
+}
+
+\newcommand{\footnotecite}[2]{%
+    \footnote{%
+        \ifx&#2&%
+            \space\hspace{0.5em}\citeauthor{#1}%
+        \else%
+            \foreach \aut [count = \i] in {#1} {%
+                \foreach \page [count = \h] in {#2} {%
+                    \ifnum\i=\h%
+                        \ifnum\i=1\hspace{0.5em}\fi\ifnum\i>1 ; \fi\citeauthor{\aut}\ifx\page\empty \else, \page \fi%
+                    \fi%
+                }%
+            }%
+        \fi%
+        .%
+    }%
+}%
+
+\newcommand{\footnoteciteextended}[3]{%
+    \footnote{%
+        \ifx&#3&%
+            \foreach \prev [count = \p] in {#1} {%
+                \foreach \aut [count = \i] in {#2} {%
+                    \ifnum\i=\p%
+                        \ifnum\i=1\hspace{0.5em}\fi\ifnum\i>1 ; \fi \ifx\prev\empty \else \prev \ \fi \citeauthor{\aut}%
+                    \fi%
+                }%
+            }%
+        \else%
+            \foreach \aut [count = \i] in {#2} {%
+                \foreach \page [count = \h] in {#3} {%
+                    \foreach \prev [count = \p] in {#1} {%
+                        \ifnum\i=\h%
+                            \ifnum\i=\p%
+                                \ifnum\i=1\hspace{0.5em}\fi\ifnum\i>1 ; \fi\ifx\prev\empty \else \prev \ \fi\citeauthor{\aut}\ifx\page\empty \else, \page \fi%
+                            \fi%
+                        \fi%
+                    }%
+                }%
+            }%
+        \fi%
+        .%
+    }%
+}%
+
+\DeclareDelimFormat{multinamedelim}{ / }
+\DeclareDelimAlias{finalnamedelim}{multinamedelim}
+
+% ########################################################################################################################################### %
+% --------------------------------------------------------- Redefining Bibliography --------------------------------------------------------- %
+% ########################################################################################################################################### %
+\renewbibmacro{in:}{%
+    \iffieldundef{journaltitle}{}{%
+        , in:\space%
+    }%
+}%
+
+\AtEveryBibitem{\clearfield{note}}
+\AtEveryBibitem{\clearfield{number}}
+\AtEveryBibitem{\clearfield{abstract}}
+\AtEveryBibitem{\clearlist{language}}
+
+\DeclareFieldFormat{journaltitle}{#1\isdot} %journal titel nicht kursiv
+\DeclareFieldFormat[misc]{title}{#1\isdot} %titel bei misc nicht kursiv
+%\DeclareFieldFormat[article]{pages}{#1} %Seite weglassen.
+%\DeclareFieldFormat[article]{title}{"#1"}
+%\DeclareFieldFormat[online]{title}{"#1"}
+\DeclareFieldFormat[report]{volume}{#1}
+\DeclareFieldFormat[article]{title}{\textit{"#1"}}
+\DeclareFieldFormat[online]{title}{\textit{"#1"}}
+\DeclareFieldFormat[report]{title}{\textit{"#1"}}
+\DeclareFieldFormat[online]{shorthand}{\bfseries [#1]}
+
+\DeclareFieldFormat{url}{URL: \url{#1}}
+\DeclareFieldFormat{urldate}{(\textsc{Besucht am:}\space#1)}
+
+\renewcommand{\labelnamepunct}{\addcolon\space} % Doppelpunkt nach letztem Autor
+
+\renewcommand*{\revsdnamepunct}{} % Komma zwischen Nachnamen und Vornamen weg
+
+% Doppelpunkt nach journal 
+\renewbibmacro*{journal+issuetitle}{
+    \usebibmacro{journal}
+    \setunit*{\addcolon\space}
+    \iffieldundef{series}{}
+    {\newunit
+        \printfield{series}
+        \setunit{\addspace}
+    }
+    \usebibmacro{volume+number+eid}
+    \setunit{\addspace}
+    \usebibmacro{issue+date}
+    \setunit{\addcolon\space}
+    \usebibmacro{issue}
+    \newunit
+}
+
+\renewbibmacro*{name:last-first}[4]{
+    \ifuseprefix
+    {
+        \usebibmacro{name:delim}{#3#1}%
+        \usebibmacro{name:hook}{#3#1}%
+        \ifblank{#3}{}{%
+            \ifcapital
+            {\mkbibnameprefix{\MakeCapital{#3}}\isdot}
+            {\mkbibnameprefix{#3}\isdot}%
+            \ifpunctmark{'}{}{\bibnamedelimc}
+        }
+        \mkbibnamelast{#1}\isdot
+        \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}
+        \ifblank{#2}{}{\bibnamedelimd\mkbibnamefirst{#2}\isdot}
+    }
+    {
+        \usebibmacro{name:delim}{#1}%
+        \usebibmacro{name:hook}{#1}%
+        \mkbibnamelast{#1}\isdot
+        \ifblank{#4}{}{\bibnamedelimd\mkbibnameaffix{#4}\isdot}
+        \ifblank{#2}{}{\bibnamedelimd\mkbibnamefirst{#2}\isdot}
+        \ifblank{#3}{}{\bibnamedelimd\mkbibnameprefix{#3}\isdot}
+    }
+}
+
+% % Schlüssel als Zahlen in eckigen Klammern
+% \DeclareFieldFormat{bibentrysetcount}{\mkbibparens{\mknumalph{#1}}}
+% \DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+% \defbibenvironment{bibliography}{
+%     \iffieldundef{shorthand}{}{
+%         \list
+%             {\printtext[labelnumberwidth]{%
+%             \printfield{prefixnumber}%
+%             \printfield{labelnumber}}}
+%             {\setlength{\labelwidth}{\labelnumberwidth}%
+%                 \setlength{\leftmargin}{\labelwidth}%
+%                 \setlength{\labelsep}{\biblabelsep}%
+%                 \addtolength{\leftmargin}{\labelsep}%
+%                 \setlength{\itemsep}{\bibitemsep}%
+%                 \setlength{\parsep}{\bibparsep}}%
+%             \renewcommand*{\makelabel}[1]{\hss##1}
+%         }
+%     }
+%     {\iffieldundef{shorthand}{}{\endlist}}
+%     {\item}
+
+\DeclareNameAlias{sortname}{last-first}
+
+% Zuerst das Datum aus dem Autor entfernen:
+\renewbibmacro*{author}{%
+    \iffieldundef{shorthand}{}{\parbox{3cm}{\printfield{shorthand}} \begin{minipage}[t]{13cm}}%
+    \ifboolexpr{
+        test \ifuseauthor
+        and
+        not test {\ifnameundef{author}}
+    }
+    {
+        \usebibmacro{bbx:dashcheck}{\bibnamedash}
+        {\usebibmacro{bbx:savehash}%
+            \printnames{author}%
+            \iffieldundef{authortype}{\setunit{\printdelim{nameyeardelim}}}
+            {\setunit{\addcomma\space}}
+        }
+        \iffieldundef{authortype}{}
+        {\usebibmacro{authorstrg}%
+            \setunit{\printdelim{nameyeardelim}}
+        }
+    }
+    {
+        \global\undef\bbx@lasthash
+        \usebibmacro{labeltitle}%
+        \setunit*{\printdelim{nonameyeardelim}}
+    }
+}
+% Dann das Jahr am Ende wieder einfügen und den Punkt am Ende weglassen:
+\usepackage{xpatch}
+\xpatchbibdriver{article}{\usebibmacro{finentry}}{\usebibmacro{date+extradate}.}{}{}
+\xpatchbibdriver{online}{\usebibmacro{finentry}}{\iffieldundef{shorthand}{}{\end{minipage}}}{}{}
+\xpatchbibdriver{report}{\usebibmacro{finentry}}{\printfield{volume}\iffieldundef{year}{}{ \usebibmacro{date+extradate}}.}{}{}
+% ------------------------------------------------------------------------------------------------------------------------------------------- %
+% ########################################################################################################################################### %

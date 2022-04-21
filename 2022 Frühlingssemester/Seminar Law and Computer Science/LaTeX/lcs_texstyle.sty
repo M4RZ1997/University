@@ -16,9 +16,11 @@
 \usepackage{reledmac} % for enumerating pages
 \usepackage{changepage} % for adjustwidth/indent
 \usepackage{paralist} % for enumerating
-\usepackage{hyperref}
+%\usepackage{hyperref}
+\usepackage{nameref, setspace}
 \usepackage{subcaption}
 \usepackage{titlesec} % for chapter indentation and page skipping modifications
+\usepackage{datatool}
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ------------------------------------------- Geometry -------------------------------------------- %
@@ -61,9 +63,10 @@
 % ################################################################################################# %
 % ---------------------------------------- PGF/Tikz-Plots ----------------------------------------- %
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
-\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.geometric, shapes.misc, arrows}
 \usetikzlibrary{calc}
 
 % ## Nice Arrow ## %
@@ -99,6 +102,13 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \fancyfoot[C]{\thepage}
 \renewcommand{\footrulewidth}{0.4pt}
+
+% ------------------ Chapter-Head Alteration ------------------- %
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{Kapitel \thechapter:}{1em}{}
+\titlespacing*{\chapter}{0pt}{-60pt}{15pt}
+% \titlespacing*{\chapter}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+% -------------------------------------------------------------- %
 % ------------------------------------------------------------------------------------------------- %
 % ################################################################################################# %
 % ---------------------------------------- New Commands ------------------------------------------- %
@@ -107,6 +117,7 @@
 % (Only title and subtitle must be defined, name and matriculation number are set in previous sections)
 % if an author is defined the author will be displayed instead of the hardcoded name and immatriculation number
 % Example: \runningheads{Computer Science}{Lecture 05}
+\setlength{\headheight}{14.49998pt}
 \newcommand{\runningheads}[2]{
 	\fancyhead[L]{
 		\begin{tabular}{l}
@@ -134,13 +145,39 @@
 %	\closesection
 %	...
 % \closesection
-\newcommand{\startsection}{\begin{adjustwidth}{2em}{2em}} % Indent left and right
-\newcommand{\startsubsection}{\begin{adjustwidth}{2em}{}} % Indent only left
+\newcommand{\startsection}{\begin{adjustwidth}{0em}{0em}} % Indent left and right
+\newcommand{\startsubsection}{\begin{adjustwidth}{0em}{}} % Indent only left
 \newcommand{\closesection}{\end{adjustwidth}} % Indent paragraph closed (is always needed at the end)
 
 % Citation for text >100 words
 \newcommand{\beginbigcite}{\begin{adjustwidth}{1cm}{1cm}}
 \newcommand{\closebigcite}{\end{adjustwidth}}
+
+% Adjusting Geometry
+\newcommand{\adjustgeometry}{
+    \newgeometry{
+		hmargin=25mm,
+		bottom=25mm,
+		left=25mm,
+		right=40mm,
+		height=150mm,
+		includehead,
+		headsep = 30pt,
+		textheight= 640pt
+	}
+}
+\newcommand{\revertgeometry}{
+    \newgeometry{
+		hmargin=25mm,
+		bottom=25mm,
+		left=25mm,
+		right=25mm,
+		height=150mm,
+		includehead,
+		headsep = 30pt,
+		textheight= 640pt
+	}
+}
 % ####################################### %
 
 % ######## No-Page-Brake Chapter ######## %
@@ -160,6 +197,22 @@
 
 % ########## Text-Color Changer ######### %
 \newcommand{\changetextcolor}[2]{{\color{#1} #2}}
+% ####################################### %
+
+% ######## Abbreviation DataBase ######## %
+\newcommand*{\addacronym}[2]{%
+  \DTLnewrow{acronyms}%
+  \DTLnewdbentry{acronyms}{Acronym}{#1}%
+  \DTLnewdbentry{acronyms}{Description}{#2}%
+}
+% ####################################### %
+
+% ------------------------------------------------------------------------------------------------- %
+% ################################################################################################# %
+% -------------------------------------- New Environments ----------------------------------------- %
+% ########## Abbreviations List ######### %
+\newcommand{\abbrlabel}[1]{\parbox{7cm}{\textbf{#1}\ \dotfill}}
+\newenvironment{abbreviations}{\begin{list}{}{\renewcommand{\makelabel}{\abbrlabel}}}{\end{list}}
 % ####################################### %
 
 % ------------------------------------------------------------------------------------------------- %
