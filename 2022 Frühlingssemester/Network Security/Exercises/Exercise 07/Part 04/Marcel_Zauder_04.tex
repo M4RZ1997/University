@@ -42,10 +42,12 @@
 		
 		\subsection{During the operation of an IEEE 802.11i Robust Security Network, can the communication between a connected mobile station and a wired end-station become insecure? Why?}
 		\startsubsection
+			Yes, it can become insecure during the protected data transfer protocol as if used with the temporlal key integrity protocol, as without rekeying the probability of a successful attack using cryptanalysis rises and the secret key used can become compromised.
 		\closesection
 		
 		\subsection{What is an Association Request Frame? Does this normally include the confidentiality protocol that a Station has decided to use? Why?}
 		\startsubsection
+			The Association Request Frame is used in the discovery phase by the STA in order to ensure the security parameters used. It usually consists of an authentication and key management, a group-key cipher, and a pairwise cipher suites. As the confidentiality protocol is dictated by the access point it is not usually part of this frame.
 		\closesection
 	\closesection
 \end{document}

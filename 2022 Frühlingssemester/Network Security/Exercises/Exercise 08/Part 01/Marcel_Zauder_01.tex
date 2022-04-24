@@ -1,0 +1,22 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{8}
+
+\runningheads{Network Security}{Exercise 0\exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{0}
+
+
+\begin{document}
+	\section{Question 1}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{In this company’s network, where would you implement IPSec? Why?}
+		\startsubsection
+			I would implement it between the Networking device and the Ethernet switch, as devices within the Ethernet network do not need to be secured against monitoring from each other and the control of network traffic is also not that important on that level. Furthermore, each Ethernet switch should be authenticated to the Networking device and the data sent should be encrypted to ensure security.
+		\closesection
+	\closesection
+\end{document}

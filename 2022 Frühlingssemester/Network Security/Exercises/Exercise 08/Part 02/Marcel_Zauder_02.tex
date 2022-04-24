@@ -1,0 +1,41 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{8}
+
+\runningheads{Network Security}{Exercise 0\exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{1}
+
+
+\begin{document}
+	\section{Question 2}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Provide quick definitions for the following IPsec terms:}
+		\startsubsection
+			\subsubsection{Authentication Header Protocol}
+			\startsubsection
+				The Authentication Header provides the message to have the RFC 4302 authentication. However, as of today it is deprecated and should only be used in order to make IPsecv3 backward compatible. For other purposes its use should be discontinued.
+			\closesection
+			\subsubsection{Encapsulating Security Payload}
+			\startsubsection
+				A message consisting of an encapsulating header and a trailer which is used in order to provide encryption and authentication in the means of RFC 4303.
+			\closesection
+			\subsubsection{Security Association}
+			\startsubsection
+				A security association is defined as the establishment of shared security attributes between two network entities in order to provide the possibility of secure communication.
+			\closesection
+			\subsubsection{Security Association Database}
+			\startsubsection
+				The database contains parameters associated with each SA, like Security paramter index, ESP information, the SA's lifetime, the IPsec protocol mode, and others.
+			\closesection
+			\subsubsection{Security Policy Database}
+			\startsubsection
+				Is used to map an IP packet to a specific Security Association. This is done within the database with so-called selectors. It can occur that within a database many entries relate to the same SA or one entry relates to many different SAs.
+			\closesection
+		\closesection
+	\closesection
+\end{document}

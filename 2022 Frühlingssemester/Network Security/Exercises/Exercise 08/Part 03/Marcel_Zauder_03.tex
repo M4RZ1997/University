@@ -1,0 +1,22 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{8}
+
+\runningheads{Network Security}{Exercise 0\exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{2}
+
+
+\begin{document}
+	\section{Question 3}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Why does ESP include a Padding Field?}
+		\startsubsection
+			The padding within the Encapsulation Security Payload is used in order to achieve a certain block length, align the padding length and the next header, and to conceal the packet length.
+		\closesection
+	\closesection
+\end{document}
