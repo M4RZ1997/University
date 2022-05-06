@@ -16,6 +16,13 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{Explain briefly what the basic approaches for bundling Security Associations are.}
 		\startsubsection
+			\textit{Using Stallings 20.4 as a reference:} \\
+			In order to deal with traffic flow IPsec services between hosts and separate services between security gateways a sequence of bundles of SAs is performed. There are two main approaches:
+			\begin{enumerate}
+				\item Inner SA for ESP and outer SA for AH which are combined at once. This approach is called \textit{Transport Adjacency}
+				\item Through IP tunneling multiple layers of security protocols can be combined which allows for multiple nested levels. In order to perform the authentication before encryption, here an SA is used for the inner AH transport and another one for the outer ESP tunnel. This approach is called \textit{Interated Tunneling/Transport Tunnel Bundle}.
+			\end{enumerate}
+			Furthermore, it is also possible to combine these two approaches.
 		\closesection
 	\closesection
 \end{document}

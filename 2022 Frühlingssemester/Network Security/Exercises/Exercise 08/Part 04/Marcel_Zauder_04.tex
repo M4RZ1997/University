@@ -16,6 +16,7 @@
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{How does ESP and AH provide replay protection?}
 		\startsubsection
+			AH uses IP headers field which are immutable and can therefore not be changed within a communication between a sender and a receiver. Within these fields there is a sequence number in order to provide replay protection. When the AH recognizeses such a replay attack the whole packet is discarded. ESP also uses such a sequence number and operates similarly.
 		\closesection
 	\closesection
 \end{document}
