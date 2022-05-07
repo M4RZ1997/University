@@ -1,0 +1,25 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{9}
+
+\runningheads{Network Security}{Exercise 0\exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{2}
+
+
+\begin{document}
+	\section{Question 3}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Are there cases, where the identity confidentiality in LTE might be compromised? Explain why. Would that be dangerous?}
+		\startsubsection
+			\textbf{Terminal Identity Confidentiality} \\
+			In ESP the UE only sends the IMEI (or IMEISV) if NAS security has been activated. Hence, in this case there would not be any problem. \\
+			\textbf{User Identity Confidentiality} \\
+			In order to secure the user's IMSI a temporary identity called GUTI is used. So if the network is using the signaling confidentiality property any attacker cannot read the GUTI which is sent from the UE to the MME. However, if signaling confidentiality is not given an attacker might determine a relation between the GUTI and the IMSI. This security problem leads to the leaking of the users place and tracking would be enabled by observing his temporary identities.
+		\closesection
+	\closesection
+\end{document}
