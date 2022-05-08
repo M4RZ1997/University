@@ -18,20 +18,36 @@
 		\startsubsection
 			\subsubsection{What security services are provided by TLS Record Protocol?}
 			\startsubsection
+				The TLS Record Protocol provides confidentiality by defining a shared secret key used for conventional encryption of the payloads. It also provides message integrity by defining a shared secret key which is used to form MACs.
 			\closesection
-			\subsubsection{Which of the following parameters correspond to session state andwhich to connection state?}
+			\subsubsection{Which of the following parameters correspond to session state and which to connection state?}
 			\startsubsection
+				\textbf{Session State:} \\
+				Peer Certificate, Cipher Spec, Master Secret \\
+				\textbf{Connection State:} \\
+				Server and Client Random, Server and Client write Keys, Server and Client MAC Secrets
 			\closesection
 			\subsubsection{\textit{server\_key\_exchange} message in TLS Handshake protocol contains a digital signature of the exchanged server parameters and the random values from \textit{client\_hello} and \textit{server\_hello} messages. What is the purpose of signing these two random values?}
 			\startsubsection
 			\closesection
 			\subsubsection{Which certificate issue can you spot on https://bit.ly/3EwxKOt? Which TLS higher-level protocol takes care of sending certificate and other error messages?}
 			\startsubsection
+				The digital certificate issued is expired and therefore an error by the browser is raised. In TLS the Alert Protocol is used to ingotm the peer about the cause of a protocol failure.
 			\closesection
 		\closesection
 		
 		\subsection{Match the following SSL/TLS attacks and describe how each of them can be mitigated.}
 		\startsubsection
+			\parbox{6.5cm}{\textbf{CRIME}\dotfill} \parbox[t]{8cm}{Authentication cookie recovery thanks to the use of compression} \\
+			\textbf{Mitigation Options:} \\
+			This approach can be defeated by preventing the use of compression at either the client end, the browser disabling the compression of HTTPS requests, or by the website preventing the use of data compression on such transactions using the protocol negotiation features of the TLS protocol. In TLS 1.2 it is specified that in the ClientHello message different compression methods can be specified and only one of these can be used during the communication between server and client (the messages are not compressed if no compression method is specified).\\
+			\\\parbox{6.5cm}{\textbf{Bleichenbacher Attack}\dotfill} \parbox[t]{8cm}{Utilizes fixed PKCS\#1 format and chosen-ciphertext weakness of RSA to decrypt pre\_master\_secret} \\
+			\textbf{Mitigation Options:} \\
+			In order to mitigate a Bleichenbacher attack the RSA key exchange approach should be changed so that either DH or ECDH are used instead. Another option would be to use OAEP instead of PKCS. In the end the client should not be noticed about any Pre-Master decryption fails and the server should only inform the client once reaching the Finished state (as stated on https://datatracker.ietf.org/doc/html/rfc5246, p.60). \\
+			\\\parbox{6.5cm}{\textbf{BEAST}\dotfill} \parbox[t]{8cm}{Chosen-plaintext attack on CBC mode encryption with chained IVs} \\
+			\textbf{Mitigation Options:} \\
+			\\\parbox{6.5cm}{\textbf{"The Hacker's Choice"/DDoS Attack}\dotfill} \parbox[t]{8cm}{Exploits SSL Renegotiation feature} \\
+			\textbf{Mitigation Options:} \\
 		\closesection
 	\closesection
 \end{document}

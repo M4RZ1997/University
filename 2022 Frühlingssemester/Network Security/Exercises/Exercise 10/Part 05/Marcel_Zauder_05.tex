@@ -21,6 +21,7 @@
 			\closesection
 			\subsubsection{Public key vs password authentication in SSH}
 			\startsubsection
+				The password authentication in SSH is better as SSH keys are much more difficult to hack than passwords/public keys and therefore are more secure as they can have a length of up to 4096bits making them more complex and harder to brute-force. Furthrmore, the actual private SSH key is never sent to the server, hence making it impossible for malicious attackers to access the account only by hacking into the server. In the end the SSH key can also be multi-factor authenticated by adding a password.
 			\closesection
 			\subsubsection{Local database vs certified host name-to-key association SSH trust model in a small company with 5 employees for allowing them to SSH to a company server when they work remotely}
 			\startsubsection
