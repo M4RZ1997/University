@@ -2,43 +2,148 @@
 
 \usepackage{../../../LaTeX/marzstyle}
 
+\newgeometry{
+	hmargin=2.5cm,
+	bottom=2cm,
+	height=120mm,
+	includehead,
+	headsep = 25pt,
+	textheight= 675pt
+}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{7pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{0pt}
+\renewcommand{\startsection}{\begin{adjustwidth}{0.35em}{0em}}
+\renewcommand{\startsubsection}{\begin{adjustwidth}{0.35em}{}}
+
 \author{Miro \textsc{Schüpbach} 17-109-851 \\
 	Marcel \textsc{Zauder} 16-124-836}
 \runningheads{Law and Computerscience Seminar}{Decentralized Finances - Handout}
 
-
-
 \begin{document}
-	\section{DAO Definition}
+	\section{Dezentralisierte Autonome Organisation - Definition}
 	\startsection
+		\begin{enumerate}[-]
+			\item Smart Contracts definieren die Regeln und die Operationen einer DAO
+			\item Entscheidungsgewalt ist über alle Mitglieder verteilt
+			\item Alle Transaktionen werden auf Blockchain festgehalten; Source Code und Blockchain ist Open Source
+			\item \textbf{Protokoll-DAOs} kümmern sich um die Governance eines Protokolls, wie z.B. Aave (Kredit-Protokoll), Uniswap (DEX) oder MakerDAO (Stablecoin).
+			\item In \textbf{Dienstleistungs-DAOs} finden sich Serviceanbieter und Nutzer zusammen, um verschiedene Dienstleistungen anzubieten und zu nutzen, beispielsweise Gitcoin.
+			\item \textbf{Fundraising-DAOs} haben das Ziel ein gemeinschaftlichen Kapitals anzusammeln, um ein gemeinsames Ziel zu erreichen, z.B. ConstitutionDAO oder PleasrDAO.
+		\end{enumerate}
 	\closesection
 	
 	\section{Computerscience Teil}
 	\startsection
-		\subsection{Dash DAO}
+		\subsection{Dash DAO (DASH Blockchain)}
 		\startsubsection
+			\begin{enumerate}[-]
+				\item Users with at least 1000 DASH ($\approx$ 80.000 US-\$, May 2022) can establish Masternodes
+				\item Masternodes enable different features (i.e. InstantSend, CoinJoin, ChainLocks etc.)
+				\item Uses Proof-of-Work consensus by solving >>X-11<<-hash function
+				\item Not everything of the mining reward goes to the miners:
+				\begin{enumerate}[-]
+					\item 10\% for Decentralized Governance Budget
+					\item 90\% for miners and masternode owners (masternode owners get 60\% of this reward in 2025)
+				\end{enumerate}
+				\item Only masternode owners can vote in proposals
+			\end{enumerate}
 		\closesection
-		\subsection{ConstitutionDAO}
+		\subsection{ConstitutionDAO (Ethereum Blockchain - Juicebox Framwork)}
 		\startsubsection
+			\begin{enumerate}[-]
+				\item Uses Proof-of-Work consensus; Ethereum network plans to switch to Proof-of-Stake approach
+				\item Donated money is stored in a multi-signature wallet
+				\item Juicebox DAO have a funding goal and period $\rightarrow$ overflow is collected in separate treasury pool which can be accessed by the members by >>burning<< their tokens
+				\item Voting rights are distributed across all members proportionally to the number of tokens they hold
+			\end{enumerate}
 		\closesection
 		\subsection{Vulnerabilities and Potential Attack Opportunities}
 		\startsubsection
-			\subsubsection{Reentrancy Exploits}
+			\begin{enumerate}[-]
+				\item 10.9 billion US-\$ distributed across all DAOs
+				\item 86 DAO attacks since January 2020 lead to a loss of 3.2 billion US-\$
+				\item \textbf{TheDAO Hack (2016)} – approx. 60 million US-\$ siphoned; lead to hardfork of Ethereum blockchain
+				\item \textbf{Ronin Network Attack (29. March 2022)} – 625 million US-\$ lost
+				\item \textbf{Beanstalk Farms (18. April 2022)} – 182 million US-\$ lost
+			\end{enumerate}
+			\subsubsection{Reentrancy Exploits (TheDAO Hack)}
 			\startsubsection
+				\begin{enumerate}[-]
+					\item During execution the execution itself is interrupted, initiated, and both execution parts are terminating
+					\item In TheDAO Hack example:
+					\begin{enumerate}[-]
+						\item After the Ether was transferred a Fallback-Function is called
+						\item Initialized another withdrawal of same account
+						\item As balance was not yet updated, the same amount could be withdrawn several times
+					\end{enumerate}
+				\end{enumerate}
 			\closesection
 			\subsubsection{Rug Pulls}
 			\startsubsection
+				\begin{enumerate}[-]
+					\item If the private key for treasury/liquidity pool was not burned owner still has complete access over it
+					\item After enough money was gathered the DAO's owner can transfer all the money to his wallet and >>run<<
+					\item In Juicebox it is also possible to set the reconfiguration strategy to none $\rightarrow$ changes to settings of the DAO take effect immediately
+					\item In 2021 over 2.8 billion US-\$ were lost this way
+				\end{enumerate}
 			\closesection
 			\subsubsection{Flash Loan (Governance) Attacks}
 			\startsubsection
+				\begin{enumerate}[-]
+					\item Flash loans are taken within the execution of a smart contract and must be paid back in full (plus interest) before the SC's termination
+					\item Was commonly used to exploit differences in price between two exchange portals
+					\item As tokens are most often proportionally to votes, one can use the flash loan in order to vote in proposals (\textbf{Flash Loan Governance Attack})
+				\end{enumerate}
 			\closesection
+			\newpage\vspace*{-3em}
 			\subsubsection{Other Common Attacks}
 			\startsubsection
+				\begin{enumerate}[-]
+					\item If someone gathers hash power of over \textbf{51\%} of the whole DAO, they would have full control over the blockchain.
+					\item Wrong timestamped blocks can lead the blockchain to think that current mining processes take longer $\rightarrow$ decreases difficulty, and subsequent block mining becomes easier. (\textbf{Time Warp Exploit})
+					\item Ethereum was the target of a \textbf{DoS Attack} in 2016 $\rightarrow$ transactions took a lot of time to verify. Especially DAOs that use >>\textit{validation nodes}<< (like Dash's Masternodes) are susceptible for this.
+				\end{enumerate}
+				\vspace*{0.25em}
 			\closesection
 		\closesection
 	\closesection
 	
 	\section{Juristischer Teil}
 	\startsection
+		DAOs können in \textit{top-} und \textit{ground-layer} DAOs eingeteilt werden. \textit{Ground-layer} DAOs sind ganze Blockchains wie Ethereum oder Bitcoin. Die \textit{top-layer} basieren auf einer \textit{ground-layer} DAO und bedienen sich derer Infrastruktur, indem sie Smart Contracts auf der Blockchain ablegen.	
+		\subsection{DAOs im Gesellschaftsrecht}
+    	\startsubsection
+			Aufgrund des numerus clausus des schweizerischen Gesellschaftsrechts müssten DAOs entweder als Personengesellschaft oder als Körperschaft qualifiziert werden. \\	
+			\noindent\textbf{Körperschaft} \\
+	Für eine Qualifikation als Körperschaft spricht die unbegrenzte Mitgliederzahl, die fehlenden Treuepflichten sowie dass grundsätzlich die Stimmkraft dem eingebrachten Kapital entspricht. Dagegen sprechen mögliche Organisationsmängel sowie das Fehlen von Statuten und HR-Eintrag. \\
+			\noindent\textbf{Personengesellschaft} \\
+			Sowohl die grosse Gestaltungsfreiheit bezüglich der vertraglichen Grundlage als auch das Prinzip der Selbstorganschaft deuten auf eine Qualifikation als Personengesellschaft hin. Dagegen spricht die persönliche Beziehung und die weitgehenden Treuepflichten der Gesellschafter.
+		\closesection	
+		\subsection{DAOs als einfache Gesellschaft}
+		\startsubsection
+			Es ist durchaus vertretbar, dass eine vertragsmässige Verbindung von mehreren Personen, die sich gemeinsamen Mittel bedienen, vorliegt. Da das Bewusstsein der Qualifikation als eG nicht erforderlich ist, müsste jedoch ein Wille zur gemeinsamen Zweckverfolgung gegeben sein. Gerade dieser Rechtsbindungswille ist u.E. jedoch bei DAOs nicht vorhanden. 
+		\closesection	
+		\subsection{DAOs als kollektive Kapitalanlage}
+		\startsubsection
+			Eine kollektive Kapitalanlage ist ein Vermögen, das durch die Anleger zur kollektiven Kapitalanlage aufgebracht und in Fremdverwaltung für deren Rechnung verwaltet werden, wobei die Anlegerinteressen gleichmässig befriedigt werden. DAOs erfüllen drei dieser vier Kriterien. Diese Qualifikation scheitert an dem Kriterium der Selbstverwaltung, da DAOs definitionsgemäss selbstverwaltet sind und die Mitwirkung der Anlegerinnen und Anleger im Zentrum steht.
+		\closesection
+		\subsection{Stakeholder einer DAO}
+		\startsubsection
+			Die Stakeholder einer DAO sind grundsätzlich in Entwickler, Benutzer, DAO Mitglieder und möglicherweise Delegates einzuteilen. Zentral sind dabei die DAO Mitglieder, da diese das entscheidungsbefugte Organ einer DAO sind.
+		\closesection
+		\subsection{Ansprüche der Investoren}
+		\startsubsection
+			Die DAO Token vermitteln den DAO Mitglieder primär Stimmrechte. Verschiedene DAOs experimentieren ebenfalls mit Mechanismen welche Dividendenausschüttungen oder Bezugsrechten ähneln. Ebenfalls gibt es DAOs die Rückerstattungsrechte garantieren.
+		\closesection
+		\subsection{Haftung von DAOs}
+		\startsubsection
+			\noindent\textbf{Haftung der DAO als solche} \\
+    		Da es der DAO an einer eigenen Rechtspersönlichkeit mangelt, ist eine Haftung der DAO als solche de lege lata nicht möglich. \\
+			\noindent\textbf{Haftung der DAO Mitglieder} \\
+			Wird die DAO als einfache Gesellschaft qualifiziert, würde dies zu einer solidarischen, persönlichen und unbeschränkten Haftung der einzelnen Mitglieder führen. Fehlt es an einem Rechtsbindungswillen, schlagen gewisse Autorinnen und Autoren vor, die Regeln der einfachen Gesellschaft analog anzuwenden. U.E. ist dies nicht zielführend, insbesondere da es sich bereits um einen Auffangstatbestand handelt und sich Probleme bei der Durchsetzbarkeit stellen würden.\\
+			\noindent\textbf{Haftung de lege ferenda} \\
+    		De lege ferenda wäre es wünschenswert, den DAOs eine eigene Rechtspersönlichkeit zu gewähren und das Betriebs-risiko auf die DAO als solche zu überwälzen. Dies könnte mit gewissen Eigenkapital- und Auditvorschriften kombiniert werden.
+		\closesection	
 	\closesection
 \end{document}
