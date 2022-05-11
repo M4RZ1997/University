@@ -1,0 +1,25 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{11}
+
+\runningheads{Network Security}{Exercise \exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{6}
+
+
+\begin{document}
+	\section{Question 7}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Match the following:}
+		\startsubsection
+			\parbox{2.5cm}{\textbf{DANE}\dotfill} \parbox[t]{12cm}{Bind X.509 certificates to DNS names using DNSSEC} \\
+			\parbox{2.5cm}{\textbf{SPF}\dotfill} \parbox[t]{12cm}{Ensure that only emails from authorized IP addresses can be sent from a domain} \\
+			\parbox{2.5cm}{\textbf{DKIM}\dotfill} \parbox[t]{12cm}{Perform source domain validation, ensure message body integrity} \\
+			\parbox{2.5cm}{\textbf{DMARC}\dotfill} \parbox[t]{12cm}{Inform receivers if SPF or DKIM are used} \\
+		\closesection
+	\closesection
+\end{document}

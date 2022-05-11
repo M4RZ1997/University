@@ -29,6 +29,7 @@
 			\closesection
 			\subsubsection{\textit{server\_key\_exchange} message in TLS Handshake protocol contains a digital signature of the exchanged server parameters and the random values from \textit{client\_hello} and \textit{server\_hello} messages. What is the purpose of signing these two random values?}
 			\startsubsection
+				This is done in order to protect from replay attacks as a server should never allow a duplicate nonce, mitigating a capture and resending of a particular message.
 			\closesection
 			\subsubsection{Which certificate issue can you spot on https://bit.ly/3EwxKOt? Which TLS higher-level protocol takes care of sending certificate and other error messages?}
 			\startsubsection
@@ -43,11 +44,13 @@
 			This approach can be defeated by preventing the use of compression at either the client end, the browser disabling the compression of HTTPS requests, or by the website preventing the use of data compression on such transactions using the protocol negotiation features of the TLS protocol. In TLS 1.2 it is specified that in the ClientHello message different compression methods can be specified and only one of these can be used during the communication between server and client (the messages are not compressed if no compression method is specified).\\
 			\\\parbox{6.5cm}{\textbf{Bleichenbacher Attack}\dotfill} \parbox[t]{8cm}{Utilizes fixed PKCS\#1 format and chosen-ciphertext weakness of RSA to decrypt pre\_master\_secret} \\
 			\textbf{Mitigation Options:} \\
-			In order to mitigate a Bleichenbacher attack the RSA key exchange approach should be changed so that either DH or ECDH are used instead. Another option would be to use OAEP instead of PKCS. In the end the client should not be noticed about any Pre-Master decryption fails and the server should only inform the client once reaching the Finished state (as stated on https://datatracker.ietf.org/doc/html/rfc5246, p.60). \\
+			In order to mitigate a Bleichenbacher attack the RSA key exchange approach should be changed so that either DH or ECDH are used instead. Another option would be to use OAEP instead of PKCS. In the end the client should not be noticed about any Pre-Master decryption fails and the server should only inform the client once reaching the Finished State (as stated on https://datatracker.ietf.org/doc/html/rfc5246, p.60). \\
 			\\\parbox{6.5cm}{\textbf{BEAST}\dotfill} \parbox[t]{8cm}{Chosen-plaintext attack on CBC mode encryption with chained IVs} \\
 			\textbf{Mitigation Options:} \\
+			The easiest option to mitigate such an attack is to disable TLS 1.0 and 1.1 as well as SSL on the server. \\
 			\\\parbox{6.5cm}{\textbf{"The Hacker's Choice"/DDoS Attack}\dotfill} \parbox[t]{8cm}{Exploits SSL Renegotiation feature} \\
 			\textbf{Mitigation Options:} \\
+			One can integrate an iRule which drops a connection of a client if he is renegotiating several times in a given time frame (i.e. 10 times in 1 minute). This drop will stall the attack for long periods of time which will fully negate the attack (see https://community.f5.com/t5/technical-articles/ssl-renegotiation-dos-attack-ndash-an-irule-countermeasure/ta-p/274560).
 		\closesection
 	\closesection
 \end{document}
