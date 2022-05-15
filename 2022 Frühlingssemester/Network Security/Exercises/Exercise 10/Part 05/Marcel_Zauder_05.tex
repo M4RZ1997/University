@@ -18,6 +18,7 @@
 		\startsubsection
 			\subsubsection{Telnet vs SSH}
 			\startsubsection
+				As stated on slide 30 from the lecture SSH was intoduced in order to replace Telnet. Therefore SSH would be preferrable for a secure remote logon facility.
 			\closesection
 			\subsubsection{Public key vs password authentication in SSH}
 			\startsubsection
@@ -25,6 +26,26 @@
 			\closesection
 			\subsubsection{Local database vs certified host name-to-key association SSH trust model in a small company with 5 employees for allowing them to SSH to a company server when they work remotely}
 			\startsubsection
+				As the local database needs the client to know the host’s public key it would be better to use the certified host name-to-key association. Furthermore, as the company is rather small this approach is much more suitable. If the company would be larger a CA is needed in order to improve the operability and security (https://smallstep.com/blog/use-ssh-certificates/).
+			\closesection
+		\closesection
+		\subsection{Which SSH channel types would you use in the following scenarios?}
+		\startsubsection
+			\subsubsection{You want to be able to connect to your company's internal network protected by a firewall when working from home}
+			\startsubsection
+				On slide 43 from the lecture this scenario is solved by using \textbf{remote port forwarding}.
+			\closesection
+			\subsubsection{You want to run AutoCAD installed on a remote server}
+			\startsubsection
+				As AutoCad is a graphical display the channel type would be \textbf{X11}.
+			\closesection
+			\subsubsection{You want to list running processes on a remote Linux host using \textit{ps} command}
+			\startsubsection
+				A good option for this scenario would be to use a \textbf{session channel type} in order to execute the system command \textit{ps} on the host.
+			\closesection
+			\subsubsection{You have a database running on a server and you want to access it remotely over a secure channel}
+			\startsubsection
+				The best option would be \textbf{local port forwarding} as this maximizes the security due to the use of a tunnel.
 			\closesection
 		\closesection
 	\closesection

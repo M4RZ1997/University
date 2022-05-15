@@ -33,7 +33,7 @@
 			\closesection
 			\subsubsection{Which certificate issue can you spot on https://bit.ly/3EwxKOt? Which TLS higher-level protocol takes care of sending certificate and other error messages?}
 			\startsubsection
-				The digital certificate issued is expired and therefore an error by the browser is raised. In TLS the Alert Protocol is used to ingotm the peer about the cause of a protocol failure.
+				The digital certificate issued is expired and therefore an error by the browser is raised. In TLS the Alert Protocol is used to inform the peer about the cause of a protocol failure.
 			\closesection
 		\closesection
 		
@@ -45,7 +45,7 @@
 			\\\parbox{6.5cm}{\textbf{Bleichenbacher Attack}\dotfill} \parbox[t]{8cm}{Utilizes fixed PKCS\#1 format and chosen-ciphertext weakness of RSA to decrypt pre\_master\_secret} \\
 			\textbf{Mitigation Options:} \\
 			In order to mitigate a Bleichenbacher attack the RSA key exchange approach should be changed so that either DH or ECDH are used instead. Another option would be to use OAEP instead of PKCS. In the end the client should not be noticed about any Pre-Master decryption fails and the server should only inform the client once reaching the Finished State (as stated on https://datatracker.ietf.org/doc/html/rfc5246, p.60). \\
-			\\\parbox{6.5cm}{\textbf{BEAST}\dotfill} \parbox[t]{8cm}{Chosen-plaintext attack on CBC mode encryption with chained IVs} \\
+			\newpage\noindent\parbox{6.5cm}{\textbf{BEAST}\dotfill} \parbox[t]{8cm}{Chosen-plaintext attack on CBC mode encryption with chained IVs} \\
 			\textbf{Mitigation Options:} \\
 			The easiest option to mitigate such an attack is to disable TLS 1.0 and 1.1 as well as SSL on the server. \\
 			\\\parbox{6.5cm}{\textbf{"The Hacker's Choice"/DDoS Attack}\dotfill} \parbox[t]{8cm}{Exploits SSL Renegotiation feature} \\
