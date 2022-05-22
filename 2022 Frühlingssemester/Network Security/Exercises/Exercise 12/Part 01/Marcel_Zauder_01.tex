@@ -1,0 +1,41 @@
+\documentclass{report}
+
+\usepackage{../../../../../LaTeX/marzstyle}
+
+\newcommand{\exercisenr}{12}
+
+\runningheads{Network Security}{Exercise \exercisenr}
+
+\setcounter{chapter}{\exercisenr}
+\setcounter{section}{0}
+
+
+\begin{document}
+	\section{Question 1}
+	\startsection
+		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
+		\subsection{Decide, which incoming packets will be accepted, and which will be dropped. Specify, which rule will accept/drop each packet.}
+		\begin{enumerate}[-]
+			\item src: 142.8.5.11, dst: 141.9.7.11:22, tcp \\ \textbf{dropped}, Rule 7
+			\item src: 152.4.8.2, dst: 141.9.7.12, icmp \\ \textbf{accepted}, Rule 3
+			\item src: 142.5.17.99, dst: 141.9.7.111:443, tcp \\ \textbf{dropped}, Rule 1
+			\item src: 141.9.7.215, dst: 141.9.7.11:443, tcp \\ \textbf{accepted}, Rule 6
+			\item src: 2003:4860:4860::8844, dst: 2016:837:62f::b8, dstport: 53, udp
+		\end{enumerate}
+		\subsection{One of the packets from question 1 A is malicious}
+		\startsubsection
+			\subsubsection{Which one?}
+			\startsubsection
+			\closesection
+			\subsubsection{What’s malicious about it?}
+			\startsubsection
+			\closesection
+			\subsubsection{Add a rule that would block such malicious packets}
+			\startsubsection
+			\closesection
+			\subsubsection{In which place will you add the new rule to the table?}
+			\startsubsection
+			\closesection
+		\closesection
+	\closesection
+\end{document}

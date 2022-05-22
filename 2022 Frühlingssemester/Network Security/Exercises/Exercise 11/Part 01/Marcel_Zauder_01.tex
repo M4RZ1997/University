@@ -15,13 +15,30 @@
 	\startsection
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
 		\subsection{RFC 5598 defines five components of the Internet Mail Architecture. In which order does a message pass through them on it's way from the sender to the receiver?}
-		\startsubsection
-		\closesection
+		\begin{enumerate}
+			\item Message User Agent
+			\item Mail Submission Agent
+			\item Message Transfer Agent
+			\item Mail Delivery Agent
+			\item Message Store
+			\item[-] In the end the MUA is used to retrieve the messages from a remote server
+		\end{enumerate}
 		\subsection{Which of these components form the Message Handling System?}
 		\startsubsection
+			The Mail Submission Agent, the Message Transfer Agent, and the Mail Delivery Agent form the Message Handling System.
 		\closesection
 		\subsection{Which email protocols are used in the Internet Mail Architecture? Between which components are they used?}
 		\startsubsection
+			There are three common protocols used to deliver email over the internet:
+			\begin{enumerate}
+				\item Simple Mail Transfer Protocol (SMTP) \\
+				Was designed as a host-to-host protocol in order to send messages directly to the destination
+				\item Post Office Protocol (POP) \\
+				Allows client to download email from a server.
+				\item Internet Message Access Protocol (IMAP) \\
+				Allows client to access email on an email server.
+				\item[-] All of these protocols use TCP connections.
+			\end{enumerate}
 		\closesection
 	\closesection
 \end{document}

@@ -14,11 +14,19 @@
 	\section{Question 6}
 	\startsection
 		\renewcommand{\thesubsection}{\thesection.\Alph{subsection}}
-		\subsection{Which security services are provided by S/MIME? By which security mechanism(s) are they provided? (X.800)}
+		\subsection{Which security services are provided by DNSSEC? By which security mechanism(s) are they provided? (X.800)}
 		\startsubsection
+			DNSSEC adds two security services:
+			\begin{enumerate}
+				\item \textit{Data Origin Authentication} \\
+				Ensures the receiver/resolver to verify that the data originated from the zone he believes it comes from.
+				\item \textit{Data Integrity Protection} \\
+				Ensures the receiver/resolver that the data was not modified during transfer.
+			\end{enumerate}
 		\closesection
 		\subsection{Is DNSSEC enabled for unibe.ch? Describe how you found out.}
 		\startsubsection
+			Using the "\textit{dig ds unibe.ch +short}" command I could determine that DNSSEC is enabled for unibe.ch. Also various internet websites concluded in the same result.
 		\closesection
 	\closesection
 \end{document}
