@@ -20,7 +20,7 @@
 			\item src: 152.4.8.2, dst: 141.9.7.12, icmp \\ \textbf{accepted}, Rule 3
 			\item src: 142.5.17.99, dst: 141.9.7.111:443, tcp \\ \textbf{dropped}, Rule 1
 			\item src: 141.9.7.215, dst: 141.9.7.11:443, tcp \\ \textbf{accepted}, Rule 6
-			\item src: 2003:4860:4860::8844, dst: 2016:837:62f::b8, dstport: 53, udp
+			\item src: 2003:4860:4860::8844, dst: 2016:837:62f::b8, dstport: 53, udp \\ As IPv6 packets are not handled at all by generic \textit{iptables} this packet is just \textbf{accepted}.
 		\end{enumerate}
 		\subsection{One of the packets from question 1 A is malicious}
 		\startsubsection
