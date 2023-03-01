@@ -1,3 +1,6 @@
 [submodule "2023 Frühlingssemester/Graph-Based-Pattern-Recognition"]
 	path = 2023 Frühlingssemester/Graph-Based-Pattern-Recognition
 	url = https://github.com/M4RZ1997/Graph-Based-Pattern-Recognition.git
+[submodule "2023 Frühlingssemester/Compiler-Construction"]
+	path = 2023 Frühlingssemester/Compiler-Construction
+	url = https://github.com/M4RZ1997/Compiler-Construction.git
